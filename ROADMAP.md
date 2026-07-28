@@ -14,8 +14,8 @@ canonical status.
 ```text
 M0 Project Definition          → implemented in repository
 M1 Knowledge Kernel            → implemented; ontology questions remain open
-M2 Validation Kernel           → implemented; independent audit is next
-M3 Reference Knowledge Corpus  → proposed, blocked by M2 audit
+M2 Validation Kernel           → hardened locally; cross-platform CI pending
+M3 Reference Knowledge Corpus  → proposed, blocked by Linux + Windows CI proof
 M4 Knowledge Graph             → future
 M5 Hybrid Retrieval            → future
 M6 Architecture RAG            → future
@@ -24,22 +24,20 @@ M8 Review Platform             → future
 M9 Production Platform         → future
 ```
 
-## Immediate next step — M2 audit
+## Immediate next step — cross-platform CI proof
 
-Before M3 begins:
+The independent M2 audit and local hardening are complete:
 
-- run clean-checkout CI on Linux and Windows;
-- independently review fixture coverage and diagnostic precision;
-- mutation-test high-risk relationship and lifecycle rules;
-- evaluate false positives in Markdown and alias checks;
-- review source-admission transitions and lifecycle evidence;
-- decide whether concept `human_key` becomes mandatory before parallel M3
-  authoring;
-- confirm integrity reports cover the first reference batch.
+- active concept allocations require a non-null, globally unique `human_key`;
+- registry and schema vocabulary semantics are checked for drift;
+- claim derivation cycles and ungrounded evidence chains are rejected;
+- audit regression fixtures cover previously untested high-risk diagnostics;
+- coverage gates pass at 97.83% statements and 82.72% branches;
+- focused mutation testing passes at 70.16% with a 60% break threshold;
+- the workflow defines Linux and Windows jobs from a frozen pnpm lockfile.
 
-The audit may fix validation defects. It must not create production knowledge or
-the 20 reference units.
-
+M3 remains blocked until `main` is pushed and both clean-checkout CI jobs pass.
+No production knowledge or reference unit was created during hardening.
 ## M0 — Project Definition
 
 Purpose: establish project direction and boundaries.
@@ -84,7 +82,8 @@ Implemented outputs:
   validators;
 - immutable ID ledger and lifecycle event registry;
 - valid, invalid, boundary, and regression fixtures;
-- test suite and minimal CI;
+- test suite, coverage gates, focused mutation testing, and cross-platform CI;
+- registry-schema consistency and transitive claim-grounding checks;
 - deterministic integrity reports;
 - stable pnpm commands.
 
@@ -94,12 +93,14 @@ Exit criteria currently satisfied in the local execution environment:
 Clean checkout
 → pnpm install --frozen-lockfile
 → pnpm validate
-→ pnpm test
+→ pnpm test:coverage
+→ pnpm test:mutation
 → pnpm report:check
 → all pass
 ```
 
-Status: implemented; independent M2 audit is the next bounded run.
+Status: hardened and verified locally; remote Linux and Windows CI proof remains
+the final M2 release gate.
 
 ## M3 — Reference Knowledge Corpus
 
@@ -119,7 +120,7 @@ Exit criteria:
 - orphan concepts are explained or corrected;
 - all content remains below human-reviewed lifecycle states unless humans act.
 
-Status: proposed; blocked until the M2 audit completes.
+Status: proposed; blocked until both remote M2 CI jobs pass.
 
 ## M4 — Knowledge Graph and Query Layer
 

@@ -102,6 +102,36 @@ Observed final results:
 The dependency directory was removed and restored from the frozen lockfile
 before the final audit commands.
 
+## M2 hardening audit follow-up
+
+The independent audit reproduced three gaps in the initial boundary: nullable
+concept `human_key` values, ontology registry changes that could drift from
+schema enums, and cyclic claim derivations with no admitted source foundation.
+The hardening run corrected all three without creating production knowledge.
+
+Additional committed controls:
+
+- Git baseline commit `9299075` on `main`;
+- non-null, globally unique `human_key` values for active concept allocations;
+- registry-schema consistency checks for concept, domain, dimension, lifecycle,
+  maturity, claim, relationship, and source vocabularies and conditional rules;
+- claim derivation cycle detection and transitive admitted-source grounding;
+- regression coverage for previously untested ID, evidence, lifecycle, and
+  relationship diagnostics;
+- coverage gates of 90% statements, 70% branches, 90% functions, and 90% lines;
+- focused mutation testing with a 60% breaking threshold;
+- a GitHub Actions matrix for `ubuntu-latest` and `windows-latest`.
+
+Observed local hardening results:
+
+- validation: 0 errors and 0 warnings;
+- tests: 13 files and 42 tests passed;
+- coverage: 97.83% statements, 82.72% branches, 97.97% functions, and 98.11%
+  lines;
+- mutation score: 70.16%, above the 60% breaking threshold;
+- integrity reports: 12 generated twice and 12/12 confirmed current.
+
+Remote Linux and Windows workflow results remain the final M2 release gate.
 ## ID strategy assessment
 
 The opaque record-kind IDs remain appropriate, but sequential allocation is
@@ -110,13 +140,12 @@ duplicate allocation, wrong prefixes, path drift, missing allocations, and
 retired-ID reuse. It does not provide a distributed allocation lock.
 
 ADR 0002 recommends retaining existing IDs, keeping human-readable keys outside
-canonical identity, and deciding whether concept `human_key` becomes mandatory
-before concurrent M3 authoring.
+canonical identity, and requiring a non-null concept `human_key` before concurrent M3 authoring.
 
 ## Known gaps
 
-- Immutable history is enforced through ledger tombstones, not Git-history
-  comparison, because this directory is not currently a Git repository.
+- Git history now begins at the explicit baseline commit, but validators do not
+  yet compare ledger allocations against historical revisions.
 - Human authorization evidence is structurally required but cannot be verified
   cryptographically or organizationally.
 - Explicit inverse edges are checked for consistency when present; inverse edge
@@ -130,9 +159,9 @@ before concurrent M3 authoring.
 - The phase produces integrity reports, not the future knowledge graph or
   semantic indexes.
 
-## Recommended audit
+## Remaining release gate
 
-Run the bounded M2 audit in `ROADMAP.md` before M3. In particular,
-exercise the workflow in clean Linux and Windows CI, mutation-test lifecycle and
-relationship rules, review heuristic false positives, and decide the
-human-readable key policy. Do not create reference knowledge during that audit.
+Push `main` to the intended remote and require both clean Linux and Windows CI
+jobs to pass. M3 must remain blocked until that evidence exists. Heuristic
+false-positive review and source-transition registry extraction remain explicit
+follow-up risks; neither authorizes production knowledge generation by itself.

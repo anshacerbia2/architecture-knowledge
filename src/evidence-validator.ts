@@ -1,3 +1,4 @@
+import { validateClaimDerivations } from "./claim-derivation-validator.js";
 import { asArray, asString, asStringArray, isPlainObject } from "./io.js";
 import { diagnostic, type Diagnostic } from "./diagnostics.js";
 import type { RepositoryModel } from "./model.js";
@@ -159,6 +160,8 @@ export function validateEvidence(model: RepositoryModel): EvidenceAnalysis {
       }
     }
   }
+
+  claimDiagnostics.push(...validateClaimDerivations(model));
 
   const sourceUsage = model.sources
     .map((source) => ({

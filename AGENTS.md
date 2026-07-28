@@ -73,6 +73,9 @@ Use pnpm only. The committed validation boundary is:
   `generated/integrity/`.
 - `pnpm report:check`: fail when generated reports are missing or stale.
 - `pnpm test`: execute positive, negative, boundary, and regression fixtures.
+- `pnpm test:coverage`: enforce coverage gates on the high-risk validation boundary.
+- `pnpm test:mutation`: enforce the mutation-score gate for ID, claim,
+  relationship, and lifecycle logic.
 - `pnpm format:check`: check the executable M2 boundary.
 
 Run `pnpm install --frozen-lockfile` from a clean checkout. Do not hand-edit

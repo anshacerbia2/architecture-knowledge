@@ -10,7 +10,11 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -36,8 +40,12 @@ jobs:
       - name: Validate repository
         run: pnpm validate
 
-      - name: Run tests
-        run: pnpm test
+      - name: Run tests with coverage gates
+        run: pnpm test:coverage
+
+      - name: Run mutation tests
+        if: runner.os == 'Linux'
+        run: pnpm test:mutation
 
       - name: Verify generated integrity reports
         run: pnpm report:check

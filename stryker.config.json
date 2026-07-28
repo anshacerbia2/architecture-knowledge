@@ -1,0 +1,34 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "testRunner": "vitest",
+  "plugins": ["@stryker-mutator/vitest-runner"],
+  "mutator": {
+    "excludedMutations": [
+      "ArithmeticOperator",
+      "ArrayDeclaration",
+      "ArrowFunction",
+      "AssignmentOperator",
+      "MethodExpression",
+      "ObjectLiteral",
+      "Regex",
+      "StringLiteral",
+      "UpdateOperator"
+    ]
+  },
+  "coverageAnalysis": "perTest",
+  "mutate": [
+    "src/id-validator.ts",
+    "src/evidence-validator.ts",
+    "src/claim-derivation-validator.ts",
+    "src/relationship-validator.ts",
+    "src/lifecycle-validator.ts"
+  ],
+  "reporters": ["clear-text", "progress"],
+  "concurrency": 8,
+  "timeoutMS": 10000,
+  "thresholds": {
+    "high": 80,
+    "low": 60,
+    "break": 60
+  }
+}

@@ -31,15 +31,16 @@ tombstones and cannot be reused.
 
 ## Human-readable key decision
 
-Do not make a human-readable key part of canonical identity. The ledger permits
-an optional globally unique `human_key` for navigation and tooling, while titles
-and aliases remain mutable labels. Ontology vocabulary keys remain unique
+Do not make a human-readable key part of canonical identity. Every active
+concept allocation requires a globally unique, non-null `human_key` for
+navigation and tooling, while the opaque `AKC-*` ID remains canonical. Titles
+and aliases remain mutable labels. A `human_key` is stable by default; changing
+one requires an explicit migration and preservation of the previous navigation
+key before external links depend on it. Ontology vocabulary keys remain unique
 within their registries.
 
-Before M3 scales beyond a single authoring stream, decide whether
-`human_key` should become mandatory for concepts. Current recommendation:
-require it for new concept allocations after a short fixture-based usability
-trial, without changing existing machine IDs.
+This policy was accepted by the project owner during the M2 hardening run on
+2026-07-29. It does not change existing machine IDs.
 
 ## Alternatives
 

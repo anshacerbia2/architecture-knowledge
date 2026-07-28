@@ -43,10 +43,12 @@ milestones:
     exit_criteria:
       - pnpm install --frozen-lockfile succeeds from a clean workspace
       - pnpm validate passes
-      - pnpm test passes
+      - pnpm test:coverage passes its configured thresholds
+      - pnpm test:mutation passes its configured threshold
       - pnpm report:check passes
+      - clean-checkout CI passes on Linux and Windows
       - no human-only lifecycle transition can be automated
-    notes: Independent M2 audit is the next bounded run.
+    notes: Hardened locally; remote Linux and Windows CI proof is pending.
   - id: m3
     title: Reference Knowledge Corpus
     status: proposed
@@ -61,7 +63,7 @@ milestones:
       - important claims have admitted evidence
       - references resolve and orphan concepts are explained or corrected
       - no content is marked reviewed, approved, published, or canonical by automation
-    notes: Blocked until the M2 audit completes.
+    notes: Blocked until both remote M2 CI jobs pass.
   - id: m4
     title: Knowledge Graph and Query Layer
     status: future

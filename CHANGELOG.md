@@ -10,6 +10,9 @@
 - Split stable project direction into `PROJECT_CHARTER.md` and consolidated the
   authoritative M0–M9 roadmap in `ROADMAP.md` plus its synchronized YAML model.
 - Recorded project-owner acceptance of the active project charter.
+- Hardened M2 with mandatory active-concept human keys, registry-schema drift
+  detection, transitive claim grounding, coverage gates, mutation testing, and a
+  Linux/Windows CI matrix.
 
 No entry in this changelog indicates human review, approval, publication, or
 canonical status.

@@ -71,6 +71,7 @@ export interface RepositoryModel {
     relationshipTypes: Record<string, unknown>[];
     relationshipDefaults: Record<string, unknown>;
     lifecycle: Record<string, unknown>;
+    maturityLevels: Record<string, unknown>[];
     sourceStatuses: Record<string, unknown>[];
     domains: string[];
     dimensions: string[];
@@ -236,6 +237,7 @@ export async function loadRepository(root: string): Promise<RepositoryModel> {
         "defaults",
       ),
       lifecycle: objectFromFile(governedFiles, "ontology/lifecycle-statuses.yaml"),
+      maturityLevels: objectArray(governedFiles, "ontology/maturity-levels.yaml", "levels"),
       sourceStatuses: objectArray(governedFiles, "ontology/source-statuses.yaml", "statuses"),
       domains: stringArray(governedFiles, "ontology/domains.yaml", "domains"),
       dimensions: objectArray(governedFiles, "ontology/architecture-dimensions.yaml", "dimensions")

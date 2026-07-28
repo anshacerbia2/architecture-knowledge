@@ -25,7 +25,9 @@
     "validate:links": "tsx src/cli.ts validate links",
     "report:integrity": "tsx src/cli.ts report write",
     "report:check": "tsx src/cli.ts report check",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:mutation": "stryker run"
   },
   "dependencies": {
     "ajv": "8.17.1",
@@ -33,7 +35,10 @@
     "yaml": "2.8.1"
   },
   "devDependencies": {
+    "@stryker-mutator/core": "9.6.1",
+    "@stryker-mutator/vitest-runner": "9.6.1",
     "@types/node": "24.10.1",
+    "@vitest/coverage-v8": "4.0.16",
     "prettier": "3.8.1",
     "tsx": "4.20.6",
     "typescript": "5.9.3",

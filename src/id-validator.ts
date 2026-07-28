@@ -166,6 +166,16 @@ export function validateIdentities(model: RepositoryModel): IdentityAnalysis {
     }
     const record = byId.get(id)?.[0];
     const state = asString(allocation.state);
+    if (kind === "concept" && state === "active" && !humanKey) {
+      diagnostics.push(
+        diagnostic(
+          "ID_HUMAN_KEY_REQUIRED",
+          "error",
+          "ids/ledger.yaml",
+          `Active concept allocation '${id}' requires a non-null human_key.`,
+        ),
+      );
+    }
     if (state === "retired" && record) {
       diagnostics.push(
         diagnostic(

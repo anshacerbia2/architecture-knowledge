@@ -95,9 +95,9 @@ between the repository root and the target file. Follow
 [`CONTRIBUTING.md`](CONTRIBUTING.md) for the authoring workflow and
 [`CODE_OF_KNOWLEDGE.md`](CODE_OF_KNOWLEDGE.md) for evidence rules.
 
-Before M3, run the bounded M2 audit defined in `ROADMAP.md`.
-Reference knowledge must remain draft and must not begin until that audit accepts
-the validation boundary.
+The M2 hardening audit is complete locally. Reference knowledge must remain
+draft and M3 must not begin until the Linux and Windows jobs in the committed CI
+matrix both pass from a clean remote checkout.
 
 ## Validation commands
 
@@ -105,7 +105,8 @@ the validation boundary.
 pnpm install --frozen-lockfile
 pnpm format:check
 pnpm validate
-pnpm test
+pnpm test:coverage
+pnpm test:mutation
 pnpm report:check
 ```
 

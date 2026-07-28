@@ -58,7 +58,25 @@
             "type": ["string", "null"],
             "format": "date"
           }
-        }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "record_kind": { "const": "concept" },
+                "state": { "const": "active" }
+              },
+              "required": ["record_kind", "state"]
+            },
+            "then": {
+              "properties": {
+                "human_key": {
+                  "$ref": "_defs.schema.json#/$defs/slug"
+                }
+              }
+            }
+          }
+        ]
       }
     }
   }
