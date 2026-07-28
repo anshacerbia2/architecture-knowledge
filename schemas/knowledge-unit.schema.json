@@ -1,0 +1,396 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/knowledge-unit.schema.json",
+  "title": "Knowledge Unit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "record_kind",
+    "title",
+    "aliases",
+    "type",
+    "secondary_types",
+    "domain",
+    "subdomains",
+    "dimensions",
+    "status",
+    "maturity",
+    "summary",
+    "tags",
+    "problem",
+    "context",
+    "intent",
+    "forces",
+    "applicable_when",
+    "avoid_when",
+    "prerequisites",
+    "quality_attributes",
+    "constraints",
+    "assumptions",
+    "benefits",
+    "tradeoffs",
+    "risks",
+    "failure_modes",
+    "security_implications",
+    "operational_implications",
+    "data_implications",
+    "alternatives",
+    "related",
+    "relationships",
+    "examples",
+    "counterexamples",
+    "claims",
+    "sources",
+    "review",
+    "version"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "_defs.schema.json#/$defs/conceptId"
+    },
+    "record_kind": {
+      "const": "concept"
+    },
+    "title": {
+      "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "type": {
+      "enum": [
+        "philosophy",
+        "reasoning-model",
+        "principle",
+        "heuristic",
+        "law",
+        "constraint",
+        "assumption",
+        "business-goal",
+        "stakeholder",
+        "concern",
+        "architectural-driver",
+        "quality-attribute",
+        "quality-attribute-scenario",
+        "tactic",
+        "architectural-style",
+        "architectural-pattern",
+        "design-pattern",
+        "integration-pattern",
+        "data-pattern",
+        "security-control",
+        "protocol",
+        "technology",
+        "engineering-practice",
+        "governance-mechanism",
+        "documentation-artifact",
+        "deployable-artifact",
+        "metric",
+        "fitness-function",
+        "anti-pattern",
+        "code-smell",
+        "failure-mode",
+        "risk",
+        "decision",
+        "context-condition",
+        "example"
+      ]
+    },
+    "secondary_types": {
+      "type": "array",
+      "items": {
+        "$ref": "knowledge-unit.schema.json#/properties/type"
+      },
+      "uniqueItems": true
+    },
+    "domain": {
+      "$ref": "#/$defs/domain"
+    },
+    "subdomains": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/slug"
+      },
+      "uniqueItems": true
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "system-decomposition",
+          "internal-structure",
+          "interaction",
+          "execution",
+          "deployment",
+          "data-ownership",
+          "data-consistency",
+          "state-management",
+          "tenancy",
+          "trust-security",
+          "resilience",
+          "observability",
+          "delivery-evolution",
+          "governance",
+          "organizational-ownership"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "status": {
+      "$ref": "_defs.schema.json#/$defs/lifecycleStatus"
+    },
+    "maturity": {
+      "$ref": "_defs.schema.json#/$defs/maturity"
+    },
+    "summary": {
+      "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/slug"
+      },
+      "uniqueItems": true
+    },
+    "problem": {
+      "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+    },
+    "context": {
+      "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+    },
+    "intent": {
+      "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+    },
+    "forces": {
+      "$ref": "#/$defs/nonEmptyStringArray"
+    },
+    "applicable_when": {
+      "$ref": "#/$defs/conditions"
+    },
+    "avoid_when": {
+      "$ref": "#/$defs/conditions"
+    },
+    "prerequisites": {
+      "$ref": "#/$defs/conceptIds"
+    },
+    "quality_attributes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["improves", "degrades", "influences"],
+      "properties": {
+        "improves": {
+          "$ref": "#/$defs/qualifiedImpacts"
+        },
+        "degrades": {
+          "$ref": "#/$defs/qualifiedImpacts"
+        },
+        "influences": {
+          "$ref": "#/$defs/qualifiedImpacts"
+        }
+      }
+    },
+    "constraints": {
+      "$ref": "#/$defs/conceptIds"
+    },
+    "assumptions": {
+      "$ref": "#/$defs/conceptIds"
+    },
+    "benefits": {
+      "$ref": "#/$defs/nonEmptyStringArray"
+    },
+    "tradeoffs": {
+      "$ref": "#/$defs/nonEmptyStringArray"
+    },
+    "risks": {
+      "$ref": "#/$defs/conceptIds"
+    },
+    "failure_modes": {
+      "$ref": "#/$defs/conceptIds"
+    },
+    "security_implications": {
+      "$ref": "#/$defs/nonEmptyStringArray"
+    },
+    "operational_implications": {
+      "$ref": "#/$defs/nonEmptyStringArray"
+    },
+    "data_implications": {
+      "$ref": "#/$defs/nonEmptyStringArray"
+    },
+    "alternatives": {
+      "$ref": "#/$defs/conceptIds"
+    },
+    "related": {
+      "$ref": "#/$defs/conceptIds"
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/relationshipId"
+      },
+      "uniqueItems": true
+    },
+    "examples": {
+      "$ref": "#/$defs/conceptIds"
+    },
+    "counterexamples": {
+      "$ref": "#/$defs/conceptIds"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/claimId"
+      },
+      "uniqueItems": true
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/sourceId"
+      },
+      "uniqueItems": true
+    },
+    "review": {
+      "$ref": "_defs.schema.json#/$defs/review"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "superseded_by": {
+      "oneOf": [
+        {
+          "$ref": "_defs.schema.json#/$defs/conceptId"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "domain": {
+      "enum": [
+        "foundations",
+        "business-enterprise",
+        "engineering",
+        "constraints-assumptions",
+        "quality",
+        "architecture-analysis",
+        "system-structure",
+        "application-architecture",
+        "distributed-systems",
+        "integration",
+        "api",
+        "data",
+        "security-privacy",
+        "platform-infrastructure",
+        "cloud",
+        "delivery",
+        "reliability-operability",
+        "observability",
+        "testing-verification",
+        "governance",
+        "documentation",
+        "measurement"
+      ]
+    },
+    "nonEmptyStringArray": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "conceptIds": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/conceptId"
+      },
+      "uniqueItems": true
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/condition"
+      }
+    },
+    "qualifiedImpacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["quality_attribute_id", "conditions", "claim_ids"],
+        "properties": {
+          "quality_attribute_id": {
+            "$ref": "_defs.schema.json#/$defs/conceptId"
+          },
+          "conditions": {
+            "$ref": "#/$defs/conditions"
+          },
+          "claim_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "_defs.schema.json#/$defs/claimId"
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "proposed",
+              "source-candidate",
+              "sourced",
+              "drafted",
+              "schema-valid",
+              "content-validated",
+              "human-review"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "review": {
+            "properties": {
+              "reviewed_at": {
+                "type": "null"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "superseded"
+          }
+        },
+        "required": ["status"]
+      },
+      "then": {
+        "required": ["superseded_by"],
+        "properties": {
+          "superseded_by": {
+            "$ref": "_defs.schema.json#/$defs/conceptId"
+          }
+        }
+      }
+    }
+  ]
+}

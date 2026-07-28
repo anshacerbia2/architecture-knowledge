@@ -1,0 +1,17 @@
+id: AKL-900001
+record_kind: claim
+subject: AKC-900001
+predicate: improves
+object:
+  record_id: AKC-900002
+statement: The synthetic subject may improve the synthetic quality under the fixture condition.
+claim_type: recommendation
+conditions:
+  - statement: The bounded synthetic condition holds.
+    concept_ids: []
+confidence: low
+sources: [AKS-900001]
+derived_from_claims: []
+status: proposed
+notes: Test fixture only.
+version: 1

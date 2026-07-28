@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "status": "proposed",
+  "mappings": [
+    {
+      "path": "schemas/registry.json",
+      "schema": "schemas/schema-registry.schema.json",
+      "format": "json"
+    },
+    {
+      "path": "ontology/architecture-dimensions.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/architectureDimensions",
+      "format": "yaml"
+    },
+    {
+      "path": "ontology/claim-types.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/claimTypes",
+      "format": "yaml"
+    },
+    {
+      "path": "ontology/concept-types.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/conceptTypes",
+      "format": "yaml"
+    },
+    {
+      "path": "ontology/domains.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/domains",
+      "format": "yaml"
+    },
+    {
+      "path": "ontology/identifier-namespaces.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/identifierNamespaces",
+      "format": "yaml"
+    },
+    {
+      "path": "ontology/lifecycle-statuses.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/lifecycleStatuses",
+      "format": "yaml"
+    },
+    {
+      "path": "ontology/maturity-levels.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/maturityLevels",
+      "format": "yaml"
+    },
+    {
+      "path": "ontology/quality-attributes.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/qualityAttributes",
+      "format": "yaml"
+    },
+    {
+      "path": "ontology/record-kinds.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/recordKinds",
+      "format": "yaml"
+    },
+    {
+      "path": "ontology/relationship-types.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/relationshipTypes",
+      "format": "yaml"
+    },
+    {
+      "path": "ontology/source-statuses.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/sourceStatuses",
+      "format": "yaml"
+    },
+    {
+      "path": "sources/registry.yaml",
+      "schema": "schemas/source-registry.schema.json",
+      "format": "yaml"
+    },
+    {
+      "path": "sources/source-quality-rubric.yaml",
+      "schema": "schemas/source-quality-rubric.schema.json",
+      "format": "yaml"
+    },
+    {
+      "path": "roadmap/implementation.yaml",
+      "schema": "schemas/implementation-roadmap.schema.json",
+      "format": "yaml"
+    },
+    {
+      "path": "ids/ledger.yaml",
+      "schema": "schemas/id-ledger.schema.json",
+      "format": "yaml"
+    },
+    {
+      "path": "governance/lifecycle-events.yaml",
+      "schema": "schemas/lifecycle-events.schema.json",
+      "format": "yaml"
+    },
+    {
+      "path": "validation/policies.yaml",
+      "schema": "schemas/validation-policies.schema.json",
+      "format": "yaml"
+    }
+  ],
+  "record_patterns": [
+    {
+      "prefix": "claims/",
+      "extension": ".yaml",
+      "exclude_names": ["AGENTS.md"],
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "prefix": "relationships/",
+      "extension": ".yaml",
+      "exclude_names": ["AGENTS.md"],
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "prefix": "decisions/",
+      "extension": ".yaml",
+      "exclude_names": ["AGENTS.md"],
+      "schema": "schemas/decision-guide.schema.json"
+    },
+    {
+      "prefix": "quality-scenarios/",
+      "extension": ".yaml",
+      "exclude_names": ["AGENTS.md"],
+      "schema": "schemas/quality-attribute-scenario.schema.json"
+    },
+    {
+      "prefix": "knowledge/",
+      "extension": ".md",
+      "exclude_names": ["AGENTS.md"],
+      "schema": "schemas/knowledge-unit.schema.json",
+      "front_matter": true
+    },
+    {
+      "prefix": "generated/integrity/",
+      "extension": ".json",
+      "exclude_names": [],
+      "schema": "schemas/integrity-report.schema.json"
+    }
+  ]
+}

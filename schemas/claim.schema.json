@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/claim.schema.json",
+  "title": "Claim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "record_kind",
+    "subject",
+    "predicate",
+    "object",
+    "statement",
+    "claim_type",
+    "conditions",
+    "confidence",
+    "sources",
+    "derived_from_claims",
+    "status",
+    "notes",
+    "version"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "_defs.schema.json#/$defs/claimId"
+    },
+    "record_kind": {
+      "const": "claim"
+    },
+    "subject": {
+      "$ref": "_defs.schema.json#/$defs/recordId"
+    },
+    "predicate": {
+      "$ref": "_defs.schema.json#/$defs/slug"
+    },
+    "object": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "maxProperties": 1,
+      "properties": {
+        "record_id": {
+          "$ref": "_defs.schema.json#/$defs/recordId"
+        },
+        "literal": {
+          "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "statement": {
+      "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+    },
+    "claim_type": {
+      "enum": [
+        "direct-source-claim",
+        "normalized-source-claim",
+        "synthesis",
+        "inference",
+        "recommendation",
+        "hypothesis",
+        "opinion"
+      ]
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/condition"
+      }
+    },
+    "confidence": {
+      "$ref": "_defs.schema.json#/$defs/confidence"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/sourceId"
+      },
+      "uniqueItems": true
+    },
+    "derived_from_claims": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/claimId"
+      },
+      "uniqueItems": true
+    },
+    "status": {
+      "$ref": "_defs.schema.json#/$defs/lifecycleStatus"
+    },
+    "notes": {
+      "type": ["string", "null"]
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "claim_type": {
+            "enum": [
+              "direct-source-claim",
+              "normalized-source-claim",
+              "synthesis",
+              "inference",
+              "recommendation"
+            ]
+          }
+        },
+        "required": ["claim_type"]
+      },
+      "then": {
+        "anyOf": [
+          {
+            "properties": {
+              "sources": {
+                "minItems": 1,
+                "type": "array"
+              }
+            }
+          },
+          {
+            "properties": {
+              "derived_from_claims": {
+                "minItems": 1,
+                "type": "array"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "claim_type": {
+            "enum": ["recommendation", "hypothesis"]
+          }
+        },
+        "required": ["claim_type"]
+      },
+      "then": {
+        "properties": {
+          "conditions": {
+            "minItems": 1,
+            "type": "array"
+          }
+        }
+      }
+    }
+  ]
+}

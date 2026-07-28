@@ -1,0 +1,42 @@
+{
+  "name": "architecture-knowledge-system",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Validation kernel for a version-controlled architecture knowledge system.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": "24.11.1",
+    "pnpm": "10.23.0"
+  },
+  "packageManager": "pnpm@10.23.0",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"*.json\" \"*.ts\" \"schemas/**/*.json\" \".github/**/*.yml\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\" \"*.json\" \"*.ts\" \"schemas/**/*.json\" \".github/**/*.yml\"",
+    "validate": "pnpm run typecheck && tsx src/cli.ts validate",
+    "validate:schema": "tsx src/cli.ts validate schema",
+    "validate:ids": "tsx src/cli.ts validate ids",
+    "validate:sources": "tsx src/cli.ts validate sources",
+    "validate:claims": "tsx src/cli.ts validate claims",
+    "validate:relationships": "tsx src/cli.ts validate relationships",
+    "validate:lifecycle": "tsx src/cli.ts validate lifecycle",
+    "validate:markdown": "tsx src/cli.ts validate markdown",
+    "validate:links": "tsx src/cli.ts validate links",
+    "report:integrity": "tsx src/cli.ts report write",
+    "report:check": "tsx src/cli.ts report check",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "ajv": "8.17.1",
+    "ajv-formats": "3.0.1",
+    "yaml": "2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "prettier": "3.8.1",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "vitest": "4.0.16"
+  }
+}

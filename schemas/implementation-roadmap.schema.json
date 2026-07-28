@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/implementation-roadmap.schema.json",
+  "title": "Strategic Implementation Roadmap",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "roadmap_id", "milestones"],
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "status": {
+      "const": "proposed"
+    },
+    "roadmap_id": {
+      "$ref": "_defs.schema.json#/$defs/slug"
+    },
+    "milestones": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/milestone"
+      }
+    }
+  },
+  "$defs": {
+    "milestoneId": {
+      "type": "string",
+      "pattern": "^m[0-9]+$"
+    },
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+      }
+    },
+    "milestone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "status",
+        "dependencies",
+        "deliverables",
+        "exit_criteria",
+        "notes"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/milestoneId"
+        },
+        "title": {
+          "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+        },
+        "status": {
+          "enum": ["implemented", "proposed", "future"]
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/milestoneId"
+          },
+          "uniqueItems": true
+        },
+        "deliverables": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "exit_criteria": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "notes": {
+          "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+        }
+      }
+    }
+  }
+}

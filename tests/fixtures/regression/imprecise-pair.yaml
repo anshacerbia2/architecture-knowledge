@@ -1,0 +1,9 @@
+relationships:
+  - id: AKR-900020
+    subject: AKC-900001
+    predicate: related-to
+    object: AKC-900002
+  - id: AKR-900021
+    subject: AKC-900001
+    predicate: improves
+    object: AKC-900002

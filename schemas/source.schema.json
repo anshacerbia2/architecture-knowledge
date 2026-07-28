@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/source.schema.json",
+  "title": "Source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "record_kind",
+    "title",
+    "authors",
+    "publisher",
+    "source_type",
+    "url",
+    "publication_date",
+    "accessed_at",
+    "version",
+    "authority_level",
+    "primary_or_secondary",
+    "domains",
+    "license_or_usage_notes",
+    "status",
+    "supersedes",
+    "superseded_by",
+    "quality",
+    "notes"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "_defs.schema.json#/$defs/sourceId"
+    },
+    "record_kind": {
+      "const": "source"
+    },
+    "title": {
+      "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+      }
+    },
+    "publisher": {
+      "type": ["string", "null"]
+    },
+    "source_type": {
+      "enum": [
+        "standard",
+        "specification",
+        "official-guidance",
+        "research-paper",
+        "official-documentation",
+        "book",
+        "industry-publication",
+        "educational-material",
+        "community-article",
+        "other"
+      ]
+    },
+    "url": {
+      "type": ["string", "null"],
+      "format": "uri"
+    },
+    "publication_date": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "accessed_at": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "version": {
+      "type": ["string", "null"]
+    },
+    "authority_level": {
+      "enum": ["primary-authority", "recognized-authority", "supplemental", "unassessed"]
+    },
+    "primary_or_secondary": {
+      "enum": ["primary", "secondary", "mixed", "unassessed"]
+    },
+    "domains": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/slug"
+      },
+      "uniqueItems": true
+    },
+    "license_or_usage_notes": {
+      "type": ["string", "null"]
+    },
+    "status": {
+      "enum": ["candidate", "approved", "restricted", "deprecated", "superseded", "rejected"]
+    },
+    "supersedes": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/sourceId"
+      },
+      "uniqueItems": true
+    },
+    "superseded_by": {
+      "oneOf": [
+        {
+          "$ref": "_defs.schema.json#/$defs/sourceId"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "quality": {
+      "$ref": "#/$defs/quality"
+    },
+    "notes": {
+      "type": ["string", "null"]
+    }
+  },
+  "$defs": {
+    "rating": {
+      "enum": ["strong", "adequate", "weak", "not-applicable", "unassessed"]
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "proximity",
+        "recency",
+        "stability",
+        "scope_fit",
+        "conflict_of_interest",
+        "technical_depth",
+        "reproducibility",
+        "peer_review",
+        "maintenance_status",
+        "assessment_notes"
+      ],
+      "properties": {
+        "authority": {
+          "$ref": "#/$defs/rating"
+        },
+        "proximity": {
+          "$ref": "#/$defs/rating"
+        },
+        "recency": {
+          "$ref": "#/$defs/rating"
+        },
+        "stability": {
+          "$ref": "#/$defs/rating"
+        },
+        "scope_fit": {
+          "$ref": "#/$defs/rating"
+        },
+        "conflict_of_interest": {
+          "$ref": "#/$defs/rating"
+        },
+        "technical_depth": {
+          "$ref": "#/$defs/rating"
+        },
+        "reproducibility": {
+          "$ref": "#/$defs/rating"
+        },
+        "peer_review": {
+          "$ref": "#/$defs/rating"
+        },
+        "maintenance_status": {
+          "$ref": "#/$defs/rating"
+        },
+        "assessment_notes": {
+          "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "superseded"
+          }
+        },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "superseded_by": {
+            "$ref": "_defs.schema.json#/$defs/sourceId"
+          }
+        }
+      }
+    }
+  ]
+}

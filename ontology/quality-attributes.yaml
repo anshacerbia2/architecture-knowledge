@@ -1,0 +1,43 @@
+schema_version: 1
+status: proposed
+notes:
+  - This is a discovery vocabulary, not a claim that all entries are peers under one standard.
+  - Family and overlaps fields expose umbrella, specialization, and adjacent-capability ambiguity.
+attributes:
+  - {key: availability, family: dependability}
+  - {key: reliability, family: dependability, overlaps: [availability]}
+  - {key: resilience, family: dependability, overlaps: [fault-tolerance, recoverability]}
+  - {key: fault-tolerance, family: dependability, overlaps: [resilience]}
+  - {key: recoverability, family: dependability, overlaps: [disaster-recovery]}
+  - {key: disaster-recovery, family: dependability, overlaps: [recoverability]}
+  - {key: scalability, family: capacity}
+  - {key: elasticity, family: capacity, overlaps: [scalability]}
+  - {key: performance, family: performance}
+  - {key: latency, family: performance}
+  - {key: throughput, family: performance}
+  - {key: efficiency, family: performance, overlaps: [cost-efficiency, sustainability]}
+  - {key: security, family: protection, umbrella: true}
+  - {key: privacy, family: protection, overlaps: [confidentiality]}
+  - {key: confidentiality, family: protection}
+  - {key: integrity, family: protection}
+  - {key: maintainability, family: changeability, umbrella: true}
+  - {key: modifiability, family: changeability}
+  - {key: extensibility, family: changeability}
+  - {key: evolvability, family: changeability}
+  - {key: portability, family: compatibility}
+  - {key: interoperability, family: compatibility}
+  - {key: compatibility, family: compatibility, umbrella: true}
+  - {key: auditability, family: assurance, overlaps: [traceability, observability]}
+  - {key: traceability, family: assurance, overlaps: [auditability]}
+  - {key: observability, family: operability, adjacent_capability: true}
+  - {key: operability, family: operability}
+  - {key: deployability, family: operability}
+  - {key: testability, family: assurance}
+  - {key: usability, family: human-experience}
+  - {key: accessibility, family: human-experience, contextual_role: quality-or-obligation}
+  - {key: localization, family: human-experience}
+  - {key: compliance, family: assurance, contextual_role: quality-or-constraint}
+  - {key: safety, family: protection}
+  - {key: data-quality, family: data}
+  - {key: cost-efficiency, family: economics, contextual_role: quality-or-business-goal}
+  - {key: sustainability, family: sustainability, contextual_role: quality-or-business-goal}

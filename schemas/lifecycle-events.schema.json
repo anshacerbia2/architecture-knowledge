@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/lifecycle-events.schema.json",
+  "title": "Lifecycle Event Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "events"],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "const": "proposed"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "event_id",
+          "record_id",
+          "lifecycle_kind",
+          "from",
+          "to",
+          "actor",
+          "actor_type",
+          "human_authorized",
+          "authorization_evidence",
+          "occurred_at"
+        ],
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "pattern": "^LCE-[0-9]{6}$"
+          },
+          "record_id": {
+            "$ref": "_defs.schema.json#/$defs/recordId"
+          },
+          "lifecycle_kind": {
+            "enum": ["content", "source"]
+          },
+          "from": {
+            "$ref": "_defs.schema.json#/$defs/slug"
+          },
+          "to": {
+            "$ref": "_defs.schema.json#/$defs/slug"
+          },
+          "actor": {
+            "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+          },
+          "actor_type": {
+            "enum": ["human", "automation"]
+          },
+          "human_authorized": {
+            "type": "boolean"
+          },
+          "authorization_evidence": {
+            "type": ["string", "null"]
+          },
+          "occurred_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}

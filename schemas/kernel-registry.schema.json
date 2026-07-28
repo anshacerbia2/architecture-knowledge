@@ -1,0 +1,538 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/kernel-registry.schema.json",
+  "title": "Kernel Ontology Registries",
+  "$defs": {
+    "header": {
+      "type": "object",
+      "required": ["schema_version", "status"],
+      "properties": {
+        "schema_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "status": {
+          "const": "proposed"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+          }
+        }
+      }
+    },
+    "architectureDimensions": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/header"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["schema_version", "status", "notes", "dimensions"],
+          "properties": {
+            "schema_version": true,
+            "status": true,
+            "notes": true,
+            "dimensions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["key", "question"],
+                "properties": {
+                  "key": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  },
+                  "question": {
+                    "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "claimTypes": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/header"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["schema_version", "status", "notes", "types"],
+          "properties": {
+            "schema_version": true,
+            "status": true,
+            "notes": true,
+            "types": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["key", "definition", "evidence_required"],
+                "properties": {
+                  "key": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  },
+                  "definition": {
+                    "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+                  },
+                  "evidence_required": {
+                    "type": "boolean"
+                  },
+                  "conditions_required": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "conceptTypes": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/header"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["schema_version", "status", "notes", "types"],
+          "properties": {
+            "schema_version": true,
+            "status": true,
+            "notes": true,
+            "types": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["key", "definition", "assignable_primary"],
+                "properties": {
+                  "key": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  },
+                  "definition": {
+                    "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+                  },
+                  "assignable_primary": {
+                    "type": "boolean"
+                  },
+                  "parent": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  },
+                  "abstract": {
+                    "type": "boolean"
+                  },
+                  "role_only": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "domains": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/header"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["schema_version", "status", "notes", "domains"],
+          "properties": {
+            "schema_version": true,
+            "status": true,
+            "notes": true,
+            "domains": {
+              "type": "array",
+              "items": {
+                "$ref": "_defs.schema.json#/$defs/slug"
+              },
+              "uniqueItems": true
+            }
+          }
+        }
+      ]
+    },
+    "identifierNamespaces": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/header"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["schema_version", "status", "format", "allocation", "namespaces"],
+          "properties": {
+            "schema_version": true,
+            "status": true,
+            "format": {
+              "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+            },
+            "allocation": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["strategy", "width", "first_value", "rules"],
+              "properties": {
+                "strategy": {
+                  "$ref": "_defs.schema.json#/$defs/slug"
+                },
+                "width": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "first_value": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rules": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+                  }
+                }
+              }
+            },
+            "namespaces": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["prefix", "record_kind"],
+                "properties": {
+                  "prefix": {
+                    "type": "string",
+                    "pattern": "^[A-Z][A-Z0-9]*$"
+                  },
+                  "record_kind": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "lifecycleStatuses": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/header"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["schema_version", "status", "notes", "statuses", "transitions"],
+          "properties": {
+            "schema_version": true,
+            "status": true,
+            "notes": true,
+            "statuses": {
+              "type": "array",
+              "items": {
+                "$ref": "_defs.schema.json#/$defs/slug"
+              },
+              "uniqueItems": true
+            },
+            "transitions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["from", "to", "authority"],
+                "properties": {
+                  "from": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  },
+                  "to": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  },
+                  "authority": {
+                    "enum": ["automation-or-human", "human-only"]
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "maturityLevels": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/header"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["schema_version", "status", "notes", "levels"],
+          "properties": {
+            "schema_version": true,
+            "status": true,
+            "notes": true,
+            "levels": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["key", "rank", "definition"],
+                "properties": {
+                  "key": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  },
+                  "rank": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "definition": {
+                    "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "qualityAttributes": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/header"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["schema_version", "status", "notes", "attributes"],
+          "properties": {
+            "schema_version": true,
+            "status": true,
+            "notes": true,
+            "attributes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["key", "family"],
+                "properties": {
+                  "key": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  },
+                  "family": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  },
+                  "overlaps": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "_defs.schema.json#/$defs/slug"
+                    },
+                    "uniqueItems": true
+                  },
+                  "umbrella": {
+                    "type": "boolean"
+                  },
+                  "adjacent_capability": {
+                    "type": "boolean"
+                  },
+                  "contextual_role": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "recordKinds": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/header"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["schema_version", "status", "record_kinds"],
+          "properties": {
+            "schema_version": true,
+            "status": true,
+            "record_kinds": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["key", "id_namespace", "description"],
+                "properties": {
+                  "key": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  },
+                  "id_namespace": {
+                    "type": "string",
+                    "pattern": "^[A-Z][A-Z0-9]*$"
+                  },
+                  "description": {
+                    "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "relationshipTypes": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/header"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["schema_version", "status", "defaults", "notes", "predicates"],
+          "properties": {
+            "schema_version": true,
+            "status": true,
+            "notes": true,
+            "defaults": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "self_relation_allowed",
+                "conditions_required",
+                "evidence_claims_required"
+              ],
+              "properties": {
+                "self_relation_allowed": {
+                  "type": "boolean"
+                },
+                "conditions_required": {
+                  "type": "boolean"
+                },
+                "evidence_claims_required": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "predicates": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["key", "definition", "subject_kinds", "object_kinds", "direction"],
+                "properties": {
+                  "key": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  },
+                  "definition": {
+                    "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+                  },
+                  "subject_kinds": {
+                    "$ref": "#/$defs/slugArray"
+                  },
+                  "object_kinds": {
+                    "$ref": "#/$defs/slugArray"
+                  },
+                  "object_concept_types": {
+                    "$ref": "#/$defs/slugArray"
+                  },
+                  "direction": {
+                    "enum": ["directed", "symmetric"]
+                  },
+                  "inverse": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  },
+                  "inverse_of": {
+                    "$ref": "#/$defs/slugArray"
+                  },
+                  "transitive": {
+                    "oneOf": [
+                      {
+                        "type": "boolean"
+                      },
+                      {
+                        "const": "contextual"
+                      }
+                    ]
+                  },
+                  "conditions_required": {
+                    "type": "boolean"
+                  },
+                  "evidence_claims_required": {
+                    "type": "boolean"
+                  },
+                  "precision_warning": {
+                    "type": "boolean"
+                  },
+                  "strong_claim_warning": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "sourceStatuses": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/header"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["schema_version", "status", "notes", "statuses"],
+          "properties": {
+            "schema_version": true,
+            "status": true,
+            "notes": true,
+            "statuses": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["key", "may_support_claims"],
+                "properties": {
+                  "key": {
+                    "$ref": "_defs.schema.json#/$defs/slug"
+                  },
+                  "may_support_claims": {
+                    "oneOf": [
+                      {
+                        "type": "boolean"
+                      },
+                      {
+                        "const": "warning"
+                      }
+                    ]
+                  },
+                  "usage_notes_required": {
+                    "type": "boolean"
+                  },
+                  "replacement_required": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "slugArray": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/slug"
+      },
+      "uniqueItems": true
+    }
+  }
+}

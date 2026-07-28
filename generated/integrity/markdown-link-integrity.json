@@ -1,0 +1,76 @@
+{
+  "generated_by": "architecture-knowledge-validation-kernel",
+  "report": "markdown-link-integrity",
+  "items": [
+    {
+      "path": "PROJECT_CHARTER.md",
+      "target": "CODE_OF_KNOWLEDGE.md",
+      "status": "valid"
+    },
+    {
+      "path": "PROJECT_CHARTER.md",
+      "target": "GOVERNANCE.md",
+      "status": "valid"
+    },
+    {
+      "path": "PROJECT_CHARTER.md",
+      "target": "README.md",
+      "status": "valid"
+    },
+    {
+      "path": "PROJECT_CHARTER.md",
+      "target": "ROADMAP.md",
+      "status": "valid"
+    },
+    {
+      "path": "PROJECT_CHARTER.md",
+      "target": "roadmap/implementation.yaml",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
+      "target": "CODE_OF_KNOWLEDGE.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
+      "target": "CONTRIBUTING.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
+      "target": "ontology/",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
+      "target": "ontology/identifier-namespaces.yaml",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
+      "target": "PROJECT_CHARTER.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
+      "target": "ROADMAP.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
+      "target": "schemas/",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
+      "target": "roadmap/implementation.yaml",
+      "status": "valid"
+    }
+  ],
+  "summary": {
+    "checked_link_count": 13,
+    "broken_link_count": 0,
+    "markdown_file_count": 29
+  }
+}

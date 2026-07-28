@@ -1,0 +1,53 @@
+schema_version: 1
+status: proposed
+relationship_cycles:
+  forbidden: [is-a, part-of, specializes, generalizes, supersedes, deprecated-by, derived-from]
+  report_only:
+    - depends-on
+    - requires
+    - enables
+    - constrains
+    - addresses
+    - mitigates
+    - introduces
+    - causes
+    - influences
+    - improves
+    - degrades
+    - measured-by
+    - verified-by
+    - implemented-by
+    - documented-by
+    - governed-by
+    - supported-by
+    - applies-when
+    - avoid-when
+  allowed:
+    - instance-of
+    - related-to
+    - conflicts-with
+    - compatible-with
+    - alternative-to
+    - solves
+    - contradicted-by
+markdown:
+  failure_sensitive_types:
+    - tactic
+    - architectural-style
+    - architectural-pattern
+    - integration-pattern
+    - data-pattern
+    - security-control
+    - protocol
+    - technology
+    - failure-mode
+  security_sensitive_types: [security-control, protocol]
+  security_sensitive_domains: [security-privacy]
+  placeholder_patterns:
+    - '\bTODO\b'
+    - '\bTBD\b'
+    - '\bFIXME\b'
+    - '\blorem ipsum\b'
+    - '\bplaceholder\b'
+  absolute_terms: [always, never, best]
+  contextual_qualifiers: [when, unless, under, within, in this context, depends on]

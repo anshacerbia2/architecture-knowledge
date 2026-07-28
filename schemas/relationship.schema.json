@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/relationship.schema.json",
+  "title": "Relationship",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "record_kind",
+    "subject",
+    "predicate",
+    "object",
+    "strength",
+    "direction",
+    "conditions",
+    "evidence",
+    "confidence",
+    "status",
+    "notes",
+    "version"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "_defs.schema.json#/$defs/relationshipId"
+    },
+    "record_kind": {
+      "const": "relationship"
+    },
+    "subject": {
+      "$ref": "_defs.schema.json#/$defs/recordId"
+    },
+    "predicate": {
+      "enum": [
+        "is-a",
+        "part-of",
+        "instance-of",
+        "specializes",
+        "generalizes",
+        "related-to",
+        "depends-on",
+        "requires",
+        "enables",
+        "constrains",
+        "conflicts-with",
+        "compatible-with",
+        "alternative-to",
+        "supersedes",
+        "deprecated-by",
+        "addresses",
+        "solves",
+        "mitigates",
+        "introduces",
+        "causes",
+        "influences",
+        "improves",
+        "degrades",
+        "measured-by",
+        "verified-by",
+        "implemented-by",
+        "documented-by",
+        "governed-by",
+        "derived-from",
+        "supported-by",
+        "contradicted-by",
+        "applies-when",
+        "avoid-when"
+      ]
+    },
+    "object": {
+      "$ref": "_defs.schema.json#/$defs/recordId"
+    },
+    "strength": {
+      "enum": ["weak", "moderate", "strong"]
+    },
+    "direction": {
+      "enum": ["directed", "symmetric"]
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/condition"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/claimId"
+      },
+      "uniqueItems": true
+    },
+    "confidence": {
+      "$ref": "_defs.schema.json#/$defs/confidence"
+    },
+    "status": {
+      "$ref": "_defs.schema.json#/$defs/lifecycleStatus"
+    },
+    "notes": {
+      "type": ["string", "null"]
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "predicate": {
+            "enum": [
+              "related-to",
+              "conflicts-with",
+              "compatible-with",
+              "alternative-to",
+              "contradicted-by"
+            ]
+          }
+        },
+        "required": ["predicate"]
+      },
+      "then": {
+        "properties": {
+          "direction": {
+            "const": "symmetric"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "direction": {
+            "const": "directed"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "predicate": {
+            "enum": [
+              "part-of",
+              "specializes",
+              "generalizes",
+              "related-to",
+              "depends-on",
+              "requires",
+              "enables",
+              "constrains",
+              "conflicts-with",
+              "compatible-with",
+              "alternative-to",
+              "supersedes",
+              "deprecated-by",
+              "addresses",
+              "solves",
+              "mitigates",
+              "introduces",
+              "causes",
+              "influences",
+              "improves",
+              "degrades",
+              "measured-by",
+              "verified-by",
+              "implemented-by",
+              "governed-by",
+              "derived-from",
+              "supported-by",
+              "contradicted-by",
+              "applies-when",
+              "avoid-when"
+            ]
+          }
+        },
+        "required": ["predicate"]
+      },
+      "then": {
+        "properties": {
+          "conditions": {
+            "minItems": 1,
+            "type": "array"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "predicate": {
+            "enum": [
+              "supersedes",
+              "deprecated-by",
+              "documented-by",
+              "derived-from",
+              "supported-by",
+              "contradicted-by"
+            ]
+          }
+        },
+        "required": ["predicate"]
+      },
+      "else": {
+        "properties": {
+          "evidence": {
+            "minItems": 1,
+            "type": "array"
+          }
+        }
+      }
+    }
+  ]
+}

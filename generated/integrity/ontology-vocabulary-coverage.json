@@ -1,0 +1,525 @@
+{
+  "generated_by": "architecture-knowledge-validation-kernel",
+  "report": "ontology-vocabulary-coverage",
+  "items": [
+    {
+      "vocabulary": "concept-type",
+      "key": "alternative",
+      "assignable": false,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "anti-pattern",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "architectural-driver",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "architectural-pattern",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "architectural-style",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "artifact",
+      "assignable": false,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "assumption",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "business-goal",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "code-smell",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "concern",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "constraint",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "context-condition",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "control",
+      "assignable": false,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "data-pattern",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "decision",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "deployable-artifact",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "design-pattern",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "documentation-artifact",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "engineering-practice",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "example",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "failure-mode",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "fitness-function",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "governance-mechanism",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "heuristic",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "integration-pattern",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "law",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "metric",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "pattern",
+      "assignable": false,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "philosophy",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "principle",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "protocol",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "quality-attribute",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "quality-attribute-scenario",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "reasoning-model",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "risk",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "security-control",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "stakeholder",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "style",
+      "assignable": false,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "tactic",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "concept-type",
+      "key": "technology",
+      "assignable": true,
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "api",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "application-architecture",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "architecture-analysis",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "business-enterprise",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "cloud",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "constraints-assumptions",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "data",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "delivery",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "distributed-systems",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "documentation",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "engineering",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "foundations",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "governance",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "integration",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "measurement",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "observability",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "platform-infrastructure",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "quality",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "reliability-operability",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "security-privacy",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "system-structure",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "domain",
+      "key": "testing-verification",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "addresses",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "alternative-to",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "applies-when",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "avoid-when",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "causes",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "compatible-with",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "conflicts-with",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "constrains",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "contradicted-by",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "degrades",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "depends-on",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "deprecated-by",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "derived-from",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "documented-by",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "enables",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "generalizes",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "governed-by",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "implemented-by",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "improves",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "influences",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "instance-of",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "introduces",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "is-a",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "measured-by",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "mitigates",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "part-of",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "related-to",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "requires",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "solves",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "specializes",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "supersedes",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "supported-by",
+      "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "verified-by",
+      "usage_count": 0
+    }
+  ],
+  "summary": {
+    "vocabulary_term_count": 95,
+    "used_term_count": 0
+  }
+}

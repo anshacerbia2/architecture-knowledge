@@ -1,0 +1,35 @@
+schema_version: 1
+status: proposed
+notes:
+  - Dimensions are orthogonal classification facets, not mutually exclusive styles.
+dimensions:
+  - key: system-decomposition
+    question: How are system responsibilities partitioned into major units?
+  - key: internal-structure
+    question: How are responsibilities and dependencies organized inside a unit?
+  - key: interaction
+    question: How do participants communicate and coordinate?
+  - key: execution
+    question: Where and under what runtime model does computation execute?
+  - key: deployment
+    question: What is independently released, placed, and scaled?
+  - key: data-ownership
+    question: Who controls data definitions, storage, and change?
+  - key: data-consistency
+    question: What consistency and concurrency semantics apply?
+  - key: state-management
+    question: Where and how is state represented and evolved?
+  - key: tenancy
+    question: How are tenant resources, identity, and data isolated or shared?
+  - key: trust-security
+    question: Where are trust boundaries and how are risks controlled?
+  - key: resilience
+    question: How are faults contained, recovered from, and adapted to?
+  - key: observability
+    question: How is internal state inferred and operational behavior evaluated?
+  - key: delivery-evolution
+    question: How does the system change safely over time?
+  - key: governance
+    question: How are decisions constrained, assured, and made accountable?
+  - key: organizational-ownership
+    question: Which teams own boundaries, decisions, and operations?

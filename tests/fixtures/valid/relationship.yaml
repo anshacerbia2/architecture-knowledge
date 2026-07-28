@@ -1,0 +1,15 @@
+id: AKR-900001
+record_kind: relationship
+subject: AKC-900001
+predicate: improves
+object: AKC-900002
+strength: weak
+direction: directed
+conditions:
+  - statement: The bounded synthetic condition holds.
+    concept_ids: []
+evidence: [AKL-900001]
+confidence: low
+status: proposed
+notes: Test fixture only.
+version: 1

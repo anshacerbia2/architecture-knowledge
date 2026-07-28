@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/source-quality-rubric.schema.json",
+  "title": "Source Quality Rubric",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "ratings", "dimensions", "decision_rules"],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "const": "proposed"
+    },
+    "ratings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strong", "adequate", "weak", "not-applicable", "unassessed"],
+      "properties": {
+        "strong": {
+          "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+        },
+        "adequate": {
+          "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+        },
+        "weak": {
+          "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+        },
+        "not-applicable": {
+          "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+        },
+        "unassessed": {
+          "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "question"],
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "question": {
+            "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+          }
+        }
+      }
+    },
+    "decision_rules": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+      }
+    }
+  }
+}

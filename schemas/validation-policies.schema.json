@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/validation-policies.schema.json",
+  "title": "Validation Policies",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "relationship_cycles", "markdown"],
+  "properties": {
+    "schema_version": { "type": "integer", "minimum": 1 },
+    "status": { "const": "proposed" },
+    "relationship_cycles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["forbidden", "report_only", "allowed"],
+      "properties": {
+        "forbidden": { "$ref": "#/$defs/slugArray" },
+        "report_only": { "$ref": "#/$defs/slugArray" },
+        "allowed": { "$ref": "#/$defs/slugArray" }
+      }
+    },
+    "markdown": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "failure_sensitive_types",
+        "security_sensitive_types",
+        "security_sensitive_domains",
+        "placeholder_patterns",
+        "absolute_terms",
+        "contextual_qualifiers"
+      ],
+      "properties": {
+        "failure_sensitive_types": { "$ref": "#/$defs/slugArray" },
+        "security_sensitive_types": { "$ref": "#/$defs/slugArray" },
+        "security_sensitive_domains": { "$ref": "#/$defs/slugArray" },
+        "placeholder_patterns": {
+          "type": "array",
+          "items": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+          "uniqueItems": true
+        },
+        "absolute_terms": { "$ref": "#/$defs/slugArray" },
+        "contextual_qualifiers": {
+          "type": "array",
+          "items": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+          "uniqueItems": true
+        }
+      }
+    }
+  },
+  "$defs": {
+    "slugArray": {
+      "type": "array",
+      "items": { "$ref": "_defs.schema.json#/$defs/slug" },
+      "uniqueItems": true
+    }
+  }
+}

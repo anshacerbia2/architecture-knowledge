@@ -1,0 +1,139 @@
+schema_version: 1
+status: proposed
+notes:
+  - These are semantic types for concepts, not repository record kinds.
+  - Abstract and role-only entries cannot be assigned as a primary type.
+types:
+  - key: philosophy
+    definition: A coherent worldview about how architecture should be understood.
+    assignable_primary: true
+  - key: reasoning-model
+    definition: A repeatable model for analyzing evidence, causality, uncertainty, or trade-offs.
+    assignable_primary: true
+  - key: principle
+    definition: A durable normative proposition that guides choices across contexts.
+    assignable_primary: true
+  - key: heuristic
+    definition: A defeasible rule of thumb used to reduce reasoning effort.
+    assignable_primary: true
+  - key: law
+    definition: A named, broadly observed regularity with stated scope and limits.
+    assignable_primary: true
+  - key: constraint
+    definition: A condition that restricts feasible architecture choices.
+    assignable_primary: true
+  - key: assumption
+    definition: A proposition treated as true for reasoning but requiring validation.
+    assignable_primary: true
+  - key: business-goal
+    definition: A desired business outcome that architecture is intended to support.
+    assignable_primary: true
+  - key: stakeholder
+    definition: A person, group, or role with interests in the system or its architecture.
+    assignable_primary: true
+  - key: concern
+    definition: An interest or issue relevant to one or more stakeholders.
+    assignable_primary: true
+  - key: architectural-driver
+    definition: A contextual factor with material influence on architecture decisions.
+    assignable_primary: true
+  - key: quality-attribute
+    definition: A measurable or assessable property of a system or its operation.
+    assignable_primary: true
+  - key: quality-attribute-scenario
+    definition: A structured scenario used to make a quality-attribute expectation testable.
+    assignable_primary: true
+  - key: tactic
+    definition: A focused design move intended to influence a quality-attribute response.
+    assignable_primary: true
+  - key: style
+    definition: An abstract family of organizing constraints on system elements and relationships.
+    assignable_primary: false
+    abstract: true
+  - key: architectural-style
+    parent: style
+    definition: A system-level family of organizing constraints on elements and relationships.
+    assignable_primary: true
+  - key: pattern
+    definition: An abstract reusable problem-context-solution form with consequences.
+    assignable_primary: false
+    abstract: true
+  - key: architectural-pattern
+    parent: pattern
+    definition: A reusable architecture-scale arrangement addressing recurring forces.
+    assignable_primary: true
+  - key: design-pattern
+    parent: pattern
+    definition: A reusable software-design arrangement below the system architecture scale.
+    assignable_primary: true
+  - key: integration-pattern
+    parent: pattern
+    definition: A reusable arrangement for communication or coordination across boundaries.
+    assignable_primary: true
+  - key: data-pattern
+    parent: pattern
+    definition: A reusable arrangement for data modeling, ownership, movement, or persistence.
+    assignable_primary: true
+  - key: control
+    definition: An abstract mechanism that changes exposure to a policy or risk.
+    assignable_primary: false
+    abstract: true
+  - key: security-control
+    parent: control
+    definition: A safeguard that modifies security or privacy risk.
+    assignable_primary: true
+  - key: protocol
+    definition: A defined set of interaction rules and message semantics.
+    assignable_primary: true
+  - key: technology
+    definition: A concrete product, platform, language, runtime, or technical implementation.
+    assignable_primary: true
+  - key: engineering-practice
+    definition: A repeatable way of working used to create or operate systems.
+    assignable_primary: true
+  - key: governance-mechanism
+    definition: A mechanism for directing, constraining, assuring, or overseeing decisions.
+    assignable_primary: true
+  - key: artifact
+    definition: An abstract information or implementation product.
+    assignable_primary: false
+    abstract: true
+  - key: documentation-artifact
+    parent: artifact
+    definition: A durable information product that records architecture knowledge or decisions.
+    assignable_primary: true
+  - key: deployable-artifact
+    parent: artifact
+    definition: A versioned unit that can be deployed or promoted.
+    assignable_primary: true
+  - key: metric
+    definition: A defined quantitative measure with units and interpretation.
+    assignable_primary: true
+  - key: fitness-function
+    definition: An executable or repeatable check that evaluates an architecture property over time.
+    assignable_primary: true
+  - key: anti-pattern
+    definition: A recurring response whose documented consequences commonly outweigh its benefits in stated contexts.
+    assignable_primary: true
+  - key: code-smell
+    definition: An observable code characteristic that suggests, but does not prove, a deeper design problem.
+    assignable_primary: true
+  - key: failure-mode
+    definition: A way in which a system element or interaction can fail to provide intended behavior.
+    assignable_primary: true
+  - key: risk
+    definition: An uncertain event or condition characterized by likelihood, impact, and context.
+    assignable_primary: true
+  - key: decision
+    definition: A contextual commitment among alternatives with rationale and consequences.
+    assignable_primary: true
+  - key: alternative
+    definition: A role played by a candidate option within a particular decision context.
+    assignable_primary: false
+    role_only: true
+  - key: context-condition
+    definition: A reusable condition that qualifies applicability or a relationship.
+    assignable_primary: true
+  - key: example
+    definition: An illustrative instance used to explain or test a concept without establishing evidence by itself.
+    assignable_primary: true

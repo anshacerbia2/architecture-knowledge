@@ -1,0 +1,28 @@
+schema_version: 1
+status: proposed
+notes:
+  - Domains locate subject matter and are non-exclusive except for the required primary domain.
+  - Domain does not determine concept type, ownership, or architecture dimension.
+domains:
+  - foundations
+  - business-enterprise
+  - engineering
+  - constraints-assumptions
+  - quality
+  - architecture-analysis
+  - system-structure
+  - application-architecture
+  - distributed-systems
+  - integration
+  - api
+  - data
+  - security-privacy
+  - platform-infrastructure
+  - cloud
+  - delivery
+  - reliability-operability
+  - observability
+  - testing-verification
+  - governance
+  - documentation
+  - measurement

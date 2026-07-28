@@ -1,0 +1,18 @@
+report_only:
+  - id: AKR-900010
+    subject: AKC-900001
+    predicate: depends-on
+    object: AKC-900002
+  - id: AKR-900011
+    subject: AKC-900002
+    predicate: depends-on
+    object: AKC-900001
+forbidden:
+  - id: AKR-900012
+    subject: AKC-900001
+    predicate: is-a
+    object: AKC-900002
+  - id: AKR-900013
+    subject: AKC-900002
+    predicate: is-a
+    object: AKC-900001

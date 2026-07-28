@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/source-registry.schema.json",
+  "title": "Source Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "sources"],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "const": "proposed"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "source.schema.json"
+      }
+    }
+  }
+}

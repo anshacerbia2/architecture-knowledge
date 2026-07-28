@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/id-ledger.schema.json",
+  "title": "Canonical ID Ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "allocations"],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "const": "proposed"
+    },
+    "allocations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "record_kind",
+          "human_key",
+          "state",
+          "path",
+          "allocated_at",
+          "retired_at"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "_defs.schema.json#/$defs/recordId"
+          },
+          "record_kind": {
+            "$ref": "_defs.schema.json#/$defs/slug"
+          },
+          "human_key": {
+            "oneOf": [
+              {
+                "$ref": "_defs.schema.json#/$defs/slug"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "state": {
+            "enum": ["active", "retired"]
+          },
+          "path": {
+            "type": ["string", "null"]
+          },
+          "allocated_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "retired_at": {
+            "type": ["string", "null"],
+            "format": "date"
+          }
+        }
+      }
+    }
+  }
+}

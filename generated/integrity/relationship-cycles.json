@@ -1,0 +1,10 @@
+{
+  "generated_by": "architecture-knowledge-validation-kernel",
+  "report": "relationship-cycles",
+  "items": [],
+  "summary": {
+    "cycle_count": 0,
+    "forbidden_count": 0,
+    "report_only_count": 0
+  }
+}

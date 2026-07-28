@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/_defs.schema.json",
+  "title": "Architecture Knowledge Common Definitions",
+  "$defs": {
+    "conceptId": {
+      "type": "string",
+      "pattern": "^AKC-[0-9]{6}$"
+    },
+    "sourceId": {
+      "type": "string",
+      "pattern": "^AKS-[0-9]{6}$"
+    },
+    "claimId": {
+      "type": "string",
+      "pattern": "^AKL-[0-9]{6}$"
+    },
+    "relationshipId": {
+      "type": "string",
+      "pattern": "^AKR-[0-9]{6}$"
+    },
+    "decisionGuideId": {
+      "type": "string",
+      "pattern": "^AKG-[0-9]{6}$"
+    },
+    "recordId": {
+      "type": "string",
+      "pattern": "^(AKC|AKS|AKL|AKR|AKG)-[0-9]{6}$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "lifecycleStatus": {
+      "enum": [
+        "proposed",
+        "source-candidate",
+        "sourced",
+        "drafted",
+        "schema-valid",
+        "content-validated",
+        "human-review",
+        "reviewed",
+        "published",
+        "deprecated",
+        "superseded"
+      ]
+    },
+    "maturity": {
+      "enum": ["seed", "developing", "substantial", "maintained"]
+    },
+    "confidence": {
+      "enum": ["low", "medium", "high"]
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statement", "concept_ids"],
+      "properties": {
+        "statement": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "concept_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/conceptId"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner",
+        "reviewers",
+        "created_at",
+        "updated_at",
+        "reviewed_at",
+        "review_due_at"
+      ],
+      "properties": {
+        "owner": {
+          "type": ["string", "null"]
+        },
+        "reviewers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "reviewed_at": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "review_due_at": {
+          "type": ["string", "null"],
+          "format": "date"
+        }
+      }
+    }
+  }
+}

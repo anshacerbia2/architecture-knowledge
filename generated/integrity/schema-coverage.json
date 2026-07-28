@@ -1,0 +1,131 @@
+{
+  "generated_by": "architecture-knowledge-validation-kernel",
+  "report": "schema-coverage",
+  "items": [
+    {
+      "path": "generated/integrity/deprecated-source-usage.json",
+      "schema": "schemas/integrity-report.schema.json"
+    },
+    {
+      "path": "generated/integrity/duplicate-ids.json",
+      "schema": "schemas/integrity-report.schema.json"
+    },
+    {
+      "path": "generated/integrity/duplicate-keys.json",
+      "schema": "schemas/integrity-report.schema.json"
+    },
+    {
+      "path": "generated/integrity/lifecycle-distribution.json",
+      "schema": "schemas/integrity-report.schema.json"
+    },
+    {
+      "path": "generated/integrity/markdown-link-integrity.json",
+      "schema": "schemas/integrity-report.schema.json"
+    },
+    {
+      "path": "generated/integrity/ontology-vocabulary-coverage.json",
+      "schema": "schemas/integrity-report.schema.json"
+    },
+    {
+      "path": "generated/integrity/orphan-records.json",
+      "schema": "schemas/integrity-report.schema.json"
+    },
+    {
+      "path": "generated/integrity/relationship-cycles.json",
+      "schema": "schemas/integrity-report.schema.json"
+    },
+    {
+      "path": "generated/integrity/schema-coverage.json",
+      "schema": "schemas/integrity-report.schema.json"
+    },
+    {
+      "path": "generated/integrity/source-usage.json",
+      "schema": "schemas/integrity-report.schema.json"
+    },
+    {
+      "path": "generated/integrity/summary.json",
+      "schema": "schemas/integrity-report.schema.json"
+    },
+    {
+      "path": "generated/integrity/unresolved-references.json",
+      "schema": "schemas/integrity-report.schema.json"
+    },
+    {
+      "path": "governance/lifecycle-events.yaml",
+      "schema": "schemas/lifecycle-events.schema.json"
+    },
+    {
+      "path": "ids/ledger.yaml",
+      "schema": "schemas/id-ledger.schema.json"
+    },
+    {
+      "path": "ontology/architecture-dimensions.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/architectureDimensions"
+    },
+    {
+      "path": "ontology/claim-types.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/claimTypes"
+    },
+    {
+      "path": "ontology/concept-types.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/conceptTypes"
+    },
+    {
+      "path": "ontology/domains.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/domains"
+    },
+    {
+      "path": "ontology/identifier-namespaces.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/identifierNamespaces"
+    },
+    {
+      "path": "ontology/lifecycle-statuses.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/lifecycleStatuses"
+    },
+    {
+      "path": "ontology/maturity-levels.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/maturityLevels"
+    },
+    {
+      "path": "ontology/quality-attributes.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/qualityAttributes"
+    },
+    {
+      "path": "ontology/record-kinds.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/recordKinds"
+    },
+    {
+      "path": "ontology/relationship-types.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/relationshipTypes"
+    },
+    {
+      "path": "ontology/source-statuses.yaml",
+      "schema": "schemas/kernel-registry.schema.json#/$defs/sourceStatuses"
+    },
+    {
+      "path": "roadmap/implementation.yaml",
+      "schema": "schemas/implementation-roadmap.schema.json"
+    },
+    {
+      "path": "schemas/registry.json",
+      "schema": "schemas/schema-registry.schema.json"
+    },
+    {
+      "path": "sources/registry.yaml",
+      "schema": "schemas/source-registry.schema.json"
+    },
+    {
+      "path": "sources/source-quality-rubric.yaml",
+      "schema": "schemas/source-quality-rubric.schema.json"
+    },
+    {
+      "path": "validation/policies.yaml",
+      "schema": "schemas/validation-policies.schema.json"
+    }
+  ],
+  "summary": {
+    "governed_files": 30,
+    "validated_files": 30,
+    "schema_files": 16
+  }
+}

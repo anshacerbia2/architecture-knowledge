@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/decision-guide.schema.json",
+  "title": "Architecture Decision Guide",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "record_kind",
+    "title",
+    "decision_question",
+    "context_variables",
+    "constraints",
+    "quality_attributes",
+    "options",
+    "evaluation_criteria",
+    "tradeoff_matrix",
+    "disqualifiers",
+    "risk_questions",
+    "recommended_when",
+    "avoid_when",
+    "evolution_triggers",
+    "evidence",
+    "status",
+    "review",
+    "version"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "_defs.schema.json#/$defs/decisionGuideId"
+    },
+    "record_kind": {
+      "const": "decision-guide"
+    },
+    "title": {
+      "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+    },
+    "decision_question": {
+      "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+    },
+    "context_variables": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/namedQuestion"
+      }
+    },
+    "constraints": {
+      "$ref": "#/$defs/conceptIds"
+    },
+    "quality_attributes": {
+      "$ref": "#/$defs/conceptIds"
+    },
+    "options": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["concept_id", "label"],
+        "properties": {
+          "concept_id": {
+            "$ref": "_defs.schema.json#/$defs/conceptId"
+          },
+          "label": {
+            "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+          }
+        }
+      }
+    },
+    "evaluation_criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/namedQuestion"
+      }
+    },
+    "tradeoff_matrix": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["option_id", "criterion", "assessment", "conditions", "claim_ids"],
+        "properties": {
+          "option_id": {
+            "$ref": "_defs.schema.json#/$defs/conceptId"
+          },
+          "criterion": {
+            "$ref": "_defs.schema.json#/$defs/slug"
+          },
+          "assessment": {
+            "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+          },
+          "conditions": {
+            "type": "array",
+            "items": {
+              "$ref": "_defs.schema.json#/$defs/condition"
+            }
+          },
+          "claim_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "_defs.schema.json#/$defs/claimId"
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "disqualifiers": {
+      "$ref": "#/$defs/conditions"
+    },
+    "risk_questions": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+      }
+    },
+    "recommended_when": {
+      "$ref": "#/$defs/conditions"
+    },
+    "avoid_when": {
+      "$ref": "#/$defs/conditions"
+    },
+    "evolution_triggers": {
+      "$ref": "#/$defs/conditions"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/claimId"
+      },
+      "uniqueItems": true
+    },
+    "status": {
+      "$ref": "_defs.schema.json#/$defs/lifecycleStatus"
+    },
+    "review": {
+      "$ref": "_defs.schema.json#/$defs/review"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "$defs": {
+    "conceptIds": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/conceptId"
+      },
+      "uniqueItems": true
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/condition"
+      }
+    },
+    "namedQuestion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "question"],
+      "properties": {
+        "key": {
+          "$ref": "_defs.schema.json#/$defs/slug"
+        },
+        "question": {
+          "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+        }
+      }
+    }
+  }
+}

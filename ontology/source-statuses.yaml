@@ -1,0 +1,19 @@
+schema_version: 1
+status: proposed
+notes:
+  - Source status governs evidentiary admission and does not approve downstream content.
+statuses:
+  - key: candidate
+    may_support_claims: false
+  - key: approved
+    may_support_claims: true
+  - key: restricted
+    may_support_claims: true
+    usage_notes_required: true
+  - key: deprecated
+    may_support_claims: warning
+  - key: superseded
+    may_support_claims: warning
+    replacement_required: true
+  - key: rejected
+    may_support_claims: false

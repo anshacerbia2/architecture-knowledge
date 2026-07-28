@@ -1,0 +1,51 @@
+schema_version: 1
+status: proposed
+notes:
+  - Draft examples in the master prompt use "draft"; this registry uses the normative "drafted".
+  - Lifecycle status does not express confidence or maturity.
+statuses:
+  - proposed
+  - source-candidate
+  - sourced
+  - drafted
+  - schema-valid
+  - content-validated
+  - human-review
+  - reviewed
+  - published
+  - deprecated
+  - superseded
+transitions:
+  - from: proposed
+    to: source-candidate
+    authority: automation-or-human
+  - from: source-candidate
+    to: sourced
+    authority: automation-or-human
+  - from: sourced
+    to: drafted
+    authority: automation-or-human
+  - from: drafted
+    to: schema-valid
+    authority: automation-or-human
+  - from: schema-valid
+    to: content-validated
+    authority: automation-or-human
+  - from: content-validated
+    to: human-review
+    authority: automation-or-human
+  - from: human-review
+    to: reviewed
+    authority: human-only
+  - from: reviewed
+    to: published
+    authority: human-only
+  - from: reviewed
+    to: deprecated
+    authority: human-only
+  - from: published
+    to: deprecated
+    authority: human-only
+  - from: deprecated
+    to: superseded
+    authority: human-only

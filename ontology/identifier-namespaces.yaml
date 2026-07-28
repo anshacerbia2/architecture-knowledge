@@ -1,0 +1,24 @@
+schema_version: 1
+status: proposed
+format: '^(AKC|AKS|AKL|AKR|AKG)-[0-9]{6}$'
+allocation:
+  strategy: monotonically-increasing-sequence-per-namespace
+  width: 6
+  first_value: 1
+  rules:
+    - IDs are globally unique across the repository.
+    - IDs are immutable and never recycled.
+    - Titles, slugs, file paths, domains, and detailed types are not encoded.
+    - A record-kind conversion creates a new ID and an explicit migration link.
+    - Concurrent allocations must be checked before merge.
+namespaces:
+  - prefix: AKC
+    record_kind: concept
+  - prefix: AKS
+    record_kind: source
+  - prefix: AKL
+    record_kind: claim
+  - prefix: AKR
+    record_kind: relationship
+  - prefix: AKG
+    record_kind: decision-guide

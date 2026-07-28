@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/integrity-report.schema.json",
+  "title": "Generated Integrity Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["generated_by", "report", "items", "summary"],
+  "properties": {
+    "generated_by": {
+      "const": "architecture-knowledge-validation-kernel"
+    },
+    "report": {
+      "$ref": "_defs.schema.json#/$defs/slug"
+    },
+    "items": {
+      "type": "array"
+    },
+    "summary": {
+      "type": "object"
+    }
+  }
+}

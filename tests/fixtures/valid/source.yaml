@@ -1,0 +1,30 @@
+id: AKS-900001
+record_kind: source
+title: Synthetic validation source
+authors: [Validation Team]
+publisher: Synthetic Publisher
+source_type: other
+url: https://example.invalid/validation-source
+publication_date: 2026-01-01
+accessed_at: 2026-07-29
+version: "1"
+authority_level: recognized-authority
+primary_or_secondary: primary
+domains: [distributed-systems]
+license_or_usage_notes: Synthetic fixture; not evidentiary production content.
+status: approved
+supersedes: []
+superseded_by: null
+quality:
+  authority: strong
+  proximity: strong
+  recency: strong
+  stability: strong
+  scope_fit: strong
+  conflict_of_interest: adequate
+  technical_depth: strong
+  reproducibility: adequate
+  peer_review: adequate
+  maintenance_status: strong
+  assessment_notes: Synthetic ratings exercise the admitted-source contract.
+notes: Test fixture only.

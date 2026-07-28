@@ -1,0 +1,35 @@
+schema_version: 1
+status: proposed
+ratings:
+  strong: The source strongly satisfies the dimension for the intended claim scope.
+  adequate: The source is usable with documented limitations.
+  weak: The dimension materially limits reliance on the source.
+  not-applicable: The dimension does not apply; assessment notes must explain why.
+  unassessed: The dimension has not yet been evaluated.
+dimensions:
+  - key: authority
+    question: Is the author or issuing body authoritative for this subject and scope?
+  - key: proximity
+    question: How close is the source to the original specification, observation, or research?
+  - key: recency
+    question: Is the source current enough for the stability and lifecycle of its subject?
+  - key: stability
+    question: Is the cited version stable, final, and unlikely to change unexpectedly?
+  - key: scope_fit
+    question: Does the source directly support the claim within the claim's stated scope?
+  - key: conflict_of_interest
+    question: Are incentives or affiliations disclosed and appropriately accounted for?
+  - key: technical_depth
+    question: Does the source expose enough mechanism and qualification to support reasoning?
+  - key: reproducibility
+    question: Can relevant observations, analyses, or results be independently checked?
+  - key: peer_review
+    question: Has the material received an appropriate independent review for its source type?
+  - key: maintenance_status
+    question: Is the source actively maintained or explicitly retired or superseded?
+decision_rules:
+  - Popularity, search rank, and citation count are not quality dimensions.
+  - No aggregate score may hide a weak scope-fit or proximity assessment.
+  - Security-critical claims require primary specifications or recognized security authorities unless the limitation is explicit.
+  - Product behavior claims should prefer documentation for the exact supported version.
+  - Conflicts among credible sources must be represented, not averaged away.

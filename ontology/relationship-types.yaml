@@ -1,0 +1,230 @@
+schema_version: 1
+status: proposed
+defaults:
+  self_relation_allowed: false
+  conditions_required: false
+  evidence_claims_required: true
+notes:
+  - Evidence on a relationship is a list of claim IDs; claims in turn cite sources.
+  - '"related-to" is a last-resort symmetric predicate and should trigger a precision warning.'
+  - '"is-a" means strict type inclusion; "specializes" means narrower scope or application and is not interchangeable with it.'
+predicates:
+  - key: is-a
+    definition: The subject is a subtype whose instances are also instances of the object.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    inverse: generalizes
+    transitive: true
+  - key: part-of
+    definition: The subject is a constituent of the object under the stated decomposition.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    conditions_required: true
+    transitive: contextual
+  - key: instance-of
+    definition: The subject is a concrete instance or example of the class represented by the object.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    transitive: false
+  - key: specializes
+    definition: The subject narrows the scope or application of the object without necessarily being its strict subtype.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    inverse: generalizes
+    conditions_required: true
+  - key: generalizes
+    definition: The subject has broader scope than the object.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    inverse_of: [is-a, specializes]
+    conditions_required: true
+  - key: related-to
+    definition: The endpoints have a material relationship for which no precise registered predicate yet applies.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: symmetric
+    precision_warning: true
+    conditions_required: true
+  - key: depends-on
+    definition: The subject's intended outcome materially relies on the object.
+    subject_kinds: [concept, decision-guide]
+    object_kinds: [concept]
+    direction: directed
+    conditions_required: true
+  - key: requires
+    definition: The object is a necessary precondition for the subject within stated scope.
+    subject_kinds: [concept, decision-guide]
+    object_kinds: [concept]
+    direction: directed
+    conditions_required: true
+  - key: enables
+    definition: The subject makes the object feasible but does not guarantee it.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    conditions_required: true
+  - key: constrains
+    definition: The subject restricts feasible forms or values of the object.
+    subject_kinds: [concept]
+    object_kinds: [concept, decision-guide]
+    direction: directed
+    conditions_required: true
+  - key: conflicts-with
+    definition: The endpoints create materially opposing forces under stated conditions.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: symmetric
+    conditions_required: true
+  - key: compatible-with
+    definition: The endpoints may coexist without a known intrinsic conflict under stated conditions.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: symmetric
+    conditions_required: true
+  - key: alternative-to
+    definition: The endpoints can address the same decision question in a stated context.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: symmetric
+    conditions_required: true
+  - key: supersedes
+    definition: The subject intentionally replaces the object for a defined scope.
+    subject_kinds: [concept, source, claim, decision-guide]
+    object_kinds: [concept, source, claim, decision-guide]
+    direction: directed
+    evidence_claims_required: false
+    conditions_required: true
+  - key: deprecated-by
+    definition: The subject is discouraged in favor of or by action of the object.
+    subject_kinds: [concept, source, claim, decision-guide]
+    object_kinds: [concept, source, claim, decision-guide]
+    direction: directed
+    evidence_claims_required: false
+    conditions_required: true
+  - key: addresses
+    definition: The subject responds to part or all of the object without asserting complete resolution.
+    subject_kinds: [concept, decision-guide]
+    object_kinds: [concept]
+    direction: directed
+    conditions_required: true
+  - key: solves
+    definition: The subject resolves the object within explicitly bounded conditions and acceptance criteria.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    conditions_required: true
+    strong_claim_warning: true
+  - key: mitigates
+    definition: The subject reduces likelihood or impact of the object under stated conditions.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    conditions_required: true
+  - key: introduces
+    definition: Adoption or presence of the subject creates the object as a new concern, risk, or behavior.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    conditions_required: true
+  - key: causes
+    definition: The subject produces the object through a supported causal mechanism.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    conditions_required: true
+    strong_claim_warning: true
+  - key: influences
+    definition: The subject affects the object but direction or magnitude is context dependent.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    conditions_required: true
+    precision_warning: true
+  - key: improves
+    definition: The subject positively changes a measurable aspect of the object under stated conditions.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    object_concept_types: [quality-attribute]
+    direction: directed
+    conditions_required: true
+  - key: degrades
+    definition: The subject negatively changes a measurable aspect of the object under stated conditions.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    object_concept_types: [quality-attribute]
+    direction: directed
+    conditions_required: true
+  - key: measured-by
+    definition: The subject is quantified in part by the object.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    object_concept_types: [metric]
+    direction: directed
+    conditions_required: true
+  - key: verified-by
+    definition: The subject can be evaluated by the object within stated acceptance criteria.
+    subject_kinds: [concept, claim]
+    object_kinds: [concept]
+    object_concept_types: [fitness-function, engineering-practice]
+    direction: directed
+    conditions_required: true
+  - key: implemented-by
+    definition: The subject can be realized by the object.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    conditions_required: true
+  - key: documented-by
+    definition: The subject is materially described or recorded by the object.
+    subject_kinds: [concept, decision-guide]
+    object_kinds: [concept]
+    object_concept_types: [documentation-artifact]
+    direction: directed
+    evidence_claims_required: false
+  - key: governed-by
+    definition: The subject is directed, constrained, or assured by the object.
+    subject_kinds: [concept, decision-guide]
+    object_kinds: [concept]
+    object_concept_types: [governance-mechanism, principle]
+    direction: directed
+    conditions_required: true
+  - key: derived-from
+    definition: The subject was produced through transformation or reasoning from the object.
+    subject_kinds: [claim, concept, decision-guide]
+    object_kinds: [claim, concept, source]
+    direction: directed
+    evidence_claims_required: false
+    conditions_required: true
+  - key: supported-by
+    definition: Evidence from the object provides support for the subject.
+    subject_kinds: [claim]
+    object_kinds: [source, claim]
+    direction: directed
+    evidence_claims_required: false
+    conditions_required: true
+  - key: contradicted-by
+    definition: The object materially conflicts with the subject within overlapping scope.
+    subject_kinds: [claim]
+    object_kinds: [claim]
+    direction: symmetric
+    evidence_claims_required: false
+    conditions_required: true
+  - key: applies-when
+    definition: The subject is applicable when the object and edge conditions hold.
+    subject_kinds: [concept, decision-guide]
+    object_kinds: [concept]
+    object_concept_types: [context-condition, constraint, assumption]
+    direction: directed
+    conditions_required: true
+  - key: avoid-when
+    definition: The subject should generally not be selected when the object and edge conditions hold.
+    subject_kinds: [concept, decision-guide]
+    object_kinds: [concept]
+    object_concept_types: [context-condition, constraint, assumption]
+    direction: directed
+    conditions_required: true

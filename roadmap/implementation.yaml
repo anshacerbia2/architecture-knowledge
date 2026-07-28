@@ -1,0 +1,141 @@
+schema_version: 2
+status: proposed
+roadmap_id: architecture-knowledge-platform
+milestones:
+  - id: m0
+    title: Project Definition
+    status: implemented
+    dependencies: []
+    deliverables:
+      - project charter and north star
+      - goals and non-goals
+      - target product boundaries
+      - success criteria
+      - strategic roadmap
+    exit_criteria:
+      - charter and roadmap responsibilities are non-overlapping
+      - current implementation status is represented outside the charter
+    notes: Project charter accepted by the project owner on 2026-07-29.
+  - id: m1
+    title: Knowledge Kernel
+    status: implemented
+    dependencies: [m0]
+    deliverables:
+      - ontology and taxonomy registries
+      - schema contracts
+      - identifier and lifecycle rules
+      - source, claim, and evidence governance
+      - layered repository instructions
+    exit_criteria:
+      - M1 bootstrap checks pass
+      - unresolved taxonomy questions and ontology risks are documented
+    notes: Implemented and bootstrap-validated; foundational questions remain open.
+  - id: m2
+    title: Validation Kernel
+    status: implemented
+    dependencies: [m1]
+    deliverables:
+      - pinned pnpm and TypeScript toolchain
+      - committed validators and tests
+      - valid, invalid, boundary, and regression fixtures
+      - CI workflow
+      - deterministic integrity reports and freshness checks
+    exit_criteria:
+      - pnpm install --frozen-lockfile succeeds from a clean workspace
+      - pnpm validate passes
+      - pnpm test passes
+      - pnpm report:check passes
+      - no human-only lifecycle transition can be automated
+    notes: Independent M2 audit is the next bounded run.
+  - id: m3
+    title: Reference Knowledge Corpus
+    status: proposed
+    dependencies: [m2]
+    deliverables:
+      - twenty draft reference knowledge units
+      - registered authoritative sources
+      - first-class claims
+      - typed, conditional relationships
+    exit_criteria:
+      - every unit passes all validators
+      - important claims have admitted evidence
+      - references resolve and orphan concepts are explained or corrected
+      - no content is marked reviewed, approved, published, or canonical by automation
+    notes: Blocked until the M2 audit completes.
+  - id: m4
+    title: Knowledge Graph and Query Layer
+    status: future
+    dependencies: [m3]
+    deliverables:
+      - concept, relationship, source, and claim indexes
+      - generated knowledge graph
+      - graph traversal CLI or API
+      - deterministic generated-artifact checks
+    exit_criteria:
+      - graph queries preserve typed relationships and evidence links
+    notes: Depends on a validated representative corpus.
+  - id: m5
+    title: Search and Hybrid Retrieval
+    status: future
+    dependencies: [m4]
+    deliverables:
+      - metadata and full-text retrieval
+      - semantic retrieval
+      - graph expansion and reranking
+      - traceable context assembly
+    exit_criteria:
+      - terminology and semantic queries retrieve relevant concepts
+      - evidence and citations remain attached
+    notes: Infrastructure choices require measured justification.
+  - id: m6
+    title: Architecture RAG MVP
+    status: future
+    dependencies: [m5]
+    deliverables:
+      - ingestion and chunking pipeline
+      - hybrid retriever
+      - graph-aware context builder
+      - citation generator
+      - evaluation dataset
+    exit_criteria:
+      - answers include resolvable citations
+      - retrieval relevance and unsupported claims are measurable
+      - recommendations incorporate context and constraints
+    notes: Answers must preserve epistemic claim distinctions.
+  - id: m7
+    title: Architecture Decision Assistant
+    status: future
+    dependencies: [m6]
+    deliverables:
+      - context and constraint intake
+      - option and trade-off analysis
+      - risk and evolution-trigger analysis
+      - decision-artifact drafting
+    exit_criteria:
+      - recommendations are contextual and explainable
+      - automation cannot approve decisions
+    notes: Depends on representative decision guides.
+  - id: m8
+    title: Architecture Review Platform
+    status: future
+    dependencies: [m6, m7]
+    deliverables:
+      - design artifact review
+      - missing-requirement and unsupported-decision detection
+      - traceable findings
+      - waiver and exception tracking
+    exit_criteria:
+      - review findings resolve to governed knowledge and evidence
+    notes: Requires evaluation against representative review cases.
+  - id: m9
+    title: Production Knowledge Platform
+    status: future
+    dependencies: [m8]
+    deliverables:
+      - documentation website
+      - identity and access control
+      - ownership and review workflow
+      - audit, freshness, observability, feedback, and cost controls
+    exit_criteria:
+      - operational controls support sustainable organizational use
+    notes: Depends on demonstrated value from prior milestones.

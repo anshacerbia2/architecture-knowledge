@@ -1,0 +1,17 @@
+schema_version: 1
+status: proposed
+notes:
+  - Maturity describes development depth, not confidence, validation, or human approval.
+levels:
+  - key: seed
+    rank: 0
+    definition: Scope and intent are outlined; important fields may remain incomplete.
+  - key: developing
+    rank: 1
+    definition: Core reasoning and evidence are present but material gaps remain.
+  - key: substantial
+    rank: 2
+    definition: Required reasoning dimensions are developed with no known structural gaps.
+  - key: maintained
+    rank: 3
+    definition: The record has an active owner and a demonstrated update history.

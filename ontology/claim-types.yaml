@@ -1,0 +1,28 @@
+schema_version: 1
+status: proposed
+notes:
+  - Epistemic type describes claim construction, not truth, confidence, or review status.
+types:
+  - key: direct-source-claim
+    definition: A narrowly scoped proposition represented directly by a source.
+    evidence_required: true
+  - key: normalized-source-claim
+    definition: A source proposition paraphrased or normalized without materially extending it.
+    evidence_required: true
+  - key: synthesis
+    definition: A proposition formed by combining multiple supported propositions.
+    evidence_required: true
+  - key: inference
+    definition: A proposition reasoned from evidence but not directly stated by it.
+    evidence_required: true
+  - key: recommendation
+    definition: Contextual advice derived from evidence, goals, constraints, and trade-offs.
+    evidence_required: true
+    conditions_required: true
+  - key: hypothesis
+    definition: A testable proposition not yet adequately supported.
+    evidence_required: false
+    conditions_required: true
+  - key: opinion
+    definition: A judgment or preference not presented as an evidence-derived fact.
+    evidence_required: false
