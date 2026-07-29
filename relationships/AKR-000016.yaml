@@ -1,0 +1,15 @@
+id: AKR-000016
+record_kind: relationship
+subject: AKC-000008
+predicate: degrades
+object: AKC-000005
+strength: moderate
+direction: directed
+conditions:
+  - statement: "Services are introduced without adequate resilience, observability, delivery, or ownership capability."
+    concept_ids: []
+evidence: [AKL-000036]
+confidence: medium
+status: sourced
+notes: "This records a conditional risk, not a universal outcome."
+version: 1

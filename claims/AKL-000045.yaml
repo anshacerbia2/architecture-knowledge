@@ -1,0 +1,17 @@
+id: AKL-000045
+record_kind: claim
+subject: AKC-000012
+predicate: introduces
+object:
+  record_id: AKC-000021
+statement: "Retry can introduce cascading failure amplification when repeated attempts increase load against a persistently unhealthy or saturated dependency."
+claim_type: synthesis
+conditions:
+  - statement: "The failure is persistent or capacity-related and attempts are not effectively bounded."
+    concept_ids: []
+confidence: medium
+sources: [AKS-000012, AKS-000013]
+derived_from_claims: []
+status: proposed
+notes: "Supporting M3 claim; not human reviewed."
+version: 1

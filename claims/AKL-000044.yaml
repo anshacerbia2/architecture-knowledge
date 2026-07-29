@@ -1,0 +1,16 @@
+id: AKL-000044
+record_kind: claim
+subject: AKC-000024
+predicate: exceeds
+object:
+  literal: "an accepted convergence or reconciliation bound"
+statement: "Distributed state is unreconciled when it remains divergent beyond the accepted bound because propagation, compensation, conflict handling, or repair does not converge."
+claim_type: synthesis
+conditions:
+  []
+confidence: medium
+sources: [AKS-000010, AKS-000014, AKS-000015, AKS-000016]
+derived_from_claims: []
+status: proposed
+notes: "Supporting M3 claim; not human reviewed."
+version: 1

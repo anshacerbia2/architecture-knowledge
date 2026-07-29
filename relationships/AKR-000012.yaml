@@ -1,0 +1,15 @@
+id: AKR-000012
+record_kind: relationship
+subject: AKC-000010
+predicate: introduces
+object: AKC-000016
+strength: strong
+direction: directed
+conditions:
+  - statement: "Consumers maintain independent state from asynchronously delivered events."
+    concept_ids: []
+evidence: [AKL-000032]
+confidence: high
+status: sourced
+notes: "Event transport does not make every path eventually consistent."
+version: 1

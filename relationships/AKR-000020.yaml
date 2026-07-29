@@ -1,0 +1,15 @@
+id: AKR-000020
+record_kind: relationship
+subject: AKC-000005
+predicate: influences
+object: AKC-000004
+strength: strong
+direction: directed
+conditions:
+  - statement: "The availability boundary includes the failed function under the same operating conditions."
+    concept_ids: []
+evidence: [AKL-000040]
+confidence: high
+status: sourced
+notes: "The quality attributes remain distinct."
+version: 1

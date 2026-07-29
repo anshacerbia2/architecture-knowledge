@@ -1,0 +1,16 @@
+id: AKL-000010
+record_kind: claim
+subject: AKC-000010
+predicate: coordinates
+object:
+  literal: "asynchronous reactions to published event facts"
+statement: "Event-driven architecture decouples producers and consumers by publishing event facts and processing reactions asynchronously."
+claim_type: normalized-source-claim
+conditions:
+  []
+confidence: high
+sources: [AKS-000010]
+derived_from_claims: []
+status: sourced
+notes: "Delivery, schema, ordering, and consistency semantics remain explicit design choices."
+version: 1

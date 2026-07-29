@@ -1,0 +1,16 @@
+id: AKL-000013
+record_kind: claim
+subject: AKC-000013
+predicate: prevents
+object:
+  literal: "calls to an unhealthy dependency during an open state"
+statement: "A circuit breaker transitions among closed, open, and probe states to prevent repeated calls to a failing dependency and test recovery."
+claim_type: normalized-source-claim
+conditions:
+  []
+confidence: high
+sources: [AKS-000013]
+derived_from_claims: []
+status: sourced
+notes: "State thresholds and fallback semantics are context dependent."
+version: 1

@@ -1,0 +1,15 @@
+id: AKR-000018
+record_kind: relationship
+subject: AKC-000003
+predicate: constrains
+object: AKC-000008
+strength: moderate
+direction: directed
+conditions:
+  - statement: "The constraint is authoritative, scoped, and materially excludes a microservice option."
+    concept_ids: []
+evidence: [AKL-000038]
+confidence: medium
+status: sourced
+notes: "Preferences and assumptions do not establish this edge."
+version: 1

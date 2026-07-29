@@ -1,0 +1,16 @@
+id: AKL-000018
+record_kind: claim
+subject: AKC-000018
+predicate: authenticates
+object:
+  literal: "an end user through an identity layer over OAuth 2.0"
+statement: "OpenID Connect adds an identity layer to OAuth 2.0 so a relying party can verify an end user's authentication and obtain identity claims."
+claim_type: normalized-source-claim
+conditions:
+  []
+confidence: high
+sources: [AKS-000019]
+derived_from_claims: []
+status: sourced
+notes: "Authentication does not grant application authorization by itself."
+version: 1

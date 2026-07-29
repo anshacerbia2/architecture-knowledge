@@ -1,0 +1,17 @@
+id: AKL-000021
+record_kind: claim
+subject: AKC-000001
+predicate: compatible-with
+object:
+  record_id: AKC-000002
+statement: "First-principles thinking and systems thinking can be combined when a decision requires both premise examination and analysis of interactions and feedback."
+claim_type: synthesis
+conditions:
+  - statement: "The inquiry has both uncertain premises and material cross-boundary interactions."
+    concept_ids: []
+confidence: medium
+sources: [AKS-000001, AKS-000002]
+derived_from_claims: []
+status: sourced
+notes: "Compatibility is contextual, not identity between the reasoning models."
+version: 1

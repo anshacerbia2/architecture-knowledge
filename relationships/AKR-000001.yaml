@@ -1,0 +1,15 @@
+id: AKR-000001
+record_kind: relationship
+subject: AKC-000001
+predicate: compatible-with
+object: AKC-000002
+strength: moderate
+direction: symmetric
+conditions:
+  - statement: "The inquiry has uncertain premises and material cross-boundary interactions."
+    concept_ids: []
+evidence: [AKL-000021]
+confidence: medium
+status: sourced
+notes: "Compatibility is contextual and does not merge the reasoning models."
+version: 1

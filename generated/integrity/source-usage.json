@@ -1,9 +1,238 @@
 {
   "generated_by": "architecture-knowledge-validation-kernel",
   "report": "source-usage",
-  "items": [],
+  "items": [
+    {
+      "source_id": "AKS-000001",
+      "claim_ids": [
+        "AKL-000001",
+        "AKL-000021"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000002",
+      "claim_ids": [
+        "AKL-000002",
+        "AKL-000003",
+        "AKL-000021",
+        "AKL-000038",
+        "AKL-000039"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000003",
+      "claim_ids": [
+        "AKL-000004",
+        "AKL-000005",
+        "AKL-000040"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000004",
+      "claim_ids": [
+        "AKL-000004",
+        "AKL-000005",
+        "AKL-000006",
+        "AKL-000037",
+        "AKL-000040"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000005",
+      "claim_ids": [
+        "AKL-000004",
+        "AKL-000005",
+        "AKL-000035",
+        "AKL-000040"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000006",
+      "claim_ids": [
+        "AKL-000007",
+        "AKL-000022",
+        "AKL-000023",
+        "AKL-000042",
+        "AKL-000046"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000007",
+      "claim_ids": [
+        "AKL-000007",
+        "AKL-000008",
+        "AKL-000022",
+        "AKL-000024",
+        "AKL-000036",
+        "AKL-000038",
+        "AKL-000042"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000008",
+      "claim_ids": [
+        "AKL-000008",
+        "AKL-000022",
+        "AKL-000024",
+        "AKL-000036",
+        "AKL-000038",
+        "AKL-000041"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000009",
+      "claim_ids": [
+        "AKL-000009",
+        "AKL-000023",
+        "AKL-000042",
+        "AKL-000046"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000010",
+      "claim_ids": [
+        "AKL-000010",
+        "AKL-000016",
+        "AKL-000024",
+        "AKL-000029",
+        "AKL-000032",
+        "AKL-000044",
+        "AKL-000048"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000011",
+      "claim_ids": [
+        "AKL-000011",
+        "AKL-000025"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000012",
+      "claim_ids": [
+        "AKL-000011",
+        "AKL-000012",
+        "AKL-000025",
+        "AKL-000026",
+        "AKL-000028",
+        "AKL-000041",
+        "AKL-000045"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000013",
+      "claim_ids": [
+        "AKL-000013",
+        "AKL-000027",
+        "AKL-000028",
+        "AKL-000041",
+        "AKL-000045"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000014",
+      "claim_ids": [
+        "AKL-000014",
+        "AKL-000029",
+        "AKL-000030",
+        "AKL-000044",
+        "AKL-000048"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000015",
+      "claim_ids": [
+        "AKL-000015",
+        "AKL-000016",
+        "AKL-000031",
+        "AKL-000044"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000016",
+      "claim_ids": [
+        "AKL-000016",
+        "AKL-000031",
+        "AKL-000032",
+        "AKL-000044",
+        "AKL-000048"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000017",
+      "claim_ids": [
+        "AKL-000017",
+        "AKL-000033",
+        "AKL-000043"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000018",
+      "claim_ids": [
+        "AKL-000017",
+        "AKL-000043",
+        "AKL-000047"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000019",
+      "claim_ids": [
+        "AKL-000018",
+        "AKL-000033",
+        "AKL-000034",
+        "AKL-000043",
+        "AKL-000047"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000020",
+      "claim_ids": [
+        "AKL-000019",
+        "AKL-000035"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000021",
+      "claim_ids": [
+        "AKL-000020",
+        "AKL-000037",
+        "AKL-000039"
+      ],
+      "status": "approved"
+    },
+    {
+      "source_id": "AKS-000022",
+      "claim_ids": [
+        "AKL-000003",
+        "AKL-000020",
+        "AKL-000037",
+        "AKL-000039"
+      ],
+      "status": "approved"
+    }
+  ],
   "summary": {
-    "source_count": 0,
-    "used_source_count": 0
+    "source_count": 22,
+    "used_source_count": 22
   }
 }

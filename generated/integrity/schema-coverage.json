@@ -3,6 +3,198 @@
   "report": "schema-coverage",
   "items": [
     {
+      "path": "claims/AKL-000001.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000002.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000003.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000004.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000005.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000006.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000007.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000008.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000009.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000010.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000011.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000012.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000013.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000014.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000015.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000016.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000017.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000018.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000019.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000020.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000021.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000022.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000023.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000024.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000025.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000026.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000027.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000028.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000029.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000030.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000031.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000032.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000033.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000034.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000035.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000036.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000037.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000038.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000039.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000040.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000041.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000042.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000043.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000044.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000045.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000046.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000047.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000048.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
       "path": "generated/integrity/deprecated-source-usage.json",
       "schema": "schemas/integrity-report.schema.json"
     },
@@ -63,6 +255,102 @@
       "schema": "schemas/id-ledger.schema.json"
     },
     {
+      "path": "knowledge/application-architecture/hexagonal-architecture.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/application-architecture/modular-monolith.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/constraints-assumptions/constraint.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/distributed-systems/eventual-consistency.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/distributed-systems/idempotency.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/distributed-systems/microservices.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/distributed-systems/saga.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/distributed-systems/transactional-outbox.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/documentation/architecture-decision-record.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/foundations/first-principles-thinking.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/foundations/systems-thinking.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/integration/event-driven-architecture.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/observability/observability.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/quality/availability.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/quality/quality-attribute-scenario.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/quality/reliability.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/reliability-operability/circuit-breaker.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/reliability-operability/retry.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/security/oauth-2x.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/security/openid-connect.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/supporting/boundary-erosion.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/supporting/cascading-failure-amplification.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/supporting/token-role-confusion.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
+      "path": "knowledge/supporting/unreconciled-state-divergence.md",
+      "schema": "schemas/knowledge-unit.schema.json"
+    },
+    {
       "path": "ontology/architecture-dimensions.yaml",
       "schema": "schemas/kernel-registry.schema.json#/$defs/architectureDimensions"
     },
@@ -107,6 +395,102 @@
       "schema": "schemas/kernel-registry.schema.json#/$defs/sourceStatuses"
     },
     {
+      "path": "relationships/AKR-000001.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000002.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000003.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000004.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000005.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000006.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000007.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000008.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000009.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000010.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000011.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000012.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000013.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000014.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000015.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000016.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000017.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000018.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000019.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000020.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000021.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000022.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000023.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
+      "path": "relationships/AKR-000024.yaml",
+      "schema": "schemas/relationship.schema.json"
+    },
+    {
       "path": "roadmap/implementation.yaml",
       "schema": "schemas/implementation-roadmap.schema.json"
     },
@@ -132,8 +516,8 @@
     }
   ],
   "summary": {
-    "governed_files": 32,
-    "validated_files": 32,
+    "governed_files": 128,
+    "validated_files": 128,
     "schema_files": 18
   }
 }

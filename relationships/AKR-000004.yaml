@@ -1,0 +1,15 @@
+id: AKR-000004
+record_kind: relationship
+subject: AKC-000008
+predicate: compatible-with
+object: AKC-000010
+strength: strong
+direction: symmetric
+conditions:
+  - statement: "Asynchronous delivery and schema operations are acceptable and supported."
+    concept_ids: []
+evidence: [AKL-000024]
+confidence: high
+status: sourced
+notes: "Either architectural style can exist without the other."
+version: 1

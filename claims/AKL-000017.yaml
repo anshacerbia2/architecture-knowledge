@@ -1,0 +1,16 @@
+id: AKL-000017
+record_kind: claim
+subject: AKC-000017
+predicate: authorizes
+object:
+  literal: "delegated or service access to protected resources"
+statement: "OAuth 2.0 is an authorization framework for scoped access to protected resources and does not by itself specify end-user authentication."
+claim_type: synthesis
+conditions:
+  []
+confidence: high
+sources: [AKS-000017, AKS-000018]
+derived_from_claims: []
+status: sourced
+notes: "Current security guidance supplements the base framework."
+version: 1

@@ -1,0 +1,15 @@
+id: AKR-000015
+record_kind: relationship
+subject: AKC-000019
+predicate: improves
+object: AKC-000005
+strength: moderate
+direction: directed
+conditions:
+  - statement: "Telemetry represents affected behavior and responders can act on the evidence."
+    concept_ids: []
+evidence: [AKL-000035]
+confidence: medium
+status: sourced
+notes: "Signal collection without response capability does not establish improvement."
+version: 1

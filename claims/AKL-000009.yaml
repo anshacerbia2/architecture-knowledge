@@ -1,0 +1,16 @@
+id: AKL-000009
+record_kind: claim
+subject: AKC-000009
+predicate: isolates
+object:
+  literal: "application behavior behind ports connected through adapters"
+statement: "Hexagonal architecture isolates application behavior behind ports and connects external actors and technologies through adapters that depend toward the application boundary."
+claim_type: normalized-source-claim
+conditions:
+  []
+confidence: high
+sources: [AKS-000009]
+derived_from_claims: []
+status: sourced
+notes: "Port granularity is contextual."
+version: 1

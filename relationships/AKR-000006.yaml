@@ -1,0 +1,15 @@
+id: AKR-000006
+record_kind: relationship
+subject: AKC-000012
+predicate: improves
+object: AKC-000004
+strength: moderate
+direction: directed
+conditions:
+  - statement: "Failures are transient, attempts fit the deadline, and retry load remains within capacity."
+    concept_ids: []
+evidence: [AKL-000026]
+confidence: medium
+status: sourced
+notes: "Persistent failure can reverse the effect."
+version: 1

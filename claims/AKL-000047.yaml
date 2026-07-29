@@ -1,0 +1,17 @@
+id: AKL-000047
+record_kind: claim
+subject: AKC-000018
+predicate: introduces
+object:
+  record_id: AKC-000023
+statement: "An OpenID Connect integration can introduce token-role confusion when a relying party or API fails to enforce ID Token and access-token roles and validation context."
+claim_type: synthesis
+conditions:
+  - statement: "Token consumers do not validate the complete issuer, audience, client, token role, and protocol context."
+    concept_ids: []
+confidence: medium
+sources: [AKS-000018, AKS-000019]
+derived_from_claims: []
+status: proposed
+notes: "Supporting M3 claim; not human reviewed."
+version: 1

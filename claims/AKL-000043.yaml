@@ -1,0 +1,16 @@
+id: AKL-000043
+record_kind: claim
+subject: AKC-000023
+predicate: misinterprets
+object:
+  literal: "a token under an unintended issuer, audience, client, or protocol role"
+statement: "Token-role confusion occurs when a consumer accepts a token under a different issuer, audience, client, or protocol role from the one for which it was issued."
+claim_type: synthesis
+conditions:
+  []
+confidence: medium
+sources: [AKS-000017, AKS-000018, AKS-000019]
+derived_from_claims: []
+status: proposed
+notes: "Supporting M3 claim; not human reviewed."
+version: 1

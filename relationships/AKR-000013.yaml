@@ -1,0 +1,15 @@
+id: AKR-000013
+record_kind: relationship
+subject: AKC-000017
+predicate: compatible-with
+object: AKC-000018
+strength: strong
+direction: symmetric
+conditions:
+  - statement: "The implementation follows OpenID Connect token-role and validation rules."
+    concept_ids: []
+evidence: [AKL-000033]
+confidence: high
+status: sourced
+notes: "Authentication and authorization semantics remain distinct."
+version: 1

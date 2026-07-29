@@ -1,0 +1,16 @@
+id: AKL-000011
+record_kind: claim
+subject: AKC-000011
+predicate: bounds
+object:
+  literal: "the effects of repeated equivalent operations"
+statement: "Within a defined operation scope, idempotency means that repeating an equivalent request does not create additional unintended effects beyond the specified result."
+claim_type: synthesis
+conditions:
+  []
+confidence: medium
+sources: [AKS-000011, AKS-000012]
+derived_from_claims: []
+status: sourced
+notes: "RFC 9110 directly covers HTTP method semantics; broader operation semantics are a qualified synthesis."
+version: 1

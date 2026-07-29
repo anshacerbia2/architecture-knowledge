@@ -1,0 +1,15 @@
+id: AKR-000011
+record_kind: relationship
+subject: AKC-000015
+predicate: depends-on
+object: AKC-000016
+strength: strong
+direction: directed
+conditions:
+  - statement: "The saga spans independent transactions and exposes intermediate state before completion or recovery."
+    concept_ids: []
+evidence: [AKL-000031]
+confidence: high
+status: sourced
+notes: "Local steps may still use strong consistency."
+version: 1

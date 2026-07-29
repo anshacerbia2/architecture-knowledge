@@ -1,0 +1,15 @@
+id: AKR-000010
+record_kind: relationship
+subject: AKC-000014
+predicate: improves
+object: AKC-000005
+strength: strong
+direction: directed
+conditions:
+  - statement: "Business state and message intent share one local transaction and relay backlog is operated."
+    concept_ids: []
+evidence: [AKL-000030]
+confidence: high
+status: sourced
+notes: "Duplicate publication and consumer correctness remain separate concerns."
+version: 1

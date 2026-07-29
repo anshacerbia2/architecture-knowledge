@@ -1,0 +1,15 @@
+id: AKR-000021
+record_kind: relationship
+subject: AKC-000012
+predicate: introduces
+object: AKC-000021
+strength: moderate
+direction: directed
+conditions:
+  - statement: "The failure is persistent or capacity-related and attempts are not effectively bounded."
+    concept_ids: []
+evidence: [AKL-000045]
+confidence: medium
+status: proposed
+notes: "Supporting M3 failure-mode edge; not human reviewed."
+version: 1

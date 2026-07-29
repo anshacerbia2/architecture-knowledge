@@ -1,0 +1,17 @@
+id: AKL-000025
+record_kind: claim
+subject: AKC-000012
+predicate: requires
+object:
+  record_id: AKC-000011
+statement: "Retrying a state-changing operation requires idempotency or equivalent duplicate-effect control when an earlier attempt may have completed."
+claim_type: synthesis
+conditions:
+  - statement: "The caller cannot determine whether an earlier state-changing attempt completed and duplicate effects are harmful."
+    concept_ids: []
+confidence: high
+sources: [AKS-000011, AKS-000012]
+derived_from_claims: []
+status: sourced
+notes: "Naturally safe operations can satisfy the condition without a stored idempotency key."
+version: 1

@@ -1,0 +1,15 @@
+id: AKR-000024
+record_kind: relationship
+subject: AKC-000010
+predicate: introduces
+object: AKC-000024
+strength: moderate
+direction: directed
+conditions:
+  - statement: "Consumers maintain derived state and the convergence mechanism fails beyond its declared bound."
+    concept_ids: []
+evidence: [AKL-000048]
+confidence: medium
+status: proposed
+notes: "Supporting M3 failure-mode edge; not human reviewed."
+version: 1

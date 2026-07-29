@@ -1,0 +1,17 @@
+id: AKL-000039
+record_kind: claim
+subject: AKC-000002
+predicate: influences
+object:
+  record_id: AKC-000020
+statement: "Systems thinking can influence an architecture decision record by expanding its context and consequences to include interactions, stakeholders, feedback, and lifecycle effects."
+claim_type: recommendation
+conditions:
+  - statement: "The decision has material cross-boundary or lifecycle effects."
+    concept_ids: []
+confidence: medium
+sources: [AKS-000002, AKS-000021, AKS-000022]
+derived_from_claims: []
+status: sourced
+notes: "The reasoning model informs the record but does not approve the decision."
+version: 1

@@ -1,0 +1,16 @@
+id: AKL-000002
+record_kind: claim
+subject: AKC-000002
+predicate: examines
+object:
+  literal: "system behavior across boundaries, interactions, feedback, and lifecycle"
+statement: "Systems thinking examines a system through its purpose, boundary, interacting elements, feedback, stakeholders, and lifecycle behavior."
+claim_type: normalized-source-claim
+conditions:
+  []
+confidence: high
+sources: [AKS-000002]
+derived_from_claims: []
+status: sourced
+notes: "The aerospace context is explicit; software use is a contextual transfer."
+version: 1

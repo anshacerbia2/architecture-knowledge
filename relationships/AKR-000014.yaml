@@ -1,0 +1,15 @@
+id: AKR-000014
+record_kind: relationship
+subject: AKC-000018
+predicate: depends-on
+object: AKC-000017
+strength: strong
+direction: directed
+conditions:
+  - statement: "The concept refers to OpenID Connect Core protocol operation."
+    concept_ids: []
+evidence: [AKL-000034]
+confidence: high
+status: sourced
+notes: "This is a protocol dependency, not semantic equivalence."
+version: 1

@@ -1,0 +1,15 @@
+id: AKR-000022
+record_kind: relationship
+subject: AKC-000007
+predicate: mitigates
+object: AKC-000022
+strength: moderate
+direction: directed
+conditions:
+  - statement: "Module boundaries are explicit and enforced by tests, ownership, and data-access policy."
+    concept_ids: []
+evidence: [AKL-000046]
+confidence: medium
+status: proposed
+notes: "Supporting M3 failure-mode edge; not human reviewed."
+version: 1

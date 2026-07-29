@@ -1,0 +1,15 @@
+id: AKR-000008
+record_kind: relationship
+subject: AKC-000012
+predicate: compatible-with
+object: AKC-000013
+strength: strong
+direction: symmetric
+conditions:
+  - statement: "Failure classification, attempt budgets, and breaker state are coordinated."
+    concept_ids: []
+evidence: [AKL-000028]
+confidence: high
+status: sourced
+notes: "Uncoordinated policies can amplify failure."
+version: 1

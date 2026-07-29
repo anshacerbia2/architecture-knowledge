@@ -1,0 +1,15 @@
+id: AKL-000001
+record_kind: claim
+subject: AKC-000001
+predicate: decomposes-into
+object:
+  literal: foundational propositions or premises
+statement: First-principles reasoning examines a subject by identifying propositions treated as foundational within the inquiry and reasoning from them.
+claim_type: normalized-source-claim
+conditions: []
+confidence: medium
+sources: [AKS-000001]
+derived_from_claims: []
+status: sourced
+notes: The source is historical and philosophical; application to software architecture is a bounded transfer, not a universal method.
+version: 1

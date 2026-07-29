@@ -1,8 +1,37 @@
 {
   "generated_by": "architecture-knowledge-validation-kernel",
   "report": "lifecycle-distribution",
-  "items": [],
+  "items": [
+    {
+      "state": "claim:proposed",
+      "count": 8
+    },
+    {
+      "state": "claim:sourced",
+      "count": 40
+    },
+    {
+      "state": "concept:drafted",
+      "count": 20
+    },
+    {
+      "state": "concept:proposed",
+      "count": 4
+    },
+    {
+      "state": "relationship:proposed",
+      "count": 4
+    },
+    {
+      "state": "relationship:sourced",
+      "count": 20
+    },
+    {
+      "state": "source:approved",
+      "count": 22
+    }
+  ],
   "summary": {
-    "record_count": 0
+    "record_count": 118
   }
 }

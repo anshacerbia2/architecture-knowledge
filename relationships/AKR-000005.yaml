@@ -1,0 +1,15 @@
+id: AKR-000005
+record_kind: relationship
+subject: AKC-000012
+predicate: requires
+object: AKC-000011
+strength: strong
+direction: directed
+conditions:
+  - statement: "A state-changing attempt can be repeated after an uncertain outcome and duplicate effects are harmful."
+    concept_ids: []
+evidence: [AKL-000025]
+confidence: high
+status: sourced
+notes: "Equivalent duplicate-effect control can satisfy the requirement."
+version: 1

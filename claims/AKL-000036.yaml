@@ -1,0 +1,17 @@
+id: AKL-000036
+record_kind: claim
+subject: AKC-000008
+predicate: degrades
+object:
+  record_id: AKC-000005
+statement: "Microservices can degrade reliability when operational capability is insufficient for network failure, distributed state, deployment, and service ownership."
+claim_type: synthesis
+conditions:
+  - statement: "The system is distributed into services without adequate resilience, observability, delivery, or ownership capability."
+    concept_ids: []
+confidence: medium
+sources: [AKS-000007, AKS-000008]
+derived_from_claims: []
+status: sourced
+notes: "This is a conditional risk, not an intrinsic universal outcome."
+version: 1

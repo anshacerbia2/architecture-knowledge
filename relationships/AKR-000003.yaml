@@ -1,0 +1,15 @@
+id: AKR-000003
+record_kind: relationship
+subject: AKC-000007
+predicate: compatible-with
+object: AKC-000009
+strength: moderate
+direction: symmetric
+conditions:
+  - statement: "Module contracts and inward dependency rules are explicit and tested."
+    concept_ids: []
+evidence: [AKL-000023]
+confidence: medium
+status: sourced
+notes: "Hexagonal structure can be applied within modular-monolith modules."
+version: 1

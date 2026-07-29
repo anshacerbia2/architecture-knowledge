@@ -1,0 +1,16 @@
+id: AKL-000020
+record_kind: claim
+subject: AKC-000020
+predicate: records
+object:
+  literal: "a consequential architecture decision and its rationale"
+statement: "An architecture decision record durably captures a consequential decision, its context, selected option, rationale, and consequences."
+claim_type: synthesis
+conditions:
+  []
+confidence: high
+sources: [AKS-000021, AKS-000022]
+derived_from_claims: []
+status: sourced
+notes: "The originating ADR proposal is not an international format mandate."
+version: 1

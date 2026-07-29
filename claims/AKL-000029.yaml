@@ -1,0 +1,17 @@
+id: AKL-000029
+record_kind: claim
+subject: AKC-000014
+predicate: enables
+object:
+  record_id: AKC-000010
+statement: "A transactional outbox enables reliable event publication from local database changes in an event-driven architecture without a cross-resource transaction."
+claim_type: synthesis
+conditions:
+  - statement: "The database is authoritative and asynchronous at-least-once publication is acceptable."
+    concept_ids: []
+confidence: high
+sources: [AKS-000010, AKS-000014]
+derived_from_claims: []
+status: sourced
+notes: "It addresses message intent atomicity, not consumer correctness by itself."
+version: 1

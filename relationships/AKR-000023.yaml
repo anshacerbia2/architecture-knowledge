@@ -1,0 +1,15 @@
+id: AKR-000023
+record_kind: relationship
+subject: AKC-000018
+predicate: introduces
+object: AKC-000023
+strength: moderate
+direction: directed
+conditions:
+  - statement: "Token consumers do not validate the complete issuer, audience, client, token role, and protocol context."
+    concept_ids: []
+evidence: [AKL-000047]
+confidence: medium
+status: proposed
+notes: "Supporting M3 failure-mode edge; not human reviewed."
+version: 1

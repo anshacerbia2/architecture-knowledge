@@ -15,7 +15,7 @@ canonical status.
 M0 Project Definition          → implemented in repository
 M1 Knowledge Kernel            → implemented; ontology questions remain open
 M2 Validation Kernel           → implemented; hosted CI proven
-M3 Reference Knowledge Corpus  → proposed; eligible for a scoped next run
+M3 Reference Knowledge Corpus  → implemented; semantic audit recommended
 M4 Knowledge Graph             → future
 M5 Hybrid Retrieval            → future
 M6 Architecture RAG            → future
@@ -124,7 +124,12 @@ Exit criteria:
 - orphan concepts are explained or corrected;
 - all content remains below human-reviewed lifecycle states unless humans act.
 
-Status: proposed and eligible for a separately authorized M3 run; not started.
+Status: implemented and machine-validated. The repository contains exactly
+twenty drafted reference units, four proposed supporting failure-mode nodes,
+forty-eight claims, twenty-four typed relationships, and twenty-two admitted
+sources. No content crossed the human-review boundary. An independent semantic
+and human-content audit is recommended before M4; see
+`docs/m3-validation-report.md`.
 
 ## M4 — Knowledge Graph and Query Layer
 
@@ -147,7 +152,8 @@ Find patterns that:
 - introduce eventual consistency.
 ```
 
-Status: future; depends on M3.
+Status: future; the M3 implementation dependency is satisfied, but the
+recommended M3 semantic audit remains open.
 
 ## M5 — Search and Hybrid Retrieval
 

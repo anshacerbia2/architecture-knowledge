@@ -1,0 +1,15 @@
+id: AKR-000019
+record_kind: relationship
+subject: AKC-000002
+predicate: influences
+object: AKC-000020
+strength: moderate
+direction: directed
+conditions:
+  - statement: "The decision has material cross-boundary or lifecycle effects."
+    concept_ids: []
+evidence: [AKL-000039]
+confidence: medium
+status: sourced
+notes: "The reasoning model informs the record but does not approve it."
+version: 1

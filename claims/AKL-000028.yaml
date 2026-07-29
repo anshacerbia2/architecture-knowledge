@@ -1,0 +1,17 @@
+id: AKL-000028
+record_kind: claim
+subject: AKC-000012
+predicate: compatible-with
+object:
+  record_id: AKC-000013
+statement: "Retry and circuit breaker tactics can coexist when retry handles bounded transient faults and the breaker limits attempts during sustained failure."
+claim_type: synthesis
+conditions:
+  - statement: "Failure classification, attempt budgets, and breaker state are coordinated."
+    concept_ids: []
+confidence: high
+sources: [AKS-000012, AKS-000013]
+derived_from_claims: []
+status: sourced
+notes: "Uncoordinated policies can create oscillation or amplification."
+version: 1

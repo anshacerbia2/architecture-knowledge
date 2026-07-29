@@ -1,0 +1,17 @@
+id: AKL-000035
+record_kind: claim
+subject: AKC-000019
+predicate: improves
+object:
+  record_id: AKC-000005
+statement: "Actionable observability can improve reliability by reducing detection and diagnosis uncertainty when telemetry is connected to operational response."
+claim_type: recommendation
+conditions:
+  - statement: "Telemetry represents the affected behavior and responders can act on the evidence."
+    concept_ids: []
+confidence: medium
+sources: [AKS-000005, AKS-000020]
+derived_from_claims: []
+status: sourced
+notes: "Collecting signals without response capability does not establish the effect."
+version: 1

@@ -1,0 +1,16 @@
+id: AKL-000005
+record_kind: claim
+subject: AKC-000005
+predicate: defines
+object:
+  literal: "performance of specified functions without unacceptable failure over time"
+statement: "Reliability concerns performance of specified functions without unacceptable failure under stated conditions for a stated period and is not identical to availability."
+claim_type: synthesis
+conditions:
+  []
+confidence: high
+sources: [AKS-000003, AKS-000004, AKS-000005]
+derived_from_claims: []
+status: sourced
+notes: "The claim intentionally distinguishes correctness and continuity from accessibility."
+version: 1

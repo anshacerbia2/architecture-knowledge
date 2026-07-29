@@ -1,0 +1,16 @@
+id: AKL-000007
+record_kind: claim
+subject: AKC-000007
+predicate: organizes
+object:
+  literal: "explicit internal modules inside one primary deployable"
+statement: "A modular monolith organizes an application into explicit internal modules while retaining one primary deployment and runtime boundary."
+claim_type: synthesis
+conditions:
+  []
+confidence: medium
+sources: [AKS-000006, AKS-000007]
+derived_from_claims: []
+status: sourced
+notes: "The GitLab source is a first-party case, not universal evidence."
+version: 1

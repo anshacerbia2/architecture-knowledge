@@ -51,7 +51,7 @@ milestones:
     notes: Hosted Ubuntu, Windows, and Linux mutation jobs passed for commit c47f391.
   - id: m3
     title: Reference Knowledge Corpus
-    status: proposed
+    status: implemented
     dependencies: [m2]
     deliverables:
       - twenty draft reference knowledge units
@@ -63,7 +63,7 @@ milestones:
       - important claims have admitted evidence
       - references resolve and orphan concepts are explained or corrected
       - no content is marked reviewed, approved, published, or canonical by automation
-    notes: Eligible for a separately scoped M3 run; no M3 content has been generated.
+    notes: Twenty drafted reference units and four proposed supporting failure-mode nodes are machine-valid; independent semantic and human-content audit is recommended before M4.
   - id: m4
     title: Knowledge Graph and Query Layer
     status: future

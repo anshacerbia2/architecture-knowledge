@@ -1,0 +1,16 @@
+id: AKL-000012
+record_kind: claim
+subject: AKC-000012
+predicate: repeats
+object:
+  literal: "an operation under a bounded transient-failure policy"
+statement: "A retry tactic repeats an operation only for classified transient failures under bounded attempts, delay, and end-to-end time."
+claim_type: normalized-source-claim
+conditions:
+  []
+confidence: high
+sources: [AKS-000012]
+derived_from_claims: []
+status: sourced
+notes: "Safe repetition and capacity effects must be evaluated."
+version: 1

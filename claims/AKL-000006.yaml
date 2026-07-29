@@ -1,0 +1,16 @@
+id: AKL-000006
+record_kind: claim
+subject: AKC-000006
+predicate: structures
+object:
+  literal: "a quality expectation as stimulus, environment, response, and measure"
+statement: "A quality attribute scenario identifies a stimulus source, stimulus, environment, affected artifact, response, and response measure to make a quality expectation analyzable."
+claim_type: normalized-source-claim
+conditions:
+  []
+confidence: high
+sources: [AKS-000004]
+derived_from_claims: []
+status: sourced
+notes: "A concrete scenario still requires stakeholder validation."
+version: 1

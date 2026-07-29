@@ -24,13 +24,13 @@
       "vocabulary": "concept-type",
       "key": "architectural-pattern",
       "assignable": true,
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "concept-type",
       "key": "architectural-style",
       "assignable": true,
-      "usage_count": 0
+      "usage_count": 3
     },
     {
       "vocabulary": "concept-type",
@@ -66,7 +66,7 @@
       "vocabulary": "concept-type",
       "key": "constraint",
       "assignable": true,
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "concept-type",
@@ -84,7 +84,7 @@
       "vocabulary": "concept-type",
       "key": "data-pattern",
       "assignable": true,
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "concept-type",
@@ -108,7 +108,7 @@
       "vocabulary": "concept-type",
       "key": "documentation-artifact",
       "assignable": true,
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "concept-type",
@@ -126,7 +126,7 @@
       "vocabulary": "concept-type",
       "key": "failure-mode",
       "assignable": true,
-      "usage_count": 0
+      "usage_count": 4
     },
     {
       "vocabulary": "concept-type",
@@ -150,7 +150,7 @@
       "vocabulary": "concept-type",
       "key": "integration-pattern",
       "assignable": true,
-      "usage_count": 0
+      "usage_count": 2
     },
     {
       "vocabulary": "concept-type",
@@ -186,25 +186,25 @@
       "vocabulary": "concept-type",
       "key": "protocol",
       "assignable": true,
-      "usage_count": 0
+      "usage_count": 2
     },
     {
       "vocabulary": "concept-type",
       "key": "quality-attribute",
       "assignable": true,
-      "usage_count": 0
+      "usage_count": 3
     },
     {
       "vocabulary": "concept-type",
       "key": "quality-attribute-scenario",
       "assignable": true,
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "concept-type",
       "key": "reasoning-model",
       "assignable": true,
-      "usage_count": 0
+      "usage_count": 2
     },
     {
       "vocabulary": "concept-type",
@@ -234,7 +234,7 @@
       "vocabulary": "concept-type",
       "key": "tactic",
       "assignable": true,
-      "usage_count": 0
+      "usage_count": 3
     },
     {
       "vocabulary": "concept-type",
@@ -250,7 +250,7 @@
     {
       "vocabulary": "domain",
       "key": "application-architecture",
-      "usage_count": 0
+      "usage_count": 3
     },
     {
       "vocabulary": "domain",
@@ -270,7 +270,7 @@
     {
       "vocabulary": "domain",
       "key": "constraints-assumptions",
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "domain",
@@ -285,12 +285,12 @@
     {
       "vocabulary": "domain",
       "key": "distributed-systems",
-      "usage_count": 0
+      "usage_count": 6
     },
     {
       "vocabulary": "domain",
       "key": "documentation",
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "domain",
@@ -300,7 +300,7 @@
     {
       "vocabulary": "domain",
       "key": "foundations",
-      "usage_count": 0
+      "usage_count": 2
     },
     {
       "vocabulary": "domain",
@@ -310,7 +310,7 @@
     {
       "vocabulary": "domain",
       "key": "integration",
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "domain",
@@ -320,7 +320,7 @@
     {
       "vocabulary": "domain",
       "key": "observability",
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "domain",
@@ -330,17 +330,17 @@
     {
       "vocabulary": "domain",
       "key": "quality",
-      "usage_count": 0
+      "usage_count": 3
     },
     {
       "vocabulary": "domain",
       "key": "reliability-operability",
-      "usage_count": 0
+      "usage_count": 3
     },
     {
       "vocabulary": "domain",
       "key": "security-privacy",
-      "usage_count": 0
+      "usage_count": 3
     },
     {
       "vocabulary": "domain",
@@ -360,7 +360,7 @@
     {
       "vocabulary": "relationship-predicate",
       "key": "alternative-to",
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "relationship-predicate",
@@ -380,7 +380,7 @@
     {
       "vocabulary": "relationship-predicate",
       "key": "compatible-with",
-      "usage_count": 0
+      "usage_count": 5
     },
     {
       "vocabulary": "relationship-predicate",
@@ -390,7 +390,7 @@
     {
       "vocabulary": "relationship-predicate",
       "key": "constrains",
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "relationship-predicate",
@@ -400,12 +400,12 @@
     {
       "vocabulary": "relationship-predicate",
       "key": "degrades",
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "relationship-predicate",
       "key": "depends-on",
-      "usage_count": 0
+      "usage_count": 2
     },
     {
       "vocabulary": "relationship-predicate",
@@ -420,12 +420,12 @@
     {
       "vocabulary": "relationship-predicate",
       "key": "documented-by",
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "relationship-predicate",
       "key": "enables",
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "relationship-predicate",
@@ -445,12 +445,12 @@
     {
       "vocabulary": "relationship-predicate",
       "key": "improves",
-      "usage_count": 0
+      "usage_count": 4
     },
     {
       "vocabulary": "relationship-predicate",
       "key": "influences",
-      "usage_count": 0
+      "usage_count": 2
     },
     {
       "vocabulary": "relationship-predicate",
@@ -460,7 +460,7 @@
     {
       "vocabulary": "relationship-predicate",
       "key": "introduces",
-      "usage_count": 0
+      "usage_count": 4
     },
     {
       "vocabulary": "relationship-predicate",
@@ -475,7 +475,7 @@
     {
       "vocabulary": "relationship-predicate",
       "key": "mitigates",
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "relationship-predicate",
@@ -490,7 +490,7 @@
     {
       "vocabulary": "relationship-predicate",
       "key": "requires",
-      "usage_count": 0
+      "usage_count": 1
     },
     {
       "vocabulary": "relationship-predicate",
@@ -520,6 +520,6 @@
   ],
   "summary": {
     "vocabulary_term_count": 95,
-    "used_term_count": 0
+    "used_term_count": 34
   }
 }

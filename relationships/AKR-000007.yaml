@@ -1,0 +1,15 @@
+id: AKR-000007
+record_kind: relationship
+subject: AKC-000013
+predicate: improves
+object: AKC-000004
+strength: moderate
+direction: directed
+conditions:
+  - statement: "A failing dependency would otherwise consume shared capacity and an acceptable open-state response exists."
+    concept_ids: []
+evidence: [AKL-000027]
+confidence: medium
+status: sourced
+notes: "The edge concerns broader caller availability."
+version: 1

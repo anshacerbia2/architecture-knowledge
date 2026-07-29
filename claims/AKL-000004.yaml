@@ -1,0 +1,16 @@
+id: AKL-000004
+record_kind: claim
+subject: AKC-000004
+predicate: defines
+object:
+  literal: "operational accessibility under stated conditions and time"
+statement: "Availability concerns whether a specified service is operational and accessible when required within stated conditions and a defined observation window."
+claim_type: synthesis
+conditions:
+  []
+confidence: high
+sources: [AKS-000003, AKS-000004, AKS-000005]
+derived_from_claims: []
+status: sourced
+notes: "Measurement boundaries and stakeholder function remain mandatory qualifications."
+version: 1
