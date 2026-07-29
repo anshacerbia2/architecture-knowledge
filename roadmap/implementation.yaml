@@ -48,7 +48,7 @@ milestones:
       - pnpm report:check passes
       - clean-checkout CI passes on Linux and Windows
       - no human-only lifecycle transition can be automated
-    notes: Hardened locally; remote Linux and Windows CI proof is pending.
+    notes: Hosted Ubuntu, Windows, and Linux mutation jobs passed for commit c47f391.
   - id: m3
     title: Reference Knowledge Corpus
     status: proposed
@@ -63,7 +63,7 @@ milestones:
       - important claims have admitted evidence
       - references resolve and orphan concepts are explained or corrected
       - no content is marked reviewed, approved, published, or canonical by automation
-    notes: Blocked until both remote M2 CI jobs pass.
+    notes: Eligible for a separately scoped M3 run; no M3 content has been generated.
   - id: m4
     title: Knowledge Graph and Query Layer
     status: future

@@ -125,7 +125,7 @@ Observed local clean-install results:
 - mutation score: 71.15% globally, above the 60% breaking threshold; relationship validation scored 59.72% and remains the main test-strength risk;
 - integrity reports: 12 generated twice with 12/12 identical SHA-256 hashes and 12/12 current.
 
-Remote Linux, Windows, and Linux mutation job results remain the final M2 release gate until this commit is pushed.
+Hosted run [30431428690](https://github.com/anshacerbia2/architecture-knowledge/actions/runs/30431428690) passed its Ubuntu, Windows, and separate Linux mutation jobs for commit `c47f391`.
 ## ID strategy assessment
 
 The opaque record-kind IDs remain appropriate, but sequential allocation is
@@ -151,7 +151,10 @@ canonical identity, and requiring a non-null concept `human_key` before concurre
 - The phase produces integrity reports, not the future knowledge graph or
   semantic indexes.
 
-## Remaining release gate
+## Release-gate result
 
-Push `main` to the intended remote and require both clean Linux and Windows CI
-jobs to pass. M3 must remain blocked until that evidence exists. Heuristic false-positive review and surviving relationship-validator mutants remain explicit follow-up risks; neither authorizes production knowledge generation by itself.
+M2 is complete: clean-checkout Ubuntu and Windows validation passed, and the
+separate Linux mutation job passed. M3 is eligible for a separately scoped run
+but has not started. Heuristic false-positive review and surviving
+relationship-validator mutants remain explicit follow-up risks; neither
+authorizes lifecycle promotion or production knowledge generation.

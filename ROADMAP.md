@@ -14,8 +14,8 @@ canonical status.
 ```text
 M0 Project Definition          → implemented in repository
 M1 Knowledge Kernel            → implemented; ontology questions remain open
-M2 Validation Kernel           → hardened locally; cross-platform CI pending
-M3 Reference Knowledge Corpus  → proposed, blocked by Linux + Windows CI proof
+M2 Validation Kernel           → implemented; hosted CI proven
+M3 Reference Knowledge Corpus  → proposed; eligible for a scoped next run
 M4 Knowledge Graph             → future
 M5 Hybrid Retrieval            → future
 M6 Architecture RAG            → future
@@ -24,7 +24,7 @@ M8 Review Platform             → future
 M9 Production Platform         → future
 ```
 
-## Immediate next step — cross-platform CI proof
+## M2 release-gate result
 
 The independent M2 audit and local hardening are complete:
 
@@ -37,8 +37,10 @@ The independent M2 audit and local hardening are complete:
 - focused mutation testing passes at 71.15% globally with a 60% break threshold; relationship validation is the weakest file at 59.72%;
 - the workflow runs full tests and coverage on Linux and Windows, plus mutation testing on Linux, from a frozen pnpm lockfile.
 
-M3 remains blocked until `main` is pushed and both clean-checkout CI jobs pass.
-No production knowledge or reference unit was created during hardening.
+Hosted run 30431428690 passed on Ubuntu, Windows, and the separate Linux
+mutation job for commit `c47f391`. M2 is complete. M3 is eligible for an
+explicitly scoped next run; no production knowledge or reference unit was created
+during hardening.
 ## M0 — Project Definition
 
 Purpose: establish project direction and boundaries.
@@ -101,8 +103,8 @@ Clean checkout
 → all pass
 ```
 
-Status: hardened and verified locally; remote Linux and Windows CI proof remains
-the final M2 release gate.
+Status: implemented. Clean-checkout validation passed on hosted Ubuntu and
+Windows, and the separate Linux mutation job passed.
 
 ## M3 — Reference Knowledge Corpus
 
@@ -122,7 +124,7 @@ Exit criteria:
 - orphan concepts are explained or corrected;
 - all content remains below human-reviewed lifecycle states unless humans act.
 
-Status: proposed; blocked until both remote M2 CI jobs pass.
+Status: proposed and eligible for a separately authorized M3 run; not started.
 
 ## M4 — Knowledge Graph and Query Layer
 
