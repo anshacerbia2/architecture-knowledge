@@ -39,7 +39,19 @@ try {
     console.log(
       `Validation ${categories.join(",")}: ${summary.errors} error(s), ${summary.warnings} warning(s).`,
     );
-    process.exitCode = hasErrors(diagnostics) ? 1 : 0;
+    const policy = analysis.model.ontology.validationPolicies.diagnostics;
+    const blockingWarningCodes = new Set(
+      typeof policy === "object" &&
+        policy !== null &&
+        "blocking_warning_codes" in policy &&
+        Array.isArray(policy.blocking_warning_codes)
+        ? policy.blocking_warning_codes.filter((code): code is string => typeof code === "string")
+        : [],
+    );
+    const hasBlockingWarning = diagnostics.some(
+      (item) => item.severity === "warning" && blockingWarningCodes.has(item.code),
+    );
+    process.exitCode = hasErrors(diagnostics) || hasBlockingWarning ? 1 : 0;
   } else if (command === "report" && argument === "write") {
     const diagnostics = sortDiagnostics(diagnosticsFor(analysis));
     if (hasErrors(diagnostics)) {

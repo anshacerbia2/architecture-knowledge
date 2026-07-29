@@ -64,6 +64,8 @@ export interface RepositoryModel {
   decisionGuides: RecordEntry[];
   idLedger: Record<string, unknown>;
   lifecycleEvents: Record<string, unknown>;
+  sourceLifecycle: Record<string, unknown>;
+  vocabularyMappings: Record<string, unknown>;
   ontology: {
     conceptTypes: Record<string, unknown>[];
     claimTypes: Record<string, unknown>[];
@@ -222,6 +224,8 @@ export async function loadRepository(root: string): Promise<RepositoryModel> {
     decisionGuides: byKind("decision-guide"),
     idLedger: objectFromFile(governedFiles, "ids/ledger.yaml"),
     lifecycleEvents: objectFromFile(governedFiles, "governance/lifecycle-events.yaml"),
+    sourceLifecycle: objectFromFile(governedFiles, "governance/source-lifecycle.yaml"),
+    vocabularyMappings: objectFromFile(governedFiles, "validation/vocabulary-mappings.yaml"),
     ontology: {
       conceptTypes: objectArray(governedFiles, "ontology/concept-types.yaml", "types"),
       claimTypes: objectArray(governedFiles, "ontology/claim-types.yaml", "types"),

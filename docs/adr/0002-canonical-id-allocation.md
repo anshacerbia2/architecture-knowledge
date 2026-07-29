@@ -35,8 +35,9 @@ Do not make a human-readable key part of canonical identity. Every active
 concept allocation requires a globally unique, non-null `human_key` for
 navigation and tooling, while the opaque `AKC-*` ID remains canonical. Titles
 and aliases remain mutable labels. A `human_key` is stable by default; changing
-one requires an explicit migration and preservation of the previous navigation
-key before external links depend on it. Ontology vocabulary keys remain unique
+one requires an explicit ledger migration: move the old value into
+`previous_human_keys`, assign the new current key, and preserve both lookups to
+the same opaque ID. Historical and retired keys cannot be reassigned. Ontology vocabulary keys remain unique
 within their registries.
 
 This policy was accepted by the project owner during the M2 hardening run on

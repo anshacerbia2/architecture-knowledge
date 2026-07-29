@@ -1,0 +1,146 @@
+schema_version: 1
+status: proposed
+coverage:
+  - schema: schemas/knowledge-unit.schema.json
+    schema_path: /properties/type/enum
+  - schema: schemas/knowledge-unit.schema.json
+    schema_path: /$defs/domain/enum
+  - schema: schemas/knowledge-unit.schema.json
+    schema_path: /properties/dimensions/items/enum
+  - schema: schemas/_defs.schema.json
+    schema_path: /$defs/lifecycleStatus/enum
+  - schema: schemas/_defs.schema.json
+    schema_path: /$defs/maturity/enum
+  - schema: schemas/claim.schema.json
+    schema_path: /properties/claim_type/enum
+  - schema: schemas/claim.schema.json
+    schema_path: /allOf/0/if/properties/claim_type/enum
+  - schema: schemas/claim.schema.json
+    schema_path: /allOf/1/if/properties/claim_type/enum
+  - schema: schemas/relationship.schema.json
+    schema_path: /properties/predicate/enum
+  - schema: schemas/relationship.schema.json
+    schema_path: /allOf/0/if/properties/predicate/enum
+  - schema: schemas/relationship.schema.json
+    schema_path: /allOf/1/if/properties/predicate/enum
+  - schema: schemas/relationship.schema.json
+    schema_path: /allOf/2/if/properties/predicate/enum
+  - schema: schemas/source.schema.json
+    schema_path: /properties/status/enum
+mappings:
+  - name: assignable-concept-types
+    registry: ontology/concept-types.yaml
+    registry_path: /types
+    schema: schemas/knowledge-unit.schema.json
+    schema_path: /properties/type/enum
+    comparison_mode: object-keys
+    assignability_rules:
+      key_field: key
+      filter_field: assignable_primary
+      filter_equals: true
+  - name: domains
+    registry: ontology/domains.yaml
+    registry_path: /domains
+    schema: schemas/knowledge-unit.schema.json
+    schema_path: /$defs/domain/enum
+    comparison_mode: string-values
+    assignability_rules: {}
+  - name: architecture-dimensions
+    registry: ontology/architecture-dimensions.yaml
+    registry_path: /dimensions
+    schema: schemas/knowledge-unit.schema.json
+    schema_path: /properties/dimensions/items/enum
+    comparison_mode: object-keys
+    assignability_rules:
+      key_field: key
+  - name: lifecycle-statuses
+    registry: ontology/lifecycle-statuses.yaml
+    registry_path: /statuses
+    schema: schemas/_defs.schema.json
+    schema_path: /$defs/lifecycleStatus/enum
+    comparison_mode: string-values
+    assignability_rules: {}
+  - name: maturity-levels
+    registry: ontology/maturity-levels.yaml
+    registry_path: /levels
+    schema: schemas/_defs.schema.json
+    schema_path: /$defs/maturity/enum
+    comparison_mode: object-keys
+    assignability_rules:
+      key_field: key
+  - name: claim-types
+    registry: ontology/claim-types.yaml
+    registry_path: /types
+    schema: schemas/claim.schema.json
+    schema_path: /properties/claim_type/enum
+    comparison_mode: object-keys
+    assignability_rules:
+      key_field: key
+  - name: evidence-required-claim-types
+    registry: ontology/claim-types.yaml
+    registry_path: /types
+    schema: schemas/claim.schema.json
+    schema_path: /allOf/0/if/properties/claim_type/enum
+    comparison_mode: object-keys
+    assignability_rules:
+      key_field: key
+      filter_field: evidence_required
+      filter_equals: true
+  - name: conditions-required-claim-types
+    registry: ontology/claim-types.yaml
+    registry_path: /types
+    schema: schemas/claim.schema.json
+    schema_path: /allOf/1/if/properties/claim_type/enum
+    comparison_mode: object-keys
+    assignability_rules:
+      key_field: key
+      filter_field: conditions_required
+      filter_equals: true
+  - name: relationship-predicates
+    registry: ontology/relationship-types.yaml
+    registry_path: /predicates
+    schema: schemas/relationship.schema.json
+    schema_path: /properties/predicate/enum
+    comparison_mode: object-keys
+    assignability_rules:
+      key_field: key
+  - name: symmetric-predicates
+    registry: ontology/relationship-types.yaml
+    registry_path: /predicates
+    schema: schemas/relationship.schema.json
+    schema_path: /allOf/0/if/properties/predicate/enum
+    comparison_mode: object-keys
+    assignability_rules:
+      key_field: key
+      filter_field: direction
+      filter_equals: symmetric
+  - name: condition-required-predicates
+    registry: ontology/relationship-types.yaml
+    registry_path: /predicates
+    schema: schemas/relationship.schema.json
+    schema_path: /allOf/1/if/properties/predicate/enum
+    comparison_mode: object-keys
+    assignability_rules:
+      key_field: key
+      filter_field: conditions_required
+      filter_equals: true
+      default_value: false
+  - name: evidence-exempt-predicates
+    registry: ontology/relationship-types.yaml
+    registry_path: /predicates
+    schema: schemas/relationship.schema.json
+    schema_path: /allOf/2/if/properties/predicate/enum
+    comparison_mode: object-keys
+    assignability_rules:
+      key_field: key
+      filter_field: evidence_claims_required
+      filter_equals: false
+      default_value: true
+  - name: source-statuses
+    registry: ontology/source-statuses.yaml
+    registry_path: /statuses
+    schema: schemas/source.schema.json
+    schema_path: /properties/status/enum
+    comparison_mode: object-keys
+    assignability_rules:
+      key_field: key

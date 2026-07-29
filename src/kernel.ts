@@ -10,10 +10,15 @@ import {
 } from "./markdown-validator.js";
 import { loadRepository, type RepositoryModel } from "./model.js";
 import { validateRelationships, type RelationshipAnalysis } from "./relationship-validator.js";
+import {
+  validateRegistrySchemaConsistency,
+  type VocabularyAnalysis,
+} from "./registry-consistency-validator.js";
 import { validateSchemas, type SchemaValidationResult } from "./schema-validator.js";
 
 export type ValidationCategory =
   | "schema"
+  | "vocabulary"
   | "ids"
   | "sources"
   | "claims"
@@ -24,6 +29,7 @@ export type ValidationCategory =
 
 export const validationCategories: ValidationCategory[] = [
   "schema",
+  "vocabulary",
   "ids",
   "sources",
   "claims",
@@ -36,6 +42,7 @@ export const validationCategories: ValidationCategory[] = [
 export interface KernelAnalysis {
   model: RepositoryModel;
   schema: SchemaValidationResult;
+  vocabulary: VocabularyAnalysis;
   identity: IdentityAnalysis;
   evidence: EvidenceAnalysis;
   relationships: RelationshipAnalysis;
@@ -50,6 +57,7 @@ export async function analyzeRepository(root: string): Promise<KernelAnalysis> {
   return {
     model,
     schema,
+    vocabulary: validateRegistrySchemaConsistency(model, schema.documents),
     identity: validateIdentities(model),
     evidence: validateEvidence(model),
     relationships: validateRelationships(model),
@@ -68,6 +76,9 @@ export function diagnosticsFor(
     switch (category) {
       case "schema":
         diagnostics.push(...analysis.schema.diagnostics);
+        break;
+      case "vocabulary":
+        diagnostics.push(...analysis.model.diagnostics, ...analysis.vocabulary.diagnostics);
         break;
       case "ids":
         diagnostics.push(...analysis.model.diagnostics, ...analysis.identity.diagnostics);

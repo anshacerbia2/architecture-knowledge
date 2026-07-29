@@ -4,18 +4,43 @@
   "title": "Validation Policies",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "status", "relationship_cycles", "markdown"],
+  "required": ["schema_version", "status", "diagnostics", "relationship_cycles", "markdown"],
   "properties": {
-    "schema_version": { "type": "integer", "minimum": 1 },
-    "status": { "const": "proposed" },
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "const": "proposed"
+    },
+    "diagnostics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blocking_warning_codes"],
+      "properties": {
+        "blocking_warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
     "relationship_cycles": {
       "type": "object",
       "additionalProperties": false,
       "required": ["forbidden", "report_only", "allowed"],
       "properties": {
-        "forbidden": { "$ref": "#/$defs/slugArray" },
-        "report_only": { "$ref": "#/$defs/slugArray" },
-        "allowed": { "$ref": "#/$defs/slugArray" }
+        "forbidden": {
+          "$ref": "#/$defs/slugArray"
+        },
+        "report_only": {
+          "$ref": "#/$defs/slugArray"
+        },
+        "allowed": {
+          "$ref": "#/$defs/slugArray"
+        }
       }
     },
     "markdown": {
@@ -30,18 +55,30 @@
         "contextual_qualifiers"
       ],
       "properties": {
-        "failure_sensitive_types": { "$ref": "#/$defs/slugArray" },
-        "security_sensitive_types": { "$ref": "#/$defs/slugArray" },
-        "security_sensitive_domains": { "$ref": "#/$defs/slugArray" },
+        "failure_sensitive_types": {
+          "$ref": "#/$defs/slugArray"
+        },
+        "security_sensitive_types": {
+          "$ref": "#/$defs/slugArray"
+        },
+        "security_sensitive_domains": {
+          "$ref": "#/$defs/slugArray"
+        },
         "placeholder_patterns": {
           "type": "array",
-          "items": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+          "items": {
+            "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+          },
           "uniqueItems": true
         },
-        "absolute_terms": { "$ref": "#/$defs/slugArray" },
+        "absolute_terms": {
+          "$ref": "#/$defs/slugArray"
+        },
         "contextual_qualifiers": {
           "type": "array",
-          "items": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+          "items": {
+            "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+          },
           "uniqueItems": true
         }
       }
@@ -50,7 +87,9 @@
   "$defs": {
     "slugArray": {
       "type": "array",
-      "items": { "$ref": "_defs.schema.json#/$defs/slug" },
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/slug"
+      },
       "uniqueItems": true
     }
   }

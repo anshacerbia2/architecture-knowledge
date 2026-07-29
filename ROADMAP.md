@@ -28,13 +28,14 @@ M9 Production Platform         → future
 
 The independent M2 audit and local hardening are complete:
 
-- active concept allocations require a non-null, globally unique `human_key`;
-- registry and schema vocabulary semantics are checked for drift;
-- claim derivation cycles and ungrounded evidence chains are rejected;
-- audit regression fixtures cover previously untested high-risk diagnostics;
-- coverage gates pass at 97.83% statements and 82.72% branches;
-- focused mutation testing passes at 70.16% with a 60% break threshold;
-- the workflow defines Linux and Windows jobs from a frozen pnpm lockfile.
+- active concept allocations require unique non-null `human_key` values, while `previous_human_keys` preserve rename resolution and reserve old keys;
+- a governed vocabulary mapping registry detects registry-only, schema-only, missing, stale, duplicate, and assignability drift;
+- claim grounding rejects direct and indirect cycles, unresolved claim references, forbidden sources, and invalid mixed evidence chains;
+- source lifecycle states, transitions, authority, evidence eligibility, terminality, and replacement requirements are machine-readable;
+- 16 test files and 56 tests pass, including negative and regression cases;
+- coverage gates pass at 95.73% statements and 82.31% branches;
+- focused mutation testing passes at 71.15% globally with a 60% break threshold; relationship validation is the weakest file at 59.72%;
+- the workflow runs full tests and coverage on Linux and Windows, plus mutation testing on Linux, from a frozen pnpm lockfile.
 
 M3 remains blocked until `main` is pushed and both clean-checkout CI jobs pass.
 No production knowledge or reference unit was created during hardening.
@@ -93,6 +94,7 @@ Exit criteria currently satisfied in the local execution environment:
 Clean checkout
 → pnpm install --frozen-lockfile
 → pnpm validate
+→ pnpm test
 → pnpm test:coverage
 → pnpm test:mutation
 → pnpm report:check

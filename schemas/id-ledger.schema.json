@@ -22,6 +22,7 @@
           "id",
           "record_kind",
           "human_key",
+          "previous_human_keys",
           "state",
           "path",
           "allocated_at",
@@ -57,14 +58,25 @@
           "retired_at": {
             "type": ["string", "null"],
             "format": "date"
+          },
+          "previous_human_keys": {
+            "type": "array",
+            "items": {
+              "$ref": "_defs.schema.json#/$defs/slug"
+            },
+            "uniqueItems": true
           }
         },
         "allOf": [
           {
             "if": {
               "properties": {
-                "record_kind": { "const": "concept" },
-                "state": { "const": "active" }
+                "record_kind": {
+                  "const": "concept"
+                },
+                "state": {
+                  "const": "active"
+                }
               },
               "required": ["record_kind", "state"]
             },

@@ -1,5 +1,7 @@
 schema_version: 1
 status: proposed
+diagnostics:
+  blocking_warning_codes: []
 relationship_cycles:
   forbidden: [is-a, part-of, specializes, generalizes, supersedes, deprecated-by, derived-from]
   report_only:

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/vocabulary-mappings.schema.json",
+  "title": "Vocabulary Mapping Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "coverage", "mappings"],
+  "properties": {
+    "schema_version": { "type": "integer", "minimum": 1 },
+    "status": { "const": "proposed" },
+    "coverage": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/schemaPair" }
+    },
+    "mappings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "allOf": [
+          { "$ref": "#/$defs/schemaPair" },
+          {
+            "type": "object",
+            "required": [
+              "name",
+              "registry",
+              "registry_path",
+              "comparison_mode",
+              "assignability_rules"
+            ],
+            "properties": {
+              "name": { "$ref": "_defs.schema.json#/$defs/slug" },
+              "registry": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+              "registry_path": { "$ref": "#/$defs/pointer" },
+              "comparison_mode": { "enum": ["string-values", "object-keys"] },
+              "assignability_rules": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "key_field": { "$ref": "#/$defs/fieldName" },
+                  "filter_field": { "$ref": "#/$defs/fieldName" },
+                  "filter_equals": { "type": ["string", "boolean"] },
+                  "default_value": { "type": ["string", "boolean"] }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "pointer": { "type": "string", "pattern": "^/" },
+    "fieldName": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+    "schemaPair": {
+      "type": "object",
+      "required": ["schema", "schema_path"],
+      "properties": {
+        "schema": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+        "schema_path": { "$ref": "#/$defs/pointer" }
+      }
+    }
+  }
+}

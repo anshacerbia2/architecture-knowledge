@@ -32,6 +32,7 @@ describe("active concept human keys", () => {
         id: "AKC-900001",
         record_kind: "concept",
         human_key: null,
+        previous_human_keys: [],
         state: "active",
         path: null,
         allocated_at: "2026-07-29",

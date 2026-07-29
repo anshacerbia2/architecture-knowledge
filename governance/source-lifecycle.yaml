@@ -1,0 +1,62 @@
+schema_version: 1
+status: proposed
+initial_state: candidate
+states:
+  - key: candidate
+    terminal: false
+    evidence_eligibility: forbidden
+    replacement_required: false
+  - key: approved
+    terminal: false
+    evidence_eligibility: admitted
+    replacement_required: false
+  - key: restricted
+    terminal: false
+    evidence_eligibility: admitted
+    replacement_required: false
+  - key: deprecated
+    terminal: false
+    evidence_eligibility: warning
+    replacement_required: false
+  - key: superseded
+    terminal: true
+    evidence_eligibility: warning
+    replacement_required: true
+  - key: rejected
+    terminal: true
+    evidence_eligibility: forbidden
+    replacement_required: false
+transitions:
+  - from: candidate
+    to: approved
+    authority: human-only
+  - from: candidate
+    to: restricted
+    authority: human-only
+  - from: candidate
+    to: rejected
+    authority: human-only
+  - from: approved
+    to: restricted
+    authority: human-only
+  - from: approved
+    to: deprecated
+    authority: human-only
+  - from: approved
+    to: superseded
+    authority: human-only
+  - from: restricted
+    to: approved
+    authority: human-only
+  - from: restricted
+    to: deprecated
+    authority: human-only
+  - from: restricted
+    to: rejected
+    authority: human-only
+  - from: restricted
+    to: superseded
+    authority: human-only
+  - from: deprecated
+    to: superseded
+    authority: human-only

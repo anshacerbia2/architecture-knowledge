@@ -55,6 +55,10 @@
       "schema": "schemas/lifecycle-events.schema.json"
     },
     {
+      "path": "governance/source-lifecycle.yaml",
+      "schema": "schemas/source-lifecycle.schema.json"
+    },
+    {
       "path": "ids/ledger.yaml",
       "schema": "schemas/id-ledger.schema.json"
     },
@@ -121,11 +125,15 @@
     {
       "path": "validation/policies.yaml",
       "schema": "schemas/validation-policies.schema.json"
+    },
+    {
+      "path": "validation/vocabulary-mappings.yaml",
+      "schema": "schemas/vocabulary-mappings.schema.json"
     }
   ],
   "summary": {
-    "governed_files": 30,
-    "validated_files": 30,
-    "schema_files": 16
+    "governed_files": 32,
+    "validated_files": 32,
+    "schema_files": 18
   }
 }

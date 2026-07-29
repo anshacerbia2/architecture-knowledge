@@ -6,12 +6,12 @@ import addFormatsModule, { type FormatsPlugin } from "ajv-formats";
 import { diagnostic, type Diagnostic } from "./diagnostics.js";
 import { isPlainObject, relativePath, walkFiles } from "./io.js";
 import type { GovernedFile, RepositoryModel } from "./model.js";
-import { validateRegistrySchemaConsistency } from "./registry-consistency-validator.js";
 
 export interface SchemaValidationResult {
   diagnostics: Diagnostic[];
   validatedFiles: string[];
   schemas: string[];
+  documents: ReadonlyMap<string, Record<string, unknown>>;
 }
 
 interface LoadedSchema {
@@ -72,13 +72,6 @@ export async function validateSchemas(model: RepositoryModel): Promise<SchemaVal
     }
   }
 
-  diagnostics.push(
-    ...validateRegistrySchemaConsistency(
-      model,
-      new Map(loaded.map((schema) => [schema.path, schema.data])),
-    ),
-  );
-
   const validatedFiles: string[] = [];
   for (const file of model.governedFiles) {
     const schemaId = resolveSchemaReference(file.schemaRef, loaded);
@@ -130,6 +123,7 @@ export async function validateSchemas(model: RepositoryModel): Promise<SchemaVal
     diagnostics,
     validatedFiles: validatedFiles.sort(),
     schemas: loaded.map((schema) => schema.path).sort(),
+    documents: new Map(loaded.map((schema) => [schema.path, schema.data])),
   };
 }
 

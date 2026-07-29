@@ -105,6 +105,9 @@ matrix both pass from a clean remote checkout.
 pnpm install --frozen-lockfile
 pnpm format:check
 pnpm validate
+pnpm validate:vocabulary
+pnpm validate:claim-grounding
+pnpm test
 pnpm test:coverage
 pnpm test:mutation
 pnpm report:check

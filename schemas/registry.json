@@ -91,6 +91,16 @@
       "path": "validation/policies.yaml",
       "schema": "schemas/validation-policies.schema.json",
       "format": "yaml"
+    },
+    {
+      "path": "governance/source-lifecycle.yaml",
+      "schema": "schemas/source-lifecycle.schema.json",
+      "format": "yaml"
+    },
+    {
+      "path": "validation/vocabulary-mappings.yaml",
+      "schema": "schemas/vocabulary-mappings.schema.json",
+      "format": "yaml"
     }
   ],
   "record_patterns": [

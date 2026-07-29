@@ -33,6 +33,7 @@ export async function validSemanticModel(): Promise<RepositoryModel> {
     id: record.id,
     record_kind: record.recordKind,
     human_key: `fixture-${String(index + 1).padStart(2, "0")}`,
+    previous_human_keys: [],
     state: "active",
     path: record.path,
     allocated_at: "2026-07-29",

@@ -17,6 +17,7 @@ export interface IdentityAnalysis {
   duplicateKeys: { key: string; owners: string[] }[];
   unresolvedReferences: ReferenceOccurrence[];
   references: ReferenceOccurrence[];
+  humanKeyLookup: { key: string; id: string; current: boolean }[];
 }
 
 export function validateIdentities(model: RepositoryModel): IdentityAnalysis {
@@ -127,19 +128,19 @@ export function validateIdentities(model: RepositoryModel): IdentityAnalysis {
     }
   }
 
-  const labelOwners = new Map<string, Set<string>>();
+  const aliasOwners = new Map<string, Set<string>>();
   for (const concept of model.concepts) {
-    const labels = [asString(concept.data.title), ...asStringArray(concept.data.aliases)].filter(
-      (item): item is string => Boolean(item),
-    );
-    for (const label of labels) {
-      addOwner(labelOwners, normalizeHumanKey(label), concept.id);
+    for (const alias of asStringArray(concept.data.aliases)) {
+      addOwner(aliasOwners, normalizeHumanKey(alias), concept.id);
     }
   }
 
   const allocations = asArray(model.idLedger.allocations).filter(isPlainObject);
   const allocationById = new Map<string, Record<string, unknown>[]>();
   const humanKeyOwners = new Map<string, Set<string>>();
+  const activeHumanKeyOwners = new Map<string, Set<string>>();
+  const retiredHumanKeyOwners = new Map<string, Set<string>>();
+  const humanKeyLookup: IdentityAnalysis["humanKeyLookup"] = [];
   for (const allocation of allocations) {
     const id = asString(allocation.id);
     if (!id) {
@@ -149,8 +150,24 @@ export function validateIdentities(model: RepositoryModel): IdentityAnalysis {
     entries.push(allocation);
     allocationById.set(id, entries);
     const humanKey = asString(allocation.human_key);
-    if (humanKey) {
-      addOwner(humanKeyOwners, humanKey, id);
+    const previousHumanKeys = asStringArray(allocation.previous_human_keys);
+    const state = asString(allocation.state);
+    for (const key of [humanKey, ...previousHumanKeys].filter((value): value is string =>
+      Boolean(value),
+    )) {
+      addOwner(humanKeyOwners, key, id);
+      addOwner(state === "retired" ? retiredHumanKeyOwners : activeHumanKeyOwners, key, id);
+      humanKeyLookup.push({ key, id, current: key === humanKey });
+    }
+    if (humanKey && previousHumanKeys.includes(humanKey)) {
+      diagnostics.push(
+        diagnostic(
+          "ID_HUMAN_KEY_HISTORY_INVALID",
+          "error",
+          "ids/ledger.yaml",
+          `Allocation '${id}' repeats current human_key '${humanKey}' in previous_human_keys.`,
+        ),
+      );
     }
     const kind = asString(allocation.record_kind);
     const expectedPrefix = kind ? prefixByKind.get(kind) : undefined;
@@ -165,7 +182,6 @@ export function validateIdentities(model: RepositoryModel): IdentityAnalysis {
       );
     }
     const record = byId.get(id)?.[0];
-    const state = asString(allocation.state);
     if (kind === "concept" && state === "active" && !humanKey) {
       diagnostics.push(
         diagnostic(
@@ -234,8 +250,24 @@ export function validateIdentities(model: RepositoryModel): IdentityAnalysis {
     }
   }
 
-  collectDuplicateKeys(labelOwners, "alias", duplicateKeys, diagnostics);
-  collectDuplicateKeys(humanKeyOwners, "human key", duplicateKeys, diagnostics);
+  for (const [key, owners] of aliasOwners) {
+    for (const owner of owners) addOwner(humanKeyOwners, key, owner);
+  }
+  for (const [key, activeOwners] of activeHumanKeyOwners) {
+    const retiredOwners = retiredHumanKeyOwners.get(key) ?? new Set<string>();
+    const conflicting = [...activeOwners].filter((id) => !retiredOwners.has(id));
+    if (retiredOwners.size > 0 && conflicting.length > 0) {
+      diagnostics.push(
+        diagnostic(
+          "ID_HUMAN_KEY_REUSED",
+          "error",
+          "ids/ledger.yaml",
+          `Retired human key '${key}' is reused by ${conflicting.sort().join(", ")}.`,
+        ),
+      );
+    }
+  }
+  collectDuplicateKeys(humanKeyOwners, "human key or alias", duplicateKeys, diagnostics);
   validateControlledKeys(model, duplicateKeys, diagnostics);
 
   return {
@@ -244,6 +276,9 @@ export function validateIdentities(model: RepositoryModel): IdentityAnalysis {
     duplicateKeys,
     unresolvedReferences,
     references,
+    humanKeyLookup: humanKeyLookup.sort(
+      (left, right) => left.key.localeCompare(right.key) || left.id.localeCompare(right.id),
+    ),
   };
 }
 
@@ -344,7 +379,12 @@ function addOwner(map: Map<string, Set<string>>, key: string, owner: string): vo
 }
 
 function normalizeHumanKey(value: string): string {
-  return value.normalize("NFKC").trim().toLocaleLowerCase("en").replace(/\s+/g, " ");
+  return value
+    .normalize("NFKC")
+    .trim()
+    .toLocaleLowerCase("en")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 function escapePointer(value: string): string {

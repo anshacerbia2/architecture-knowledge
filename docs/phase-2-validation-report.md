@@ -104,34 +104,28 @@ before the final audit commands.
 
 ## M2 hardening audit follow-up
 
-The independent audit reproduced three gaps in the initial boundary: nullable
-concept `human_key` values, ontology registry changes that could drift from
-schema enums, and cyclic claim derivations with no admitted source foundation.
-The hardening run corrected all three without creating production knowledge.
+The independent audit and the later mandatory hardening prompt exposed additional self-validation risks. The repository now uses governed data, schemas, and negative tests instead of test-only duplicated lists for the affected contracts. No production knowledge was created.
 
-Additional committed controls:
+Additional controls:
 
-- Git baseline commit `9299075` on `main`;
-- non-null, globally unique `human_key` values for active concept allocations;
-- registry-schema consistency checks for concept, domain, dimension, lifecycle,
-  maturity, claim, relationship, and source vocabularies and conditional rules;
-- claim derivation cycle detection and transitive admitted-source grounding;
-- regression coverage for previously untested ID, evidence, lifecycle, and
-  relationship diagnostics;
-- coverage gates of 90% statements, 70% branches, 90% functions, and 90% lines;
-- focused mutation testing with a 60% breaking threshold;
-- a GitHub Actions matrix for `ubuntu-latest` and `windows-latest`.
+- `human_key` remains a usable locator while opaque IDs remain canonical; `previous_human_keys` preserve rename resolution and prevent reassignment;
+- aliases, active keys, historical keys, and retired keys share a collision-checked namespace;
+- `validation/vocabulary-mappings.yaml` declares registry/schema pairs, JSON Pointer paths, comparison modes, and assignability rules;
+- `governance/source-lifecycle.yaml` governs source states, transitions, authority, evidence eligibility, terminality, and replacement requirements;
+- claim derivation emits explicit cycle paths and dedicated diagnostics for missing references, forbidden sources, ungrounded chains, and invalid mixed evidence;
+- warning codes can be configured as blocking through validation policy;
+- GitHub Actions runs formatting, aggregate validation, unit tests, coverage, and report checks on Ubuntu and Windows, with a separate Linux mutation job.
 
-Observed local hardening results:
+Observed local clean-install results:
 
+- frozen pnpm install: passed under Node 24.11.1 and pnpm 10.23.0;
 - validation: 0 errors and 0 warnings;
-- tests: 13 files and 42 tests passed;
-- coverage: 97.83% statements, 82.72% branches, 97.97% functions, and 98.11%
-  lines;
-- mutation score: 70.16%, above the 60% breaking threshold;
-- integrity reports: 12 generated twice and 12/12 confirmed current.
+- tests: 16 files and 56 tests passed;
+- coverage: 95.73% statements, 82.31% branches, 98.14% functions, and 96.79% lines;
+- mutation score: 71.15% globally, above the 60% breaking threshold; relationship validation scored 59.72% and remains the main test-strength risk;
+- integrity reports: 12 generated twice with 12/12 identical SHA-256 hashes and 12/12 current.
 
-Remote Linux and Windows workflow results remain the final M2 release gate.
+Remote Linux, Windows, and Linux mutation job results remain the final M2 release gate until this commit is pushed.
 ## ID strategy assessment
 
 The opaque record-kind IDs remain appropriate, but sequential allocation is
@@ -154,14 +148,10 @@ canonical identity, and requiring a non-null concept `human_key` before concurre
   reference-style Markdown extension.
 - Absolute-language and threat-assumption checks are deterministic heuristics
   and require audit against a larger synthetic corpus.
-- Source-admission transition rules are committed in code because M1 did
-  not define a machine-readable transition registry.
 - The phase produces integrity reports, not the future knowledge graph or
   semantic indexes.
 
 ## Remaining release gate
 
 Push `main` to the intended remote and require both clean Linux and Windows CI
-jobs to pass. M3 must remain blocked until that evidence exists. Heuristic
-false-positive review and source-transition registry extraction remain explicit
-follow-up risks; neither authorizes production knowledge generation by itself.
+jobs to pass. M3 must remain blocked until that evidence exists. Heuristic false-positive review and surviving relationship-validator mutants remain explicit follow-up risks; neither authorizes production knowledge generation by itself.

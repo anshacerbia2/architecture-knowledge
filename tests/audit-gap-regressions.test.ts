@@ -35,6 +35,7 @@ describe("audit regression coverage", () => {
           id: "AKC-900099",
           record_kind: "concept",
           human_key: "orphaned-reservation",
+          previous_human_keys: [],
           state: "active",
           path: "knowledge/missing.md",
           allocated_at: "2026-07-29",
