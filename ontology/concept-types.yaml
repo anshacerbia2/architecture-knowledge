@@ -40,6 +40,12 @@ types:
   - key: quality-attribute
     definition: A measurable or assessable property of a system or its operation.
     assignable_primary: true
+  - key: semantic-property
+    definition: A property whose meaning is defined by the semantics of an operation, interaction, or protocol within an explicit scope.
+    assignable_primary: true
+  - key: consistency-model
+    definition: A model that defines which state observations and convergence guarantees participants may rely on under stated conditions.
+    assignable_primary: true
   - key: quality-attribute-scenario
     definition: A structured scenario used to make a quality-attribute expectation testable.
     assignable_primary: true

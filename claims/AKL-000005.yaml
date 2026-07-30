@@ -3,14 +3,16 @@ record_kind: claim
 subject: AKC-000005
 predicate: defines
 object:
-  literal: "performance of specified functions without unacceptable failure over time"
-statement: "Reliability concerns performance of specified functions without unacceptable failure under stated conditions for a stated period and is not identical to availability."
+  literal: performance of specified functions without unacceptable failure over time
+statement: Within this corpus, reliability concerns continuity of correct service under stated conditions over time, while availability concerns readiness for usable service when required; the concepts can overlap operationally without being synonyms.
 claim_type: synthesis
-conditions:
-  []
-confidence: high
-sources: [AKS-000003, AKS-000004, AKS-000005]
+semantic_scope: concept-global
+conditions: []
+confidence: medium
+sources:
+  - AKS-000004
+  - AKS-000005
 derived_from_claims: []
 status: sourced
-notes: "The claim intentionally distinguishes correctness and continuity from accessibility."
-version: 1
+notes: Qualified public-source synthesis and explicit corpus terminology boundary. It does not claim an ISO hierarchy or a causal relationship.
+version: 2

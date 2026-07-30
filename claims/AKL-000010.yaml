@@ -3,14 +3,15 @@ record_kind: claim
 subject: AKC-000010
 predicate: coordinates
 object:
-  literal: "asynchronous reactions to published event facts"
-statement: "Event-driven architecture decouples producers and consumers by publishing event facts and processing reactions asynchronously."
-claim_type: normalized-source-claim
-conditions:
-  []
-confidence: high
-sources: [AKS-000010]
+  literal: asynchronous reactions to published event facts
+statement: In the architecture described by AKS-000010, producers publish events through channels and consumers react asynchronously, reducing direct producer-consumer coupling.
+claim_type: synthesis
+semantic_scope: concept-global
+conditions: []
+confidence: medium
+sources:
+  - AKS-000010
 derived_from_claims: []
 status: sourced
-notes: "Delivery, schema, ordering, and consistency semantics remain explicit design choices."
-version: 1
+notes: Qualified synthesis from one vendor architecture guide; not classified as a universal vendor-neutral normalized definition.
+version: 2

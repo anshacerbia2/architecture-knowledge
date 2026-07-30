@@ -6,10 +6,16 @@ object: AKC-000009
 strength: moderate
 direction: symmetric
 conditions:
-  - statement: "Module contracts and inward dependency rules are explicit and tested."
+  - statement: Module contracts and dependency rules are explicit and tested.
     concept_ids: []
-evidence: [AKL-000023]
+    scope: edge-local
+evidence:
+  - AKL-000023
 confidence: medium
 status: sourced
-notes: "Hexagonal structure can be applied within modular-monolith modules."
-version: 1
+notes: Hexagonal structure can be applied within modular-monolith modules.
+version: 2
+semantic_scope: concept-global
+traversal:
+  eligible: true
+  rationale: null

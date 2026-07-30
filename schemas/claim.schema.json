@@ -12,6 +12,7 @@
     "object",
     "statement",
     "claim_type",
+    "semantic_scope",
     "conditions",
     "confidence",
     "sources",
@@ -93,6 +94,45 @@
     "version": {
       "type": "integer",
       "minimum": 1
+    },
+    "semantic_scope": {
+      "enum": ["concept-global", "claim-context-only"]
+    },
+    "source_locations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "locator"],
+        "properties": {
+          "source_id": {
+            "$ref": "_defs.schema.json#/$defs/sourceId"
+          },
+          "locator": {
+            "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+          }
+        }
+      }
+    },
+    "normative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["force", "applies_to", "exceptions"],
+      "properties": {
+        "force": {
+          "enum": ["must", "must-not", "should", "should-not", "recommended", "may"]
+        },
+        "applies_to": {
+          "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+        },
+        "exceptions": {
+          "type": "array",
+          "items": {
+            "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+          },
+          "uniqueItems": true
+        }
+      }
     }
   },
   "allOf": [

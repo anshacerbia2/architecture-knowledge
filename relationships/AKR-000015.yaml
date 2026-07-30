@@ -1,15 +1,24 @@
 id: AKR-000015
 record_kind: relationship
 subject: AKC-000019
-predicate: improves
+predicate: supports-investigation-of
 object: AKC-000005
-strength: moderate
+strength: weak
 direction: directed
 conditions:
-  - statement: "Telemetry represents affected behavior and responders can act on the evidence."
+  - statement: Telemetry represents the affected behavior and responders can act on
+      the evidence.
     concept_ids: []
-evidence: [AKL-000035]
-confidence: medium
+    scope: edge-local
+evidence:
+  - AKL-000035
+confidence: low
 status: sourced
-notes: "Signal collection without response capability does not establish improvement."
-version: 1
+notes: "Non-causal association only: observability may support incident
+  investigation; no reliability improvement is asserted."
+version: 2
+semantic_scope: claim-context-only
+traversal:
+  eligible: false
+  rationale: Association is non-causal; admitted evidence supports investigation
+    capability, not reliability improvement.

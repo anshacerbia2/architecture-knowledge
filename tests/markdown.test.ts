@@ -43,6 +43,43 @@ describe("Markdown contract validation", () => {
       expect.arrayContaining([expect.objectContaining({ code: "MARKDOWN_NOT_APPLICABLE_REASON" })]),
     );
   });
+
+  it("allows a terminal failure-mode analysis without invented peer failures", async () => {
+    const model = await validSemanticModel();
+    model.concepts[0]!.data.type = "failure-mode";
+    model.concepts[0]!.data.failure_modes = [];
+    const codes = validateMarkdown(model).diagnostics.map((item) => item.code);
+    expect(codes).not.toContain("MARKDOWN_FAILURE_MODES_REQUIRED");
+  });
+
+  it("rejects empty structured context and generic related-concept boilerplate", async () => {
+    const model = await validSemanticModel();
+    model.concepts[0]!.data.constraints = [];
+    model.concepts[0]!.markdown!.sections.set(
+      "Related Concepts",
+      "AKC-900002 and AKC-900004 are governed related concepts.",
+    );
+    const codes = validateMarkdown(model).diagnostics.map((item) => item.code);
+    expect(codes).toEqual(
+      expect.arrayContaining([
+        "MARKDOWN_STRUCTURED_METADATA_REQUIRED",
+        "MARKDOWN_RELATED_CONCEPTS_BOILERPLATE",
+      ]),
+    );
+  });
+
+  it("rejects drift between structured metadata and its Markdown projection", async () => {
+    const model = await validSemanticModel();
+    model.concepts[0]!.markdown!.sections.set(
+      "Examples",
+      "A different human-readable example that no longer projects the structured statement.",
+    );
+    expect(validateMarkdown(model).diagnostics).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ code: "MARKDOWN_STRUCTURED_PROJECTION_MISMATCH" }),
+      ]),
+    );
+  });
 });
 
 describe("Markdown link validation", () => {

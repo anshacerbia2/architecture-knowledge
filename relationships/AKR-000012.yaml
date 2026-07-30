@@ -3,13 +3,20 @@ record_kind: relationship
 subject: AKC-000010
 predicate: introduces
 object: AKC-000016
-strength: strong
+strength: moderate
 direction: directed
 conditions:
-  - statement: "Consumers maintain independent state from asynchronously delivered events."
+  - statement: Consumers maintain independent state derived from asynchronously
+      delivered events.
     concept_ids: []
-evidence: [AKL-000032]
+    scope: edge-local
+evidence:
+  - AKL-000032
 confidence: high
 status: sourced
-notes: "Event transport does not make every path eventually consistent."
-version: 1
+notes: Event transport does not make every path eventually consistent.
+version: 2
+semantic_scope: concept-global
+traversal:
+  eligible: true
+  rationale: null

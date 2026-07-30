@@ -24,12 +24,16 @@ relationship_cycles:
     - supported-by
     - applies-when
     - avoid-when
+    - supports-investigation-of
+    - presents-risk-to
+    - can-occur-in-context-of
   allowed:
     - instance-of
     - related-to
     - conflicts-with
     - compatible-with
     - alternative-to
+    - overlaps-with
     - solves
     - contradicted-by
 markdown:
@@ -42,7 +46,13 @@ markdown:
     - security-control
     - protocol
     - technology
-    - failure-mode
+  structured_metadata_fields:
+    - constraints
+    - assumptions
+    - risks
+    - alternatives
+    - examples
+    - counterexamples
   security_sensitive_types: [security-control, protocol]
   security_sensitive_domains: [security-privacy]
   placeholder_patterns:

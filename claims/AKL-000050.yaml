@@ -1,0 +1,24 @@
+id: AKL-000050
+record_kind: claim
+subject: AKC-000017
+predicate: requires-pkce
+object:
+  literal: public OAuth clients using the authorization code grant
+statement: Public OAuth clients using the authorization code grant MUST use PKCE.
+claim_type: normalized-source-claim
+semantic_scope: concept-global
+conditions: []
+confidence: high
+sources:
+  - AKS-000018
+source_locations:
+  - source_id: AKS-000018
+    locator: RFC 9700 Section 2.1.1
+normative:
+  force: must
+  applies_to: Public OAuth clients using the authorization code grant.
+  exceptions: []
+derived_from_claims: []
+status: sourced
+notes: PKCE is a mandatory public-client control, not an optional enhancement.
+version: 1

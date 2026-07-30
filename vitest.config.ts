@@ -18,6 +18,8 @@ export default defineConfig({
         "src/evidence-validator.ts",
         "src/claim-derivation-validator.ts",
         "src/relationship-validator.ts",
+        "src/markdown-validator.ts",
+        "src/security-claim-validator.ts",
         "src/lifecycle-validator.ts",
         "src/registry-consistency-validator.ts",
       ],

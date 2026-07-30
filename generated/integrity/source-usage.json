@@ -23,11 +23,7 @@
     },
     {
       "source_id": "AKS-000003",
-      "claim_ids": [
-        "AKL-000004",
-        "AKL-000005",
-        "AKL-000040"
-      ],
+      "claim_ids": [],
       "status": "approved"
     },
     {
@@ -46,7 +42,6 @@
       "claim_ids": [
         "AKL-000004",
         "AKL-000005",
-        "AKL-000035",
         "AKL-000040"
       ],
       "status": "approved"
@@ -113,15 +108,13 @@
     {
       "source_id": "AKS-000011",
       "claim_ids": [
-        "AKL-000011",
-        "AKL-000025"
+        "AKL-000011"
       ],
       "status": "approved"
     },
     {
       "source_id": "AKS-000012",
       "claim_ids": [
-        "AKL-000011",
         "AKL-000012",
         "AKL-000025",
         "AKL-000026",
@@ -137,8 +130,7 @@
         "AKL-000013",
         "AKL-000027",
         "AKL-000028",
-        "AKL-000041",
-        "AKL-000045"
+        "AKL-000041"
       ],
       "status": "approved"
     },
@@ -179,7 +171,11 @@
       "claim_ids": [
         "AKL-000017",
         "AKL-000033",
-        "AKL-000043"
+        "AKL-000043",
+        "AKL-000049",
+        "AKL-000051",
+        "AKL-000059",
+        "AKL-000062"
       ],
       "status": "approved"
     },
@@ -188,7 +184,16 @@
       "claim_ids": [
         "AKL-000017",
         "AKL-000043",
-        "AKL-000047"
+        "AKL-000047",
+        "AKL-000050",
+        "AKL-000052",
+        "AKL-000053",
+        "AKL-000054",
+        "AKL-000055",
+        "AKL-000056",
+        "AKL-000057",
+        "AKL-000058",
+        "AKL-000063"
       ],
       "status": "approved"
     },
@@ -199,7 +204,10 @@
         "AKL-000033",
         "AKL-000034",
         "AKL-000043",
-        "AKL-000047"
+        "AKL-000047",
+        "AKL-000060",
+        "AKL-000061",
+        "AKL-000062"
       ],
       "status": "approved"
     },
@@ -224,7 +232,6 @@
       "source_id": "AKS-000022",
       "claim_ids": [
         "AKL-000003",
-        "AKL-000020",
         "AKL-000037",
         "AKL-000039"
       ],
@@ -233,6 +240,6 @@
   ],
   "summary": {
     "source_count": 22,
-    "used_source_count": 22
+    "used_source_count": 21
   }
 }

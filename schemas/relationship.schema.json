@@ -12,10 +12,12 @@
     "object",
     "strength",
     "direction",
+    "semantic_scope",
     "conditions",
     "evidence",
     "confidence",
     "status",
+    "traversal",
     "notes",
     "version"
   ],
@@ -44,6 +46,10 @@
         "conflicts-with",
         "compatible-with",
         "alternative-to",
+        "overlaps-with",
+        "supports-investigation-of",
+        "presents-risk-to",
+        "can-occur-in-context-of",
         "supersedes",
         "deprecated-by",
         "addresses",
@@ -75,6 +81,9 @@
     "direction": {
       "enum": ["directed", "symmetric"]
     },
+    "semantic_scope": {
+      "enum": ["concept-global", "claim-context-only"]
+    },
     "conditions": {
       "type": "array",
       "items": {
@@ -94,6 +103,45 @@
     "status": {
       "$ref": "_defs.schema.json#/$defs/lifecycleStatus"
     },
+    "traversal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eligible", "rationale"],
+      "properties": {
+        "eligible": {
+          "type": "boolean"
+        },
+        "rationale": {
+          "type": ["string", "null"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "eligible": {
+                "const": false
+              }
+            },
+            "required": ["eligible"]
+          },
+          "then": {
+            "properties": {
+              "rationale": {
+                "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "rationale": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
     "notes": {
       "type": ["string", "null"]
     },
@@ -112,6 +160,7 @@
               "conflicts-with",
               "compatible-with",
               "alternative-to",
+              "overlaps-with",
               "contradicted-by"
             ]
           }
@@ -149,6 +198,10 @@
               "conflicts-with",
               "compatible-with",
               "alternative-to",
+              "overlaps-with",
+              "supports-investigation-of",
+              "presents-risk-to",
+              "can-occur-in-context-of",
               "supersedes",
               "deprecated-by",
               "addresses",

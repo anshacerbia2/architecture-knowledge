@@ -3,14 +3,15 @@ record_kind: claim
 subject: AKC-000015
 predicate: coordinates
 object:
-  literal: "local transactions with compensation or forward recovery"
-statement: "A saga coordinates a sequence of local transactions and responds to later failure through compensating actions, forward recovery, or intervention."
+  literal: local transactions with compensation or forward recovery
+statement: A saga coordinates a sequence of local transactions and responds to later failure through compensating actions, forward recovery, or intervention.
 claim_type: normalized-source-claim
-conditions:
-  []
+semantic_scope: concept-global
+conditions: []
 confidence: high
-sources: [AKS-000015]
+sources:
+  - AKS-000015
 derived_from_claims: []
 status: sourced
-notes: "Compensation is semantic and may not restore the prior physical state."
+notes: Compensation is semantic and may not restore the prior physical state.
 version: 1

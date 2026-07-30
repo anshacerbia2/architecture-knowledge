@@ -3,13 +3,19 @@ record_kind: relationship
 subject: AKC-000012
 predicate: compatible-with
 object: AKC-000013
-strength: strong
+strength: moderate
 direction: symmetric
 conditions:
-  - statement: "Failure classification, attempt budgets, and breaker state are coordinated."
+  - statement: Failure classification, attempt budgets, and breaker state are coordinated.
     concept_ids: []
-evidence: [AKL-000028]
+    scope: edge-local
+evidence:
+  - AKL-000028
 confidence: high
 status: sourced
-notes: "Uncoordinated policies can amplify failure."
-version: 1
+notes: Uncoordinated policies can amplify failure.
+version: 2
+semantic_scope: concept-global
+traversal:
+  eligible: true
+  rationale: null

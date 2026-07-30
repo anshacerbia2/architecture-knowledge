@@ -3,13 +3,22 @@ record_kind: relationship
 subject: AKC-000014
 predicate: improves
 object: AKC-000005
-strength: strong
+strength: moderate
 direction: directed
 conditions:
-  - statement: "Business state and message intent share one local transaction and relay backlog is operated."
+  - statement: Business state and outbox record share one local transaction and
+      relay backlog is operated.
     concept_ids: []
-evidence: [AKL-000030]
-confidence: high
+    scope: edge-local
+evidence:
+  - AKL-000030
+confidence: medium
 status: sourced
-notes: "Duplicate publication and consumer correctness remain separate concerns."
-version: 1
+notes: This edge represents only the local durability boundary described by
+  AKL-000030; it does not claim end-to-end reliability.
+version: 3
+semantic_scope: claim-context-only
+traversal:
+  eligible: false
+  rationale: The evidence is explicitly claim-context-only and cannot support
+    concept-global traversal.

@@ -4,14 +4,17 @@ subject: AKC-000012
 predicate: improves
 object:
   record_id: AKC-000004
-statement: "A bounded retry policy can improve availability when failures are transient, repeated execution is safe, and retry load remains within capacity."
+statement: Use a bounded retry policy to pursue service success only when failures are transient, repetition is safe, attempts fit the deadline, and aggregate retry load stays within capacity.
 claim_type: recommendation
+semantic_scope: claim-context-only
 conditions:
-  - statement: "Failures are transient, attempts fit the end-to-end deadline, and retry load remains within capacity."
+  - statement: Failures are transient, attempts fit the end-to-end deadline, and retry load remains within capacity.
     concept_ids: []
-confidence: medium
-sources: [AKS-000012]
+    scope: edge-local
+confidence: low
+sources:
+  - AKS-000012
 derived_from_claims: []
 status: sourced
-notes: "The effect reverses under persistent failure or amplification."
-version: 1
+notes: Qualified operational recommendation. AKS-000012 supports the mechanism and overload risk, not a measured general availability improvement.
+version: 2

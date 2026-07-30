@@ -27,20 +27,38 @@ quality_attributes:
   improves: []
   degrades: []
   influences: []
-constraints: []
-assumptions: []
+constraints:
+  - statement: The fixture remains isolated from production knowledge.
+    scope: edge-local
+    concept_ids: []
+assumptions:
+  - statement: Synthetic identifiers cannot be confused with production identifiers.
+    scope: edge-local
+    concept_ids: []
 benefits: [Exercises positive validation behavior.]
 tradeoffs: [Adds a deliberately verbose synthetic fixture.]
-risks: []
+risks:
+  - statement: Malformed fixture references can make a positive test fail.
+    scope: edge-local
+    concept_ids: []
 failure_modes: [AKC-900003]
 security_implications: [Threat assumptions are limited to synthetic test input.]
 operational_implications: [No operational system is represented.]
 data_implications: [No production data is represented.]
-alternatives: [AKC-900004]
+alternatives:
+  - statement: AKC-900004 represents a synthetic alternative.
+    scope: reusable-concept
+    concept_ids: [AKC-900004]
 related: [AKC-900002]
 relationships: [AKR-900001]
-examples: []
-counterexamples: []
+examples:
+  - statement: The fixture itself is the synthetic example.
+    scope: edge-local
+    concept_ids: []
+counterexamples:
+  - statement: A fixture with missing sections is a counterexample.
+    scope: edge-local
+    concept_ids: []
 claims: [AKL-900001]
 sources: [AKS-900001]
 review:
@@ -51,6 +69,7 @@ review:
   reviewed_at: null
   review_due_at: null
 version: 1
+contextual_roles: []
 ---
 
 # Synthetic Validation Pattern

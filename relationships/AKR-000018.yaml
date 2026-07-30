@@ -3,13 +3,21 @@ record_kind: relationship
 subject: AKC-000003
 predicate: constrains
 object: AKC-000008
-strength: moderate
+strength: weak
 direction: directed
 conditions:
-  - statement: "The constraint is authoritative, scoped, and materially excludes a microservice option."
+  - statement: The named constraint is authoritative, scoped, and materially
+      excludes an option.
     concept_ids: []
-evidence: [AKL-000038]
-confidence: medium
+    scope: edge-local
+evidence:
+  - AKL-000038
+confidence: low
 status: sourced
-notes: "Preferences and assumptions do not establish this edge."
-version: 1
+notes: Preferences and assumptions do not establish this edge.
+version: 2
+semantic_scope: claim-context-only
+traversal:
+  eligible: false
+  rationale: A generic constraint edge is tautological until a specific reusable
+    constraint is identified.

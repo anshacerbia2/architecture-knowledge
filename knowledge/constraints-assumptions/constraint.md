@@ -1,59 +1,102 @@
 ---
 id: AKC-000003
 record_kind: concept
-title: "Constraint"
-aliases: ["Architecture constraint"]
+title: Constraint
+aliases:
+  - Architecture constraint
 type: constraint
 secondary_types: []
 domain: constraints-assumptions
-subdomains: [decision-context]
-dimensions: [governance]
+subdomains:
+  - decision-context
+dimensions:
+  - governance
 status: drafted
 maturity: seed
-summary: "A condition that restricts the feasible architecture choices, values, or implementation forms within a stated scope."
-tags: [constraint, feasibility]
-problem: "Architecture reasoning becomes misleading when non-negotiable limits, negotiable preferences, and untested assumptions are mixed together."
-context: "Any decision with regulatory, physical, temporal, budgetary, organizational, contractual, or technical limits."
-intent: "Make restrictions explicit, scoped, attributable, testable where possible, and distinguishable from assumptions and preferences."
-forces: ["Some limits are externally imposed.","Constraints can expire or be renegotiated.","Unverified constraints can become folklore.","Multiple constraints can conflict."]
+summary: A condition that restricts the feasible architecture choices, values, or implementation forms within a stated scope.
+tags:
+  - constraint
+  - feasibility
+problem: Architecture reasoning becomes misleading when non-negotiable limits, negotiable preferences, and untested assumptions are mixed together.
+context: Any decision with regulatory, physical, temporal, budgetary, organizational, contractual, or technical limits.
+intent: Make restrictions explicit, scoped, attributable, testable where possible, and distinguishable from assumptions and preferences.
+forces:
+  - Some limits are externally imposed.
+  - Constraints can expire or be renegotiated.
+  - Unverified constraints can become folklore.
+  - Multiple constraints can conflict.
 applicable_when:
-  - statement: "Use whenever a restriction materially removes options or bounds an acceptance criterion."
+  - statement: Use whenever a restriction materially removes options or bounds an acceptance criterion.
     concept_ids: []
+    scope: edge-local
 avoid_when:
-  - statement: "Do not label a preference or an untested belief as a constraint; record those as a decision criterion or assumption."
+  - statement: Do not label a preference or an untested belief as a constraint; record those as a decision criterion or assumption.
     concept_ids: []
+    scope: edge-local
 prerequisites: []
 quality_attributes:
-  improves:
-    []
-  degrades:
-    []
-  influences:
-    []
-constraints: []
-assumptions: []
-benefits: ["Narrows feasible choices transparently.","Prevents hidden noncompliance.","Supports revisiting decisions when limits change."]
-tradeoffs: ["Documentation does not prove validity.","Overclassification can freeze design.","Conflicting limits require escalation."]
-risks: []
+  improves: []
+  degrades: []
+  influences: []
+constraints:
+  - statement: A constraint is valid only within its declared scope, authority, and effective period.
+    scope: edge-local
+    concept_ids: []
+assumptions:
+  - statement: The stated authority and environmental conditions remain valid for the decision being constrained.
+    scope: edge-local
+    concept_ids: []
+benefits:
+  - Narrows feasible choices transparently.
+  - Prevents hidden noncompliance.
+  - Supports revisiting decisions when limits change.
+tradeoffs:
+  - Documentation does not prove validity.
+  - Overclassification can freeze design.
+  - Conflicting limits require escalation.
+risks:
+  - statement: Constraint laundering occurs when a preferred solution is declared mandatory.
+    scope: edge-local
+    concept_ids: []
 failure_modes: []
-security_implications: ["Security and privacy obligations should identify jurisdiction, asset, threat, and enforcement scope rather than use generic mandates."]
-operational_implications: ["Operational constraints include recovery targets, maintenance windows, staffing, platform support, and observability requirements."]
-data_implications: ["Data constraints can cover residency, retention, schema, lineage, ownership, and consistency; each needs an explicit scope."]
-alternatives: []
-related: [AKC-000008, AKC-000020]
-relationships: [AKR-000018]
-examples: []
-counterexamples: []
-claims: [AKL-000003, AKL-000038]
-sources: [AKS-000002, AKS-000022]
+security_implications:
+  - Security and privacy obligations should identify jurisdiction, asset, threat, and enforcement scope rather than use generic mandates.
+operational_implications:
+  - Operational constraints include recovery targets, maintenance windows, staffing, platform support, and observability requirements.
+data_implications:
+  - Data constraints can cover residency, retention, schema, lineage, ownership, and consistency; each needs an explicit scope.
+alternatives:
+  - statement: Assumptions are propositions accepted for reasoning but still need validation; goals express desired outcomes rather than restrictions.
+    scope: edge-local
+    concept_ids: []
+related:
+  - AKC-000008
+  - AKC-000020
+relationships:
+  - AKR-000018
+examples:
+  - statement: A regulated dataset must remain in an identified jurisdiction under a named legal scope.
+    scope: edge-local
+    concept_ids: []
+counterexamples:
+  - statement: The team prefers a familiar database is a preference, not a constraint, unless an authorized policy makes it mandatory.
+    scope: edge-local
+    concept_ids: []
+claims:
+  - AKL-000003
+  - AKL-000038
+sources:
+  - AKS-000002
+  - AKS-000022
 review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-29
+  updated_at: 2026-07-30
   reviewed_at: null
   review_due_at: null
-version: 1
+version: 2
+contextual_roles: []
 ---
 
 # Constraint
@@ -152,7 +195,7 @@ The team prefers a familiar database is a preference, not a constraint, unless a
 
 ## Related Concepts
 
-AKC-000008, AKC-000020 are governed related concepts. Relationships are qualified in the relationship registry.
+Microservice choices illustrate how constraints narrow feasible decomposition and deployment; ADRs preserve the governing constraint and decision context.
 
 ## Claims and Evidence
 

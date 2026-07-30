@@ -4,14 +4,20 @@ subject: AKC-000018
 predicate: depends-on
 object:
   record_id: AKC-000017
-statement: "OpenID Connect depends on OAuth 2.0 protocol mechanisms for its authorization requests and token interactions."
+statement: OpenID Connect depends on OAuth 2.0 protocol mechanisms for its authorization requests and token interactions.
 claim_type: normalized-source-claim
+semantic_scope: concept-global
 conditions:
-  - statement: "The concept refers to OpenID Connect Core protocol operation."
+  - statement: The concept refers to OpenID Connect Core protocol operation.
     concept_ids: []
+    scope: edge-local
 confidence: high
-sources: [AKS-000019]
+sources:
+  - AKS-000019
+source_locations:
+  - source_id: AKS-000019
+    locator: OpenID Connect Core Section 1
 derived_from_claims: []
 status: sourced
-notes: "The dependency is protocol-level; authentication and authorization semantics remain distinct."
+notes: The dependency is protocol-level; authentication and authorization semantics remain distinct.
 version: 1

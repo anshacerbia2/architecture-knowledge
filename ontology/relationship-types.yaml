@@ -92,6 +92,30 @@ predicates:
     object_kinds: [concept]
     direction: symmetric
     conditions_required: true
+  - key: overlaps-with
+    definition: The endpoints share a measurable or semantic region under stated conditions without asserting synonymy, hierarchy, or causality.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: symmetric
+    conditions_required: true
+  - key: supports-investigation-of
+    definition: The subject supplies evidence useful for investigating behavior of the object without asserting that it improves the object.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    conditions_required: true
+  - key: presents-risk-to
+    definition: The subject creates a qualified risk relevant to the object without asserting a measured degradation.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    conditions_required: true
+  - key: can-occur-in-context-of
+    definition: The subject failure or condition can occur within the object context without attributing causation to that context.
+    subject_kinds: [concept]
+    object_kinds: [concept]
+    direction: directed
+    conditions_required: true
   - key: supersedes
     definition: The subject intentionally replaces the object for a defined scope.
     subject_kinds: [concept, source, claim, decision-guide]

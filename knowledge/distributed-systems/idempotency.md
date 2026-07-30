@@ -1,66 +1,119 @@
 ---
 id: AKC-000011
 record_kind: concept
-title: "Idempotency"
-aliases: ["Idempotent operation semantics"]
-type: tactic
+title: Idempotency
+aliases:
+  - Idempotent operation semantics
+type: semantic-property
 secondary_types: []
 domain: distributed-systems
-subdomains: [message-processing]
-dimensions: [interaction, state-management, resilience]
+subdomains:
+  - message-processing
+dimensions:
+  - interaction
+  - state-management
+  - resilience
 status: drafted
 maturity: seed
-summary: "A semantic property or design tactic whereby repeating an operation with the same intended input does not create additional unintended effects beyond the defined result."
-tags: [idempotency, duplicates, retries]
-problem: "Networks and brokers can leave callers uncertain whether an operation completed, so safe recovery may require repeating it."
-context: "Operations that can be retried, redelivered, replayed, or submitted concurrently and whose duplicate effects matter."
-intent: "Make repeated execution produce a bounded, explicitly defined outcome."
-forces: ["Duplicate detection needs identity and retention.","Concurrent duplicates can race.","A repeated response may differ while intended state stays stable.","Side effects can cross system boundaries."]
+summary: An umbrella semantic property for bounded repeated operations, with HTTP method semantics, operation-effect semantics, and implementation tactics kept as distinct contextual roles.
+tags:
+  - idempotency
+  - duplicates
+  - retries
+problem: Networks and brokers can leave callers uncertain whether an operation completed, so safe recovery may require repeating it.
+context: Operations that can be retried, redelivered, replayed, or submitted concurrently and whose duplicate effects matter.
+intent: Make repeated execution produce a bounded, explicitly defined outcome.
+forces:
+  - Duplicate detection needs identity and retention.
+  - Concurrent duplicates can race.
+  - A repeated response may differ while intended state stays stable.
+  - Side effects can cross system boundaries.
 applicable_when:
-  - statement: "Use where recovery or delivery semantics permit duplicate attempts and duplicate effects would violate business or system invariants."
+  - statement: Use where recovery or delivery semantics permit duplicate attempts and duplicate effects would violate business or system invariants.
     concept_ids: []
+    scope: edge-local
 avoid_when:
-  - statement: "Do not add global deduplication when the operation is naturally idempotent or when duplicate effects are acceptable and retention cost is unjustified."
+  - statement: Do not add global deduplication when the operation is naturally idempotent or when duplicate effects are acceptable and retention cost is unjustified.
     concept_ids: []
+    scope: edge-local
 prerequisites: []
 quality_attributes:
-  improves:
-    []
-  degrades:
-    []
-  influences:
-    []
-constraints: []
-assumptions: []
-benefits: ["Enables safer retries and redelivery.","Protects invariants from duplicate effects.","Makes recovery semantics explicit."]
-tradeoffs: ["Key storage and expiry.","Concurrency coordination.","Ambiguous request equivalence."]
-risks: []
-failure_modes: [AKC-000024]
-security_implications: ["Bind idempotency keys to the authorized principal and operation; otherwise a key can leak results or create cross-tenant interference."]
-operational_implications: ["Monitor duplicate rates, key conflicts, storage growth, expiry behavior, and stuck in-progress records."]
-data_implications: ["Define key uniqueness, retention, atomicity with domain state, and treatment of payload changes and external side effects."]
-alternatives: []
-related: [AKC-000012, AKC-000014]
-relationships: [AKR-000005]
-examples: []
-counterexamples: []
-claims: [AKL-000011, AKL-000025]
-sources: [AKS-000011, AKS-000012]
+  improves: []
+  degrades: []
+  influences: []
+constraints:
+  - statement: Operation equivalence, intended effect, identity, and retention must be defined for each idempotency context.
+    scope: edge-local
+    concept_ids: []
+assumptions:
+  - statement: Equivalent attempts can be identified within the chosen scope and retention window.
+    scope: edge-local
+    concept_ids: []
+benefits:
+  - Enables safer retries and redelivery.
+  - Protects invariants from duplicate effects.
+  - Makes recovery semantics explicit.
+tradeoffs:
+  - Key storage and expiry.
+  - Concurrency coordination.
+  - Ambiguous request equivalence.
+risks:
+  - statement: Reusing a key for a different request can return a wrong result.
+    scope: edge-local
+    concept_ids: []
+failure_modes:
+  - AKC-000024
+security_implications:
+  - Bind idempotency keys to the authorized principal and operation; otherwise a key can leak results or create cross-tenant interference.
+operational_implications:
+  - Monitor duplicate rates, key conflicts, storage growth, expiry behavior, and stuck in-progress records.
+data_implications:
+  - Define key uniqueness, retention, atomicity with domain state, and treatment of payload changes and external side effects.
+alternatives:
+  - statement: A transactional boundary can prevent some duplicates locally; at-most-once delivery can lose work and still needs explicit failure semantics.
+    scope: edge-local
+    concept_ids: []
+related:
+  - AKC-000012
+  - AKC-000014
+relationships:
+  - AKR-000005
+examples:
+  - statement: A payment request with the same customer-scoped key returns the recorded outcome without creating a second charge.
+    scope: edge-local
+    concept_ids: []
+counterexamples:
+  - statement: Suppressing a duplicate message ID while an earlier attempt left an external effect uncertain does not prove end-to-end idempotency.
+    scope: edge-local
+    concept_ids: []
+claims:
+  - AKL-000011
+  - AKL-000025
+sources:
+  - AKS-000011
+  - AKS-000012
 review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-29
+  updated_at: 2026-07-30
   reviewed_at: null
   review_due_at: null
-version: 1
+version: 3
+contextual_roles:
+  - role: http-method-semantics
+    context: RFC 9110 defines the intended effect of repeated identical requests for an HTTP method.
+  - role: operation-characteristic
+    context: A business operation can define equivalent attempts and a bounded intended effect.
+  - role: implementation-tactic
+    context: Keys, inboxes, conditional writes, and effect ledgers are mechanisms, not the semantic property itself.
 ---
 
 # Idempotency
 
 ## Summary
 
-A semantic property or design tactic whereby repeating an operation with the same intended input does not create additional unintended effects beyond the defined result.
+An umbrella semantic property for bounded repeated operations, with HTTP method semantics, operation-effect semantics, and implementation tactics kept as distinct contextual roles.
 
 ## Intent
 
@@ -72,7 +125,7 @@ Operations that can be retried, redelivered, replayed, or submitted concurrently
 
 ## Problem
 
-Networks and brokers can leave callers uncertain whether an operation completed, so safe recovery may require repeating it.
+Repeated delivery, uncertain outcomes, and client retries can duplicate harmful effects. HTTP method semantics, business-operation equivalence, message deduplication, and storage mechanisms answer different questions and must not be collapsed.
 
 ## Forces
 
@@ -80,15 +133,15 @@ Duplicate detection needs identity and retention. Concurrent duplicates can race
 
 ## How It Works
 
-Define the idempotency scope, key, request equivalence, result semantics, concurrency control, retention window, and behavior for partial side effects. Persist enough state to recognize or safely recompute repeats.
+First name the context. RFC 9110 defines the intended server effect of repeated identical requests for an HTTP method. A business operation separately defines equivalent attempts and permitted effects. Keys, inboxes, conditional writes, and effect ledgers are implementation tactics that may enforce that operation contract; they are not the semantic property itself.
 
 ## Structural View
 
-A caller supplies or derives stable operation identity; the receiver coordinates domain state, idempotency records, and external effects within a defined boundary.
+The umbrella retains three explicit roles: HTTP method semantic property, protocol-neutral operation characteristic, and implementation tactic. Only the HTTP role is directly defined by AKS-000011; retry guidance in AKS-000012 motivates duplicate-effect control without defining a universal message-idempotency model.
 
 ## Runtime View
 
-The first accepted attempt records its outcome or state transition. Later equivalent attempts return or derive the defined result without applying another unintended effect.
+A system classifies an incoming attempt by the applicable semantic contract, identifies an equivalent prior attempt when the contract requires it, and either returns the prior outcome or prevents additional prohibited effects within the declared retention and concurrency scope.
 
 ## Applicability
 
@@ -100,7 +153,7 @@ Do not add global deduplication when the operation is naturally idempotent or wh
 
 ## Quality Attribute Impact
 
-It can improve recovery safety and effective reliability but adds state, storage, contention, and semantic complexity.
+Duplicate-effect control can protect state correctness, but storage, coordination, retention, and concurrency handling add latency and operational complexity. HTTP idempotency alone does not guarantee exactly-once processing or external-effect deduplication.
 
 ## Benefits
 
@@ -152,12 +205,12 @@ Suppressing a duplicate message ID while an earlier attempt left an external eff
 
 ## Related Concepts
 
-AKC-000012, AKC-000014 are governed related concepts. Typed edges are recorded separately.
+Retry needs operation-level duplicate-effect safety only in qualified uncertain outcomes; Transactional Outbox consumers often need separate message-processing deduplication.
 
 ## Claims and Evidence
 
-AKL-000011 distinguishes HTTP method semantics from broader operation design. AKL-000025 qualifies the retry dependency.
+AKL-000011 is strictly the RFC 9110 HTTP-method definition. AKL-000025 states a qualified retry duplicate-effect need without treating HTTP semantics, message processing, or idempotency-key tactics as equivalent.
 
 ## Sources
 
-AKS-000011 defines HTTP idempotent method semantics; AKS-000012 motivates retry safety without universalizing that protocol scope.
+AKS-000011 directly defines HTTP method idempotency. AKS-000012 supports the retry duplicate-effect problem. No admitted source is represented as a universal protocol-neutral definition of message or business-operation idempotency.

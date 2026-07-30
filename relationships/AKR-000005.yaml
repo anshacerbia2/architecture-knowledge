@@ -3,13 +3,21 @@ record_kind: relationship
 subject: AKC-000012
 predicate: requires
 object: AKC-000011
-strength: strong
+strength: moderate
 direction: directed
 conditions:
-  - statement: "A state-changing attempt can be repeated after an uncertain outcome and duplicate effects are harmful."
+  - statement: The caller cannot determine whether an earlier state-changing attempt
+      completed and duplicate effects are harmful.
     concept_ids: []
-evidence: [AKL-000025]
-confidence: high
+    scope: edge-local
+evidence:
+  - AKL-000025
+confidence: medium
 status: sourced
-notes: "Equivalent duplicate-effect control can satisfy the requirement."
-version: 1
+notes: Equivalent duplicate-effect control can satisfy the requirement.
+version: 2
+semantic_scope: claim-context-only
+traversal:
+  eligible: false
+  rationale: Duplicate-effect requirement is claim-specific; the Idempotency
+    umbrella has multiple contextual roles.

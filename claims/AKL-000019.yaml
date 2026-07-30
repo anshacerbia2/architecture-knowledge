@@ -3,14 +3,15 @@ record_kind: claim
 subject: AKC-000019
 predicate: enables
 object:
-  literal: "understanding internal state through contextual system outputs"
-statement: "Observability is the capability to understand internal system state and behavior from available outputs and context, not merely the presence of a telemetry library."
+  literal: understanding internal state through contextual system outputs
+statement: Observability is the capability to understand internal system state and behavior from available outputs and context, not merely the presence of a telemetry library.
 claim_type: normalized-source-claim
-conditions:
-  []
+semantic_scope: concept-global
+conditions: []
 confidence: high
-sources: [AKS-000020]
+sources:
+  - AKS-000020
 derived_from_claims: []
 status: sourced
-notes: "OpenTelemetry is one implementation ecosystem, not a mandatory condition."
+notes: OpenTelemetry is one implementation ecosystem, not a mandatory condition.
 version: 1

@@ -1,59 +1,114 @@
 ---
 id: AKC-000010
 record_kind: concept
-title: "Event-Driven Architecture"
-aliases: ["EDA"]
+title: Event-Driven Architecture
+aliases:
+  - EDA
 type: architectural-style
 secondary_types: []
 domain: integration
-subdomains: [eventing]
-dimensions: [interaction, execution, data-consistency, state-management, resilience]
+subdomains:
+  - eventing
+dimensions:
+  - interaction
+  - execution
+  - data-consistency
+  - state-management
+  - resilience
 status: drafted
 maturity: seed
-summary: "An architectural style in which producers publish facts about state changes and consumers react through asynchronous event flows."
-tags: [events, asynchronous, integration]
-problem: "Direct request coupling can force producers to know consumers and can synchronize lifecycles that need independent reaction and scaling."
-context: "Systems where multiple consumers react to facts, temporal decoupling is valuable, and asynchronous semantics can be operated safely."
-intent: "Decouple producers and consumers in time and knowledge while enabling reactive workflows."
-forces: ["Events can be duplicated, delayed, reordered, or lost by faulty implementations.","Schemas evolve independently.","Consumers need replay and recovery policies.","Global transactions are usually unavailable."]
+summary: An architectural style in which producers publish facts about state changes and consumers react through asynchronous event flows.
+tags:
+  - events
+  - asynchronous
+  - integration
+problem: Direct request coupling can force producers to know consumers and can synchronize lifecycles that need independent reaction and scaling.
+context: Systems where multiple consumers react to facts, temporal decoupling is valuable, and asynchronous semantics can be operated safely.
+intent: Decouple producers and consumers in time and knowledge while enabling reactive workflows.
+forces:
+  - Events can be duplicated, delayed, reordered, or lost by faulty implementations.
+  - Schemas evolve independently.
+  - Consumers need replay and recovery policies.
+  - Global transactions are usually unavailable.
 applicable_when:
-  - statement: "Use when asynchronous reaction, fan-out, buffering, or independent consumer evolution addresses a demonstrated driver."
+  - statement: Use when asynchronous reaction, fan-out, buffering, or independent consumer evolution addresses a demonstrated driver.
     concept_ids: []
+    scope: edge-local
 avoid_when:
-  - statement: "Avoid when the workflow requires immediate coordinated response and asynchronous state or operational complexity has no compensating value."
+  - statement: Avoid when the workflow requires immediate coordinated response and asynchronous state or operational complexity has no compensating value.
     concept_ids: []
+    scope: edge-local
 prerequisites: []
 quality_attributes:
-  improves:
-    []
-  degrades:
-    []
-  influences:
-    []
-constraints: []
-assumptions: []
-benefits: ["Temporal and knowledge decoupling.","Natural fan-out.","Independent consumer scaling."]
-tradeoffs: ["Eventual consistency.","Harder end-to-end tracing.","Schema and replay governance."]
-risks: []
-failure_modes: [AKC-000024]
-security_implications: ["Authorize publication and consumption, protect sensitive payloads, validate schemas, and account for replay as a security-relevant action."]
-operational_implications: ["Operate broker capacity, lag, dead letters, replay, schema compatibility, correlation, and consumer health."]
-data_implications: ["Events become durable integration data; ownership, retention, ordering, schema evolution, and deletion obligations must be explicit."]
-alternatives: []
-related: [AKC-000008, AKC-000014, AKC-000016]
-relationships: [AKR-000004, AKR-000009, AKR-000012, AKR-000024]
-examples: []
-counterexamples: []
-claims: [AKL-000010, AKL-000024, AKL-000029, AKL-000032, AKL-000048]
-sources: [AKS-000010]
+  improves: []
+  degrades: []
+  influences: []
+constraints:
+  - statement: Event semantics, ownership, delivery behavior, and consumer compatibility must be governed explicitly.
+    scope: edge-local
+    concept_ids: []
+assumptions:
+  - statement: Asynchronous processing and its consistency window are acceptable for the affected workflow.
+    scope: edge-local
+    concept_ids: []
+benefits:
+  - Temporal and knowledge decoupling.
+  - Natural fan-out.
+  - Independent consumer scaling.
+tradeoffs:
+  - Eventual consistency.
+  - Harder end-to-end tracing.
+  - Schema and replay governance.
+risks:
+  - statement: Dual writes lose events, consumers create duplicate effects, and unbounded replay overloads dependencies.
+    scope: edge-local
+    concept_ids: []
+failure_modes:
+  - AKC-000024
+security_implications:
+  - Authorize publication and consumption, protect sensitive payloads, validate schemas, and account for replay as a security-relevant action.
+operational_implications:
+  - Operate broker capacity, lag, dead letters, replay, schema compatibility, correlation, and consumer health.
+data_implications:
+  - Events become durable integration data; ownership, retention, ordering, schema evolution, and deletion obligations must be explicit.
+alternatives:
+  - statement: Request-response integration offers immediate results and simpler local reasoning when temporal decoupling is unnecessary.
+    scope: edge-local
+    concept_ids: []
+related:
+  - AKC-000008
+  - AKC-000014
+  - AKC-000016
+relationships:
+  - AKR-000004
+  - AKR-000009
+  - AKR-000012
+  - AKR-000024
+examples:
+  - statement: An order-accepted event triggers fulfillment, analytics, and notification consumers without the producer knowing each implementation.
+    scope: edge-local
+    concept_ids: []
+counterexamples:
+  - statement: Renaming remote commands as events while requiring an immediate single consumer response does not create event-driven decoupling.
+    scope: edge-local
+    concept_ids: []
+claims:
+  - AKL-000010
+  - AKL-000024
+  - AKL-000029
+  - AKL-000032
+  - AKL-000048
+sources:
+  - AKS-000010
 review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-29
+  updated_at: 2026-07-30
   reviewed_at: null
   review_due_at: null
-version: 1
+version: 2
+contextual_roles: []
 ---
 
 # Event-Driven Architecture
@@ -152,7 +207,7 @@ Renaming remote commands as events while requiring an immediate single consumer 
 
 ## Related Concepts
 
-AKC-000008, AKC-000014, AKC-000016 are governed related concepts. Typed edges are recorded separately.
+Transactional Outbox addresses one event-publication boundary, Eventual Consistency describes a conditional state model, and Microservices are one possible deployment context.
 
 ## Claims and Evidence
 

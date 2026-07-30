@@ -4,14 +4,18 @@ subject: AKC-000007
 predicate: compatible-with
 object:
   record_id: AKC-000009
-statement: "A modular monolith can apply hexagonal ports and adapters inside modules to enforce inward dependencies and adapter isolation."
+statement: A modular monolith can apply hexagonal ports and adapters inside modules to enforce inward dependencies and adapter isolation.
 claim_type: synthesis
+semantic_scope: concept-global
 conditions:
-  - statement: "Module contracts and dependency rules are explicit and tested."
+  - statement: Module contracts and dependency rules are explicit and tested.
     concept_ids: []
+    scope: edge-local
 confidence: medium
-sources: [AKS-000006, AKS-000009]
+sources:
+  - AKS-000006
+  - AKS-000009
 derived_from_claims: []
 status: sourced
-notes: "Compatibility does not make either concept a subtype of the other."
+notes: Compatibility does not make either concept a subtype of the other.
 version: 1

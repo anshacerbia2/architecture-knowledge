@@ -1,14 +1,19 @@
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { validateIdentities } from "../src/id-validator.js";
 import { asArray, isPlainObject } from "../src/io.js";
-import { loadRepository } from "../src/model.js";
+import type { RepositoryModel } from "../src/model.js";
 import { validateSchemas } from "../src/schema-validator.js";
 import { allocations, validSemanticModel } from "./helpers.js";
 
 describe("active concept human keys", () => {
+  let baseline: RepositoryModel;
+
+  beforeAll(async () => {
+    baseline = await validSemanticModel();
+  });
   it("rejects a null human_key for an active concept allocation", async () => {
-    const model = await validSemanticModel();
+    const model = { ...baseline };
     model.idLedger = {
       ...model.idLedger,
       allocations: allocations(model).map((allocation) =>
@@ -22,7 +27,13 @@ describe("active concept human keys", () => {
   });
 
   it("enforces the same rule through the ledger schema", async () => {
-    const model = await loadRepository(process.cwd());
+    const model = {
+      ...baseline,
+      governedFiles: baseline.governedFiles.map((file) => ({
+        ...file,
+        data: isPlainObject(file.data) ? { ...file.data } : file.data,
+      })),
+    };
     const ledger = model.governedFiles.find((file) => file.path === "ids/ledger.yaml");
     if (!ledger || !isPlainObject(ledger.data)) {
       throw new Error("ID ledger fixture is unavailable.");
@@ -48,7 +59,7 @@ describe("active concept human keys", () => {
   });
 
   it("allows a null human_key for a non-concept allocation", async () => {
-    const model = await validSemanticModel();
+    const model = { ...baseline };
     const rows = asArray(model.idLedger.allocations).filter(isPlainObject);
     model.idLedger = {
       ...model.idLedger,

@@ -1,59 +1,107 @@
 ---
 id: AKC-000015
 record_kind: concept
-title: "Saga"
-aliases: ["Saga distributed transaction"]
+title: Saga
+aliases:
+  - Saga distributed transaction
 type: integration-pattern
 secondary_types: []
 domain: distributed-systems
-subdomains: [workflow, transactions]
-dimensions: [interaction, data-consistency, state-management, resilience]
+subdomains:
+  - workflow
+  - transactions
+dimensions:
+  - interaction
+  - data-consistency
+  - state-management
+  - resilience
 status: drafted
 maturity: seed
-summary: "A distributed workflow pattern that coordinates a sequence of local transactions and uses compensating actions or forward recovery after failure."
-tags: [saga, compensation, workflow]
-problem: "A business workflow spans independently owned transactional boundaries where one atomic transaction is unavailable or undesirable."
-context: "Long-running or cross-service processes with explicit intermediate states, failure handling, and business-defined compensation."
-intent: "Coordinate distributed progress while making partial completion and recovery explicit."
-forces: ["Compensation may not undo reality.","Steps can repeat or reorder.","Isolation is weaker than one transaction.","Business deadlines can be long.","Ownership spans services."]
+summary: A distributed workflow pattern that coordinates a sequence of local transactions and uses compensating actions or forward recovery after failure.
+tags:
+  - saga
+  - compensation
+  - workflow
+problem: A business workflow spans independently owned transactional boundaries where one atomic transaction is unavailable or undesirable.
+context: Long-running or cross-service processes with explicit intermediate states, failure handling, and business-defined compensation.
+intent: Coordinate distributed progress while making partial completion and recovery explicit.
+forces:
+  - Compensation may not undo reality.
+  - Steps can repeat or reorder.
+  - Isolation is weaker than one transaction.
+  - Business deadlines can be long.
+  - Ownership spans services.
 applicable_when:
-  - statement: "Use when local transactions can advance a workflow and the business can define acceptable compensation or forward recovery for failures."
+  - statement: Use when local transactions can advance a workflow and the business can define acceptable compensation or forward recovery for failures.
     concept_ids: []
+    scope: edge-local
 avoid_when:
-  - statement: "Avoid when partial completion is unacceptable and a single transactional boundary is feasible, or when no valid recovery semantics exist."
+  - statement: Avoid when partial completion is unacceptable and a single transactional boundary is feasible, or when no valid recovery semantics exist.
     concept_ids: []
+    scope: edge-local
 prerequisites: []
 quality_attributes:
-  improves:
-    []
-  degrades:
-    []
-  influences:
-    []
-constraints: []
-assumptions: []
-benefits: ["Avoids global locks.","Supports long-running workflows.","Makes compensation explicit."]
-tradeoffs: ["Weak isolation.","Complex state machines.","Compensation and operations burden."]
-risks: []
-failure_modes: [AKC-000024]
-security_implications: ["Authorize every step and compensation independently; a coordinator must not become a confused deputy across service boundaries."]
-operational_implications: ["Provide end-to-end state visibility, stuck-saga detection, replay controls, manual repair, and audit trails."]
-data_implications: ["Persist workflow identity, step state, causal links, deadlines, and compensation outcomes; design participant actions for repeated messages."]
-alternatives: []
-related: [AKC-000016]
-relationships: [AKR-000011]
-examples: []
-counterexamples: []
-claims: [AKL-000015, AKL-000031]
-sources: [AKS-000015]
+  improves: []
+  degrades: []
+  influences: []
+constraints:
+  - statement: Compensation, pivot, retryable steps, isolation risks, and intervention paths must be specified.
+    scope: edge-local
+    concept_ids: []
+assumptions:
+  - statement: Participants and recovery mechanisms eventually make progress or escalate to explicit intervention.
+    scope: edge-local
+    concept_ids: []
+benefits:
+  - Avoids global locks.
+  - Supports long-running workflows.
+  - Makes compensation explicit.
+tradeoffs:
+  - Weak isolation.
+  - Complex state machines.
+  - Compensation and operations burden.
+risks:
+  - statement: Compensation can fail or be semantically impossible.
+    scope: edge-local
+    concept_ids: []
+failure_modes:
+  - AKC-000024
+security_implications:
+  - Authorize every step and compensation independently; a coordinator must not become a confused deputy across service boundaries.
+operational_implications:
+  - Provide end-to-end state visibility, stuck-saga detection, replay controls, manual repair, and audit trails.
+data_implications:
+  - Persist workflow identity, step state, causal links, deadlines, and compensation outcomes; design participant actions for repeated messages.
+alternatives:
+  - statement: A local transaction is simpler when ownership can remain within one boundary.
+    scope: edge-local
+    concept_ids: []
+related:
+  - AKC-000016
+relationships:
+  - AKR-000011
+examples:
+  - statement: A travel workflow reserves components locally and compensates completed reservations when a later required step fails.
+    scope: edge-local
+    concept_ids: []
+counterexamples:
+  - statement: Calling several services sequentially without durable workflow state or compensation is not a reliable saga.
+    scope: edge-local
+    concept_ids: []
+claims:
+  - AKL-000015
+  - AKL-000031
+sources:
+  - AKS-000015
 review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-29
+  updated_at: 2026-07-30
   reviewed_at: null
   review_due_at: null
-version: 1
+version: 2
+contextual_roles: []
 ---
 
 # Saga
@@ -152,7 +200,7 @@ Calling several services sequentially without durable workflow state or compensa
 
 ## Related Concepts
 
-AKC-000016 are governed related concepts. Typed edges are recorded separately.
+Eventual Consistency describes the convergence contract exposed by saga intermediate states and recovery.
 
 ## Claims and Evidence
 

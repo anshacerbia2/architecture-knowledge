@@ -1,59 +1,102 @@
 ---
 id: AKC-000022
 record_kind: concept
-title: "Boundary Erosion"
-aliases: ["Architecture boundary erosion"]
+title: Boundary Erosion
+aliases:
+  - Architecture boundary erosion
 type: failure-mode
 secondary_types: []
 domain: application-architecture
-subdomains: [supporting-concepts]
-dimensions: [system-decomposition, internal-structure, data-ownership]
+subdomains:
+  - supporting-concepts
+dimensions:
+  - system-decomposition
+  - internal-structure
+  - data-ownership
 status: proposed
 maturity: seed
-summary: "A failure mode in which intended module or service boundaries lose enforceable ownership and dependency semantics over time."
-tags: [failure-mode, coupling, boundaries]
-problem: "Named boundaries can remain in diagrams while code, data, releases, and ownership become mutually coupled."
-context: "Modular monoliths, microservices, and ports-and-adapters designs whose benefits depend on maintained boundaries."
-intent: "Represent the failure of an architecture boundary to constrain dependencies and ownership."
-forces: ["Cross-boundary shortcuts are locally cheap.","Shared data accelerates initial work.","Enforcement requires maintenance."]
+summary: A failure mode in which intended module or service boundaries lose enforceable ownership and dependency semantics over time.
+tags:
+  - failure-mode
+  - coupling
+  - boundaries
+problem: Named boundaries can remain in diagrams while code, data, releases, and ownership become mutually coupled.
+context: Modular monoliths, microservices, and ports-and-adapters designs whose benefits depend on maintained boundaries.
+intent: Represent the failure of an architecture boundary to constrain dependencies and ownership.
+forces:
+  - Cross-boundary shortcuts are locally cheap.
+  - Shared data accelerates initial work.
+  - Enforcement requires maintenance.
 applicable_when:
-  - statement: "Use when observed dependencies contradict the stated contract or ownership of a boundary."
+  - statement: Use when observed dependencies contradict the stated contract or ownership of a boundary.
     concept_ids: []
+    scope: edge-local
 avoid_when:
-  - statement: "Do not label necessary, governed collaboration as erosion merely because components interact."
+  - statement: Do not label necessary, governed collaboration as erosion merely because components interact.
     concept_ids: []
+    scope: edge-local
 prerequisites: []
 quality_attributes:
-  improves:
-    []
-  degrades:
-    []
-  influences:
-    []
-constraints: []
-assumptions: []
-benefits: ["Makes boundary integrity an explicit failure concern."]
-tradeoffs: ["Boundary strength is contextual and can be costly to measure."]
-risks: []
-failure_modes: [AKC-000021]
-security_implications: ["Threat assumptions include unintended privilege or data access through an eroded trust or module boundary."]
-operational_implications: ["Track coordinated releases, cross-owner incidents, dependency cycles, and exception growth."]
-data_implications: ["Shared mutable schemas and direct cross-owner writes are common evidence of erosion."]
-alternatives: []
-related: [AKC-000007, AKC-000008, AKC-000009]
-relationships: [AKR-000022]
-examples: []
-counterexamples: []
-claims: [AKL-000042, AKL-000046]
-sources: [AKS-000006, AKS-000007, AKS-000009]
+  improves: []
+  degrades: []
+  influences: []
+constraints:
+  - statement: Boundary erosion must be assessed against an explicit intended dependency or ownership rule.
+    scope: edge-local
+    concept_ids: []
+assumptions:
+  - statement: The declared boundary is still intended and exceptions can be distinguished from unmanaged coupling.
+    scope: edge-local
+    concept_ids: []
+benefits:
+  - Makes boundary integrity an explicit failure concern.
+tradeoffs:
+  - Boundary strength is contextual and can be costly to measure.
+risks:
+  - statement: Rigid enforcement can preserve a poor boundary, while absent enforcement can turn architecture intent into documentation only.
+    scope: edge-local
+    concept_ids: []
+failure_modes: []
+security_implications:
+  - Threat assumptions include unintended privilege or data access through an eroded trust or module boundary.
+operational_implications:
+  - Track coordinated releases, cross-owner incidents, dependency cycles, and exception growth.
+data_implications:
+  - Shared mutable schemas and direct cross-owner writes are common evidence of erosion.
+alternatives:
+  - statement: Cascading amplification concerns runtime feedback; boundary erosion concerns structural integrity.
+    scope: edge-local
+    concept_ids: []
+related:
+  - AKC-000007
+  - AKC-000008
+  - AKC-000009
+relationships:
+  - AKR-000022
+examples:
+  - statement: A module imports another module's internal persistence classes and writes its tables directly.
+    scope: edge-local
+    concept_ids: []
+counterexamples:
+  - statement: A versioned public contract used across teams is boundary interaction, not erosion.
+    scope: edge-local
+    concept_ids: []
+claims:
+  - AKL-000042
+  - AKL-000046
+sources:
+  - AKS-000006
+  - AKS-000007
+  - AKS-000009
 review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-29
+  updated_at: 2026-07-30
   reviewed_at: null
   review_due_at: null
-version: 1
+version: 2
+contextual_roles: []
 ---
 
 # Boundary Erosion
@@ -152,7 +195,7 @@ A versioned public contract used across teams is boundary interaction, not erosi
 
 ## Related Concepts
 
-AKC-000007, AKC-000008, AKC-000009 are governed related concepts. This supporting node is not one of the twenty draft reference units.
+Modular Monolith, Microservices, and Hexagonal Architecture depend on different boundary mechanisms whose erosion must be evaluated separately.
 
 ## Claims and Evidence
 

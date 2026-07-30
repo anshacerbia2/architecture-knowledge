@@ -3,14 +3,17 @@ record_kind: claim
 subject: AKC-000022
 predicate: erodes
 object:
-  literal: "declared module or service boundaries"
-statement: "Direct internal dependencies, shared mutable data, and coordinated releases can erode declared architecture boundaries until they no longer constrain change or ownership."
+  literal: declared module or service boundaries
+statement: Direct internal dependencies, shared mutable data, and coordinated releases can erode declared architecture boundaries until they no longer constrain change or ownership.
 claim_type: synthesis
-conditions:
-  []
+semantic_scope: claim-context-only
+conditions: []
 confidence: medium
-sources: [AKS-000006, AKS-000007, AKS-000009]
+sources:
+  - AKS-000006
+  - AKS-000007
+  - AKS-000009
 derived_from_claims: []
 status: proposed
-notes: "Supporting M3 claim; not human reviewed."
-version: 1
+notes: Retained as proposed project-defined synthesis. Evidence separating structural, release, data, and ownership erosion remains incomplete; related traversal remains excluded.
+version: 2

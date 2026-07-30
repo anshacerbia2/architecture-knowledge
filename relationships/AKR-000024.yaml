@@ -1,15 +1,24 @@
 id: AKR-000024
 record_kind: relationship
-subject: AKC-000010
-predicate: introduces
-object: AKC-000024
-strength: moderate
+subject: AKC-000024
+predicate: can-occur-in-context-of
+object: AKC-000010
+strength: weak
 direction: directed
 conditions:
-  - statement: "Consumers maintain derived state and the convergence mechanism fails beyond its declared bound."
+  - statement: Consumers maintain derived state and the convergence mechanism fails
+      beyond its declared bound.
     concept_ids: []
-evidence: [AKL-000048]
-confidence: medium
+    scope: edge-local
+evidence:
+  - AKL-000048
+confidence: low
 status: proposed
-notes: "Supporting M3 failure-mode edge; not human reviewed."
-version: 1
+notes: The failed reconciliation outcome, rather than EDA, is the actor; this
+  context association remains proposed and excluded.
+version: 2
+semantic_scope: claim-context-only
+traversal:
+  eligible: false
+  rationale: Proposed context association has corrected actor semantics but still
+    lacks direct repair/convergence evidence.

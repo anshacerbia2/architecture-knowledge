@@ -1,63 +1,111 @@
 ---
 id: AKC-000019
 record_kind: concept
-title: "Observability"
-aliases: ["System observability"]
+title: Observability
+aliases:
+  - System observability
 type: quality-attribute
 secondary_types: []
 domain: observability
-subdomains: [telemetry, diagnostics]
-dimensions: [observability, resilience, execution]
+subdomains:
+  - telemetry
+  - diagnostics
+dimensions:
+  - observability
+  - resilience
+  - execution
 status: drafted
 maturity: seed
-summary: "The capability to understand a system's internal state and behavior from available outputs, context, and targeted investigation."
-tags: [observability, telemetry, diagnostics]
-problem: "Operators and engineers cannot diagnose unfamiliar failures or evaluate behavior when the system exposes only predetermined health signals without sufficient context."
-context: "Operated systems whose distributed, dynamic, or high-cardinality behavior requires investigation beyond known failure dashboards."
-intent: "Enable evidence-based questions about system behavior while controlling telemetry cost, sensitivity, and interpretation."
-forces: ["Unknown failures need exploratory evidence.","Telemetry has cost and cardinality.","Context propagation can break.","Signals are incomplete models.","Sensitive data can leak."]
+summary: The capability to understand a system's internal state and behavior from available outputs, context, and targeted investigation.
+tags:
+  - observability
+  - telemetry
+  - diagnostics
+problem: Operators and engineers cannot diagnose unfamiliar failures or evaluate behavior when the system exposes only predetermined health signals without sufficient context.
+context: Operated systems whose distributed, dynamic, or high-cardinality behavior requires investigation beyond known failure dashboards.
+intent: Enable evidence-based questions about system behavior while controlling telemetry cost, sensitivity, and interpretation.
+forces:
+  - Unknown failures need exploratory evidence.
+  - Telemetry has cost and cardinality.
+  - Context propagation can break.
+  - Signals are incomplete models.
+  - Sensitive data can leak.
 applicable_when:
-  - statement: "Use as a system quality concern where diagnosis, learning, and operational decisions depend on interrogating behavior."
+  - statement: Use as a system quality concern where diagnosis, learning, and operational decisions depend on interrogating behavior.
     concept_ids: []
+    scope: edge-local
 avoid_when:
-  - statement: "Do not equate installing a telemetry library or collecting three signal types with achieving useful observability."
+  - statement: Do not equate installing a telemetry library or collecting three signal types with achieving useful observability.
     concept_ids: []
+    scope: edge-local
 prerequisites: []
 quality_attributes:
-  improves:
-    - quality_attribute_id: AKC-000005
-      conditions:
-        - statement: Telemetry is actionable and used in detection and response.
-          concept_ids: []
-      claim_ids: [AKL-000035]
-  degrades:
-    []
-  influences:
-    []
-constraints: []
-assumptions: []
-benefits: ["Supports investigation of unknown failure.","Improves causal context.","Enables operational learning and verification."]
-tradeoffs: ["Storage and processing cost.","Instrumentation maintenance.","Privacy and cardinality risks."]
-risks: []
+  improves: []
+  degrades: []
+  influences: []
+constraints:
+  - statement: Telemetry collection must stay within cost, privacy, retention, and access-control limits.
+    scope: edge-local
+    concept_ids: []
+assumptions:
+  - statement: Signals preserve enough context and responders have workflows capable of acting on the evidence.
+    scope: edge-local
+    concept_ids: []
+benefits:
+  - Supports investigation of unknown failure.
+  - Improves causal context.
+  - Enables operational learning and verification.
+tradeoffs:
+  - Storage and processing cost.
+  - Instrumentation maintenance.
+  - Privacy and cardinality risks.
+risks:
+  - statement: Dashboards can create false confidence.
+    scope: edge-local
+    concept_ids: []
 failure_modes: []
-security_implications: ["Treat telemetry as sensitive data, enforce tenant boundaries, redact secrets and personal data, and audit query access."]
-operational_implications: ["Operate telemetry pipelines as production dependencies with capacity, loss, delay, quality, and cost indicators."]
-data_implications: ["Define telemetry ownership, schema, retention, sampling, redaction, lineage, and deletion requirements."]
-alternatives: []
-related: [AKC-000005]
-relationships: [AKR-000015]
-examples: []
-counterexamples: []
-claims: [AKL-000019, AKL-000035]
-sources: [AKS-000020]
+security_implications:
+  - Treat telemetry as sensitive data, enforce tenant boundaries, redact secrets and personal data, and audit query access.
+operational_implications:
+  - Operate telemetry pipelines as production dependencies with capacity, loss, delay, quality, and cost indicators.
+data_implications:
+  - Define telemetry ownership, schema, retention, sampling, redaction, lineage, and deletion requirements.
+alternatives:
+  - statement: Monitoring of known conditions is necessary but narrower; debugging and profiling provide targeted evidence and can participate in an observability strategy.
+    scope: edge-local
+    concept_ids: []
+related:
+  - AKC-000005
+relationships:
+  - AKR-000015
+examples:
+  - statement: An engineer traces a degraded user journey across services and correlates it with deployment, tenant, and dependency evidence.
+    scope: edge-local
+    concept_ids: []
+counterexamples:
+  - statement: A dashboard showing host CPU without request or domain context does not establish system observability.
+    scope: edge-local
+    concept_ids: []
+claims:
+  - AKL-000019
+  - AKL-000035
+sources:
+  - AKS-000020
 review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-29
+  updated_at: 2026-07-30
   reviewed_at: null
   review_due_at: null
-version: 1
+version: 3
+contextual_roles:
+  - role: system-property
+    context: The system exposes enough output and context to investigate internal behavior.
+  - role: operational-capability
+    context: People and automation can ask questions and act on the resulting evidence.
+  - role: engineering-discipline
+    context: Instrumentation and telemetry operations are practices that support, but do not equal, observability.
 ---
 
 # Observability
@@ -104,7 +152,7 @@ Do not equate installing a telemetry library or collecting three signal types wi
 
 ## Quality Attribute Impact
 
-Actionable observability can improve reliability through faster detection and diagnosis, but instrumentation overhead and poor signals can add cost without improving outcomes.
+Observability supplies contextual evidence for investigation and operational decisions. It does not intrinsically improve reliability: detection time, diagnosis time, response effectiveness, and service outcomes require separate measures and causal evidence.
 
 ## Benefits
 
@@ -156,12 +204,12 @@ A dashboard showing host CPU without request or domain context does not establis
 
 ## Related Concepts
 
-AKC-000005 are governed related concepts. Typed edges are recorded separately.
+Reliability remains a separate system quality; observability supplies investigative evidence but does not intrinsically improve it.
 
 ## Claims and Evidence
 
-AKL-000019 defines observability as understanding through outputs. AKL-000035 qualifies its reliability effect when evidence drives response.
+AKL-000019 defines observability as understanding through outputs and context. AKL-000035 is a low-confidence inference limited to supporting reliability-incident investigation; the causal improvement claim was removed.
 
 ## Sources
 
-AKS-000020 supplies vendor-neutral observability concepts; it does not mandate OpenTelemetry as the implementation.
+AKS-000020 supplies the inspectable observability definition and evidence-pipeline context. It does not establish a measurable reliability improvement or mandate OpenTelemetry as the implementation.

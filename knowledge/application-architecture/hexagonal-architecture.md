@@ -1,59 +1,106 @@
 ---
 id: AKC-000009
 record_kind: concept
-title: "Hexagonal Architecture"
-aliases: ["Ports and Adapters"]
+title: Hexagonal Architecture
+aliases:
+  - Ports and Adapters
 type: architectural-pattern
 secondary_types: []
 domain: application-architecture
-subdomains: [internal-structure]
-dimensions: [internal-structure, interaction, trust-security, delivery-evolution]
+subdomains:
+  - internal-structure
+dimensions:
+  - internal-structure
+  - interaction
+  - trust-security
+  - delivery-evolution
 status: drafted
 maturity: seed
-summary: "An architectural pattern that isolates application behavior behind ports and connects external actors and technologies through adapters."
-tags: [hexagonal, ports, adapters]
-problem: "Business behavior becomes difficult to test and evolve when it directly depends on user interfaces, databases, frameworks, or remote systems."
-context: "Applications where domain or application logic needs stable boundaries from external technologies and delivery mechanisms."
-intent: "Make application behavior invocable and testable independently of particular external adapters."
-forces: ["External technologies change.","The application still needs explicit contracts.","Abstraction has design cost.","Not every dependency needs a port."]
+summary: An architectural pattern that isolates application behavior behind ports and connects external actors and technologies through adapters.
+tags:
+  - hexagonal
+  - ports
+  - adapters
+problem: Business behavior becomes difficult to test and evolve when it directly depends on user interfaces, databases, frameworks, or remote systems.
+context: Applications where domain or application logic needs stable boundaries from external technologies and delivery mechanisms.
+intent: Make application behavior invocable and testable independently of particular external adapters.
+forces:
+  - External technologies change.
+  - The application still needs explicit contracts.
+  - Abstraction has design cost.
+  - Not every dependency needs a port.
 applicable_when:
-  - statement: "Use when external technology volatility or test isolation justifies explicit inbound and outbound ports."
+  - statement: Use when external technology volatility or test isolation justifies explicit inbound and outbound ports.
     concept_ids: []
+    scope: edge-local
 avoid_when:
-  - statement: "Avoid ceremonial ports around stable trivial dependencies when indirection adds more cost than isolation value."
+  - statement: Avoid ceremonial ports around stable trivial dependencies when indirection adds more cost than isolation value.
     concept_ids: []
+    scope: edge-local
 prerequisites: []
 quality_attributes:
-  improves:
-    []
-  degrades:
-    []
-  influences:
-    []
-constraints: []
-assumptions: []
-benefits: ["Technology-independent application tests.","Explicit dependency direction.","Replaceable external adapters."]
-tradeoffs: ["More interfaces and mapping.","Boundary design requires judgment.","Leaky ports can preserve coupling."]
-risks: []
-failure_modes: [AKC-000022]
-security_implications: ["Adapters are trust-boundary translation points and should validate, authenticate, authorize, and normalize external input as appropriate."]
-operational_implications: ["Adapter-level telemetry should preserve correlation while distinguishing external failure from application decision."]
-data_implications: ["Outbound ports should express application data needs without pretending persistence semantics are interchangeable."]
-alternatives: []
-related: [AKC-000007]
-relationships: [AKR-000003]
-examples: []
-counterexamples: []
-claims: [AKL-000009, AKL-000023]
-sources: [AKS-000006, AKS-000009]
+  improves: []
+  degrades: []
+  influences: []
+constraints:
+  - statement: Application behavior must remain isolated from technology-specific adapters at the declared application boundary.
+    scope: edge-local
+    concept_ids: []
+assumptions:
+  - statement: Ports express stable application purposes rather than leaking external technology details.
+    scope: edge-local
+    concept_ids: []
+benefits:
+  - Technology-independent application tests.
+  - Explicit dependency direction.
+  - Replaceable external adapters.
+tradeoffs:
+  - More interfaces and mapping.
+  - Boundary design requires judgment.
+  - Leaky ports can preserve coupling.
+risks:
+  - statement: Framework types inside ports undermine isolation.
+    scope: edge-local
+    concept_ids: []
+failure_modes:
+  - AKC-000022
+security_implications:
+  - Adapters are trust-boundary translation points and should validate, authenticate, authorize, and normalize external input as appropriate.
+operational_implications:
+  - Adapter-level telemetry should preserve correlation while distinguishing external failure from application decision.
+data_implications:
+  - Outbound ports should express application data needs without pretending persistence semantics are interchangeable.
+alternatives:
+  - statement: Layered architecture can also direct dependencies but may organize by technical layer rather than application boundary.
+    scope: edge-local
+    concept_ids: []
+related:
+  - AKC-000007
+relationships:
+  - AKR-000003
+examples:
+  - statement: A payment use case exposes an inbound port and calls an application-owned payment-provider port implemented by a vendor adapter.
+    scope: edge-local
+    concept_ids: []
+counterexamples:
+  - statement: An interface mirroring every method of a database client is indirection, not a meaningful application port.
+    scope: edge-local
+    concept_ids: []
+claims:
+  - AKL-000009
+  - AKL-000023
+sources:
+  - AKS-000006
+  - AKS-000009
 review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-29
+  updated_at: 2026-07-30
   reviewed_at: null
   review_due_at: null
-version: 1
+version: 2
+contextual_roles: []
 ---
 
 # Hexagonal Architecture
@@ -152,7 +199,7 @@ An interface mirroring every method of a database client is indirection, not a m
 
 ## Related Concepts
 
-AKC-000007 are governed related concepts. Typed edges are recorded separately.
+A Modular Monolith can use ports and adapters within modules; the pattern does not require a monolithic or distributed deployment.
 
 ## Claims and Evidence
 

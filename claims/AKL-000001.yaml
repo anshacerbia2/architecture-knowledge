@@ -4,12 +4,14 @@ subject: AKC-000001
 predicate: decomposes-into
 object:
   literal: foundational propositions or premises
-statement: First-principles reasoning examines a subject by identifying propositions treated as foundational within the inquiry and reasoning from them.
-claim_type: normalized-source-claim
+statement: This corpus transfers first-principles reasoning from the examination of foundational propositions to bounded architecture inquiries; the software-architecture method is a repository synthesis, not a directly normalized historical source claim.
+claim_type: synthesis
+semantic_scope: concept-global
 conditions: []
-confidence: medium
-sources: [AKS-000001]
+confidence: low
+sources:
+  - AKS-000001
 derived_from_claims: []
 status: sourced
-notes: The source is historical and philosophical; application to software architecture is a bounded transfer, not a universal method.
-version: 1
+notes: Qualified transfer from AKS-000001. The source establishes foundational propositions in a historical philosophical scope; it does not prescribe a modern software method.
+version: 2

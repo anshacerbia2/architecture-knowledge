@@ -1,66 +1,122 @@
 ---
 id: AKC-000016
 record_kind: concept
-title: "Eventual Consistency"
-aliases: ["Eventually consistent convergence"]
-type: data-pattern
+title: Eventual Consistency
+aliases:
+  - Eventually consistent convergence
+type: consistency-model
 secondary_types: []
 domain: distributed-systems
-subdomains: [consistency]
-dimensions: [data-consistency, state-management, interaction]
+subdomains:
+  - consistency
+dimensions:
+  - data-consistency
+  - state-management
+  - interaction
 status: drafted
 maturity: seed
-summary: "A consistency model in which replicas or distributed participants may temporarily diverge but are expected to converge after updates cease under stated delivery and conflict assumptions."
-tags: [eventual-consistency, convergence]
-problem: "Independent distribution and availability can make immediate global agreement costly or unavailable, while users and workflows still need understandable state semantics."
-context: "Replicated data or distributed workflows that permit bounded temporary divergence and have a convergence mechanism."
-intent: "Trade immediate agreement for availability, autonomy, or latency while defining convergence and anomaly handling explicitly."
-forces: ["Updates propagate with delay.","Concurrent writes can conflict.","Users observe intermediate states.","Convergence depends on delivery and merge rules.","Some invariants cannot be delayed."]
+summary: A consistency model that permits bounded temporary divergence and promises convergence only under explicit delivery, conflict-resolution, and quiescence assumptions.
+tags:
+  - eventual-consistency
+  - convergence
+problem: Independent distribution and availability can make immediate global agreement costly or unavailable, while users and workflows still need understandable state semantics.
+context: Replicated data or distributed workflows that permit bounded temporary divergence and have a convergence mechanism.
+intent: Trade immediate agreement for availability, autonomy, or latency while defining convergence and anomaly handling explicitly.
+forces:
+  - Updates propagate with delay.
+  - Concurrent writes can conflict.
+  - Users observe intermediate states.
+  - Convergence depends on delivery and merge rules.
+  - Some invariants cannot be delayed.
 applicable_when:
-  - statement: "Use when stakeholders accept specified temporary divergence and the system can prove or monitor convergence for the affected state."
+  - statement: Use when stakeholders accept specified temporary divergence and the system can prove or monitor convergence for the affected state.
     concept_ids: []
+    scope: edge-local
 avoid_when:
-  - statement: "Avoid for invariants that require immediate coordination or where stale and conflicting observations create unacceptable harm."
+  - statement: Avoid for invariants that require immediate coordination or where stale and conflicting observations create unacceptable harm.
     concept_ids: []
+    scope: edge-local
 prerequisites: []
 quality_attributes:
-  improves:
-    []
-  degrades:
-    []
-  influences:
-    []
-constraints: []
-assumptions: []
-benefits: ["Supports disconnected or autonomous progress.","Reduces synchronous coordination.","Can improve regional latency and availability."]
-tradeoffs: ["Temporary anomalies.","Conflict-resolution complexity.","Harder user and operator reasoning."]
-risks: []
-failure_modes: [AKC-000024]
-security_implications: ["Authorization and revocation semantics need special care because stale replicas can continue accepting or exposing actions."]
-operational_implications: ["Measure replication lag, divergence age, conflict rate, repair backlog, and convergence failures rather than assuming convergence."]
-data_implications: ["Specify convergence target, conflict semantics, causal metadata, tombstones, retention, and invariants requiring coordination."]
-alternatives: []
-related: [AKC-000010, AKC-000015]
-relationships: [AKR-000011, AKR-000012]
-examples: []
-counterexamples: []
-claims: [AKL-000016, AKL-000031, AKL-000032]
-sources: [AKS-000010, AKS-000015, AKS-000016]
+  improves: []
+  degrades: []
+  influences: []
+constraints:
+  - statement: Permitted divergence, convergence target, anomaly window, and invariants requiring coordination must be explicit.
+    scope: edge-local
+    concept_ids: []
+assumptions:
+  - statement: After relevant updates cease, delivery and conflict-resolution mechanisms can make progress toward the convergence target.
+    scope: edge-local
+    concept_ids: []
+benefits:
+  - Supports disconnected or autonomous progress.
+  - Reduces synchronous coordination.
+  - Can improve regional latency and availability.
+tradeoffs:
+  - Temporary anomalies.
+  - Conflict-resolution complexity.
+  - Harder user and operator reasoning.
+risks:
+  - statement: Eventually can become unbounded when delivery or repair fails.
+    scope: edge-local
+    concept_ids: []
+failure_modes:
+  - AKC-000024
+security_implications:
+  - Authorization and revocation semantics need special care because stale replicas can continue accepting or exposing actions.
+operational_implications:
+  - Measure replication lag, divergence age, conflict rate, repair backlog, and convergence failures rather than assuming convergence.
+data_implications:
+  - Specify convergence target, conflict semantics, causal metadata, tombstones, retention, and invariants requiring coordination.
+alternatives:
+  - statement: Strong consistency coordinates before exposing results; bounded staleness and session guarantees offer intermediate contracts.
+    scope: edge-local
+    concept_ids: []
+related:
+  - AKC-000010
+  - AKC-000015
+relationships:
+  - AKR-000011
+  - AKR-000012
+examples:
+  - statement: A regional catalog projection serves slightly stale descriptions and converges after event delivery resumes.
+    scope: edge-local
+    concept_ids: []
+counterexamples:
+  - statement: Two databases that drift indefinitely with no delivery, conflict, or repair mechanism are inconsistent, not eventually consistent by design.
+    scope: edge-local
+    concept_ids: []
+claims:
+  - AKL-000016
+  - AKL-000031
+  - AKL-000032
+sources:
+  - AKS-000010
+  - AKS-000015
+  - AKS-000016
 review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-29
+  updated_at: 2026-07-30
   reviewed_at: null
   review_due_at: null
-version: 1
+version: 3
+contextual_roles:
+  - role: distributed-system-property
+    context: Participants can observe divergent state within a declared consistency contract.
+  - role: architectural-consequence
+    context: Asynchronous replication or workflow choices can introduce the consistency behavior conditionally.
+  - role: architectural-tradeoff
+    context: The model trades immediate agreement against stated availability, autonomy, or latency goals.
 ---
 
 # Eventual Consistency
 
 ## Summary
 
-A consistency model in which replicas or distributed participants may temporarily diverge but are expected to converge after updates cease under stated delivery and conflict assumptions.
+A consistency model that permits bounded temporary divergence and promises convergence only under explicit delivery, conflict-resolution, and quiescence assumptions.
 
 ## Intent
 
@@ -84,7 +140,7 @@ Define what may diverge, how updates propagate, how conflicts are ordered or mer
 
 ## Structural View
 
-Multiple state holders exchange updates through channels and apply deterministic ordering, conflict resolution, or compensating workflow rules.
+Eventual consistency is primarily a consistency model, not a reusable solution pattern. Replicas, event consumers, repair processes, and conflict rules are mechanisms that may realize the model or cause it to fail.
 
 ## Runtime View
 
@@ -100,7 +156,7 @@ Avoid for invariants that require immediate coordination or where stale and conf
 
 ## Quality Attribute Impact
 
-It can improve availability, latency, and autonomy while degrading freshness, simplicity, and immediate invariant enforcement.
+The model may support autonomy or availability goals in a particular design, but it introduces a divergence window and does not itself guarantee reliability, recoverability, or correct conflict outcomes.
 
 ## Benefits
 
@@ -152,7 +208,7 @@ Two databases that drift indefinitely with no delivery, conflict, or repair mech
 
 ## Related Concepts
 
-AKC-000010, AKC-000015 are governed related concepts. Typed edges are recorded separately.
+Event-Driven Architecture and Saga can produce eventual-consistency behavior conditionally; neither implementation form is synonymous with the consistency model.
 
 ## Claims and Evidence
 
@@ -160,4 +216,4 @@ AKL-000016 defines convergence assumptions. AKL-000031 and AKL-000032 qualify sa
 
 ## Sources
 
-AKS-000016 provides the foundational model; AKS-000010 and AKS-000015 supply architecture and workflow contexts.
+AKS-000016 directly frames eventual consistency as a weak consistency model. AKS-000010 and AKS-000015 provide conditional architecture contexts, not definitional equivalence.

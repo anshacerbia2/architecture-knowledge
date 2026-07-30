@@ -1,15 +1,24 @@
 id: AKR-000023
 record_kind: relationship
-subject: AKC-000018
-predicate: introduces
-object: AKC-000023
-strength: moderate
+subject: AKC-000023
+predicate: can-occur-in-context-of
+object: AKC-000018
+strength: weak
 direction: directed
 conditions:
-  - statement: "Token consumers do not validate the complete issuer, audience, client, token role, and protocol context."
+  - statement: Token consumers do not validate the complete issuer, audience,
+      client, token role, and protocol context.
     concept_ids: []
-evidence: [AKL-000047]
+    scope: edge-local
+evidence:
+  - AKL-000047
 confidence: medium
 status: proposed
-notes: "Supporting M3 failure-mode edge; not human reviewed."
-version: 1
+notes: The failure mode, rather than OpenID Connect, is the actor; this context
+  association remains proposed and excluded.
+version: 2
+semantic_scope: claim-context-only
+traversal:
+  eligible: false
+  rationale: Proposed context association has corrected actor semantics but still
+    lacks exact threat evidence.

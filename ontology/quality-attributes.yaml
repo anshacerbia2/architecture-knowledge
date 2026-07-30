@@ -4,11 +4,30 @@ notes:
   - This is a discovery vocabulary, not a claim that all entries are peers under one standard.
   - Family and overlaps fields expose umbrella, specialization, and adjacent-capability ambiguity.
 attributes:
-  - {key: availability, family: dependability}
-  - {key: reliability, family: dependability, overlaps: [availability]}
-  - {key: resilience, family: dependability, overlaps: [fault-tolerance, recoverability]}
-  - {key: fault-tolerance, family: dependability, overlaps: [resilience]}
-  - {key: recoverability, family: dependability, overlaps: [disaster-recovery]}
+  - key: availability
+    family: dependability
+    definition: Readiness for a specified correct service to be usable when required within stated operating conditions and a defined observation window.
+    boundary: Availability does not establish continuity over time, correctness of every result, fault tolerance, or recovery capability.
+  - key: reliability
+    family: dependability
+    overlaps: [availability]
+    definition: Continuity of specified correct service without an unacceptable failure over a stated period or set of operating conditions.
+    boundary: Reliability is not a synonym for reachability or uptime; availability and reliability may share measures in a scenario but neither universally implies the other.
+  - key: resilience
+    family: dependability
+    overlaps: [fault-tolerance, recoverability]
+    definition: Capacity to withstand, adapt to, and recover from disruption while preserving or restoring explicitly prioritized outcomes.
+    boundary: Resilience is broader than preventing service interruption and can include degraded operation, adaptation, and recovery.
+  - key: fault-tolerance
+    family: dependability
+    overlaps: [resilience]
+    definition: Ability to continue a specified service despite particular faults within an explicit fault model.
+    boundary: Fault tolerance concerns continued service during faults; it does not by itself guarantee later repair, full recovery, or resilience to faults outside the model.
+  - key: recoverability
+    family: dependability
+    overlaps: [disaster-recovery]
+    definition: Ability to restore specified service and required state after a failure within defined recovery objectives.
+    boundary: Recoverability concerns restoration after failure and does not imply uninterrupted service during the failure.
   - {key: disaster-recovery, family: dependability, overlaps: [recoverability]}
   - {key: scalability, family: capacity}
   - {key: elasticity, family: capacity, overlaps: [scalability]}

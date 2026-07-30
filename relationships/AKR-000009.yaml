@@ -3,13 +3,21 @@ record_kind: relationship
 subject: AKC-000014
 predicate: enables
 object: AKC-000010
-strength: strong
+strength: moderate
 direction: directed
 conditions:
-  - statement: "A local database is authoritative and asynchronous at-least-once publication is acceptable."
+  - statement: The database is authoritative and asynchronous at-least-once
+      publication is acceptable.
     concept_ids: []
-evidence: [AKL-000029]
+    scope: edge-local
+evidence:
+  - AKL-000029
 confidence: high
 status: sourced
-notes: "The outbox enables a publication mechanism, not all EDA behavior."
-version: 1
+notes: The outbox enables a publication mechanism, not all EDA behavior.
+version: 2
+semantic_scope: claim-context-only
+traversal:
+  eligible: false
+  rationale: The outbox enables a publication mechanism, not event-driven
+    architecture as a whole.

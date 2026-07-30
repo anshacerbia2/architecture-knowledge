@@ -64,6 +64,12 @@
     },
     {
       "vocabulary": "concept-type",
+      "key": "consistency-model",
+      "assignable": true,
+      "usage_count": 1
+    },
+    {
+      "vocabulary": "concept-type",
       "key": "constraint",
       "assignable": true,
       "usage_count": 1
@@ -84,7 +90,7 @@
       "vocabulary": "concept-type",
       "key": "data-pattern",
       "assignable": true,
-      "usage_count": 1
+      "usage_count": 0
     },
     {
       "vocabulary": "concept-type",
@@ -220,6 +226,12 @@
     },
     {
       "vocabulary": "concept-type",
+      "key": "semantic-property",
+      "assignable": true,
+      "usage_count": 1
+    },
+    {
+      "vocabulary": "concept-type",
       "key": "stakeholder",
       "assignable": true,
       "usage_count": 0
@@ -234,7 +246,7 @@
       "vocabulary": "concept-type",
       "key": "tactic",
       "assignable": true,
-      "usage_count": 3
+      "usage_count": 2
     },
     {
       "vocabulary": "concept-type",
@@ -374,6 +386,11 @@
     },
     {
       "vocabulary": "relationship-predicate",
+      "key": "can-occur-in-context-of",
+      "usage_count": 2
+    },
+    {
+      "vocabulary": "relationship-predicate",
       "key": "causes",
       "usage_count": 0
     },
@@ -400,7 +417,7 @@
     {
       "vocabulary": "relationship-predicate",
       "key": "degrades",
-      "usage_count": 1
+      "usage_count": 0
     },
     {
       "vocabulary": "relationship-predicate",
@@ -445,12 +462,12 @@
     {
       "vocabulary": "relationship-predicate",
       "key": "improves",
-      "usage_count": 4
+      "usage_count": 3
     },
     {
       "vocabulary": "relationship-predicate",
       "key": "influences",
-      "usage_count": 2
+      "usage_count": 1
     },
     {
       "vocabulary": "relationship-predicate",
@@ -460,7 +477,7 @@
     {
       "vocabulary": "relationship-predicate",
       "key": "introduces",
-      "usage_count": 4
+      "usage_count": 2
     },
     {
       "vocabulary": "relationship-predicate",
@@ -479,8 +496,18 @@
     },
     {
       "vocabulary": "relationship-predicate",
+      "key": "overlaps-with",
+      "usage_count": 1
+    },
+    {
+      "vocabulary": "relationship-predicate",
       "key": "part-of",
       "usage_count": 0
+    },
+    {
+      "vocabulary": "relationship-predicate",
+      "key": "presents-risk-to",
+      "usage_count": 1
     },
     {
       "vocabulary": "relationship-predicate",
@@ -514,12 +541,17 @@
     },
     {
       "vocabulary": "relationship-predicate",
+      "key": "supports-investigation-of",
+      "usage_count": 1
+    },
+    {
+      "vocabulary": "relationship-predicate",
       "key": "verified-by",
       "usage_count": 0
     }
   ],
   "summary": {
-    "vocabulary_term_count": 95,
-    "used_term_count": 34
+    "vocabulary_term_count": 101,
+    "used_term_count": 38
   }
 }

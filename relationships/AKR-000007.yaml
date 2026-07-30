@@ -3,13 +3,21 @@ record_kind: relationship
 subject: AKC-000013
 predicate: improves
 object: AKC-000004
-strength: moderate
+strength: weak
 direction: directed
 conditions:
-  - statement: "A failing dependency would otherwise consume shared capacity and an acceptable open-state response exists."
+  - statement: The dependency failure would otherwise consume shared capacity and
+      the caller has an acceptable open-state response.
     concept_ids: []
-evidence: [AKL-000027]
-confidence: medium
+    scope: edge-local
+evidence:
+  - AKL-000027
+confidence: low
 status: sourced
-notes: "The edge concerns broader caller availability."
-version: 1
+notes: The edge concerns broader caller availability.
+version: 2
+semantic_scope: claim-context-only
+traversal:
+  eligible: false
+  rationale: Caller-capacity effect is plausible, but a measured availability
+    effect is not established.

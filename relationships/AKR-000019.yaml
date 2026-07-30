@@ -3,13 +3,19 @@ record_kind: relationship
 subject: AKC-000002
 predicate: influences
 object: AKC-000020
-strength: moderate
+strength: weak
 direction: directed
 conditions:
-  - statement: "The decision has material cross-boundary or lifecycle effects."
+  - statement: The decision has material cross-boundary or lifecycle effects.
     concept_ids: []
-evidence: [AKL-000039]
-confidence: medium
+    scope: edge-local
+evidence:
+  - AKL-000039
+confidence: low
 status: sourced
-notes: "The reasoning model informs the record but does not approve it."
-version: 1
+notes: The reasoning model informs the record but does not approve it.
+version: 2
+semantic_scope: claim-context-only
+traversal:
+  eligible: false
+  rationale: Cross-method recommendation is not directly established by admitted sources.

@@ -3,14 +3,16 @@ record_kind: claim
 subject: AKC-000008
 predicate: organizes
 object:
-  literal: "independently deployable services around bounded capabilities"
-statement: "Microservice architecture organizes a system as independently deployable services aligned to bounded capabilities and communicating through explicit contracts."
+  literal: independently deployable services around bounded capabilities
+statement: Microservice architecture organizes a system as independently deployable services aligned to bounded capabilities and communicating through explicit contracts.
 claim_type: synthesis
-conditions:
-  []
+semantic_scope: concept-global
+conditions: []
 confidence: high
-sources: [AKS-000007, AKS-000008]
+sources:
+  - AKS-000007
+  - AKS-000008
 derived_from_claims: []
 status: sourced
-notes: "Service size alone does not establish the style."
+notes: Service size alone does not establish the style.
 version: 1

@@ -4,14 +4,19 @@ subject: AKC-000007
 predicate: alternative-to
 object:
   record_id: AKC-000008
-statement: "A modular monolith and microservices are alternative deployment and decomposition choices when evaluating how much independent runtime ownership a product needs."
+statement: A modular monolith and microservices are alternative deployment and decomposition choices when evaluating how much independent runtime ownership a product needs.
 claim_type: synthesis
+semantic_scope: concept-global
 conditions:
-  - statement: "The decision concerns deployment and ownership boundaries for the same product scope."
+  - statement: The decision concerns deployment and ownership boundaries for the same product scope.
     concept_ids: []
+    scope: edge-local
 confidence: high
-sources: [AKS-000006, AKS-000007, AKS-000008]
+sources:
+  - AKS-000006
+  - AKS-000007
+  - AKS-000008
 derived_from_claims: []
 status: sourced
-notes: "The alternatives can coexist at different system scopes."
+notes: The alternatives can coexist at different system scopes.
 version: 1

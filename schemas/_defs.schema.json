@@ -64,6 +64,9 @@
         "statement": {
           "$ref": "#/$defs/nonEmptyString"
         },
+        "scope": {
+          "enum": ["edge-local", "reusable-concept"]
+        },
         "concept_ids": {
           "type": "array",
           "items": {

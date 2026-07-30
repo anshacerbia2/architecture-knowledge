@@ -1,0 +1,24 @@
+id: AKL-000058
+record_kind: claim
+subject: AKC-000017
+predicate: requires-intended-recipient-validation
+object:
+  literal: resource servers receiving access tokens
+statement: Resource servers MUST validate that an access token is intended for them and reject a token whose audience or resource binding does not match.
+claim_type: normalized-source-claim
+semantic_scope: concept-global
+conditions: []
+confidence: high
+sources:
+  - AKS-000018
+source_locations:
+  - source_id: AKS-000018
+    locator: RFC 9700 Section 2.3
+normative:
+  force: must
+  applies_to: Resource servers receiving OAuth access tokens.
+  exceptions: []
+derived_from_claims: []
+status: sourced
+notes: Recipient validation is distinct from privilege evaluation and application authorization.
+version: 1

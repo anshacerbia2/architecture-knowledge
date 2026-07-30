@@ -4,14 +4,18 @@ subject: AKC-000010
 predicate: introduces
 object:
   record_id: AKC-000016
-statement: "Event-driven workflows can introduce eventual-consistency behavior when consumers update independent state asynchronously."
+statement: Event-driven workflows can introduce eventual-consistency behavior when consumers update independent state asynchronously.
 claim_type: synthesis
+semantic_scope: concept-global
 conditions:
-  - statement: "Consumers maintain independent state derived from asynchronously delivered events."
+  - statement: Consumers maintain independent state derived from asynchronously delivered events.
     concept_ids: []
+    scope: edge-local
 confidence: high
-sources: [AKS-000010, AKS-000016]
+sources:
+  - AKS-000010
+  - AKS-000016
 derived_from_claims: []
 status: sourced
-notes: "Event transport alone does not require every data path to be eventually consistent."
+notes: Event transport alone does not require every data path to be eventually consistent.
 version: 1

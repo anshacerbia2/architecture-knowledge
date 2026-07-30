@@ -4,14 +4,19 @@ subject: AKC-000003
 predicate: constrains
 object:
   record_id: AKC-000008
-statement: "A constraint can narrow feasible microservice boundaries or deployment choices when it restricts data location, ownership, runtime, budget, or operational capability."
-claim_type: synthesis
+statement: A specific authoritative constraint can exclude particular microservice boundaries or deployment choices when its scope covers data location, ownership, runtime, budget, or operating capability.
+claim_type: inference
+semantic_scope: claim-context-only
 conditions:
-  - statement: "The named constraint is authoritative, scoped, and materially excludes an option."
+  - statement: The named constraint is authoritative, scoped, and materially excludes an option.
     concept_ids: []
-confidence: medium
-sources: [AKS-000002, AKS-000007, AKS-000008]
+    scope: edge-local
+confidence: low
+sources:
+  - AKS-000002
+  - AKS-000007
+  - AKS-000008
 derived_from_claims: []
 status: sourced
-notes: "Preferences and untested assumptions do not establish this edge."
-version: 1
+notes: Qualified low-confidence inference. A generic constraint creates no useful edge without naming the excluding condition.
+version: 2

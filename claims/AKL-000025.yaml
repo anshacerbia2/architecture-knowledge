@@ -4,14 +4,17 @@ subject: AKC-000012
 predicate: requires
 object:
   record_id: AKC-000011
-statement: "Retrying a state-changing operation requires idempotency or equivalent duplicate-effect control when an earlier attempt may have completed."
+statement: When a caller cannot know whether a state-changing attempt completed, retry requires a safe operation or an equivalent mechanism that prevents harmful duplicate effects.
 claim_type: synthesis
+semantic_scope: claim-context-only
 conditions:
-  - statement: "The caller cannot determine whether an earlier state-changing attempt completed and duplicate effects are harmful."
+  - statement: The caller cannot determine whether an earlier state-changing attempt completed and duplicate effects are harmful.
     concept_ids: []
-confidence: high
-sources: [AKS-000011, AKS-000012]
+    scope: edge-local
+confidence: medium
+sources:
+  - AKS-000012
 derived_from_claims: []
 status: sourced
-notes: "Naturally safe operations can satisfy the condition without a stored idempotency key."
-version: 1
+notes: Narrowed to the duplicate-effect requirement in AKS-000012. It does not equate HTTP method idempotency, message deduplication, and idempotency-key tactics.
+version: 2

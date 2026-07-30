@@ -1,15 +1,23 @@
 id: AKR-000020
 record_kind: relationship
-subject: AKC-000005
-predicate: influences
-object: AKC-000004
-strength: strong
-direction: directed
+subject: AKC-000004
+predicate: overlaps-with
+object: AKC-000005
+strength: moderate
+direction: symmetric
 conditions:
-  - statement: "The availability boundary includes the failed function under the same operating conditions."
+  - statement: The availability boundary includes the failed function under the same
+      operating conditions.
     concept_ids: []
-evidence: [AKL-000040]
-confidence: high
+    scope: edge-local
+evidence:
+  - AKL-000040
+confidence: medium
 status: sourced
-notes: "The quality attributes remain distinct."
-version: 1
+notes: Terminology overlap only; neither an ISO hierarchy nor a causal quality
+  impact is asserted.
+version: 2
+semantic_scope: concept-global
+traversal:
+  eligible: true
+  rationale: null

@@ -4,14 +4,18 @@ subject: AKC-000007
 predicate: mitigates
 object:
   record_id: AKC-000022
-statement: "A modular monolith can mitigate boundary erosion when module APIs, dependency direction, data ownership, and exceptions are enforced continuously."
+statement: A modular monolith can mitigate boundary erosion when module APIs, dependency direction, data ownership, and exceptions are enforced continuously.
 claim_type: recommendation
+semantic_scope: claim-context-only
 conditions:
-  - statement: "Module boundaries are explicit and enforced by tests, ownership, and data-access policy."
+  - statement: Module boundaries are explicit and enforced by tests, ownership, and data-access policy.
     concept_ids: []
-confidence: medium
-sources: [AKS-000006, AKS-000009]
+    scope: edge-local
+confidence: low
+sources:
+  - AKS-000006
+  - AKS-000009
 derived_from_claims: []
 status: proposed
-notes: "Supporting M3 claim; not human reviewed."
-version: 1
+notes: Retained as proposed recommendation. AKS-000006 is a case, not universal proof of continuous boundary enforcement; traversal remains excluded.
+version: 2

@@ -3,13 +3,20 @@ record_kind: relationship
 subject: AKC-000017
 predicate: compatible-with
 object: AKC-000018
-strength: strong
+strength: moderate
 direction: symmetric
 conditions:
-  - statement: "The implementation follows OpenID Connect token-role and validation rules."
+  - statement: The implementation follows OpenID Connect token-role and validation rules.
     concept_ids: []
-evidence: [AKL-000033]
-confidence: high
+    scope: edge-local
+evidence:
+  - AKL-000033
+confidence: medium
 status: sourced
-notes: "Authentication and authorization semantics remain distinct."
-version: 1
+notes: Authentication and authorization semantics remain distinct.
+version: 2
+semantic_scope: claim-context-only
+traversal:
+  eligible: false
+  rationale: Redundant compatibility edge adds less information than the direct
+    OIDC dependency and token-role boundary.

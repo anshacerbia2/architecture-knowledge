@@ -21,7 +21,9 @@
     "src/evidence-validator.ts",
     "src/claim-derivation-validator.ts",
     "src/relationship-validator.ts",
-    "src/lifecycle-validator.ts"
+    "src/lifecycle-validator.ts",
+    "src/markdown-validator.ts",
+    "src/security-claim-validator.ts"
   ],
   "reporters": ["clear-text", "progress"],
   "concurrency": 8,

@@ -3,13 +3,20 @@ record_kind: relationship
 subject: AKC-000006
 predicate: documented-by
 object: AKC-000020
-strength: moderate
+strength: weak
 direction: directed
 conditions:
-  - statement: "The quality scenario materially influences the recorded decision."
+  - statement: The scenario materially influences the recorded decision.
     concept_ids: []
-evidence: [AKL-000037]
-confidence: medium
+    scope: edge-local
+evidence:
+  - AKL-000037
+confidence: low
 status: sourced
-notes: "A separate scenario catalog may remain authoritative."
-version: 1
+notes: A separate scenario catalog may remain authoritative.
+version: 2
+semantic_scope: claim-context-only
+traversal:
+  eligible: false
+  rationale: Cross-practice recommendation is not directly established by admitted
+    sources.

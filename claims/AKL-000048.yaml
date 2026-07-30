@@ -1,17 +1,22 @@
 id: AKL-000048
 record_kind: claim
-subject: AKC-000010
-predicate: introduces
+subject: AKC-000024
+predicate: can-occur-in-context-of
 object:
-  record_id: AKC-000024
-statement: "An event-driven architecture can introduce unreconciled state divergence when event delivery, conflict handling, replay, or repair fails beyond the accepted convergence bound."
+  record_id: AKC-000010
+statement: Unreconciled state divergence can occur in an event-driven workflow when delivery, conflict handling, replay, or repair fails beyond the declared convergence bound.
 claim_type: synthesis
+semantic_scope: claim-context-only
 conditions:
-  - statement: "Consumers maintain derived state and the convergence mechanism fails beyond its declared bound."
+  - statement: Consumers maintain derived state and the convergence mechanism fails beyond its declared bound.
     concept_ids: []
-confidence: medium
-sources: [AKS-000010, AKS-000014, AKS-000016]
+    scope: edge-local
+confidence: low
+sources:
+  - AKS-000010
+  - AKS-000014
+  - AKS-000016
 derived_from_claims: []
 status: proposed
-notes: "Supporting M3 claim; not human reviewed."
-version: 1
+notes: Retained as proposed inference with the failure mode as actor. Direct repair and convergence evidence remains required; traversal remains excluded.
+version: 2

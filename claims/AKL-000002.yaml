@@ -3,14 +3,15 @@ record_kind: claim
 subject: AKC-000002
 predicate: examines
 object:
-  literal: "system behavior across boundaries, interactions, feedback, and lifecycle"
-statement: "Systems thinking examines a system through its purpose, boundary, interacting elements, feedback, stakeholders, and lifecycle behavior."
-claim_type: normalized-source-claim
-conditions:
-  []
-confidence: high
-sources: [AKS-000002]
+  literal: system behavior across boundaries, interactions, feedback, and lifecycle
+statement: For this corpus, systems thinking combines explicit purpose and boundaries with interacting elements, stakeholders, feedback, and lifecycle effects when analyzing architecture decisions.
+claim_type: synthesis
+semantic_scope: concept-global
+conditions: []
+confidence: medium
+sources:
+  - AKS-000002
 derived_from_claims: []
 status: sourced
-notes: "The aerospace context is explicit; software use is a contextual transfer."
-version: 1
+notes: Qualified transfer from the aerospace systems-engineering scope of AKS-000002; the bundled software-oriented formulation is a synthesis.
+version: 2

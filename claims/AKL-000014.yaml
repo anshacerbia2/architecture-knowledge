@@ -3,14 +3,15 @@ record_kind: claim
 subject: AKC-000014
 predicate: persists
 object:
-  literal: "business state and outgoing message intent in one local transaction"
-statement: "A transactional outbox stores business changes and an outgoing message record in one local transaction, then publishes the message asynchronously."
+  literal: business state and outgoing message intent in one local transaction
+statement: A transactional outbox stores business changes and an outgoing message record in one local transaction, then publishes the message asynchronously.
 claim_type: normalized-source-claim
-conditions:
-  []
+semantic_scope: concept-global
+conditions: []
 confidence: high
-sources: [AKS-000014]
+sources:
+  - AKS-000014
 derived_from_claims: []
 status: sourced
-notes: "Publication can be repeated, so consumer duplicate handling remains required."
+notes: Publication can be repeated, so consumer duplicate handling remains required.
 version: 1

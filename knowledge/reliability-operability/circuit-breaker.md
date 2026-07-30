@@ -1,27 +1,41 @@
 ---
 id: AKC-000013
 record_kind: concept
-title: "Circuit Breaker"
-aliases: ["Circuit breaker pattern"]
+title: Circuit Breaker
+aliases:
+  - Circuit breaker pattern
 type: tactic
 secondary_types: []
 domain: reliability-operability
-subdomains: [fault-containment]
-dimensions: [interaction, resilience, observability]
+subdomains:
+  - fault-containment
+dimensions:
+  - interaction
+  - resilience
+  - observability
 status: drafted
 maturity: seed
-summary: "A resilience tactic that temporarily prevents calls to a failing dependency and probes for recovery according to an explicit state policy."
-tags: [circuit-breaker, fault-containment]
-problem: "Continuing to call an unhealthy dependency consumes capacity, increases latency, and can spread failure through waiting callers."
-context: "Remote calls with observable failure signals, meaningful fallback or fast-failure behavior, and a dependency likely to recover."
-intent: "Contain sustained dependency failure and allow controlled recovery probing."
-forces: ["Failure thresholds can misclassify.","Shared and per-instance state behave differently.","Fallback can be stale or unsafe.","Recovery probes need capacity.","Business errors differ from system faults."]
+summary: A resilience tactic that temporarily prevents calls to a failing dependency and probes for recovery according to an explicit state policy.
+tags:
+  - circuit-breaker
+  - fault-containment
+problem: Continuing to call an unhealthy dependency consumes capacity, increases latency, and can spread failure through waiting callers.
+context: Remote calls with observable failure signals, meaningful fallback or fast-failure behavior, and a dependency likely to recover.
+intent: Contain sustained dependency failure and allow controlled recovery probing.
+forces:
+  - Failure thresholds can misclassify.
+  - Shared and per-instance state behave differently.
+  - Fallback can be stale or unsafe.
+  - Recovery probes need capacity.
+  - Business errors differ from system faults.
 applicable_when:
-  - statement: "Use where stopping calls preserves material resources or prevents cascading failure and the open-state behavior is defined."
+  - statement: Use where stopping calls preserves material resources or prevents cascading failure and the open-state behavior is defined.
     concept_ids: []
+    scope: edge-local
 avoid_when:
-  - statement: "Avoid when the call is local and cheap, failure classification is unavailable, or blocking calls would violate a safety-critical action."
+  - statement: Avoid when the call is local and cheap, failure classification is unavailable, or blocking calls would violate a safety-critical action.
     concept_ids: []
+    scope: edge-local
 prerequisites: []
 quality_attributes:
   improves:
@@ -29,35 +43,72 @@ quality_attributes:
       conditions:
         - statement: Calls to an unhealthy dependency would otherwise consume shared capacity.
           concept_ids: []
-      claim_ids: [AKL-000027]
-  degrades:
-    []
-  influences:
-    []
-constraints: []
-assumptions: []
-benefits: ["Limits cascading failure.","Reduces wasted waits.","Creates controlled recovery probes."]
-tradeoffs: ["State tuning and coordination.","Intentional rejection while open.","Fallback correctness burden."]
-risks: []
-failure_modes: [AKC-000021]
-security_implications: ["Failure responses and breaker state should not leak sensitive dependency details; fallback must preserve authorization and freshness rules."]
-operational_implications: ["Monitor state transitions, rejected calls, probe outcomes, thresholds, and correlation with dependency health."]
-data_implications: ["Cached or alternate fallback data needs explicit staleness, consistency, and provenance semantics."]
-alternatives: []
-related: [AKC-000004, AKC-000012]
-relationships: [AKR-000007, AKR-000008]
-examples: []
-counterexamples: []
-claims: [AKL-000013, AKL-000027, AKL-000028]
-sources: [AKS-000013]
+      claim_ids:
+        - AKL-000027
+  degrades: []
+  influences: []
+constraints:
+  - statement: Failure thresholds, open duration, probe volume, and open-state behavior must be bounded.
+    scope: edge-local
+    concept_ids: []
+assumptions:
+  - statement: A rejected or degraded response is acceptable while the protected dependency is unhealthy.
+    scope: edge-local
+    concept_ids: []
+benefits:
+  - Limits cascading failure.
+  - Reduces wasted waits.
+  - Creates controlled recovery probes.
+tradeoffs:
+  - State tuning and coordination.
+  - Intentional rejection while open.
+  - Fallback correctness burden.
+risks:
+  - statement: A global breaker can create synchronized recovery load.
+    scope: edge-local
+    concept_ids: []
+failure_modes:
+  - AKC-000021
+security_implications:
+  - Failure responses and breaker state should not leak sensitive dependency details; fallback must preserve authorization and freshness rules.
+operational_implications:
+  - Monitor state transitions, rejected calls, probe outcomes, thresholds, and correlation with dependency health.
+data_implications:
+  - Cached or alternate fallback data needs explicit staleness, consistency, and provenance semantics.
+alternatives:
+  - statement: Timeouts bound individual waits; retries address transient failures; bulkheads isolate capacity.
+    scope: reusable-concept
+    concept_ids:
+      - AKC-000012
+related:
+  - AKC-000004
+  - AKC-000012
+relationships:
+  - AKR-000007
+  - AKR-000008
+examples:
+  - statement: A checkout service opens a breaker for a failing recommendation dependency and continues without optional recommendations.
+    scope: edge-local
+    concept_ids: []
+counterexamples:
+  - statement: Opening a breaker for declined payments confuses expected business outcomes with dependency failure.
+    scope: edge-local
+    concept_ids: []
+claims:
+  - AKL-000013
+  - AKL-000027
+  - AKL-000028
+sources:
+  - AKS-000013
 review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-29
+  updated_at: 2026-07-30
   reviewed_at: null
   review_due_at: null
-version: 1
+version: 2
+contextual_roles: []
 ---
 
 # Circuit Breaker
@@ -156,7 +207,7 @@ Opening a breaker for declined payments confuses expected business outcomes with
 
 ## Related Concepts
 
-AKC-000004, AKC-000012 are governed related concepts. Typed edges are recorded separately.
+Retry addresses bounded transient faults; Circuit Breaker protects callers and dependencies during sustained failure rather than replacing retry.
 
 ## Claims and Evidence
 

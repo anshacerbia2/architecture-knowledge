@@ -133,16 +133,18 @@ describe("audit regression coverage", () => {
   });
 
   it("rejects unknown, unsupported, and unconditional evidence-required claims", async () => {
-    let model = await validSemanticModel();
-    model = replaceRecord(model, cloneRecord(model.claims[0]!, { claim_type: "unknown-type" }));
+    const baseline = await validSemanticModel();
+    let model = replaceRecord(
+      baseline,
+      cloneRecord(baseline.claims[0]!, { claim_type: "unknown-type" }),
+    );
     expect(validateEvidence(model).claimDiagnostics).toEqual(
       expect.arrayContaining([expect.objectContaining({ code: "CLAIM_TYPE_UNKNOWN" })]),
     );
 
-    model = await validSemanticModel();
     model = replaceRecord(
-      model,
-      cloneRecord(model.claims[0]!, {
+      baseline,
+      cloneRecord(baseline.claims[0]!, {
         claim_type: "recommendation",
         sources: [],
         derived_from_claims: [],
@@ -157,10 +159,9 @@ describe("audit regression coverage", () => {
       ]),
     );
 
-    model = await validSemanticModel();
     model = replaceRecord(
-      model,
-      cloneRecord(model.claims[0]!, {
+      baseline,
+      cloneRecord(baseline.claims[0]!, {
         claim_type: "normalized-source-claim",
         sources: [],
         derived_from_claims: ["AKL-900001"],
@@ -294,10 +295,14 @@ function relationshipRecord(partial: Record<string, unknown>): RecordEntry {
       object: "AKC-900002",
       strength: "weak",
       direction: symmetric ? "symmetric" : "directed",
-      conditions: [{ statement: "Synthetic audit condition.", concept_ids: [] }],
+      semantic_scope: "claim-context-only",
+      conditions: [
+        { statement: "Synthetic audit condition.", concept_ids: [], scope: "edge-local" },
+      ],
       evidence: ["AKL-900001"],
       confidence: "low",
       status: "proposed",
+      traversal: { eligible: false, rationale: "Synthetic relationship is not traversable." },
       notes: "Synthetic audit fixture.",
       version: 1,
       ...partial,

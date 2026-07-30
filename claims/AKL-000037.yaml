@@ -4,14 +4,19 @@ subject: AKC-000006
 predicate: documented-by
 object:
   record_id: AKC-000020
-statement: "A quality attribute scenario can be recorded in an architecture decision record as a decision driver and verification target."
-claim_type: synthesis
+statement: Record a quality-attribute scenario in an ADR only when the scenario materially drives the decision, while allowing a separate scenario catalog to remain authoritative.
+claim_type: recommendation
+semantic_scope: claim-context-only
 conditions:
-  - statement: "The scenario materially influences the recorded decision."
+  - statement: The scenario materially influences the recorded decision.
     concept_ids: []
-confidence: medium
-sources: [AKS-000004, AKS-000021, AKS-000022]
+    scope: edge-local
+confidence: low
+sources:
+  - AKS-000004
+  - AKS-000021
+  - AKS-000022
 derived_from_claims: []
 status: sourced
-notes: "A separate scenario catalog may remain authoritative."
-version: 1
+notes: Repository practice recommendation; the admitted sources do not directly establish this cross-practice relationship.
+version: 2

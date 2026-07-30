@@ -1,27 +1,42 @@
 ---
 id: AKC-000012
 record_kind: concept
-title: "Retry"
-aliases: ["Retry pattern"]
+title: Retry
+aliases:
+  - Retry pattern
 type: tactic
 secondary_types: []
 domain: reliability-operability
-subdomains: [fault-handling]
-dimensions: [interaction, resilience, observability]
+subdomains:
+  - fault-handling
+dimensions:
+  - interaction
+  - resilience
+  - observability
 status: drafted
 maturity: seed
-summary: "A resilience tactic that repeats a failed operation under a bounded policy when the failure may be transient."
-tags: [retry, transient-fault, backoff]
-problem: "Temporary faults can make an otherwise valid operation fail, but uncontrolled repetition can amplify load, latency, and duplicate effects."
-context: "Remote or local operations with understood transient failure modes, bounded latency budgets, and safe repetition semantics."
-intent: "Recover from transient failure without turning persistent failure into an amplification loop."
-forces: ["Failures are not all transient.","Attempts consume time and capacity.","Clients can synchronize retries.","Duplicate effects may be unsafe.","Upstream deadlines bound recovery."]
+summary: A resilience tactic that repeats a failed operation under a bounded policy when the failure may be transient.
+tags:
+  - retry
+  - transient-fault
+  - backoff
+problem: Temporary faults can make an otherwise valid operation fail, but uncontrolled repetition can amplify load, latency, and duplicate effects.
+context: Remote or local operations with understood transient failure modes, bounded latency budgets, and safe repetition semantics.
+intent: Recover from transient failure without turning persistent failure into an amplification loop.
+forces:
+  - Failures are not all transient.
+  - Attempts consume time and capacity.
+  - Clients can synchronize retries.
+  - Duplicate effects may be unsafe.
+  - Upstream deadlines bound recovery.
 applicable_when:
-  - statement: "Use when evidence supports transient recovery, repetition is safe, and a bounded attempt fits the end-to-end deadline."
+  - statement: Use when evidence supports transient recovery, repetition is safe, and a bounded attempt fits the end-to-end deadline.
     concept_ids: []
+    scope: edge-local
 avoid_when:
-  - statement: "Avoid retrying permanent validation, authorization, capacity, or semantic failures without a state change that could make them succeed."
+  - statement: Avoid retrying permanent validation, authorization, capacity, or semantic failures without a state change that could make them succeed.
     concept_ids: []
+    scope: edge-local
 prerequisites: []
 quality_attributes:
   improves:
@@ -29,35 +44,77 @@ quality_attributes:
       conditions:
         - statement: Failures are transient and attempts are bounded.
           concept_ids: []
-      claim_ids: [AKL-000026]
-  degrades:
-    []
-  influences:
-    []
-constraints: []
-assumptions: []
-benefits: ["Masks short transient faults.","Can reduce user-visible failure.","Provides bounded recovery behavior."]
-tradeoffs: ["Increased tail latency.","Extra load and cost.","Potential duplicate effects."]
-risks: []
-failure_modes: [AKC-000021]
-security_implications: ["Do not retry authorization failures; cap attacker-controlled amplification and preserve authentication context safely across attempts."]
-operational_implications: ["Expose attempt counts, reasons, backoff, exhausted budgets, and downstream outcomes; tune policies from failure evidence."]
-data_implications: ["Repeated writes require idempotency or equivalent concurrency semantics. Reads may still observe changing state between attempts."]
-alternatives: []
-related: [AKC-000004, AKC-000011, AKC-000013]
-relationships: [AKR-000005, AKR-000006, AKR-000008, AKR-000021]
-examples: []
-counterexamples: []
-claims: [AKL-000012, AKL-000025, AKL-000026, AKL-000028, AKL-000045]
-sources: [AKS-000012]
+      claim_ids:
+        - AKL-000026
+  degrades: []
+  influences: []
+constraints:
+  - statement: Attempts, delays, deadlines, and aggregate retry load must remain bounded.
+    scope: edge-local
+    concept_ids: []
+assumptions:
+  - statement: The failure is transient and repeating the operation is safe or protected by equivalent duplicate-effect control.
+    scope: edge-local
+    concept_ids: []
+benefits:
+  - Masks short transient faults.
+  - Can reduce user-visible failure.
+  - Provides bounded recovery behavior.
+tradeoffs:
+  - Increased tail latency.
+  - Extra load and cost.
+  - Potential duplicate effects.
+risks:
+  - statement: Retry storms synchronize clients and exhaust capacity.
+    scope: edge-local
+    concept_ids: []
+failure_modes:
+  - AKC-000021
+security_implications:
+  - Do not retry authorization failures; cap attacker-controlled amplification and preserve authentication context safely across attempts.
+operational_implications:
+  - Expose attempt counts, reasons, backoff, exhausted budgets, and downstream outcomes; tune policies from failure evidence.
+data_implications:
+  - Repeated writes require idempotency or equivalent concurrency semantics. Reads may still observe changing state between attempts.
+alternatives:
+  - statement: Circuit breakers limit calls during sustained failure; queues defer work; fail-fast behavior preserves capacity when recovery is unlikely.
+    scope: reusable-concept
+    concept_ids:
+      - AKC-000013
+related:
+  - AKC-000004
+  - AKC-000011
+  - AKC-000013
+relationships:
+  - AKR-000005
+  - AKR-000006
+  - AKR-000008
+  - AKR-000021
+examples:
+  - statement: A client retries a throttled read with server-directed delay, jitter, and a remaining deadline.
+    scope: edge-local
+    concept_ids: []
+counterexamples:
+  - statement: Retrying every error at every service layer until a fixed count is an amplification pattern, not a bounded recovery strategy.
+    scope: edge-local
+    concept_ids: []
+claims:
+  - AKL-000012
+  - AKL-000025
+  - AKL-000026
+  - AKL-000028
+  - AKL-000045
+sources:
+  - AKS-000012
 review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-29
+  updated_at: 2026-07-30
   reviewed_at: null
   review_due_at: null
-version: 1
+version: 2
+contextual_roles: []
 ---
 
 # Retry
@@ -156,7 +213,7 @@ Retrying every error at every service layer until a fixed count is an amplificat
 
 ## Related Concepts
 
-AKC-000004, AKC-000011, AKC-000013 are governed related concepts. Typed edges are recorded separately.
+Idempotency defines one safety property for repeated operations, while Circuit Breaker limits attempts during sustained dependency failure.
 
 ## Claims and Evidence
 

@@ -4,14 +4,23 @@ subject: AKC-000017
 predicate: compatible-with
 object:
   record_id: AKC-000018
-statement: "OAuth 2.0 authorization and OpenID Connect authentication are compatible because OpenID Connect defines an identity layer using OAuth 2.0 mechanisms while preserving distinct token roles."
+statement: OpenID Connect uses OAuth 2.0 mechanisms while preserving a semantic boundary between authentication assertions and authorization credentials.
 claim_type: synthesis
+semantic_scope: concept-global
 conditions:
-  - statement: "The implementation follows OpenID Connect token-role and validation rules."
+  - statement: The implementation follows OpenID Connect token-role and validation rules.
     concept_ids: []
-confidence: high
-sources: [AKS-000017, AKS-000019]
+    scope: edge-local
+confidence: medium
+sources:
+  - AKS-000017
+  - AKS-000019
+source_locations:
+  - source_id: AKS-000017
+    locator: RFC 6749 Section 1.4
+  - source_id: AKS-000019
+    locator: OpenID Connect Core Sections 1 and 2
 derived_from_claims: []
 status: sourced
-notes: "Compatibility does not make an OAuth access token an identity assertion."
-version: 1
+notes: Compatibility is limited to composition of distinct token roles; AKL-000034 remains the direct protocol-dependency claim.
+version: 2

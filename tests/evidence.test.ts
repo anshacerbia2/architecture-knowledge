@@ -34,4 +34,20 @@ describe("claim and source validation", () => {
       ]),
     );
   });
+  it("rejects source locators that are unresolved, undeclared, or duplicated", async () => {
+    let model = await validSemanticModel();
+    model = replaceRecord(
+      model,
+      cloneRecord(model.claims[0]!, {
+        source_locations: [
+          { source_id: "AKS-999999", locator: "Section 1" },
+          { source_id: "AKS-999999", locator: "Section 1" },
+        ],
+      }),
+    );
+    const codes = validateEvidence(model).claimDiagnostics.map((item) => item.code);
+    expect(codes).toEqual(
+      expect.arrayContaining(["CLAIM_SOURCE_LOCATION_SOURCE", "CLAIM_SOURCE_LOCATION_DUPLICATE"]),
+    );
+  });
 });

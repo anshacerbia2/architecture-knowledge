@@ -195,6 +195,66 @@
       "schema": "schemas/claim.schema.json"
     },
     {
+      "path": "claims/AKL-000049.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000050.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000051.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000052.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000053.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000054.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000055.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000056.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000057.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000058.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000059.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000060.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000061.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000062.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000063.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
       "path": "generated/integrity/deprecated-source-usage.json",
       "schema": "schemas/integrity-report.schema.json"
     },
@@ -327,7 +387,7 @@
       "schema": "schemas/knowledge-unit.schema.json"
     },
     {
-      "path": "knowledge/security/oauth-2x.md",
+      "path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "schema": "schemas/knowledge-unit.schema.json"
     },
     {
@@ -516,8 +576,8 @@
     }
   ],
   "summary": {
-    "governed_files": 128,
-    "validated_files": 128,
+    "governed_files": 143,
+    "validated_files": 143,
     "schema_files": 18
   }
 }

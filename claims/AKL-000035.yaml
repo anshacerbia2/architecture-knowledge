@@ -1,17 +1,20 @@
 id: AKL-000035
 record_kind: claim
 subject: AKC-000019
-predicate: improves
+predicate: supports-investigation-of
 object:
   record_id: AKC-000005
-statement: "Actionable observability can improve reliability by reducing detection and diagnosis uncertainty when telemetry is connected to operational response."
-claim_type: recommendation
+statement: Observability can support investigation of reliability incidents when outputs preserve relevant context, but the admitted evidence does not establish that observability causes reliability improvement.
+claim_type: inference
+semantic_scope: claim-context-only
 conditions:
-  - statement: "Telemetry represents the affected behavior and responders can act on the evidence."
+  - statement: Telemetry represents the affected behavior and responders can act on the evidence.
     concept_ids: []
-confidence: medium
-sources: [AKS-000005, AKS-000020]
+    scope: edge-local
+confidence: low
+sources:
+  - AKS-000020
 derived_from_claims: []
 status: sourced
-notes: "Collecting signals without response capability does not establish the effect."
-version: 1
+notes: Causal quality-impact wording removed. Detection time, diagnosis time, and service reliability require separate measures and evidence.
+version: 2

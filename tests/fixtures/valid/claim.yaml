@@ -6,9 +6,11 @@ object:
   record_id: AKC-900002
 statement: The synthetic subject may improve the synthetic quality under the fixture condition.
 claim_type: recommendation
+semantic_scope: claim-context-only
 conditions:
   - statement: The bounded synthetic condition holds.
     concept_ids: []
+    scope: edge-local
 confidence: low
 sources: [AKS-900001]
 derived_from_claims: []

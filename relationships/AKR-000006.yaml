@@ -3,13 +3,21 @@ record_kind: relationship
 subject: AKC-000012
 predicate: improves
 object: AKC-000004
-strength: moderate
+strength: weak
 direction: directed
 conditions:
-  - statement: "Failures are transient, attempts fit the deadline, and retry load remains within capacity."
+  - statement: Failures are transient, attempts fit the end-to-end deadline, and
+      retry load remains within capacity.
     concept_ids: []
-evidence: [AKL-000026]
-confidence: medium
+    scope: edge-local
+evidence:
+  - AKL-000026
+confidence: low
 status: sourced
-notes: "Persistent failure can reverse the effect."
-version: 1
+notes: Persistent failure can reverse the effect.
+version: 2
+semantic_scope: claim-context-only
+traversal:
+  eligible: false
+  rationale: Availability impact is a qualified recommendation without a measured
+    causal effect.

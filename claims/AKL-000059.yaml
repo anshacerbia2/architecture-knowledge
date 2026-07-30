@@ -1,0 +1,20 @@
+id: AKL-000059
+record_kind: claim
+subject: AKC-000017
+predicate: defines-access-token-role
+object:
+  literal: access-token credential role and format
+statement: OAuth access tokens are authorization credentials for protected-resource access, and OAuth does not require every access token to use JWT format.
+claim_type: synthesis
+semantic_scope: concept-global
+conditions: []
+confidence: high
+sources:
+  - AKS-000017
+source_locations:
+  - source_id: AKS-000017
+    locator: RFC 6749 Section 1.4
+derived_from_claims: []
+status: sourced
+notes: Token role and token serialization are separate concerns.
+version: 1

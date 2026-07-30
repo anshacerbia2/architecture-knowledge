@@ -4,14 +4,17 @@ subject: AKC-000012
 predicate: introduces
 object:
   record_id: AKC-000021
-statement: "Retry can introduce cascading failure amplification when repeated attempts increase load against a persistently unhealthy or saturated dependency."
+statement: Retry can introduce cascading failure amplification when repeated attempts increase load against a persistently unhealthy or saturated dependency.
 claim_type: synthesis
+semantic_scope: claim-context-only
 conditions:
-  - statement: "The failure is persistent or capacity-related and attempts are not effectively bounded."
+  - statement: The failure is persistent or capacity-related and attempts are not effectively bounded.
     concept_ids: []
+    scope: edge-local
 confidence: medium
-sources: [AKS-000012, AKS-000013]
+sources:
+  - AKS-000012
 derived_from_claims: []
 status: proposed
-notes: "Supporting M3 claim; not human reviewed."
-version: 1
+notes: Retained as proposed conditional risk. AKS-000012 supports aggregate retry overload, but generalized cascading-failure evidence is still missing; traversal remains excluded.
+version: 2

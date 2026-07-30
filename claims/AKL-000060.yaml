@@ -1,0 +1,20 @@
+id: AKL-000060
+record_kind: claim
+subject: AKC-000018
+predicate: defines-id-token-role
+object:
+  literal: ID Token authentication assertion
+statement: An OpenID Connect ID Token is a JWT authentication assertion about an end-user authentication event for its intended relying party.
+claim_type: normalized-source-claim
+semantic_scope: concept-global
+conditions: []
+confidence: high
+sources:
+  - AKS-000019
+source_locations:
+  - source_id: AKS-000019
+    locator: OpenID Connect Core Section 2
+derived_from_claims: []
+status: sourced
+notes: The ID Token role remains distinct from an OAuth access token.
+version: 1

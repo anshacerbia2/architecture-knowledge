@@ -4,14 +4,17 @@ subject: AKC-000014
 predicate: improves
 object:
   record_id: AKC-000005
-statement: "A transactional outbox can improve reliability by preventing committed business state from lacking a durable corresponding message intent."
-claim_type: recommendation
+statement: Within the local database-to-message boundary, a transactional outbox reduces the failure case in which business state commits without durable message intent.
+claim_type: synthesis
+semantic_scope: claim-context-only
 conditions:
-  - statement: "Business state and outbox record share one local transaction and relay backlog is operated."
+  - statement: Business state and outbox record share one local transaction and relay backlog is operated.
     concept_ids: []
-confidence: high
-sources: [AKS-000014]
+    scope: edge-local
+confidence: medium
+sources:
+  - AKS-000014
 derived_from_claims: []
 status: sourced
-notes: "Duplicate publication and relay failure remain in scope."
-version: 1
+notes: Narrowed to the dual-write boundary supported by AKS-000014; it does not establish end-to-end system reliability.
+version: 2

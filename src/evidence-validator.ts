@@ -81,6 +81,34 @@ export function validateEvidence(model: RepositoryModel): EvidenceAnalysis {
     }
     const sourceIds = asStringArray(claim.data.sources);
     const derivedIds = asStringArray(claim.data.derived_from_claims);
+    const sourceLocations = asArray(claim.data.source_locations).filter(isPlainObject);
+    const seenSourceLocations = new Set<string>();
+    for (const location of sourceLocations) {
+      const sourceId = asString(location.source_id);
+      const locator = asString(location.locator);
+      if (!sourceId || !sourceIds.includes(sourceId) || !sourceById.has(sourceId)) {
+        claimDiagnostics.push(
+          diagnostic(
+            "CLAIM_SOURCE_LOCATION_SOURCE",
+            "error",
+            claim.path,
+            `Source location '${sourceId ?? "missing"}' must resolve and appear in the claim sources.`,
+          ),
+        );
+      }
+      const signature = `${sourceId ?? ""}|${locator ?? ""}`;
+      if (seenSourceLocations.has(signature)) {
+        claimDiagnostics.push(
+          diagnostic(
+            "CLAIM_SOURCE_LOCATION_DUPLICATE",
+            "error",
+            claim.path,
+            `Claim '${claim.id}' repeats source locator '${signature}'.`,
+          ),
+        );
+      }
+      seenSourceLocations.add(signature);
+    }
     const evidenceRequired = rule.evidence_required === true;
     if (evidenceRequired && sourceIds.length === 0 && derivedIds.length === 0) {
       claimDiagnostics.push(

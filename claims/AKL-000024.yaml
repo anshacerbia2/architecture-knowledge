@@ -4,14 +4,19 @@ subject: AKC-000008
 predicate: compatible-with
 object:
   record_id: AKC-000010
-statement: "Microservices and event-driven architecture can coexist when autonomous services exchange asynchronous event facts through governed contracts."
+statement: Microservices and event-driven architecture can coexist when autonomous services exchange asynchronous event facts through governed contracts.
 claim_type: synthesis
+semantic_scope: concept-global
 conditions:
-  - statement: "Asynchronous delivery and schema operations are acceptable and supported."
+  - statement: Asynchronous delivery and schema operations are acceptable and supported.
     concept_ids: []
+    scope: edge-local
 confidence: high
-sources: [AKS-000007, AKS-000008, AKS-000010]
+sources:
+  - AKS-000007
+  - AKS-000008
+  - AKS-000010
 derived_from_claims: []
 status: sourced
-notes: "Either style can be used without the other."
+notes: Either style can be used without the other.
 version: 1

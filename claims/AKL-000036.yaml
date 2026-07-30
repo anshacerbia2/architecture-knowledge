@@ -1,17 +1,21 @@
 id: AKL-000036
 record_kind: claim
 subject: AKC-000008
-predicate: degrades
+predicate: presents-risk-to
 object:
   record_id: AKC-000005
-statement: "Microservices can degrade reliability when operational capability is insufficient for network failure, distributed state, deployment, and service ownership."
-claim_type: synthesis
+statement: This corpus infers an increased reliability risk when independently deployed services are introduced without capability for network failure, distributed state, delivery, observability, and ownership.
+claim_type: inference
+semantic_scope: claim-context-only
 conditions:
-  - statement: "The system is distributed into services without adequate resilience, observability, delivery, or ownership capability."
+  - statement: The system is distributed into services without adequate resilience, observability, delivery, or ownership capability.
     concept_ids: []
-confidence: medium
-sources: [AKS-000007, AKS-000008]
+    scope: edge-local
+confidence: low
+sources:
+  - AKS-000007
+  - AKS-000008
 derived_from_claims: []
 status: sourced
-notes: "This is a conditional risk, not an intrinsic universal outcome."
-version: 1
+notes: Qualified architecture risk inference; no intrinsic or measured degradation is asserted.
+version: 2

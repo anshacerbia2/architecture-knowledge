@@ -39,7 +39,7 @@ allocations:
   - {id: AKC-000014, record_kind: concept, human_key: transactional-outbox, previous_human_keys: [], state: active, path: knowledge/distributed-systems/transactional-outbox.md, allocated_at: 2026-07-29, retired_at: null}
   - {id: AKC-000015, record_kind: concept, human_key: saga, previous_human_keys: [], state: active, path: knowledge/distributed-systems/saga.md, allocated_at: 2026-07-29, retired_at: null}
   - {id: AKC-000016, record_kind: concept, human_key: eventual-consistency, previous_human_keys: [], state: active, path: knowledge/distributed-systems/eventual-consistency.md, allocated_at: 2026-07-29, retired_at: null}
-  - {id: AKC-000017, record_kind: concept, human_key: oauth-2x, previous_human_keys: [], state: active, path: knowledge/security/oauth-2x.md, allocated_at: 2026-07-29, retired_at: null}
+  - {id: AKC-000017, record_kind: concept, human_key: oauth-2-0-authorization-framework, previous_human_keys: [oauth-2x], state: active, path: knowledge/security/oauth-2-0-authorization-framework.md, allocated_at: 2026-07-29, retired_at: null}
   - {id: AKC-000018, record_kind: concept, human_key: openid-connect, previous_human_keys: [], state: active, path: knowledge/security/openid-connect.md, allocated_at: 2026-07-29, retired_at: null}
   - {id: AKC-000019, record_kind: concept, human_key: observability, previous_human_keys: [], state: active, path: knowledge/observability/observability.md, allocated_at: 2026-07-29, retired_at: null}
   - {id: AKC-000020, record_kind: concept, human_key: architecture-decision-record, previous_human_keys: [], state: active, path: knowledge/documentation/architecture-decision-record.md, allocated_at: 2026-07-29, retired_at: null}
@@ -119,3 +119,18 @@ allocations:
   - {id: AKR-000022, record_kind: relationship, human_key: null, previous_human_keys: [], state: active, path: relationships/AKR-000022.yaml, allocated_at: 2026-07-29, retired_at: null}
   - {id: AKR-000023, record_kind: relationship, human_key: null, previous_human_keys: [], state: active, path: relationships/AKR-000023.yaml, allocated_at: 2026-07-29, retired_at: null}
   - {id: AKR-000024, record_kind: relationship, human_key: null, previous_human_keys: [], state: active, path: relationships/AKR-000024.yaml, allocated_at: 2026-07-29, retired_at: null}
+  - {id: AKL-000049, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000049.yaml, allocated_at: 2026-07-30, retired_at: null}
+  - {id: AKL-000050, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000050.yaml, allocated_at: 2026-07-30, retired_at: null}
+  - {id: AKL-000051, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000051.yaml, allocated_at: 2026-07-30, retired_at: null}
+  - {id: AKL-000052, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000052.yaml, allocated_at: 2026-07-30, retired_at: null}
+  - {id: AKL-000053, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000053.yaml, allocated_at: 2026-07-30, retired_at: null}
+  - {id: AKL-000054, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000054.yaml, allocated_at: 2026-07-30, retired_at: null}
+  - {id: AKL-000055, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000055.yaml, allocated_at: 2026-07-30, retired_at: null}
+  - {id: AKL-000056, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000056.yaml, allocated_at: 2026-07-30, retired_at: null}
+  - {id: AKL-000057, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000057.yaml, allocated_at: 2026-07-30, retired_at: null}
+  - {id: AKL-000058, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000058.yaml, allocated_at: 2026-07-30, retired_at: null}
+  - {id: AKL-000059, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000059.yaml, allocated_at: 2026-07-30, retired_at: null}
+  - {id: AKL-000060, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000060.yaml, allocated_at: 2026-07-30, retired_at: null}
+  - {id: AKL-000061, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000061.yaml, allocated_at: 2026-07-30, retired_at: null}
+  - {id: AKL-000062, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000062.yaml, allocated_at: 2026-07-30, retired_at: null}
+  - {id: AKL-000063, record_kind: claim, human_key: null, previous_human_keys: [], state: active, path: claims/AKL-000063.yaml, allocated_at: 2026-07-30, retired_at: null}

@@ -6,10 +6,17 @@ object: AKC-000021
 strength: moderate
 direction: directed
 conditions:
-  - statement: "The failure is persistent or capacity-related and attempts are not effectively bounded."
+  - statement: The failure is persistent or capacity-related and attempts are not
+      effectively bounded.
     concept_ids: []
-evidence: [AKL-000045]
+    scope: edge-local
+evidence:
+  - AKL-000045
 confidence: medium
 status: proposed
-notes: "Supporting M3 failure-mode edge; not human reviewed."
-version: 1
+notes: Supporting M3 failure-mode edge; not human reviewed.
+version: 2
+semantic_scope: claim-context-only
+traversal:
+  eligible: false
+  rationale: Proposed cascading-failure edge lacks direct feedback-path evidence.

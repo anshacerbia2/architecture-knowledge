@@ -3,14 +3,16 @@ record_kind: claim
 subject: AKC-000004
 predicate: defines
 object:
-  literal: "operational accessibility under stated conditions and time"
-statement: "Availability concerns whether a specified service is operational and accessible when required within stated conditions and a defined observation window."
-claim_type: synthesis
-conditions:
-  []
-confidence: high
-sources: [AKS-000003, AKS-000004, AKS-000005]
+  literal: operational accessibility under stated conditions and time
+statement: In an operational service-level context, availability is evaluated as whether valid demand receives a successful response during a stated observation window.
+claim_type: normalized-source-claim
+semantic_scope: concept-global
+conditions: []
+confidence: medium
+sources:
+  - AKS-000004
+  - AKS-000005
 derived_from_claims: []
 status: sourced
-notes: "Measurement boundaries and stakeholder function remain mandatory qualifications."
-version: 1
+notes: Narrowed to inspectable SEI scenario framing and Google SRE operational measurement. No inaccessible ISO definition or hierarchy is asserted.
+version: 2

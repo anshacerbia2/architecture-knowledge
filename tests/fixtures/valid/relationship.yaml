@@ -5,11 +5,16 @@ predicate: improves
 object: AKC-900002
 strength: weak
 direction: directed
+semantic_scope: claim-context-only
 conditions:
   - statement: The bounded synthetic condition holds.
     concept_ids: []
+    scope: edge-local
 evidence: [AKL-900001]
 confidence: low
 status: proposed
+traversal:
+  eligible: false
+  rationale: Proposed synthetic relationships are excluded from traversal.
 notes: Test fixture only.
 version: 1

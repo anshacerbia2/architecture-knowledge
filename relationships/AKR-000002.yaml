@@ -3,13 +3,20 @@ record_kind: relationship
 subject: AKC-000007
 predicate: alternative-to
 object: AKC-000008
-strength: strong
+strength: moderate
 direction: symmetric
 conditions:
-  - statement: "The decision concerns deployment and ownership boundaries for the same product scope."
+  - statement: The decision concerns deployment and ownership boundaries for the
+      same product scope.
     concept_ids: []
-evidence: [AKL-000022]
+    scope: edge-local
+evidence:
+  - AKL-000022
 confidence: high
 status: sourced
-notes: "The alternatives can coexist at different system scopes."
-version: 1
+notes: The alternatives can coexist at different system scopes.
+version: 2
+semantic_scope: concept-global
+traversal:
+  eligible: true
+  rationale: null

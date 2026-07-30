@@ -3,14 +3,16 @@ record_kind: claim
 subject: AKC-000003
 predicate: restricts
 object:
-  literal: "feasible architecture choices within a stated scope"
-statement: "A constraint restricts feasible architecture choices or values within a stated scope and should be distinguished from an assumption or preference."
+  literal: feasible architecture choices within a stated scope
+statement: A constraint states a condition that an architecture or system must satisfy within a declared scope.
 claim_type: synthesis
-conditions:
-  []
+semantic_scope: concept-global
+conditions: []
 confidence: medium
-sources: [AKS-000002, AKS-000022]
+sources:
+  - AKS-000002
+  - AKS-000022
 derived_from_claims: []
 status: sourced
-notes: "The sources provide system and architecture-description context; the normalized distinction is repository ontology."
-version: 1
+notes: Narrowed to the inspectable constraint scope. Distinctions from assumptions, preferences, and policy remain repository terminology rather than attributed source definitions.
+version: 2

@@ -1,15 +1,23 @@
 id: AKR-000016
 record_kind: relationship
 subject: AKC-000008
-predicate: degrades
+predicate: presents-risk-to
 object: AKC-000005
-strength: moderate
+strength: weak
 direction: directed
 conditions:
-  - statement: "Services are introduced without adequate resilience, observability, delivery, or ownership capability."
+  - statement: The system is distributed into services without adequate resilience,
+      observability, delivery, or ownership capability.
     concept_ids: []
-evidence: [AKL-000036]
-confidence: medium
+    scope: edge-local
+evidence:
+  - AKL-000036
+confidence: low
 status: sourced
-notes: "This records a conditional risk, not a universal outcome."
-version: 1
+notes: Qualified risk association only; measurable reliability degradation is
+  not established.
+version: 2
+semantic_scope: claim-context-only
+traversal:
+  eligible: false
+  rationale: Conditional reliability risk is inferential and not a measured degradation.

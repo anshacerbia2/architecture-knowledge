@@ -21,6 +21,7 @@ export function validateRelationships(model: RepositoryModel): RelationshipAnaly
   diagnostics.push(...validateCyclePolicy(model));
   const byId = new Map(model.records.map((record) => [record.id, record]));
   const claimIds = new Set(model.claims.map((claim) => claim.id));
+  const claimById = new Map(model.claims.map((claim) => [claim.id, claim]));
   const defaults = model.ontology.relationshipDefaults;
   const predicateByKey = new Map(
     model.ontology.relationshipTypes
@@ -92,7 +93,8 @@ export function validateRelationships(model: RepositoryModel): RelationshipAnaly
     }
     const conditionsRequired =
       definition.conditions_required ?? defaults.conditions_required ?? false;
-    if (conditionsRequired === true && asArray(relationship.data.conditions).length === 0) {
+    const conditions = asArray(relationship.data.conditions);
+    if (conditionsRequired === true && conditions.length === 0) {
       diagnostics.push(
         diagnostic(
           "REL_CONDITIONS_REQUIRED",
@@ -101,6 +103,30 @@ export function validateRelationships(model: RepositoryModel): RelationshipAnaly
           `Predicate '${predicate}' requires structured conditions.`,
         ),
       );
+    }
+    for (const condition of conditions.filter(isPlainObject)) {
+      const scope = asString(condition.scope);
+      const conceptIds = asArray(condition.concept_ids);
+      if (conceptIds.length === 0 && scope !== "edge-local") {
+        diagnostics.push(
+          diagnostic(
+            "REL_CONDITION_SCOPE",
+            "error",
+            relationship.path,
+            "A relationship condition without concept IDs must be explicitly scoped as edge-local.",
+          ),
+        );
+      }
+      if (conceptIds.length > 0 && scope !== "reusable-concept") {
+        diagnostics.push(
+          diagnostic(
+            "REL_CONDITION_SCOPE",
+            "error",
+            relationship.path,
+            "A relationship condition with concept IDs must be scoped as reusable-concept.",
+          ),
+        );
+      }
     }
     const evidenceRequired =
       definition.evidence_claims_required ?? defaults.evidence_claims_required ?? true;
@@ -126,6 +152,79 @@ export function validateRelationships(model: RepositoryModel): RelationshipAnaly
           ),
         );
       }
+    }
+    const traversal = isPlainObject(relationship.data.traversal) ? relationship.data.traversal : {};
+    const traversalEligible = traversal.eligible === true;
+    if (traversalEligible && relationship.data.status !== "sourced") {
+      diagnostics.push(
+        diagnostic(
+          "REL_TRAVERSAL_UNSOURCED",
+          "error",
+          relationship.path,
+          "Only sourced relationships can be eligible for future traversal.",
+        ),
+      );
+    }
+    if (traversalEligible && relationship.data.semantic_scope !== "concept-global") {
+      diagnostics.push(
+        diagnostic(
+          "REL_TRAVERSAL_CONTEXT_ONLY",
+          "error",
+          relationship.path,
+          "Claim-context-only relationships cannot be eligible for concept-global traversal.",
+        ),
+      );
+    }
+    const evidenceClaims = evidence
+      .filter((item): item is string => typeof item === "string")
+      .map((item) => claimById.get(item))
+      .filter((item): item is RecordEntry => item !== undefined);
+    diagnostics.push(
+      ...validateRelationshipEvidence(relationship, evidenceClaims, subjectId, predicate, objectId),
+    );
+    if (traversalEligible && evidenceClaims.some((claim) => claim.data.status !== "sourced")) {
+      diagnostics.push(
+        diagnostic(
+          "REL_TRAVERSAL_UNSOURCED_EVIDENCE",
+          "error",
+          relationship.path,
+          "Traversal-eligible relationships require sourced claim evidence.",
+        ),
+      );
+    }
+    if (
+      traversalEligible &&
+      new Set(["improves", "degrades"]).has(predicate) &&
+      evidenceClaims.some((claim) =>
+        new Set(["inference", "recommendation", "hypothesis", "opinion"]).has(
+          asString(claim.data.claim_type) ?? "",
+        ),
+      )
+    ) {
+      diagnostics.push(
+        diagnostic(
+          "REL_QUALITY_IMPACT_EVIDENCE",
+          "error",
+          relationship.path,
+          "A traversal-eligible quality impact cannot rely only on inferential or recommendation evidence.",
+        ),
+      );
+    }
+    const subjectType = asString(subject.data.type);
+    const objectType = asString(object.data.type);
+    if (
+      subjectType === "quality-attribute" &&
+      objectType === "quality-attribute" &&
+      new Set(["causes", "improves", "degrades", "influences"]).has(predicate)
+    ) {
+      diagnostics.push(
+        diagnostic(
+          "REL_QUALITY_TAXONOMY_CAUSALITY",
+          "error",
+          relationship.path,
+          "Quality-attribute overlap must not be encoded as an unsupported causal relationship.",
+        ),
+      );
     }
     if (predicate === "related-to") {
       diagnostics.push(
@@ -267,6 +366,131 @@ export function validateRelationships(model: RepositoryModel): RelationshipAnaly
   };
 }
 
+const confidenceRank = new Map([
+  ["low", 0],
+  ["medium", 1],
+  ["high", 2],
+]);
+
+const strengthRank = new Map([
+  ["weak", 0],
+  ["moderate", 1],
+  ["strong", 2],
+]);
+
+function validateRelationshipEvidence(
+  relationship: RecordEntry,
+  claims: RecordEntry[],
+  subjectId: string,
+  predicate: string,
+  objectId: string,
+): Diagnostic[] {
+  const diagnostics: Diagnostic[] = [];
+  const relationshipScope = asString(relationship.data.semantic_scope);
+  const relationshipConfidence =
+    confidenceRank.get(asString(relationship.data.confidence) ?? "") ?? 99;
+  const relationshipStrength = strengthRank.get(asString(relationship.data.strength) ?? "") ?? 99;
+  const relationshipConditions = new Set(
+    asArray(relationship.data.conditions).map((condition) => stableStringify(condition)),
+  );
+
+  for (const claim of claims) {
+    const claimScope = asString(claim.data.semantic_scope);
+    if (relationshipScope === "concept-global" && claimScope !== "concept-global") {
+      diagnostics.push(
+        diagnostic(
+          "REL_EVIDENCE_SCOPE",
+          "error",
+          relationship.path,
+          `Concept-global relationship cannot rely on claim-context-only evidence '${claim.id}'.`,
+        ),
+      );
+    }
+
+    const claimConfidence = confidenceRank.get(asString(claim.data.confidence) ?? "") ?? -1;
+    if (relationshipConfidence > claimConfidence) {
+      diagnostics.push(
+        diagnostic(
+          "REL_EVIDENCE_CONFIDENCE",
+          "error",
+          relationship.path,
+          `Relationship confidence exceeds evidence claim '${claim.id}'.`,
+        ),
+      );
+    }
+
+    if (asString(claim.data.subject) !== subjectId) {
+      diagnostics.push(
+        diagnostic(
+          "REL_EVIDENCE_SUBJECT",
+          "error",
+          relationship.path,
+          `Evidence claim '${claim.id}' does not prove relationship subject '${subjectId}'.`,
+        ),
+      );
+    }
+    if (asString(claim.data.predicate) !== predicate) {
+      diagnostics.push(
+        diagnostic(
+          "REL_EVIDENCE_PREDICATE",
+          "error",
+          relationship.path,
+          `Evidence claim '${claim.id}' predicate does not prove '${predicate}'.`,
+        ),
+      );
+    }
+    const claimObject = isPlainObject(claim.data.object)
+      ? asString(claim.data.object.record_id)
+      : undefined;
+    if (claimObject !== objectId) {
+      diagnostics.push(
+        diagnostic(
+          "REL_EVIDENCE_OBJECT",
+          "error",
+          relationship.path,
+          `Evidence claim '${claim.id}' does not prove relationship object '${objectId}'.`,
+        ),
+      );
+    }
+
+    const claimConditions = asArray(claim.data.conditions);
+    for (const condition of claimConditions) {
+      if (!relationshipConditions.has(stableStringify(condition))) {
+        diagnostics.push(
+          diagnostic(
+            "REL_EVIDENCE_CONDITION",
+            "error",
+            relationship.path,
+            `Relationship omits a material condition from evidence claim '${claim.id}'.`,
+          ),
+        );
+      }
+    }
+
+    const claimType = asString(claim.data.claim_type) ?? "";
+    let maximumStrength = 2;
+    if (
+      claimConfidence <= 0 ||
+      new Set(["inference", "recommendation", "hypothesis", "opinion"]).has(claimType)
+    ) {
+      maximumStrength = 0;
+    } else if (claimConfidence === 1 || claimConditions.length > 0) {
+      maximumStrength = 1;
+    }
+    if (relationshipStrength > maximumStrength) {
+      diagnostics.push(
+        diagnostic(
+          "REL_EVIDENCE_STRENGTH",
+          "error",
+          relationship.path,
+          `Relationship strength exceeds the proof ceiling of evidence claim '${claim.id}'.`,
+        ),
+      );
+    }
+  }
+
+  return diagnostics;
+}
 function validateEndpoint(
   endpoint: "subject" | "object",
   record: RecordEntry,

@@ -3,14 +3,17 @@ record_kind: claim
 subject: AKC-000021
 predicate: amplifies
 object:
-  literal: "a bounded dependency fault into wider resource saturation"
-statement: "Retries, queue growth, and resource retention can create positive feedback that amplifies a local dependency fault into broader saturation."
+  literal: a bounded dependency fault into wider resource saturation
+statement: Retries, queue growth, and resource retention can create positive feedback that amplifies a local dependency fault into broader saturation.
 claim_type: synthesis
-conditions:
-  []
+semantic_scope: claim-context-only
+conditions: []
 confidence: medium
-sources: [AKS-000008, AKS-000012, AKS-000013]
+sources:
+  - AKS-000008
+  - AKS-000012
+  - AKS-000013
 derived_from_claims: []
 status: proposed
-notes: "Supporting M3 claim; not human reviewed."
-version: 1
+notes: Retained as proposed. Direct retry-storm or cascading-failure evidence and a measurable feedback path are still missing; related traversal remains excluded.
+version: 2

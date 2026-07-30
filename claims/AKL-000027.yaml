@@ -4,14 +4,17 @@ subject: AKC-000013
 predicate: improves
 object:
   record_id: AKC-000004
-statement: "A circuit breaker can improve caller availability by preserving capacity and failing fast while a noncritical dependency is unhealthy."
-claim_type: recommendation
+statement: A circuit breaker may preserve caller capacity during sustained dependency failure when it fails fast and an acceptable open-state response exists.
+claim_type: inference
+semantic_scope: claim-context-only
 conditions:
-  - statement: "The dependency failure would otherwise consume shared capacity and the caller has an acceptable open-state response."
+  - statement: The dependency failure would otherwise consume shared capacity and the caller has an acceptable open-state response.
     concept_ids: []
-confidence: medium
-sources: [AKS-000013]
+    scope: edge-local
+confidence: low
+sources:
+  - AKS-000013
 derived_from_claims: []
 status: sourced
-notes: "Intentional rejection can lower dependency-specific success while preserving the broader service."
-version: 1
+notes: Qualified inference from the supported stability/capacity mechanism; no general measured availability gain is claimed.
+version: 2

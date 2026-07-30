@@ -1,59 +1,109 @@
 ---
 id: AKC-000020
 record_kind: concept
-title: "Architecture Decision Record"
-aliases: ["ADR"]
+title: Architecture Decision Record
+aliases:
+  - ADR
 type: documentation-artifact
 secondary_types: []
 domain: documentation
-subdomains: [architecture-decisions]
-dimensions: [governance, delivery-evolution, organizational-ownership]
+subdomains:
+  - architecture-decisions
+dimensions:
+  - governance
+  - delivery-evolution
+  - organizational-ownership
 status: drafted
 maturity: seed
-summary: "A durable record of a consequential architecture decision, including its context, selected option, rationale, and consequences."
-tags: [adr, decision-record, rationale]
-problem: "Architecture choices lose context over time, causing repeated debate, accidental reversal, or cargo-cult reuse outside the original conditions."
-context: "A decision with material, durable, cross-cutting, costly, or difficult-to-reverse consequences."
-intent: "Preserve why a decision was made, under which conditions, and with what acknowledged consequences."
-forces: ["Records must remain concise enough to maintain.","Context and alternatives change.","Decision status needs history.","Evidence can be uncertain.","Repository location affects discoverability."]
+summary: A durable record of a consequential architecture decision, including its context, selected option, rationale, and consequences.
+tags:
+  - adr
+  - decision-record
+  - rationale
+problem: Architecture choices lose context over time, causing repeated debate, accidental reversal, or cargo-cult reuse outside the original conditions.
+context: A decision with material, durable, cross-cutting, costly, or difficult-to-reverse consequences.
+intent: Preserve why a decision was made, under which conditions, and with what acknowledged consequences.
+forces:
+  - Records must remain concise enough to maintain.
+  - Context and alternatives change.
+  - Decision status needs history.
+  - Evidence can be uncertain.
+  - Repository location affects discoverability.
 applicable_when:
-  - statement: "Use for decisions whose rationale and consequences future maintainers or stakeholders need to understand."
+  - statement: Use for decisions whose rationale and consequences future maintainers or stakeholders need to understand.
     concept_ids: []
+    scope: edge-local
 avoid_when:
-  - statement: "Do not create an ADR for every implementation detail or treat the record as a substitute for discussion, evidence, or enforcement."
+  - statement: Do not create an ADR for every implementation detail or treat the record as a substitute for discussion, evidence, or enforcement.
     concept_ids: []
+    scope: edge-local
 prerequisites: []
 quality_attributes:
-  improves:
-    []
-  degrades:
-    []
-  influences:
-    []
-constraints: []
-assumptions: []
-benefits: ["Preserves rationale and consequences.","Reduces repeated debate.","Supports review and supersession."]
-tradeoffs: ["Maintenance and discovery cost.","Risk of stale context.","Conciseness can omit evidence."]
-risks: []
+  improves: []
+  degrades: []
+  influences: []
+constraints:
+  - statement: One ADR must capture one significant decision within a versioned project context.
+    scope: edge-local
+    concept_ids: []
+assumptions:
+  - statement: Readers can identify the project, time, status, and supersession context of the recorded decision.
+    scope: edge-local
+    concept_ids: []
+benefits:
+  - Preserves rationale and consequences.
+  - Reduces repeated debate.
+  - Supports review and supersession.
+tradeoffs:
+  - Maintenance and discovery cost.
+  - Risk of stale context.
+  - Conciseness can omit evidence.
+risks:
+  - statement: Retroactive ADRs can fabricate certainty.
+    scope: edge-local
+    concept_ids: []
 failure_modes: []
-security_implications: ["Security-relevant ADRs should record threat assumptions, accepted residual risk, authority, and sensitive-detail handling."]
-operational_implications: ["Link decisions to operational ownership, rollout, observability, rollback, and verification evidence."]
-data_implications: ["Data decisions should capture ownership, lifecycle, migration, consistency, privacy, and rollback consequences."]
-alternatives: []
-related: [AKC-000002, AKC-000003, AKC-000006]
-relationships: [AKR-000017, AKR-000019]
-examples: []
-counterexamples: []
-claims: [AKL-000020, AKL-000037, AKL-000039]
-sources: [AKS-000021, AKS-000022]
+security_implications:
+  - Security-relevant ADRs should record threat assumptions, accepted residual risk, authority, and sensitive-detail handling.
+operational_implications:
+  - Link decisions to operational ownership, rollout, observability, rollback, and verification evidence.
+data_implications:
+  - Data decisions should capture ownership, lifecycle, migration, consistency, privacy, and rollback consequences.
+alternatives:
+  - statement: Meeting notes capture discussion but may not identify a durable decision.
+    scope: edge-local
+    concept_ids: []
+related:
+  - AKC-000002
+  - AKC-000003
+  - AKC-000006
+relationships:
+  - AKR-000017
+  - AKR-000019
+examples:
+  - statement: A team records why it selected a modular monolith, the autonomy thresholds that would trigger reconsideration, and the boundary fitness checks.
+    scope: edge-local
+    concept_ids: []
+counterexamples:
+  - statement: A document that merely announces a technology without context, alternatives, rationale, or consequences is not a useful ADR.
+    scope: edge-local
+    concept_ids: []
+claims:
+  - AKL-000020
+  - AKL-000037
+  - AKL-000039
+sources:
+  - AKS-000021
+  - AKS-000022
 review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-29
+  updated_at: 2026-07-30
   reviewed_at: null
   review_due_at: null
-version: 1
+version: 2
+contextual_roles: []
 ---
 
 # Architecture Decision Record
@@ -152,7 +202,7 @@ A document that merely announces a technology without context, alternatives, rat
 
 ## Related Concepts
 
-AKC-000002, AKC-000003, AKC-000006 are governed related concepts. Typed edges are recorded separately.
+Systems Thinking and constraints can shape decision context, while a Quality Attribute Scenario may be recorded as a driver only under an explicit documentation practice.
 
 ## Claims and Evidence
 

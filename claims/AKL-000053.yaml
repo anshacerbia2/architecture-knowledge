@@ -1,0 +1,24 @@
+id: AKL-000053
+record_kind: claim
+subject: AKC-000017
+predicate: prohibits-password-grant
+object:
+  literal: resource owner password credentials grant
+statement: OAuth deployments MUST NOT use the resource owner password credentials grant.
+claim_type: normalized-source-claim
+semantic_scope: concept-global
+conditions: []
+confidence: high
+sources:
+  - AKS-000018
+source_locations:
+  - source_id: AKS-000018
+    locator: RFC 9700 Section 2.4
+normative:
+  force: must-not
+  applies_to: OAuth deployments selecting an authorization grant.
+  exceptions: []
+derived_from_claims: []
+status: sourced
+notes: This is a prohibition from the current OAuth Security BCP.
+version: 1

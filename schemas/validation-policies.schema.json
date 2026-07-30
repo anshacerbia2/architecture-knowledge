@@ -50,6 +50,7 @@
         "failure_sensitive_types",
         "security_sensitive_types",
         "security_sensitive_domains",
+        "structured_metadata_fields",
         "placeholder_patterns",
         "absolute_terms",
         "contextual_qualifiers"
@@ -62,6 +63,9 @@
           "$ref": "#/$defs/slugArray"
         },
         "security_sensitive_domains": {
+          "$ref": "#/$defs/slugArray"
+        },
+        "structured_metadata_fields": {
           "$ref": "#/$defs/slugArray"
         },
         "placeholder_patterns": {

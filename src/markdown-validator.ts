@@ -5,6 +5,7 @@ import { asArray, asString, asStringArray, isPlainObject, toPosix } from "./io.j
 import { diagnostic, type Diagnostic } from "./diagnostics.js";
 import type { MarkdownHeading } from "./io.js";
 import type { RepositoryModel } from "./model.js";
+import { validateSecurityClaimBindings } from "./security-claim-validator.js";
 
 const requiredSections = [
   "Summary",
@@ -34,6 +35,13 @@ const requiredSections = [
   "Claims and Evidence",
   "Sources",
 ] as const;
+
+const structuredProjectionSections = new Map([
+  ["risks", "Risks and Failure Modes"],
+  ["alternatives", "Alternatives"],
+  ["examples", "Examples"],
+  ["counterexamples", "Counterexamples"],
+]);
 
 const lifecycleRank = new Map([
   ["proposed", 0],
@@ -77,6 +85,7 @@ export function validateMarkdown(model: RepositoryModel): MarkdownAnalysis {
   const securitySensitiveDomains = new Set(
     asStringArray(markdownPolicy.security_sensitive_domains),
   );
+  const structuredMetadataFields = asStringArray(markdownPolicy.structured_metadata_fields);
   const placeholderPatterns = asStringArray(markdownPolicy.placeholder_patterns).map(
     (item) => new RegExp(item, "iu"),
   );
@@ -203,6 +212,47 @@ export function validateMarkdown(model: RepositoryModel): MarkdownAnalysis {
         ),
       );
     }
+    for (const field of structuredMetadataFields) {
+      if (asArray(concept.data[field]).length === 0) {
+        diagnostics.push(
+          diagnostic(
+            "MARKDOWN_STRUCTURED_METADATA_REQUIRED",
+            "error",
+            document.path,
+            `Structured metadata field '${field}' must preserve independently retrievable context.`,
+          ),
+        );
+      }
+      const projectedSection = structuredProjectionSections.get(field);
+      if (projectedSection) {
+        const sectionText = normalizeSemanticText(document.sections.get(projectedSection) ?? "");
+        for (const item of asArray(concept.data[field]).filter(isPlainObject)) {
+          const statement = asString(item.statement);
+          if (statement && !sectionText.includes(normalizeSemanticText(statement))) {
+            diagnostics.push(
+              diagnostic(
+                "MARKDOWN_STRUCTURED_PROJECTION_MISMATCH",
+                "error",
+                document.path,
+                `Structured field '${field}' is not projected in Markdown section '${projectedSection}'.`,
+              ),
+            );
+          }
+        }
+      }
+    }
+    if (
+      /\bare governed related concepts\b/iu.test(document.sections.get("Related Concepts") ?? "")
+    ) {
+      diagnostics.push(
+        diagnostic(
+          "MARKDOWN_RELATED_CONCEPTS_BOILERPLATE",
+          "error",
+          document.path,
+          "Related Concepts must explain the concept-specific semantic connection.",
+        ),
+      );
+    }
     if (
       failureSensitive.has(type) &&
       (asArray(concept.data.failure_modes).length === 0 ||
@@ -269,6 +319,8 @@ export function validateMarkdown(model: RepositoryModel): MarkdownAnalysis {
       }
     }
   }
+
+  diagnostics.push(...validateSecurityClaimBindings(model));
 
   return {
     diagnostics,
@@ -398,4 +450,12 @@ function escapeRegex(value: string): string {
 
 function truncate(value: string): string {
   return value.length <= 120 ? value : `${value.slice(0, 117)}...`;
+}
+
+function normalizeSemanticText(value: string): string {
+  return value
+    .normalize("NFKC")
+    .toLocaleLowerCase("en")
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .trim();
 }

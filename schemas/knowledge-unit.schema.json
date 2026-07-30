@@ -11,6 +11,7 @@
     "aliases",
     "type",
     "secondary_types",
+    "contextual_roles",
     "domain",
     "subdomains",
     "dimensions",
@@ -76,6 +77,8 @@
         "concern",
         "architectural-driver",
         "quality-attribute",
+        "semantic-property",
+        "consistency-model",
         "quality-attribute-scenario",
         "tactic",
         "architectural-style",
@@ -107,6 +110,22 @@
         "$ref": "knowledge-unit.schema.json#/properties/type"
       },
       "uniqueItems": true
+    },
+    "contextual_roles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "context"],
+        "properties": {
+          "role": {
+            "$ref": "_defs.schema.json#/$defs/slug"
+          },
+          "context": {
+            "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+          }
+        }
+      }
     },
     "domain": {
       "$ref": "#/$defs/domain"
@@ -195,10 +214,10 @@
       }
     },
     "constraints": {
-      "$ref": "#/$defs/conceptIds"
+      "$ref": "#/$defs/qualifiedStatements"
     },
     "assumptions": {
-      "$ref": "#/$defs/conceptIds"
+      "$ref": "#/$defs/qualifiedStatements"
     },
     "benefits": {
       "$ref": "#/$defs/nonEmptyStringArray"
@@ -207,13 +226,24 @@
       "$ref": "#/$defs/nonEmptyStringArray"
     },
     "risks": {
-      "$ref": "#/$defs/conceptIds"
+      "$ref": "#/$defs/qualifiedStatements"
     },
     "failure_modes": {
       "$ref": "#/$defs/conceptIds"
     },
     "security_implications": {
-      "$ref": "#/$defs/nonEmptyStringArray"
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+          },
+          {
+            "$ref": "#/$defs/securityImplication"
+          }
+        ]
+      }
     },
     "operational_implications": {
       "$ref": "#/$defs/nonEmptyStringArray"
@@ -222,7 +252,7 @@
       "$ref": "#/$defs/nonEmptyStringArray"
     },
     "alternatives": {
-      "$ref": "#/$defs/conceptIds"
+      "$ref": "#/$defs/qualifiedStatements"
     },
     "related": {
       "$ref": "#/$defs/conceptIds"
@@ -235,10 +265,10 @@
       "uniqueItems": true
     },
     "examples": {
-      "$ref": "#/$defs/conceptIds"
+      "$ref": "#/$defs/qualifiedStatements"
     },
     "counterexamples": {
-      "$ref": "#/$defs/conceptIds"
+      "$ref": "#/$defs/qualifiedStatements"
     },
     "claims": {
       "type": "array",
@@ -319,6 +349,13 @@
         "$ref": "_defs.schema.json#/$defs/condition"
       }
     },
+    "qualifiedStatements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/condition"
+      }
+    },
     "qualifiedImpacts": {
       "type": "array",
       "items": {
@@ -342,6 +379,61 @@
           }
         }
       }
+    },
+    "securityImplication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statement", "kind", "claim_ids", "scope", "concept_ids"],
+      "properties": {
+        "statement": {
+          "$ref": "_defs.schema.json#/$defs/nonEmptyString"
+        },
+        "kind": {
+          "enum": [
+            "normative-control",
+            "security-risk",
+            "implementation-observation",
+            "operational-recommendation"
+          ]
+        },
+        "claim_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "_defs.schema.json#/$defs/claimId"
+          },
+          "uniqueItems": true
+        },
+        "scope": {
+          "enum": ["edge-local", "reusable-concept"]
+        },
+        "concept_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "_defs.schema.json#/$defs/conceptId"
+          },
+          "uniqueItems": true
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "normative-control"
+              }
+            },
+            "required": ["kind"]
+          },
+          "then": {
+            "properties": {
+              "claim_ids": {
+                "type": "array",
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "allOf": [
