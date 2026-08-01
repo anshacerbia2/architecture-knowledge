@@ -169,6 +169,17 @@ export function validateSecurityClaimBindings(model: RepositoryModel): Diagnosti
           );
           continue;
         }
+        const normative = isPlainObject(claim.data.normative) ? claim.data.normative : undefined;
+        if (normative && kind !== "normative-control") {
+          diagnostics.push(
+            diagnostic(
+              "SECURITY_NORMATIVE_KIND",
+              "error",
+              concept.path,
+              `Security implication kind '${kind ?? "missing"}' binds normative claim '${claimId}' and must use 'normative-control'.`,
+            ),
+          );
+        }
         if (!declaredClaimIds.has(claimId)) {
           diagnostics.push(
             diagnostic(
@@ -267,7 +278,6 @@ export function validateSecurityClaimBindings(model: RepositoryModel): Diagnosti
 
         if (kind === "normative-control") {
           const claimStatement = asString(claim.data.statement);
-          const normative = isPlainObject(claim.data.normative) ? claim.data.normative : undefined;
           const claimType = asString(claim.data.claim_type);
           if (
             claimType !== "direct-source-claim" &&

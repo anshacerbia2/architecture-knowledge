@@ -129,6 +129,25 @@ describe("security claim binding", () => {
     },
   );
 
+  it.each([
+    ["security-risk", "The client must validate the synthetic security assertion."],
+    ["security-risk", "Issuer validation is performed by the client."],
+    ["implementation-observation", "The client must validate the synthetic security assertion."],
+    ["implementation-observation", "Issuer validation is performed by the client."],
+  ])("rejects %s with normative claim despite non-uppercase prose", async (kind, statement) => {
+    const model = await securityModel();
+    implication(model).kind = kind;
+    implication(model).statement = statement;
+    expect(codes(model)).toContain("SECURITY_NORMATIVE_KIND");
+  });
+
+  it("rejects an operational recommendation binding a normative claim with neutral prose", async () => {
+    const model = await securityModel();
+    implication(model).kind = "operational-recommendation";
+    implication(model).statement = "Issuer validation is performed by the client.";
+    expect(codes(model)).toContain("SECURITY_NORMATIVE_KIND");
+  });
+
   it("rejects protocol force hidden under an operational recommendation", async () => {
     const model = await securityModel();
     implication(model).kind = "operational-recommendation";
@@ -321,6 +340,16 @@ describe("security claim binding", () => {
       expect(validateSecurityClaimBindings(model)).toEqual([]);
     },
   );
+
+  it("accepts a descriptive implication bound to a non-normative descriptive claim", async () => {
+    const model = await securityModel();
+    const statement = "A descriptive synthetic security risk exists at this boundary.";
+    delete model.claims[0]!.data.normative;
+    model.claims[0]!.data.statement = statement;
+    implication(model).kind = "security-risk";
+    implication(model).statement = statement;
+    expect(validateSecurityClaimBindings(model)).toEqual([]);
+  });
 
   it("accepts a repository-authored operational recommendation without protocol force", async () => {
     const model = await securityModel();

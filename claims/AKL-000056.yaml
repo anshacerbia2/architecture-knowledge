@@ -13,7 +13,7 @@ sources:
   - AKS-000018
 source_locations:
   - source_id: AKS-000018
-    locator: RFC 9700 Sections 2.2.1 and 4.10.1
+    locator: RFC 9700 Sections 2.2.1 and 4.10
 normative:
   force: should
   applies_to: OAuth authorization servers issuing access tokens and resource servers accepting them.
