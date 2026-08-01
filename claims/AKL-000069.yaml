@@ -1,0 +1,27 @@
+id: AKL-000069
+record_kind: claim
+subject: AKC-000018
+predicate: requires-applicable-id-token-nonce-validation
+object:
+  literal: OpenID Connect ID Token nonce presence and value validation
+statement: When a nonce was sent in the Authentication Request, OpenID Connect clients MUST require a nonce claim in the ID Token and validate that its value equals the sent nonce.
+claim_type: normalized-source-claim
+semantic_scope: concept-global
+conditions:
+  - statement: A nonce was sent in the Authentication Request.
+    concept_ids: []
+    scope: edge-local
+confidence: high
+sources:
+  - AKS-000019
+source_locations:
+  - source_id: AKS-000019
+    locator: OpenID Connect Core Section 3.1.3.7, item 11
+normative:
+  force: must
+  applies_to: OpenID Connect clients when a nonce was sent in the Authentication Request.
+  exceptions: []
+derived_from_claims: []
+status: sourced
+notes: Nonce validation remains conditional on a nonce having been sent.
+version: 1

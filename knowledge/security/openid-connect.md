@@ -59,7 +59,7 @@ tradeoffs:
   - Complex validation rules.
   - Privacy and claim-minimization burden.
 risks:
-  - statement: Skipping issuer, audience, nonce, or signature validation enables substitution and replay.
+  - statement: Skipping an applicable issuer, audience, nonce, expiration, or signature control enables substitution and replay.
     scope: edge-local
     concept_ids: []
 failure_modes:
@@ -70,7 +70,7 @@ security_implications:
     claim_ids: [AKL-000050]
     scope: edge-local
     concept_ids: []
-  - statement: Confidential clients making token endpoint requests MUST authenticate using the method established with the authorization server and any stricter selected profile requirements.
+  - statement: Confidential clients making token endpoint requests MUST authenticate using the method established with the authorization server. Selected profiles may impose stricter authentication requirements.
     kind: normative-control
     claim_ids: [AKL-000051]
     scope: edge-local
@@ -80,7 +80,7 @@ security_implications:
     claim_ids: [AKL-000052]
     scope: edge-local
     concept_ids: []
-  - statement: OAuth deployments SHOULD NOT use the implicit grant or other response types that issue access tokens in the authorization response unless access-token injection is prevented and the relevant leakage vectors are mitigated.
+  - statement: OAuth clients SHOULD NOT use the implicit grant or other response types that issue access tokens in the authorization response unless access-token injection is prevented and the relevant leakage vectors are mitigated.
     kind: normative-control
     claim_ids: [AKL-000054]
     scope: edge-local
@@ -95,13 +95,43 @@ security_implications:
     claim_ids: [AKL-000060]
     scope: edge-local
     concept_ids: []
-  - statement: OpenID Connect relying parties MUST validate the ID Token issuer, audience, applicable authorized-party value, signature, time constraints, and nonce when a nonce was sent.
+  - statement: OpenID Connect clients MUST require the configured OpenID Provider issuer identifier to exactly match the ID Token iss claim.
     kind: normative-control
     claim_ids: [AKL-000061]
     scope: edge-local
     concept_ids: []
-  - statement: Clients MUST NOT use an OpenID Connect ID Token as a generic API access credential when the API expects an OAuth access token issued for that API audience.
+  - statement: OpenID Connect clients MUST validate that the ID Token audience contains their registered client identifier and reject the token if the client is not a valid audience or any additional audience is untrusted.
     kind: normative-control
+    claim_ids: [AKL-000064]
+    scope: edge-local
+    concept_ids: []
+  - statement: When an extension makes the azp claim applicable, OpenID Connect clients SHOULD validate the azp value as specified by that extension.
+    kind: normative-control
+    claim_ids: [AKL-000065]
+    scope: edge-local
+    concept_ids: []
+  - statement: When an ID Token is not received by direct communication from the Token Endpoint, OpenID Connect clients MUST validate its signature using the issuer's keys and the token's declared algorithm.
+    kind: normative-control
+    claim_ids: [AKL-000066]
+    scope: edge-local
+    concept_ids: []
+  - statement: When an ID Token is received by direct communication from the Token Endpoint, OpenID Connect clients MAY use TLS server validation to validate the issuer in place of checking that token's signature.
+    kind: normative-control
+    claim_ids: [AKL-000067]
+    scope: edge-local
+    concept_ids: []
+  - statement: OpenID Connect clients MUST require the current time to be before the time represented by the ID Token exp claim.
+    kind: normative-control
+    claim_ids: [AKL-000068]
+    scope: edge-local
+    concept_ids: []
+  - statement: When a nonce was sent in the Authentication Request, OpenID Connect clients MUST require a nonce claim in the ID Token and validate that its value equals the sent nonce.
+    kind: normative-control
+    claim_ids: [AKL-000069]
+    scope: edge-local
+    concept_ids: []
+  - statement: Repository guidance recommends that clients not substitute an OpenID Connect ID Token when an API contract requires an audience-bound OAuth access token.
+    kind: operational-recommendation
     claim_ids: [AKL-000062]
     scope: edge-local
     concept_ids: []
@@ -140,6 +170,12 @@ claims:
   - AKL-000060
   - AKL-000061
   - AKL-000062
+  - AKL-000064
+  - AKL-000065
+  - AKL-000066
+  - AKL-000067
+  - AKL-000068
+  - AKL-000069
 sources:
   - AKS-000017
   - AKS-000018
@@ -148,10 +184,10 @@ review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-30
+  updated_at: 2026-08-01
   reviewed_at: null
   review_due_at: null
-version: 4
+version: 5
 contextual_roles: []
 ---
 
@@ -187,7 +223,7 @@ End-User, Relying Party, OpenID Provider, authorization endpoint, token endpoint
 
 ## Runtime View
 
-The client correlates state and nonce and applies current OAuth flow requirements directly: public authorization-code clients use PKCE, confidential token-endpoint clients authenticate, redirect matching preserves the native loopback-port exception, and implicit-style access-token responses retain their BCP qualification. It then validates issuer, audience, applicable authorized-party context, signature, time, nonce when sent, and applicable hash bindings before establishing local session and authorization policy separately.
+The client correlates state and nonce and applies current OAuth flow requirements directly: public authorization-code clients use PKCE, confidential token-endpoint clients authenticate, redirect matching preserves the native loopback-port exception, and implicit-style access-token responses retain their BCP qualification. It then validates the exact issuer and intended audience. Authorized-party validation remains a conditional SHOULD when an extension makes azp applicable. Signature validation is mandatory outside direct Token Endpoint communication; for a directly received ID Token, TLS server validation may validate the issuer instead. Expiration is mandatory, and nonce presence and equality are mandatory only when a nonce was sent. Local session and authorization policy remain separate.
 
 ## Applicability
 
@@ -211,11 +247,11 @@ Provider dependency. Complex validation rules. Privacy and claim-minimization bu
 
 ## Risks and Failure Modes
 
-Skipping issuer, audience, nonce, or signature validation enables substitution and replay. Conflating ID and access tokens produces trust-boundary errors.
+Skipping an applicable issuer, audience, nonce, expiration, or signature control enables substitution and replay. The direct Token Endpoint signature alternative is flow-specific. Conflating ID and access tokens produces trust-boundary errors.
 
 ## Security Implications
 
-Threat assumptions include token substitution, replay, malicious or confused clients, issuer or audience confusion, and compromised browser state. OIDC flow security is bound directly to the admitted OAuth sources and claims: public authorization-code clients must use PKCE, confidential token-endpoint clients authenticate, redirect matching preserves the native localhost loopback-port exception, and implicit-style access-token responses retain their qualified SHOULD NOT guidance. ID Tokens are JWT authentication assertions for their relying party and require issuer, audience, applicable authorized-party, signature, time, and nonce validation. They must not be substituted for an OAuth access token when an API expects a token issued for that audience. OAuth access-token format remains profile-specific rather than universally JWT.
+Threat assumptions include token substitution, replay, malicious or confused clients, issuer or audience confusion, and compromised browser state. OIDC flow security is bound directly to admitted OAuth claims with explicit cross-concept applicability: public authorization-code clients must use PKCE, confidential token-endpoint clients authenticate, redirect matching preserves the native localhost loopback-port exception, and OAuth clients retain the qualified SHOULD NOT for implicit-style access-token responses. ID Token issuer and audience checks are mandatory. Authorized-party validation is a conditional SHOULD. Signature validation is mandatory outside direct Token Endpoint communication, where TLS server validation may instead validate the issuer. Expiration is mandatory, while nonce presence and equality are mandatory only when a nonce was sent. Repository guidance recommends preserving the access-token/ID-Token role boundary when an API contract requires an audience-bound OAuth access token; this is not presented as protocol-level MUST NOT language.
 
 ## Data Implications
 
@@ -255,7 +291,7 @@ OAuth 2.0 supplies authorization mechanisms, while OpenID Connect adds an authen
 
 ## Claims and Evidence
 
-AKL-000050, AKL-000051, AKL-000052, and AKL-000054 bind the OAuth flow controls used by OIDC directly to this unit. AKL-000059 through AKL-000062 distinguish access-token format, ID Token role, ID Token validation, and the API credential boundary. AKL-000018, AKL-000033, and AKL-000034 preserve the identity-layer and protocol-dependency model; AKL-000047 remains proposed and is not used to support a sourced security implication.
+AKL-000050, AKL-000051, AKL-000052, AKL-000054, and AKL-000059 explicitly declare cross-concept applicability to this OIDC unit. AKL-000060 records the ID Token role. AKL-000061 and AKL-000064 through AKL-000069 separately preserve issuer, audience, conditional authorized-party, flow-qualified signature, direct Token Endpoint TLS alternative, expiration, and conditional nonce semantics. AKL-000062 is repository-authored operational guidance derived from the sourced token-role boundary, not a protocol MUST NOT. AKL-000018, AKL-000033, and AKL-000034 preserve the identity-layer and protocol-dependency model; AKL-000047 remains proposed and is not used to support a sourced security implication.
 
 ## Sources
 

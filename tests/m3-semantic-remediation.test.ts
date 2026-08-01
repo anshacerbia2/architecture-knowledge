@@ -84,6 +84,104 @@ describe("M3 semantic remediation production contract", () => {
     expect(required("AKL-000054").data.normative).toMatchObject({ force: "should-not" });
     expect(required("AKL-000056").data.normative).toMatchObject({ force: "should" });
     expect(required("AKL-000059").data.normative).toBeUndefined();
+    expect(asString(required("AKL-000054").data.statement)).toMatch(/^OAuth clients SHOULD NOT/u);
+    expect(asString(required("AKL-000056").data.statement)).toMatch(
+      /^Authorization servers and resource servers SHOULD/u,
+    );
+  });
+
+  it("preserves each OIDC ID Token validation force and applicability independently", () => {
+    const expected = new Map([
+      ["AKL-000061", { force: "must", marker: /issuer/iu }],
+      ["AKL-000064", { force: "must", marker: /audience/iu }],
+      ["AKL-000065", { force: "should", marker: /azp/iu }],
+      ["AKL-000066", { force: "must", marker: /not received.*Token Endpoint/iu }],
+      ["AKL-000067", { force: "may", marker: /direct communication.*Token Endpoint/iu }],
+      ["AKL-000068", { force: "must", marker: /exp claim/iu }],
+      ["AKL-000069", { force: "must", marker: /nonce was sent/iu }],
+    ]);
+    for (const [id, contract] of expected) {
+      const claim = required(id);
+      expect(claim.data.normative, id).toMatchObject({ force: contract.force });
+      expect(asString(claim.data.statement), id).toMatch(contract.marker);
+      expect(claim.data.sources, id).toEqual(["AKS-000019"]);
+      expect(claim.data.source_locations, id).toEqual([
+        expect.objectContaining({ source_id: "AKS-000019", locator: expect.any(String) }),
+      ]);
+    }
+    expect(required("AKL-000065").data.conditions).not.toEqual([]);
+    expect(required("AKL-000066").data.conditions).not.toEqual([]);
+    expect(required("AKL-000067").data.conditions).not.toEqual([]);
+    expect(required("AKL-000069").data.conditions).not.toEqual([]);
+    expect(asString(required("AKL-000061").data.notes)).toMatch(/semantic migration/iu);
+  });
+
+  it("keeps the ID Token API boundary as repository guidance rather than protocol force", () => {
+    const claim = required("AKL-000062");
+    expect(claim.data).toMatchObject({
+      claim_type: "recommendation",
+      semantic_scope: "claim-context-only",
+      derived_from_claims: ["AKL-000059", "AKL-000060"],
+    });
+    expect(claim.data.normative).toBeUndefined();
+    expect(asString(claim.data.statement)).not.toMatch(/\bMUST NOT\b/u);
+
+    const oidc = required("AKC-000018");
+    const recommendation = asArray(oidc.data.security_implications)
+      .filter(isPlainObject)
+      .find((item) => asArray(item.claim_ids).includes("AKL-000062"));
+    expect(recommendation).toMatchObject({ kind: "operational-recommendation" });
+  });
+
+  it("uses explicit applicability for every OAuth control reused by OIDC", () => {
+    for (const id of ["AKL-000050", "AKL-000051", "AKL-000052", "AKL-000054", "AKL-000059"]) {
+      expect(asArray(required(id).data.applicable_concept_ids), id).toContain("AKC-000018");
+    }
+    const oidc = required("AKC-000018");
+    const boundIds = new Set(
+      asArray(oidc.data.security_implications)
+        .filter(isPlainObject)
+        .flatMap((item) => asArray(item.claim_ids)),
+    );
+    for (const id of [
+      "AKL-000050",
+      "AKL-000051",
+      "AKL-000052",
+      "AKL-000054",
+      "AKL-000061",
+      "AKL-000064",
+      "AKL-000065",
+      "AKL-000066",
+      "AKL-000067",
+      "AKL-000068",
+      "AKL-000069",
+    ]) {
+      expect(boundIds, id).toContain(id);
+    }
+  });
+
+  it("allocates and advances new OIDC claims without crossing a human-only lifecycle", () => {
+    const ids = Array.from(
+      { length: 6 },
+      (_, index) => `AKL-${String(index + 64).padStart(6, "0")}`,
+    );
+    const allocations = asArray(model.idLedger.allocations).filter(isPlainObject);
+    const events = asArray(model.lifecycleEvents.events).filter(isPlainObject);
+    for (const id of ids) {
+      expect(allocations.find((item) => item.id === id)).toMatchObject({
+        record_kind: "claim",
+        state: "active",
+        path: `claims/${id}.yaml`,
+      });
+      const claimEvents = events.filter((item) => item.record_id === id);
+      expect(claimEvents).toHaveLength(2);
+      expect(claimEvents.map((item) => [item.from, item.to])).toEqual([
+        ["proposed", "source-candidate"],
+        ["source-candidate", "sourced"],
+      ]);
+      expect(claimEvents.every((item) => item.actor_type === "automation")).toBe(true);
+      expect(claimEvents.every((item) => item.human_authorized === false)).toBe(true);
+    }
   });
 
   it("keeps AKR-000010 within AKL-000030 scope and proof bounds", () => {

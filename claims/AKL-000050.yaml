@@ -7,6 +7,8 @@ object:
 statement: Public OAuth clients using the authorization code grant MUST use PKCE.
 claim_type: normalized-source-claim
 semantic_scope: concept-global
+applicable_concept_ids:
+  - AKC-000018
 conditions: []
 confidence: high
 sources:

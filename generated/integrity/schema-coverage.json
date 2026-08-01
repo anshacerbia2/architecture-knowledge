@@ -255,6 +255,30 @@
       "schema": "schemas/claim.schema.json"
     },
     {
+      "path": "claims/AKL-000064.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000065.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000066.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000067.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000068.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000069.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
       "path": "generated/integrity/deprecated-source-usage.json",
       "schema": "schemas/integrity-report.schema.json"
     },
@@ -576,8 +600,8 @@
     }
   ],
   "summary": {
-    "governed_files": 143,
-    "validated_files": 143,
+    "governed_files": 149,
+    "validated_files": 149,
     "schema_files": 18
   }
 }

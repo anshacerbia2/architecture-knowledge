@@ -4,9 +4,11 @@ subject: AKC-000017
 predicate: discourages-implicit-grant
 object:
   literal: implicit grant and other access-token issuance in authorization responses
-statement: OAuth deployments SHOULD NOT use the implicit grant or other response types that issue access tokens in the authorization response unless access-token injection is prevented and the relevant leakage vectors are mitigated.
+statement: OAuth clients SHOULD NOT use the implicit grant or other response types that issue access tokens in the authorization response unless access-token injection is prevented and the relevant leakage vectors are mitigated.
 claim_type: normalized-source-claim
 semantic_scope: concept-global
+applicable_concept_ids:
+  - AKC-000018
 conditions: []
 confidence: high
 sources:
@@ -16,10 +18,10 @@ source_locations:
     locator: RFC 9700 Section 2.1.2
 normative:
   force: should-not
-  applies_to: OAuth deployments considering response types that issue access tokens in authorization responses.
+  applies_to: OAuth clients considering response types that issue access tokens in authorization responses.
   exceptions:
     - Access-token injection is prevented and the relevant leakage vectors are mitigated.
 derived_from_claims: []
 status: sourced
 notes: The BCP qualification is retained; this is not rewritten as an unconditional prohibition.
-version: 1
+version: 2

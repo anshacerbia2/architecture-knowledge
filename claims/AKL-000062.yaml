@@ -1,10 +1,10 @@
 id: AKL-000062
 record_kind: claim
 subject: AKC-000018
-predicate: prohibits-id-token-api-use
+predicate: recommends-preserving-token-role-boundary
 object:
   literal: ID Token use as a generic API access credential
-statement: Clients MUST NOT use an OpenID Connect ID Token as a generic API access credential when the API expects an OAuth access token issued for that API audience.
+statement: Repository guidance recommends that clients not substitute an OpenID Connect ID Token when an API contract requires an audience-bound OAuth access token.
 claim_type: recommendation
 semantic_scope: claim-context-only
 conditions:
@@ -20,13 +20,9 @@ source_locations:
     locator: RFC 6749 Section 1.4
   - source_id: AKS-000019
     locator: OpenID Connect Core Sections 2 and 3.1.3.7
-normative:
-  force: must-not
-  applies_to: Clients calling an API that expects an OAuth access token issued for that API audience.
-  exceptions: []
 derived_from_claims:
   - AKL-000059
   - AKL-000060
 status: sourced
-notes: This bounded recommendation prevents token-role confusion without asserting that every API uses OAuth.
-version: 1
+notes: RFC 6749 and OpenID Connect Core support the distinct token roles. The action is repository-authored guidance, not a protocol-level MUST NOT.
+version: 2

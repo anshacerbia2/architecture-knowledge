@@ -7,6 +7,8 @@ object:
 statement: Authorization servers MUST compare redirect URIs using exact string matching, except that native-application localhost loopback redirect URIs may vary only by port as specified by RFC 9700.
 claim_type: normalized-source-claim
 semantic_scope: concept-global
+applicable_concept_ids:
+  - AKC-000018
 conditions: []
 confidence: high
 sources:

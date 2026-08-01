@@ -1,0 +1,27 @@
+id: AKL-000067
+record_kind: claim
+subject: AKC-000018
+predicate: permits-direct-token-endpoint-tls-validation
+object:
+  literal: TLS issuer validation in place of signature checking for a directly received ID Token
+statement: When an ID Token is received by direct communication from the Token Endpoint, OpenID Connect clients MAY use TLS server validation to validate the issuer in place of checking that token's signature.
+claim_type: normalized-source-claim
+semantic_scope: concept-global
+conditions:
+  - statement: The ID Token is received by direct communication from the Token Endpoint.
+    concept_ids: []
+    scope: edge-local
+confidence: high
+sources:
+  - AKS-000019
+source_locations:
+  - source_id: AKS-000019
+    locator: OpenID Connect Core Section 3.1.3.7, item 6
+normative:
+  force: may
+  applies_to: OpenID Connect clients receiving an ID Token directly from the Token Endpoint.
+  exceptions: []
+derived_from_claims: []
+status: sourced
+notes: This flow-specific MAY is not represented as a universal signature-validation exemption.
+version: 1

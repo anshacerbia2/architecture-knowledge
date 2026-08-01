@@ -1,0 +1,27 @@
+id: AKL-000066
+record_kind: claim
+subject: AKC-000018
+predicate: requires-id-token-signature-validation
+object:
+  literal: signature validation for ID Tokens outside the direct Token Endpoint exception
+statement: When an ID Token is not received by direct communication from the Token Endpoint, OpenID Connect clients MUST validate its signature using the issuer's keys and the token's declared algorithm.
+claim_type: normalized-source-claim
+semantic_scope: concept-global
+conditions:
+  - statement: The ID Token is not received by direct communication from the Token Endpoint.
+    concept_ids: []
+    scope: edge-local
+confidence: high
+sources:
+  - AKS-000019
+source_locations:
+  - source_id: AKS-000019
+    locator: OpenID Connect Core Section 3.1.3.7, item 6
+normative:
+  force: must
+  applies_to: OpenID Connect clients validating an ID Token outside direct Token Endpoint communication.
+  exceptions: []
+derived_from_claims: []
+status: sourced
+notes: The direct Token Endpoint alternative is represented separately by AKL-000067.
+version: 1

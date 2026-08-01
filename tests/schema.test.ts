@@ -71,4 +71,61 @@ describe("schema validation", () => {
       expect.arrayContaining([expect.objectContaining({ code: "SCHEMA_YAML_PARSE" })]),
     );
   });
+
+  it("rejects normative claims without direct source and locator arrays", async () => {
+    const model = await loadRepository(process.cwd());
+    const data = structuredClone(model.claims.find((claim) => claim.id === "AKL-000050")!.data);
+    data.id = "AKL-999991";
+    data.sources = [];
+    data.source_locations = [];
+    model.governedFiles.push({
+      path: "tests/fixtures/synthetic/normative-without-direct-source.yaml",
+      absolutePath: path.join(
+        process.cwd(),
+        "tests/fixtures/synthetic/normative-without-direct-source.yaml",
+      ),
+      schemaRef: "schemas/claim.schema.json",
+      data,
+      format: "yaml",
+    });
+    const result = await validateSchemas(model);
+    expect(result.diagnostics).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: "SCHEMA_INSTANCE",
+          path: "tests/fixtures/synthetic/normative-without-direct-source.yaml",
+        }),
+      ]),
+    );
+  });
+
+  it("rejects protocol normative metadata on a repository recommendation", async () => {
+    const model = await loadRepository(process.cwd());
+    const data = structuredClone(model.claims.find((claim) => claim.id === "AKL-000062")!.data);
+    data.id = "AKL-999992";
+    data.normative = {
+      force: "must-not",
+      applies_to: "Synthetic clients.",
+      exceptions: [],
+    };
+    model.governedFiles.push({
+      path: "tests/fixtures/synthetic/normative-recommendation.yaml",
+      absolutePath: path.join(
+        process.cwd(),
+        "tests/fixtures/synthetic/normative-recommendation.yaml",
+      ),
+      schemaRef: "schemas/claim.schema.json",
+      data,
+      format: "yaml",
+    });
+    const result = await validateSchemas(model);
+    expect(result.diagnostics).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: "SCHEMA_INSTANCE",
+          path: "tests/fixtures/synthetic/normative-recommendation.yaml",
+        }),
+      ]),
+    );
+  });
 });

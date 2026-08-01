@@ -3,8 +3,8 @@ record_kind: claim
 subject: AKC-000017
 predicate: recommends-access-token-sender-constraint
 object:
-  literal: access tokens in security-sensitive OAuth deployments
-statement: OAuth deployments SHOULD use sender-constrained access tokens such as mutual TLS or DPoP when their architecture and performance constraints permit.
+  literal: sender-constrained access tokens issued and accepted by OAuth servers
+statement: Authorization servers and resource servers SHOULD use sender-constraining mechanisms for access tokens, such as mutual TLS or DPoP, unless architecture or performance constraints prevent their use.
 claim_type: normalized-source-claim
 semantic_scope: concept-global
 conditions: []
@@ -16,10 +16,10 @@ source_locations:
     locator: RFC 9700 Sections 2.2.1 and 4.10.1
 normative:
   force: should
-  applies_to: OAuth deployments evaluating replay resistance for access tokens.
+  applies_to: OAuth authorization servers issuing access tokens and resource servers accepting them.
   exceptions:
     - Architecture or performance constraints prevent sender-constrained access tokens.
 derived_from_claims: []
 status: sourced
 notes: This preserves SHOULD strength and does not turn mTLS or DPoP into universal requirements.
-version: 1
+version: 2

@@ -8,7 +8,7 @@
     },
     {
       "state": "claim:sourced",
-      "count": 55
+      "count": 61
     },
     {
       "state": "concept:drafted",
@@ -32,6 +32,6 @@
     }
   ],
   "summary": {
-    "record_count": 133
+    "record_count": 139
   }
 }

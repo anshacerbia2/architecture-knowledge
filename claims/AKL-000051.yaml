@@ -4,9 +4,11 @@ subject: AKC-000017
 predicate: requires-client-authentication
 object:
   literal: confidential clients making token endpoint requests
-statement: Confidential clients making token endpoint requests MUST authenticate using the method established with the authorization server and any stricter selected profile requirements.
+statement: Confidential clients making token endpoint requests MUST authenticate using the method established with the authorization server. Selected profiles may impose stricter authentication requirements.
 claim_type: synthesis
 semantic_scope: concept-global
+applicable_concept_ids:
+  - AKC-000018
 conditions:
   - statement: The client is confidential and invokes the token endpoint.
     concept_ids: []
@@ -21,7 +23,7 @@ normative:
   force: must
   applies_to: Confidential OAuth clients making token endpoint requests.
   exceptions:
-    - A selected extension or deployment profile may impose a stricter authentication method.
+    - Selected profiles may impose stricter authentication requirements.
 derived_from_claims: []
 status: sourced
 notes: The claim does not prescribe one universal confidential-client authentication mechanism.

@@ -98,6 +98,13 @@
     "semantic_scope": {
       "enum": ["concept-global", "claim-context-only"]
     },
+    "applicable_concept_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "_defs.schema.json#/$defs/conceptId"
+      },
+      "uniqueItems": true
+    },
     "source_locations": {
       "type": "array",
       "items": {
@@ -187,6 +194,42 @@
             "minItems": 1,
             "type": "array"
           }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "normative": {}
+        },
+        "required": ["normative"]
+      },
+      "then": {
+        "required": ["source_locations"],
+        "properties": {
+          "sources": {
+            "type": "array",
+            "minItems": 1
+          },
+          "source_locations": {
+            "type": "array",
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "claim_type": {
+            "const": "recommendation"
+          }
+        },
+        "required": ["claim_type"]
+      },
+      "then": {
+        "not": {
+          "required": ["normative"]
         }
       }
     }

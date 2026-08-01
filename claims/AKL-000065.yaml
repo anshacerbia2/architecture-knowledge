@@ -1,0 +1,27 @@
+id: AKL-000065
+record_kind: claim
+subject: AKC-000018
+predicate: recommends-applicable-azp-validation
+object:
+  literal: applicable OpenID Connect authorized-party validation
+statement: When an extension makes the azp claim applicable, OpenID Connect clients SHOULD validate the azp value as specified by that extension.
+claim_type: normalized-source-claim
+semantic_scope: concept-global
+conditions:
+  - statement: An extension makes the azp claim applicable to the ID Token.
+    concept_ids: []
+    scope: edge-local
+confidence: high
+sources:
+  - AKS-000019
+source_locations:
+  - source_id: AKS-000019
+    locator: OpenID Connect Core Section 3.1.3.7, items 4 and 5
+normative:
+  force: should
+  applies_to: OpenID Connect clients when an extension makes the azp claim applicable.
+  exceptions: []
+derived_from_claims: []
+status: sourced
+notes: The conditional SHOULD is not upgraded to an unconditional MUST.
+version: 1

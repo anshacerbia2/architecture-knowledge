@@ -21,6 +21,13 @@ export function validateEvidence(model: RepositoryModel): EvidenceAnalysis {
   );
   const usage = new Map<string, Set<string>>();
   const deprecatedUsage: EvidenceAnalysis["deprecatedUsage"] = [];
+  const supportingStatuses = new Set(
+    model.ontology.sourceStatuses
+      .filter((status) => status.may_support_claims === true)
+      .map((status) => asString(status.key))
+      .filter((status): status is string => Boolean(status)),
+  );
+  const conceptById = new Map(model.concepts.map((concept) => [concept.id, concept]));
 
   for (const source of model.sources) {
     const status = asString(source.data.status);
@@ -82,6 +89,7 @@ export function validateEvidence(model: RepositoryModel): EvidenceAnalysis {
     const sourceIds = asStringArray(claim.data.sources);
     const derivedIds = asStringArray(claim.data.derived_from_claims);
     const sourceLocations = asArray(claim.data.source_locations).filter(isPlainObject);
+    const normative = isPlainObject(claim.data.normative);
     const seenSourceLocations = new Set<string>();
     for (const location of sourceLocations) {
       const sourceId = asString(location.source_id);
@@ -133,6 +141,16 @@ export function validateEvidence(model: RepositoryModel): EvidenceAnalysis {
         ),
       );
     }
+    if (normative && sourceIds.length === 0) {
+      claimDiagnostics.push(
+        diagnostic(
+          "CLAIM_NORMATIVE_DIRECT_SOURCE",
+          "error",
+          claim.path,
+          `Normative claim '${claim.id}' requires direct source evidence; derived claims cannot replace it.`,
+        ),
+      );
+    }
     if (
       (claimType === "direct-source-claim" || claimType === "normalized-source-claim") &&
       derivedIds.length > 0
@@ -166,6 +184,48 @@ export function validateEvidence(model: RepositoryModel): EvidenceAnalysis {
       claims.add(claim.id);
       usage.set(sourceId, claims);
       const status = asString(source.data.status) ?? "unknown";
+      if (normative && !supportingStatuses.has(status)) {
+        claimDiagnostics.push(
+          diagnostic(
+            "CLAIM_NORMATIVE_SOURCE_NOT_ADMITTED",
+            "error",
+            claim.path,
+            `Normative claim '${claim.id}' requires admitted direct source '${sourceId}', not status '${status}'.`,
+          ),
+        );
+      }
+      if (
+        normative &&
+        !sourceLocations.some(
+          (location) =>
+            asString(location.source_id) === sourceId &&
+            (asString(location.locator)?.trim().length ?? 0) > 0,
+        )
+      ) {
+        claimDiagnostics.push(
+          diagnostic(
+            "CLAIM_NORMATIVE_SOURCE_LOCATION",
+            "error",
+            claim.path,
+            `Normative claim '${claim.id}' requires a non-empty locator for direct source '${sourceId}'.`,
+          ),
+        );
+      }
+      if (normative) {
+        const subject = conceptById.get(asString(claim.data.subject) ?? "");
+        const subjectDomain = subject ? asString(subject.data.domain) : undefined;
+        const sourceDomains = new Set(asStringArray(source.data.domains));
+        if (subjectDomain && !sourceDomains.has(subjectDomain)) {
+          claimDiagnostics.push(
+            diagnostic(
+              "CLAIM_NORMATIVE_SOURCE_SCOPE",
+              "error",
+              claim.path,
+              `Normative claim '${claim.id}' source '${sourceId}' does not cover subject domain '${subjectDomain}'.`,
+            ),
+          );
+        }
+      }
       if (status === "rejected" || status === "candidate") {
         claimDiagnostics.push(
           diagnostic(

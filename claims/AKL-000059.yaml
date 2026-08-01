@@ -7,6 +7,8 @@ object:
 statement: OAuth access tokens are authorization credentials for protected-resource access, and OAuth does not require every access token to use JWT format.
 claim_type: synthesis
 semantic_scope: concept-global
+applicable_concept_ids:
+  - AKC-000018
 conditions: []
 confidence: high
 sources:

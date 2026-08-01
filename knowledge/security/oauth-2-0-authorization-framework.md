@@ -74,7 +74,7 @@ security_implications:
     claim_ids: [AKL-000050]
     scope: edge-local
     concept_ids: []
-  - statement: Confidential clients making token endpoint requests MUST authenticate using the method established with the authorization server and any stricter selected profile requirements.
+  - statement: Confidential clients making token endpoint requests MUST authenticate using the method established with the authorization server. Selected profiles may impose stricter authentication requirements.
     kind: normative-control
     claim_ids: [AKL-000051]
     scope: edge-local
@@ -89,7 +89,7 @@ security_implications:
     claim_ids: [AKL-000053]
     scope: edge-local
     concept_ids: []
-  - statement: OAuth deployments SHOULD NOT use the implicit grant or other response types that issue access tokens in the authorization response unless access-token injection is prevented and the relevant leakage vectors are mitigated.
+  - statement: OAuth clients SHOULD NOT use the implicit grant or other response types that issue access tokens in the authorization response unless access-token injection is prevented and the relevant leakage vectors are mitigated.
     kind: normative-control
     claim_ids: [AKL-000054]
     scope: edge-local
@@ -99,7 +99,7 @@ security_implications:
     claim_ids: [AKL-000055]
     scope: edge-local
     concept_ids: []
-  - statement: OAuth deployments SHOULD use sender-constrained access tokens such as mutual TLS or DPoP when their architecture and performance constraints permit.
+  - statement: Authorization servers and resource servers SHOULD use sender-constraining mechanisms for access tokens, such as mutual TLS or DPoP, unless architecture or performance constraints prevent their use.
     kind: normative-control
     claim_ids: [AKL-000056]
     scope: edge-local
@@ -166,10 +166,10 @@ review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-30
+  updated_at: 2026-08-01
   reviewed_at: null
   review_due_at: null
-version: 4
+version: 5
 contextual_roles:
   - role: base-framework
     context: AKC-000017 represents RFC 6749 OAuth 2.0 authorization semantics.
@@ -211,7 +211,7 @@ RFC 6749 defines the OAuth 2.0 framework. RFC 9700 is its admitted Security BCP,
 
 ## Runtime View
 
-Modern user-facing flows use authorization-code protections. Public clients using the authorization code grant must use PKCE. Redirect URIs use exact string matching, except that native-application localhost loopback redirect URIs may vary only by port. Refresh tokens issued to public clients require rotation or sender constraint with replay detection. Sender-constrained access tokens such as mTLS or DPoP are recommended when architecture and performance constraints permit.
+Modern user-facing flows use authorization-code protections. Public clients using the authorization code grant must use PKCE. Redirect URIs use exact string matching, except that native-application localhost loopback redirect URIs may vary only by port. Refresh tokens issued to public clients require rotation or sender constraint with replay detection. Authorization and resource servers should use sender-constraining mechanisms such as mTLS or DPoP unless architecture or performance constraints prevent their use.
 
 ## Applicability
 
@@ -239,7 +239,7 @@ Redirect manipulation, code injection, mix-up, bearer-token replay, refresh-toke
 
 ## Security Implications
 
-Threat assumptions include malicious clients, redirect manipulation, code injection, stolen or replayed tokens, and issuer or audience confusion. Public clients using authorization code must use PKCE. Confidential token-endpoint clients must authenticate using their registered method and selected profile. Redirect matching is exact except for the native localhost loopback-port exception. Password grant is prohibited; implicit and similar front-channel access-token responses should not be used unless injection and leakage risks are mitigated. Public-client refresh tokens require rotation or sender constraint with replay response. Sender-constrained access tokens are recommended when architecture and performance allow. Issuers minimize audience and privilege, and resource servers reject recipient mismatches. OAuth access tokens are authorization credentials and are not universally JWTs.
+Threat assumptions include malicious clients, redirect manipulation, code injection, stolen or replayed tokens, and issuer or audience confusion. Public clients using authorization code must use PKCE. Confidential token-endpoint clients must authenticate using their registered method and selected profile. Redirect matching is exact except for the native localhost loopback-port exception. Password grant is prohibited; OAuth clients should not use implicit and similar front-channel access-token responses unless injection and leakage risks are mitigated. Public-client refresh tokens require rotation or sender constraint with replay response. Authorization and resource servers should use sender-constraining mechanisms when architecture and performance allow. Issuers minimize audience and privilege, and resource servers reject recipient mismatches. OAuth access tokens are authorization credentials and are not universally JWTs.
 
 ## Data Implications
 
