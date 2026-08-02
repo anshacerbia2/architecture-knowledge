@@ -19,6 +19,26 @@ describe("M4 graph CLI contract", () => {
     expect(JSON.parse(result.stdout)).toMatchObject({ graph_contract_version: 1, result_count: 1 });
   });
 
+  it("accepts source and target positionals for a path query", () => {
+    const result = run("path", "AKC-000008", "AKC-000016", "--max-depth", "4");
+    expect(result.status).toBe(0);
+    const output = JSON.parse(result.stdout) as {
+      result_count: number;
+      results: Array<{ node_ids: string[]; relationship_ids: string[] }>;
+    };
+    expect(output.result_count).toBe(1);
+    expect(output.results[0]?.node_ids).toEqual(["AKC-000008", "AKC-000010", "AKC-000016"]);
+    expect(output.results[0]?.relationship_ids).toEqual(["AKR-000004", "AKR-000012"]);
+  });
+
+  it("rejects an extra positional after the path target", () => {
+    const result = run("path", "AKC-000008", "AKC-000016", "AKC-000010");
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain(
+      "GRAPH_ARGUMENT_UNKNOWN Unexpected positional argument 'AKC-000010'.",
+    );
+  });
+
   it("returns non-zero for an unknown ID without a stack trace", () => {
     const result = run("get", "AKC-999999");
     expect(result.status).toBe(1);

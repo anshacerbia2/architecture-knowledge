@@ -83,7 +83,7 @@ async function runQuery(
     return engine.traverse(identifier, parseTraversalFlags(args, true));
   }
   if (command === "path") {
-    const from = requiredPositional(args, "source concept ID");
+    const from = requiredPositional(args, "source concept ID", true);
     const to = requiredPositional(args, "target concept ID");
     return engine.paths(from, to, parseTraversalFlags(args, true));
   }
@@ -215,11 +215,15 @@ function parseFilterFlags(
   );
 }
 
-function requiredPositional(args: string[], label: string): string {
+function requiredPositional(
+  args: string[],
+  label: string,
+  allowFollowingPositional = false,
+): string {
   const value = args.shift();
   if (!value || value.startsWith("--"))
     throw new Error(`GRAPH_ARGUMENT_REQUIRED Missing ${label}.`);
-  if (args[0] && !args[0]?.startsWith("--")) {
+  if (!allowFollowingPositional && args[0] && !args[0]?.startsWith("--")) {
     throw new Error(`GRAPH_ARGUMENT_UNKNOWN Unexpected positional argument '${args[0]}'.`);
   }
   return value;
