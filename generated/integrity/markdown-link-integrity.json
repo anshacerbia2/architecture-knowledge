@@ -44,12 +44,27 @@
     },
     {
       "path": "docs/README.md",
+      "target": "adr/0005-knowledge-graph-projection-and-traversal.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "adr/0005-knowledge-graph-projection-and-traversal.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "kernel-decisions.md",
       "status": "valid"
     },
     {
       "path": "docs/README.md",
       "target": "m3-final-focused-reaudit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m3-final-regression-reaudit-report.md",
       "status": "valid"
     },
     {
@@ -90,6 +105,16 @@
     {
       "path": "docs/README.md",
       "target": "m3-validation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m4-graph-query-layer.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m4-implementation-report.md",
       "status": "valid"
     },
     {
@@ -149,7 +174,7 @@
     },
     {
       "path": "README.md",
-      "target": "docs/m3-validation-report.md",
+      "target": "docs/m4-implementation-report.md",
       "status": "valid"
     },
     {
@@ -189,8 +214,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 37,
+    "checked_link_count": 42,
     "broken_link_count": 0,
-    "markdown_file_count": 68
+    "markdown_file_count": 69
   }
 }

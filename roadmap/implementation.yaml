@@ -63,19 +63,28 @@ milestones:
       - important claims have admitted evidence
       - references resolve and orphan concepts are explained or corrected
       - no content is marked reviewed, approved, published, or canonical by automation
-    notes: Twenty drafted reference units and four proposed supporting failure-mode nodes are machine-valid; independent semantic and human-content audit is recommended before M4.
+    notes: Twenty drafted reference units and four proposed supporting failure-mode nodes are machine-valid; final independent regression re-audit recorded M4 READY.
   - id: m4
     title: Knowledge Graph and Query Layer
-    status: future
+    status: implemented
     dependencies: [m3]
     deliverables:
       - concept, relationship, source, and claim indexes
       - generated knowledge graph
       - graph traversal CLI or API
       - deterministic generated-artifact checks
+      - forward and reverse adjacency
+      - provenance and traversal-policy views
+      - graph production, coverage, and focused mutation gates
     exit_criteria:
       - graph queries preserve typed relationships and evidence links
-    notes: Depends on a validated representative corpus.
+      - all production relationships are projected and partitioned into traversable or excluded sets
+      - default traversal cannot use proposed, claim-context-only, or explicitly excluded relationships
+      - graph artifacts are byte-deterministic and current in clean checkouts
+      - exact record, path, provenance, dependent, and structured queries pass regression tests
+      - Linux, Windows, legacy mutation, and focused graph mutation pass on the exact implementation SHA
+      - no lifecycle status is promoted and M5 capabilities remain out of scope
+    notes: Implemented on commit 9825216cffc97c162cc2514a44b09f0283c9d7be; hosted run 30756684255 passed. Independent M4 audit is next; M5 has not started.
   - id: m5
     title: Search and Hybrid Retrieval
     status: future

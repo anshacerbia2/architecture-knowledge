@@ -36,10 +36,15 @@ any document reviewed, approved, published, or canonical.
 | M3-07 | [Final Focused M3 Independent Re-Audit](m3-final-focused-reaudit-report.md) | Re-audits the focused hardening and identifies the remaining security-validator defects. |
 | M3-08 | [M3 Final Security Remediation Report](m3-final-security-remediation-report.md) | Remediates those final security findings. Read with [ADR 0004](adr/0004-security-claim-applicability-and-projection.md). |
 | M3-09 | [M3-REG-001 Focused Remediation Report](m3-reg-001-remediation-report.md) | Closes the metadata-driven normative-claim classification bypass found by the following regression audit. |
+| M3-10 | [Final M3 Regression Re-Audit](m3-final-regression-reaudit-report.md) | Independently verifies M3-REG-001 closure and records the final `M4 READY` verdict. |
 
-The independent regression audit between M3-08 and M3-09 was delivered as a
-review handoff and was not persisted as a separate repository document. Its
-remaining High finding is identified as `M3-REG-001` in the M3-09 report.
+### M4 knowledge graph and query layer
+
+| Sequence | Document | Why it comes here |
+|---|---|---|
+| M4-01 | [ADR 0005: Knowledge Graph Projection and Traversal](adr/0005-knowledge-graph-projection-and-traversal.md) | Defines the derived-graph boundary, default-deny traversal, determinism contract, and rejected infrastructure alternatives. |
+| M4-02 | [M4 Graph and Query Layer](m4-graph-query-layer.md) | Documents artifacts, commands, exact-query behavior, diagnostics, and the M5 boundary. |
+| M4-03 | [M4 Implementation Report](m4-implementation-report.md) | Reconciles relationship counts and records implementation, validation, determinism, CI, and handoff evidence. |
 
 ## Architecture Decision Records
 
@@ -53,6 +58,7 @@ decision.
 | [0002: Canonical ID Allocation](adr/0002-canonical-id-allocation.md) | M1 identifier design and M2 enforcement |
 | [0003: M3 Semantic Model Remediation](adr/0003-m3-semantic-model-remediation.md) | M3-04 through M3-06 |
 | [0004: Security Claim Applicability and Projection](adr/0004-security-claim-applicability-and-projection.md) | M3-07 through M3-09 |
+| [0005: Knowledge Graph Projection and Traversal](adr/0005-knowledge-graph-projection-and-traversal.md) | M4-01 through M4-03 |
 
 ## Git Creation Timeline
 
@@ -70,6 +76,9 @@ describe.
 | 2026-08-02 02:28 | `4844c2a` | Final focused M3 re-audit; ADR 0004 |
 | 2026-08-02 03:09 | `af08022` | M3 final security remediation report |
 | 2026-08-02 05:37 | `be21bac` | M3-REG-001 remediation report |
+| 2026-08-02 17:32 | `aa23532` | Final M3 regression re-audit report |
+| 2026-08-02 22:29 | `0bdc241` | ADR 0005; M4 graph/query guide |
+| 2026-08-03 | report commit; see post-commit handoff | M4 implementation report |
 
 ## Maintenance Rule
 

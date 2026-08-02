@@ -7,8 +7,9 @@ knowledge units are authored.
 
 ## Current scope
 
-The repository currently implements M0 (project definition), M1 (knowledge
-kernel), and M2 (validation kernel):
+The repository currently implements M0 through M4: project definition,
+knowledge and validation kernels, the reference corpus, and a deterministic
+knowledge graph/query layer:
 
 - ontology registries and architecture classification facets;
 - stable canonical identifier rules;
@@ -17,11 +18,14 @@ kernel), and M2 (validation kernel):
 - lifecycle and contribution rules;
 - layered instructions for future agents;
 - a strategic milestone roadmap;
-- deterministic TypeScript validators, fixtures, CI, and integrity reports.
+- deterministic TypeScript validators, fixtures, CI, and integrity reports;
+- twenty drafted reference knowledge units plus four supporting failure-mode
+  concepts, with first-class claims, admitted evidence, and typed relationships;
+- versioned graph and exact metadata indexes with a default-deny query CLI.
 
-It intentionally contains no reference knowledge units, decision-guide
-examples, generated knowledge graph, or publication output. Those belong to
-later milestones.
+It intentionally contains no decision-guide examples, full-text or vector
+search, natural-language query parsing, RAG, graph database, or publication
+output. Those belong to later milestones.
 
 ## Classification model
 
@@ -88,6 +92,8 @@ knowledge unit.
 - `validation/`: predicate-cycle and Markdown validation policy.
 - `src/` and `tests/`: committed validation kernel and synthetic fixtures.
 - `generated/integrity/`: deterministic, generated integrity reports.
+- `generated/graph/` and `generated/indexes/`: deterministic M4 graph and exact
+  metadata views; never hand-edit them.
 
 ## Extending the kernel
 
@@ -96,11 +102,12 @@ between the repository root and the target file. Follow
 [`CONTRIBUTING.md`](CONTRIBUTING.md) for the authoring workflow and
 [`CODE_OF_KNOWLEDGE.md`](CODE_OF_KNOWLEDGE.md) for evidence rules.
 
-M2 hardening is complete and its hosted clean-checkout validation passed on
-Ubuntu and Windows. M3 is implemented as twenty drafted reference units plus
-four proposed supporting failure-mode nodes. See
-[`docs/m3-validation-report.md`](docs/m3-validation-report.md) for corpus scope,
-validation evidence, and unresolved ontology questions.
+M2 hardening is complete. M3 passed its final independent regression re-audit.
+M4 is implemented and hosted clean-checkout validation passed on Ubuntu and
+Windows, including graph currentness and mutation gates. See
+[`docs/m4-implementation-report.md`](docs/m4-implementation-report.md) for the
+complete handoff evidence. The next step is an independent M4 audit; M5 has not
+started.
 
 ## Validation commands
 
@@ -114,6 +121,10 @@ pnpm test
 pnpm test:coverage
 pnpm test:mutation
 pnpm report:check
+pnpm graph:generate
+pnpm graph:check
+pnpm graph:query -- get AKC-000018
+pnpm test:mutation:graph
 ```
 
 Focused `validate:*` commands are listed in the root `AGENTS.md` and

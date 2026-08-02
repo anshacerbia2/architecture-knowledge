@@ -15,8 +15,8 @@ canonical status.
 M0 Project Definition          → implemented in repository
 M1 Knowledge Kernel            → implemented; ontology questions remain open
 M2 Validation Kernel           → implemented; hosted CI proven
-M3 Reference Knowledge Corpus  → implemented; semantic audit recommended
-M4 Knowledge Graph             → future
+M3 Reference Knowledge Corpus  → implemented; final independent re-audit passed
+M4 Knowledge Graph             → implemented; independent M4 audit is next
 M5 Hybrid Retrieval            → future
 M6 Architecture RAG            → future
 M7 Decision Assistant          → future
@@ -124,24 +124,27 @@ Exit criteria:
 - orphan concepts are explained or corrected;
 - all content remains below human-reviewed lifecycle states unless humans act.
 
-Status: implemented and machine-validated. The repository contains exactly
-twenty drafted reference units, four proposed supporting failure-mode nodes,
-forty-eight claims, twenty-four typed relationships, and twenty-two admitted
-sources. No content crossed the human-review boundary. An independent semantic
-and human-content audit is recommended before M4; see
-`docs/m3-validation-report.md`.
+Status: implemented, machine-validated, remediated, and independently
+re-audited. The final M3 regression re-audit recorded `M4 READY`; see
+`docs/m3-final-regression-reaudit-report.md`. No content crossed the
+human-review boundary.
 
 ## M4 — Knowledge Graph and Query Layer
 
 Purpose: make governed relationships programmatically consumable.
 
-Planned outputs:
+Implemented outputs:
 
 - concept, relationship, source, and claim indexes;
 - generated knowledge graph;
 - graph query CLI or API;
 - traversal and dependency rules;
 - deterministic generated-artifact checks.
+- versioned graph manifest, traversal policy, and orphan analysis;
+- exact record, neighbor, traversal, path, claim, evidence, explanation,
+  dependent, list, and structured-query commands;
+- focused graph coverage, mutation, production-contract, and cross-platform CI
+  gates.
 
 Example query:
 
@@ -152,8 +155,13 @@ Find patterns that:
 - introduce eventual consistency.
 ```
 
-Status: future; the M3 implementation dependency is satisfied, but the
-recommended M3 semantic audit remains open.
+Status: implemented; independent M4 audit is next. The production projection
+contains 139 nodes and 261 edges, accounts for all 24 relationship records, and
+permits 8 governed relationships in default traversal while preserving 16
+explicit exclusions. Hosted Ubuntu, Windows, legacy mutation, focused graph
+mutation, and graph-currentness gates passed on implementation commit
+`9825216cffc97c162cc2514a44b09f0283c9d7be`. M5 has not started; see
+`docs/m4-implementation-report.md`.
 
 ## M5 — Search and Hybrid Retrieval
 
