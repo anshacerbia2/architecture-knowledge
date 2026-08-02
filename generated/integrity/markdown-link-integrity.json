@@ -3,6 +3,116 @@
   "report": "markdown-link-integrity",
   "items": [
     {
+      "path": "docs/README.md",
+      "target": "adr/0001-validation-toolchain.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "adr/0001-validation-toolchain.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "adr/0002-canonical-id-allocation.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "adr/0002-canonical-id-allocation.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "adr/0003-m3-semantic-model-remediation.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "adr/0003-m3-semantic-model-remediation.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "adr/0004-security-claim-applicability-and-projection.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "adr/0004-security-claim-applicability-and-projection.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "kernel-decisions.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m3-final-focused-reaudit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m3-final-security-remediation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m3-focused-hardening-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m3-independent-semantic-reaudit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m3-reg-001-remediation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m3-semantic-audit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m3-semantic-remediation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m3-source-admission-proposal.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m3-validation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "ontology-stress-test.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "phase-0-assessment.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "phase-1-validation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "phase-2-validation-report.md",
+      "status": "valid"
+    },
+    {
       "path": "PROJECT_CHARTER.md",
       "target": "CODE_OF_KNOWLEDGE.md",
       "status": "valid"
@@ -44,6 +154,11 @@
     },
     {
       "path": "README.md",
+      "target": "docs/README.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
       "target": "ontology/",
       "status": "valid"
     },
@@ -74,8 +189,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 14,
+    "checked_link_count": 37,
     "broken_link_count": 0,
-    "markdown_file_count": 64
+    "markdown_file_count": 65
   }
 }

@@ -81,7 +81,8 @@ knowledge unit.
 - `claims/`: instructions for first-class claim records.
 - `relationships/`: instructions for typed graph edges.
 - `knowledge/`: domain-local authoring rules; no knowledge units yet.
-- `docs/`: historical execution reports, ADRs, and provisional kernel decisions.
+- [`docs/`](docs/README.md): ordered historical reports, audits, remediations,
+  ADRs, and provisional kernel decisions.
 - `roadmap/`: machine-readable implementation plan.
 - `ids/` and `governance/`: immutable allocation ledger and lifecycle events.
 - `validation/`: predicate-cycle and Markdown validation policy.
