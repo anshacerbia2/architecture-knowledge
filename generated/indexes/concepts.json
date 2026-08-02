@@ -1,0 +1,3971 @@
+{
+  "artifact_type": "concepts-index",
+  "exact_match_normalization": "case-sensitive-unicode-code-point",
+  "graph_contract_version": 1,
+  "records": [
+    {
+      "aliases": [
+        "First-principles reasoning"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [
+            "AKC-000002"
+          ],
+          "scope": "reusable-concept",
+          "statement": "Systems thinking is a complement and, for interaction-dominated questions, an alternative analytical starting point."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when a decision is dominated by inherited assumptions or when the feasible design space needs to be reopened."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Evidence and declared assumptions can be distinguished well enough to test the selected premises."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Avoid using decomposition alone when feedback, emergence, or stakeholder interaction dominates the outcome."
+        }
+      ],
+      "benefits": [
+        "Makes hidden assumptions discussable.",
+        "Expands alternatives beyond copied solutions.",
+        "Supports traceable rationale."
+      ],
+      "claims": [
+        "AKL-000001",
+        "AKL-000021"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The inquiry must stop at explicitly declared contextual premises rather than treating a convenient premise as universal."
+        }
+      ],
+      "context": "Architecture exploration where inherited constraints or conventional solutions need to be separated from facts, choices, and hypotheses.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Renaming a preferred solution as a first principle without exposing its premises is not first-principles reasoning."
+        }
+      ],
+      "data_implications": [
+        "Claims about data ownership, meaning, and consistency should be separated from implementation conventions."
+      ],
+      "dimensions": [
+        "governance"
+      ],
+      "domain": "foundations",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A team challenges the premise that independent deployment requires independently owned services and evaluates modular boundaries inside one deployable."
+        }
+      ],
+      "failure_modes": [],
+      "forces": [
+        "Reasoning needs a defensible stopping point.",
+        "Evidence and assumptions have different epistemic status.",
+        "Decomposition can hide system interactions."
+      ],
+      "human_key": "first-principles-thinking",
+      "id": "AKC-000001",
+      "intent": "Expose the premises beneath an architecture question so alternatives can be reasoned about explicitly.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Operational evidence is needed to test premises about load, failure, recovery, and team capability."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Teams can inherit assumptions, labels, and solution forms without examining whether those premises hold in the current architecture context.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000002",
+        "AKC-000020"
+      ],
+      "relationships": [
+        "AKR-000001"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "False certainty arises when a convenient premise is treated as an unquestionable fact."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Threat assumptions should be challenged explicitly; reducing security to isolated controls can omit attacker paths and trust-boundary interactions."
+      ],
+      "source_path": "knowledge/foundations/first-principles-thinking.md",
+      "sources": [
+        "AKS-000001"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "reasoning"
+      ],
+      "summary": "A reasoning model that identifies propositions treated as foundational within a bounded inquiry and builds conclusions from them.",
+      "tags": [
+        "reasoning",
+        "decomposition"
+      ],
+      "title": "First-Principles Thinking",
+      "tradeoffs": [
+        "Requires time and domain evidence.",
+        "A chosen foundation can still be wrong.",
+        "Reduction can underrepresent emergence."
+      ],
+      "type": "reasoning-model",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "Whole-system reasoning"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [
+            "AKC-000001"
+          ],
+          "scope": "reusable-concept",
+          "statement": "First-principles thinking emphasizes premise decomposition; the two can be combined when both assumptions and interactions matter."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when cross-boundary effects, lifecycle consequences, or organizational and technical interactions materially affect the decision."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Interactions and feedback materially affect the decision and can be represented without claiming complete causality."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Do not use an expansive system model when a narrowly bounded mechanism can be tested directly and wider interactions are immaterial."
+        }
+      ],
+      "benefits": [
+        "Exposes cross-boundary consequences.",
+        "Reduces local optimization.",
+        "Connects technical and organizational behavior."
+      ],
+      "claims": [
+        "AKL-000002",
+        "AKL-000021",
+        "AKL-000039"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The system boundary must remain decision-focused so wider analysis does not become unbounded."
+        }
+      ],
+      "context": "Architecture questions involving multiple stakeholders, feedback loops, lifecycle stages, or behavior that cannot be explained by one component.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Optimizing one service metric while ignoring downstream saturation and customer outcomes is not systems thinking."
+        }
+      ],
+      "data_implications": [
+        "Include information flows, feedback data, ownership, delay, and data-quality effects in the system model."
+      ],
+      "dimensions": [
+        "interaction",
+        "governance"
+      ],
+      "domain": "foundations",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A latency intervention is evaluated for user behavior, queue growth, downstream load, cost, and on-call impact."
+        }
+      ],
+      "failure_modes": [],
+      "forces": [
+        "System boundaries are choices.",
+        "Feedback can be delayed or nonlinear.",
+        "Stakeholders optimize different outcomes.",
+        "Models must remain understandable."
+      ],
+      "human_key": "systems-thinking",
+      "id": "AKC-000002",
+      "intent": "Reason about outcomes at the system level while making boundaries, interactions, and feedback explicit.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Operational teams, incident feedback, maintenance, and retirement are lifecycle elements, not external afterthoughts."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Local optimization can move cost or failure elsewhere and can miss behavior produced by interactions among components, people, and environment.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000001",
+        "AKC-000020"
+      ],
+      "relationships": [
+        "AKR-000001",
+        "AKR-000019"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A map can be mistaken for the system itself."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Model trust boundaries, adversaries, operators, and supply-chain participants as interacting parts of the system."
+      ],
+      "source_path": "knowledge/foundations/systems-thinking.md",
+      "sources": [
+        "AKS-000002"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "systems-engineering"
+      ],
+      "summary": "A reasoning model that studies a system through boundaries, interactions, feedback, lifecycle effects, and stakeholder outcomes.",
+      "tags": [
+        "systems",
+        "feedback",
+        "boundaries"
+      ],
+      "title": "Systems Thinking",
+      "tradeoffs": [
+        "Models can become too broad.",
+        "Causal attribution may remain uncertain.",
+        "Analysis costs grow with boundary size."
+      ],
+      "type": "reasoning-model",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "Architecture constraint"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Assumptions are propositions accepted for reasoning but still need validation; goals express desired outcomes rather than restrictions."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use whenever a restriction materially removes options or bounds an acceptance criterion."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The stated authority and environmental conditions remain valid for the decision being constrained."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Do not label a preference or an untested belief as a constraint; record those as a decision criterion or assumption."
+        }
+      ],
+      "benefits": [
+        "Narrows feasible choices transparently.",
+        "Prevents hidden noncompliance.",
+        "Supports revisiting decisions when limits change."
+      ],
+      "claims": [
+        "AKL-000003",
+        "AKL-000038"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A constraint is valid only within its declared scope, authority, and effective period."
+        }
+      ],
+      "context": "Any decision with regulatory, physical, temporal, budgetary, organizational, contractual, or technical limits.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The team prefers a familiar database is a preference, not a constraint, unless an authorized policy makes it mandatory."
+        }
+      ],
+      "data_implications": [
+        "Data constraints can cover residency, retention, schema, lineage, ownership, and consistency; each needs an explicit scope."
+      ],
+      "dimensions": [
+        "governance"
+      ],
+      "domain": "constraints-assumptions",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A regulated dataset must remain in an identified jurisdiction under a named legal scope."
+        }
+      ],
+      "failure_modes": [],
+      "forces": [
+        "Some limits are externally imposed.",
+        "Constraints can expire or be renegotiated.",
+        "Unverified constraints can become folklore.",
+        "Multiple constraints can conflict."
+      ],
+      "human_key": "constraint",
+      "id": "AKC-000003",
+      "intent": "Make restrictions explicit, scoped, attributable, testable where possible, and distinguishable from assumptions and preferences.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Operational constraints include recovery targets, maintenance windows, staffing, platform support, and observability requirements."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Architecture reasoning becomes misleading when non-negotiable limits, negotiable preferences, and untested assumptions are mixed together.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000008",
+        "AKC-000020"
+      ],
+      "relationships": [
+        "AKR-000018"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Constraint laundering occurs when a preferred solution is declared mandatory."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Security and privacy obligations should identify jurisdiction, asset, threat, and enforcement scope rather than use generic mandates."
+      ],
+      "source_path": "knowledge/constraints-assumptions/constraint.md",
+      "sources": [
+        "AKS-000002",
+        "AKS-000022"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "decision-context"
+      ],
+      "summary": "A condition that restricts the feasible architecture choices, values, or implementation forms within a stated scope.",
+      "tags": [
+        "constraint",
+        "feasibility"
+      ],
+      "title": "Constraint",
+      "tradeoffs": [
+        "Documentation does not prove validity.",
+        "Overclassification can freeze design.",
+        "Conflicting limits require escalation."
+      ],
+      "type": "constraint",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "Service availability"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [
+            "AKC-000005",
+            "AKC-000006"
+          ],
+          "scope": "reusable-concept",
+          "statement": "Reliability evaluates continuity or correctness over time; a quality-attribute scenario supplies a testable expression."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when stakeholders care whether a defined service can be used at required times and conditions."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The selected indicators represent whether the specified service is usable by the affected stakeholders."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Do not use availability as a substitute for reliability, correctness, durability, or disaster-recovery capability."
+        }
+      ],
+      "benefits": [
+        "Connects stakeholder need to measurable behavior.",
+        "Guides redundancy and recovery choices.",
+        "Supports service-level objectives."
+      ],
+      "claims": [
+        "AKL-000004",
+        "AKL-000026",
+        "AKL-000027"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The required service, users, operating conditions, and observation window must be explicit."
+        }
+      ],
+      "context": "Services whose inability to perform required functions creates material stakeholder impact.",
+      "contextual_roles": [
+        {
+          "context": "Readiness for usable service is evaluated against a specified service boundary, valid demand, conditions, and window.",
+          "role": "operational-quality"
+        },
+        {
+          "context": "This corpus keeps Availability distinct from Reliability while allowing explicitly conditioned measurement overlap.",
+          "role": "dependability-term"
+        }
+      ],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A process-running metric alone is not evidence that customers can complete the required function."
+        }
+      ],
+      "data_implications": [
+        "Availability of computation does not imply availability or correctness of required data; data dependencies belong in the scenario."
+      ],
+      "dimensions": [
+        "resilience",
+        "observability"
+      ],
+      "domain": "quality",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A checkout journey succeeds for eligible users in a region during a rolling window under specified dependency conditions."
+        }
+      ],
+      "failure_modes": [],
+      "forces": [
+        "Different functions have different criticality.",
+        "Planned and unplanned time may be classified differently.",
+        "Dependencies affect observed service.",
+        "Short outages and long degradation have different impacts."
+      ],
+      "human_key": "availability",
+      "id": "AKC-000004",
+      "intent": "Turn accessibility expectations into bounded, measurable scenarios and architecture trade-offs.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Measurement, alerting, incident response, capacity, failover testing, and dependency management are part of the availability design."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Availability statements are ambiguous unless required service, users, conditions, measurement boundaries, and time windows are specified.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000005",
+        "AKC-000006",
+        "AKC-000012",
+        "AKC-000013"
+      ],
+      "relationships": [
+        "AKR-000006",
+        "AKR-000007",
+        "AKR-000020"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Vanity uptime can report healthy infrastructure while required user functions fail."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Security controls can intentionally deny access; availability analysis should distinguish authorized denial, attack-induced outage, and control failure."
+      ],
+      "source_path": "knowledge/quality/availability.md",
+      "sources": [
+        "AKS-000004",
+        "AKS-000005"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "dependability"
+      ],
+      "summary": "Operational readiness for a specified service to satisfy valid demand under stated conditions during a defined observation window.",
+      "tags": [
+        "availability",
+        "uptime"
+      ],
+      "title": "Availability",
+      "tradeoffs": [
+        "Higher targets increase cost and complexity.",
+        "Aggregate percentages can hide severe user segments.",
+        "Exclusions can distort the result."
+      ],
+      "type": "quality-attribute",
+      "version": 3
+    },
+    {
+      "aliases": [
+        "Service reliability"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [
+            "AKC-000004"
+          ],
+          "scope": "reusable-concept",
+          "statement": "Availability focuses on accessibility; resilience focuses on adapting to faults; both overlap but are not synonyms."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when repeated or sustained operation must meet explicit correctness and failure expectations."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Observed failures and correctness indicators represent the specified service behavior over the stated period."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Do not infer reliability from availability alone or from a short successful demonstration."
+        }
+      ],
+      "benefits": [
+        "Broadens dependability beyond uptime.",
+        "Guides fault and recovery analysis.",
+        "Makes incorrect outcomes visible."
+      ],
+      "claims": [
+        "AKL-000005",
+        "AKL-000030",
+        "AKL-000035",
+        "AKL-000036",
+        "AKL-000040"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Specified functions, unacceptable failures, operating conditions, and evaluation period must be explicit."
+        }
+      ],
+      "context": "Systems where continuity and correctness of specified behavior across time and conditions matter.",
+      "contextual_roles": [
+        {
+          "context": "Correct service and unacceptable failure are evaluated over stated conditions and time.",
+          "role": "service-quality"
+        },
+        {
+          "context": "This corpus does not treat Reliability as a synonym for Availability, Resilience, Fault Tolerance, or Recoverability.",
+          "role": "dependability-term"
+        }
+      ],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A reachable endpoint returning incorrect results is available by one measure but not reliable for its specified function."
+        }
+      ],
+      "data_implications": [
+        "Reliability includes preservation of required state transitions, duplicate control, loss detection, reconciliation, and recovery."
+      ],
+      "dimensions": [
+        "resilience",
+        "observability"
+      ],
+      "domain": "quality",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A payment workflow avoids loss and duplicate capture while completing within its bounded failure and recovery conditions."
+        }
+      ],
+      "failure_modes": [],
+      "forces": [
+        "Failure definitions depend on stakeholder outcomes.",
+        "Components and dependencies fail differently.",
+        "Recovery can restore access without correcting state.",
+        "Long-term behavior is expensive to test."
+      ],
+      "human_key": "reliability",
+      "id": "AKC-000005",
+      "intent": "Specify dependable behavior in terms of functions, failure criteria, operating conditions, duration, and evidence.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Incident data, change failure, dependency health, repair time, and error budgets contribute evidence but require careful interpretation."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Reliability is often collapsed into uptime even though incorrect, duplicated, lost, or inconsistent outcomes can occur while a service remains reachable.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000004",
+        "AKC-000006",
+        "AKC-000008",
+        "AKC-000014",
+        "AKC-000019"
+      ],
+      "relationships": [
+        "AKR-000010",
+        "AKR-000015",
+        "AKR-000016",
+        "AKR-000020"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Successful requests can conceal corrupt or duplicated outcomes."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Compromise can create apparently available but untrustworthy behavior; integrity and authorization failures belong in the failure model."
+      ],
+      "source_path": "knowledge/quality/reliability.md",
+      "sources": [
+        "AKS-000004",
+        "AKS-000005"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "dependability"
+      ],
+      "summary": "Continuity of correct service under stated conditions over a stated period, evaluated against explicitly unacceptable failures.",
+      "tags": [
+        "reliability",
+        "correctness"
+      ],
+      "title": "Reliability",
+      "tradeoffs": [
+        "Evidence across long periods is difficult.",
+        "Fault injection has risk and cost.",
+        "Stronger guarantees constrain performance and autonomy."
+      ],
+      "type": "quality-attribute",
+      "version": 3
+    },
+    {
+      "aliases": [
+        "QAS"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Unstructured quality statements are cheaper but less testable."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when a quality expectation needs to influence architecture or be verified against an observable response."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The selected stimulus, context, response, and measure are representative enough to evaluate the architecture concern."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Do not force a scenario form onto a purely functional rule with no quality-response dimension."
+        }
+      ],
+      "benefits": [
+        "Makes quality expectations testable.",
+        "Improves stakeholder alignment.",
+        "Supports traceability from concern to evidence."
+      ],
+      "claims": [
+        "AKL-000006",
+        "AKL-000037"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A scenario must identify a bounded quality concern, expected response, and assessable evidence without attributing an unsupported fixed field set to a source."
+        }
+      ],
+      "context": "Architecture work where a quality concern must guide design, evaluation, or trade-off decisions.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The system must be highly available lacks stimulus, environment, boundary, response, and measure."
+        }
+      ],
+      "data_implications": [
+        "Include dataset size, state, sensitivity, consistency, and retention conditions when they affect the response."
+      ],
+      "dimensions": [
+        "resilience",
+        "observability",
+        "governance"
+      ],
+      "domain": "quality",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "When one regional dependency becomes unavailable during peak traffic, eligible requests recover within a defined interval and bounded error ratio."
+        }
+      ],
+      "failure_modes": [],
+      "forces": [
+        "Stakeholders use broad quality language.",
+        "Responses depend on environment and stimulus.",
+        "Measures can create unintended incentives.",
+        "Scenarios compete for architecture resources."
+      ],
+      "human_key": "quality-attribute-scenario",
+      "id": "AKC-000006",
+      "intent": "Convert an ambiguous quality concern into a bounded and testable statement.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Scenarios should be executable or observable through tests, telemetry, drills, or operational review."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Quality terms such as fast, secure, scalable, or reliable do not identify the conditions, system response, or acceptance threshold needed for architecture analysis.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000004",
+        "AKC-000005",
+        "AKC-000020"
+      ],
+      "relationships": [
+        "AKR-000017"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A scenario can validate the wrong boundary or incentivize a proxy rather than the stakeholder outcome."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Security scenarios should include threat actor or stimulus source, protected asset, trust boundary, response, and measurable residual behavior."
+      ],
+      "source_path": "knowledge/quality/quality-attribute-scenario.md",
+      "sources": [
+        "AKS-000004"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "quality-requirements"
+      ],
+      "summary": "A reusable or system-specific scenario used to make a quality concern concrete enough for architecture reasoning and assessment.",
+      "tags": [
+        "quality-attribute",
+        "scenario",
+        "verification"
+      ],
+      "title": "Quality Attribute Scenario",
+      "tradeoffs": [
+        "Quantification can be costly.",
+        "A measure can oversimplify impact.",
+        "One scenario cannot represent every operating condition."
+      ],
+      "type": "quality-attribute-scenario",
+      "version": 3
+    },
+    {
+      "aliases": [
+        "Modular monolithic architecture"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [
+            "AKC-000008"
+          ],
+          "scope": "reusable-concept",
+          "statement": "Microservices provide independent deployment and stronger runtime boundaries at higher coordination cost."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when a cohesive release unit is acceptable and internal boundaries can be enforced through code, data, and ownership rules."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Module boundaries are continuously enforced in code, data access, and ownership."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Avoid when independently deployable scaling, fault isolation, regulatory separation, or team autonomy is a demonstrated requirement that one deployable cannot meet."
+        }
+      ],
+      "benefits": [
+        "Lower distributed-systems overhead.",
+        "Explicit internal ownership.",
+        "Simpler transactions and deployment."
+      ],
+      "claims": [
+        "AKL-000007",
+        "AKL-000022",
+        "AKL-000023",
+        "AKL-000046"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A coordinated deployment boundary must remain acceptable for the product and organization."
+        }
+      ],
+      "context": "A product whose domain boundaries matter but whose deployment, scale, or organizational needs do not yet justify distributed services.",
+      "contextual_roles": [
+        {
+          "context": "Logical modules are the principal internal decomposition.",
+          "role": "decomposition-model"
+        },
+        {
+          "context": "The modules retain one coordinated deployment and runtime boundary.",
+          "role": "deployment-topology"
+        }
+      ],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Folders named by domain while every module reads shared tables and imports internal classes do not form a modular monolith."
+        }
+      ],
+      "data_implications": [
+        "Prefer module-owned schemas or access APIs; shared transactions are available but should not erase ownership."
+      ],
+      "dimensions": [
+        "system-decomposition",
+        "internal-structure",
+        "deployment",
+        "data-ownership",
+        "organizational-ownership"
+      ],
+      "domain": "application-architecture",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "An order application deploys as one service but separates catalog, ordering, payment orchestration, and fulfillment behind module APIs."
+        }
+      ],
+      "failure_modes": [
+        "AKC-000022"
+      ],
+      "forces": [
+        "One deployment simplifies coordination.",
+        "Modules need enforceable dependency rules.",
+        "Shared runtime and storage permit accidental coupling.",
+        "Future extraction may or may not occur."
+      ],
+      "human_key": "modular-monolith",
+      "id": "AKC-000007",
+      "intent": "Preserve strong module boundaries and replaceability without requiring independent deployment.",
+      "maturity": "seed",
+      "operational_implications": [
+        "One release and runtime reduce fleet complexity, but observability should still attribute behavior and failures to modules."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "A single deployable can accumulate implicit coupling and unclear ownership, while distributing it prematurely introduces network and operational costs.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000008",
+        "AKC-000009"
+      ],
+      "relationships": [
+        "AKR-000002",
+        "AKR-000003",
+        "AKR-000022"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A monolith labeled modular can retain shared tables and cyclic dependencies."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Modules should define authorization boundaries and limit access to sensitive data even when calls stay in-process."
+      ],
+      "source_path": "knowledge/application-architecture/modular-monolith.md",
+      "sources": [
+        "AKS-000006",
+        "AKS-000007"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "modularity"
+      ],
+      "summary": "An application architecture organized into explicit internal modules while remaining a single primary deployment and runtime boundary.",
+      "tags": [
+        "monolith",
+        "modules",
+        "boundaries"
+      ],
+      "title": "Modular Monolith",
+      "tradeoffs": [
+        "Runtime fate remains shared.",
+        "Independent scaling is limited.",
+        "Boundary erosion is easy without enforcement."
+      ],
+      "type": "architectural-style",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "Microservice architecture"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [
+            "AKC-000007"
+          ],
+          "scope": "reusable-concept",
+          "statement": "A modular monolith retains internal modularity and one primary deployment boundary."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when independent release, scaling, ownership, or isolation has enough value to fund distributed-system and platform capability."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Teams can operate networked services and independently owned state across the full lifecycle."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Avoid when boundaries are immature, the team lacks operational capability, or a single deployable meets the actual drivers."
+        }
+      ],
+      "benefits": [
+        "Independent deployment and scaling.",
+        "Clear service ownership.",
+        "Fault and technology isolation when boundaries hold."
+      ],
+      "claims": [
+        "AKL-000008",
+        "AKL-000022",
+        "AKL-000024",
+        "AKL-000036",
+        "AKL-000038"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Independent deployment must be supported by service ownership, delivery, data, and operating capability."
+        }
+      ],
+      "context": "Systems with demonstrated needs for independent lifecycle, ownership, scaling, or isolation across well-understood capability boundaries.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Many processes that require coordinated releases and share one mutable schema form a distributed monolith, not effective autonomy."
+        }
+      ],
+      "data_implications": [
+        "Service-owned data reduces shared coupling but requires explicit replication, consistency, and cross-boundary query strategies."
+      ],
+      "dimensions": [
+        "system-decomposition",
+        "interaction",
+        "deployment",
+        "data-ownership",
+        "resilience",
+        "organizational-ownership"
+      ],
+      "domain": "distributed-systems",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Capability-aligned teams own independently deployed services and their data, with contracts and operational responsibility."
+        }
+      ],
+      "failure_modes": [
+        "AKC-000021",
+        "AKC-000022"
+      ],
+      "forces": [
+        "Independent deployment needs stable contracts.",
+        "Network calls fail and add latency.",
+        "Data ownership complicates cross-service consistency.",
+        "Team topology shapes boundaries.",
+        "Operational overhead grows with service count."
+      ],
+      "human_key": "microservices",
+      "id": "AKC-000008",
+      "intent": "Create autonomous service boundaries that can evolve and operate with limited coordination.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Requires automated delivery, service discovery, telemetry, incident ownership, capacity management, and contract governance."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "A large application can constrain independent delivery, scaling, ownership, and technology evolution, but distribution adds failure and coordination modes.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000003",
+        "AKC-000007",
+        "AKC-000010"
+      ],
+      "relationships": [
+        "AKR-000002",
+        "AKR-000004",
+        "AKR-000016",
+        "AKR-000018"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A distributed monolith combines coupled releases with network failure."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Every service boundary expands identity, authorization, secret, transport, and supply-chain responsibilities."
+      ],
+      "source_path": "knowledge/distributed-systems/microservices.md",
+      "sources": [
+        "AKS-000007",
+        "AKS-000008"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "service-architecture"
+      ],
+      "summary": "An architectural style that organizes a system as independently deployable services aligned to bounded capabilities and communicating through explicit contracts.",
+      "tags": [
+        "microservices",
+        "services",
+        "distributed-systems"
+      ],
+      "title": "Microservices",
+      "tradeoffs": [
+        "Network and platform complexity.",
+        "Harder cross-service consistency.",
+        "More demanding observability and testing."
+      ],
+      "type": "architectural-style",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "Ports and Adapters"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Layered architecture can also direct dependencies but may organize by technical layer rather than application boundary."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when external technology volatility or test isolation justifies explicit inbound and outbound ports."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Ports express stable application purposes rather than leaking external technology details."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Avoid ceremonial ports around stable trivial dependencies when indirection adds more cost than isolation value."
+        }
+      ],
+      "benefits": [
+        "Technology-independent application tests.",
+        "Explicit dependency direction.",
+        "Replaceable external adapters."
+      ],
+      "claims": [
+        "AKL-000009",
+        "AKL-000023"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Application behavior must remain isolated from technology-specific adapters at the declared application boundary."
+        }
+      ],
+      "context": "Applications where domain or application logic needs stable boundaries from external technologies and delivery mechanisms.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "An interface mirroring every method of a database client is indirection, not a meaningful application port."
+        }
+      ],
+      "data_implications": [
+        "Outbound ports should express application data needs without pretending persistence semantics are interchangeable."
+      ],
+      "dimensions": [
+        "internal-structure",
+        "interaction",
+        "trust-security",
+        "delivery-evolution"
+      ],
+      "domain": "application-architecture",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A payment use case exposes an inbound port and calls an application-owned payment-provider port implemented by a vendor adapter."
+        }
+      ],
+      "failure_modes": [
+        "AKC-000022"
+      ],
+      "forces": [
+        "External technologies change.",
+        "The application still needs explicit contracts.",
+        "Abstraction has design cost.",
+        "Not every dependency needs a port."
+      ],
+      "human_key": "hexagonal-architecture",
+      "id": "AKC-000009",
+      "intent": "Make application behavior invocable and testable independently of particular external adapters.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Adapter-level telemetry should preserve correlation while distinguishing external failure from application decision."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Business behavior becomes difficult to test and evolve when it directly depends on user interfaces, databases, frameworks, or remote systems.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000007"
+      ],
+      "relationships": [
+        "AKR-000003"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Framework types inside ports undermine isolation."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Adapters are trust-boundary translation points and should validate, authenticate, authorize, and normalize external input as appropriate."
+      ],
+      "source_path": "knowledge/application-architecture/hexagonal-architecture.md",
+      "sources": [
+        "AKS-000006",
+        "AKS-000009"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "internal-structure"
+      ],
+      "summary": "An architectural pattern that isolates application behavior behind ports and connects external actors and technologies through adapters.",
+      "tags": [
+        "hexagonal",
+        "ports",
+        "adapters"
+      ],
+      "title": "Hexagonal Architecture",
+      "tradeoffs": [
+        "More interfaces and mapping.",
+        "Boundary design requires judgment.",
+        "Leaky ports can preserve coupling."
+      ],
+      "type": "architectural-pattern",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "EDA"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Request-response integration offers immediate results and simpler local reasoning when temporal decoupling is unnecessary."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when asynchronous reaction, fan-out, buffering, or independent consumer evolution addresses a demonstrated driver."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Asynchronous processing and its consistency window are acceptable for the affected workflow."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Avoid when the workflow requires immediate coordinated response and asynchronous state or operational complexity has no compensating value."
+        }
+      ],
+      "benefits": [
+        "Temporal and knowledge decoupling.",
+        "Natural fan-out.",
+        "Independent consumer scaling."
+      ],
+      "claims": [
+        "AKL-000010",
+        "AKL-000024",
+        "AKL-000029",
+        "AKL-000032",
+        "AKL-000048"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Event semantics, ownership, delivery behavior, and consumer compatibility must be governed explicitly."
+        }
+      ],
+      "context": "Systems where multiple consumers react to facts, temporal decoupling is valuable, and asynchronous semantics can be operated safely.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Renaming remote commands as events while requiring an immediate single consumer response does not create event-driven decoupling."
+        }
+      ],
+      "data_implications": [
+        "Events become durable integration data; ownership, retention, ordering, schema evolution, and deletion obligations must be explicit."
+      ],
+      "dimensions": [
+        "interaction",
+        "execution",
+        "data-consistency",
+        "state-management",
+        "resilience"
+      ],
+      "domain": "integration",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "An order-accepted event triggers fulfillment, analytics, and notification consumers without the producer knowing each implementation."
+        }
+      ],
+      "failure_modes": [
+        "AKC-000024"
+      ],
+      "forces": [
+        "Events can be duplicated, delayed, reordered, or lost by faulty implementations.",
+        "Schemas evolve independently.",
+        "Consumers need replay and recovery policies.",
+        "Global transactions are usually unavailable."
+      ],
+      "human_key": "event-driven-architecture",
+      "id": "AKC-000010",
+      "intent": "Decouple producers and consumers in time and knowledge while enabling reactive workflows.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Operate broker capacity, lag, dead letters, replay, schema compatibility, correlation, and consumer health."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Direct request coupling can force producers to know consumers and can synchronize lifecycles that need independent reaction and scaling.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000008",
+        "AKC-000014",
+        "AKC-000016"
+      ],
+      "relationships": [
+        "AKR-000004",
+        "AKR-000009",
+        "AKR-000012",
+        "AKR-000024"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Dual writes lose events, consumers create duplicate effects, and unbounded replay overloads dependencies."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Authorize publication and consumption, protect sensitive payloads, validate schemas, and account for replay as a security-relevant action."
+      ],
+      "source_path": "knowledge/integration/event-driven-architecture.md",
+      "sources": [
+        "AKS-000010"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "eventing"
+      ],
+      "summary": "An architectural style in which producers publish facts about state changes and consumers react through asynchronous event flows.",
+      "tags": [
+        "events",
+        "asynchronous",
+        "integration"
+      ],
+      "title": "Event-Driven Architecture",
+      "tradeoffs": [
+        "Eventual consistency.",
+        "Harder end-to-end tracing.",
+        "Schema and replay governance."
+      ],
+      "type": "architectural-style",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "Idempotent operation semantics"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A transactional boundary can prevent some duplicates locally; at-most-once delivery can lose work and still needs explicit failure semantics."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use where recovery or delivery semantics permit duplicate attempts and duplicate effects would violate business or system invariants."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Equivalent attempts can be identified within the chosen scope and retention window."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Do not add global deduplication when the operation is naturally idempotent or when duplicate effects are acceptable and retention cost is unjustified."
+        }
+      ],
+      "benefits": [
+        "Enables safer retries and redelivery.",
+        "Protects invariants from duplicate effects.",
+        "Makes recovery semantics explicit."
+      ],
+      "claims": [
+        "AKL-000011",
+        "AKL-000025"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Operation equivalence, intended effect, identity, and retention must be defined for each idempotency context."
+        }
+      ],
+      "context": "Operations that can be retried, redelivered, replayed, or submitted concurrently and whose duplicate effects matter.",
+      "contextual_roles": [
+        {
+          "context": "RFC 9110 defines the intended effect of repeated identical requests for an HTTP method.",
+          "role": "http-method-semantics"
+        },
+        {
+          "context": "A business operation can define equivalent attempts and a bounded intended effect.",
+          "role": "operation-characteristic"
+        },
+        {
+          "context": "Keys, inboxes, conditional writes, and effect ledgers are mechanisms, not the semantic property itself.",
+          "role": "implementation-tactic"
+        }
+      ],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Suppressing a duplicate message ID while an earlier attempt left an external effect uncertain does not prove end-to-end idempotency."
+        }
+      ],
+      "data_implications": [
+        "Define key uniqueness, retention, atomicity with domain state, and treatment of payload changes and external side effects."
+      ],
+      "dimensions": [
+        "interaction",
+        "state-management",
+        "resilience"
+      ],
+      "domain": "distributed-systems",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A payment request with the same customer-scoped key returns the recorded outcome without creating a second charge."
+        }
+      ],
+      "failure_modes": [
+        "AKC-000024"
+      ],
+      "forces": [
+        "Duplicate detection needs identity and retention.",
+        "Concurrent duplicates can race.",
+        "A repeated response may differ while intended state stays stable.",
+        "Side effects can cross system boundaries."
+      ],
+      "human_key": "idempotency",
+      "id": "AKC-000011",
+      "intent": "Make repeated execution produce a bounded, explicitly defined outcome.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Monitor duplicate rates, key conflicts, storage growth, expiry behavior, and stuck in-progress records."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Networks and brokers can leave callers uncertain whether an operation completed, so safe recovery may require repeating it.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000012",
+        "AKC-000014"
+      ],
+      "relationships": [
+        "AKR-000005"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Reusing a key for a different request can return a wrong result."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Bind idempotency keys to the authorized principal and operation; otherwise a key can leak results or create cross-tenant interference."
+      ],
+      "source_path": "knowledge/distributed-systems/idempotency.md",
+      "sources": [
+        "AKS-000011",
+        "AKS-000012"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "message-processing"
+      ],
+      "summary": "An umbrella semantic property for bounded repeated operations, with HTTP method semantics, operation-effect semantics, and implementation tactics kept as distinct contextual roles.",
+      "tags": [
+        "idempotency",
+        "duplicates",
+        "retries"
+      ],
+      "title": "Idempotency",
+      "tradeoffs": [
+        "Key storage and expiry.",
+        "Concurrency coordination.",
+        "Ambiguous request equivalence."
+      ],
+      "type": "semantic-property",
+      "version": 3
+    },
+    {
+      "aliases": [
+        "Retry pattern"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [
+            "AKC-000013"
+          ],
+          "scope": "reusable-concept",
+          "statement": "Circuit breakers limit calls during sustained failure; queues defer work; fail-fast behavior preserves capacity when recovery is unlikely."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when evidence supports transient recovery, repetition is safe, and a bounded attempt fits the end-to-end deadline."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The failure is transient and repeating the operation is safe or protected by equivalent duplicate-effect control."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Avoid retrying permanent validation, authorization, capacity, or semantic failures without a state change that could make them succeed."
+        }
+      ],
+      "benefits": [
+        "Masks short transient faults.",
+        "Can reduce user-visible failure.",
+        "Provides bounded recovery behavior."
+      ],
+      "claims": [
+        "AKL-000012",
+        "AKL-000025",
+        "AKL-000026",
+        "AKL-000028",
+        "AKL-000045"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Attempts, delays, deadlines, and aggregate retry load must remain bounded."
+        }
+      ],
+      "context": "Remote or local operations with understood transient failure modes, bounded latency budgets, and safe repetition semantics.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Retrying every error at every service layer until a fixed count is an amplification pattern, not a bounded recovery strategy."
+        }
+      ],
+      "data_implications": [
+        "Repeated writes require idempotency or equivalent concurrency semantics. Reads may still observe changing state between attempts."
+      ],
+      "dimensions": [
+        "interaction",
+        "resilience",
+        "observability"
+      ],
+      "domain": "reliability-operability",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A client retries a throttled read with server-directed delay, jitter, and a remaining deadline."
+        }
+      ],
+      "failure_modes": [
+        "AKC-000021"
+      ],
+      "forces": [
+        "Failures are not all transient.",
+        "Attempts consume time and capacity.",
+        "Clients can synchronize retries.",
+        "Duplicate effects may be unsafe.",
+        "Upstream deadlines bound recovery."
+      ],
+      "human_key": "retry",
+      "id": "AKC-000012",
+      "intent": "Recover from transient failure without turning persistent failure into an amplification loop.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Expose attempt counts, reasons, backoff, exhausted budgets, and downstream outcomes; tune policies from failure evidence."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Temporary faults can make an otherwise valid operation fail, but uncontrolled repetition can amplify load, latency, and duplicate effects.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [
+          {
+            "claim_ids": [
+              "AKL-000026"
+            ],
+            "conditions": [
+              {
+                "concept_ids": [],
+                "statement": "Failures are transient and attempts are bounded."
+              }
+            ],
+            "quality_attribute_id": "AKC-000004"
+          }
+        ],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000004",
+        "AKC-000011",
+        "AKC-000013"
+      ],
+      "relationships": [
+        "AKR-000005",
+        "AKR-000006",
+        "AKR-000008",
+        "AKR-000021"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Retry storms synchronize clients and exhaust capacity."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Do not retry authorization failures; cap attacker-controlled amplification and preserve authentication context safely across attempts."
+      ],
+      "source_path": "knowledge/reliability-operability/retry.md",
+      "sources": [
+        "AKS-000012"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "fault-handling"
+      ],
+      "summary": "A resilience tactic that repeats a failed operation under a bounded policy when the failure may be transient.",
+      "tags": [
+        "retry",
+        "transient-fault",
+        "backoff"
+      ],
+      "title": "Retry",
+      "tradeoffs": [
+        "Increased tail latency.",
+        "Extra load and cost.",
+        "Potential duplicate effects."
+      ],
+      "type": "tactic",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "Circuit breaker pattern"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [
+            "AKC-000012"
+          ],
+          "scope": "reusable-concept",
+          "statement": "Timeouts bound individual waits; retries address transient failures; bulkheads isolate capacity."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use where stopping calls preserves material resources or prevents cascading failure and the open-state behavior is defined."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A rejected or degraded response is acceptable while the protected dependency is unhealthy."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Avoid when the call is local and cheap, failure classification is unavailable, or blocking calls would violate a safety-critical action."
+        }
+      ],
+      "benefits": [
+        "Limits cascading failure.",
+        "Reduces wasted waits.",
+        "Creates controlled recovery probes."
+      ],
+      "claims": [
+        "AKL-000013",
+        "AKL-000027",
+        "AKL-000028"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Failure thresholds, open duration, probe volume, and open-state behavior must be bounded."
+        }
+      ],
+      "context": "Remote calls with observable failure signals, meaningful fallback or fast-failure behavior, and a dependency likely to recover.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Opening a breaker for declined payments confuses expected business outcomes with dependency failure."
+        }
+      ],
+      "data_implications": [
+        "Cached or alternate fallback data needs explicit staleness, consistency, and provenance semantics."
+      ],
+      "dimensions": [
+        "interaction",
+        "resilience",
+        "observability"
+      ],
+      "domain": "reliability-operability",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A checkout service opens a breaker for a failing recommendation dependency and continues without optional recommendations."
+        }
+      ],
+      "failure_modes": [
+        "AKC-000021"
+      ],
+      "forces": [
+        "Failure thresholds can misclassify.",
+        "Shared and per-instance state behave differently.",
+        "Fallback can be stale or unsafe.",
+        "Recovery probes need capacity.",
+        "Business errors differ from system faults."
+      ],
+      "human_key": "circuit-breaker",
+      "id": "AKC-000013",
+      "intent": "Contain sustained dependency failure and allow controlled recovery probing.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Monitor state transitions, rejected calls, probe outcomes, thresholds, and correlation with dependency health."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Continuing to call an unhealthy dependency consumes capacity, increases latency, and can spread failure through waiting callers.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [
+          {
+            "claim_ids": [
+              "AKL-000027"
+            ],
+            "conditions": [
+              {
+                "concept_ids": [],
+                "statement": "Calls to an unhealthy dependency would otherwise consume shared capacity."
+              }
+            ],
+            "quality_attribute_id": "AKC-000004"
+          }
+        ],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000004",
+        "AKC-000012"
+      ],
+      "relationships": [
+        "AKR-000007",
+        "AKR-000008"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A global breaker can create synchronized recovery load."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Failure responses and breaker state should not leak sensitive dependency details; fallback must preserve authorization and freshness rules."
+      ],
+      "source_path": "knowledge/reliability-operability/circuit-breaker.md",
+      "sources": [
+        "AKS-000013"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "fault-containment"
+      ],
+      "summary": "A resilience tactic that temporarily prevents calls to a failing dependency and probes for recovery according to an explicit state policy.",
+      "tags": [
+        "circuit-breaker",
+        "fault-containment"
+      ],
+      "title": "Circuit Breaker",
+      "tradeoffs": [
+        "State tuning and coordination.",
+        "Intentional rejection while open.",
+        "Fallback correctness burden."
+      ],
+      "type": "tactic",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "Outbox pattern"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Distributed transactions provide stronger atomic coordination where supported; event sourcing derives events from the primary log but changes the data model."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when a database state transition and an outgoing message must not diverge and asynchronous publication is acceptable."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The relay is operated to eventual publication and consumers tolerate the declared delivery semantics."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Avoid when one transactional resource already covers both effects or when message delay and duplicate delivery cannot be tolerated."
+        }
+      ],
+      "benefits": [
+        "Closes the local dual-write gap.",
+        "Works without cross-resource transactions.",
+        "Supports recoverable publication."
+      ],
+      "claims": [
+        "AKL-000014",
+        "AKL-000029",
+        "AKL-000030"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Business state and message intent must be committed within one local transaction."
+        }
+      ],
+      "context": "A service must emit messages corresponding to local durable state changes without a distributed transaction across database and broker.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Writing state, then directly publishing without a durable message intent remains a dual write even if failures are rare."
+        }
+      ],
+      "data_implications": [
+        "Define transactional boundary, event identity, ordering key, retention, cleanup, schema evolution, and recovery from poisoned rows."
+      ],
+      "dimensions": [
+        "interaction",
+        "data-consistency",
+        "state-management",
+        "resilience"
+      ],
+      "domain": "distributed-systems",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "An order transaction stores OrderAccepted and its outbox message together; a relay later publishes the event."
+        }
+      ],
+      "failure_modes": [
+        "AKC-000024"
+      ],
+      "forces": [
+        "The publisher can crash at any point.",
+        "Publication is usually at least once.",
+        "Ordering requirements vary by aggregate.",
+        "Outbox retention grows.",
+        "Broker acknowledgement can be uncertain."
+      ],
+      "human_key": "transactional-outbox",
+      "id": "AKC-000014",
+      "intent": "Make business-state commit and message intent atomic within one local transaction.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Monitor oldest unpublished age, backlog, publish failures, duplicates, cleanup, and broker acknowledgement behavior."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Updating a database and publishing a message as separate operations creates a dual-write gap in which either side can succeed alone.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [
+          {
+            "claim_ids": [
+              "AKL-000030"
+            ],
+            "conditions": [
+              {
+                "concept_ids": [],
+                "statement": "Business state and message intent share one local transaction."
+              }
+            ],
+            "quality_attribute_id": "AKC-000005"
+          }
+        ],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000005",
+        "AKC-000010",
+        "AKC-000011"
+      ],
+      "relationships": [
+        "AKR-000009",
+        "AKR-000010"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Marking published before broker acknowledgement loses messages; marking after acknowledgement permits duplicates."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Protect outbox payloads and relay credentials; avoid placing unnecessary sensitive data in durable integration records."
+      ],
+      "source_path": "knowledge/distributed-systems/transactional-outbox.md",
+      "sources": [
+        "AKS-000014"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "messaging",
+        "transactions"
+      ],
+      "summary": "An integration pattern that stores an outgoing message record in the same local transaction as business state, then publishes it asynchronously.",
+      "tags": [
+        "outbox",
+        "dual-write",
+        "events"
+      ],
+      "title": "Transactional Outbox",
+      "tradeoffs": [
+        "At-least-once publication.",
+        "Additional table and relay.",
+        "Cleanup and ordering complexity."
+      ],
+      "type": "integration-pattern",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "Saga distributed transaction"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A local transaction is simpler when ownership can remain within one boundary."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when local transactions can advance a workflow and the business can define acceptable compensation or forward recovery for failures."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Participants and recovery mechanisms eventually make progress or escalate to explicit intervention."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Avoid when partial completion is unacceptable and a single transactional boundary is feasible, or when no valid recovery semantics exist."
+        }
+      ],
+      "benefits": [
+        "Avoids global locks.",
+        "Supports long-running workflows.",
+        "Makes compensation explicit."
+      ],
+      "claims": [
+        "AKL-000015",
+        "AKL-000031"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Compensation, pivot, retryable steps, isolation risks, and intervention paths must be specified."
+        }
+      ],
+      "context": "Long-running or cross-service processes with explicit intermediate states, failure handling, and business-defined compensation.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Calling several services sequentially without durable workflow state or compensation is not a reliable saga."
+        }
+      ],
+      "data_implications": [
+        "Persist workflow identity, step state, causal links, deadlines, and compensation outcomes; design participant actions for repeated messages."
+      ],
+      "dimensions": [
+        "interaction",
+        "data-consistency",
+        "state-management",
+        "resilience"
+      ],
+      "domain": "distributed-systems",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A travel workflow reserves components locally and compensates completed reservations when a later required step fails."
+        }
+      ],
+      "failure_modes": [
+        "AKC-000024"
+      ],
+      "forces": [
+        "Compensation may not undo reality.",
+        "Steps can repeat or reorder.",
+        "Isolation is weaker than one transaction.",
+        "Business deadlines can be long.",
+        "Ownership spans services."
+      ],
+      "human_key": "saga",
+      "id": "AKC-000015",
+      "intent": "Coordinate distributed progress while making partial completion and recovery explicit.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Provide end-to-end state visibility, stuck-saga detection, replay controls, manual repair, and audit trails."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "A business workflow spans independently owned transactional boundaries where one atomic transaction is unavailable or undesirable.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000016"
+      ],
+      "relationships": [
+        "AKR-000011"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Compensation can fail or be semantically impossible."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Authorize every step and compensation independently; a coordinator must not become a confused deputy across service boundaries."
+      ],
+      "source_path": "knowledge/distributed-systems/saga.md",
+      "sources": [
+        "AKS-000015"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "workflow",
+        "transactions"
+      ],
+      "summary": "A distributed workflow pattern that coordinates a sequence of local transactions and uses compensating actions or forward recovery after failure.",
+      "tags": [
+        "saga",
+        "compensation",
+        "workflow"
+      ],
+      "title": "Saga",
+      "tradeoffs": [
+        "Weak isolation.",
+        "Complex state machines.",
+        "Compensation and operations burden."
+      ],
+      "type": "integration-pattern",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "Eventually consistent convergence"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Strong consistency coordinates before exposing results; bounded staleness and session guarantees offer intermediate contracts."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when stakeholders accept specified temporary divergence and the system can prove or monitor convergence for the affected state."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "After relevant updates cease, delivery and conflict-resolution mechanisms can make progress toward the convergence target."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Avoid for invariants that require immediate coordination or where stale and conflicting observations create unacceptable harm."
+        }
+      ],
+      "benefits": [
+        "Supports disconnected or autonomous progress.",
+        "Reduces synchronous coordination.",
+        "Can improve regional latency and availability."
+      ],
+      "claims": [
+        "AKL-000016",
+        "AKL-000031",
+        "AKL-000032"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Permitted divergence, convergence target, anomaly window, and invariants requiring coordination must be explicit."
+        }
+      ],
+      "context": "Replicated data or distributed workflows that permit bounded temporary divergence and have a convergence mechanism.",
+      "contextual_roles": [
+        {
+          "context": "Participants can observe divergent state within a declared consistency contract.",
+          "role": "distributed-system-property"
+        },
+        {
+          "context": "Asynchronous replication or workflow choices can introduce the consistency behavior conditionally.",
+          "role": "architectural-consequence"
+        },
+        {
+          "context": "The model trades immediate agreement against stated availability, autonomy, or latency goals.",
+          "role": "architectural-tradeoff"
+        }
+      ],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Two databases that drift indefinitely with no delivery, conflict, or repair mechanism are inconsistent, not eventually consistent by design."
+        }
+      ],
+      "data_implications": [
+        "Specify convergence target, conflict semantics, causal metadata, tombstones, retention, and invariants requiring coordination."
+      ],
+      "dimensions": [
+        "data-consistency",
+        "state-management",
+        "interaction"
+      ],
+      "domain": "distributed-systems",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A regional catalog projection serves slightly stale descriptions and converges after event delivery resumes."
+        }
+      ],
+      "failure_modes": [
+        "AKC-000024"
+      ],
+      "forces": [
+        "Updates propagate with delay.",
+        "Concurrent writes can conflict.",
+        "Users observe intermediate states.",
+        "Convergence depends on delivery and merge rules.",
+        "Some invariants cannot be delayed."
+      ],
+      "human_key": "eventual-consistency",
+      "id": "AKC-000016",
+      "intent": "Trade immediate agreement for availability, autonomy, or latency while defining convergence and anomaly handling explicitly.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Measure replication lag, divergence age, conflict rate, repair backlog, and convergence failures rather than assuming convergence."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Independent distribution and availability can make immediate global agreement costly or unavailable, while users and workflows still need understandable state semantics.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000010",
+        "AKC-000015"
+      ],
+      "relationships": [
+        "AKR-000011",
+        "AKR-000012"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Eventually can become unbounded when delivery or repair fails."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Authorization and revocation semantics need special care because stale replicas can continue accepting or exposing actions."
+      ],
+      "source_path": "knowledge/distributed-systems/eventual-consistency.md",
+      "sources": [
+        "AKS-000010",
+        "AKS-000015",
+        "AKS-000016"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "consistency"
+      ],
+      "summary": "A consistency model that permits bounded temporary divergence and promises convergence only under explicit delivery, conflict-resolution, and quiescence assumptions.",
+      "tags": [
+        "eventual-consistency",
+        "convergence"
+      ],
+      "title": "Eventual Consistency",
+      "tradeoffs": [
+        "Temporary anomalies.",
+        "Conflict-resolution complexity.",
+        "Harder user and operator reasoning."
+      ],
+      "type": "consistency-model",
+      "version": 3
+    },
+    {
+      "aliases": [
+        "OAuth 2.0"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Session cookies can suit one first-party web boundary; capability or signed-request designs address different trust models."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when delegated or service access to HTTP resources needs standardized authorization flows and ecosystem interoperability."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Authorization server, resource server, client type, user agent, resource owner, and protected resource boundaries are known."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Do not use OAuth alone as proof of end-user authentication or as a replacement for resource-specific authorization policy."
+        }
+      ],
+      "benefits": [
+        "Standardized delegated authorization.",
+        "Reduced credential sharing.",
+        "Separation of token issuance and resource enforcement."
+      ],
+      "claims": [
+        "AKL-000017",
+        "AKL-000033",
+        "AKL-000049",
+        "AKL-000050",
+        "AKL-000051",
+        "AKL-000052",
+        "AKL-000053",
+        "AKL-000054",
+        "AKL-000055",
+        "AKL-000056",
+        "AKL-000057",
+        "AKL-000058",
+        "AKL-000059",
+        "AKL-000063"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "OAuth 2.0 deployment must apply the admitted Security BCP and the requirements of each selected extension or profile."
+        }
+      ],
+      "context": "HTTP-based ecosystems with authorization servers, resource servers, clients, explicit trust boundaries, and protected resources.",
+      "contextual_roles": [
+        {
+          "context": "AKC-000017 represents RFC 6749 OAuth 2.0 authorization semantics.",
+          "role": "base-framework"
+        },
+        {
+          "context": "RFC 9700 updates deployment security guidance without becoming OAuth 2.1.",
+          "role": "security-bcp-governed"
+        },
+        {
+          "context": "Extensions and deployment profiles remain separate specifications with their own applicability.",
+          "role": "extension-host"
+        }
+      ],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Treating an access token as proof of user identity, assuming an access token is universally a JWT, giving a public client a shared secret and calling it confidential, or using password or implicit grants as modern defaults violates the governed boundaries."
+        }
+      ],
+      "data_implications": [
+        "Minimize token contents, restrict audiences and privilege, protect tokens and logs, define revocation and retention, and do not treat scopes as complete application authorization policy."
+      ],
+      "dimensions": [
+        "interaction",
+        "trust-security"
+      ],
+      "domain": "security-privacy",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A user authorizes a client to access a bounded resource scope without giving the client the user's password."
+        }
+      ],
+      "failure_modes": [
+        "AKC-000023"
+      ],
+      "forces": [
+        "Client types have different security capabilities.",
+        "Tokens are bearer credentials in common deployments.",
+        "Redirects and browsers create attack surfaces.",
+        "Scopes are not complete business authorization.",
+        "Standards evolve."
+      ],
+      "human_key": "oauth-2-0-authorization-framework",
+      "id": "AKC-000017",
+      "intent": "Separate authorization delegation and token issuance from protected-resource access.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Operate keys, issuer metadata, client registration, redirect inventories, refresh-token replay response, token revocation, telemetry, and configuration-drift controls."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [
+        "oauth-2x"
+      ],
+      "problem": "Applications need delegated or service authorization without sharing a resource owner's primary credentials with every client.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000018"
+      ],
+      "relationships": [
+        "AKR-000013"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-08-01"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Redirect manipulation, code injection, mix-up, bearer-token replay, refresh-token replay, weak client authentication, excess privilege, and audience confusion arise from incomplete profiles or validation."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        {
+          "claim_ids": [
+            "AKL-000049"
+          ],
+          "concept_ids": [],
+          "kind": "implementation-observation",
+          "scope": "edge-local",
+          "statement": "Public OAuth clients cannot keep credentials confidential, while confidential clients can authenticate only within their registered deployment assumptions."
+        },
+        {
+          "claim_ids": [
+            "AKL-000050"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "Public OAuth clients using the authorization code grant MUST use PKCE."
+        },
+        {
+          "claim_ids": [
+            "AKL-000051"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "Confidential clients making token endpoint requests MUST authenticate using the method established with the authorization server. Selected profiles may impose stricter authentication requirements."
+        },
+        {
+          "claim_ids": [
+            "AKL-000052"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "Authorization servers MUST compare redirect URIs using exact string matching, except that native-application localhost loopback redirect URIs may vary only by port as specified by RFC 9700."
+        },
+        {
+          "claim_ids": [
+            "AKL-000053"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "OAuth deployments MUST NOT use the resource owner password credentials grant."
+        },
+        {
+          "claim_ids": [
+            "AKL-000054"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "OAuth clients SHOULD NOT use the implicit grant or other response types that issue access tokens in the authorization response unless access-token injection is prevented and the relevant leakage vectors are mitigated."
+        },
+        {
+          "claim_ids": [
+            "AKL-000055"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "Authorization servers issuing refresh tokens to public clients MUST use sender-constrained refresh tokens or refresh-token rotation, detect replay, and revoke the active refresh token when replay is detected."
+        },
+        {
+          "claim_ids": [
+            "AKL-000056"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "Authorization servers and resource servers SHOULD use sender-constraining mechanisms for access tokens, such as mutual TLS or DPoP, unless architecture or performance constraints prevent their use."
+        },
+        {
+          "claim_ids": [
+            "AKL-000057"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "Authorization servers SHOULD restrict access-token privileges and audience to the minimum required for the requested resource access."
+        },
+        {
+          "claim_ids": [
+            "AKL-000058"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "Resource servers MUST validate that an access token is intended for them and reject a token whose audience or resource binding does not match."
+        },
+        {
+          "claim_ids": [
+            "AKL-000063"
+          ],
+          "concept_ids": [],
+          "kind": "security-risk",
+          "scope": "edge-local",
+          "statement": "An OAuth bearer access token can be replayed by a party that possesses it unless token use is sender-constrained."
+        },
+        {
+          "claim_ids": [
+            "AKL-000059"
+          ],
+          "concept_ids": [],
+          "kind": "implementation-observation",
+          "scope": "edge-local",
+          "statement": "OAuth access tokens are authorization credentials for protected-resource access, and OAuth does not require every access token to use JWT format."
+        }
+      ],
+      "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
+      "sources": [
+        "AKS-000017",
+        "AKS-000018"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "authorization"
+      ],
+      "summary": "The RFC 6749 authorization framework, deployed with RFC 9700 Security BCP requirements and with each extension or profile governed separately.",
+      "tags": [
+        "oauth",
+        "authorization",
+        "tokens"
+      ],
+      "title": "OAuth 2.0 Authorization Framework",
+      "tradeoffs": [
+        "Large security-sensitive configuration surface.",
+        "Token lifecycle operations.",
+        "Scopes can become coarse or ambiguous."
+      ],
+      "type": "protocol",
+      "version": 5
+    },
+    {
+      "aliases": [
+        "OIDC"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Local authentication or other federation protocols can be appropriate when ecosystem, trust, or deployment constraints differ."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when a client needs interoperable federated end-user authentication and an appropriate OpenID Provider is trusted."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The configured OpenID Provider metadata, keys, issuer, client identity, and redirect endpoints are trustworthy and current."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Do not use ID Tokens as generic API access tokens or assume an authenticated identity is authorized for a protected action."
+        }
+      ],
+      "benefits": [
+        "Standardized federated authentication.",
+        "Signed identity assertions.",
+        "Interoperable discovery and claims."
+      ],
+      "claims": [
+        "AKL-000018",
+        "AKL-000033",
+        "AKL-000034",
+        "AKL-000047",
+        "AKL-000050",
+        "AKL-000051",
+        "AKL-000052",
+        "AKL-000054",
+        "AKL-000059",
+        "AKL-000060",
+        "AKL-000061",
+        "AKL-000062",
+        "AKL-000064",
+        "AKL-000065",
+        "AKL-000066",
+        "AKL-000067",
+        "AKL-000068",
+        "AKL-000069"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The relying party must validate the complete OpenID Connect response in the configured issuer and client context."
+        }
+      ],
+      "context": "Clients need federated authentication through an OpenID Provider and can validate issuer, audience, nonce, signatures, and protocol state.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Sending an ID Token to an unrelated API as a bearer credential, accepting an access token as a universal identity assertion, or assuming every OAuth access token is a JWT violates the token-role and format boundaries."
+        }
+      ],
+      "data_implications": [
+        "Collect minimal identity claims, define freshness and authoritative source, and avoid durable storage of unnecessary personal data."
+      ],
+      "dimensions": [
+        "interaction",
+        "trust-security"
+      ],
+      "domain": "security-privacy",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A web client validates an ID Token from its configured provider and then applies its own application authorization rules."
+        }
+      ],
+      "failure_modes": [
+        "AKC-000023"
+      ],
+      "forces": [
+        "Authentication and authorization have different semantics.",
+        "ID Tokens require strict validation.",
+        "Claims can be stale or sensitive.",
+        "Federation expands trust.",
+        "Logout and session behavior vary."
+      ],
+      "human_key": "openid-connect",
+      "id": "AKC-000018",
+      "intent": "Provide standardized authentication assertions and identity claims without redefining OAuth resource authorization.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Monitor provider availability, key rotation, metadata changes, clock skew, login failures, and emergency trust revocation."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "OAuth access tokens authorize resource access but do not by themselves define an interoperable end-user authentication result for a client.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000017"
+      ],
+      "relationships": [
+        "AKR-000013",
+        "AKR-000014",
+        "AKR-000023"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-08-01"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Skipping an applicable issuer, audience, nonce, expiration, or signature control enables substitution and replay."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        {
+          "claim_ids": [
+            "AKL-000050"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "Public OAuth clients using the authorization code grant MUST use PKCE."
+        },
+        {
+          "claim_ids": [
+            "AKL-000051"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "Confidential clients making token endpoint requests MUST authenticate using the method established with the authorization server. Selected profiles may impose stricter authentication requirements."
+        },
+        {
+          "claim_ids": [
+            "AKL-000052"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "Authorization servers MUST compare redirect URIs using exact string matching, except that native-application localhost loopback redirect URIs may vary only by port as specified by RFC 9700."
+        },
+        {
+          "claim_ids": [
+            "AKL-000054"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "OAuth clients SHOULD NOT use the implicit grant or other response types that issue access tokens in the authorization response unless access-token injection is prevented and the relevant leakage vectors are mitigated."
+        },
+        {
+          "claim_ids": [
+            "AKL-000059"
+          ],
+          "concept_ids": [],
+          "kind": "implementation-observation",
+          "scope": "edge-local",
+          "statement": "OAuth access tokens are authorization credentials for protected-resource access, and OAuth does not require every access token to use JWT format."
+        },
+        {
+          "claim_ids": [
+            "AKL-000060"
+          ],
+          "concept_ids": [],
+          "kind": "implementation-observation",
+          "scope": "edge-local",
+          "statement": "An OpenID Connect ID Token is a JWT authentication assertion about an end-user authentication event for its intended relying party."
+        },
+        {
+          "claim_ids": [
+            "AKL-000061"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "OpenID Connect clients MUST require the configured OpenID Provider issuer identifier to exactly match the ID Token iss claim."
+        },
+        {
+          "claim_ids": [
+            "AKL-000064"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "OpenID Connect clients MUST validate that the ID Token audience contains their registered client identifier and reject the token if the client is not a valid audience or any additional audience is untrusted."
+        },
+        {
+          "claim_ids": [
+            "AKL-000065"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "When an extension makes the azp claim applicable, OpenID Connect clients SHOULD validate the azp value as specified by that extension."
+        },
+        {
+          "claim_ids": [
+            "AKL-000066"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "When an ID Token is not received by direct communication from the Token Endpoint, OpenID Connect clients MUST validate its signature using the issuer's keys and the token's declared algorithm."
+        },
+        {
+          "claim_ids": [
+            "AKL-000067"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "When an ID Token is received by direct communication from the Token Endpoint, OpenID Connect clients MAY use TLS server validation to validate the issuer in place of checking that token's signature."
+        },
+        {
+          "claim_ids": [
+            "AKL-000068"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "OpenID Connect clients MUST require the current time to be before the time represented by the ID Token exp claim."
+        },
+        {
+          "claim_ids": [
+            "AKL-000069"
+          ],
+          "concept_ids": [],
+          "kind": "normative-control",
+          "scope": "edge-local",
+          "statement": "When a nonce was sent in the Authentication Request, OpenID Connect clients MUST require a nonce claim in the ID Token and validate that its value equals the sent nonce."
+        },
+        {
+          "claim_ids": [
+            "AKL-000062"
+          ],
+          "concept_ids": [],
+          "kind": "operational-recommendation",
+          "scope": "edge-local",
+          "statement": "Repository guidance recommends that clients not substitute an OpenID Connect ID Token when an API contract requires an audience-bound OAuth access token."
+        }
+      ],
+      "source_path": "knowledge/security/openid-connect.md",
+      "sources": [
+        "AKS-000017",
+        "AKS-000018",
+        "AKS-000019"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "authentication",
+        "identity"
+      ],
+      "summary": "An identity layer built on OAuth 2.0 that lets a relying party verify an end user's authentication and obtain interoperable identity claims.",
+      "tags": [
+        "openid-connect",
+        "authentication",
+        "identity"
+      ],
+      "title": "OpenID Connect",
+      "tradeoffs": [
+        "Provider dependency.",
+        "Complex validation rules.",
+        "Privacy and claim-minimization burden."
+      ],
+      "type": "protocol",
+      "version": 5
+    },
+    {
+      "aliases": [
+        "System observability"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Monitoring of known conditions is necessary but narrower; debugging and profiling provide targeted evidence and can participate in an observability strategy."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use as a system quality concern where diagnosis, learning, and operational decisions depend on interrogating behavior."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Signals preserve enough context and responders have workflows capable of acting on the evidence."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Do not equate installing a telemetry library or collecting three signal types with achieving useful observability."
+        }
+      ],
+      "benefits": [
+        "Supports investigation of unknown failure.",
+        "Improves causal context.",
+        "Enables operational learning and verification."
+      ],
+      "claims": [
+        "AKL-000019",
+        "AKL-000035"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Telemetry collection must stay within cost, privacy, retention, and access-control limits."
+        }
+      ],
+      "context": "Operated systems whose distributed, dynamic, or high-cardinality behavior requires investigation beyond known failure dashboards.",
+      "contextual_roles": [
+        {
+          "context": "The system exposes enough output and context to investigate internal behavior.",
+          "role": "system-property"
+        },
+        {
+          "context": "People and automation can ask questions and act on the resulting evidence.",
+          "role": "operational-capability"
+        },
+        {
+          "context": "Instrumentation and telemetry operations are practices that support, but do not equal, observability.",
+          "role": "engineering-discipline"
+        }
+      ],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A dashboard showing host CPU without request or domain context does not establish system observability."
+        }
+      ],
+      "data_implications": [
+        "Define telemetry ownership, schema, retention, sampling, redaction, lineage, and deletion requirements."
+      ],
+      "dimensions": [
+        "observability",
+        "resilience",
+        "execution"
+      ],
+      "domain": "observability",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "An engineer traces a degraded user journey across services and correlates it with deployment, tenant, and dependency evidence."
+        }
+      ],
+      "failure_modes": [],
+      "forces": [
+        "Unknown failures need exploratory evidence.",
+        "Telemetry has cost and cardinality.",
+        "Context propagation can break.",
+        "Signals are incomplete models.",
+        "Sensitive data can leak."
+      ],
+      "human_key": "observability",
+      "id": "AKC-000019",
+      "intent": "Enable evidence-based questions about system behavior while controlling telemetry cost, sensitivity, and interpretation.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Operate telemetry pipelines as production dependencies with capacity, loss, delay, quality, and cost indicators."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Operators and engineers cannot diagnose unfamiliar failures or evaluate behavior when the system exposes only predetermined health signals without sufficient context.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000005"
+      ],
+      "relationships": [
+        "AKR-000015"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Dashboards can create false confidence."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Treat telemetry as sensitive data, enforce tenant boundaries, redact secrets and personal data, and audit query access."
+      ],
+      "source_path": "knowledge/observability/observability.md",
+      "sources": [
+        "AKS-000020"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "telemetry",
+        "diagnostics"
+      ],
+      "summary": "The capability to understand a system's internal state and behavior from available outputs, context, and targeted investigation.",
+      "tags": [
+        "observability",
+        "telemetry",
+        "diagnostics"
+      ],
+      "title": "Observability",
+      "tradeoffs": [
+        "Storage and processing cost.",
+        "Instrumentation maintenance.",
+        "Privacy and cardinality risks."
+      ],
+      "type": "quality-attribute",
+      "version": 3
+    },
+    {
+      "aliases": [
+        "ADR"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Meeting notes capture discussion but may not identify a durable decision."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use for decisions whose rationale and consequences future maintainers or stakeholders need to understand."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Readers can identify the project, time, status, and supersession context of the recorded decision."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Do not create an ADR for every implementation detail or treat the record as a substitute for discussion, evidence, or enforcement."
+        }
+      ],
+      "benefits": [
+        "Preserves rationale and consequences.",
+        "Reduces repeated debate.",
+        "Supports review and supersession."
+      ],
+      "claims": [
+        "AKL-000020",
+        "AKL-000037",
+        "AKL-000039"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "One ADR must capture one significant decision within a versioned project context."
+        }
+      ],
+      "context": "A decision with material, durable, cross-cutting, costly, or difficult-to-reverse consequences.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A document that merely announces a technology without context, alternatives, rationale, or consequences is not a useful ADR."
+        }
+      ],
+      "data_implications": [
+        "Data decisions should capture ownership, lifecycle, migration, consistency, privacy, and rollback consequences."
+      ],
+      "dimensions": [
+        "governance",
+        "delivery-evolution",
+        "organizational-ownership"
+      ],
+      "domain": "documentation",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A team records why it selected a modular monolith, the autonomy thresholds that would trigger reconsideration, and the boundary fitness checks."
+        }
+      ],
+      "failure_modes": [],
+      "forces": [
+        "Records must remain concise enough to maintain.",
+        "Context and alternatives change.",
+        "Decision status needs history.",
+        "Evidence can be uncertain.",
+        "Repository location affects discoverability."
+      ],
+      "human_key": "architecture-decision-record",
+      "id": "AKC-000020",
+      "intent": "Preserve why a decision was made, under which conditions, and with what acknowledged consequences.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Link decisions to operational ownership, rollout, observability, rollback, and verification evidence."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Architecture choices lose context over time, causing repeated debate, accidental reversal, or cargo-cult reuse outside the original conditions.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000002",
+        "AKC-000003",
+        "AKC-000006"
+      ],
+      "relationships": [
+        "AKR-000017",
+        "AKR-000019"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Retroactive ADRs can fabricate certainty."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Security-relevant ADRs should record threat assumptions, accepted residual risk, authority, and sensitive-detail handling."
+      ],
+      "source_path": "knowledge/documentation/architecture-decision-record.md",
+      "sources": [
+        "AKS-000021",
+        "AKS-000022"
+      ],
+      "status": "drafted",
+      "subdomains": [
+        "architecture-decisions"
+      ],
+      "summary": "A durable record of a consequential architecture decision, including its context, selected option, rationale, and consequences.",
+      "tags": [
+        "adr",
+        "decision-record",
+        "rationale"
+      ],
+      "title": "Architecture Decision Record",
+      "tradeoffs": [
+        "Maintenance and discovery cost.",
+        "Risk of stale context.",
+        "Conciseness can omit evidence."
+      ],
+      "type": "documentation-artifact",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "Failure amplification"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Boundary erosion and unreconciled divergence describe different failure mechanisms."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when one participant's response to failure can increase load or resource occupancy elsewhere."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Attempt, queue, saturation, and dependency evidence is available to distinguish amplification from independent failures."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Do not use this label when failures are independent and no amplification mechanism is evidenced."
+        }
+      ],
+      "benefits": [
+        "Creates a reusable node for failure analysis."
+      ],
+      "claims": [
+        "AKL-000041",
+        "AKL-000045"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Amplification requires an evidenced positive-feedback path from failure response to additional load or resource occupancy."
+        }
+      ],
+      "context": "Distributed call paths and asynchronous workflows under degraded dependency or capacity conditions.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Two independent components failing from one power loss share a cause but do not necessarily amplify each other."
+        }
+      ],
+      "data_implications": [
+        "Queue and attempt identity are needed to measure amplification without double counting."
+      ],
+      "dimensions": [
+        "interaction",
+        "resilience"
+      ],
+      "domain": "reliability-operability",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Nested retries multiply one user request into many calls against a degraded dependency."
+        }
+      ],
+      "failure_modes": [],
+      "forces": [
+        "Recovery consumes capacity.",
+        "Clients share dependencies.",
+        "Feedback is delayed."
+      ],
+      "human_key": "cascading-failure-amplification",
+      "id": "AKC-000021",
+      "intent": "Name and analyze the mechanism by which a bounded fault becomes a wider outage.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Observe attempt ratios, queue age, saturation, call depth, and correlated failure timing."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Recovery behavior can consume more capacity than normal traffic and spread a local fault.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000008",
+        "AKC-000012",
+        "AKC-000013"
+      ],
+      "relationships": [
+        "AKR-000021"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Misdiagnosing correlation as amplification can lead to the wrong control."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Threat assumptions include an actor able to trigger expensive failure paths or retry amplification."
+      ],
+      "source_path": "knowledge/supporting/cascading-failure-amplification.md",
+      "sources": [
+        "AKS-000008",
+        "AKS-000012",
+        "AKS-000013"
+      ],
+      "status": "proposed",
+      "subdomains": [
+        "supporting-concepts"
+      ],
+      "summary": "A failure mode in which retries, queues, dependencies, or resource contention magnify an initial fault across system boundaries.",
+      "tags": [
+        "failure-mode",
+        "amplification"
+      ],
+      "title": "Cascading Failure Amplification",
+      "tradeoffs": [
+        "The label does not identify the root cause by itself."
+      ],
+      "type": "failure-mode",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "Architecture boundary erosion"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Cascading amplification concerns runtime feedback; boundary erosion concerns structural integrity."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when observed dependencies contradict the stated contract or ownership of a boundary."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The declared boundary is still intended and exceptions can be distinguished from unmanaged coupling."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Do not label necessary, governed collaboration as erosion merely because components interact."
+        }
+      ],
+      "benefits": [
+        "Makes boundary integrity an explicit failure concern."
+      ],
+      "claims": [
+        "AKL-000042",
+        "AKL-000046"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Boundary erosion must be assessed against an explicit intended dependency or ownership rule."
+        }
+      ],
+      "context": "Modular monoliths, microservices, and ports-and-adapters designs whose benefits depend on maintained boundaries.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A versioned public contract used across teams is boundary interaction, not erosion."
+        }
+      ],
+      "data_implications": [
+        "Shared mutable schemas and direct cross-owner writes are common evidence of erosion."
+      ],
+      "dimensions": [
+        "system-decomposition",
+        "internal-structure",
+        "data-ownership"
+      ],
+      "domain": "application-architecture",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A module imports another module's internal persistence classes and writes its tables directly."
+        }
+      ],
+      "failure_modes": [],
+      "forces": [
+        "Cross-boundary shortcuts are locally cheap.",
+        "Shared data accelerates initial work.",
+        "Enforcement requires maintenance."
+      ],
+      "human_key": "boundary-erosion",
+      "id": "AKC-000022",
+      "intent": "Represent the failure of an architecture boundary to constrain dependencies and ownership.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Track coordinated releases, cross-owner incidents, dependency cycles, and exception growth."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Named boundaries can remain in diagrams while code, data, releases, and ownership become mutually coupled.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000007",
+        "AKC-000008",
+        "AKC-000009"
+      ],
+      "relationships": [
+        "AKR-000022"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Rigid enforcement can preserve a poor boundary, while absent enforcement can turn architecture intent into documentation only."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Threat assumptions include unintended privilege or data access through an eroded trust or module boundary."
+      ],
+      "source_path": "knowledge/supporting/boundary-erosion.md",
+      "sources": [
+        "AKS-000006",
+        "AKS-000007",
+        "AKS-000009"
+      ],
+      "status": "proposed",
+      "subdomains": [
+        "supporting-concepts"
+      ],
+      "summary": "A failure mode in which intended module or service boundaries lose enforceable ownership and dependency semantics over time.",
+      "tags": [
+        "failure-mode",
+        "coupling",
+        "boundaries"
+      ],
+      "title": "Boundary Erosion",
+      "tradeoffs": [
+        "Boundary strength is contextual and can be costly to measure."
+      ],
+      "type": "failure-mode",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "OAuth token confusion"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Boundary erosion is structural; token role confusion is a protocol trust failure."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when a component accepts a token without proving its intended issuer, audience, type, and protocol role."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Consumers know the expected token type and validation context before accepting a token."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Do not apply the label to a correctly validated token merely because several token types use JWT encoding."
+        }
+      ],
+      "benefits": [
+        "Keeps OAuth authorization and OIDC authentication failures explicit."
+      ],
+      "claims": [
+        "AKL-000043",
+        "AKL-000047"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Token role must be evaluated against the issuer, audience, client, recipient, and protocol context for which the token was issued."
+        }
+      ],
+      "context": "Authorization servers, OpenID Providers, clients, relying parties, and resource servers that exchange access, refresh, and ID tokens.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A resource server validating an access token's issuer, audience, expiry, and authorization policy is not token-role confusion."
+        }
+      ],
+      "data_implications": [
+        "Token claims and logs can expose personal or authorization data; role confusion can widen disclosure."
+      ],
+      "dimensions": [
+        "interaction",
+        "trust-security"
+      ],
+      "domain": "security-privacy",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "An API accepts an ID Token minted for a web client as though it were an API access token."
+        }
+      ],
+      "failure_modes": [],
+      "forces": [
+        "Tokens can share encoding.",
+        "Multiple issuers coexist.",
+        "Libraries hide validation defaults.",
+        "Consumers seek convenient identity data."
+      ],
+      "human_key": "token-role-confusion",
+      "id": "AKC-000023",
+      "intent": "Represent trust failures caused by collapsing token roles or validation contexts.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Monitor issuer and audience failures, key and metadata drift, token-type errors, and unexpected presentation paths."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "OAuth and OpenID Connect use multiple token types whose syntax can look similar while their consumers and meanings differ.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000017",
+        "AKC-000018"
+      ],
+      "relationships": [
+        "AKR-000023"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Treating token syntax as proof of role hides issuer, audience, nonce, and authorized-party requirements."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Threat assumptions include an attacker who can obtain or replay a valid token issued for another client, audience, issuer, or role."
+      ],
+      "source_path": "knowledge/supporting/token-role-confusion.md",
+      "sources": [
+        "AKS-000017",
+        "AKS-000018",
+        "AKS-000019"
+      ],
+      "status": "proposed",
+      "subdomains": [
+        "supporting-concepts"
+      ],
+      "summary": "A security failure mode in which a token is accepted under a role, issuer, audience, or semantic contract different from the one for which it was issued.",
+      "tags": [
+        "failure-mode",
+        "oauth",
+        "tokens"
+      ],
+      "title": "Token Role Confusion",
+      "tradeoffs": [
+        "The node groups several attacks that still require precise threat analysis."
+      ],
+      "type": "failure-mode",
+      "version": 2
+    },
+    {
+      "aliases": [
+        "Unbounded distributed divergence"
+      ],
+      "alternatives": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Cascading amplification describes feedback-driven load rather than persistent state mismatch."
+        }
+      ],
+      "applicable_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Use when a convergence contract exists but observed state remains outside its accepted bound."
+        }
+      ],
+      "assumptions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Authoritative or comparable state exists so divergence age and repair outcome can be evaluated."
+        }
+      ],
+      "avoid_when": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Do not call bounded, measured temporary divergence a failure when it remains inside the accepted contract."
+        }
+      ],
+      "benefits": [
+        "Makes failed convergence observable as a first-class failure."
+      ],
+      "claims": [
+        "AKL-000044",
+        "AKL-000048"
+      ],
+      "constraints": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A convergence contract and accepted divergence bound must exist before divergence can be classified as unreconciled."
+        }
+      ],
+      "context": "Event-driven projections, outbox relays, sagas, deduplication records, or replicated state with expected convergence.",
+      "contextual_roles": [],
+      "counterexamples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A projection lagging for seconds inside its declared bound is temporary inconsistency, not unreconciled divergence."
+        }
+      ],
+      "data_implications": [
+        "Define authoritative state, divergence measure, conflict outcome, tombstone behavior, and repair provenance."
+      ],
+      "dimensions": [
+        "data-consistency",
+        "state-management",
+        "resilience"
+      ],
+      "domain": "distributed-systems",
+      "examples": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "An outbox relay stalls and an order projection remains stale past its operational objective without alert or repair."
+        }
+      ],
+      "failure_modes": [],
+      "forces": [
+        "Delivery can stall.",
+        "Conflicts can be unresolved.",
+        "Repairs can repeat.",
+        "Users act on stale state."
+      ],
+      "human_key": "unreconciled-state-divergence",
+      "id": "AKC-000024",
+      "intent": "Distinguish designed temporary divergence from failed or absent reconciliation.",
+      "maturity": "seed",
+      "operational_implications": [
+        "Alert on lag and divergence age, provide reconciliation, and audit manual repair."
+      ],
+      "prerequisites": [],
+      "previous_human_keys": [],
+      "problem": "Temporary inconsistency becomes an unbounded defect when delivery or recovery mechanisms fail silently.",
+      "quality_attributes": {
+        "degrades": [],
+        "improves": [],
+        "influences": []
+      },
+      "record_kind": "concept",
+      "related": [
+        "AKC-000010",
+        "AKC-000014",
+        "AKC-000015",
+        "AKC-000016"
+      ],
+      "relationships": [
+        "AKR-000024"
+      ],
+      "review": {
+        "created_at": "2026-07-29",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-07-30"
+      },
+      "risks": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Assuming that eventual consistency guarantees eventual repair can leave permanent inconsistency undetected."
+        }
+      ],
+      "secondary_types": [],
+      "security_implications": [
+        "Threat assumptions include tampering, replay, or authorization drift that selectively blocks or alters convergence."
+      ],
+      "source_path": "knowledge/supporting/unreconciled-state-divergence.md",
+      "sources": [
+        "AKS-000010",
+        "AKS-000014",
+        "AKS-000015",
+        "AKS-000016"
+      ],
+      "status": "proposed",
+      "subdomains": [
+        "supporting-concepts"
+      ],
+      "summary": "A failure mode in which distributed state diverges beyond its accepted anomaly window because propagation, conflict handling, compensation, or repair does not converge.",
+      "tags": [
+        "failure-mode",
+        "divergence",
+        "reconciliation"
+      ],
+      "title": "Unreconciled State Divergence",
+      "tradeoffs": [
+        "A divergence bound and authoritative comparison can be expensive to define."
+      ],
+      "type": "failure-mode",
+      "version": 2
+    }
+  ]
+}

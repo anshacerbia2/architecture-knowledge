@@ -1,0 +1,142 @@
+{
+  "artifact_type": "traversal-policy",
+  "decisions": [
+    {
+      "eligible": false,
+      "exclusion_reason": "Inferential comparison not directly established by admitted sources.",
+      "relationship_id": "AKR-000001"
+    },
+    {
+      "eligible": true,
+      "exclusion_reason": null,
+      "relationship_id": "AKR-000002"
+    },
+    {
+      "eligible": true,
+      "exclusion_reason": null,
+      "relationship_id": "AKR-000003"
+    },
+    {
+      "eligible": true,
+      "exclusion_reason": null,
+      "relationship_id": "AKR-000004"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "Duplicate-effect requirement is claim-specific; the Idempotency umbrella has multiple contextual roles.",
+      "relationship_id": "AKR-000005"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "Availability impact is a qualified recommendation without a measured causal effect.",
+      "relationship_id": "AKR-000006"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "Caller-capacity effect is plausible, but a measured availability effect is not established.",
+      "relationship_id": "AKR-000007"
+    },
+    {
+      "eligible": true,
+      "exclusion_reason": null,
+      "relationship_id": "AKR-000008"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "The outbox enables a publication mechanism, not event-driven architecture as a whole.",
+      "relationship_id": "AKR-000009"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "The evidence is explicitly claim-context-only and cannot support concept-global traversal.",
+      "relationship_id": "AKR-000010"
+    },
+    {
+      "eligible": true,
+      "exclusion_reason": null,
+      "relationship_id": "AKR-000011"
+    },
+    {
+      "eligible": true,
+      "exclusion_reason": null,
+      "relationship_id": "AKR-000012"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "Redundant compatibility edge adds less information than the direct OIDC dependency and token-role boundary.",
+      "relationship_id": "AKR-000013"
+    },
+    {
+      "eligible": true,
+      "exclusion_reason": null,
+      "relationship_id": "AKR-000014"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "Association is non-causal; admitted evidence supports investigation capability, not reliability improvement.",
+      "relationship_id": "AKR-000015"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "Conditional reliability risk is inferential and not a measured degradation.",
+      "relationship_id": "AKR-000016"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "Cross-practice recommendation is not directly established by admitted sources.",
+      "relationship_id": "AKR-000017"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "A generic constraint edge is tautological until a specific reusable constraint is identified.",
+      "relationship_id": "AKR-000018"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "Cross-method recommendation is not directly established by admitted sources.",
+      "relationship_id": "AKR-000019"
+    },
+    {
+      "eligible": true,
+      "exclusion_reason": null,
+      "relationship_id": "AKR-000020"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "Proposed cascading-failure edge lacks direct feedback-path evidence.",
+      "relationship_id": "AKR-000021"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "Proposed mitigation edge lacks general evidence for continuous boundary enforcement.",
+      "relationship_id": "AKR-000022"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "Proposed context association has corrected actor semantics but still lacks exact threat evidence.",
+      "relationship_id": "AKR-000023"
+    },
+    {
+      "eligible": false,
+      "exclusion_reason": "Proposed context association has corrected actor semantics but still lacks direct repair/convergence evidence.",
+      "relationship_id": "AKR-000024"
+    }
+  ],
+  "graph_contract_version": 1,
+  "policy": {
+    "default_max_depth": 3,
+    "hard_max_depth": 8,
+    "incoming_semantics": "inspect-reverse-adjacency-without-inverse-predicate",
+    "mode": "default-deny",
+    "requirements": [
+      "repository-traversal-eligible",
+      "sourced-relationship",
+      "concept-global-scope",
+      "resolved-concept-endpoints",
+      "sourced-evidence-chain",
+      "admitted-source-grounding",
+      "quality-impact-evidence-policy"
+    ],
+    "unevaluated_edge_local_conditions": "preserve-as-qualifier"
+  }
+}

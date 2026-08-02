@@ -1,0 +1,52 @@
+{
+  "artifact_type": "graph-manifest",
+  "excluded_relationships": 16,
+  "first_class_relationship_records": 24,
+  "forward_relationship_adjacency_entries": 31,
+  "generated_artifact_paths": [
+    "generated/graph/graph.json",
+    "generated/graph/nodes.json",
+    "generated/graph/edges.json",
+    "generated/graph/adjacency.json",
+    "generated/graph/reverse-adjacency.json",
+    "generated/graph/traversal-policy.json",
+    "generated/graph/orphan-analysis.json",
+    "generated/graph/manifest.json",
+    "generated/indexes/concepts.json",
+    "generated/indexes/claims.json",
+    "generated/indexes/relationships.json",
+    "generated/indexes/sources.json"
+  ],
+  "generator_contract_version": 1,
+  "graph_contract_version": 1,
+  "input_fingerprint": "sha256:ad827bcfa37e9cb0a0510dbc51ab2149598e2e3200b2fa68c25490faa34ddc68",
+  "input_record_counts": {
+    "claims": 69,
+    "concepts": 24,
+    "relationships": 24,
+    "sources": 22
+  },
+  "invalid_orphan_count": 0,
+  "orphan_count": 1,
+  "output_edge_counts": {
+    "claim-applicable-to-concept": 5,
+    "claim-derived-from-claim": 2,
+    "claim-supported-by-source": 110,
+    "concept-declares-claim": 96,
+    "relationship": 24,
+    "relationship-supported-by-claim": 24
+  },
+  "output_node_counts": {
+    "claim": 69,
+    "concept": 24,
+    "relationship": 24,
+    "source": 22
+  },
+  "provenance_edges": 237,
+  "reverse_relationship_adjacency_entries": 31,
+  "semantic_relationship_edges": 24,
+  "total_edges": 261,
+  "total_nodes": 139,
+  "traversal_eligible_relationships": 8,
+  "unresolved_reference_count": 0
+}

@@ -1,0 +1,897 @@
+{
+  "artifact_type": "sources-index",
+  "exact_match_normalization": "case-sensitive-unicode-code-point",
+  "graph_contract_version": 1,
+  "records": [
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "Henry Mendell"
+      ],
+      "domains": [
+        "foundations"
+      ],
+      "id": "AKS-000001",
+      "license_or_usage_notes": "Cite and link the public entry; do not mirror its body.",
+      "notes": "Proposed support for First-Principles Thinking only within a qualified reasoning scope.",
+      "primary_or_secondary": "secondary",
+      "publication_date": "2004-03-26",
+      "publisher": "Stanford Encyclopedia of Philosophy",
+      "quality": {
+        "assessment_notes": "A peer-reviewed academic encyclopedia entry is suitable for the historical and epistemic roots of first-principles reasoning. It is secondary and does not by itself establish a modern software-architecture method; reproducibility is not applicable to this interpretive scope.",
+        "authority": "strong",
+        "conflict_of_interest": "strong",
+        "maintenance_status": "strong",
+        "peer_review": "strong",
+        "proximity": "adequate",
+        "recency": "adequate",
+        "reproducibility": "not-applicable",
+        "scope_fit": "adequate",
+        "stability": "strong",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/0",
+      "source_type": "educational-material",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Aristotle and Mathematics",
+      "url": "https://plato.stanford.edu/entries/aristotle-mathematics/",
+      "version": "Living entry accessed 2026-07-29"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "primary-authority",
+      "authors": [
+        "National Aeronautics and Space Administration"
+      ],
+      "domains": [
+        "foundations",
+        "engineering",
+        "constraints-assumptions"
+      ],
+      "id": "AKS-000002",
+      "license_or_usage_notes": "United States government publication; cite the source and relevant section.",
+      "notes": "Proposed support for Systems Thinking and Constraint.",
+      "primary_or_secondary": "primary",
+      "publication_date": null,
+      "publisher": "National Aeronautics and Space Administration",
+      "quality": {
+        "assessment_notes": "NASA directly describes holistic system reasoning, interacting elements, lifecycle context, and opposing constraints. Its aerospace scope means software recommendations require synthesis and explicit conditions.",
+        "authority": "strong",
+        "conflict_of_interest": "adequate",
+        "maintenance_status": "adequate",
+        "peer_review": "adequate",
+        "proximity": "strong",
+        "recency": "adequate",
+        "reproducibility": "adequate",
+        "scope_fit": "strong",
+        "stability": "strong",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/1",
+      "source_type": "official-guidance",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "NASA Systems Engineering Handbook",
+      "url": "https://www.nasa.gov/wp-content/uploads/2018/09/nasa_systems_engineering_handbook_0.pdf",
+      "version": "NASA/SP-2016-6105 Rev2"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "primary-authority",
+      "authors": [
+        "ISO/IEC JTC 1/SC 7"
+      ],
+      "domains": [
+        "quality",
+        "testing-verification",
+        "measurement"
+      ],
+      "id": "AKS-000003",
+      "license_or_usage_notes": "The full standard is licensed; use the public abstract and independently authored summaries without reproducing licensed text.",
+      "notes": "Proposed taxonomy support for Reliability and Availability.",
+      "primary_or_secondary": "primary",
+      "publication_date": "2023-11-15",
+      "publisher": "International Organization for Standardization",
+      "quality": {
+        "assessment_notes": "Current international product-quality standard and primary authority for the quality model. The public page exposes only the abstract, so detailed taxonomy claims must remain within accessible text unless a licensed copy is reviewed; reproducibility is not applicable to a normative taxonomy.",
+        "authority": "strong",
+        "conflict_of_interest": "strong",
+        "maintenance_status": "strong",
+        "peer_review": "strong",
+        "proximity": "strong",
+        "recency": "strong",
+        "reproducibility": "not-applicable",
+        "scope_fit": "strong",
+        "stability": "strong",
+        "technical_depth": "adequate"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/2",
+      "source_type": "standard",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "ISO/IEC 25010:2023 — Systems and software Quality Requirements and Evaluation (SQuaRE) — Product quality model",
+      "url": "https://www.iso.org/standard/78176.html",
+      "version": "ISO/IEC 25010:2023, Edition 2"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "Software Engineering Institute"
+      ],
+      "domains": [
+        "quality",
+        "architecture-analysis",
+        "testing-verification"
+      ],
+      "id": "AKS-000004",
+      "license_or_usage_notes": "Cite and link the public SEI material; do not mirror report bodies.",
+      "notes": "Proposed support for Quality Attribute Scenario, Availability, and Reliability.",
+      "primary_or_secondary": "mixed",
+      "publication_date": "2018-02-13",
+      "publisher": "Carnegie Mellon University Software Engineering Institute",
+      "quality": {
+        "assessment_notes": "SEI directly explains general quality-attribute scenarios and failure response. Some linked work is older, but the scenario structure is stable and remains appropriate for architecture analysis.",
+        "authority": "strong",
+        "conflict_of_interest": "strong",
+        "maintenance_status": "adequate",
+        "peer_review": "adequate",
+        "proximity": "strong",
+        "recency": "adequate",
+        "reproducibility": "adequate",
+        "scope_fit": "strong",
+        "stability": "strong",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/3",
+      "source_type": "official-guidance",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Reasoning About Software Quality Attributes",
+      "url": "https://www.sei.cmu.edu/library/reasoning-about-software-quality-attributes/",
+      "version": "SEI collection page accessed 2026-07-29"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "Chris Jones",
+        "John Wilkes",
+        "Niall Murphy",
+        "Cody Smith"
+      ],
+      "domains": [
+        "quality",
+        "reliability-operability",
+        "measurement"
+      ],
+      "id": "AKS-000005",
+      "license_or_usage_notes": "Cite and link the public book chapter; do not mirror its body.",
+      "notes": "Proposed measurement and operational support for Availability and Reliability.",
+      "primary_or_secondary": "mixed",
+      "publication_date": null,
+      "publisher": "Google",
+      "quality": {
+        "assessment_notes": "First-party account of mature production practice with concrete SLI and SLO semantics. Google-specific experience and incentives limit universal generalization, so recommendations must be conditional and user-outcome-focused.",
+        "authority": "strong",
+        "conflict_of_interest": "adequate",
+        "maintenance_status": "strong",
+        "peer_review": "adequate",
+        "proximity": "strong",
+        "recency": "adequate",
+        "reproducibility": "adequate",
+        "scope_fit": "strong",
+        "stability": "strong",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/4",
+      "source_type": "industry-publication",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Service Level Objectives",
+      "url": "https://sre.google/sre-book/service-level-objectives/",
+      "version": "Site Reliability Engineering book chapter accessed 2026-07-29"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "GitLab Engineering"
+      ],
+      "domains": [
+        "application-architecture",
+        "system-structure",
+        "engineering"
+      ],
+      "id": "AKS-000006",
+      "license_or_usage_notes": "Cite and link the public GitLab handbook page.",
+      "notes": "Proposed case evidence for Modular Monolith and secondary support for Hexagonal Architecture.",
+      "primary_or_secondary": "primary",
+      "publication_date": null,
+      "publisher": "GitLab",
+      "quality": {
+        "assessment_notes": "Current inspectable design for a large production codebase exposing module boundaries, enforcement, and migration risks. It is one organization's evolving design, so broader claims require corroboration.",
+        "authority": "adequate",
+        "conflict_of_interest": "adequate",
+        "maintenance_status": "strong",
+        "peer_review": "adequate",
+        "proximity": "strong",
+        "recency": "strong",
+        "reproducibility": "strong",
+        "scope_fit": "strong",
+        "stability": "adequate",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/5",
+      "source_type": "official-documentation",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Hexagonal Rails Monolith",
+      "url": "https://handbook.gitlab.com/handbook/engineering/architecture/design-documents/modular_monolith/hexagonal_monolith/",
+      "version": "Page revision 8f81c5f8, 2026-06-15"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "James Lewis",
+        "Martin Fowler"
+      ],
+      "domains": [
+        "application-architecture",
+        "distributed-systems",
+        "system-structure"
+      ],
+      "id": "AKS-000007",
+      "license_or_usage_notes": "Cite and link the public article; do not mirror its body.",
+      "notes": "Proposed foundational support for Microservices and comparison with monolithic deployment.",
+      "primary_or_secondary": "mixed",
+      "publication_date": "2014-03-25",
+      "publisher": "MartinFowler.com",
+      "quality": {
+        "assessment_notes": "Seminal practitioner description close to the emergence of the term and explicit about characteristics and limitations. It is not a formal specification and predates some current platform practices.",
+        "authority": "strong",
+        "conflict_of_interest": "adequate",
+        "maintenance_status": "adequate",
+        "peer_review": "adequate",
+        "proximity": "strong",
+        "recency": "adequate",
+        "reproducibility": "adequate",
+        "scope_fit": "strong",
+        "stability": "strong",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/6",
+      "source_type": "industry-publication",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Microservices",
+      "url": "https://martinfowler.com/articles/microservices.html",
+      "version": "Original article accessed 2026-07-29"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "Microsoft Azure Architecture Center"
+      ],
+      "domains": [
+        "application-architecture",
+        "distributed-systems",
+        "cloud"
+      ],
+      "id": "AKS-000008",
+      "license_or_usage_notes": "Cite and link the public Microsoft guidance.",
+      "notes": "Proposed current trade-off and decision support for Microservices.",
+      "primary_or_secondary": "secondary",
+      "publication_date": null,
+      "publisher": "Microsoft",
+      "quality": {
+        "assessment_notes": "Current guidance presents benefits, operational demands, data-consistency costs, and non-applicability. Vendor context may bias examples toward cloud services, so generic claims must avoid Azure-specific assumptions.",
+        "authority": "adequate",
+        "conflict_of_interest": "adequate",
+        "maintenance_status": "strong",
+        "peer_review": "adequate",
+        "proximity": "adequate",
+        "recency": "strong",
+        "reproducibility": "adequate",
+        "scope_fit": "strong",
+        "stability": "adequate",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/7",
+      "source_type": "official-guidance",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Microservices architecture style",
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices",
+      "version": "Living guidance accessed 2026-07-29"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "Alistair Cockburn"
+      ],
+      "domains": [
+        "application-architecture",
+        "system-structure",
+        "testing-verification"
+      ],
+      "id": "AKS-000009",
+      "license_or_usage_notes": "Cite and link the public original article; do not mirror its body.",
+      "notes": "Proposed primary support for Hexagonal Architecture.",
+      "primary_or_secondary": "primary",
+      "publication_date": "2005-09-04",
+      "publisher": "Alistair Cockburn",
+      "quality": {
+        "assessment_notes": "Original formulation by the pattern's author and primary for intent and boundaries. It is an industry report rather than peer-reviewed research; peer review is not applicable to its role as the originating description.",
+        "authority": "strong",
+        "conflict_of_interest": "adequate",
+        "maintenance_status": "adequate",
+        "peer_review": "not-applicable",
+        "proximity": "strong",
+        "recency": "adequate",
+        "reproducibility": "adequate",
+        "scope_fit": "strong",
+        "stability": "strong",
+        "technical_depth": "adequate"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/8",
+      "source_type": "industry-publication",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Hexagonal architecture",
+      "url": "https://alistair.cockburn.us/hexagonal-architecture/",
+      "version": "HaT Technical Report 2005.02, v0.9"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "Microsoft Azure Architecture Center"
+      ],
+      "domains": [
+        "application-architecture",
+        "distributed-systems",
+        "integration"
+      ],
+      "id": "AKS-000010",
+      "license_or_usage_notes": "Cite and link the public Microsoft guidance.",
+      "notes": "Proposed support for Event-Driven Architecture and related cross-domain risks.",
+      "primary_or_secondary": "secondary",
+      "publication_date": null,
+      "publisher": "Microsoft",
+      "quality": {
+        "assessment_notes": "Current guidance directly covers producers, channels, consumers, delivery, ordering, consistency, observability, and non-applicability. Claims must preserve transport- and product-independent scope.",
+        "authority": "adequate",
+        "conflict_of_interest": "adequate",
+        "maintenance_status": "strong",
+        "peer_review": "adequate",
+        "proximity": "adequate",
+        "recency": "strong",
+        "reproducibility": "adequate",
+        "scope_fit": "strong",
+        "stability": "adequate",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/9",
+      "source_type": "official-guidance",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Event-driven architecture style",
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/event-driven",
+      "version": "Living guidance accessed 2026-07-29"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "primary-authority",
+      "authors": [
+        "Roy T. Fielding",
+        "Mark Nottingham",
+        "Julian Reschke"
+      ],
+      "domains": [
+        "api",
+        "distributed-systems"
+      ],
+      "id": "AKS-000011",
+      "license_or_usage_notes": "IETF Trust terms apply; cite the RFC and section rather than mirroring it.",
+      "notes": "Proposed primary support for Idempotency.",
+      "primary_or_secondary": "primary",
+      "publication_date": null,
+      "publisher": "Internet Engineering Task Force",
+      "quality": {
+        "assessment_notes": "Current standards-track authority for HTTP method idempotency. Its definition applies to intended HTTP request effects and must not be overgeneralized into a universal distributed-operation guarantee; reproducibility is not applicable to normative semantics.",
+        "authority": "strong",
+        "conflict_of_interest": "strong",
+        "maintenance_status": "strong",
+        "peer_review": "strong",
+        "proximity": "strong",
+        "recency": "strong",
+        "reproducibility": "not-applicable",
+        "scope_fit": "strong",
+        "stability": "strong",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/10",
+      "source_type": "specification",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "RFC 9110 — HTTP Semantics",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "version": "RFC 9110, June 2022"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "Microsoft Azure Architecture Center"
+      ],
+      "domains": [
+        "distributed-systems",
+        "reliability-operability",
+        "cloud"
+      ],
+      "id": "AKS-000012",
+      "license_or_usage_notes": "Cite and link the public Microsoft guidance.",
+      "notes": "Proposed support for Retry and its relationships to Idempotency and Circuit Breaker.",
+      "primary_or_secondary": "secondary",
+      "publication_date": null,
+      "publisher": "Microsoft",
+      "quality": {
+        "assessment_notes": "Current guidance distinguishes transient faults, bounded strategies, idempotency, and retry amplification. Product examples are secondary and vendor-specific, but the mechanism and failure conditions are directly in scope.",
+        "authority": "adequate",
+        "conflict_of_interest": "adequate",
+        "maintenance_status": "strong",
+        "peer_review": "adequate",
+        "proximity": "adequate",
+        "recency": "strong",
+        "reproducibility": "adequate",
+        "scope_fit": "strong",
+        "stability": "adequate",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/11",
+      "source_type": "official-guidance",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Retry pattern",
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/retry",
+      "version": "Living guidance accessed 2026-07-29"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "Microsoft Azure Architecture Center"
+      ],
+      "domains": [
+        "distributed-systems",
+        "reliability-operability",
+        "cloud"
+      ],
+      "id": "AKS-000013",
+      "license_or_usage_notes": "Cite and link the public Microsoft guidance.",
+      "notes": "Proposed support for Circuit Breaker.",
+      "primary_or_secondary": "secondary",
+      "publication_date": null,
+      "publisher": "Microsoft",
+      "quality": {
+        "assessment_notes": "Detailed current guidance covers the state machine, thresholds, recovery probes, trade-offs, and unsuitable cases. Vendor context limits product-specific claims but not the generic mechanism when conditions remain explicit.",
+        "authority": "adequate",
+        "conflict_of_interest": "adequate",
+        "maintenance_status": "strong",
+        "peer_review": "adequate",
+        "proximity": "adequate",
+        "recency": "strong",
+        "reproducibility": "adequate",
+        "scope_fit": "strong",
+        "stability": "adequate",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/12",
+      "source_type": "official-guidance",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Circuit Breaker pattern",
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker",
+      "version": "Living guidance accessed 2026-07-29"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "Amazon Web Services"
+      ],
+      "domains": [
+        "distributed-systems",
+        "data",
+        "integration"
+      ],
+      "id": "AKS-000014",
+      "license_or_usage_notes": "Cite and link the public AWS guidance.",
+      "notes": "Proposed support for Transactional Outbox.",
+      "primary_or_secondary": "secondary",
+      "publication_date": null,
+      "publisher": "Amazon Web Services",
+      "quality": {
+        "assessment_notes": "Directly explains the dual-write failure, atomic local write, relay, duplicates, ordering, and idempotent-consumer concerns with inspectable implementations. AWS examples must not define the pattern's boundary.",
+        "authority": "adequate",
+        "conflict_of_interest": "adequate",
+        "maintenance_status": "strong",
+        "peer_review": "adequate",
+        "proximity": "adequate",
+        "recency": "strong",
+        "reproducibility": "strong",
+        "scope_fit": "strong",
+        "stability": "adequate",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/13",
+      "source_type": "official-guidance",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Transactional outbox pattern",
+      "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html",
+      "version": "AWS Prescriptive Guidance accessed 2026-07-29"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "Microsoft Azure Architecture Center"
+      ],
+      "domains": [
+        "distributed-systems",
+        "data",
+        "integration"
+      ],
+      "id": "AKS-000015",
+      "license_or_usage_notes": "Cite and link the public Microsoft guidance.",
+      "notes": "Proposed support for Saga.",
+      "primary_or_secondary": "secondary",
+      "publication_date": null,
+      "publisher": "Microsoft",
+      "quality": {
+        "assessment_notes": "Current guidance covers local transactions, compensation, pivot and retryable steps, choreography versus orchestration, and isolation anomalies. It is not the original saga research, so historical or formal claims need narrower treatment.",
+        "authority": "adequate",
+        "conflict_of_interest": "adequate",
+        "maintenance_status": "strong",
+        "peer_review": "adequate",
+        "proximity": "adequate",
+        "recency": "strong",
+        "reproducibility": "adequate",
+        "scope_fit": "strong",
+        "stability": "adequate",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/14",
+      "source_type": "official-guidance",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Saga distributed transactions pattern",
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/saga",
+      "version": "Living guidance accessed 2026-07-29"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "Werner Vogels"
+      ],
+      "domains": [
+        "distributed-systems",
+        "data",
+        "reliability-operability"
+      ],
+      "id": "AKS-000016",
+      "license_or_usage_notes": "Cite and link the public article; do not mirror its body.",
+      "notes": "Proposed primary conceptual support for Eventual Consistency.",
+      "primary_or_secondary": "mixed",
+      "publication_date": "2008-12-23",
+      "publisher": "All Things Distributed",
+      "quality": {
+        "assessment_notes": "Influential first-party practitioner treatment, revised for ACM Queue, defining inconsistency windows and client-observable variants. Amazon affiliation and age require qualification; the fundamental distinctions remain stable.",
+        "authority": "strong",
+        "conflict_of_interest": "adequate",
+        "maintenance_status": "adequate",
+        "peer_review": "adequate",
+        "proximity": "strong",
+        "recency": "adequate",
+        "reproducibility": "adequate",
+        "scope_fit": "strong",
+        "stability": "strong",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/15",
+      "source_type": "industry-publication",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Eventually Consistent — Revisited",
+      "url": "https://www.allthingsdistributed.com/2008/12/eventually_consistent.html",
+      "version": "Revised article prepared for ACM Queue"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "primary-authority",
+      "authors": [
+        "Dick Hardt"
+      ],
+      "domains": [
+        "security-privacy",
+        "api",
+        "integration"
+      ],
+      "id": "AKS-000017",
+      "license_or_usage_notes": "IETF Trust terms apply; cite the RFC and section rather than mirroring it.",
+      "notes": "Proposed foundational support for OAuth 2.x.",
+      "primary_or_secondary": "primary",
+      "publication_date": null,
+      "publisher": "Internet Engineering Task Force",
+      "quality": {
+        "assessment_notes": "Normative source for OAuth 2.0 roles, grants, tokens, and endpoints. Security recommendations have evolved, so implementation guidance must also cite current BCP 240; reproducibility is not applicable to normative semantics.",
+        "authority": "strong",
+        "conflict_of_interest": "strong",
+        "maintenance_status": "strong",
+        "peer_review": "strong",
+        "proximity": "strong",
+        "recency": "adequate",
+        "reproducibility": "not-applicable",
+        "scope_fit": "strong",
+        "stability": "strong",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/16",
+      "source_type": "specification",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "RFC 6749 — The OAuth 2.0 Authorization Framework",
+      "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+      "version": "RFC 6749, October 2012"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "primary-authority",
+      "authors": [
+        "Torsten Lodderstedt",
+        "John Bradley",
+        "Andrei Labunets",
+        "Daniel Fett"
+      ],
+      "domains": [
+        "security-privacy",
+        "api",
+        "integration"
+      ],
+      "id": "AKS-000018",
+      "license_or_usage_notes": "IETF Trust terms apply; cite the RFC and section rather than mirroring it.",
+      "notes": "Proposed current security support for OAuth 2.x.",
+      "primary_or_secondary": "primary",
+      "publication_date": null,
+      "publisher": "Internet Engineering Task Force",
+      "quality": {
+        "assessment_notes": "Current IETF Best Current Practice for modern OAuth 2.0 threat mitigations and deprecations. It complements rather than replaces all base protocol semantics; reproducibility is not applicable to normative security guidance.",
+        "authority": "strong",
+        "conflict_of_interest": "strong",
+        "maintenance_status": "strong",
+        "peer_review": "strong",
+        "proximity": "strong",
+        "recency": "strong",
+        "reproducibility": "not-applicable",
+        "scope_fit": "strong",
+        "stability": "strong",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/17",
+      "source_type": "specification",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "RFC 9700 — Best Current Practice for OAuth 2.0 Security",
+      "url": "https://www.rfc-editor.org/rfc/rfc9700.html",
+      "version": "RFC 9700 / BCP 240, January 2025"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "primary-authority",
+      "authors": [
+        "Nat Sakimura",
+        "John Bradley",
+        "Michael B. Jones",
+        "Breno de Medeiros",
+        "Chuck Mortimore"
+      ],
+      "domains": [
+        "security-privacy",
+        "api",
+        "integration"
+      ],
+      "id": "AKS-000019",
+      "license_or_usage_notes": "OpenID Foundation specification terms apply; cite sections without mirroring the body.",
+      "notes": "Proposed primary support for OpenID Connect.",
+      "primary_or_secondary": "primary",
+      "publication_date": "2023-12-15",
+      "publisher": "OpenID Foundation",
+      "quality": {
+        "assessment_notes": "Final primary specification for authentication built on OAuth 2.0, ID Tokens, claims, and validation. It must remain distinct from OAuth authorization semantics; reproducibility is not applicable to normative protocol semantics.",
+        "authority": "strong",
+        "conflict_of_interest": "strong",
+        "maintenance_status": "strong",
+        "peer_review": "strong",
+        "proximity": "strong",
+        "recency": "strong",
+        "reproducibility": "not-applicable",
+        "scope_fit": "strong",
+        "stability": "strong",
+        "technical_depth": "strong"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/18",
+      "source_type": "specification",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "OpenID Connect Core 1.0 incorporating errata set 2",
+      "url": "https://openid.net/specs/openid-connect-core-1_0.html",
+      "version": "Final specification incorporating errata set 2"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "OpenTelemetry Authors"
+      ],
+      "domains": [
+        "observability",
+        "reliability-operability",
+        "measurement"
+      ],
+      "id": "AKS-000020",
+      "license_or_usage_notes": "Cite and link the public OpenTelemetry documentation.",
+      "notes": "Proposed foundational support for Observability.",
+      "primary_or_secondary": "mixed",
+      "publication_date": null,
+      "publisher": "Cloud Native Computing Foundation",
+      "quality": {
+        "assessment_notes": "Current project documentation separates observability outcomes from telemetry signals and explains traces, metrics, and logs. It promotes its own ecosystem, so tool-selection claims must not be inferred from the conceptual page.",
+        "authority": "strong",
+        "conflict_of_interest": "adequate",
+        "maintenance_status": "strong",
+        "peer_review": "adequate",
+        "proximity": "adequate",
+        "recency": "strong",
+        "reproducibility": "strong",
+        "scope_fit": "strong",
+        "stability": "adequate",
+        "technical_depth": "adequate"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/19",
+      "source_type": "official-documentation",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Observability primer",
+      "url": "https://opentelemetry.io/docs/concepts/observability-primer/",
+      "version": "Page revision c4c8aa76, 2026-04-23"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "recognized-authority",
+      "authors": [
+        "Michael Nygard"
+      ],
+      "domains": [
+        "governance",
+        "documentation",
+        "architecture-analysis"
+      ],
+      "id": "AKS-000021",
+      "license_or_usage_notes": "Cognitect states that copyright and related rights are waived to the extent possible; still prefer citation and linking over mirroring.",
+      "notes": "Proposed primary support for Architecture Decision Record.",
+      "primary_or_secondary": "primary",
+      "publication_date": "2011-11-15",
+      "publisher": "Cognitect",
+      "quality": {
+        "assessment_notes": "Originating public description of the lightweight ADR format and its rationale, lifecycle, and consequences. It is a practitioner article, not a standard or empirical study; peer review is not applicable to its role as the original proposal.",
+        "authority": "strong",
+        "conflict_of_interest": "adequate",
+        "maintenance_status": "adequate",
+        "peer_review": "not-applicable",
+        "proximity": "strong",
+        "recency": "adequate",
+        "reproducibility": "adequate",
+        "scope_fit": "strong",
+        "stability": "strong",
+        "technical_depth": "adequate"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/20",
+      "source_type": "industry-publication",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "Documenting Architecture Decisions",
+      "url": "https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+      "version": "Original public article"
+    },
+    {
+      "accessed_at": "2026-07-29",
+      "authority_level": "primary-authority",
+      "authors": [
+        "ISO/IEC JTC 1/SC 7"
+      ],
+      "domains": [
+        "architecture-analysis",
+        "documentation",
+        "governance"
+      ],
+      "id": "AKS-000022",
+      "license_or_usage_notes": "The full standard is licensed; use the public abstract and independently authored summaries without reproducing licensed text.",
+      "notes": "Proposed contextual support for Architecture Decision Record and architecture-description boundaries.",
+      "primary_or_secondary": "primary",
+      "publication_date": "2022-11-07",
+      "publisher": "International Organization for Standardization",
+      "quality": {
+        "assessment_notes": "Current authority for architecture-description concepts. The public abstract is limited and the standard does not prescribe ADR format or architecting methods, so ADR claims remain grounded primarily in Nygard; reproducibility is not applicable to a normative standard.",
+        "authority": "strong",
+        "conflict_of_interest": "strong",
+        "maintenance_status": "strong",
+        "peer_review": "strong",
+        "proximity": "strong",
+        "recency": "strong",
+        "reproducibility": "not-applicable",
+        "scope_fit": "adequate",
+        "stability": "strong",
+        "technical_depth": "adequate"
+      },
+      "record_kind": "source",
+      "source_path": "sources/registry.yaml#/sources/21",
+      "source_type": "standard",
+      "status": "approved",
+      "superseded_by": null,
+      "supersedes": [],
+      "title": "ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description",
+      "url": "https://www.iso.org/standard/74393.html",
+      "version": "ISO/IEC/IEEE 42010:2022, Edition 2"
+    }
+  ]
+}

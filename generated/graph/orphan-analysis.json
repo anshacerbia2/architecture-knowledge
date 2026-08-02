@@ -1,0 +1,99 @@
+{
+  "artifact_type": "orphan-analysis",
+  "graph_contract_version": 1,
+  "intentional_or_explained": {
+    "concepts_referenced_only_through_non_traversable_edges": [
+      "AKC-000001",
+      "AKC-000002",
+      "AKC-000003",
+      "AKC-000006",
+      "AKC-000011",
+      "AKC-000014",
+      "AKC-000019",
+      "AKC-000020",
+      "AKC-000021",
+      "AKC-000022",
+      "AKC-000023",
+      "AKC-000024"
+    ],
+    "concepts_with_claims_but_no_relationships": [],
+    "concepts_with_no_first_class_relationships": [],
+    "relationships_excluded_from_traversal_by_design": [
+      {
+        "reason": "Inferential comparison not directly established by admitted sources.",
+        "relationship_id": "AKR-000001"
+      },
+      {
+        "reason": "Duplicate-effect requirement is claim-specific; the Idempotency umbrella has multiple contextual roles.",
+        "relationship_id": "AKR-000005"
+      },
+      {
+        "reason": "Availability impact is a qualified recommendation without a measured causal effect.",
+        "relationship_id": "AKR-000006"
+      },
+      {
+        "reason": "Caller-capacity effect is plausible, but a measured availability effect is not established.",
+        "relationship_id": "AKR-000007"
+      },
+      {
+        "reason": "The outbox enables a publication mechanism, not event-driven architecture as a whole.",
+        "relationship_id": "AKR-000009"
+      },
+      {
+        "reason": "The evidence is explicitly claim-context-only and cannot support concept-global traversal.",
+        "relationship_id": "AKR-000010"
+      },
+      {
+        "reason": "Redundant compatibility edge adds less information than the direct OIDC dependency and token-role boundary.",
+        "relationship_id": "AKR-000013"
+      },
+      {
+        "reason": "Association is non-causal; admitted evidence supports investigation capability, not reliability improvement.",
+        "relationship_id": "AKR-000015"
+      },
+      {
+        "reason": "Conditional reliability risk is inferential and not a measured degradation.",
+        "relationship_id": "AKR-000016"
+      },
+      {
+        "reason": "Cross-practice recommendation is not directly established by admitted sources.",
+        "relationship_id": "AKR-000017"
+      },
+      {
+        "reason": "A generic constraint edge is tautological until a specific reusable constraint is identified.",
+        "relationship_id": "AKR-000018"
+      },
+      {
+        "reason": "Cross-method recommendation is not directly established by admitted sources.",
+        "relationship_id": "AKR-000019"
+      },
+      {
+        "reason": "Proposed cascading-failure edge lacks direct feedback-path evidence.",
+        "relationship_id": "AKR-000021"
+      },
+      {
+        "reason": "Proposed mitigation edge lacks general evidence for continuous boundary enforcement.",
+        "relationship_id": "AKR-000022"
+      },
+      {
+        "reason": "Proposed context association has corrected actor semantics but still lacks exact threat evidence.",
+        "relationship_id": "AKR-000023"
+      },
+      {
+        "reason": "Proposed context association has corrected actor semantics but still lacks direct repair/convergence evidence.",
+        "relationship_id": "AKR-000024"
+      }
+    ],
+    "sources_with_no_supporting_claims": [
+      "AKS-000003"
+    ]
+  },
+  "invalid": {
+    "claims_not_projected_by_required_concepts": []
+  },
+  "summary": {
+    "intentional_or_explained_isolation": 13,
+    "invalid_orphans": 0,
+    "total_isolated_records": 1
+  }
+}

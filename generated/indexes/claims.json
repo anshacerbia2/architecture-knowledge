@@ -1,0 +1,2014 @@
+{
+  "artifact_type": "claims-index",
+  "exact_match_normalization": "case-sensitive-unicode-code-point",
+  "graph_contract_version": 1,
+  "records": [
+    {
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "low",
+      "derived_from_claims": [],
+      "id": "AKL-000001",
+      "notes": "Qualified transfer from AKS-000001. The source establishes foundational propositions in a historical philosophical scope; it does not prescribe a modern software method.",
+      "object": {
+        "literal": "foundational propositions or premises"
+      },
+      "predicate": "decomposes-into",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000001.yaml",
+      "sources": [
+        "AKS-000001"
+      ],
+      "statement": "This corpus transfers first-principles reasoning from the examination of foundational propositions to bounded architecture inquiries; the software-architecture method is a repository synthesis, not a directly normalized historical source claim.",
+      "status": "sourced",
+      "subject": "AKC-000001",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000002",
+      "notes": "Qualified transfer from the aerospace systems-engineering scope of AKS-000002; the bundled software-oriented formulation is a synthesis.",
+      "object": {
+        "literal": "system behavior across boundaries, interactions, feedback, and lifecycle"
+      },
+      "predicate": "examines",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000002.yaml",
+      "sources": [
+        "AKS-000002"
+      ],
+      "statement": "For this corpus, systems thinking combines explicit purpose and boundaries with interacting elements, stakeholders, feedback, and lifecycle effects when analyzing architecture decisions.",
+      "status": "sourced",
+      "subject": "AKC-000002",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000003",
+      "notes": "Narrowed to the inspectable constraint scope. Distinctions from assumptions, preferences, and policy remain repository terminology rather than attributed source definitions.",
+      "object": {
+        "literal": "feasible architecture choices within a stated scope"
+      },
+      "predicate": "restricts",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000003.yaml",
+      "sources": [
+        "AKS-000002",
+        "AKS-000022"
+      ],
+      "statement": "A constraint states a condition that an architecture or system must satisfy within a declared scope.",
+      "status": "sourced",
+      "subject": "AKC-000003",
+      "version": 2
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000004",
+      "notes": "Narrowed to inspectable SEI scenario framing and Google SRE operational measurement. No inaccessible ISO definition or hierarchy is asserted.",
+      "object": {
+        "literal": "operational accessibility under stated conditions and time"
+      },
+      "predicate": "defines",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000004.yaml",
+      "sources": [
+        "AKS-000004",
+        "AKS-000005"
+      ],
+      "statement": "In an operational service-level context, availability is evaluated as whether valid demand receives a successful response during a stated observation window.",
+      "status": "sourced",
+      "subject": "AKC-000004",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000005",
+      "notes": "Qualified public-source synthesis and explicit corpus terminology boundary. It does not claim an ISO hierarchy or a causal relationship.",
+      "object": {
+        "literal": "performance of specified functions without unacceptable failure over time"
+      },
+      "predicate": "defines",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000005.yaml",
+      "sources": [
+        "AKS-000004",
+        "AKS-000005"
+      ],
+      "statement": "Within this corpus, reliability concerns continuity of correct service under stated conditions over time, while availability concerns readiness for usable service when required; the concepts can overlap operationally without being synonyms.",
+      "status": "sourced",
+      "subject": "AKC-000005",
+      "version": 2
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000006",
+      "notes": "Narrowed to the content inspectable in AKS-000004. The familiar six-part scenario template remains useful repository practice but is not attributed to this admitted page.",
+      "object": {
+        "literal": "a quality-attribute concern as a reusable or concrete scenario"
+      },
+      "predicate": "frames",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000006.yaml",
+      "sources": [
+        "AKS-000004"
+      ],
+      "statement": "General quality-attribute scenarios provide reusable quality reasoning, while concrete scenarios adapt that reasoning to a specific system and context.",
+      "status": "sourced",
+      "subject": "AKC-000006",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000007",
+      "notes": "The GitLab source is a first-party case, not universal evidence.",
+      "object": {
+        "literal": "explicit internal modules inside one primary deployable"
+      },
+      "predicate": "organizes",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000007.yaml",
+      "sources": [
+        "AKS-000006",
+        "AKS-000007"
+      ],
+      "statement": "A modular monolith organizes an application into explicit internal modules while retaining one primary deployment and runtime boundary.",
+      "status": "sourced",
+      "subject": "AKC-000007",
+      "version": 1
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000008",
+      "notes": "Service size alone does not establish the style.",
+      "object": {
+        "literal": "independently deployable services around bounded capabilities"
+      },
+      "predicate": "organizes",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000008.yaml",
+      "sources": [
+        "AKS-000007",
+        "AKS-000008"
+      ],
+      "statement": "Microservice architecture organizes a system as independently deployable services aligned to bounded capabilities and communicating through explicit contracts.",
+      "status": "sourced",
+      "subject": "AKC-000008",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000009",
+      "notes": "Port granularity is contextual.",
+      "object": {
+        "literal": "application behavior behind ports connected through adapters"
+      },
+      "predicate": "isolates",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000009.yaml",
+      "sources": [
+        "AKS-000009"
+      ],
+      "statement": "Hexagonal architecture isolates application behavior behind ports and connects external actors and technologies through adapters that depend toward the application boundary.",
+      "status": "sourced",
+      "subject": "AKC-000009",
+      "version": 1
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000010",
+      "notes": "Qualified synthesis from one vendor architecture guide; not classified as a universal vendor-neutral normalized definition.",
+      "object": {
+        "literal": "asynchronous reactions to published event facts"
+      },
+      "predicate": "coordinates",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000010.yaml",
+      "sources": [
+        "AKS-000010"
+      ],
+      "statement": "In the architecture described by AKS-000010, producers publish events through channels and consumers react asynchronously, reducing direct producer-consumer coupling.",
+      "status": "sourced",
+      "subject": "AKC-000010",
+      "version": 2
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000011",
+      "notes": "Strictly scoped to RFC 9110 HTTP method semantics. Operation deduplication, message replay, and implementation tactics are separate contextual roles on the umbrella concept.",
+      "object": {
+        "literal": "the intended server effect of repeated identical requests for an HTTP method"
+      },
+      "predicate": "defines",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000011.yaml",
+      "sources": [
+        "AKS-000011"
+      ],
+      "statement": "For an HTTP method, idempotency means that the intended server effect of multiple identical requests is the same as the effect of one such request.",
+      "status": "sourced",
+      "subject": "AKC-000011",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000012",
+      "notes": "Mechanism and safeguards are supported by AKS-000012; the prescriptive combination is retained as qualified synthesis.",
+      "object": {
+        "literal": "an operation under a bounded transient-failure policy"
+      },
+      "predicate": "repeats",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000012.yaml",
+      "sources": [
+        "AKS-000012"
+      ],
+      "statement": "A retry policy repeats an operation for failures classified as transient and should bound attempts, delay, and total elapsed time.",
+      "status": "sourced",
+      "subject": "AKC-000012",
+      "version": 2
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000013",
+      "notes": "State thresholds and fallback semantics are context dependent.",
+      "object": {
+        "literal": "calls to an unhealthy dependency during an open state"
+      },
+      "predicate": "prevents",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000013.yaml",
+      "sources": [
+        "AKS-000013"
+      ],
+      "statement": "A circuit breaker transitions among closed, open, and probe states to prevent repeated calls to a failing dependency and test recovery.",
+      "status": "sourced",
+      "subject": "AKC-000013",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000014",
+      "notes": "Publication can be repeated, so consumer duplicate handling remains required.",
+      "object": {
+        "literal": "business state and outgoing message intent in one local transaction"
+      },
+      "predicate": "persists",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000014.yaml",
+      "sources": [
+        "AKS-000014"
+      ],
+      "statement": "A transactional outbox stores business changes and an outgoing message record in one local transaction, then publishes the message asynchronously.",
+      "status": "sourced",
+      "subject": "AKC-000014",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000015",
+      "notes": "Compensation is semantic and may not restore the prior physical state.",
+      "object": {
+        "literal": "local transactions with compensation or forward recovery"
+      },
+      "predicate": "coordinates",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000015.yaml",
+      "sources": [
+        "AKS-000015"
+      ],
+      "statement": "A saga coordinates a sequence of local transactions and responds to later failure through compensating actions, forward recovery, or intervention.",
+      "status": "sourced",
+      "subject": "AKC-000015",
+      "version": 1
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000016",
+      "notes": "The convergence assumptions and affected invariants must be stated.",
+      "object": {
+        "literal": "temporarily divergent state after updates cease"
+      },
+      "predicate": "converges",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000016.yaml",
+      "sources": [
+        "AKS-000016",
+        "AKS-000010",
+        "AKS-000015"
+      ],
+      "statement": "Under stated delivery and conflict-resolution assumptions, an eventually consistent system permits temporary divergence and converges after relevant updates cease.",
+      "status": "sourced",
+      "subject": "AKC-000016",
+      "version": 1
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000017",
+      "notes": "Current security guidance supplements the base framework.",
+      "object": {
+        "literal": "delegated or service access to protected resources"
+      },
+      "predicate": "authorizes",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "RFC 6749 Sections 1.1 and 1.4",
+          "source_id": "AKS-000017"
+        },
+        {
+          "locator": "RFC 9700 Section 1.2",
+          "source_id": "AKS-000018"
+        }
+      ],
+      "source_path": "claims/AKL-000017.yaml",
+      "sources": [
+        "AKS-000017",
+        "AKS-000018"
+      ],
+      "statement": "OAuth 2.0 is an authorization framework for scoped access to protected resources and does not by itself specify end-user authentication.",
+      "status": "sourced",
+      "subject": "AKC-000017",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000018",
+      "notes": "Authentication does not grant application authorization by itself.",
+      "object": {
+        "literal": "an end user through an identity layer over OAuth 2.0"
+      },
+      "predicate": "authenticates",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "OpenID Connect Core Sections 1 and 2",
+          "source_id": "AKS-000019"
+        }
+      ],
+      "source_path": "claims/AKL-000018.yaml",
+      "sources": [
+        "AKS-000019"
+      ],
+      "statement": "OpenID Connect adds an identity layer to OAuth 2.0 so a relying party can verify an end user's authentication and obtain identity claims.",
+      "status": "sourced",
+      "subject": "AKC-000018",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000019",
+      "notes": "OpenTelemetry is one implementation ecosystem, not a mandatory condition.",
+      "object": {
+        "literal": "understanding internal state through contextual system outputs"
+      },
+      "predicate": "enables",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000019.yaml",
+      "sources": [
+        "AKS-000020"
+      ],
+      "statement": "Observability is the capability to understand internal system state and behavior from available outputs and context, not merely the presence of a telemetry library.",
+      "status": "sourced",
+      "subject": "AKC-000019",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000020",
+      "notes": "Narrowed to AKS-000021. AKS-000022 is architecture-description context and is not treated as prescribing the ADR format.",
+      "object": {
+        "literal": "a consequential architecture decision and its rationale"
+      },
+      "predicate": "records",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000020.yaml",
+      "sources": [
+        "AKS-000021"
+      ],
+      "statement": "An architecture decision record captures a significant architecture decision together with its context and consequences.",
+      "status": "sourced",
+      "subject": "AKC-000020",
+      "version": 2
+    },
+    {
+      "claim_type": "inference",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The inquiry has both uncertain premises and material cross-boundary interactions."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [],
+      "id": "AKL-000021",
+      "notes": "Explicit repository inference from juxtaposed sources; neither source directly compares the two methods.",
+      "object": {
+        "record_id": "AKC-000002"
+      },
+      "predicate": "compatible-with",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000021.yaml",
+      "sources": [
+        "AKS-000001",
+        "AKS-000002"
+      ],
+      "statement": "This corpus infers that first-principles and systems thinking can be combined when an inquiry must test premises and also examine cross-boundary interactions and feedback.",
+      "status": "sourced",
+      "subject": "AKC-000001",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The decision concerns deployment and ownership boundaries for the same product scope."
+        }
+      ],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000022",
+      "notes": "The alternatives can coexist at different system scopes.",
+      "object": {
+        "record_id": "AKC-000008"
+      },
+      "predicate": "alternative-to",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000022.yaml",
+      "sources": [
+        "AKS-000006",
+        "AKS-000007",
+        "AKS-000008"
+      ],
+      "statement": "A modular monolith and microservices are alternative deployment and decomposition choices when evaluating how much independent runtime ownership a product needs.",
+      "status": "sourced",
+      "subject": "AKC-000007",
+      "version": 1
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Module contracts and dependency rules are explicit and tested."
+        }
+      ],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000023",
+      "notes": "Compatibility does not make either concept a subtype of the other.",
+      "object": {
+        "record_id": "AKC-000009"
+      },
+      "predicate": "compatible-with",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000023.yaml",
+      "sources": [
+        "AKS-000006",
+        "AKS-000009"
+      ],
+      "statement": "A modular monolith can apply hexagonal ports and adapters inside modules to enforce inward dependencies and adapter isolation.",
+      "status": "sourced",
+      "subject": "AKC-000007",
+      "version": 1
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Asynchronous delivery and schema operations are acceptable and supported."
+        }
+      ],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000024",
+      "notes": "Either style can be used without the other.",
+      "object": {
+        "record_id": "AKC-000010"
+      },
+      "predicate": "compatible-with",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000024.yaml",
+      "sources": [
+        "AKS-000007",
+        "AKS-000008",
+        "AKS-000010"
+      ],
+      "statement": "Microservices and event-driven architecture can coexist when autonomous services exchange asynchronous event facts through governed contracts.",
+      "status": "sourced",
+      "subject": "AKC-000008",
+      "version": 1
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The caller cannot determine whether an earlier state-changing attempt completed and duplicate effects are harmful."
+        }
+      ],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000025",
+      "notes": "Narrowed to the duplicate-effect requirement in AKS-000012. It does not equate HTTP method idempotency, message deduplication, and idempotency-key tactics.",
+      "object": {
+        "record_id": "AKC-000011"
+      },
+      "predicate": "requires",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000025.yaml",
+      "sources": [
+        "AKS-000012"
+      ],
+      "statement": "When a caller cannot know whether a state-changing attempt completed, retry requires a safe operation or an equivalent mechanism that prevents harmful duplicate effects.",
+      "status": "sourced",
+      "subject": "AKC-000012",
+      "version": 2
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Failures are transient, attempts fit the end-to-end deadline, and retry load remains within capacity."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [],
+      "id": "AKL-000026",
+      "notes": "Qualified operational recommendation. AKS-000012 supports the mechanism and overload risk, not a measured general availability improvement.",
+      "object": {
+        "record_id": "AKC-000004"
+      },
+      "predicate": "improves",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000026.yaml",
+      "sources": [
+        "AKS-000012"
+      ],
+      "statement": "Use a bounded retry policy to pursue service success only when failures are transient, repetition is safe, attempts fit the deadline, and aggregate retry load stays within capacity.",
+      "status": "sourced",
+      "subject": "AKC-000012",
+      "version": 2
+    },
+    {
+      "claim_type": "inference",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The dependency failure would otherwise consume shared capacity and the caller has an acceptable open-state response."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [],
+      "id": "AKL-000027",
+      "notes": "Qualified inference from the supported stability/capacity mechanism; no general measured availability gain is claimed.",
+      "object": {
+        "record_id": "AKC-000004"
+      },
+      "predicate": "improves",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000027.yaml",
+      "sources": [
+        "AKS-000013"
+      ],
+      "statement": "A circuit breaker may preserve caller capacity during sustained dependency failure when it fails fast and an acceptable open-state response exists.",
+      "status": "sourced",
+      "subject": "AKC-000013",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Failure classification, attempt budgets, and breaker state are coordinated."
+        }
+      ],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000028",
+      "notes": "Uncoordinated policies can create oscillation or amplification.",
+      "object": {
+        "record_id": "AKC-000013"
+      },
+      "predicate": "compatible-with",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000028.yaml",
+      "sources": [
+        "AKS-000012",
+        "AKS-000013"
+      ],
+      "statement": "Retry and circuit breaker tactics can coexist when retry handles bounded transient faults and the breaker limits attempts during sustained failure.",
+      "status": "sourced",
+      "subject": "AKC-000012",
+      "version": 1
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The database is authoritative and asynchronous at-least-once publication is acceptable."
+        }
+      ],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000029",
+      "notes": "It addresses message intent atomicity, not consumer correctness by itself.",
+      "object": {
+        "record_id": "AKC-000010"
+      },
+      "predicate": "enables",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000029.yaml",
+      "sources": [
+        "AKS-000010",
+        "AKS-000014"
+      ],
+      "statement": "A transactional outbox enables reliable event publication from local database changes in an event-driven architecture without a cross-resource transaction.",
+      "status": "sourced",
+      "subject": "AKC-000014",
+      "version": 1
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Business state and outbox record share one local transaction and relay backlog is operated."
+        }
+      ],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000030",
+      "notes": "Narrowed to the dual-write boundary supported by AKS-000014; it does not establish end-to-end system reliability.",
+      "object": {
+        "record_id": "AKC-000005"
+      },
+      "predicate": "improves",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000030.yaml",
+      "sources": [
+        "AKS-000014"
+      ],
+      "statement": "Within the local database-to-message boundary, a transactional outbox reduces the failure case in which business state commits without durable message intent.",
+      "status": "sourced",
+      "subject": "AKC-000014",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The workflow spans independent transactional boundaries and intermediate state is externally observable."
+        }
+      ],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000031",
+      "notes": "Some saga steps can still enforce local strong consistency.",
+      "object": {
+        "record_id": "AKC-000016"
+      },
+      "predicate": "depends-on",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000031.yaml",
+      "sources": [
+        "AKS-000015",
+        "AKS-000016"
+      ],
+      "statement": "A saga depends on explicitly managed eventual convergence when its local transactions expose intermediate distributed states before completion or recovery.",
+      "status": "sourced",
+      "subject": "AKC-000015",
+      "version": 1
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Consumers maintain independent state derived from asynchronously delivered events."
+        }
+      ],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000032",
+      "notes": "Event transport alone does not require every data path to be eventually consistent.",
+      "object": {
+        "record_id": "AKC-000016"
+      },
+      "predicate": "introduces",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000032.yaml",
+      "sources": [
+        "AKS-000010",
+        "AKS-000016"
+      ],
+      "statement": "Event-driven workflows can introduce eventual-consistency behavior when consumers update independent state asynchronously.",
+      "status": "sourced",
+      "subject": "AKC-000010",
+      "version": 1
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The implementation follows OpenID Connect token-role and validation rules."
+        }
+      ],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000033",
+      "notes": "Compatibility is limited to composition of distinct token roles; AKL-000034 remains the direct protocol-dependency claim.",
+      "object": {
+        "record_id": "AKC-000018"
+      },
+      "predicate": "compatible-with",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "RFC 6749 Section 1.4",
+          "source_id": "AKS-000017"
+        },
+        {
+          "locator": "OpenID Connect Core Sections 1 and 2",
+          "source_id": "AKS-000019"
+        }
+      ],
+      "source_path": "claims/AKL-000033.yaml",
+      "sources": [
+        "AKS-000017",
+        "AKS-000019"
+      ],
+      "statement": "OpenID Connect uses OAuth 2.0 mechanisms while preserving a semantic boundary between authentication assertions and authorization credentials.",
+      "status": "sourced",
+      "subject": "AKC-000017",
+      "version": 2
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The concept refers to OpenID Connect Core protocol operation."
+        }
+      ],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000034",
+      "notes": "The dependency is protocol-level; authentication and authorization semantics remain distinct.",
+      "object": {
+        "record_id": "AKC-000017"
+      },
+      "predicate": "depends-on",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "OpenID Connect Core Section 1",
+          "source_id": "AKS-000019"
+        }
+      ],
+      "source_path": "claims/AKL-000034.yaml",
+      "sources": [
+        "AKS-000019"
+      ],
+      "statement": "OpenID Connect depends on OAuth 2.0 protocol mechanisms for its authorization requests and token interactions.",
+      "status": "sourced",
+      "subject": "AKC-000018",
+      "version": 1
+    },
+    {
+      "claim_type": "inference",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Telemetry represents the affected behavior and responders can act on the evidence."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [],
+      "id": "AKL-000035",
+      "notes": "Causal quality-impact wording removed. Detection time, diagnosis time, and service reliability require separate measures and evidence.",
+      "object": {
+        "record_id": "AKC-000005"
+      },
+      "predicate": "supports-investigation-of",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000035.yaml",
+      "sources": [
+        "AKS-000020"
+      ],
+      "statement": "Observability can support investigation of reliability incidents when outputs preserve relevant context, but the admitted evidence does not establish that observability causes reliability improvement.",
+      "status": "sourced",
+      "subject": "AKC-000019",
+      "version": 2
+    },
+    {
+      "claim_type": "inference",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The system is distributed into services without adequate resilience, observability, delivery, or ownership capability."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [],
+      "id": "AKL-000036",
+      "notes": "Qualified architecture risk inference; no intrinsic or measured degradation is asserted.",
+      "object": {
+        "record_id": "AKC-000005"
+      },
+      "predicate": "presents-risk-to",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000036.yaml",
+      "sources": [
+        "AKS-000007",
+        "AKS-000008"
+      ],
+      "statement": "This corpus infers an increased reliability risk when independently deployed services are introduced without capability for network failure, distributed state, delivery, observability, and ownership.",
+      "status": "sourced",
+      "subject": "AKC-000008",
+      "version": 2
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The scenario materially influences the recorded decision."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [],
+      "id": "AKL-000037",
+      "notes": "Repository practice recommendation; the admitted sources do not directly establish this cross-practice relationship.",
+      "object": {
+        "record_id": "AKC-000020"
+      },
+      "predicate": "documented-by",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000037.yaml",
+      "sources": [
+        "AKS-000004",
+        "AKS-000021",
+        "AKS-000022"
+      ],
+      "statement": "Record a quality-attribute scenario in an ADR only when the scenario materially drives the decision, while allowing a separate scenario catalog to remain authoritative.",
+      "status": "sourced",
+      "subject": "AKC-000006",
+      "version": 2
+    },
+    {
+      "claim_type": "inference",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The named constraint is authoritative, scoped, and materially excludes an option."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [],
+      "id": "AKL-000038",
+      "notes": "Qualified low-confidence inference. A generic constraint creates no useful edge without naming the excluding condition.",
+      "object": {
+        "record_id": "AKC-000008"
+      },
+      "predicate": "constrains",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000038.yaml",
+      "sources": [
+        "AKS-000002",
+        "AKS-000007",
+        "AKS-000008"
+      ],
+      "statement": "A specific authoritative constraint can exclude particular microservice boundaries or deployment choices when its scope covers data location, ownership, runtime, budget, or operating capability.",
+      "status": "sourced",
+      "subject": "AKC-000003",
+      "version": 2
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The decision has material cross-boundary or lifecycle effects."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [],
+      "id": "AKL-000039",
+      "notes": "Repository recommendation, not a directly sourced cross-method relationship.",
+      "object": {
+        "record_id": "AKC-000020"
+      },
+      "predicate": "influences",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000039.yaml",
+      "sources": [
+        "AKS-000002",
+        "AKS-000021",
+        "AKS-000022"
+      ],
+      "statement": "For decisions with material cross-boundary or lifecycle effects, use systems-thinking questions to expand the context and consequences recorded in an ADR.",
+      "status": "sourced",
+      "subject": "AKC-000002",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The availability boundary includes the failed function under the same operating conditions."
+        }
+      ],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000040",
+      "notes": "Replaced the unsupported causal edge with an explicit corpus terminology boundary; no ISO hierarchy is asserted.",
+      "object": {
+        "record_id": "AKC-000005"
+      },
+      "predicate": "overlaps-with",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_path": "claims/AKL-000040.yaml",
+      "sources": [
+        "AKS-000004",
+        "AKS-000005"
+      ],
+      "statement": "Availability and reliability overlap when a failure of correct service also makes the required service unusable during the same operating conditions and observation window, but neither concept implies or contains the other in this corpus.",
+      "status": "sourced",
+      "subject": "AKC-000004",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000041",
+      "notes": "Retained as proposed. Direct retry-storm or cascading-failure evidence and a measurable feedback path are still missing; related traversal remains excluded.",
+      "object": {
+        "literal": "a bounded dependency fault into wider resource saturation"
+      },
+      "predicate": "amplifies",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000041.yaml",
+      "sources": [
+        "AKS-000008",
+        "AKS-000012",
+        "AKS-000013"
+      ],
+      "statement": "Retries, queue growth, and resource retention can create positive feedback that amplifies a local dependency fault into broader saturation.",
+      "status": "proposed",
+      "subject": "AKC-000021",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000042",
+      "notes": "Retained as proposed project-defined synthesis. Evidence separating structural, release, data, and ownership erosion remains incomplete; related traversal remains excluded.",
+      "object": {
+        "literal": "declared module or service boundaries"
+      },
+      "predicate": "erodes",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000042.yaml",
+      "sources": [
+        "AKS-000006",
+        "AKS-000007",
+        "AKS-000009"
+      ],
+      "statement": "Direct internal dependencies, shared mutable data, and coordinated releases can erode declared architecture boundaries until they no longer constrain change or ownership.",
+      "status": "proposed",
+      "subject": "AKC-000022",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000043",
+      "notes": "Retained as proposed security synthesis. Exact issuer, audience, client, and token-substitution passages must be attached before sourcing; related traversal remains excluded.",
+      "object": {
+        "literal": "a token under an unintended issuer, audience, client, or protocol role"
+      },
+      "predicate": "misinterprets",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000043.yaml",
+      "sources": [
+        "AKS-000017",
+        "AKS-000018",
+        "AKS-000019"
+      ],
+      "statement": "Token-role confusion occurs when a consumer accepts a token under a different issuer, audience, client, or protocol role from the one for which it was issued.",
+      "status": "proposed",
+      "subject": "AKC-000023",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "low",
+      "derived_from_claims": [],
+      "id": "AKL-000044",
+      "notes": "Retained as proposed inference. Direct repair and convergence-bound evidence remains missing; related traversal remains excluded.",
+      "object": {
+        "literal": "an accepted convergence or reconciliation bound"
+      },
+      "predicate": "exceeds",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000044.yaml",
+      "sources": [
+        "AKS-000010",
+        "AKS-000014",
+        "AKS-000015",
+        "AKS-000016"
+      ],
+      "statement": "Distributed state is unreconciled when it remains divergent beyond the accepted bound because propagation, compensation, conflict handling, or repair does not converge.",
+      "status": "proposed",
+      "subject": "AKC-000024",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The failure is persistent or capacity-related and attempts are not effectively bounded."
+        }
+      ],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000045",
+      "notes": "Retained as proposed conditional risk. AKS-000012 supports aggregate retry overload, but generalized cascading-failure evidence is still missing; traversal remains excluded.",
+      "object": {
+        "record_id": "AKC-000021"
+      },
+      "predicate": "introduces",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000045.yaml",
+      "sources": [
+        "AKS-000012"
+      ],
+      "statement": "Retry can introduce cascading failure amplification when repeated attempts increase load against a persistently unhealthy or saturated dependency.",
+      "status": "proposed",
+      "subject": "AKC-000012",
+      "version": 2
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Module boundaries are explicit and enforced by tests, ownership, and data-access policy."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [],
+      "id": "AKL-000046",
+      "notes": "Retained as proposed recommendation. AKS-000006 is a case, not universal proof of continuous boundary enforcement; traversal remains excluded.",
+      "object": {
+        "record_id": "AKC-000022"
+      },
+      "predicate": "mitigates",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000046.yaml",
+      "sources": [
+        "AKS-000006",
+        "AKS-000009"
+      ],
+      "statement": "A modular monolith can mitigate boundary erosion when module APIs, dependency direction, data ownership, and exceptions are enforced continuously.",
+      "status": "proposed",
+      "subject": "AKC-000007",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Token consumers do not validate the complete issuer, audience, client, token role, and protocol context."
+        }
+      ],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000047",
+      "notes": "Retained as proposed risk with the failure mode as actor. Exact OIDC and RFC 9700 threat passages remain required before sourcing; traversal remains excluded.",
+      "object": {
+        "record_id": "AKC-000018"
+      },
+      "predicate": "can-occur-in-context-of",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000047.yaml",
+      "sources": [
+        "AKS-000018",
+        "AKS-000019"
+      ],
+      "statement": "Token-role confusion can occur in an OpenID Connect integration when a token consumer fails to enforce issuer, audience, client, intended-recipient, and token-role validation context.",
+      "status": "proposed",
+      "subject": "AKC-000023",
+      "version": 2
+    },
+    {
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Consumers maintain derived state and the convergence mechanism fails beyond its declared bound."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [],
+      "id": "AKL-000048",
+      "notes": "Retained as proposed inference with the failure mode as actor. Direct repair and convergence evidence remains required; traversal remains excluded.",
+      "object": {
+        "record_id": "AKC-000010"
+      },
+      "predicate": "can-occur-in-context-of",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000048.yaml",
+      "sources": [
+        "AKS-000010",
+        "AKS-000014",
+        "AKS-000016"
+      ],
+      "statement": "Unreconciled state divergence can occur in an event-driven workflow when delivery, conflict handling, replay, or repair fails beyond the declared convergence bound.",
+      "status": "proposed",
+      "subject": "AKC-000024",
+      "version": 2
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000049",
+      "notes": "Client type is determined by credential-confidentiality capability, not merely by an assigned label.",
+      "object": {
+        "literal": "public and confidential OAuth client types"
+      },
+      "predicate": "distinguishes-client-confidentiality",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "RFC 6749 Section 2.1",
+          "source_id": "AKS-000017"
+        }
+      ],
+      "source_path": "claims/AKL-000049.yaml",
+      "sources": [
+        "AKS-000017"
+      ],
+      "statement": "Public OAuth clients cannot keep credentials confidential, while confidential clients can authenticate only within their registered deployment assumptions.",
+      "status": "sourced",
+      "subject": "AKC-000017",
+      "version": 1
+    },
+    {
+      "applicable_concept_ids": [
+        "AKC-000018"
+      ],
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000050",
+      "normative": {
+        "applies_to": "Public OAuth clients using the authorization code grant.",
+        "exceptions": [],
+        "force": "must"
+      },
+      "notes": "PKCE is a mandatory public-client control, not an optional enhancement.",
+      "object": {
+        "literal": "public OAuth clients using the authorization code grant"
+      },
+      "predicate": "requires-pkce",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "RFC 9700 Section 2.1.1",
+          "source_id": "AKS-000018"
+        }
+      ],
+      "source_path": "claims/AKL-000050.yaml",
+      "sources": [
+        "AKS-000018"
+      ],
+      "statement": "Public OAuth clients using the authorization code grant MUST use PKCE.",
+      "status": "sourced",
+      "subject": "AKC-000017",
+      "version": 1
+    },
+    {
+      "applicable_concept_ids": [
+        "AKC-000018"
+      ],
+      "claim_type": "synthesis",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The client is confidential and invokes the token endpoint."
+        }
+      ],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000051",
+      "normative": {
+        "applies_to": "Confidential OAuth clients making token endpoint requests.",
+        "exceptions": [
+          "Selected profiles may impose stricter authentication requirements."
+        ],
+        "force": "must"
+      },
+      "notes": "The claim does not prescribe one universal confidential-client authentication mechanism.",
+      "object": {
+        "literal": "confidential clients making token endpoint requests"
+      },
+      "predicate": "requires-client-authentication",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "RFC 6749 Sections 2.3 and 3.2.1",
+          "source_id": "AKS-000017"
+        }
+      ],
+      "source_path": "claims/AKL-000051.yaml",
+      "sources": [
+        "AKS-000017"
+      ],
+      "statement": "Confidential clients making token endpoint requests MUST authenticate using the method established with the authorization server. Selected profiles may impose stricter authentication requirements.",
+      "status": "sourced",
+      "subject": "AKC-000017",
+      "version": 1
+    },
+    {
+      "applicable_concept_ids": [
+        "AKC-000018"
+      ],
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000052",
+      "normative": {
+        "applies_to": "Authorization servers comparing a request redirect URI with a registered redirect URI.",
+        "exceptions": [
+          "Native-application localhost loopback redirect URIs may vary only by port as specified by RFC 9700."
+        ],
+        "force": "must"
+      },
+      "notes": "The loopback-port exception is preserved and must not be broadened to other URI components.",
+      "object": {
+        "literal": "registered redirect URI comparison"
+      },
+      "predicate": "requires-redirect-matching",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "RFC 9700 Sections 2.1 and 4.1.3",
+          "source_id": "AKS-000018"
+        }
+      ],
+      "source_path": "claims/AKL-000052.yaml",
+      "sources": [
+        "AKS-000018"
+      ],
+      "statement": "Authorization servers MUST compare redirect URIs using exact string matching, except that native-application localhost loopback redirect URIs may vary only by port as specified by RFC 9700.",
+      "status": "sourced",
+      "subject": "AKC-000017",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000053",
+      "normative": {
+        "applies_to": "OAuth deployments selecting an authorization grant.",
+        "exceptions": [],
+        "force": "must-not"
+      },
+      "notes": "This is a prohibition from the current OAuth Security BCP.",
+      "object": {
+        "literal": "resource owner password credentials grant"
+      },
+      "predicate": "prohibits-password-grant",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "RFC 9700 Section 2.4",
+          "source_id": "AKS-000018"
+        }
+      ],
+      "source_path": "claims/AKL-000053.yaml",
+      "sources": [
+        "AKS-000018"
+      ],
+      "statement": "OAuth deployments MUST NOT use the resource owner password credentials grant.",
+      "status": "sourced",
+      "subject": "AKC-000017",
+      "version": 1
+    },
+    {
+      "applicable_concept_ids": [
+        "AKC-000018"
+      ],
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000054",
+      "normative": {
+        "applies_to": "OAuth clients considering response types that issue access tokens in authorization responses.",
+        "exceptions": [
+          "Access-token injection is prevented and the relevant leakage vectors are mitigated."
+        ],
+        "force": "should-not"
+      },
+      "notes": "The BCP qualification is retained; this is not rewritten as an unconditional prohibition.",
+      "object": {
+        "literal": "implicit grant and other access-token issuance in authorization responses"
+      },
+      "predicate": "discourages-implicit-grant",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "RFC 9700 Section 2.1.2",
+          "source_id": "AKS-000018"
+        }
+      ],
+      "source_path": "claims/AKL-000054.yaml",
+      "sources": [
+        "AKS-000018"
+      ],
+      "statement": "OAuth clients SHOULD NOT use the implicit grant or other response types that issue access tokens in the authorization response unless access-token injection is prevented and the relevant leakage vectors are mitigated.",
+      "status": "sourced",
+      "subject": "AKC-000017",
+      "version": 2
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000055",
+      "normative": {
+        "applies_to": "Authorization servers issuing refresh tokens to public clients.",
+        "exceptions": [],
+        "force": "must"
+      },
+      "notes": "Rotation and sender constraint are alternatives for detecting refresh-token replay.",
+      "object": {
+        "literal": "refresh tokens issued to public clients"
+      },
+      "predicate": "requires-refresh-token-replay-defense",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "RFC 9700 Sections 2.2.2 and 4.14.2",
+          "source_id": "AKS-000018"
+        }
+      ],
+      "source_path": "claims/AKL-000055.yaml",
+      "sources": [
+        "AKS-000018"
+      ],
+      "statement": "Authorization servers issuing refresh tokens to public clients MUST use sender-constrained refresh tokens or refresh-token rotation, detect replay, and revoke the active refresh token when replay is detected.",
+      "status": "sourced",
+      "subject": "AKC-000017",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000056",
+      "normative": {
+        "applies_to": "OAuth authorization servers issuing access tokens and resource servers accepting them.",
+        "exceptions": [
+          "Architecture or performance constraints prevent sender-constrained access tokens."
+        ],
+        "force": "should"
+      },
+      "notes": "This preserves SHOULD strength and does not turn mTLS or DPoP into universal requirements.",
+      "object": {
+        "literal": "sender-constrained access tokens issued and accepted by OAuth servers"
+      },
+      "predicate": "recommends-access-token-sender-constraint",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "RFC 9700 Sections 2.2.1 and 4.10",
+          "source_id": "AKS-000018"
+        }
+      ],
+      "source_path": "claims/AKL-000056.yaml",
+      "sources": [
+        "AKS-000018"
+      ],
+      "statement": "Authorization servers and resource servers SHOULD use sender-constraining mechanisms for access tokens, such as mutual TLS or DPoP, unless architecture or performance constraints prevent their use.",
+      "status": "sourced",
+      "subject": "AKC-000017",
+      "version": 2
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000057",
+      "normative": {
+        "applies_to": "Authorization servers issuing access tokens.",
+        "exceptions": [],
+        "force": "should"
+      },
+      "notes": "Audience restriction and least privilege are issuance controls.",
+      "object": {
+        "literal": "access-token audience and privileges"
+      },
+      "predicate": "recommends-least-privilege",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "RFC 9700 Section 2.3",
+          "source_id": "AKS-000018"
+        }
+      ],
+      "source_path": "claims/AKL-000057.yaml",
+      "sources": [
+        "AKS-000018"
+      ],
+      "statement": "Authorization servers SHOULD restrict access-token privileges and audience to the minimum required for the requested resource access.",
+      "status": "sourced",
+      "subject": "AKC-000017",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000058",
+      "normative": {
+        "applies_to": "Resource servers receiving OAuth access tokens.",
+        "exceptions": [],
+        "force": "must"
+      },
+      "notes": "Recipient validation is distinct from privilege evaluation and application authorization.",
+      "object": {
+        "literal": "resource servers receiving access tokens"
+      },
+      "predicate": "requires-intended-recipient-validation",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "RFC 9700 Section 2.3",
+          "source_id": "AKS-000018"
+        }
+      ],
+      "source_path": "claims/AKL-000058.yaml",
+      "sources": [
+        "AKS-000018"
+      ],
+      "statement": "Resource servers MUST validate that an access token is intended for them and reject a token whose audience or resource binding does not match.",
+      "status": "sourced",
+      "subject": "AKC-000017",
+      "version": 1
+    },
+    {
+      "applicable_concept_ids": [
+        "AKC-000018"
+      ],
+      "claim_type": "synthesis",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000059",
+      "notes": "Token role and token serialization are separate concerns.",
+      "object": {
+        "literal": "access-token credential role and format"
+      },
+      "predicate": "defines-access-token-role",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "RFC 6749 Section 1.4",
+          "source_id": "AKS-000017"
+        }
+      ],
+      "source_path": "claims/AKL-000059.yaml",
+      "sources": [
+        "AKS-000017"
+      ],
+      "statement": "OAuth access tokens are authorization credentials for protected-resource access, and OAuth does not require every access token to use JWT format.",
+      "status": "sourced",
+      "subject": "AKC-000017",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000060",
+      "notes": "The ID Token role remains distinct from an OAuth access token.",
+      "object": {
+        "literal": "ID Token authentication assertion"
+      },
+      "predicate": "defines-id-token-role",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "OpenID Connect Core Section 2",
+          "source_id": "AKS-000019"
+        }
+      ],
+      "source_path": "claims/AKL-000060.yaml",
+      "sources": [
+        "AKS-000019"
+      ],
+      "statement": "An OpenID Connect ID Token is a JWT authentication assertion about an end-user authentication event for its intended relying party.",
+      "status": "sourced",
+      "subject": "AKC-000018",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000061",
+      "normative": {
+        "applies_to": "OpenID Connect clients validating an ID Token from a configured OpenID Provider.",
+        "exceptions": [],
+        "force": "must"
+      },
+      "notes": "Semantic migration from the former multi-control umbrella claim. AKL-000061 now owns only issuer validation; AKL-000064 through AKL-000069 preserve the other controls without mixing normative forces.",
+      "object": {
+        "literal": "exact OpenID Connect ID Token issuer validation"
+      },
+      "predicate": "requires-id-token-issuer-validation",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "OpenID Connect Core Section 3.1.3.7, item 2",
+          "source_id": "AKS-000019"
+        }
+      ],
+      "source_path": "claims/AKL-000061.yaml",
+      "sources": [
+        "AKS-000019"
+      ],
+      "statement": "OpenID Connect clients MUST require the configured OpenID Provider issuer identifier to exactly match the ID Token iss claim.",
+      "status": "sourced",
+      "subject": "AKC-000018",
+      "version": 2
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The API expects an OAuth access token issued for its audience."
+        }
+      ],
+      "confidence": "medium",
+      "derived_from_claims": [
+        "AKL-000059",
+        "AKL-000060"
+      ],
+      "id": "AKL-000062",
+      "notes": "RFC 6749 and OpenID Connect Core support the distinct token roles. The action is repository-authored guidance, not a protocol-level MUST NOT.",
+      "object": {
+        "literal": "ID Token use as a generic API access credential"
+      },
+      "predicate": "recommends-preserving-token-role-boundary",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_locations": [
+        {
+          "locator": "RFC 6749 Section 1.4",
+          "source_id": "AKS-000017"
+        },
+        {
+          "locator": "OpenID Connect Core Sections 2 and 3.1.3.7",
+          "source_id": "AKS-000019"
+        }
+      ],
+      "source_path": "claims/AKL-000062.yaml",
+      "sources": [
+        "AKS-000017",
+        "AKS-000019"
+      ],
+      "statement": "Repository guidance recommends that clients not substitute an OpenID Connect ID Token when an API contract requires an audience-bound OAuth access token.",
+      "status": "sourced",
+      "subject": "AKC-000018",
+      "version": 2
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000063",
+      "notes": "This risk statement motivates but does not itself mandate one universal sender-constraining mechanism.",
+      "object": {
+        "literal": "bearer access tokens"
+      },
+      "predicate": "exposes-to-replay",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "RFC 9700 Sections 2.2.1 and 4.10.1",
+          "source_id": "AKS-000018"
+        }
+      ],
+      "source_path": "claims/AKL-000063.yaml",
+      "sources": [
+        "AKS-000018"
+      ],
+      "statement": "An OAuth bearer access token can be replayed by a party that possesses it unless token use is sender-constrained.",
+      "status": "sourced",
+      "subject": "AKC-000017",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000064",
+      "normative": {
+        "applies_to": "OpenID Connect clients validating an ID Token audience.",
+        "exceptions": [],
+        "force": "must"
+      },
+      "notes": "Audience membership and additional-audience trust remain part of one source item and one MUST control.",
+      "object": {
+        "literal": "OpenID Connect ID Token audience validation"
+      },
+      "predicate": "requires-id-token-audience-validation",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "OpenID Connect Core Section 3.1.3.7, item 3",
+          "source_id": "AKS-000019"
+        }
+      ],
+      "source_path": "claims/AKL-000064.yaml",
+      "sources": [
+        "AKS-000019"
+      ],
+      "statement": "OpenID Connect clients MUST validate that the ID Token audience contains their registered client identifier and reject the token if the client is not a valid audience or any additional audience is untrusted.",
+      "status": "sourced",
+      "subject": "AKC-000018",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "An extension makes the azp claim applicable to the ID Token."
+        }
+      ],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000065",
+      "normative": {
+        "applies_to": "OpenID Connect clients when an extension makes the azp claim applicable.",
+        "exceptions": [],
+        "force": "should"
+      },
+      "notes": "The conditional SHOULD is not upgraded to an unconditional MUST.",
+      "object": {
+        "literal": "applicable OpenID Connect authorized-party validation"
+      },
+      "predicate": "recommends-applicable-azp-validation",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "OpenID Connect Core Section 3.1.3.7, items 4 and 5",
+          "source_id": "AKS-000019"
+        }
+      ],
+      "source_path": "claims/AKL-000065.yaml",
+      "sources": [
+        "AKS-000019"
+      ],
+      "statement": "When an extension makes the azp claim applicable, OpenID Connect clients SHOULD validate the azp value as specified by that extension.",
+      "status": "sourced",
+      "subject": "AKC-000018",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The ID Token is not received by direct communication from the Token Endpoint."
+        }
+      ],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000066",
+      "normative": {
+        "applies_to": "OpenID Connect clients validating an ID Token outside direct Token Endpoint communication.",
+        "exceptions": [],
+        "force": "must"
+      },
+      "notes": "The direct Token Endpoint alternative is represented separately by AKL-000067.",
+      "object": {
+        "literal": "signature validation for ID Tokens outside the direct Token Endpoint exception"
+      },
+      "predicate": "requires-id-token-signature-validation",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "OpenID Connect Core Section 3.1.3.7, item 6",
+          "source_id": "AKS-000019"
+        }
+      ],
+      "source_path": "claims/AKL-000066.yaml",
+      "sources": [
+        "AKS-000019"
+      ],
+      "statement": "When an ID Token is not received by direct communication from the Token Endpoint, OpenID Connect clients MUST validate its signature using the issuer's keys and the token's declared algorithm.",
+      "status": "sourced",
+      "subject": "AKC-000018",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The ID Token is received by direct communication from the Token Endpoint."
+        }
+      ],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000067",
+      "normative": {
+        "applies_to": "OpenID Connect clients receiving an ID Token directly from the Token Endpoint.",
+        "exceptions": [],
+        "force": "may"
+      },
+      "notes": "This flow-specific MAY is not represented as a universal signature-validation exemption.",
+      "object": {
+        "literal": "TLS issuer validation in place of signature checking for a directly received ID Token"
+      },
+      "predicate": "permits-direct-token-endpoint-tls-validation",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "OpenID Connect Core Section 3.1.3.7, item 6",
+          "source_id": "AKS-000019"
+        }
+      ],
+      "source_path": "claims/AKL-000067.yaml",
+      "sources": [
+        "AKS-000019"
+      ],
+      "statement": "When an ID Token is received by direct communication from the Token Endpoint, OpenID Connect clients MAY use TLS server validation to validate the issuer in place of checking that token's signature.",
+      "status": "sourced",
+      "subject": "AKC-000018",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000068",
+      "normative": {
+        "applies_to": "OpenID Connect clients validating ID Token expiration.",
+        "exceptions": [],
+        "force": "must"
+      },
+      "notes": "The source item is represented without broadening it into every time-related validation rule.",
+      "object": {
+        "literal": "OpenID Connect ID Token expiration validation"
+      },
+      "predicate": "requires-id-token-expiration-validation",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "OpenID Connect Core Section 3.1.3.7, item 9",
+          "source_id": "AKS-000019"
+        }
+      ],
+      "source_path": "claims/AKL-000068.yaml",
+      "sources": [
+        "AKS-000019"
+      ],
+      "statement": "OpenID Connect clients MUST require the current time to be before the time represented by the ID Token exp claim.",
+      "status": "sourced",
+      "subject": "AKC-000018",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A nonce was sent in the Authentication Request."
+        }
+      ],
+      "confidence": "high",
+      "derived_from_claims": [],
+      "id": "AKL-000069",
+      "normative": {
+        "applies_to": "OpenID Connect clients when a nonce was sent in the Authentication Request.",
+        "exceptions": [],
+        "force": "must"
+      },
+      "notes": "Nonce validation remains conditional on a nonce having been sent.",
+      "object": {
+        "literal": "OpenID Connect ID Token nonce presence and value validation"
+      },
+      "predicate": "requires-applicable-id-token-nonce-validation",
+      "record_kind": "claim",
+      "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "OpenID Connect Core Section 3.1.3.7, item 11",
+          "source_id": "AKS-000019"
+        }
+      ],
+      "source_path": "claims/AKL-000069.yaml",
+      "sources": [
+        "AKS-000019"
+      ],
+      "statement": "When a nonce was sent in the Authentication Request, OpenID Connect clients MUST require a nonce claim in the ID Token and validate that its value equals the sent nonce.",
+      "status": "sourced",
+      "subject": "AKC-000018",
+      "version": 1
+    }
+  ]
+}

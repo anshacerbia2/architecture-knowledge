@@ -40,6 +40,9 @@ jobs:
       - name: Validate repository
         run: pnpm validate
 
+      - name: Verify generated graph and indexes
+        run: pnpm graph:check
+
       - name: Run unit and regression tests
         run: pnpm test
 
@@ -72,3 +75,6 @@ jobs:
 
       - name: Enforce mutation threshold
         run: pnpm test:mutation
+
+      - name: Enforce focused graph mutation threshold
+        run: pnpm test:mutation:graph

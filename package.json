@@ -25,11 +25,17 @@
     "validate:lifecycle": "tsx src/cli.ts validate lifecycle",
     "validate:markdown": "tsx src/cli.ts validate markdown",
     "validate:links": "tsx src/cli.ts validate links",
+    "validate:graph": "tsx src/graph-cli.ts check",
     "report:integrity": "tsx src/cli.ts report write",
     "report:check": "tsx src/cli.ts report check",
-    "test": "vitest run",
+    "graph": "tsx src/graph-cli.ts",
+    "graph:generate": "tsx src/graph-cli.ts generate",
+    "graph:check": "tsx src/graph-cli.ts check",
+    "graph:query": "tsx src/graph-cli.ts",
+    "test": "vitest run --maxWorkers=2",
     "test:coverage": "vitest run --coverage --maxWorkers=2",
-    "test:mutation": "stryker run"
+    "test:mutation": "stryker run",
+    "test:mutation:graph": "stryker run stryker.graph.config.json"
   },
   "dependencies": {
     "ajv": "8.17.1",

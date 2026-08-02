@@ -1,0 +1,937 @@
+{
+  "artifact_type": "reverse-adjacency",
+  "graph_contract_version": 1,
+  "records": [
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000001"
+      ],
+      "node_id": "AKC-000001"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000001"
+      ],
+      "node_id": "AKC-000002"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKC-000003"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000006",
+        "edge:relationship:AKR-000007",
+        "edge:relationship:AKR-000020"
+      ],
+      "node_id": "AKC-000004"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000010",
+        "edge:relationship:AKR-000015",
+        "edge:relationship:AKR-000016",
+        "edge:relationship:AKR-000020"
+      ],
+      "node_id": "AKC-000005"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKC-000006"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000002",
+        "edge:relationship:AKR-000003"
+      ],
+      "node_id": "AKC-000007"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000002",
+        "edge:relationship:AKR-000004",
+        "edge:relationship:AKR-000018"
+      ],
+      "node_id": "AKC-000008"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000003"
+      ],
+      "node_id": "AKC-000009"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000004",
+        "edge:relationship:AKR-000009",
+        "edge:relationship:AKR-000024"
+      ],
+      "node_id": "AKC-000010"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000005"
+      ],
+      "node_id": "AKC-000011"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000008"
+      ],
+      "node_id": "AKC-000012"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000008"
+      ],
+      "node_id": "AKC-000013"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKC-000014"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKC-000015"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000011",
+        "edge:relationship:AKR-000012"
+      ],
+      "node_id": "AKC-000016"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000013",
+        "edge:relationship:AKR-000014"
+      ],
+      "node_id": "AKC-000017"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-applicable:AKL-000050:AKC-000018",
+        "edge:claim-applicable:AKL-000051:AKC-000018",
+        "edge:claim-applicable:AKL-000052:AKC-000018",
+        "edge:claim-applicable:AKL-000054:AKC-000018",
+        "edge:claim-applicable:AKL-000059:AKC-000018",
+        "edge:relationship:AKR-000013",
+        "edge:relationship:AKR-000023"
+      ],
+      "node_id": "AKC-000018"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKC-000019"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000017",
+        "edge:relationship:AKR-000019"
+      ],
+      "node_id": "AKC-000020"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000021"
+      ],
+      "node_id": "AKC-000021"
+    },
+    {
+      "edge_ids": [
+        "edge:relationship:AKR-000022"
+      ],
+      "node_id": "AKC-000022"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKC-000023"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKC-000024"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000001:AKL-000001"
+      ],
+      "node_id": "AKL-000001"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000002:AKL-000002"
+      ],
+      "node_id": "AKL-000002"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000003:AKL-000003"
+      ],
+      "node_id": "AKL-000003"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000004:AKL-000004"
+      ],
+      "node_id": "AKL-000004"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000005:AKL-000005"
+      ],
+      "node_id": "AKL-000005"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000006:AKL-000006"
+      ],
+      "node_id": "AKL-000006"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000007:AKL-000007"
+      ],
+      "node_id": "AKL-000007"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000008:AKL-000008"
+      ],
+      "node_id": "AKL-000008"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000009:AKL-000009"
+      ],
+      "node_id": "AKL-000009"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000010:AKL-000010"
+      ],
+      "node_id": "AKL-000010"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000011:AKL-000011"
+      ],
+      "node_id": "AKL-000011"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000012:AKL-000012"
+      ],
+      "node_id": "AKL-000012"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000013:AKL-000013"
+      ],
+      "node_id": "AKL-000013"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000014:AKL-000014"
+      ],
+      "node_id": "AKL-000014"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000015:AKL-000015"
+      ],
+      "node_id": "AKL-000015"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000016:AKL-000016"
+      ],
+      "node_id": "AKL-000016"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000017:AKL-000017"
+      ],
+      "node_id": "AKL-000017"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000018:AKL-000018"
+      ],
+      "node_id": "AKL-000018"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000019:AKL-000019"
+      ],
+      "node_id": "AKL-000019"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000020:AKL-000020"
+      ],
+      "node_id": "AKL-000020"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000001:AKL-000021",
+        "edge:concept-claim:AKC-000002:AKL-000021",
+        "edge:relationship-claim:AKR-000001:AKL-000021"
+      ],
+      "node_id": "AKL-000021"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000007:AKL-000022",
+        "edge:concept-claim:AKC-000008:AKL-000022",
+        "edge:relationship-claim:AKR-000002:AKL-000022"
+      ],
+      "node_id": "AKL-000022"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000007:AKL-000023",
+        "edge:concept-claim:AKC-000009:AKL-000023",
+        "edge:relationship-claim:AKR-000003:AKL-000023"
+      ],
+      "node_id": "AKL-000023"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000008:AKL-000024",
+        "edge:concept-claim:AKC-000010:AKL-000024",
+        "edge:relationship-claim:AKR-000004:AKL-000024"
+      ],
+      "node_id": "AKL-000024"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000011:AKL-000025",
+        "edge:concept-claim:AKC-000012:AKL-000025",
+        "edge:relationship-claim:AKR-000005:AKL-000025"
+      ],
+      "node_id": "AKL-000025"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000004:AKL-000026",
+        "edge:concept-claim:AKC-000012:AKL-000026",
+        "edge:relationship-claim:AKR-000006:AKL-000026"
+      ],
+      "node_id": "AKL-000026"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000004:AKL-000027",
+        "edge:concept-claim:AKC-000013:AKL-000027",
+        "edge:relationship-claim:AKR-000007:AKL-000027"
+      ],
+      "node_id": "AKL-000027"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000012:AKL-000028",
+        "edge:concept-claim:AKC-000013:AKL-000028",
+        "edge:relationship-claim:AKR-000008:AKL-000028"
+      ],
+      "node_id": "AKL-000028"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000010:AKL-000029",
+        "edge:concept-claim:AKC-000014:AKL-000029",
+        "edge:relationship-claim:AKR-000009:AKL-000029"
+      ],
+      "node_id": "AKL-000029"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000005:AKL-000030",
+        "edge:concept-claim:AKC-000014:AKL-000030",
+        "edge:relationship-claim:AKR-000010:AKL-000030"
+      ],
+      "node_id": "AKL-000030"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000015:AKL-000031",
+        "edge:concept-claim:AKC-000016:AKL-000031",
+        "edge:relationship-claim:AKR-000011:AKL-000031"
+      ],
+      "node_id": "AKL-000031"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000010:AKL-000032",
+        "edge:concept-claim:AKC-000016:AKL-000032",
+        "edge:relationship-claim:AKR-000012:AKL-000032"
+      ],
+      "node_id": "AKL-000032"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000017:AKL-000033",
+        "edge:concept-claim:AKC-000018:AKL-000033",
+        "edge:relationship-claim:AKR-000013:AKL-000033"
+      ],
+      "node_id": "AKL-000033"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000018:AKL-000034",
+        "edge:relationship-claim:AKR-000014:AKL-000034"
+      ],
+      "node_id": "AKL-000034"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000005:AKL-000035",
+        "edge:concept-claim:AKC-000019:AKL-000035",
+        "edge:relationship-claim:AKR-000015:AKL-000035"
+      ],
+      "node_id": "AKL-000035"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000005:AKL-000036",
+        "edge:concept-claim:AKC-000008:AKL-000036",
+        "edge:relationship-claim:AKR-000016:AKL-000036"
+      ],
+      "node_id": "AKL-000036"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000006:AKL-000037",
+        "edge:concept-claim:AKC-000020:AKL-000037",
+        "edge:relationship-claim:AKR-000017:AKL-000037"
+      ],
+      "node_id": "AKL-000037"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000003:AKL-000038",
+        "edge:concept-claim:AKC-000008:AKL-000038",
+        "edge:relationship-claim:AKR-000018:AKL-000038"
+      ],
+      "node_id": "AKL-000038"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000002:AKL-000039",
+        "edge:concept-claim:AKC-000020:AKL-000039",
+        "edge:relationship-claim:AKR-000019:AKL-000039"
+      ],
+      "node_id": "AKL-000039"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000005:AKL-000040",
+        "edge:relationship-claim:AKR-000020:AKL-000040"
+      ],
+      "node_id": "AKL-000040"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000021:AKL-000041"
+      ],
+      "node_id": "AKL-000041"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000022:AKL-000042"
+      ],
+      "node_id": "AKL-000042"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000023:AKL-000043"
+      ],
+      "node_id": "AKL-000043"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000024:AKL-000044"
+      ],
+      "node_id": "AKL-000044"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000012:AKL-000045",
+        "edge:concept-claim:AKC-000021:AKL-000045",
+        "edge:relationship-claim:AKR-000021:AKL-000045"
+      ],
+      "node_id": "AKL-000045"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000007:AKL-000046",
+        "edge:concept-claim:AKC-000022:AKL-000046",
+        "edge:relationship-claim:AKR-000022:AKL-000046"
+      ],
+      "node_id": "AKL-000046"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000018:AKL-000047",
+        "edge:concept-claim:AKC-000023:AKL-000047",
+        "edge:relationship-claim:AKR-000023:AKL-000047"
+      ],
+      "node_id": "AKL-000047"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000010:AKL-000048",
+        "edge:concept-claim:AKC-000024:AKL-000048",
+        "edge:relationship-claim:AKR-000024:AKL-000048"
+      ],
+      "node_id": "AKL-000048"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000017:AKL-000049"
+      ],
+      "node_id": "AKL-000049"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000017:AKL-000050",
+        "edge:concept-claim:AKC-000018:AKL-000050"
+      ],
+      "node_id": "AKL-000050"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000017:AKL-000051",
+        "edge:concept-claim:AKC-000018:AKL-000051"
+      ],
+      "node_id": "AKL-000051"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000017:AKL-000052",
+        "edge:concept-claim:AKC-000018:AKL-000052"
+      ],
+      "node_id": "AKL-000052"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000017:AKL-000053"
+      ],
+      "node_id": "AKL-000053"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000017:AKL-000054",
+        "edge:concept-claim:AKC-000018:AKL-000054"
+      ],
+      "node_id": "AKL-000054"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000017:AKL-000055"
+      ],
+      "node_id": "AKL-000055"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000017:AKL-000056"
+      ],
+      "node_id": "AKL-000056"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000017:AKL-000057"
+      ],
+      "node_id": "AKL-000057"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000017:AKL-000058"
+      ],
+      "node_id": "AKL-000058"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-derived:AKL-000062:AKL-000059",
+        "edge:concept-claim:AKC-000017:AKL-000059",
+        "edge:concept-claim:AKC-000018:AKL-000059"
+      ],
+      "node_id": "AKL-000059"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-derived:AKL-000062:AKL-000060",
+        "edge:concept-claim:AKC-000018:AKL-000060"
+      ],
+      "node_id": "AKL-000060"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000018:AKL-000061"
+      ],
+      "node_id": "AKL-000061"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000018:AKL-000062"
+      ],
+      "node_id": "AKL-000062"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000017:AKL-000063"
+      ],
+      "node_id": "AKL-000063"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000018:AKL-000064"
+      ],
+      "node_id": "AKL-000064"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000018:AKL-000065"
+      ],
+      "node_id": "AKL-000065"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000018:AKL-000066"
+      ],
+      "node_id": "AKL-000066"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000018:AKL-000067"
+      ],
+      "node_id": "AKL-000067"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000018:AKL-000068"
+      ],
+      "node_id": "AKL-000068"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000018:AKL-000069"
+      ],
+      "node_id": "AKL-000069"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000001"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000002"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000003"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000004"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000005"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000006"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000007"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000008"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000009"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000010"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000011"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000012"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000013"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000014"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000015"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000016"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000017"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000018"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000019"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000020"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000021"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000022"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000023"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKR-000024"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000001:AKS-000001",
+        "edge:claim-source:AKL-000021:AKS-000001"
+      ],
+      "node_id": "AKS-000001"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000002:AKS-000002",
+        "edge:claim-source:AKL-000003:AKS-000002",
+        "edge:claim-source:AKL-000021:AKS-000002",
+        "edge:claim-source:AKL-000038:AKS-000002",
+        "edge:claim-source:AKL-000039:AKS-000002"
+      ],
+      "node_id": "AKS-000002"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKS-000003"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000004:AKS-000004",
+        "edge:claim-source:AKL-000005:AKS-000004",
+        "edge:claim-source:AKL-000006:AKS-000004",
+        "edge:claim-source:AKL-000037:AKS-000004",
+        "edge:claim-source:AKL-000040:AKS-000004"
+      ],
+      "node_id": "AKS-000004"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000004:AKS-000005",
+        "edge:claim-source:AKL-000005:AKS-000005",
+        "edge:claim-source:AKL-000040:AKS-000005"
+      ],
+      "node_id": "AKS-000005"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000007:AKS-000006",
+        "edge:claim-source:AKL-000022:AKS-000006",
+        "edge:claim-source:AKL-000023:AKS-000006",
+        "edge:claim-source:AKL-000042:AKS-000006",
+        "edge:claim-source:AKL-000046:AKS-000006"
+      ],
+      "node_id": "AKS-000006"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000007:AKS-000007",
+        "edge:claim-source:AKL-000008:AKS-000007",
+        "edge:claim-source:AKL-000022:AKS-000007",
+        "edge:claim-source:AKL-000024:AKS-000007",
+        "edge:claim-source:AKL-000036:AKS-000007",
+        "edge:claim-source:AKL-000038:AKS-000007",
+        "edge:claim-source:AKL-000042:AKS-000007"
+      ],
+      "node_id": "AKS-000007"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000008:AKS-000008",
+        "edge:claim-source:AKL-000022:AKS-000008",
+        "edge:claim-source:AKL-000024:AKS-000008",
+        "edge:claim-source:AKL-000036:AKS-000008",
+        "edge:claim-source:AKL-000038:AKS-000008",
+        "edge:claim-source:AKL-000041:AKS-000008"
+      ],
+      "node_id": "AKS-000008"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000009:AKS-000009",
+        "edge:claim-source:AKL-000023:AKS-000009",
+        "edge:claim-source:AKL-000042:AKS-000009",
+        "edge:claim-source:AKL-000046:AKS-000009"
+      ],
+      "node_id": "AKS-000009"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000010:AKS-000010",
+        "edge:claim-source:AKL-000016:AKS-000010",
+        "edge:claim-source:AKL-000024:AKS-000010",
+        "edge:claim-source:AKL-000029:AKS-000010",
+        "edge:claim-source:AKL-000032:AKS-000010",
+        "edge:claim-source:AKL-000044:AKS-000010",
+        "edge:claim-source:AKL-000048:AKS-000010"
+      ],
+      "node_id": "AKS-000010"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000011:AKS-000011"
+      ],
+      "node_id": "AKS-000011"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000012:AKS-000012",
+        "edge:claim-source:AKL-000025:AKS-000012",
+        "edge:claim-source:AKL-000026:AKS-000012",
+        "edge:claim-source:AKL-000028:AKS-000012",
+        "edge:claim-source:AKL-000041:AKS-000012",
+        "edge:claim-source:AKL-000045:AKS-000012"
+      ],
+      "node_id": "AKS-000012"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000013:AKS-000013",
+        "edge:claim-source:AKL-000027:AKS-000013",
+        "edge:claim-source:AKL-000028:AKS-000013",
+        "edge:claim-source:AKL-000041:AKS-000013"
+      ],
+      "node_id": "AKS-000013"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000014:AKS-000014",
+        "edge:claim-source:AKL-000029:AKS-000014",
+        "edge:claim-source:AKL-000030:AKS-000014",
+        "edge:claim-source:AKL-000044:AKS-000014",
+        "edge:claim-source:AKL-000048:AKS-000014"
+      ],
+      "node_id": "AKS-000014"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000015:AKS-000015",
+        "edge:claim-source:AKL-000016:AKS-000015",
+        "edge:claim-source:AKL-000031:AKS-000015",
+        "edge:claim-source:AKL-000044:AKS-000015"
+      ],
+      "node_id": "AKS-000015"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000016:AKS-000016",
+        "edge:claim-source:AKL-000031:AKS-000016",
+        "edge:claim-source:AKL-000032:AKS-000016",
+        "edge:claim-source:AKL-000044:AKS-000016",
+        "edge:claim-source:AKL-000048:AKS-000016"
+      ],
+      "node_id": "AKS-000016"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000017:AKS-000017",
+        "edge:claim-source:AKL-000033:AKS-000017",
+        "edge:claim-source:AKL-000043:AKS-000017",
+        "edge:claim-source:AKL-000049:AKS-000017",
+        "edge:claim-source:AKL-000051:AKS-000017",
+        "edge:claim-source:AKL-000059:AKS-000017",
+        "edge:claim-source:AKL-000062:AKS-000017"
+      ],
+      "node_id": "AKS-000017"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000017:AKS-000018",
+        "edge:claim-source:AKL-000043:AKS-000018",
+        "edge:claim-source:AKL-000047:AKS-000018",
+        "edge:claim-source:AKL-000050:AKS-000018",
+        "edge:claim-source:AKL-000052:AKS-000018",
+        "edge:claim-source:AKL-000053:AKS-000018",
+        "edge:claim-source:AKL-000054:AKS-000018",
+        "edge:claim-source:AKL-000055:AKS-000018",
+        "edge:claim-source:AKL-000056:AKS-000018",
+        "edge:claim-source:AKL-000057:AKS-000018",
+        "edge:claim-source:AKL-000058:AKS-000018",
+        "edge:claim-source:AKL-000063:AKS-000018"
+      ],
+      "node_id": "AKS-000018"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000018:AKS-000019",
+        "edge:claim-source:AKL-000033:AKS-000019",
+        "edge:claim-source:AKL-000034:AKS-000019",
+        "edge:claim-source:AKL-000043:AKS-000019",
+        "edge:claim-source:AKL-000047:AKS-000019",
+        "edge:claim-source:AKL-000060:AKS-000019",
+        "edge:claim-source:AKL-000061:AKS-000019",
+        "edge:claim-source:AKL-000062:AKS-000019",
+        "edge:claim-source:AKL-000064:AKS-000019",
+        "edge:claim-source:AKL-000065:AKS-000019",
+        "edge:claim-source:AKL-000066:AKS-000019",
+        "edge:claim-source:AKL-000067:AKS-000019",
+        "edge:claim-source:AKL-000068:AKS-000019",
+        "edge:claim-source:AKL-000069:AKS-000019"
+      ],
+      "node_id": "AKS-000019"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000019:AKS-000020",
+        "edge:claim-source:AKL-000035:AKS-000020"
+      ],
+      "node_id": "AKS-000020"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000020:AKS-000021",
+        "edge:claim-source:AKL-000037:AKS-000021",
+        "edge:claim-source:AKL-000039:AKS-000021"
+      ],
+      "node_id": "AKS-000021"
+    },
+    {
+      "edge_ids": [
+        "edge:claim-source:AKL-000003:AKS-000022",
+        "edge:claim-source:AKL-000037:AKS-000022",
+        "edge:claim-source:AKL-000039:AKS-000022"
+      ],
+      "node_id": "AKS-000022"
+    }
+  ]
+}

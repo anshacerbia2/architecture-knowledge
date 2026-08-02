@@ -1,0 +1,956 @@
+{
+  "artifact_type": "relationships-index",
+  "exact_match_normalization": "case-sensitive-unicode-code-point",
+  "graph_contract_version": 1,
+  "records": [
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The inquiry has both uncertain premises and material cross-boundary interactions."
+        }
+      ],
+      "confidence": "low",
+      "direct_source_ids": [
+        "AKS-000001",
+        "AKS-000002"
+      ],
+      "direction": "symmetric",
+      "evidence": [
+        "AKL-000021"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000021"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000001",
+      "notes": "Compatibility is contextual and does not merge the reasoning models.",
+      "object": "AKC-000002",
+      "predicate": "compatible-with",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000001.yaml",
+      "status": "sourced",
+      "strength": "weak",
+      "subject": "AKC-000001",
+      "traversal": {
+        "eligible": false,
+        "rationale": "Inferential comparison not directly established by admitted sources."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "Inferential comparison not directly established by admitted sources.",
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The decision concerns deployment and ownership boundaries for the same product scope."
+        }
+      ],
+      "confidence": "high",
+      "direct_source_ids": [
+        "AKS-000006",
+        "AKS-000007",
+        "AKS-000008"
+      ],
+      "direction": "symmetric",
+      "evidence": [
+        "AKL-000022"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000022"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000002",
+      "notes": "The alternatives can coexist at different system scopes.",
+      "object": "AKC-000008",
+      "predicate": "alternative-to",
+      "record_kind": "relationship",
+      "semantic_scope": "concept-global",
+      "source_path": "relationships/AKR-000002.yaml",
+      "status": "sourced",
+      "strength": "moderate",
+      "subject": "AKC-000007",
+      "traversal": {
+        "eligible": true,
+        "rationale": null
+      },
+      "traversal_eligible": true,
+      "traversal_exclusion_reason": null,
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Module contracts and dependency rules are explicit and tested."
+        }
+      ],
+      "confidence": "medium",
+      "direct_source_ids": [
+        "AKS-000006",
+        "AKS-000009"
+      ],
+      "direction": "symmetric",
+      "evidence": [
+        "AKL-000023"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000023"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000003",
+      "notes": "Hexagonal structure can be applied within modular-monolith modules.",
+      "object": "AKC-000009",
+      "predicate": "compatible-with",
+      "record_kind": "relationship",
+      "semantic_scope": "concept-global",
+      "source_path": "relationships/AKR-000003.yaml",
+      "status": "sourced",
+      "strength": "moderate",
+      "subject": "AKC-000007",
+      "traversal": {
+        "eligible": true,
+        "rationale": null
+      },
+      "traversal_eligible": true,
+      "traversal_exclusion_reason": null,
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Asynchronous delivery and schema operations are acceptable and supported."
+        }
+      ],
+      "confidence": "high",
+      "direct_source_ids": [
+        "AKS-000007",
+        "AKS-000008",
+        "AKS-000010"
+      ],
+      "direction": "symmetric",
+      "evidence": [
+        "AKL-000024"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000024"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000004",
+      "notes": "Either architectural style can exist without the other.",
+      "object": "AKC-000010",
+      "predicate": "compatible-with",
+      "record_kind": "relationship",
+      "semantic_scope": "concept-global",
+      "source_path": "relationships/AKR-000004.yaml",
+      "status": "sourced",
+      "strength": "moderate",
+      "subject": "AKC-000008",
+      "traversal": {
+        "eligible": true,
+        "rationale": null
+      },
+      "traversal_eligible": true,
+      "traversal_exclusion_reason": null,
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The caller cannot determine whether an earlier state-changing attempt completed and duplicate effects are harmful."
+        }
+      ],
+      "confidence": "medium",
+      "direct_source_ids": [
+        "AKS-000012"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000025"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000025"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000005",
+      "notes": "Equivalent duplicate-effect control can satisfy the requirement.",
+      "object": "AKC-000011",
+      "predicate": "requires",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000005.yaml",
+      "status": "sourced",
+      "strength": "moderate",
+      "subject": "AKC-000012",
+      "traversal": {
+        "eligible": false,
+        "rationale": "Duplicate-effect requirement is claim-specific; the Idempotency umbrella has multiple contextual roles."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "Duplicate-effect requirement is claim-specific; the Idempotency umbrella has multiple contextual roles.",
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Failures are transient, attempts fit the end-to-end deadline, and retry load remains within capacity."
+        }
+      ],
+      "confidence": "low",
+      "direct_source_ids": [
+        "AKS-000012"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000026"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000026"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000006",
+      "notes": "Persistent failure can reverse the effect.",
+      "object": "AKC-000004",
+      "predicate": "improves",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000006.yaml",
+      "status": "sourced",
+      "strength": "weak",
+      "subject": "AKC-000012",
+      "traversal": {
+        "eligible": false,
+        "rationale": "Availability impact is a qualified recommendation without a measured causal effect."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "Availability impact is a qualified recommendation without a measured causal effect.",
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The dependency failure would otherwise consume shared capacity and the caller has an acceptable open-state response."
+        }
+      ],
+      "confidence": "low",
+      "direct_source_ids": [
+        "AKS-000013"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000027"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000027"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000007",
+      "notes": "The edge concerns broader caller availability.",
+      "object": "AKC-000004",
+      "predicate": "improves",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000007.yaml",
+      "status": "sourced",
+      "strength": "weak",
+      "subject": "AKC-000013",
+      "traversal": {
+        "eligible": false,
+        "rationale": "Caller-capacity effect is plausible, but a measured availability effect is not established."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "Caller-capacity effect is plausible, but a measured availability effect is not established.",
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Failure classification, attempt budgets, and breaker state are coordinated."
+        }
+      ],
+      "confidence": "high",
+      "direct_source_ids": [
+        "AKS-000012",
+        "AKS-000013"
+      ],
+      "direction": "symmetric",
+      "evidence": [
+        "AKL-000028"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000028"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000008",
+      "notes": "Uncoordinated policies can amplify failure.",
+      "object": "AKC-000013",
+      "predicate": "compatible-with",
+      "record_kind": "relationship",
+      "semantic_scope": "concept-global",
+      "source_path": "relationships/AKR-000008.yaml",
+      "status": "sourced",
+      "strength": "moderate",
+      "subject": "AKC-000012",
+      "traversal": {
+        "eligible": true,
+        "rationale": null
+      },
+      "traversal_eligible": true,
+      "traversal_exclusion_reason": null,
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The database is authoritative and asynchronous at-least-once publication is acceptable."
+        }
+      ],
+      "confidence": "high",
+      "direct_source_ids": [
+        "AKS-000010",
+        "AKS-000014"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000029"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000029"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000009",
+      "notes": "The outbox enables a publication mechanism, not all EDA behavior.",
+      "object": "AKC-000010",
+      "predicate": "enables",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000009.yaml",
+      "status": "sourced",
+      "strength": "moderate",
+      "subject": "AKC-000014",
+      "traversal": {
+        "eligible": false,
+        "rationale": "The outbox enables a publication mechanism, not event-driven architecture as a whole."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "The outbox enables a publication mechanism, not event-driven architecture as a whole.",
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Business state and outbox record share one local transaction and relay backlog is operated."
+        }
+      ],
+      "confidence": "medium",
+      "direct_source_ids": [
+        "AKS-000014"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000030"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000030"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000010",
+      "notes": "This edge represents only the local durability boundary described by AKL-000030; it does not claim end-to-end reliability.",
+      "object": "AKC-000005",
+      "predicate": "improves",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000010.yaml",
+      "status": "sourced",
+      "strength": "moderate",
+      "subject": "AKC-000014",
+      "traversal": {
+        "eligible": false,
+        "rationale": "The evidence is explicitly claim-context-only and cannot support concept-global traversal."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "The evidence is explicitly claim-context-only and cannot support concept-global traversal.",
+      "version": 3
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The workflow spans independent transactional boundaries and intermediate state is externally observable."
+        }
+      ],
+      "confidence": "high",
+      "direct_source_ids": [
+        "AKS-000015",
+        "AKS-000016"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000031"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000031"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000011",
+      "notes": "Local steps may still use strong consistency.",
+      "object": "AKC-000016",
+      "predicate": "depends-on",
+      "record_kind": "relationship",
+      "semantic_scope": "concept-global",
+      "source_path": "relationships/AKR-000011.yaml",
+      "status": "sourced",
+      "strength": "moderate",
+      "subject": "AKC-000015",
+      "traversal": {
+        "eligible": true,
+        "rationale": null
+      },
+      "traversal_eligible": true,
+      "traversal_exclusion_reason": null,
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Consumers maintain independent state derived from asynchronously delivered events."
+        }
+      ],
+      "confidence": "high",
+      "direct_source_ids": [
+        "AKS-000010",
+        "AKS-000016"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000032"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000032"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000012",
+      "notes": "Event transport does not make every path eventually consistent.",
+      "object": "AKC-000016",
+      "predicate": "introduces",
+      "record_kind": "relationship",
+      "semantic_scope": "concept-global",
+      "source_path": "relationships/AKR-000012.yaml",
+      "status": "sourced",
+      "strength": "moderate",
+      "subject": "AKC-000010",
+      "traversal": {
+        "eligible": true,
+        "rationale": null
+      },
+      "traversal_eligible": true,
+      "traversal_exclusion_reason": null,
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The implementation follows OpenID Connect token-role and validation rules."
+        }
+      ],
+      "confidence": "medium",
+      "direct_source_ids": [
+        "AKS-000017",
+        "AKS-000019"
+      ],
+      "direction": "symmetric",
+      "evidence": [
+        "AKL-000033"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000033"
+      ],
+      "evidence_source_locations": [
+        {
+          "locator": "OpenID Connect Core Sections 1 and 2",
+          "source_id": "AKS-000019"
+        },
+        {
+          "locator": "RFC 6749 Section 1.4",
+          "source_id": "AKS-000017"
+        }
+      ],
+      "id": "AKR-000013",
+      "notes": "Authentication and authorization semantics remain distinct.",
+      "object": "AKC-000018",
+      "predicate": "compatible-with",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000013.yaml",
+      "status": "sourced",
+      "strength": "moderate",
+      "subject": "AKC-000017",
+      "traversal": {
+        "eligible": false,
+        "rationale": "Redundant compatibility edge adds less information than the direct OIDC dependency and token-role boundary."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "Redundant compatibility edge adds less information than the direct OIDC dependency and token-role boundary.",
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The concept refers to OpenID Connect Core protocol operation."
+        }
+      ],
+      "confidence": "high",
+      "direct_source_ids": [
+        "AKS-000019"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000034"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000034"
+      ],
+      "evidence_source_locations": [
+        {
+          "locator": "OpenID Connect Core Section 1",
+          "source_id": "AKS-000019"
+        }
+      ],
+      "id": "AKR-000014",
+      "notes": "This is a protocol dependency, not semantic equivalence.",
+      "object": "AKC-000017",
+      "predicate": "depends-on",
+      "record_kind": "relationship",
+      "semantic_scope": "concept-global",
+      "source_path": "relationships/AKR-000014.yaml",
+      "status": "sourced",
+      "strength": "moderate",
+      "subject": "AKC-000018",
+      "traversal": {
+        "eligible": true,
+        "rationale": null
+      },
+      "traversal_eligible": true,
+      "traversal_exclusion_reason": null,
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Telemetry represents the affected behavior and responders can act on the evidence."
+        }
+      ],
+      "confidence": "low",
+      "direct_source_ids": [
+        "AKS-000020"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000035"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000035"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000015",
+      "notes": "Non-causal association only: observability may support incident investigation; no reliability improvement is asserted.",
+      "object": "AKC-000005",
+      "predicate": "supports-investigation-of",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000015.yaml",
+      "status": "sourced",
+      "strength": "weak",
+      "subject": "AKC-000019",
+      "traversal": {
+        "eligible": false,
+        "rationale": "Association is non-causal; admitted evidence supports investigation capability, not reliability improvement."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "Association is non-causal; admitted evidence supports investigation capability, not reliability improvement.",
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The system is distributed into services without adequate resilience, observability, delivery, or ownership capability."
+        }
+      ],
+      "confidence": "low",
+      "direct_source_ids": [
+        "AKS-000007",
+        "AKS-000008"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000036"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000036"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000016",
+      "notes": "Qualified risk association only; measurable reliability degradation is not established.",
+      "object": "AKC-000005",
+      "predicate": "presents-risk-to",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000016.yaml",
+      "status": "sourced",
+      "strength": "weak",
+      "subject": "AKC-000008",
+      "traversal": {
+        "eligible": false,
+        "rationale": "Conditional reliability risk is inferential and not a measured degradation."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "Conditional reliability risk is inferential and not a measured degradation.",
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The scenario materially influences the recorded decision."
+        }
+      ],
+      "confidence": "low",
+      "direct_source_ids": [
+        "AKS-000004",
+        "AKS-000021",
+        "AKS-000022"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000037"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000037"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000017",
+      "notes": "A separate scenario catalog may remain authoritative.",
+      "object": "AKC-000020",
+      "predicate": "documented-by",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000017.yaml",
+      "status": "sourced",
+      "strength": "weak",
+      "subject": "AKC-000006",
+      "traversal": {
+        "eligible": false,
+        "rationale": "Cross-practice recommendation is not directly established by admitted sources."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "Cross-practice recommendation is not directly established by admitted sources.",
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The named constraint is authoritative, scoped, and materially excludes an option."
+        }
+      ],
+      "confidence": "low",
+      "direct_source_ids": [
+        "AKS-000002",
+        "AKS-000007",
+        "AKS-000008"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000038"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000038"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000018",
+      "notes": "Preferences and assumptions do not establish this edge.",
+      "object": "AKC-000008",
+      "predicate": "constrains",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000018.yaml",
+      "status": "sourced",
+      "strength": "weak",
+      "subject": "AKC-000003",
+      "traversal": {
+        "eligible": false,
+        "rationale": "A generic constraint edge is tautological until a specific reusable constraint is identified."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "A generic constraint edge is tautological until a specific reusable constraint is identified.",
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The decision has material cross-boundary or lifecycle effects."
+        }
+      ],
+      "confidence": "low",
+      "direct_source_ids": [
+        "AKS-000002",
+        "AKS-000021",
+        "AKS-000022"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000039"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000039"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000019",
+      "notes": "The reasoning model informs the record but does not approve it.",
+      "object": "AKC-000020",
+      "predicate": "influences",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000019.yaml",
+      "status": "sourced",
+      "strength": "weak",
+      "subject": "AKC-000002",
+      "traversal": {
+        "eligible": false,
+        "rationale": "Cross-method recommendation is not directly established by admitted sources."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "Cross-method recommendation is not directly established by admitted sources.",
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The availability boundary includes the failed function under the same operating conditions."
+        }
+      ],
+      "confidence": "medium",
+      "direct_source_ids": [
+        "AKS-000004",
+        "AKS-000005"
+      ],
+      "direction": "symmetric",
+      "evidence": [
+        "AKL-000040"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000040"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000020",
+      "notes": "Terminology overlap only; neither an ISO hierarchy nor a causal quality impact is asserted.",
+      "object": "AKC-000005",
+      "predicate": "overlaps-with",
+      "record_kind": "relationship",
+      "semantic_scope": "concept-global",
+      "source_path": "relationships/AKR-000020.yaml",
+      "status": "sourced",
+      "strength": "moderate",
+      "subject": "AKC-000004",
+      "traversal": {
+        "eligible": true,
+        "rationale": null
+      },
+      "traversal_eligible": true,
+      "traversal_exclusion_reason": null,
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The failure is persistent or capacity-related and attempts are not effectively bounded."
+        }
+      ],
+      "confidence": "medium",
+      "direct_source_ids": [
+        "AKS-000012"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000045"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000045"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000021",
+      "notes": "Supporting M3 failure-mode edge; not human reviewed.",
+      "object": "AKC-000021",
+      "predicate": "introduces",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000021.yaml",
+      "status": "proposed",
+      "strength": "moderate",
+      "subject": "AKC-000012",
+      "traversal": {
+        "eligible": false,
+        "rationale": "Proposed cascading-failure edge lacks direct feedback-path evidence."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "Proposed cascading-failure edge lacks direct feedback-path evidence.",
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Module boundaries are explicit and enforced by tests, ownership, and data-access policy."
+        }
+      ],
+      "confidence": "low",
+      "direct_source_ids": [
+        "AKS-000006",
+        "AKS-000009"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000046"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000046"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000022",
+      "notes": "Supporting M3 failure-mode edge; not human reviewed.",
+      "object": "AKC-000022",
+      "predicate": "mitigates",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000022.yaml",
+      "status": "proposed",
+      "strength": "weak",
+      "subject": "AKC-000007",
+      "traversal": {
+        "eligible": false,
+        "rationale": "Proposed mitigation edge lacks general evidence for continuous boundary enforcement."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "Proposed mitigation edge lacks general evidence for continuous boundary enforcement.",
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Token consumers do not validate the complete issuer, audience, client, token role, and protocol context."
+        }
+      ],
+      "confidence": "medium",
+      "direct_source_ids": [
+        "AKS-000018",
+        "AKS-000019"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000047"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000047"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000023",
+      "notes": "The failure mode, rather than OpenID Connect, is the actor; this context association remains proposed and excluded.",
+      "object": "AKC-000018",
+      "predicate": "can-occur-in-context-of",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000023.yaml",
+      "status": "proposed",
+      "strength": "weak",
+      "subject": "AKC-000023",
+      "traversal": {
+        "eligible": false,
+        "rationale": "Proposed context association has corrected actor semantics but still lacks exact threat evidence."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "Proposed context association has corrected actor semantics but still lacks exact threat evidence.",
+      "version": 2
+    },
+    {
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Consumers maintain derived state and the convergence mechanism fails beyond its declared bound."
+        }
+      ],
+      "confidence": "low",
+      "direct_source_ids": [
+        "AKS-000010",
+        "AKS-000014",
+        "AKS-000016"
+      ],
+      "direction": "directed",
+      "evidence": [
+        "AKL-000048"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000048"
+      ],
+      "evidence_source_locations": [],
+      "id": "AKR-000024",
+      "notes": "The failed reconciliation outcome, rather than EDA, is the actor; this context association remains proposed and excluded.",
+      "object": "AKC-000010",
+      "predicate": "can-occur-in-context-of",
+      "record_kind": "relationship",
+      "semantic_scope": "claim-context-only",
+      "source_path": "relationships/AKR-000024.yaml",
+      "status": "proposed",
+      "strength": "weak",
+      "subject": "AKC-000024",
+      "traversal": {
+        "eligible": false,
+        "rationale": "Proposed context association has corrected actor semantics but still lacks direct repair/convergence evidence."
+      },
+      "traversal_eligible": false,
+      "traversal_exclusion_reason": "Proposed context association has corrected actor semantics but still lacks direct repair/convergence evidence.",
+      "version": 2
+    }
+  ]
+}

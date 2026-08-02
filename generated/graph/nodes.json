@@ -1,0 +1,979 @@
+{
+  "artifact_type": "nodes",
+  "graph_contract_version": 1,
+  "records": [
+    {
+      "family": "claim",
+      "id": "AKL-000001",
+      "source_path": "claims/AKL-000001.yaml",
+      "status": "sourced",
+      "title": "This corpus transfers first-principles reasoning from the examination of foundational propositions to bounded architecture inquiries; the software-architecture method is a repository synthesis, not a directly normalized historical source claim."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000002",
+      "source_path": "claims/AKL-000002.yaml",
+      "status": "sourced",
+      "title": "For this corpus, systems thinking combines explicit purpose and boundaries with interacting elements, stakeholders, feedback, and lifecycle effects when analyzing architecture decisions."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000003",
+      "source_path": "claims/AKL-000003.yaml",
+      "status": "sourced",
+      "title": "A constraint states a condition that an architecture or system must satisfy within a declared scope."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000004",
+      "source_path": "claims/AKL-000004.yaml",
+      "status": "sourced",
+      "title": "In an operational service-level context, availability is evaluated as whether valid demand receives a successful response during a stated observation window."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000005",
+      "source_path": "claims/AKL-000005.yaml",
+      "status": "sourced",
+      "title": "Within this corpus, reliability concerns continuity of correct service under stated conditions over time, while availability concerns readiness for usable service when required; the concepts can overlap operationally without being synonyms."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000006",
+      "source_path": "claims/AKL-000006.yaml",
+      "status": "sourced",
+      "title": "General quality-attribute scenarios provide reusable quality reasoning, while concrete scenarios adapt that reasoning to a specific system and context."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000007",
+      "source_path": "claims/AKL-000007.yaml",
+      "status": "sourced",
+      "title": "A modular monolith organizes an application into explicit internal modules while retaining one primary deployment and runtime boundary."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000008",
+      "source_path": "claims/AKL-000008.yaml",
+      "status": "sourced",
+      "title": "Microservice architecture organizes a system as independently deployable services aligned to bounded capabilities and communicating through explicit contracts."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000009",
+      "source_path": "claims/AKL-000009.yaml",
+      "status": "sourced",
+      "title": "Hexagonal architecture isolates application behavior behind ports and connects external actors and technologies through adapters that depend toward the application boundary."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000010",
+      "source_path": "claims/AKL-000010.yaml",
+      "status": "sourced",
+      "title": "In the architecture described by AKS-000010, producers publish events through channels and consumers react asynchronously, reducing direct producer-consumer coupling."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000011",
+      "source_path": "claims/AKL-000011.yaml",
+      "status": "sourced",
+      "title": "For an HTTP method, idempotency means that the intended server effect of multiple identical requests is the same as the effect of one such request."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000012",
+      "source_path": "claims/AKL-000012.yaml",
+      "status": "sourced",
+      "title": "A retry policy repeats an operation for failures classified as transient and should bound attempts, delay, and total elapsed time."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000013",
+      "source_path": "claims/AKL-000013.yaml",
+      "status": "sourced",
+      "title": "A circuit breaker transitions among closed, open, and probe states to prevent repeated calls to a failing dependency and test recovery."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000014",
+      "source_path": "claims/AKL-000014.yaml",
+      "status": "sourced",
+      "title": "A transactional outbox stores business changes and an outgoing message record in one local transaction, then publishes the message asynchronously."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000015",
+      "source_path": "claims/AKL-000015.yaml",
+      "status": "sourced",
+      "title": "A saga coordinates a sequence of local transactions and responds to later failure through compensating actions, forward recovery, or intervention."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000016",
+      "source_path": "claims/AKL-000016.yaml",
+      "status": "sourced",
+      "title": "Under stated delivery and conflict-resolution assumptions, an eventually consistent system permits temporary divergence and converges after relevant updates cease."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000017",
+      "source_path": "claims/AKL-000017.yaml",
+      "status": "sourced",
+      "title": "OAuth 2.0 is an authorization framework for scoped access to protected resources and does not by itself specify end-user authentication."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000018",
+      "source_path": "claims/AKL-000018.yaml",
+      "status": "sourced",
+      "title": "OpenID Connect adds an identity layer to OAuth 2.0 so a relying party can verify an end user's authentication and obtain identity claims."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000019",
+      "source_path": "claims/AKL-000019.yaml",
+      "status": "sourced",
+      "title": "Observability is the capability to understand internal system state and behavior from available outputs and context, not merely the presence of a telemetry library."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000020",
+      "source_path": "claims/AKL-000020.yaml",
+      "status": "sourced",
+      "title": "An architecture decision record captures a significant architecture decision together with its context and consequences."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000021",
+      "source_path": "claims/AKL-000021.yaml",
+      "status": "sourced",
+      "title": "This corpus infers that first-principles and systems thinking can be combined when an inquiry must test premises and also examine cross-boundary interactions and feedback."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000022",
+      "source_path": "claims/AKL-000022.yaml",
+      "status": "sourced",
+      "title": "A modular monolith and microservices are alternative deployment and decomposition choices when evaluating how much independent runtime ownership a product needs."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000023",
+      "source_path": "claims/AKL-000023.yaml",
+      "status": "sourced",
+      "title": "A modular monolith can apply hexagonal ports and adapters inside modules to enforce inward dependencies and adapter isolation."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000024",
+      "source_path": "claims/AKL-000024.yaml",
+      "status": "sourced",
+      "title": "Microservices and event-driven architecture can coexist when autonomous services exchange asynchronous event facts through governed contracts."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000025",
+      "source_path": "claims/AKL-000025.yaml",
+      "status": "sourced",
+      "title": "When a caller cannot know whether a state-changing attempt completed, retry requires a safe operation or an equivalent mechanism that prevents harmful duplicate effects."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000026",
+      "source_path": "claims/AKL-000026.yaml",
+      "status": "sourced",
+      "title": "Use a bounded retry policy to pursue service success only when failures are transient, repetition is safe, attempts fit the deadline, and aggregate retry load stays within capacity."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000027",
+      "source_path": "claims/AKL-000027.yaml",
+      "status": "sourced",
+      "title": "A circuit breaker may preserve caller capacity during sustained dependency failure when it fails fast and an acceptable open-state response exists."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000028",
+      "source_path": "claims/AKL-000028.yaml",
+      "status": "sourced",
+      "title": "Retry and circuit breaker tactics can coexist when retry handles bounded transient faults and the breaker limits attempts during sustained failure."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000029",
+      "source_path": "claims/AKL-000029.yaml",
+      "status": "sourced",
+      "title": "A transactional outbox enables reliable event publication from local database changes in an event-driven architecture without a cross-resource transaction."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000030",
+      "source_path": "claims/AKL-000030.yaml",
+      "status": "sourced",
+      "title": "Within the local database-to-message boundary, a transactional outbox reduces the failure case in which business state commits without durable message intent."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000031",
+      "source_path": "claims/AKL-000031.yaml",
+      "status": "sourced",
+      "title": "A saga depends on explicitly managed eventual convergence when its local transactions expose intermediate distributed states before completion or recovery."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000032",
+      "source_path": "claims/AKL-000032.yaml",
+      "status": "sourced",
+      "title": "Event-driven workflows can introduce eventual-consistency behavior when consumers update independent state asynchronously."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000033",
+      "source_path": "claims/AKL-000033.yaml",
+      "status": "sourced",
+      "title": "OpenID Connect uses OAuth 2.0 mechanisms while preserving a semantic boundary between authentication assertions and authorization credentials."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000034",
+      "source_path": "claims/AKL-000034.yaml",
+      "status": "sourced",
+      "title": "OpenID Connect depends on OAuth 2.0 protocol mechanisms for its authorization requests and token interactions."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000035",
+      "source_path": "claims/AKL-000035.yaml",
+      "status": "sourced",
+      "title": "Observability can support investigation of reliability incidents when outputs preserve relevant context, but the admitted evidence does not establish that observability causes reliability improvement."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000036",
+      "source_path": "claims/AKL-000036.yaml",
+      "status": "sourced",
+      "title": "This corpus infers an increased reliability risk when independently deployed services are introduced without capability for network failure, distributed state, delivery, observability, and ownership."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000037",
+      "source_path": "claims/AKL-000037.yaml",
+      "status": "sourced",
+      "title": "Record a quality-attribute scenario in an ADR only when the scenario materially drives the decision, while allowing a separate scenario catalog to remain authoritative."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000038",
+      "source_path": "claims/AKL-000038.yaml",
+      "status": "sourced",
+      "title": "A specific authoritative constraint can exclude particular microservice boundaries or deployment choices when its scope covers data location, ownership, runtime, budget, or operating capability."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000039",
+      "source_path": "claims/AKL-000039.yaml",
+      "status": "sourced",
+      "title": "For decisions with material cross-boundary or lifecycle effects, use systems-thinking questions to expand the context and consequences recorded in an ADR."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000040",
+      "source_path": "claims/AKL-000040.yaml",
+      "status": "sourced",
+      "title": "Availability and reliability overlap when a failure of correct service also makes the required service unusable during the same operating conditions and observation window, but neither concept implies or contains the other in this corpus."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000041",
+      "source_path": "claims/AKL-000041.yaml",
+      "status": "proposed",
+      "title": "Retries, queue growth, and resource retention can create positive feedback that amplifies a local dependency fault into broader saturation."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000042",
+      "source_path": "claims/AKL-000042.yaml",
+      "status": "proposed",
+      "title": "Direct internal dependencies, shared mutable data, and coordinated releases can erode declared architecture boundaries until they no longer constrain change or ownership."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000043",
+      "source_path": "claims/AKL-000043.yaml",
+      "status": "proposed",
+      "title": "Token-role confusion occurs when a consumer accepts a token under a different issuer, audience, client, or protocol role from the one for which it was issued."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000044",
+      "source_path": "claims/AKL-000044.yaml",
+      "status": "proposed",
+      "title": "Distributed state is unreconciled when it remains divergent beyond the accepted bound because propagation, compensation, conflict handling, or repair does not converge."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000045",
+      "source_path": "claims/AKL-000045.yaml",
+      "status": "proposed",
+      "title": "Retry can introduce cascading failure amplification when repeated attempts increase load against a persistently unhealthy or saturated dependency."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000046",
+      "source_path": "claims/AKL-000046.yaml",
+      "status": "proposed",
+      "title": "A modular monolith can mitigate boundary erosion when module APIs, dependency direction, data ownership, and exceptions are enforced continuously."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000047",
+      "source_path": "claims/AKL-000047.yaml",
+      "status": "proposed",
+      "title": "Token-role confusion can occur in an OpenID Connect integration when a token consumer fails to enforce issuer, audience, client, intended-recipient, and token-role validation context."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000048",
+      "source_path": "claims/AKL-000048.yaml",
+      "status": "proposed",
+      "title": "Unreconciled state divergence can occur in an event-driven workflow when delivery, conflict handling, replay, or repair fails beyond the declared convergence bound."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000049",
+      "source_path": "claims/AKL-000049.yaml",
+      "status": "sourced",
+      "title": "Public OAuth clients cannot keep credentials confidential, while confidential clients can authenticate only within their registered deployment assumptions."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000050",
+      "source_path": "claims/AKL-000050.yaml",
+      "status": "sourced",
+      "title": "Public OAuth clients using the authorization code grant MUST use PKCE."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000051",
+      "source_path": "claims/AKL-000051.yaml",
+      "status": "sourced",
+      "title": "Confidential clients making token endpoint requests MUST authenticate using the method established with the authorization server. Selected profiles may impose stricter authentication requirements."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000052",
+      "source_path": "claims/AKL-000052.yaml",
+      "status": "sourced",
+      "title": "Authorization servers MUST compare redirect URIs using exact string matching, except that native-application localhost loopback redirect URIs may vary only by port as specified by RFC 9700."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000053",
+      "source_path": "claims/AKL-000053.yaml",
+      "status": "sourced",
+      "title": "OAuth deployments MUST NOT use the resource owner password credentials grant."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000054",
+      "source_path": "claims/AKL-000054.yaml",
+      "status": "sourced",
+      "title": "OAuth clients SHOULD NOT use the implicit grant or other response types that issue access tokens in the authorization response unless access-token injection is prevented and the relevant leakage vectors are mitigated."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000055",
+      "source_path": "claims/AKL-000055.yaml",
+      "status": "sourced",
+      "title": "Authorization servers issuing refresh tokens to public clients MUST use sender-constrained refresh tokens or refresh-token rotation, detect replay, and revoke the active refresh token when replay is detected."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000056",
+      "source_path": "claims/AKL-000056.yaml",
+      "status": "sourced",
+      "title": "Authorization servers and resource servers SHOULD use sender-constraining mechanisms for access tokens, such as mutual TLS or DPoP, unless architecture or performance constraints prevent their use."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000057",
+      "source_path": "claims/AKL-000057.yaml",
+      "status": "sourced",
+      "title": "Authorization servers SHOULD restrict access-token privileges and audience to the minimum required for the requested resource access."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000058",
+      "source_path": "claims/AKL-000058.yaml",
+      "status": "sourced",
+      "title": "Resource servers MUST validate that an access token is intended for them and reject a token whose audience or resource binding does not match."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000059",
+      "source_path": "claims/AKL-000059.yaml",
+      "status": "sourced",
+      "title": "OAuth access tokens are authorization credentials for protected-resource access, and OAuth does not require every access token to use JWT format."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000060",
+      "source_path": "claims/AKL-000060.yaml",
+      "status": "sourced",
+      "title": "An OpenID Connect ID Token is a JWT authentication assertion about an end-user authentication event for its intended relying party."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000061",
+      "source_path": "claims/AKL-000061.yaml",
+      "status": "sourced",
+      "title": "OpenID Connect clients MUST require the configured OpenID Provider issuer identifier to exactly match the ID Token iss claim."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000062",
+      "source_path": "claims/AKL-000062.yaml",
+      "status": "sourced",
+      "title": "Repository guidance recommends that clients not substitute an OpenID Connect ID Token when an API contract requires an audience-bound OAuth access token."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000063",
+      "source_path": "claims/AKL-000063.yaml",
+      "status": "sourced",
+      "title": "An OAuth bearer access token can be replayed by a party that possesses it unless token use is sender-constrained."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000064",
+      "source_path": "claims/AKL-000064.yaml",
+      "status": "sourced",
+      "title": "OpenID Connect clients MUST validate that the ID Token audience contains their registered client identifier and reject the token if the client is not a valid audience or any additional audience is untrusted."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000065",
+      "source_path": "claims/AKL-000065.yaml",
+      "status": "sourced",
+      "title": "When an extension makes the azp claim applicable, OpenID Connect clients SHOULD validate the azp value as specified by that extension."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000066",
+      "source_path": "claims/AKL-000066.yaml",
+      "status": "sourced",
+      "title": "When an ID Token is not received by direct communication from the Token Endpoint, OpenID Connect clients MUST validate its signature using the issuer's keys and the token's declared algorithm."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000067",
+      "source_path": "claims/AKL-000067.yaml",
+      "status": "sourced",
+      "title": "When an ID Token is received by direct communication from the Token Endpoint, OpenID Connect clients MAY use TLS server validation to validate the issuer in place of checking that token's signature."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000068",
+      "source_path": "claims/AKL-000068.yaml",
+      "status": "sourced",
+      "title": "OpenID Connect clients MUST require the current time to be before the time represented by the ID Token exp claim."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000069",
+      "source_path": "claims/AKL-000069.yaml",
+      "status": "sourced",
+      "title": "When a nonce was sent in the Authentication Request, OpenID Connect clients MUST require a nonce claim in the ID Token and validate that its value equals the sent nonce."
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000001",
+      "source_path": "knowledge/foundations/first-principles-thinking.md",
+      "status": "drafted",
+      "title": "First-Principles Thinking"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000002",
+      "source_path": "knowledge/foundations/systems-thinking.md",
+      "status": "drafted",
+      "title": "Systems Thinking"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000003",
+      "source_path": "knowledge/constraints-assumptions/constraint.md",
+      "status": "drafted",
+      "title": "Constraint"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000004",
+      "source_path": "knowledge/quality/availability.md",
+      "status": "drafted",
+      "title": "Availability"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000005",
+      "source_path": "knowledge/quality/reliability.md",
+      "status": "drafted",
+      "title": "Reliability"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000006",
+      "source_path": "knowledge/quality/quality-attribute-scenario.md",
+      "status": "drafted",
+      "title": "Quality Attribute Scenario"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000007",
+      "source_path": "knowledge/application-architecture/modular-monolith.md",
+      "status": "drafted",
+      "title": "Modular Monolith"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000008",
+      "source_path": "knowledge/distributed-systems/microservices.md",
+      "status": "drafted",
+      "title": "Microservices"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000009",
+      "source_path": "knowledge/application-architecture/hexagonal-architecture.md",
+      "status": "drafted",
+      "title": "Hexagonal Architecture"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000010",
+      "source_path": "knowledge/integration/event-driven-architecture.md",
+      "status": "drafted",
+      "title": "Event-Driven Architecture"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000011",
+      "source_path": "knowledge/distributed-systems/idempotency.md",
+      "status": "drafted",
+      "title": "Idempotency"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000012",
+      "source_path": "knowledge/reliability-operability/retry.md",
+      "status": "drafted",
+      "title": "Retry"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000013",
+      "source_path": "knowledge/reliability-operability/circuit-breaker.md",
+      "status": "drafted",
+      "title": "Circuit Breaker"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000014",
+      "source_path": "knowledge/distributed-systems/transactional-outbox.md",
+      "status": "drafted",
+      "title": "Transactional Outbox"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000015",
+      "source_path": "knowledge/distributed-systems/saga.md",
+      "status": "drafted",
+      "title": "Saga"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000016",
+      "source_path": "knowledge/distributed-systems/eventual-consistency.md",
+      "status": "drafted",
+      "title": "Eventual Consistency"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000017",
+      "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
+      "status": "drafted",
+      "title": "OAuth 2.0 Authorization Framework"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000018",
+      "source_path": "knowledge/security/openid-connect.md",
+      "status": "drafted",
+      "title": "OpenID Connect"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000019",
+      "source_path": "knowledge/observability/observability.md",
+      "status": "drafted",
+      "title": "Observability"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000020",
+      "source_path": "knowledge/documentation/architecture-decision-record.md",
+      "status": "drafted",
+      "title": "Architecture Decision Record"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000021",
+      "source_path": "knowledge/supporting/cascading-failure-amplification.md",
+      "status": "proposed",
+      "title": "Cascading Failure Amplification"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000022",
+      "source_path": "knowledge/supporting/boundary-erosion.md",
+      "status": "proposed",
+      "title": "Boundary Erosion"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000023",
+      "source_path": "knowledge/supporting/token-role-confusion.md",
+      "status": "proposed",
+      "title": "Token Role Confusion"
+    },
+    {
+      "family": "concept",
+      "id": "AKC-000024",
+      "source_path": "knowledge/supporting/unreconciled-state-divergence.md",
+      "status": "proposed",
+      "title": "Unreconciled State Divergence"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000001",
+      "source_path": "relationships/AKR-000001.yaml",
+      "status": "sourced",
+      "title": "compatible-with"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000002",
+      "source_path": "relationships/AKR-000002.yaml",
+      "status": "sourced",
+      "title": "alternative-to"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000003",
+      "source_path": "relationships/AKR-000003.yaml",
+      "status": "sourced",
+      "title": "compatible-with"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000004",
+      "source_path": "relationships/AKR-000004.yaml",
+      "status": "sourced",
+      "title": "compatible-with"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000005",
+      "source_path": "relationships/AKR-000005.yaml",
+      "status": "sourced",
+      "title": "requires"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000006",
+      "source_path": "relationships/AKR-000006.yaml",
+      "status": "sourced",
+      "title": "improves"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000007",
+      "source_path": "relationships/AKR-000007.yaml",
+      "status": "sourced",
+      "title": "improves"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000008",
+      "source_path": "relationships/AKR-000008.yaml",
+      "status": "sourced",
+      "title": "compatible-with"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000009",
+      "source_path": "relationships/AKR-000009.yaml",
+      "status": "sourced",
+      "title": "enables"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000010",
+      "source_path": "relationships/AKR-000010.yaml",
+      "status": "sourced",
+      "title": "improves"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000011",
+      "source_path": "relationships/AKR-000011.yaml",
+      "status": "sourced",
+      "title": "depends-on"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000012",
+      "source_path": "relationships/AKR-000012.yaml",
+      "status": "sourced",
+      "title": "introduces"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000013",
+      "source_path": "relationships/AKR-000013.yaml",
+      "status": "sourced",
+      "title": "compatible-with"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000014",
+      "source_path": "relationships/AKR-000014.yaml",
+      "status": "sourced",
+      "title": "depends-on"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000015",
+      "source_path": "relationships/AKR-000015.yaml",
+      "status": "sourced",
+      "title": "supports-investigation-of"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000016",
+      "source_path": "relationships/AKR-000016.yaml",
+      "status": "sourced",
+      "title": "presents-risk-to"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000017",
+      "source_path": "relationships/AKR-000017.yaml",
+      "status": "sourced",
+      "title": "documented-by"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000018",
+      "source_path": "relationships/AKR-000018.yaml",
+      "status": "sourced",
+      "title": "constrains"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000019",
+      "source_path": "relationships/AKR-000019.yaml",
+      "status": "sourced",
+      "title": "influences"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000020",
+      "source_path": "relationships/AKR-000020.yaml",
+      "status": "sourced",
+      "title": "overlaps-with"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000021",
+      "source_path": "relationships/AKR-000021.yaml",
+      "status": "proposed",
+      "title": "introduces"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000022",
+      "source_path": "relationships/AKR-000022.yaml",
+      "status": "proposed",
+      "title": "mitigates"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000023",
+      "source_path": "relationships/AKR-000023.yaml",
+      "status": "proposed",
+      "title": "can-occur-in-context-of"
+    },
+    {
+      "family": "relationship",
+      "id": "AKR-000024",
+      "source_path": "relationships/AKR-000024.yaml",
+      "status": "proposed",
+      "title": "can-occur-in-context-of"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000001",
+      "source_path": "sources/registry.yaml#/sources/0",
+      "status": "approved",
+      "title": "Aristotle and Mathematics"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000002",
+      "source_path": "sources/registry.yaml#/sources/1",
+      "status": "approved",
+      "title": "NASA Systems Engineering Handbook"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000003",
+      "source_path": "sources/registry.yaml#/sources/2",
+      "status": "approved",
+      "title": "ISO/IEC 25010:2023 — Systems and software Quality Requirements and Evaluation (SQuaRE) — Product quality model"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000004",
+      "source_path": "sources/registry.yaml#/sources/3",
+      "status": "approved",
+      "title": "Reasoning About Software Quality Attributes"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000005",
+      "source_path": "sources/registry.yaml#/sources/4",
+      "status": "approved",
+      "title": "Service Level Objectives"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000006",
+      "source_path": "sources/registry.yaml#/sources/5",
+      "status": "approved",
+      "title": "Hexagonal Rails Monolith"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000007",
+      "source_path": "sources/registry.yaml#/sources/6",
+      "status": "approved",
+      "title": "Microservices"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000008",
+      "source_path": "sources/registry.yaml#/sources/7",
+      "status": "approved",
+      "title": "Microservices architecture style"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000009",
+      "source_path": "sources/registry.yaml#/sources/8",
+      "status": "approved",
+      "title": "Hexagonal architecture"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000010",
+      "source_path": "sources/registry.yaml#/sources/9",
+      "status": "approved",
+      "title": "Event-driven architecture style"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000011",
+      "source_path": "sources/registry.yaml#/sources/10",
+      "status": "approved",
+      "title": "RFC 9110 — HTTP Semantics"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000012",
+      "source_path": "sources/registry.yaml#/sources/11",
+      "status": "approved",
+      "title": "Retry pattern"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000013",
+      "source_path": "sources/registry.yaml#/sources/12",
+      "status": "approved",
+      "title": "Circuit Breaker pattern"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000014",
+      "source_path": "sources/registry.yaml#/sources/13",
+      "status": "approved",
+      "title": "Transactional outbox pattern"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000015",
+      "source_path": "sources/registry.yaml#/sources/14",
+      "status": "approved",
+      "title": "Saga distributed transactions pattern"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000016",
+      "source_path": "sources/registry.yaml#/sources/15",
+      "status": "approved",
+      "title": "Eventually Consistent — Revisited"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000017",
+      "source_path": "sources/registry.yaml#/sources/16",
+      "status": "approved",
+      "title": "RFC 6749 — The OAuth 2.0 Authorization Framework"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000018",
+      "source_path": "sources/registry.yaml#/sources/17",
+      "status": "approved",
+      "title": "RFC 9700 — Best Current Practice for OAuth 2.0 Security"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000019",
+      "source_path": "sources/registry.yaml#/sources/18",
+      "status": "approved",
+      "title": "OpenID Connect Core 1.0 incorporating errata set 2"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000020",
+      "source_path": "sources/registry.yaml#/sources/19",
+      "status": "approved",
+      "title": "Observability primer"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000021",
+      "source_path": "sources/registry.yaml#/sources/20",
+      "status": "approved",
+      "title": "Documenting Architecture Decisions"
+    },
+    {
+      "family": "source",
+      "id": "AKS-000022",
+      "source_path": "sources/registry.yaml#/sources/21",
+      "status": "approved",
+      "title": "ISO/IEC/IEEE 42010:2022 — Software, systems and enterprise — Architecture description"
+    }
+  ]
+}

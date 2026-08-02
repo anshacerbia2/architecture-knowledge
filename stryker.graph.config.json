@@ -1,0 +1,34 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "testRunner": "vitest",
+  "plugins": ["@stryker-mutator/vitest-runner"],
+  "mutator": {
+    "excludedMutations": [
+      "ArithmeticOperator",
+      "ArrayDeclaration",
+      "ArrowFunction",
+      "AssignmentOperator",
+      "MethodExpression",
+      "ObjectLiteral",
+      "Regex",
+      "StringLiteral",
+      "UpdateOperator"
+    ]
+  },
+  "coverageAnalysis": "perTest",
+  "mutate": [
+    "src/graph-projector.ts:186-430",
+    "src/graph-query.ts:366-439",
+    "src/graph-query.ts:506-536",
+    "src/graph-artifacts.ts:22-66",
+    "src/graph-artifacts.ts:98-295"
+  ],
+  "reporters": ["clear-text", "progress"],
+  "concurrency": 2,
+  "timeoutMS": 10000,
+  "thresholds": {
+    "high": 80,
+    "low": 60,
+    "break": 60
+  }
+}
