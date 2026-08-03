@@ -4,7 +4,7 @@ import process from "node:process";
 import { hasErrors, sortDiagnostics, formatDiagnostic } from "./diagnostics.js";
 import {
   checkGraphArtifacts,
-  loadCommittedGraph,
+  loadCurrentGraph,
   validateGraphArtifacts,
   writeGraphArtifacts,
 } from "./graph-artifacts.js";
@@ -17,6 +17,7 @@ const root = process.cwd();
 
 try {
   const args = process.argv.slice(2);
+  if (args[0] === "--") args.shift();
   const command = args.shift();
   if (command === "generate" || command === "check") {
     if (args.length > 0) throw new Error(`GRAPH_ARGUMENT_UNKNOWN Unexpected '${args[0]}'.`);
@@ -52,7 +53,26 @@ try {
       if (changed.length > 0) process.exitCode = 1;
     }
   } else {
-    const graph = await loadCommittedGraph(root);
+    const analysis = await analyzeRepository(root);
+    const repositoryDiagnostics = sortDiagnostics(diagnosticsFor(analysis));
+    if (
+      hasErrors(repositoryDiagnostics) ||
+      hasBlockingWarning(analysis.model.ontology.validationPolicies, repositoryDiagnostics)
+    ) {
+      for (const item of repositoryDiagnostics) console.error(formatDiagnostic(item));
+      throw new Error("GRAPH_INPUT_INVALID Repository validation must pass before graph queries.");
+    }
+    const expectedArtifacts = buildGraphArtifacts(analysis.model);
+    const graphDiagnostics = validateGraphArtifacts(analysis.model, expectedArtifacts);
+    if (graphDiagnostics.length > 0) {
+      for (const item of graphDiagnostics) {
+        console.error(item.code + " " + item.path + ": " + item.message);
+      }
+      throw new Error(
+        "GRAPH_VALIDATION_FAILED " + graphDiagnostics.length + " graph diagnostic(s).",
+      );
+    }
+    const graph = await loadCurrentGraph(root, expectedArtifacts);
     const engine = new GraphQueryEngine(graph);
     const output = await runQuery(engine, command, args);
     console.log(serializeGraphValue(output));

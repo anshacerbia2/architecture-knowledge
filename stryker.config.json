@@ -25,7 +25,10 @@
     "src/markdown-validator.ts",
     "src/security-claim-validator.ts"
   ],
-  "reporters": ["clear-text", "progress"],
+  "reporters": ["clear-text", "progress", "json"],
+  "jsonReporter": {
+    "fileName": ".tmp/mutation-legacy.json"
+  },
   "concurrency": 8,
   "timeoutMS": 10000,
   "thresholds": {

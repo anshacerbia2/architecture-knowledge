@@ -215,6 +215,7 @@ export class GraphQueryEngine {
         predicate: edge.predicate,
         semantic_scope: edge.semantic_scope,
         confidence: edge.confidence,
+        strength: edge.strength,
         conditions: edge.conditions,
         evidence: {
           claim_ids: edge.claim_ids,
@@ -276,6 +277,8 @@ export class GraphQueryEngine {
         diagnostic("GRAPH_QUERY_SHAPE", "Structured query must be an object."),
       ]);
     }
+    const shapeDiagnostics = validateStructuredQueryShape(queryObject);
+    if (shapeDiagnostics.length > 0) return failure(query, shapeDiagnostics);
     const nodeFilter = isPlainObject(queryObject.node) ? queryObject.node : {};
     const constraints = asArray(queryObject.relationships);
     if (constraints.some((constraint) => !isPlainObject(constraint))) {
@@ -486,6 +489,62 @@ function filterRecords(
       return expected.length === 0 || expected.some((item) => exactValueMatch(value, item));
     }),
   );
+}
+
+function validateStructuredQueryShape(
+  queryObject: Record<string, unknown>,
+): GraphQueryDiagnostic[] {
+  const diagnostics: GraphQueryDiagnostic[] = [];
+  const allowedTopLevel = new Set(["node", "relationships", "traversable_only"]);
+  for (const key of Object.keys(queryObject)) {
+    if (!allowedTopLevel.has(key)) {
+      diagnostics.push(
+        diagnostic("GRAPH_QUERY_SHAPE", "Unsupported query property '" + key + "'."),
+      );
+    }
+  }
+  if (
+    queryObject.traversable_only !== undefined &&
+    typeof queryObject.traversable_only !== "boolean"
+  ) {
+    diagnostics.push(
+      diagnostic("GRAPH_QUERY_SHAPE", "traversable_only must be a boolean when provided."),
+    );
+  }
+  if (queryObject.node !== undefined && !isPlainObject(queryObject.node)) {
+    diagnostics.push(diagnostic("GRAPH_QUERY_SHAPE", "node must be an object when provided."));
+  } else if (isPlainObject(queryObject.node)) {
+    const allowedNode = new Set(["types", "domains", "statuses"]);
+    for (const [key, value] of Object.entries(queryObject.node)) {
+      if (!allowedNode.has(key)) {
+        diagnostics.push(diagnostic("GRAPH_QUERY_SHAPE", "Unsupported node filter '" + key + "'."));
+      } else if (!Array.isArray(value) || value.some((item) => typeof item !== "string")) {
+        diagnostics.push(
+          diagnostic("GRAPH_QUERY_SHAPE", "Node filter '" + key + "' must be a string array."),
+        );
+      }
+    }
+  }
+  if (queryObject.relationships !== undefined && !Array.isArray(queryObject.relationships)) {
+    diagnostics.push(
+      diagnostic("GRAPH_QUERY_SHAPE", "relationships must be an array when provided."),
+    );
+  } else if (Array.isArray(queryObject.relationships)) {
+    for (const [index, constraint] of queryObject.relationships.entries()) {
+      if (!isPlainObject(constraint)) continue;
+      for (const key of Object.keys(constraint)) {
+        if (key !== "predicate" && key !== "target") {
+          diagnostics.push(
+            diagnostic(
+              "GRAPH_QUERY_SHAPE",
+              "Unsupported relationship constraint property '" + key + "' at index " + index + ".",
+            ),
+          );
+        }
+      }
+    }
+  }
+  return diagnostics;
 }
 
 function readPath(value: unknown, dotted: string): unknown {

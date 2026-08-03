@@ -16,14 +16,11 @@
     ]
   },
   "coverageAnalysis": "perTest",
-  "mutate": [
-    "src/graph-projector.ts:186-430",
-    "src/graph-query.ts:366-439",
-    "src/graph-query.ts:506-536",
-    "src/graph-artifacts.ts:22-66",
-    "src/graph-artifacts.ts:98-295"
-  ],
-  "reporters": ["clear-text", "progress"],
+  "mutate": ["src/graph-projector.ts", "src/graph-query.ts", "src/graph-artifacts.ts"],
+  "reporters": ["clear-text", "progress", "json"],
+  "jsonReporter": {
+    "fileName": ".tmp/mutation-graph.json"
+  },
   "concurrency": 2,
   "timeoutMS": 10000,
   "thresholds": {

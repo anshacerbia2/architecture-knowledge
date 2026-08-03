@@ -20,6 +20,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000050.yaml",
       "status": null,
+      "strength": null,
       "to": "AKC-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -42,6 +43,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000051.yaml",
       "status": null,
+      "strength": null,
       "to": "AKC-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -64,6 +66,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000052.yaml",
       "status": null,
+      "strength": null,
       "to": "AKC-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -86,6 +89,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000054.yaml",
       "status": null,
+      "strength": null,
       "to": "AKC-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -108,6 +112,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000059.yaml",
       "status": null,
+      "strength": null,
       "to": "AKC-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -131,6 +136,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000062.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000059",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -154,6 +160,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000062.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000060",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -178,6 +185,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000001.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000001",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -202,6 +210,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000002.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000002",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -226,6 +235,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000003.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000002",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -250,6 +260,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000003.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000022",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -274,6 +285,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000004.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000004",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -298,6 +310,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000004.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000005",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -322,6 +335,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000005.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000004",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -346,6 +360,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000005.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000005",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -370,6 +385,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000006.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000004",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -394,6 +410,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000007.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000006",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -418,6 +435,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000007.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000007",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -442,6 +460,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000008.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000007",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -466,6 +485,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000008.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000008",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -490,6 +510,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000009.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000009",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -514,6 +535,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000010.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000010",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -538,6 +560,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000011.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000011",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -562,6 +585,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000012.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000012",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -586,6 +610,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000013.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000013",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -610,6 +635,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000014.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000014",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -634,6 +660,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000015.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000015",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -658,6 +685,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000016.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000010",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -682,6 +710,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000016.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000015",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -706,6 +735,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000016.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000016",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -735,6 +765,7 @@
       ],
       "source_path": "claims/AKL-000017.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000017",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -764,6 +795,7 @@
       ],
       "source_path": "claims/AKL-000017.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -793,6 +825,7 @@
       ],
       "source_path": "claims/AKL-000018.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -817,6 +850,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000019.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000020",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -841,6 +875,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000020.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000021",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -865,6 +900,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000021.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000001",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -889,6 +925,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000021.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000002",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -913,6 +950,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000022.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000006",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -937,6 +975,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000022.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000007",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -961,6 +1000,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000022.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000008",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -985,6 +1025,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000023.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000006",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1009,6 +1050,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000023.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000009",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1033,6 +1075,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000024.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000007",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1057,6 +1100,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000024.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000008",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1081,6 +1125,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000024.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000010",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1105,6 +1150,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000025.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000012",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1129,6 +1175,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000026.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000012",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1153,6 +1200,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000027.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000013",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1177,6 +1225,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000028.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000012",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1201,6 +1250,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000028.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000013",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1225,6 +1275,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000029.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000010",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1249,6 +1300,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000029.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000014",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1273,6 +1325,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000030.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000014",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1297,6 +1350,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000031.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000015",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1321,6 +1375,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000031.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000016",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1345,6 +1400,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000032.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000010",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1369,6 +1425,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000032.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000016",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1398,6 +1455,7 @@
       ],
       "source_path": "claims/AKL-000033.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000017",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1427,6 +1485,7 @@
       ],
       "source_path": "claims/AKL-000033.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1456,6 +1515,7 @@
       ],
       "source_path": "claims/AKL-000034.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1480,6 +1540,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000035.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000020",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1504,6 +1565,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000036.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000007",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1528,6 +1590,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000036.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000008",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1552,6 +1615,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000037.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000004",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1576,6 +1640,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000037.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000021",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1600,6 +1665,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000037.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000022",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1624,6 +1690,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000038.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000002",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1648,6 +1715,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000038.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000007",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1672,6 +1740,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000038.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000008",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1696,6 +1765,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000039.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000002",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1720,6 +1790,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000039.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000021",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1744,6 +1815,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000039.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000022",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1768,6 +1840,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000040.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000004",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1792,6 +1865,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000040.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000005",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1816,6 +1890,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000041.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000008",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1840,6 +1915,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000041.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000012",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1864,6 +1940,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000041.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000013",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1888,6 +1965,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000042.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000006",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1912,6 +1990,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000042.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000007",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1936,6 +2015,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000042.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000009",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1960,6 +2040,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000043.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000017",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -1984,6 +2065,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000043.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2008,6 +2090,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000043.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2032,6 +2115,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000044.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000010",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2056,6 +2140,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000044.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000014",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2080,6 +2165,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000044.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000015",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2104,6 +2190,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000044.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000016",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2128,6 +2215,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000045.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000012",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2152,6 +2240,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000046.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000006",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2176,6 +2265,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000046.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000009",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2200,6 +2290,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000047.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2224,6 +2315,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000047.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2248,6 +2340,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000048.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000010",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2272,6 +2365,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000048.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000014",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2296,6 +2390,7 @@
       "source_locations": [],
       "source_path": "claims/AKL-000048.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000016",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2325,6 +2420,7 @@
       ],
       "source_path": "claims/AKL-000049.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000017",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2354,6 +2450,7 @@
       ],
       "source_path": "claims/AKL-000050.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2383,6 +2480,7 @@
       ],
       "source_path": "claims/AKL-000051.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000017",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2412,6 +2510,7 @@
       ],
       "source_path": "claims/AKL-000052.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2441,6 +2540,7 @@
       ],
       "source_path": "claims/AKL-000053.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2470,6 +2570,7 @@
       ],
       "source_path": "claims/AKL-000054.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2499,6 +2600,7 @@
       ],
       "source_path": "claims/AKL-000055.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2528,6 +2630,7 @@
       ],
       "source_path": "claims/AKL-000056.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2557,6 +2660,7 @@
       ],
       "source_path": "claims/AKL-000057.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2586,6 +2690,7 @@
       ],
       "source_path": "claims/AKL-000058.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2615,6 +2720,7 @@
       ],
       "source_path": "claims/AKL-000059.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000017",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2644,6 +2750,7 @@
       ],
       "source_path": "claims/AKL-000060.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2673,6 +2780,7 @@
       ],
       "source_path": "claims/AKL-000061.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2702,6 +2810,7 @@
       ],
       "source_path": "claims/AKL-000062.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000017",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2731,6 +2840,7 @@
       ],
       "source_path": "claims/AKL-000062.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2760,6 +2870,7 @@
       ],
       "source_path": "claims/AKL-000063.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2789,6 +2900,7 @@
       ],
       "source_path": "claims/AKL-000064.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2818,6 +2930,7 @@
       ],
       "source_path": "claims/AKL-000065.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2847,6 +2960,7 @@
       ],
       "source_path": "claims/AKL-000066.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2876,6 +2990,7 @@
       ],
       "source_path": "claims/AKL-000067.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2905,6 +3020,7 @@
       ],
       "source_path": "claims/AKL-000068.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2934,6 +3050,7 @@
       ],
       "source_path": "claims/AKL-000069.yaml",
       "status": null,
+      "strength": null,
       "to": "AKS-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2956,6 +3073,7 @@
       "source_locations": [],
       "source_path": "knowledge/foundations/first-principles-thinking.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000001",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -2978,6 +3096,7 @@
       "source_locations": [],
       "source_path": "knowledge/foundations/first-principles-thinking.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000021",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3000,6 +3119,7 @@
       "source_locations": [],
       "source_path": "knowledge/foundations/systems-thinking.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000002",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3022,6 +3142,7 @@
       "source_locations": [],
       "source_path": "knowledge/foundations/systems-thinking.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000021",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3044,6 +3165,7 @@
       "source_locations": [],
       "source_path": "knowledge/foundations/systems-thinking.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000039",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3066,6 +3188,7 @@
       "source_locations": [],
       "source_path": "knowledge/constraints-assumptions/constraint.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000003",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3088,6 +3211,7 @@
       "source_locations": [],
       "source_path": "knowledge/constraints-assumptions/constraint.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000038",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3110,6 +3234,7 @@
       "source_locations": [],
       "source_path": "knowledge/quality/availability.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000004",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3132,6 +3257,7 @@
       "source_locations": [],
       "source_path": "knowledge/quality/availability.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000026",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3154,6 +3280,7 @@
       "source_locations": [],
       "source_path": "knowledge/quality/availability.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000027",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3176,6 +3303,7 @@
       "source_locations": [],
       "source_path": "knowledge/quality/reliability.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000005",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3198,6 +3326,7 @@
       "source_locations": [],
       "source_path": "knowledge/quality/reliability.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000030",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3220,6 +3349,7 @@
       "source_locations": [],
       "source_path": "knowledge/quality/reliability.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000035",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3242,6 +3372,7 @@
       "source_locations": [],
       "source_path": "knowledge/quality/reliability.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000036",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3264,6 +3395,7 @@
       "source_locations": [],
       "source_path": "knowledge/quality/reliability.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000040",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3286,6 +3418,7 @@
       "source_locations": [],
       "source_path": "knowledge/quality/quality-attribute-scenario.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000006",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3308,6 +3441,7 @@
       "source_locations": [],
       "source_path": "knowledge/quality/quality-attribute-scenario.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000037",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3330,6 +3464,7 @@
       "source_locations": [],
       "source_path": "knowledge/application-architecture/modular-monolith.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000007",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3352,6 +3487,7 @@
       "source_locations": [],
       "source_path": "knowledge/application-architecture/modular-monolith.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000022",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3374,6 +3510,7 @@
       "source_locations": [],
       "source_path": "knowledge/application-architecture/modular-monolith.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000023",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3396,6 +3533,7 @@
       "source_locations": [],
       "source_path": "knowledge/application-architecture/modular-monolith.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000046",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3418,6 +3556,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/microservices.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000008",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3440,6 +3579,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/microservices.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000022",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3462,6 +3602,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/microservices.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000024",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3484,6 +3625,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/microservices.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000036",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3506,6 +3648,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/microservices.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000038",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3528,6 +3671,7 @@
       "source_locations": [],
       "source_path": "knowledge/application-architecture/hexagonal-architecture.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000009",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3550,6 +3694,7 @@
       "source_locations": [],
       "source_path": "knowledge/application-architecture/hexagonal-architecture.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000023",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3572,6 +3717,7 @@
       "source_locations": [],
       "source_path": "knowledge/integration/event-driven-architecture.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000010",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3594,6 +3740,7 @@
       "source_locations": [],
       "source_path": "knowledge/integration/event-driven-architecture.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000024",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3616,6 +3763,7 @@
       "source_locations": [],
       "source_path": "knowledge/integration/event-driven-architecture.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000029",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3638,6 +3786,7 @@
       "source_locations": [],
       "source_path": "knowledge/integration/event-driven-architecture.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000032",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3660,6 +3809,7 @@
       "source_locations": [],
       "source_path": "knowledge/integration/event-driven-architecture.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000048",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3682,6 +3832,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/idempotency.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000011",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3704,6 +3855,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/idempotency.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000025",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3726,6 +3878,7 @@
       "source_locations": [],
       "source_path": "knowledge/reliability-operability/retry.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000012",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3748,6 +3901,7 @@
       "source_locations": [],
       "source_path": "knowledge/reliability-operability/retry.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000025",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3770,6 +3924,7 @@
       "source_locations": [],
       "source_path": "knowledge/reliability-operability/retry.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000026",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3792,6 +3947,7 @@
       "source_locations": [],
       "source_path": "knowledge/reliability-operability/retry.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000028",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3814,6 +3970,7 @@
       "source_locations": [],
       "source_path": "knowledge/reliability-operability/retry.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000045",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3836,6 +3993,7 @@
       "source_locations": [],
       "source_path": "knowledge/reliability-operability/circuit-breaker.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000013",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3858,6 +4016,7 @@
       "source_locations": [],
       "source_path": "knowledge/reliability-operability/circuit-breaker.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000027",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3880,6 +4039,7 @@
       "source_locations": [],
       "source_path": "knowledge/reliability-operability/circuit-breaker.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000028",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3902,6 +4062,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/transactional-outbox.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000014",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3924,6 +4085,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/transactional-outbox.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000029",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3946,6 +4108,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/transactional-outbox.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000030",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3968,6 +4131,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/saga.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000015",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -3990,6 +4154,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/saga.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000031",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4012,6 +4177,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/eventual-consistency.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000016",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4034,6 +4200,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/eventual-consistency.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000031",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4056,6 +4223,7 @@
       "source_locations": [],
       "source_path": "knowledge/distributed-systems/eventual-consistency.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000032",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4078,6 +4246,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000017",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4100,6 +4269,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000033",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4122,6 +4292,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000049",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4144,6 +4315,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000050",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4166,6 +4338,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000051",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4188,6 +4361,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000052",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4210,6 +4384,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000053",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4232,6 +4407,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000054",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4254,6 +4430,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000055",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4276,6 +4453,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000056",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4298,6 +4476,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000057",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4320,6 +4499,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000058",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4342,6 +4522,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000059",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4364,6 +4545,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/oauth-2-0-authorization-framework.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000063",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4386,6 +4568,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000018",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4408,6 +4591,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000033",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4430,6 +4614,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000034",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4452,6 +4637,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000047",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4474,6 +4660,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000050",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4496,6 +4683,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000051",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4518,6 +4706,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000052",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4540,6 +4729,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000054",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4562,6 +4752,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000059",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4584,6 +4775,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000060",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4606,6 +4798,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000061",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4628,6 +4821,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000062",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4650,6 +4844,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000064",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4672,6 +4867,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000065",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4694,6 +4890,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000066",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4716,6 +4913,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000067",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4738,6 +4936,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000068",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4760,6 +4959,7 @@
       "source_locations": [],
       "source_path": "knowledge/security/openid-connect.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000069",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4782,6 +4982,7 @@
       "source_locations": [],
       "source_path": "knowledge/observability/observability.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000019",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4804,6 +5005,7 @@
       "source_locations": [],
       "source_path": "knowledge/observability/observability.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000035",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4826,6 +5028,7 @@
       "source_locations": [],
       "source_path": "knowledge/documentation/architecture-decision-record.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000020",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4848,6 +5051,7 @@
       "source_locations": [],
       "source_path": "knowledge/documentation/architecture-decision-record.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000037",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4870,6 +5074,7 @@
       "source_locations": [],
       "source_path": "knowledge/documentation/architecture-decision-record.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000039",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4892,6 +5097,7 @@
       "source_locations": [],
       "source_path": "knowledge/supporting/cascading-failure-amplification.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000041",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4914,6 +5120,7 @@
       "source_locations": [],
       "source_path": "knowledge/supporting/cascading-failure-amplification.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000045",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4936,6 +5143,7 @@
       "source_locations": [],
       "source_path": "knowledge/supporting/boundary-erosion.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000042",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4958,6 +5166,7 @@
       "source_locations": [],
       "source_path": "knowledge/supporting/boundary-erosion.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000046",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -4980,6 +5189,7 @@
       "source_locations": [],
       "source_path": "knowledge/supporting/token-role-confusion.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000043",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -5002,6 +5212,7 @@
       "source_locations": [],
       "source_path": "knowledge/supporting/token-role-confusion.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000047",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -5024,6 +5235,7 @@
       "source_locations": [],
       "source_path": "knowledge/supporting/unreconciled-state-divergence.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000044",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -5046,6 +5258,7 @@
       "source_locations": [],
       "source_path": "knowledge/supporting/unreconciled-state-divergence.md",
       "status": null,
+      "strength": null,
       "to": "AKL-000048",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -5077,6 +5290,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000001.yaml",
       "status": "sourced",
+      "strength": "weak",
       "to": "AKC-000002",
       "traversable": false,
       "traversal_exclusion_reason": "Inferential comparison not directly established by admitted sources."
@@ -5109,6 +5323,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000019.yaml",
       "status": "sourced",
+      "strength": "weak",
       "to": "AKC-000020",
       "traversable": false,
       "traversal_exclusion_reason": "Cross-method recommendation is not directly established by admitted sources."
@@ -5141,6 +5356,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000018.yaml",
       "status": "sourced",
+      "strength": "weak",
       "to": "AKC-000008",
       "traversable": false,
       "traversal_exclusion_reason": "A generic constraint edge is tautological until a specific reusable constraint is identified."
@@ -5172,6 +5388,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000020.yaml",
       "status": "sourced",
+      "strength": "moderate",
       "to": "AKC-000005",
       "traversable": true,
       "traversal_exclusion_reason": null
@@ -5204,6 +5421,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000017.yaml",
       "status": "sourced",
+      "strength": "weak",
       "to": "AKC-000020",
       "traversable": false,
       "traversal_exclusion_reason": "Cross-practice recommendation is not directly established by admitted sources."
@@ -5236,6 +5454,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000002.yaml",
       "status": "sourced",
+      "strength": "moderate",
       "to": "AKC-000008",
       "traversable": true,
       "traversal_exclusion_reason": null
@@ -5267,6 +5486,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000003.yaml",
       "status": "sourced",
+      "strength": "moderate",
       "to": "AKC-000009",
       "traversable": true,
       "traversal_exclusion_reason": null
@@ -5298,6 +5518,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000022.yaml",
       "status": "proposed",
+      "strength": "weak",
       "to": "AKC-000022",
       "traversable": false,
       "traversal_exclusion_reason": "Proposed mitigation edge lacks general evidence for continuous boundary enforcement."
@@ -5330,6 +5551,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000004.yaml",
       "status": "sourced",
+      "strength": "moderate",
       "to": "AKC-000010",
       "traversable": true,
       "traversal_exclusion_reason": null
@@ -5361,6 +5583,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000016.yaml",
       "status": "sourced",
+      "strength": "weak",
       "to": "AKC-000005",
       "traversable": false,
       "traversal_exclusion_reason": "Conditional reliability risk is inferential and not a measured degradation."
@@ -5392,6 +5615,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000012.yaml",
       "status": "sourced",
+      "strength": "moderate",
       "to": "AKC-000016",
       "traversable": true,
       "traversal_exclusion_reason": null
@@ -5423,6 +5647,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000008.yaml",
       "status": "sourced",
+      "strength": "moderate",
       "to": "AKC-000013",
       "traversable": true,
       "traversal_exclusion_reason": null
@@ -5453,6 +5678,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000006.yaml",
       "status": "sourced",
+      "strength": "weak",
       "to": "AKC-000004",
       "traversable": false,
       "traversal_exclusion_reason": "Availability impact is a qualified recommendation without a measured causal effect."
@@ -5483,6 +5709,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000021.yaml",
       "status": "proposed",
+      "strength": "moderate",
       "to": "AKC-000021",
       "traversable": false,
       "traversal_exclusion_reason": "Proposed cascading-failure edge lacks direct feedback-path evidence."
@@ -5513,6 +5740,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000005.yaml",
       "status": "sourced",
+      "strength": "moderate",
       "to": "AKC-000011",
       "traversable": false,
       "traversal_exclusion_reason": "Duplicate-effect requirement is claim-specific; the Idempotency umbrella has multiple contextual roles."
@@ -5543,6 +5771,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000007.yaml",
       "status": "sourced",
+      "strength": "weak",
       "to": "AKC-000004",
       "traversable": false,
       "traversal_exclusion_reason": "Caller-capacity effect is plausible, but a measured availability effect is not established."
@@ -5574,6 +5803,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000009.yaml",
       "status": "sourced",
+      "strength": "moderate",
       "to": "AKC-000010",
       "traversable": false,
       "traversal_exclusion_reason": "The outbox enables a publication mechanism, not event-driven architecture as a whole."
@@ -5604,6 +5834,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000010.yaml",
       "status": "sourced",
+      "strength": "moderate",
       "to": "AKC-000005",
       "traversable": false,
       "traversal_exclusion_reason": "The evidence is explicitly claim-context-only and cannot support concept-global traversal."
@@ -5635,6 +5866,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000011.yaml",
       "status": "sourced",
+      "strength": "moderate",
       "to": "AKC-000016",
       "traversable": true,
       "traversal_exclusion_reason": null
@@ -5675,6 +5907,7 @@
       ],
       "source_path": "relationships/AKR-000013.yaml",
       "status": "sourced",
+      "strength": "moderate",
       "to": "AKC-000018",
       "traversable": false,
       "traversal_exclusion_reason": "Redundant compatibility edge adds less information than the direct OIDC dependency and token-role boundary."
@@ -5710,6 +5943,7 @@
       ],
       "source_path": "relationships/AKR-000014.yaml",
       "status": "sourced",
+      "strength": "moderate",
       "to": "AKC-000017",
       "traversable": true,
       "traversal_exclusion_reason": null
@@ -5740,6 +5974,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000015.yaml",
       "status": "sourced",
+      "strength": "weak",
       "to": "AKC-000005",
       "traversable": false,
       "traversal_exclusion_reason": "Association is non-causal; admitted evidence supports investigation capability, not reliability improvement."
@@ -5771,6 +6006,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000023.yaml",
       "status": "proposed",
+      "strength": "weak",
       "to": "AKC-000018",
       "traversable": false,
       "traversal_exclusion_reason": "Proposed context association has corrected actor semantics but still lacks exact threat evidence."
@@ -5803,6 +6039,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000024.yaml",
       "status": "proposed",
+      "strength": "weak",
       "to": "AKC-000010",
       "traversable": false,
       "traversal_exclusion_reason": "Proposed context association has corrected actor semantics but still lacks direct repair/convergence evidence."
@@ -5825,6 +6062,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000001.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000021",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -5847,6 +6085,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000002.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000022",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -5869,6 +6108,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000003.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000023",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -5891,6 +6131,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000004.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000024",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -5913,6 +6154,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000005.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000025",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -5935,6 +6177,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000006.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000026",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -5957,6 +6200,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000007.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000027",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -5979,6 +6223,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000008.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000028",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6001,6 +6246,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000009.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000029",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6023,6 +6269,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000010.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000030",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6045,6 +6292,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000011.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000031",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6067,6 +6315,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000012.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000032",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6089,6 +6338,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000013.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000033",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6111,6 +6361,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000014.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000034",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6133,6 +6384,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000015.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000035",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6155,6 +6407,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000016.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000036",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6177,6 +6430,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000017.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000037",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6199,6 +6453,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000018.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000038",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6221,6 +6476,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000019.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000039",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6243,6 +6499,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000020.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000040",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6265,6 +6522,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000021.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000045",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6287,6 +6545,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000022.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000046",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6309,6 +6568,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000023.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000047",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
@@ -6331,6 +6591,7 @@
       "source_locations": [],
       "source_path": "relationships/AKR-000024.yaml",
       "status": null,
+      "strength": null,
       "to": "AKL-000048",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"

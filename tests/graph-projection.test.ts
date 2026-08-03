@@ -93,6 +93,7 @@ describe("M4 graph projection production contract", () => {
       model.relationships.find((item) => item.id === "AKR-000010")?.data.conditions,
     );
     expect(edge?.semantic_scope).toBe("claim-context-only");
+    expect(edge?.strength).toBe("moderate");
   });
 
   it("preserves every explicit exclusion decision", () => {
@@ -250,6 +251,94 @@ describe("M4 graph projection production contract", () => {
     expect(relationshipTraversalDecision(original, claimById, sourceById).reason).toBe(
       "policy:evidence-chain-not-admitted",
     );
+  });
+
+  it.each([
+    [{ semantic_scope: "claim-context-only" }, "policy:relationship-not-concept-global"],
+    [{ evidence: [] }, "policy:relationship-evidence-missing"],
+    [{ evidence: ["AKL-999999"] }, "policy:relationship-evidence-unresolved"],
+  ])("fails closed for malformed eligible relationship evidence %#", (data, reason) => {
+    const original = model.relationships.find((record) => record.id === "AKR-000014")!;
+    expect(decision(changed(original, data), model)).toEqual({ eligible: false, reason });
+  });
+
+  it("fails closed when an eligible evidence claim is not sourced", () => {
+    const original = model.relationships.find((record) => record.id === "AKR-000014")!;
+    const claimId = asStringArray(original.data.evidence)[0]!;
+    const claimById = new Map(model.claims.map((record) => [record.id, record]));
+    claimById.set(claimId, changed(claimById.get(claimId)!, { status: "proposed" }));
+    expect(
+      relationshipTraversalDecision(
+        original,
+        claimById,
+        new Map(model.sources.map((record) => [record.id, record])),
+      ),
+    ).toEqual({ eligible: false, reason: "policy:relationship-evidence-not-sourced" });
+  });
+
+  it("fails closed for causal quality edges backed by inferential evidence", () => {
+    const original = model.relationships.find((record) => record.id === "AKR-000014")!;
+    const claimId = asStringArray(original.data.evidence)[0]!;
+    const claimById = new Map(model.claims.map((record) => [record.id, record]));
+    claimById.set(claimId, changed(claimById.get(claimId)!, { claim_type: "inference" }));
+    const relationship = changed(original, { predicate: "improves" });
+    expect(
+      relationshipTraversalDecision(
+        relationship,
+        claimById,
+        new Map(model.sources.map((record) => [record.id, record])),
+      ),
+    ).toEqual({ eligible: false, reason: "policy:quality-impact-evidence-ineligible" });
+  });
+
+  it("fails closed for an ungrounded or cyclic derivation branch", () => {
+    const original = model.relationships.find((record) => record.id === "AKR-000014")!;
+    const claimId = asStringArray(original.data.evidence)[0]!;
+    const claimById = new Map(model.claims.map((record) => [record.id, record]));
+    claimById.set(
+      claimId,
+      changed(claimById.get(claimId)!, {
+        sources: [],
+        derived_from_claims: [claimId],
+      }),
+    );
+    expect(
+      relationshipTraversalDecision(
+        original,
+        claimById,
+        new Map(model.sources.map((record) => [record.id, record])),
+      ),
+    ).toEqual({ eligible: false, reason: "policy:evidence-chain-not-admitted" });
+  });
+
+  it.each([
+    { sources: [], derived_from_claims: [] },
+    { sources: [], derived_from_claims: ["AKL-999999"] },
+  ])("fails closed for a claim with no complete admitted grounding %#", (claimData) => {
+    const original = model.relationships.find((record) => record.id === "AKR-000014")!;
+    const claimId = asStringArray(original.data.evidence)[0]!;
+    const claimById = new Map(model.claims.map((record) => [record.id, record]));
+    claimById.set(claimId, changed(claimById.get(claimId)!, claimData));
+    expect(
+      relationshipTraversalDecision(
+        original,
+        claimById,
+        new Map(model.sources.map((record) => [record.id, record])),
+      ),
+    ).toEqual({ eligible: false, reason: "policy:evidence-chain-not-admitted" });
+  });
+
+  it("accepts a fully grounded eligible edge when its admitted source is restricted", () => {
+    const original = model.relationships.find((record) => record.id === "AKR-000014")!;
+    const claimId = asStringArray(original.data.evidence)[0]!;
+    const claimById = new Map(model.claims.map((record) => [record.id, record]));
+    const sourceId = asStringArray(claimById.get(claimId)?.data.sources)[0]!;
+    const sourceById = new Map(model.sources.map((record) => [record.id, record]));
+    sourceById.set(sourceId, changed(sourceById.get(sourceId)!, { status: "restricted" }));
+    expect(relationshipTraversalDecision(original, claimById, sourceById)).toEqual({
+      eligible: true,
+      reason: null,
+    });
   });
 });
 

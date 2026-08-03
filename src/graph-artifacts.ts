@@ -1,7 +1,7 @@
 import { mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import { asArray, asString, asStringArray, isPlainObject } from "./io.js";
+import { asArray, asString, asStringArray, isPlainObject, toPosix } from "./io.js";
 import type { RepositoryModel } from "./model.js";
 import { relationshipTraversalDecision, serializeGraphValue } from "./graph-projector.js";
 import {
@@ -53,7 +53,10 @@ export async function checkGraphArtifacts(
   return checks.sort((left, right) => left.path.localeCompare(right.path));
 }
 
-export async function loadCommittedGraph(root: string): Promise<GraphArtifacts> {
+export async function loadCurrentGraph(
+  root: string,
+  expectedArtifacts: GraphArtifacts,
+): Promise<GraphArtifacts> {
   const read = async (relative: string): Promise<Record<string, unknown>> => {
     let value: unknown;
     try {
@@ -82,7 +85,7 @@ export async function loadCommittedGraph(root: string): Promise<GraphArtifacts> 
       read("generated/graph/manifest.json"),
       read("generated/graph/traversal-policy.json"),
     ]);
-  return {
+  const loaded = {
     files: new Map(),
     nodes: asArray(graph.nodes) as GraphNode[],
     edges: asArray(graph.edges) as GraphEdge[],
@@ -93,6 +96,15 @@ export async function loadCommittedGraph(root: string): Promise<GraphArtifacts> 
     manifest,
     traversalPolicy: policy,
   };
+  const checks = await checkGraphArtifacts(root, expectedArtifacts);
+  const changed = checks.filter((item) => item.status !== "current");
+  if (changed.length > 0) {
+    throw new Error(
+      "GRAPH_ARTIFACT_NOT_CURRENT " +
+        changed.map((item) => item.status + ":" + item.path).join(", "),
+    );
+  }
+  return loaded;
 }
 
 export function validateGraphArtifacts(
@@ -104,9 +116,11 @@ export function validateGraphArtifacts(
     diagnostics.push({ code, path: artifactPath, message });
   };
   const nodeIds = new Set<string>();
+  const nodeById = new Map<string, GraphNode>();
   for (const node of artifacts.nodes) {
     if (nodeIds.has(node.id)) add("GRAPH_DUPLICATE_NODE", "generated/graph/nodes.json", node.id);
     nodeIds.add(node.id);
+    nodeById.set(node.id, node);
   }
   const edgeIds = new Set<string>();
   for (const edge of artifacts.edges) {
@@ -158,6 +172,91 @@ export function validateGraphArtifacts(
   const claimById = new Map(model.claims.map((record) => [record.id, record]));
   const sourceById = new Map(model.sources.map((record) => [record.id, record]));
 
+  const recordsByFamily: Array<[string, GraphIndexRecord[], typeof model.records]> = [
+    ["concept", artifacts.concepts, model.concepts],
+    ["claim", artifacts.claims, model.claims],
+    ["source", artifacts.sources, model.sources],
+    ["relationship", artifacts.relationships, model.relationships],
+  ];
+  for (const [family, indexedRecords, authoritativeRecords] of recordsByFamily) {
+    const indexedById = new Map(indexedRecords.map((record) => [record.id, record]));
+    const authoritativeById = new Map(authoritativeRecords.map((record) => [record.id, record]));
+    for (const record of authoritativeRecords) {
+      const indexed = indexedById.get(record.id);
+      if (!indexed) {
+        add("GRAPH_INDEX_RECORD_MISSING", record.path, record.id);
+        continue;
+      }
+      if (
+        indexed.record_kind !== record.recordKind ||
+        indexed.source_path !== toPosix(record.path)
+      ) {
+        add("GRAPH_INDEX_FIDELITY", record.path, record.id + ": identity metadata differs");
+      }
+      for (const [key, value] of Object.entries(record.data)) {
+        if (serializeGraphValue(indexed[key]) !== serializeGraphValue(value)) {
+          add("GRAPH_INDEX_FIDELITY", record.path, record.id + ": " + key);
+        }
+      }
+    }
+    for (const indexed of indexedRecords) {
+      if (!authoritativeById.has(indexed.id)) {
+        add("GRAPH_INDEX_UNKNOWN_RECORD", "generated/indexes/" + family + "s.json", indexed.id);
+      }
+    }
+  }
+
+  for (const record of model.records) {
+    const node = nodeById.get(record.id);
+    if (!node) {
+      add("GRAPH_NODE_MISSING", record.path, record.id);
+      continue;
+    }
+    const expectedTitle =
+      asString(record.data.title) ??
+      asString(record.data.statement) ??
+      asString(record.data.predicate) ??
+      null;
+    if (
+      node.family !== record.recordKind ||
+      node.source_path !== toPosix(record.path) ||
+      node.status !== (asString(record.data.status) ?? null) ||
+      node.title !== expectedTitle
+    ) {
+      add("GRAPH_NODE_FIDELITY", record.path, record.id);
+    }
+  }
+  for (const node of artifacts.nodes) {
+    if (!model.records.some((record) => record.id === node.id)) {
+      add("GRAPH_NODE_UNKNOWN", "generated/graph/nodes.json", node.id);
+    }
+  }
+
+  const expectedProvenance = expectedProvenanceEdges(model);
+  for (const [id, expected] of expectedProvenance) {
+    const edge = edgeById.get(id);
+    if (!edge) {
+      add("GRAPH_PROVENANCE_EDGE_MISSING", expected.sourcePath, id);
+      continue;
+    }
+    if (
+      edge.family !== expected.family ||
+      edge.from !== expected.from ||
+      edge.to !== expected.to ||
+      edge.predicate !== expected.predicate ||
+      edge.direction !== "directed" ||
+      edge.traversable !== false ||
+      edge.source_path !== toPosix(expected.sourcePath)
+    ) {
+      add("GRAPH_PROVENANCE_FIDELITY", expected.sourcePath, id);
+    }
+  }
+  for (const edge of artifacts.edges) {
+    if (edge.family !== "relationship" && !expectedProvenance.has(edge.id)) {
+      add("GRAPH_PROVENANCE_EDGE_UNKNOWN", "generated/graph/edges.json", edge.id);
+    }
+  }
+
   for (const claim of model.claims) {
     if (!claimNodeIds.has(claim.id)) add("GRAPH_CLAIM_MISSING", claim.path, claim.id);
     for (const sourceId of asStringArray(claim.data.sources)) {
@@ -172,6 +271,15 @@ export function validateGraphArtifacts(
         if (serializeGraphValue(edge.source_locations) !== serializeGraphValue(expectedLocations)) {
           add("GRAPH_SOURCE_LOCATOR_LOST", claim.path, `${claim.id} -> ${sourceId}`);
         }
+        if (
+          edge.family !== "claim-supported-by-source" ||
+          edge.from !== claim.id ||
+          edge.to !== sourceId ||
+          edge.predicate !== "supported-by" ||
+          serializeGraphValue(edge.source_ids) !== serializeGraphValue([sourceId])
+        ) {
+          add("GRAPH_CLAIM_EVIDENCE_FIDELITY", claim.path, claim.id + " -> " + sourceId);
+        }
       }
     }
     for (const parentId of asStringArray(claim.data.derived_from_claims)) {
@@ -182,6 +290,9 @@ export function validateGraphArtifacts(
     }
     for (const conceptId of asStringArray(claim.data.applicable_concept_ids)) {
       if (!conceptNodeIds.has(conceptId)) add("GRAPH_CONCEPT_REFERENCE", claim.path, conceptId);
+      if (!edgeById.has("edge:claim-applicable:" + claim.id + ":" + conceptId)) {
+        add("GRAPH_APPLICABILITY_MISSING", claim.path, claim.id + " -> " + conceptId);
+      }
     }
   }
 
@@ -192,6 +303,27 @@ export function validateGraphArtifacts(
       continue;
     }
     const expectedDecision = relationshipTraversalDecision(relationship, claimById, sourceById);
+    const expectedEvidence = collectExpectedClaimEvidence(
+      asStringArray(relationship.data.evidence),
+      claimById,
+    );
+    if (
+      edge.from !== asString(relationship.data.subject) ||
+      edge.to !== asString(relationship.data.object) ||
+      edge.predicate !== asString(relationship.data.predicate) ||
+      edge.direction !== (relationship.data.direction === "symmetric" ? "symmetric" : "directed") ||
+      edge.status !== (asString(relationship.data.status) ?? null) ||
+      edge.confidence !== (asString(relationship.data.confidence) ?? null) ||
+      edge.strength !== (asString(relationship.data.strength) ?? null) ||
+      edge.source_path !== toPosix(relationship.path) ||
+      serializeGraphValue(edge.claim_ids) !==
+        serializeGraphValue(asStringArray(relationship.data.evidence).sort()) ||
+      serializeGraphValue(edge.source_ids) !== serializeGraphValue(expectedEvidence.sourceIds) ||
+      serializeGraphValue(edge.source_locations) !==
+        serializeGraphValue(expectedEvidence.sourceLocations)
+    ) {
+      add("GRAPH_RELATIONSHIP_FIDELITY", relationship.path, relationship.id);
+    }
     if (edge.traversable !== expectedDecision.eligible) {
       add("GRAPH_TRAVERSAL_POLICY", relationship.path, relationship.id);
     }
@@ -264,6 +396,112 @@ export function validateGraphArtifacts(
       left.path.localeCompare(right.path) ||
       left.message.localeCompare(right.message),
   );
+}
+
+interface ExpectedProvenanceEdge {
+  family: GraphEdge["family"];
+  from: string;
+  to: string;
+  predicate: string;
+  sourcePath: string;
+}
+
+function expectedProvenanceEdges(model: RepositoryModel): Map<string, ExpectedProvenanceEdge> {
+  const expected = new Map<string, ExpectedProvenanceEdge>();
+  const add = (
+    id: string,
+    family: GraphEdge["family"],
+    from: string,
+    to: string,
+    predicate: string,
+    sourcePath: string,
+  ): void => {
+    expected.set(id, { family, from, to, predicate, sourcePath });
+  };
+  for (const concept of model.concepts) {
+    for (const claimId of asStringArray(concept.data.claims)) {
+      add(
+        "edge:concept-claim:" + concept.id + ":" + claimId,
+        "concept-declares-claim",
+        concept.id,
+        claimId,
+        "declares-claim",
+        concept.path,
+      );
+    }
+  }
+  for (const claim of model.claims) {
+    for (const sourceId of asStringArray(claim.data.sources)) {
+      add(
+        "edge:claim-source:" + claim.id + ":" + sourceId,
+        "claim-supported-by-source",
+        claim.id,
+        sourceId,
+        "supported-by",
+        claim.path,
+      );
+    }
+    for (const parentId of asStringArray(claim.data.derived_from_claims)) {
+      add(
+        "edge:claim-derived:" + claim.id + ":" + parentId,
+        "claim-derived-from-claim",
+        claim.id,
+        parentId,
+        "derived-from",
+        claim.path,
+      );
+    }
+    for (const conceptId of asStringArray(claim.data.applicable_concept_ids)) {
+      add(
+        "edge:claim-applicable:" + claim.id + ":" + conceptId,
+        "claim-applicable-to-concept",
+        claim.id,
+        conceptId,
+        "applicable-to",
+        claim.path,
+      );
+    }
+  }
+  for (const relationship of model.relationships) {
+    for (const claimId of asStringArray(relationship.data.evidence)) {
+      add(
+        "edge:relationship-claim:" + relationship.id + ":" + claimId,
+        "relationship-supported-by-claim",
+        relationship.id,
+        claimId,
+        "supported-by-claim",
+        relationship.path,
+      );
+    }
+  }
+  return expected;
+}
+
+function collectExpectedClaimEvidence(
+  initialClaimIds: string[],
+  claimById: ReadonlyMap<string, { id: string; data: Record<string, unknown> }>,
+): { sourceIds: string[]; sourceLocations: unknown[] } {
+  const visited = new Set<string>();
+  const sourceIds = new Set<string>();
+  const locations = new Map<string, unknown>();
+  const visit = (claimId: string): void => {
+    if (visited.has(claimId)) return;
+    visited.add(claimId);
+    const claim = claimById.get(claimId);
+    if (!claim) return;
+    for (const sourceId of asStringArray(claim.data.sources)) sourceIds.add(sourceId);
+    for (const location of asArray(claim.data.source_locations)) {
+      locations.set(serializeGraphValue(location), location);
+    }
+    for (const parentId of asStringArray(claim.data.derived_from_claims)) visit(parentId);
+  };
+  for (const claimId of initialClaimIds) visit(claimId);
+  return {
+    sourceIds: [...sourceIds].sort(),
+    sourceLocations: [...locations.entries()]
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([, location]) => location),
+  };
 }
 
 function validateAdjacencyArtifact(

@@ -171,6 +171,7 @@ describe("M4 graph query engine", () => {
 
   it("explains both eligible and excluded relationship traversal", () => {
     expect(engine.explainRelationship("AKR-000014").results[0]).toMatchObject({
+      strength: "moderate",
       traversal: { eligible: true, exclusion_reason: null, multi_hop_eligible: true },
     });
     expect(engine.explainRelationship("AKR-000010").results[0]).toMatchObject({
@@ -217,6 +218,76 @@ describe("M4 graph query engine", () => {
     expect(result.results).toEqual([expect.objectContaining({ id: "AKC-000018" })]);
   });
 
+  it("applies type, domain, and status node filters conjunctively", () => {
+    const result = engine.structured({
+      node: {
+        types: ["protocol"],
+        domains: ["security-privacy"],
+        statuses: ["drafted"],
+      },
+    });
+    expect(result.results.map((record) => (record as { id: string }).id)).toEqual([
+      "AKC-000017",
+      "AKC-000018",
+    ]);
+    expect(result.diagnostics).toEqual([]);
+    expect(
+      engine.structured({
+        node: { types: ["protocol"], domains: ["integration"] },
+      }).results,
+    ).toEqual([]);
+  });
+
+  it("includes a governed excluded edge only when structured traversal opts out", () => {
+    const contract = {
+      node: { types: ["tactic"] },
+      relationships: [{ predicate: "requires", target: "AKC-000011" }],
+    };
+    expect(engine.structured(contract).results).toEqual([]);
+    expect(engine.structured({ ...contract, traversable_only: false }).results).toEqual([
+      expect.objectContaining({ id: "AKC-000012" }),
+    ]);
+  });
+
+  it("rejects unknown and non-concept structured targets", () => {
+    for (const target of ["AKC-999999", "AKS-000019"]) {
+      const result = engine.structured({
+        relationships: [{ predicate: "depends-on", target }],
+      });
+      expect(result.result_count).toBe(0);
+      expect(result.diagnostics[0]?.code).toBe("GRAPH_QUERY_TARGET");
+    }
+  });
+
+  it("does not ignore a mismatched structured relationship predicate", () => {
+    const result = engine.structured({
+      node: { types: ["protocol"] },
+      relationships: [{ predicate: "compatible-with", target: "AKC-000017" }],
+    });
+    expect(result.results).toEqual([]);
+    expect(result.diagnostics[0]?.code).toBe("GRAPH_QUERY_EMPTY");
+  });
+
+  it("reports an ambiguous exact title rather than selecting one record", () => {
+    const mutated = structuredClone(graph);
+    mutated.concepts[0] = { ...mutated.concepts[0]!, title: "OpenID Connect" };
+    const result = new GraphQueryEngine(mutated).get("OpenID Connect");
+    expect(result.result_count).toBe(0);
+    expect(result.diagnostics[0]?.code).toBe("GRAPH_ID_AMBIGUOUS");
+  });
+
+  it("rejects a non-object relationship constraint", () => {
+    const result = engine.structured({ relationships: ["bad"] });
+    expect(result.result_count).toBe(0);
+    expect(result.diagnostics[0]?.code).toBe("GRAPH_QUERY_SHAPE");
+  });
+
+  it("rejects a non-object structured query", () => {
+    const result = engine.structured([]);
+    expect(result.result_count).toBe(0);
+    expect(result.diagnostics[0]?.code).toBe("GRAPH_QUERY_SHAPE");
+  });
+
   it("does not reinterpret a directed structured constraint in reverse", () => {
     const result = engine.structured({
       node: { types: ["protocol"] },
@@ -258,6 +329,19 @@ describe("M4 graph query engine", () => {
     expect(
       engine.structured({ relationships: [{ predicate: "requires" }] }).diagnostics[0]?.code,
     ).toBe("GRAPH_QUERY_SHAPE");
+  });
+
+  it.each([
+    { node: { fuzzy: ["oidc"] } },
+    { node: { types: "protocol" } },
+    { relationships: "bad" },
+    { traversable_only: "false" },
+    { unexpected: true },
+    { relationships: [{ predicate: "depends-on", target: "AKC-000017", inverse: true }] },
+  ])("rejects unsupported structured query shapes instead of broadening them", (query) => {
+    const result = engine.structured(query);
+    expect(result.result_count).toBe(0);
+    expect(result.diagnostics[0]?.code).toBe("GRAPH_QUERY_SHAPE");
   });
 
   it("uses the stable query envelope for all successful queries", () => {

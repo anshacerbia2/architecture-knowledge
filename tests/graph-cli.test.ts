@@ -19,6 +19,12 @@ describe("M4 graph CLI contract", () => {
     expect(JSON.parse(result.stdout)).toMatchObject({ graph_contract_version: 1, result_count: 1 });
   });
 
+  it("accepts an explicit package-manager argument separator", () => {
+    const result = run("--", "get", "AKC-000018");
+    expect(result.status).toBe(0);
+    expect(JSON.parse(result.stdout)).toMatchObject({ result_count: 1 });
+  });
+
   it("accepts source and target positionals for a path query", () => {
     const result = run("path", "AKC-000008", "AKC-000016", "--max-depth", "4");
     expect(result.status).toBe(0);

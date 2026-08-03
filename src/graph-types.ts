@@ -30,6 +30,7 @@ export interface GraphEdge {
   direction: "directed" | "symmetric";
   status: string | null;
   confidence: string | null;
+  strength: string | null;
   semantic_scope: string | null;
   conditions: unknown[];
   exceptions: string[];
