@@ -3,6 +3,13 @@
 Status: implementation evidence; not human-reviewed, approved, published, or canonical
 Date: 2026-08-03 (Asia/Jakarta)
 
+> Historical handoff notice: this report records the pre-audit implementation
+> tree. The later independent audit hardened artifact currentness, validator
+> fidelity, structured-query shape handling, and relationship-strength
+> projection. Current hashes, tests, mutation evidence, hosted provenance, and
+> the `M5 READY` decision are in
+> [`m4-independent-audit-report.md`](m4-independent-audit-report.md).
+
 ## Executive Summary
 
 M4 implements a deterministic, repository-local knowledge graph projection,

@@ -103,11 +103,12 @@ between the repository root and the target file. Follow
 [`CODE_OF_KNOWLEDGE.md`](CODE_OF_KNOWLEDGE.md) for evidence rules.
 
 M2 hardening is complete. M3 passed its final independent regression re-audit.
-M4 is implemented and hosted clean-checkout validation passed on Ubuntu and
-Windows, including graph currentness and mutation gates. See
-[`docs/m4-implementation-report.md`](docs/m4-implementation-report.md) for the
-complete handoff evidence. The next step is an independent M4 audit; M5 has not
-started.
+M4 passed its independent adversarial audit and the exact audit-fix SHA passed
+hosted clean-checkout validation on Ubuntu and Windows, including graph
+currentness and mutation gates. See
+[`docs/m4-independent-audit-report.md`](docs/m4-independent-audit-report.md)
+for the `M5 READY` decision and [`docs/m4-implementation-report.md`](docs/m4-implementation-report.md)
+for the historical implementation handoff. M5 has not started.
 
 ## Validation commands
 

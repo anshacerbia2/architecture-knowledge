@@ -3,6 +3,11 @@
   "report": "markdown-link-integrity",
   "items": [
     {
+      "path": "docs/m4-implementation-report.md",
+      "target": "m4-independent-audit-report.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/README.md",
       "target": "adr/0001-validation-toolchain.md",
       "status": "valid"
@@ -119,6 +124,11 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m4-independent-audit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "ontology-stress-test.md",
       "status": "valid"
     },
@@ -179,6 +189,11 @@
     },
     {
       "path": "README.md",
+      "target": "docs/m4-independent-audit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
       "target": "docs/README.md",
       "status": "valid"
     },
@@ -214,8 +229,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 42,
+    "checked_link_count": 45,
     "broken_link_count": 0,
-    "markdown_file_count": 69
+    "markdown_file_count": 70
   }
 }

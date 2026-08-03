@@ -45,6 +45,7 @@ any document reviewed, approved, published, or canonical.
 | M4-01 | [ADR 0005: Knowledge Graph Projection and Traversal](adr/0005-knowledge-graph-projection-and-traversal.md) | Defines the derived-graph boundary, default-deny traversal, determinism contract, and rejected infrastructure alternatives. |
 | M4-02 | [M4 Graph and Query Layer](m4-graph-query-layer.md) | Documents artifacts, commands, exact-query behavior, diagnostics, and the M5 boundary. |
 | M4-03 | [M4 Implementation Report](m4-implementation-report.md) | Reconciles relationship counts and records implementation, validation, determinism, CI, and handoff evidence. |
+| M4-04 | [Independent M4 Audit](m4-independent-audit-report.md) | Adversarially verifies projection, traversal, provenance, query integrity, determinism, currentness, mutation residuals, and the `M5 READY` exit decision. |
 
 ## Architecture Decision Records
 
@@ -58,7 +59,7 @@ decision.
 | [0002: Canonical ID Allocation](adr/0002-canonical-id-allocation.md) | M1 identifier design and M2 enforcement |
 | [0003: M3 Semantic Model Remediation](adr/0003-m3-semantic-model-remediation.md) | M3-04 through M3-06 |
 | [0004: Security Claim Applicability and Projection](adr/0004-security-claim-applicability-and-projection.md) | M3-07 through M3-09 |
-| [0005: Knowledge Graph Projection and Traversal](adr/0005-knowledge-graph-projection-and-traversal.md) | M4-01 through M4-03 |
+| [0005: Knowledge Graph Projection and Traversal](adr/0005-knowledge-graph-projection-and-traversal.md) | M4-01 through M4-04 |
 
 ## Git Creation Timeline
 
@@ -79,6 +80,7 @@ describe.
 | 2026-08-02 17:32 | `aa23532` | Final M3 regression re-audit report |
 | 2026-08-02 22:29 | `0bdc241` | ADR 0005; M4 graph/query guide |
 | 2026-08-03 | report commit; see post-commit handoff | M4 implementation report |
+| 2026-08-03 | audit-report commit; see post-commit handoff | Independent M4 audit report |
 
 ## Maintenance Rule
 

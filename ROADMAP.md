@@ -16,8 +16,8 @@ M0 Project Definition          → implemented in repository
 M1 Knowledge Kernel            → implemented; ontology questions remain open
 M2 Validation Kernel           → implemented; hosted CI proven
 M3 Reference Knowledge Corpus  → implemented; final independent re-audit passed
-M4 Knowledge Graph             → implemented; independent M4 audit is next
-M5 Hybrid Retrieval            → future
+M4 Knowledge Graph             → implemented; independent audit passed
+M5 Hybrid Retrieval            → M5 READY; not started
 M6 Architecture RAG            → future
 M7 Decision Assistant          → future
 M8 Review Platform             → future
@@ -155,13 +155,13 @@ Find patterns that:
 - introduce eventual consistency.
 ```
 
-Status: implemented; independent M4 audit is next. The production projection
-contains 139 nodes and 261 edges, accounts for all 24 relationship records, and
-permits 8 governed relationships in default traversal while preserving 16
-explicit exclusions. Hosted Ubuntu, Windows, legacy mutation, focused graph
-mutation, and graph-currentness gates passed on implementation commit
-`9825216cffc97c162cc2514a44b09f0283c9d7be`. M5 has not started; see
-`docs/m4-implementation-report.md`.
+Status: implemented and independently audited `M5 READY`. The production
+projection contains 139 nodes and 261 edges, accounts for all 24 relationship
+records, and permits 8 governed relationships in default traversal while
+preserving 16 explicit exclusions. Audit hardening is on
+`7c40879963ffe1c1f647bfa35d36f47045786a8c`; exact-SHA hosted Ubuntu, Windows,
+legacy mutation, focused graph mutation, and graph-currentness evidence is in
+`docs/m4-independent-audit-report.md`. M5 has not started.
 
 ## M5 — Search and Hybrid Retrieval
 
