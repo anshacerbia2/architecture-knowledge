@@ -47,6 +47,14 @@ any document reviewed, approved, published, or canonical.
 | M4-03 | [M4 Implementation Report](m4-implementation-report.md) | Reconciles relationship counts and records implementation, validation, determinism, CI, and handoff evidence. |
 | M4-04 | [Independent M4 Audit](m4-independent-audit-report.md) | Adversarially verifies projection, traversal, provenance, query integrity, determinism, currentness, mutation residuals, and the `M5 READY` exit decision. |
 
+### M5 hybrid retrieval
+
+| Sequence | Document | Why it comes here |
+|---|---|---|
+| M5-01 | [ADR 0006: Hybrid Retrieval Architecture](adr/0006-hybrid-retrieval-architecture.md) | Defines the PostgreSQL/pgvector, embedding, fusion, generation, graph-expansion, privacy, and M6 boundaries. |
+| M5-02 | [M5 Hybrid Search and Retrieval](m5-hybrid-retrieval.md) | Documents setup, indexing, query/result contracts, evaluation, diagnostics, and safety behavior. |
+| M5-03 | [M5 Implementation Report](m5-implementation-report.md) | Records implementation inventory, validation, quality, performance, hosted provenance, residuals, and audit handoff. |
+
 ## Architecture Decision Records
 
 ADRs are supporting decision artifacts rather than a separate execution
@@ -60,6 +68,7 @@ decision.
 | [0003: M3 Semantic Model Remediation](adr/0003-m3-semantic-model-remediation.md) | M3-04 through M3-06 |
 | [0004: Security Claim Applicability and Projection](adr/0004-security-claim-applicability-and-projection.md) | M3-07 through M3-09 |
 | [0005: Knowledge Graph Projection and Traversal](adr/0005-knowledge-graph-projection-and-traversal.md) | M4-01 through M4-04 |
+| [0006: Hybrid Retrieval Architecture](adr/0006-hybrid-retrieval-architecture.md) | M5-01 through M5-03 |
 
 ## Git Creation Timeline
 

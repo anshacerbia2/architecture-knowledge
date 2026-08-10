@@ -1,0 +1,35 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "testRunner": "vitest",
+  "plugins": ["@stryker-mutator/vitest-runner"],
+  "mutator": {
+    "excludedMutations": [
+      "ArrayDeclaration",
+      "ArrowFunction",
+      "MethodExpression",
+      "ObjectLiteral",
+      "Regex",
+      "StringLiteral"
+    ]
+  },
+  "coverageAnalysis": "perTest",
+  "mutate": [
+    "src/retrieval-units.ts:45-112",
+    "src/retrieval-units.ts:300-390",
+    "src/retrieval-query-contract.ts",
+    "src/retrieval-query.ts:49-183",
+    "src/retrieval-query.ts:190-399",
+    "src/embedding-provider.ts:20-145",
+    "src/embedding-provider.ts:184-228",
+    "src/retrieval-evaluation.ts:109-241",
+    "src/retrieval-indexer.ts:54-65",
+    "src/retrieval-indexer.ts:156-194",
+    "src/retrieval-indexer.ts:363-380",
+    "src/retrieval-indexer.ts:407-412"
+  ],
+  "reporters": ["clear-text", "progress", "json"],
+  "jsonReporter": { "fileName": ".tmp/mutation-retrieval.json" },
+  "concurrency": 2,
+  "timeoutMS": 10000,
+  "thresholds": { "high": 80, "low": 60, "break": 60 }
+}

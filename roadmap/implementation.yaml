@@ -84,10 +84,10 @@ milestones:
       - exact record, path, provenance, dependent, and structured queries pass regression tests
       - Linux, Windows, legacy mutation, and focused graph mutation pass on the exact implementation SHA
       - no lifecycle status is promoted and M5 capabilities remain out of scope
-    notes: Independently audited M5 READY after hardening on commit 7c40879963ffe1c1f647bfa35d36f47045786a8c and exact-SHA hosted run 30800207983. M5 has not started.
+    notes: Independently audited M5 READY after hardening on commit 7c40879963ffe1c1f647bfa35d36f47045786a8c and exact-SHA hosted run 30800207983. At that historical M4 exit, M5 had not started.
   - id: m5
     title: Search and Hybrid Retrieval
-    status: future
+    status: implemented
     dependencies: [m4]
     deliverables:
       - metadata and full-text retrieval
@@ -97,7 +97,10 @@ milestones:
     exit_criteria:
       - terminology and semantic queries retrieve relevant concepts
       - evidence and citations remain attached
-    notes: Infrastructure choices require measured justification.
+      - active database generations are fidelity-checked against current repository and graph inputs
+      - excluded M4 relationships cannot enter graph expansion
+      - retrieval quality and safety metrics are independently auditable
+    notes: Implemented with PostgreSQL 16, pgvector 0.8.2, deterministic units, pinned OpenAI embedding contract, fake CI adapter, weighted RRF, bounded graph expansion, and a draft 46-case evaluation corpus. Independent M5 audit is pending; M6 has not started.
   - id: m6
     title: Architecture RAG MVP
     status: future

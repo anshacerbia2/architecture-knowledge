@@ -1,0 +1,2956 @@
+{
+  "artifact_inventory": [
+    "generated/retrieval/manifest.json",
+    "generated/retrieval/units.json"
+  ],
+  "artifact_type": "retrieval-manifest",
+  "chunking_version": "semantic-sections-v1-max-1200-estimated-tokens",
+  "embedding_contract": {
+    "contract_fingerprint": "sha256:0e5836e35f0e8ea1fe2842a464a13b926b9e70587ddb63b2c84f3ef105ec5baf",
+    "dimension": 1536,
+    "distance_metric": "cosine",
+    "model": "text-embedding-3-small",
+    "provider": "openai"
+  },
+  "estimated_token_total": 38862,
+  "generator_version": 1,
+  "governed_input_hash": "sha256:e3f76b02356ff982760b1a9b6683e362c9fd234d62cf7c89324e42b404535c90",
+  "graph_contract_version": 1,
+  "graph_input_fingerprint": "sha256:ad827bcfa37e9cb0a0510dbc51ab2149598e2e3200b2fa68c25490faa34ddc68",
+  "manifest_root_hash": "sha256:a3998c4b4a24dd12caefd22389b3c59b13f9b947f842c6ae10881121c92de0e2",
+  "normalization_version": "retrieval-normalization-v1",
+  "retrieval_contract_version": 1,
+  "retrieval_unit_contract_version": 1,
+  "unit_count": 487,
+  "unit_counts": {
+    "claim": 69,
+    "concept-overview": 24,
+    "concept-section": 348,
+    "relationship": 24,
+    "source": 22
+  },
+  "units": [
+    {
+      "content_hash": "sha256:d30d2607c7205e214b98382ec6e0b3e6a2086f808127d41c15653486c204d7bb",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:2f1a39ff8f15590ee25fdba506c8269639404efe4c0d64c7dfd6a87bd8d18e32",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9445bf03c18510490de81dd50a2a58702aa3ebaeb36ccaa00474dc298c39e5d6",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9de43072e429196d4ec8070bbb0bbcb7fd12ed6235fd04709c11d4b921d287ca",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:8986900564f9ba209dd99226f98daea5a3036ed0944a799a07111946357b5103",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9890ff12fba1f0b1babd87c69e04e59849729c59a1cf6f9a1c68bc7fb5c42aff",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7527f8844eac28c8d1fdb4c918265c4c0de962eba1a275548626d5b57a58254d",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:b6e8742789bba1b24527a4070f538436cae760f0931bbd769d9de7d13e0d8ca0",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:604a60117c96cc20752257280d13f29e8375ca935b069ce794105737de44b51b",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:4ecad7f2c45bed429e936200083c93e473bede3c56b985c895e30eb5165c49e1",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:100c3494a972f87c2f51bcb8b4a63c136b0d5a0e6b364a881dd52c894d73f82b",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ac2c145cd837b2c759aa6000afd2a2de68469131472c06b1d41bd3128689c631",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:640b795562f110f232992d255bd2cb032316fa1a0fa5addb3f6af4f30e9ce84f",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:f96f474073bb4e565c8aedd0380ffb58d7347645c3b448b759f4b56e932e7cc1",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:8d15cd4873387248e30572d36c8bdfcad0c3f24e0102b494969355f9a777f0e2",
+      "record_id": "AKC-000001",
+      "unit_id": "ru:AKC-000001:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:d0134306f97155f54fc98e44392c03dda585251eea8db3b44e6955068dcb5997",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:8e8be1aecc892384c33e033aca3b3f5f7ecc2c2d0b6c32c95f8d814d22d83bdd",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:8d824ab09d49aaffb22f021cafa9b1088c30bbed974256fdb9654dc2976ecd7a",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:85aecf97e74340bd7019ba146c04dd649b4152c3b202e45fe5a13cb83d7035a7",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ea08fbab26c5a868c765b91625d7cff939c61f6f5bffa344362130ec57220b80",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2f7e3972c284d9ae3000aa3b29521665257f1eb9b2a24cecdf2701d96937504a",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:3f39717c75e7e39cb645e600c72a2749b9f7fd83456c183d4ab26d9cacb9e8e0",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ee264da943576d7981fb0cbb09b7f65963807331a8e22cda4fa077b4ea8934b2",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:23063858c0126202b8b096eeecb141bec9921db265d10edd1f4335cc156335dd",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:644a7e7145b02395fe20795d0742b7ac14c79317f4e3ca7da238f6f5ea582e93",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:813430dff242d64b4bf7a4e3f87eb7e5b30df63142c972b3d2a4234505d6fe0a",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a67ad625259a18e5146dcbbb77374bac0bcc049fd035d33fb7b6374b7389973c",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:49786a5f5f7f3de8a6740ceb74b4fe042019f85461b80dbb840a8df91ffc9230",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e81631c15c47dcf71967e9493b17078d99e9db7e57a413e758f0c661b791c5a5",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2bb7283183cb392c4f4f58e7042167b418dba12715165cbc29237ccf02f4e26e",
+      "record_id": "AKC-000002",
+      "unit_id": "ru:AKC-000002:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:36005e794477c73471b4a3f156fd14374d3ef61ece3cf14f71f7f3027ec89bac",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:2b2af0380b399376f192c423a0f2ef2231f51be9b225067d547314059f59ed35",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:29e8e0ab9f24844aaf605a7c0ac0171ea6cea1d1ab62563d6571b67daf095c6d",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:33a6a217a3c2a5a135132cfb4ff3697b79a0ba55f4790b92526c702f983c3fb5",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:badeaa041d7a169eef4e86a90368a21a020e1c46425646a659a42acb6772f613",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:f7d8c8b12820f32e6c9be2e6456d8664b0ac4547d5d4543eb053fd58e4a582e5",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:f70a419dbbcafca998810bc40e9cb843cb45995d88ea47f6f21fbe5761f29bcb",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a2777a3f45c2a0f386af00e909fd5d1e1b7b93d08749d1e0ea6e7900db3f93ee",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:27ee658deb4bdfb60440cd51ec0f4f20a29a16278001ad21c795da77d9c41333",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:d31183c9196814eaa8cc67e101c937dddb5467868fdd8211a637b394d4a73548",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:189f30a30e6795c5d1899432743b345278f92aedb5556fc436971461c5fed711",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:593dd48f44f7153d9870ded0c565e0235fc9770ed6a3a7dcc0d073629b235705",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2e811d95977b6ed238db7309f0e8a9a5266003fb807c12e2b1c763df36ee657f",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:b3ea12d535dcec11e5d8834dea579d7a1f1946c09090d8848f1b6d520dc96356",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a109d96413b0f481416c319813072f853a71586b05bd4574eb133b15a23a637e",
+      "record_id": "AKC-000003",
+      "unit_id": "ru:AKC-000003:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:168e1d6f2214df7d4d410a9bd6639a1afc027e809d585473ed348cff0decb79a",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:66a1dba5c340342148093027fb12e5f768bd3b2c158300ac474f2d5654f60a41",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7fcf74b28625844ee6b47f5c5cca23a6b1d18ad56898874af7bb81855168119b",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:22c6eaa63b81c0052452a00738a7609717e09c835807cf29e4cf06dc4e096c09",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:205c88d8a92b3cd4f3305ce5942649127ef90b26e28e4a8513649c9d67b41f76",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:b4b0ece090671f60828d4463fc8845914c8daca6d0a25a55ac9a561f36968bbf",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:bb2bbcfc65b221f3ed5798dd983003524d7e9ffcfe21106211cb40c211cc11c7",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:76a128891fbe0d0fdf858839e25a188a31abd38b53096cc700a3553672105a2b",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e5c896dd32378357a5f9c0d55a1db5e222035f5ad98bed7c7e9e55b9e6efbfad",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c0d4541a98a66c64047fa9b20b6a598dbb0a34be8577aa6798ec91936a00e275",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:4e0101ed5f9b4c364636049d78106d49d16e92db2ac760194c125d8c82e65601",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:dd6893352cf89a3d5523c29e47c2807e72cc65558adc2048903168603c73803a",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:857faf67708d3cc3e47a59f8e8952274d3a3ca93c50dc43b5db0d3333b699d15",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ff28b6fa5b2893a4a6381e6831062f26657e4602bbd7bca482e561afce0b396a",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:17b8450f1317cf199971170e8367a99929b7ae18b9525cc163eb9aa0a99ffdc9",
+      "record_id": "AKC-000004",
+      "unit_id": "ru:AKC-000004:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:3f48a4592f60dffc2c236f83d4b2a25461e5044a7cd44c0a3de6bdc1f0e5a325",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:3d86e323cbc3320dd2c57dfaea7f07c59c176126bad72c94c79289f993d072ab",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:429e34e1621eeadcf7a2fa8383a9da14da02537e9d20735451da2a6bc4bda69d",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:b2591d240ac20f8c01b460aa5806ae1acaaef34ae8a1425776aec7f54f14d136",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:65f89d8ce56249959783d80fec29c95f6bebfd0919a513a6c374470d02fc6a89",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:23441c095e479bf3da2cb71b58ed14ae1ed7c6baccf493a8553f3d7c8783d63c",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:1abd9a628e9bf48f3e21b4b70cd509b9e6a5747f7d0816b4b17e92d42fe138ae",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7601a41bb13a497f1adf99d8e777b79be7dce0b305758d4b340c394b8dffe20e",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:850698057b02a22d64f6fe8422659e38fd9768eb29b9fb6479e1f8683c01120a",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e194b0703632783b9c8c3d883e3f0da9b46fc87dd978705855a04893e5836bcc",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:57f94324415ecade54c110c1680e90b01139dc67d3bea0c8c7f20737c03d1fa2",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2ad420f069b777fcfeb131af332adb7f505f860a907acaf69c77647cba248bb4",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:994c42bfe9b4546bb45d183f8e1ef204611e5cc0f6207f375756d01094727467",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:358418e35498f60d0c2cf7500e8ea8b79bf862b12743cfb8ec2f9ad1635f4c72",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7c2d9faf6a2fbb68d828e53a8d1d37a9fc33969e33c1cda79ec00bb7f27f27c1",
+      "record_id": "AKC-000005",
+      "unit_id": "ru:AKC-000005:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:89c0092b1bdd8f4049214af8ea154ec0512fdeff97ca9d819aae1344d1a169e6",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:29c5b5eb6eea2608e8bb9c587d84eeb8b0f22362d22555451e7ede299ff5120c",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:95739bc754ee8f038646fdcfd518ee34e95c59af35d0d00604aa9c8501b8128c",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a40fc7f0d3fdc893a5b651be494bbf088cafb0abca99460fcaa6fc241ad84486",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c28b5b3c7e1aba6b778ae985a67d223b39e62d28aaf7f223db4e5604d2e78cba",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:040ed7a5a4b01fd45bcc94e494a393df10568b459cf0c6faeb2c2a23d1dc0353",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:194140745b2285903d679e24017300e67e95bda7901974f45acad88b16fc0206",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2b175f5b076c235561608dbd78d94873270e1d070f0c81135f8ed02279de344a",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:3ac9f8304252a17a71c88000e0aade4e4ca2548a80e97907a9f597d74b3953c5",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ca967f584202961847878a1c528ae22295ba99dcad9f76708b1e6c64d418218e",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:625c9af977da2343981c876e8fb89525e66a26eef1c3899a4bf25246ac9422ec",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:3d294d3d7292c276c5d435e8285dadf9b7ebbdbfc919c84c06b07dc5672725dd",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ba98f2c22e73c812bd9abc3a39b4430f08cbe097b8cdd2331f9aa1c69c1d5eb7",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:cd85ecff41b12be37cb7f7163cce485dd0f1fe5cc22fcf92b418d8b5ab140704",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:4fb4d2bdf104be06d7f43aca7317a975427d510593f333c04e3d61878e8ec074",
+      "record_id": "AKC-000006",
+      "unit_id": "ru:AKC-000006:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:17b584412c67d7a7ebceb884eaa68e2e6b29175fa158493d8b2fdd31c3a8835a",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:5e0f0368bcff413d65e8a97be83750186f2d4e9e0e0985e5e2e186c2e57ed1bc",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:da8ad2a54e0c0ce07a4fabbfd2cc1a9ac4dd5f3bf06c0e5b0e996afe8165d7ec",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e97249dcd6b7a2e09e7a709d2d26f7cea3534a950d1121dd04d3e8f81ce0ddd9",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:017ec93c1cd966b538427b6426aa7dbf3e4e26eecb16a0fcdf238d2db32a8529",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:66a47d171dfc81716710aaed9822181e302248c4888387aefb2b46d23ea1b22b",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:cc70c63954848df2fd878fe68a408107689d4c5fa647d875794f889b9b4e9743",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a6ad35f2b58dbb36aff893d82f360b56f2d22f6f48291aaffc096e4b3bc82c7d",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:159c22e6bab9858f713b894470a7cfe961c20c1ebf1709ab963528893c6b2c13",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ad90b0e1fe883e2c293c0df3bc1d825ed11cbc1a775818e24ca272c60679ea2b",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c7767d11460ceeb321c6f3cea3ab02ccce090116f7fd66237d8f20f9d55f9ae4",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:failure_modes:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:f524500109e25fc3f37b9a339c34e01643532ca866e2d5297ee1a578fb4b2e67",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:371af4a530ab9a8895ef4bfc9a07591155f20484830afec72ea2e6456b710d8e",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:5067986de351aa156eec1fa60da13d78d6bb0581df3e78d7666f1aa003f28c32",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9f798f291781b1d3e5691fa0cc8d25c67ac945b2456ed08a85f19bea4a3058c3",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:13141e455bf95d70231c222b6b3c8d6d25886f4e4c6232d58178434e8981945f",
+      "record_id": "AKC-000007",
+      "unit_id": "ru:AKC-000007:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:f12b5e2fe5b2dbfcb5767269949ca03148afdbac8b5580113faf082bcb09074f",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:5ce0b2f0e63641a7a0e975e151368f6f37364ebad34c8fefea125e93df7c3ff5",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a8f3b4364ab828d8805ff0adaa876dc1592d70a0b68e14fba78f943d5a2ddd8c",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9eb0acf3828a0e637be548729231e84a0c3795250170bd475751213e21c7de31",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7ed35ab0dab430fe89446a1ae5e09e53390b060d0406d5ca0cc56bb44b0a36e0",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:4dd34f5a036c802fd358200120cb77a0f37045e34cd521092bc2c428176f8777",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:25fc1ed7cccb105d01204e24d0a7cd131ef1f2b15910cc40945d6c7f660a6203",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:76348a835381a4289db951cbb008a1cea94bebc9c61e7505e1e0e437f92ad3a4",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c471684e3eb9c1a5c1b8e2747758951c35715746f01470c9d007d863f6ff3013",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:bd7c1c762afec7df9214745d7908f73d0cffd9bce1e663bec9b6ffe314cfbbb8",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:8507d5341a5882c801315f7d5a831f5cf1d9456d5556de076f22fcf56933b01e",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:failure_modes:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:15de9d1a6bc336a0246e0f0634d9b61109c2513c43de6441b789c4a02f0fa4be",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:812a11351f1f27ddfa5c16289a32dc4ca0b9598421da7d13818de9489126b64d",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:eacf6048800b845f1defaae939aaeace7c954afceec2b327058d5a8f4b4f10a5",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ca8820168c5e3d5578a7d59fcc50f28674ef5dd5dd9745e08603c21c462a4d98",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:60c6d84783df63ede2e7ee718471353b8a34938c0287771f81dea3a1b7100041",
+      "record_id": "AKC-000008",
+      "unit_id": "ru:AKC-000008:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:3c27d50131236ac04bdef8b3054ef2b4291520a7fb63447be4975de27fe4d92a",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:c9a71812aa3dc550f61e44827c132ec8efb5f328e5e33f32fd0ff32cf13a553c",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:42d8a941a1fe1d113f3ed48cc7d27913240f0a268673ed900582d2c88981a763",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9229b8a2d0d698647caa80572f16f088ca7ea84032b71758efa7d6360338a180",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c45c754018b35ca56410c672d60158927dd6acb33f48f6fac8b133dbe9857e02",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:74c70218a84b3c0c7db951a4ec2015fac0e4b1cdca9fd3c941a72fa053eee6e7",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c07af95e8d4c126cc1b3d7795fde702da8d95a354884e53ffdf8cc8c0cababd2",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:1be9953865a5bfba69fb095ad1b968533b22f4786f76fdf05575f5c201ac93af",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9f24a6d76498b67cafd971fe8a9093eecdd24ad283ed450a4cb7a0adb5699fb9",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:1bfd590499e75e8d9dea2867dd57a99a08b4dca0926102517df63cad987b61f3",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c1ac7c4beb9b6b8476c5a26967f6c898ec35ca72826a9bfa66bb84eeee3a8034",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:failure_modes:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:05af8f6fd17b7e931e7a6b9cb3a64a82115ef2400e598d87a7865bf7707865de",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:d35e4daace440daf63f8640877901221452638c5fd19b63ede6d78b0fabf45c1",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:90532c934a86b2e02ebbc06e520de89b823321a0c9de0c251a025ce5b64d1086",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:8e2ae2ff5201c6a9f903cafd23e872a154f9ed9a722fb8af0e6528b9b37ba5d9",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:8662b43c55f1763c5cd71b7f9c62e3a4e5dfdbbd97117a6c7d75dcd993d0d358",
+      "record_id": "AKC-000009",
+      "unit_id": "ru:AKC-000009:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:419e8503eca0ada5366bef8a36ba95ab56cf24adb6797a4848854794d3789a00",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:665395174891ebcd21f4ce08c98f981ace2acc23925a4a3ce948a6fba32832dc",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:172b859db5ed37632ff4df045c0686330a3da325d1d317443bab1fc892deea79",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:939c144022a7f0e6ffd1f6caefc0a2d571e1ad89697f96161c6c8c50135ea338",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c7ee4be5deaf68708c1c937d56dc4205f8206a2d000ca797ff47d69fef48eb57",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:b2f7dd700cc4d7d0e96ed6165024f94aad6b4fb1da4eec0a751c357f9519b0ca",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:854fbe06d3aed860780c0aae34d3370d659b32d427313a697ad2161d8d2c432b",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:5eb50aede6743ba3ce106054f6de89445dc494df1aa778f8a6f9e11e4a45957e",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:b4c6148dfe6c2b1bc95557bc275f79e5593bc7f7f4e943e80eea77fa6f8bb4e2",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7f00d2eb640fd28a5194546626dbf256f4d56ad1d05c0b6b47fffa0e5406d013",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:93dd9ea79c6efc21f358fd28c600768039f137890ccde1943f30d250bf42c132",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:failure_modes:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7fd6cdcbc31aac9a8bebfdb1b8e76d88849b0b619ecac6620efbdeda8668b8ca",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:540f81af107c5be6572dc1b5ec15736a1f8cf3b5b35aec57d489a8c32b2fd058",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9eac1eae4e1d62dde948785518365a0e180281b6226a25b24643d8a62f34d326",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:dcf3bdeca1bdb0cc2e1eb2bcb65fcf3cd7846cc907858ee696e19b1b83b1b8e2",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e20dd651a4d3161abea9f2f1e1d1aa04d06b88b95a0f90b387ccf5abed3b0c2e",
+      "record_id": "AKC-000010",
+      "unit_id": "ru:AKC-000010:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:8cdbe40e2cbaa937b39d14bec54defe6c129e4aad7286ea6dfbd560772963525",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:e2f6de860305a1a57ac0b08821f7858823db9c70833aa7fdd7ae204c1f451450",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c8ad495b75de3a89129526310cb5b90b06228191cf02731629a24d21689e7236",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a10726a1669431c2540e59f6c912a6dd7c198c4b104054e66a94cd9a88a327b3",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ec2269399d8d2a048f43d390c505f773e99f861230f484142b252a3ece57b941",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:79cbb47e01827fc6dc7dfda924ba21ff94bfd22f8fec89793e9d63189657949d",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:f4de1704b8d0f6ab8b97fd4a4f4c3f8e36430e5d861ce0fdc81394004aa4db3d",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:0f26bdf195924ebac9a141e7a7dd7ffb61dff18ad45f0d77e0af3d1a142915aa",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:3742229b43795dd4d472827cb6f204f8ed3551c3dcd629b36a444b060ee0ff77",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:70c42ffb5729a0e9c2903e6fbaad65c6b02b6f92d65cab3e0e1aaab27aaa9aef",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c7c24ab5e76b4be1c67b352b74a29928437732efbb2575087644bcf0726f5681",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:failure_modes:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:5e354fc5b22dd92c6a359decf9799d97dd617ced71e3eb9b0235e5e6b8e4aad9",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2c032047fcb714920a1a78547e32dc264f41ec09f8be4ea6946a235c6d43ff38",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2920f935f5804f2571c6498a01167c304b7ff1a3e315a4822875193e0b58bf15",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:5d845df68ca1d8d779b0f2bd5273d769d8a14a20a7a0f0cb1aa54a4da8204052",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:fd60c4f2dc07c4fa9ef816f24fe5c40c6090668d8eed55fedfd56498263e90ca",
+      "record_id": "AKC-000011",
+      "unit_id": "ru:AKC-000011:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a842b45852a1e5b221f3b310f7e84d51742d6deee55cabe8b63615537895bbd2",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:132e138652746d5fbc5044b1faa2345ed97180de41fd0778f6ac9228aab5f0ba",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:d3a7d262a23ba97f6c7eeba07816e5a943c91b8eacfaaf428c8aabb04532026e",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ca9782306a87d5e4979d0bc5bd9591a14affc0066fe0dcce018cf72b73bbe018",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c4826dc64383428f89bff50fc75f0e64c09ceed3aa75667df0994f4c5bd9c12d",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9716d2df76df64989f50e6cfa5e5fc05b6ff65c61a31bb8c7bc3dc5c7c884a2d",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7ecac3d2c2bb8ab2871cdd06afec4d88b522a975cea68c77ef724e9399307b94",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:99f359f4789cbfd4c28b33f4b8d31e4673ec99452c998f000aaffaabbfed1fe4",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:4ea6aef89ca92aa92647fd794d551dcf9ff2a7adeb513381b40fd54c0936f5c0",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:4a4f86dd427e95082e6e1d8f3a0450bf16ddbe81cf98367e5f32831b40d872f7",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:684f2eead676226eb3f83072b442c9e42742fe18cb0cee34e4596a81a299c504",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:failure_modes:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:cd283e21777d953acd84293e6bf6741e27cb86b7e01464686fde55fedb8a2f18",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:33397d4aba04ea85950a6a2e5aaa9cff4c868b10bf132d2a38c72eb01b2515c3",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:dc26b337f491307a59ab6e9648098d31555e53eae567020bec041eee1a2c8021",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:67176f1454a5082d438fabae203bbe01a77a5a1a97e6c79b10a2dc1b3552ce20",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7f7d17ad9ebc03edf628a081346207eabfdf976ed0878e52bd7642acc47bd029",
+      "record_id": "AKC-000012",
+      "unit_id": "ru:AKC-000012:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c6adbc248154b019e5e3e898683d41a0c4b4968a1da4aa9b845f5df95c8b8f1c",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:7de7a42b26ddae5349e4c06ee7d5e0214408670714523a0b83547b8a26922f1b",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:21e1da655e12000cb24911bdd1352995686ab0a2b01739a17d559a110b8e7fbd",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:bf77a5c881be326d57105b5c614dedd1d0534e65812115c46f698c366da085b8",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e66212ec0f3f9cf8701ce1cad866e05fdce8be18f5b25dfa4a8d5920e96c9ac0",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:157e7d2109a084855aa8e7b19636c7b5b4cd36dc2331fad26f7e88791fdbd757",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2d6ebf77452e47bcf27c44f41138b630c44700ecc785976dfa9371731f98408a",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:8258a8abd981b5bae171cb6e9cf886dfcadc9a333ed3aa558192eab7b419f763",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:928f9facb62cbf1e5f0099d031e027f73e956e88b7556ff169649e7bf6ab1c43",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e45b17a46ffb74e698c3f939d35f89261b57887711341300c67498f4d78cf510",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2702fb54abc13ee26379a323f6fd288ce410ba86fbe30b741c18acb9f4f01d76",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:failure_modes:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:cbf30b9f8bd0dc864810908d9e6a8002010cfe846ec9405b57853eb4ac31b145",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7928128e7d4819510ad72a7fb08698684e28b2d672e1ad7bfdf8b9463708a9c5",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:fa2cf6bd1d97ff59e9d226b7165d76ce7992bb3d7cc2538f8b7b0f553396dd97",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:d6ae967d351332a84dddfcca0d0e0f315c03809c686fed8d09406b6e3534a958",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:54ea2146d74a8f78af4538a8f8cc8e2f5e3c84c1925f209bf08b1e9ba85f2135",
+      "record_id": "AKC-000013",
+      "unit_id": "ru:AKC-000013:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:1e0a388bc8e834ffe73473ed6b69ea64762fbc2894d49934c4330e7865d52f4d",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:a883908cdac37ec80848491ed310a55d9c03ee3b8807876832d5a7a83e830e6b",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:4dccff3b3d87500bb1badff9ed30e4039ed89d9757ccd501fe0366eb1d972363",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:0c63059fa26281b42fb2ddec18f09e38435548d2528d43ba7a6d088c0a3461dc",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:821211de18580e2cff18b20be794027bcd7a443d9bf2955095091b9048b8aa46",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:31b3b28f7021c6d7e9a1f7b9b53d117b7d5847e30f85e011dcd59ed295596ffc",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:cdb90b5790a5da8097d10a688ba7eac4b3f15c0a94aceceef3cbe687a9f31bb9",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e114d211f66f73a6e1b31120a95fb8bfe5cdad683d21f4a54a9fc28c764a8b44",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:5a64982ee4b2825270c2ff881e3f772e598e043fe04668fed8b172440175e272",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2d8abb8b621fca36910be08457e0937e753704c321a1394650c6f619deb56d7d",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:45b600e48041bf5416e40c5fb03877bc46a062fe5fb02ed806ac883202c93b76",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:failure_modes:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:72536ae4279f81ee4756074d65befabb04d2ebef3a33ea342790f7d56190c6c9",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:baddf45fb9f1f7ef2986708b0110b96f381a99108bf625f051ff85d6761d11eb",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a9449cd28f66860c5a4807a069ac6e381e8367d5f7c0034a9685ad82d4258d09",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:12626db7bb060cfb9083b8181d405c92ace0e5f263074eeeebcfd410f4f73a28",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ccbd1568c4f1ceb2a048af3ab4ae803217f11ce6cbcd40d497bc9550ef585d42",
+      "record_id": "AKC-000014",
+      "unit_id": "ru:AKC-000014:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:4b47ead0fd03b4e25490ebb4315d5a3570c7985810b1596e22a6a1eacc59abaf",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:e6db8c33985b40f19e8bdb9ad81b6b08ca50ce2df810b15cbff2f25772595f6c",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:6dfbe132821d8f9d41cda9f23bddc07a1fbe88d559f91cd3de216db8e5c85d1b",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:885fa208d56c242e919d1af08323d4e730006bb4b43ac275c0f6980e956ce66c",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:337b7742a9fac2f703aa3002b8ba2a2556f6025cd468ca368462397a8a15facc",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a1fe80b47d8f1850590ebcf0fcf568a49fd7b40c3379a3bf8450961bb2b3931b",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:766a682a96117aad9ffb0b457137016d6fad545056717d22a8a05f0634162506",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9532303771f2468b1e4230936f842aed19df1fd536498a612b39d95611b12ad7",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:d42ae44579a64618ccea860d48bf28b753d9db5f918b059f8cdfad4ad8896e3d",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ea223d8b5f8cdbfd4d995fe9fad4b31b093d3cd2b4dde64f136332e657c26f7e",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a8ac66b473e9fea4ad37207555f600a924c3868abe9d720c95b5e50fb72914b0",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:failure_modes:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:0c2cbf3f7f288d847585020c1f6e277d237772e79cc21611253f9114483b2291",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:66ae84f144d28402c2bfe813504a8ef9bc4e2958ad069e62a6c18d3003e0dc16",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:42664773d4e8fec558bdb3440174dd05a4cc63b417a411bfa14f8ec57b83c160",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7d1429493dcb773769e23a22f141b0ed9651ce0c2503e929d39b805afdd12c32",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:677a8b32266a94e30e1c28764f7c614f0e0089c68c721aac9a7298bbf8878959",
+      "record_id": "AKC-000015",
+      "unit_id": "ru:AKC-000015:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:776ddcfdf5fa6a0d5428d66d1cabf538b167498f1b29abaf007c606aa6fb871a",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:944d1d4764e218de97232263e7e53270f37d6fe9f8ab80d695b5272741a356b8",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ff972f1947f22b21e4bf0197327c9a83d124ece265d9b23006873a6a7630b52b",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:fa5c683b57e5d10765d23d908d18490fe45567e45d49cfec12bdd8f5d93f5369",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2778786c2027fb1632cc4230973944a4986b08e8777e4fc200df218b4f8e82e7",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:b4626947ed95aa3a8e5f12c0b1bfd6c6d3a060a0e1dd55d03d2b55b08749f978",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:feeb00755becf4fd5abc867f380f5293153d06831893c8444a7973284425311c",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:b634a048b003777d98b026674013adefde92c8dbc94ad297bcc4478eca0a9dd9",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2c731f8cf82e5d937e270fd564ae844ec8060861ffdd9be340ccb6856013f724",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:75e716a222b5a01a3d1c690688049b1dd51b2e96760a2d08baa898b9a129e2e9",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:67e33445ab71cfeecb8307a1bbaa961a47d752c49f307ce186872720a8cecb16",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:failure_modes:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:85e4c0daa35f968810c2283a7d75d7372daad211909dc9e0ca952fcae12dbd6f",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7133b511b678216cf6fa1338a8a3595f742e06d4b3ea9f53b98e51aff4774d26",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:455284b02a33309a00ad033f556b0b01fee4e2c6438a70b41c36028ded18c2b6",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a0aeed5d86a4c7742bec88d2fad5ed864d1bf5639521e5a193fe530eab0ff508",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:93794842cf2eb5d9f692b32aeb9c6f81e32e7c38c47c1f143ff45f0595068d9c",
+      "record_id": "AKC-000016",
+      "unit_id": "ru:AKC-000016:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:81805ae8410caa3cdec73d75ebfd286f8adc4b58b14b1d47b7e94423b661c844",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:d3864497d2cb3e68d36f9ba1b506745393e2f6e3e290cce84333b51d39767b3a",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:feb52bbd7a83e2f30f8f51fbe1a1f31ab9c89c0d092a22dd55493435022db91e",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:8eb9030ce62cc0379a5705d25e1c79c746db3584a9ae5e06b192bea659d7a3ed",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:0ae44c3ca00823cdbfe579fdec4e82f2e84fc67431734166de16a385568f7e47",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:1b09b392e339af32bf477add9c48a61c3a2a3931f058e56cb8f2eb40fbaa5dfe",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:972b1b00ca8a6ea838a07a8679a0a3ba4a5a3074edfad89c625231467617d998",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9099ff2d2287f44e9d5a1be7da403e5fdf881db2b74595d029cf338b9701d6ca",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:4ce4e2d6bace244fe4726a117e60dd87f36edd7c4ef71f985240c24a4960aab6",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:706ef716b1b32525afed08f913633627ceb06f6170ff2b2869c8a88678a80200",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:652651f780601a43d10a63c26ebcec122e796a6e60a6fd4b7ad52ddb4d2b74b6",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:failure_modes:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:84a3335f46d223ed7275094d452dd4ec61cff6b8bbdc1c079d99460fb362b347",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:48b19fadbfa2979485e822251f5773fa0779865a639b564b42695301cde1567e",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:74cedd22420ff118a4e95dfd72b94999d512022796c926138dea775ed82eb1d7",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a23b326db39f178c729b75d01b991b359287e39cd39b9930a25e4d567ad1e2b1",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9880eb419f8650f78efeb5ddec2bd9e6e86aaba7b2d63124d2e085e72062391e",
+      "record_id": "AKC-000017",
+      "unit_id": "ru:AKC-000017:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:f4234296e1b2253f2a99147d42eb7ed3333bc477d06ef3fd033e6c46dc39dbee",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:59d87bf8aec08340487cdaed4f76ab0843dd2f7f3b9ef2d51a160b68365af027",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:0a1475dba04b0f13ccb10b77f71db1440cef004e7b43922593aac90322f0fe52",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:734fa052e475fdfbdd198a12830383e6b3ec3d4b3d835bf754575219bb75b10c",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e3108d8072475f4895f5b95fccd1488afb96550514c8c56c36bda1ba90a054fc",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:4b65e5d65bd9e837596f84836ca2c60be1ea51c72bff73e360998838b895b116",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:eb1d9ba618da89b667dc210958cd8442dcc5558007999046da15079a5d0dde7b",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:59ce3ea803626a4f7c96205beed785a73aea0561c8519b4a982497e063b07966",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:f0fea80613048868f581882861d8e695f1d96a83b84b385a1dcef53a6f01a48d",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:86efe05e36369e2ee32686579eb3c1be9db6696f1a3a2e568b4201d5b560a441",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e4ef8c401c196ec8c2acfb38097d3818655dc74f212f6ad060a6b98ef04560e1",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:failure_modes:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:96bd6b3e9455bbb9da302a72082fa0c2b189ebd9804ec9e19ce86d45ebe918eb",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7e5d3ca8e21512798b18b7c8991b39d571c4066296c724ba7ee2ab907d609aaf",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ff25d7967398186d981a283c648bf871055fa059bfa8b1792f12c5340f61943b",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:01e8ef8effc2197c457ede03651c34cdd6e66384f0f29684dac8c12db6a47c20",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:63895c4f6da3045f0ccc11d1d7570d21b1251a1d3b17940dd0e4835b0368202c",
+      "record_id": "AKC-000018",
+      "unit_id": "ru:AKC-000018:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ea76ff85dd65af5b2315b5c438e558636b8749a0eafecda0221ccecef5d2e7f4",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:640c2345f69f0997737a456871000bfd6498b5279a01028954b7b1d439e46e55",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7b250e5d67cab0ca5e0e69e43f99fdad20ae55a3698c137891893f3936a1f82d",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:f15359b0b7a928bfa664e244a3c6cdfd01622c0ed5fa9da7e2b840b0523a73fa",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ff4452027ffcdf3bbc05e747d6d240b808eba85540fa15a1b01fe452a8d1a9ff",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:0acd8891b232719af16686494de396cdadb09023c5a2db220527c25536769034",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:27a3354bd6f8e064f3bb7494783832375e47a03b7aed7cb1f4e329f773489646",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:95d45d8a9de281680eb250bd2917ae5aea73d2cdd17b86c97283e114549c9e90",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:1507c432ed411e788a3b759e9e5fce9fcd306a30847e9aaeeaef3c1ebd773bf5",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e0269955d03707acf7e927be43026e54bf3cb45bc47ff791ba672d7111cf06f7",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:733a6ee2d4b064d24b7ee2204af2d04d5e94979f3bdfc1e5aa739674447cde61",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:4879abc493753369da23ea9e39fa0949546c572c5851d5b649ed7e18e882d2cc",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:21c4e9ed227ab7c22d8379c4406e9e1ca23fd49cd201f4cfcca1b8ea75000820",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:77bc76c099cb35631e91562bb90bb5721fb83a8a15043c1076f4bc3e5131afc0",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:56b86bcc5b1d27aa602feb6290908e44031332430cdcf7ffde89d8a4873f5253",
+      "record_id": "AKC-000019",
+      "unit_id": "ru:AKC-000019:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:fe6dc0df73542858f6bed79e015436f2a92b35b176307201c483b4771ecbf636",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:d803efa3c78a00794d4cddadb0d00eb92b0d25b2580d2672339c465a90f0dd1f",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:6a1937d1cc273d4c4f3cfa1a255be9d19adbfd7b8ae60810ad992c818c4cbc9c",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:5dd15e693cc4ab5e9e0f194dc5de5a5227e6e7c44b7f5155280892a2811eeeb2",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e74f2572a850dbce1f1ca900ad8879c0d78e17b93e3bb34fc98a6443f00b152a",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:6c075d90ee3b69d729e1452dda521ec24659056c0e2434c6813316729da69f38",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2c9094bc3847bbac985b999aebc5f18ed7d9c1c7a4a30aeaf3206a47f4557fa8",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9b0fd19c6359a000894e693541914764c5d8f2d61852a020c0b68e5d76f4779b",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:6b6802557041ef0063218412cb85d3e1b070092d10203aea4bd84292341d4ded",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:971faecf369d9de5154d827cb7278365172248ca6dae6ae9d9f3ad2f918da999",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7b9bcb13638eeb8642767f8cb2a4eb89e63f4bd770e84702739c58435a8f2941",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ce4d84e188621369e86bdfe48d3700d6c67b5e845f651f0ec12e393ade94f0ab",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e8a8bd8fd72d65afc5f9c804fc8979618bb6d85323bcde9d411336180d4ab450",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:067f4c921688dde2a65abc557672a35ceb1669fd1308d016b505305d0310c169",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2aeddecb0a8be025a95a87a1cfc6f83c98c710c079dc14f9b11aa7565ec46a58",
+      "record_id": "AKC-000020",
+      "unit_id": "ru:AKC-000020:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:57c219ab35810103a6f0e9d9b001ef2d46cbadc57760f18e2aa5f38bfc188715",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:cd51c5602f450276ba56c4786adc30d625fb981b6707a477809cc4010c55e770",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:5db175aa164fd284aadd3dec49c1b2373c0c6069a2eddb2d6f4b308958851840",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9e641334746e7423811a0443fc0a8ad146396679bc8c192cfbfa147cf4dccdf9",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a761bbd2befa0c7309a51fc39d0bc2395b4367a79489eb79daeb88d546f13696",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:298e6c27c22be677994e1775ba6c3e2136deb7b819967a80d9fcb7275d31f52c",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:63b857d55ec227b77e9fe49e4d30c71aa4deba1d8f43fd2311318d48c105de46",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c61a54ae94a46e98229a4d09b472bf30531296ccd7eb224b7fb4f8094c1121ae",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:57af842616ec9d5a51bc6c82d0fe942104c61fa1620008c03f1c8c1f91bdfb10",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:53031c0489a6075cdf6e1c33399c6cb3a81832f9e10da805c1159f17b99066df",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:d0e11ca9742bddef86ff15d62939f5c1f87f402d045959754bc258a2187e5401",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:18269aadc7e8a1e19aa98c3c2efbba60ada633862482616efa08303e3a786fb5",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:753e78ff5a1cfe25895be2d4027336ee63783c4a48d46e40ebdd6c34e67724c5",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:d8584473608669b5e107fde7682299734a42ee68c4a862c625bf89170242144a",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:2f06dfd0fd63f88c81cb969f7bfe1296d3d8ae8dfe818ce3b6b44398b88b5d10",
+      "record_id": "AKC-000021",
+      "unit_id": "ru:AKC-000021:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:8d5e6e83666bc733dc58c0a3428639bff6ce52cf1d6d10a475b1dbc401a3f65e",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:424f13b82227ad6e4d352290c11fc8fe292416874c86c1644ea7f36579f111ed",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:1e235335ef2f90102c77f7f3387fd7afe7a30781cae54b80cf643dac3ee1de66",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:47446cdf4cb6e316565bf5346eb758f1a82d69be8b88fab26a26b10aeeaffbd3",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:260db4be70883f4935438a451fb385d6272b730c650c39b92b7a8ce7b7f26b85",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:3e82861120fdfec180864541eb801444534a57f19f454de68223c3843217798f",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:b14e963c39033d0ca992ea86cb1a36b6e81510fa1f4f72c23e78919d3a2f66e8",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e00cb8a07339192752e2af0f2f340c92b0ca1cba6f3685429ed1d654bd950b58",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:27415f580f358fcb1bccbb577e5112177f226d8b823bffa5175be517cf1b9ea5",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:d6652de6796cbb9de9d55416b45de3d9db6da721f1d783c83fca51032215e860",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:02f3c3692e358b31a42f00e52cbbbf7db1e3597d2349739c6d0bc1116453c848",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a188d6f670c4b4844e8dcabd01fccdeec072c13f4d6486a17ab4d2bf0c4a482a",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:25b8232e230fb946da35bd21b1cc45dbe9a111a0f7a650d86c930905ff60ef35",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:8a1a4210e669492f748c59ddc3d9e4807c3bfa9f6f9f1273cc392d89f5658602",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:046ad93961f25aaf57b7be2aedf55a246f3228cc892dda08f616e60ff5617a44",
+      "record_id": "AKC-000022",
+      "unit_id": "ru:AKC-000022:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:32cb5dbfec4c6e3af6a05045dde71dbd16d452397ee23ffe5832d814979336f6",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:f73b4675d943efccf489d8b8e11ba2d116086f9bb461bd814d673475b1b377dd",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:9bbb8c90749658eb7cb65fdae0bde64a6cdcce191f5b08dab5864fe377603bc8",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:e56ccad07d30cf242cd0fb8750e79210ad00f048e48540e39586836e49641522",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:cb29c0b13f52ffeb97810f9695b80f0061910983a3de9316e80a36434d046627",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:f775b5f907fc378f15ea2a67e998023aab2b510e5b464aef7699504b4ad96067",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a2f658c34336350cac225472acdaa5435895b3fc163bc2a8762ec1035f518293",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:0bac95a77c3d3b00811b9320ddb95b16348271136cf453957c5c3b31fef76162",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:171506f7d464bc748fd92cb814eb0d61f57e5c47967b153e5903b76b5788d371",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:500062e1a4c20bf37e72e0d15fba6323b0b55e439d6410dc7ba3cd3e60e87b23",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ae9899d77bd724c9a966e46b7787ef0c3a759b5c63d162118c6cda38ada25407",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c11818c81151a3377c513bdf88c97bf1c5e5f67cf2ca18370c598f7ade08b362",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:030e44cb19c3ea51f63ab1c7a32e7c4d5b5b6f4a338ca29abf33dfd41d942ade",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:66e306306d8992b186678ba27569cddec7fa5d38228a005d3781ffc799338b2f",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:1c30a1aca45c0075f08d70592f66b4c0bc421a0a43db376777e22d24861c1c96",
+      "record_id": "AKC-000023",
+      "unit_id": "ru:AKC-000023:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:925ae3b88e59a09e24e121ec7e6ecd6984954190c13979e92f3cfdc738d061b4",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-overview:overview:0",
+      "unit_kind": "concept-overview"
+    },
+    {
+      "content_hash": "sha256:2fa416cdae9a9407ad05408e2cd591f3c3f6690a6b32a84e98e48f4eca7d063f",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-section:alternatives:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:0f027d364f866d21572ed457f0e24eca5f6976fd2cf4c7f31f059c0039bfd77d",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-section:applicable_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:7571cbf53bb1880a68776699ede2e372047fd591c095b2cf35ecad9294c2abc4",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-section:assumptions:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:c952d674e4bdeb9543feb850d9a180712b12d421c31287fcaa3384cec213f6f5",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-section:avoid_when:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:705a2b87688a6272a7295f554589cc0850d0af8bfe9599396435c50ddbe7021b",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-section:benefits:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:a246f4aede895c7fc68582be0c9cdccbc678e6c71c8f96d50951a2b6ec9d30e9",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-section:constraints:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ab8fe7816c038465d5f87d2a76a29dfd23e84f3a39f0195118b69a909b651a6d",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-section:counterexamples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:1321cf55927c46b6e8ed8e0c46f29bd606a0949a0d337f58fb5471cad852652f",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-section:data_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:f53cf2ad8a327974ea0be061ebfe98bb64257cc2558253848ccd6722a3277c10",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-section:examples:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:ce8ca3d9717939a7e1348dd806b56ac5a073b4e4c925ec006f90fcb1c975385e",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-section:forces:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:01ec7d26bf75d633e42c2696c379a24291c835c9e329f567ee7c10f6783fdc74",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-section:operational_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:272ed18db451c7fbf881987c61e10c9ab54fcfae85c661d5ba3e19dfb7b85e00",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-section:risks:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:389283e67eca6c7f650d7fb194e1bfdeeeb5a4898f5e642316b4baa7a2e038b5",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-section:security_implications:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:0ca55fede7633a181a2c2674a61c9286b8f670f917e444639c65a7e0cabee2ce",
+      "record_id": "AKC-000024",
+      "unit_id": "ru:AKC-000024:concept-section:tradeoffs:0",
+      "unit_kind": "concept-section"
+    },
+    {
+      "content_hash": "sha256:b846a0f10352ee2d456249829905b0791a9630845f8043867e64c492a9f5c5ed",
+      "record_id": "AKL-000001",
+      "unit_id": "ru:AKL-000001:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:08614b14007559c9dfc50b390708fc3085bec895b983034d23e4c8767463dc07",
+      "record_id": "AKL-000002",
+      "unit_id": "ru:AKL-000002:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:6b33558b195dbf687e6a1f24d46982a24f5d8053d7564e31e8e8c9691b9e2ff9",
+      "record_id": "AKL-000003",
+      "unit_id": "ru:AKL-000003:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:56330edd2c4c1e743d08bf38179d5bde139c4aef71f96c925fa6dc7c398dc76c",
+      "record_id": "AKL-000004",
+      "unit_id": "ru:AKL-000004:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:85bb3a50ae8f7249c43f8385dda1c336dd7887dc4290b912f9adf48d4c030784",
+      "record_id": "AKL-000005",
+      "unit_id": "ru:AKL-000005:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:08615c2ffa94db834384124cd71bdea4098c5a5995493be3580289cdd00f1085",
+      "record_id": "AKL-000006",
+      "unit_id": "ru:AKL-000006:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:3a5c5d3f97875b0742c18b9c55345af311c9bdf006e24ee7110957b593522cd6",
+      "record_id": "AKL-000007",
+      "unit_id": "ru:AKL-000007:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:467064f4c960cad3b6969b46bb5c2d0a0008f0bfc4cbf6170d0ddd137928622a",
+      "record_id": "AKL-000008",
+      "unit_id": "ru:AKL-000008:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:691656937cc1424c2a8df2fbfe28ebb0beecca582c5c9c9a5512dedf48062155",
+      "record_id": "AKL-000009",
+      "unit_id": "ru:AKL-000009:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:b3a794b009c655e38bad745eae33040239f0b08140959a5f465282443df4c0e8",
+      "record_id": "AKL-000010",
+      "unit_id": "ru:AKL-000010:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:a9f4f4bc4cd65f995f741e089fa15d8892173597e48a4aae7b33fb364d443fcc",
+      "record_id": "AKL-000011",
+      "unit_id": "ru:AKL-000011:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:146da0c822bfef58546c302c6eedcfeacd2d7178a620f152c1fbad5152ee5be9",
+      "record_id": "AKL-000012",
+      "unit_id": "ru:AKL-000012:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:11304526b772b91543a21ebb589389ec480538329eb4635267a06b43b3b30de3",
+      "record_id": "AKL-000013",
+      "unit_id": "ru:AKL-000013:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:2400f175e0c2df9de98442ce062c2d62c039547c20480a9ac8833ee737456c71",
+      "record_id": "AKL-000014",
+      "unit_id": "ru:AKL-000014:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:046855f247c29b127910e33d7a56ac5d46f1eb93b9f54b7b5e52329b3b5dd81d",
+      "record_id": "AKL-000015",
+      "unit_id": "ru:AKL-000015:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:328edde40e2c02e991419cf2f144c70aaff244a3a5dd880a90492bca0b7de91e",
+      "record_id": "AKL-000016",
+      "unit_id": "ru:AKL-000016:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:7d8f98d92e2a290e236746fcb948c33940c50220aa5c3d129ba7348d6c154d3a",
+      "record_id": "AKL-000017",
+      "unit_id": "ru:AKL-000017:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:4a48edd8b9f1ff15a71c0a41805d6294c4795b2ba4dd1283c37b332bd947ac22",
+      "record_id": "AKL-000018",
+      "unit_id": "ru:AKL-000018:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:95a7864e463fef38be3a17cf372075b859e38e3aa3618ed0afe135948e92b338",
+      "record_id": "AKL-000019",
+      "unit_id": "ru:AKL-000019:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:01d2c845dce34f5a6bf1da904de428746a0313de1e9f506bd609709cfd0e8ef9",
+      "record_id": "AKL-000020",
+      "unit_id": "ru:AKL-000020:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:ec7eaee9234f3f3f1f5cee1dcc481e545c6b4f5733fed2dc92f697e70647e776",
+      "record_id": "AKL-000021",
+      "unit_id": "ru:AKL-000021:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:779d5e3a8dd4fc1a1d6a06562ff07ae2e1a7700201143d3f2e91c74b29b4c363",
+      "record_id": "AKL-000022",
+      "unit_id": "ru:AKL-000022:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:3c9ac8dde30faa1e2586f09c52f5bd14e59c47155a77f3c06349ed2608873e02",
+      "record_id": "AKL-000023",
+      "unit_id": "ru:AKL-000023:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:a79cf8771e95a0e9f0adf054710ec6d44e21e158cacfda207fb57d6ae10d88b9",
+      "record_id": "AKL-000024",
+      "unit_id": "ru:AKL-000024:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:24b05dfc15caca96954428d7595bcfda5104ac48ded5b7878afb70812747c2e9",
+      "record_id": "AKL-000025",
+      "unit_id": "ru:AKL-000025:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:a6bfec6351403720f1e5a48a60c71c3fe2015aeaed60ce9df0ce4b42f89f7890",
+      "record_id": "AKL-000026",
+      "unit_id": "ru:AKL-000026:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:cf54b279e38dcd3bb3cf43d497a6d0b6acb00bd35517bf4225465475eb0c2b7f",
+      "record_id": "AKL-000027",
+      "unit_id": "ru:AKL-000027:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:f79741c318e1ba6936cace129a37fd99df296a702ddb0777a874f32991929067",
+      "record_id": "AKL-000028",
+      "unit_id": "ru:AKL-000028:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:39a40cdc79059c27502d3aec3564e91fb01528ea42e87b73be4318c752b3d878",
+      "record_id": "AKL-000029",
+      "unit_id": "ru:AKL-000029:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:774d0107396918e5b03610050d68910bf9c97cddc2d1261c746ad23259ed5783",
+      "record_id": "AKL-000030",
+      "unit_id": "ru:AKL-000030:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:609ed94b5426f383ab8befb3c382074eba22749d14ac4cb7407479db60c3cf2b",
+      "record_id": "AKL-000031",
+      "unit_id": "ru:AKL-000031:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:73a11dc5e52eb1691464bf1c98913040d38bc97acf01ba7f6416e3157a155858",
+      "record_id": "AKL-000032",
+      "unit_id": "ru:AKL-000032:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:7f4b011b35204e0dfd3abb068561cf0fd91a14c5ca32ceead4ac741f67694237",
+      "record_id": "AKL-000033",
+      "unit_id": "ru:AKL-000033:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:5c7af5b2b934942570baef5a9a0cbc89ea6a87f38f6b1869b5fe219110497fd8",
+      "record_id": "AKL-000034",
+      "unit_id": "ru:AKL-000034:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:b96c0f154b39d4aa0e9a336210c704024045245827f890eb7e5489d28a4aed53",
+      "record_id": "AKL-000035",
+      "unit_id": "ru:AKL-000035:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:65becb4e653d212365558a6e36f5c8ce2b308d1730b3b87733b7103704f9cef0",
+      "record_id": "AKL-000036",
+      "unit_id": "ru:AKL-000036:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:71d0b68f80fb124c084db0176fdadee7744e8baeb44158e5921a89b7cb33e749",
+      "record_id": "AKL-000037",
+      "unit_id": "ru:AKL-000037:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:cf0c90bf648293ca7e32527c752d06bee116e88e779c92c840164cf1811f1b59",
+      "record_id": "AKL-000038",
+      "unit_id": "ru:AKL-000038:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:1e2d492020932bddd299dacb630a18e4212193158c0f4af2dda25580f245b9a4",
+      "record_id": "AKL-000039",
+      "unit_id": "ru:AKL-000039:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:81c2c5a8b619e54767cf1461eae199563496ea9e44cba6e85e68bb35837a4f7b",
+      "record_id": "AKL-000040",
+      "unit_id": "ru:AKL-000040:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:478944ccd254b617cbc8beacf8dbde34fc61f57e1a7c5213bba8ae92cc567a2d",
+      "record_id": "AKL-000041",
+      "unit_id": "ru:AKL-000041:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:1d87310b485968185d3217d54cffb3bb07064613e345e511aca6584553b364b5",
+      "record_id": "AKL-000042",
+      "unit_id": "ru:AKL-000042:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:66f4c5cbbf9d3f5696817e8a0f64ed99fb4ae67488a6d447a851ed2c334ec55d",
+      "record_id": "AKL-000043",
+      "unit_id": "ru:AKL-000043:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:a8fa216c39de6f83d38ea8564a87e3e892781f9ef6ecc3407bfaba5b45ce0bde",
+      "record_id": "AKL-000044",
+      "unit_id": "ru:AKL-000044:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:cd906089f6089d252b1b3a5fc22cd84af667f6cf130cafae82762dc40c5edaa8",
+      "record_id": "AKL-000045",
+      "unit_id": "ru:AKL-000045:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:cfd6b9cac6e8241af32ed0798cfb06d9add544a88aa9955cf2bcca28cf58b24f",
+      "record_id": "AKL-000046",
+      "unit_id": "ru:AKL-000046:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:e622f529d500614fd2c268dd8407265767c7f14af4d104aed62fc1fa1f49e001",
+      "record_id": "AKL-000047",
+      "unit_id": "ru:AKL-000047:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:3de9a509f9e5e9e1164ea2a1547039e7b4dcee98534413def07a099177de5f33",
+      "record_id": "AKL-000048",
+      "unit_id": "ru:AKL-000048:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:23e4a32e2aa7c39affb77d7001580e9bf5bcd10bdf57af3c1e92b7676f319b00",
+      "record_id": "AKL-000049",
+      "unit_id": "ru:AKL-000049:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:c6a46acda89a264467eab2002d3826a812f08d8450302d5bc37507fb92a5c3bf",
+      "record_id": "AKL-000050",
+      "unit_id": "ru:AKL-000050:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:f4d858a9a699884be02a6e570907df1511c815d4f82abb392e7da15dbb89f8ba",
+      "record_id": "AKL-000051",
+      "unit_id": "ru:AKL-000051:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:ebc09fa3ef43417bdc115d01b7847b2d58dfc9039bf5ac6de8d676214951ddbb",
+      "record_id": "AKL-000052",
+      "unit_id": "ru:AKL-000052:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:c0f327f41fca9e579a07fc2aa4e7491155330d3ee854326b2f5218c32cfb47bc",
+      "record_id": "AKL-000053",
+      "unit_id": "ru:AKL-000053:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:1613bcd3c30ee3e43235bd13a051a188c0e86c09974742cd91bbd9c9898687f6",
+      "record_id": "AKL-000054",
+      "unit_id": "ru:AKL-000054:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:ce614ae2de56f89255c2085e417650024cbf445bf9b51b5498db00c4e991d58c",
+      "record_id": "AKL-000055",
+      "unit_id": "ru:AKL-000055:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:ac7075c789b2f9b27d1661b6529b3335b1a0133d8c8d8f0b468d16b600a9a9f8",
+      "record_id": "AKL-000056",
+      "unit_id": "ru:AKL-000056:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:0d8d1e3282419e445211e55cba3e8460c5f98a3ea68de9ecbbb1e9d2a048a045",
+      "record_id": "AKL-000057",
+      "unit_id": "ru:AKL-000057:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:0a335d2aeef4558c13d3da4da34ed6c4dfffcae4b2e7cdcdbad216f681b3c8e9",
+      "record_id": "AKL-000058",
+      "unit_id": "ru:AKL-000058:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:55f9e6825856fc133a67c90072105834aab07075a7329b0ddb3d6d62f3901ec4",
+      "record_id": "AKL-000059",
+      "unit_id": "ru:AKL-000059:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:1b9163a27ec880d49455623cb400afdef5c88990c60c61d356d01a39e2e76676",
+      "record_id": "AKL-000060",
+      "unit_id": "ru:AKL-000060:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:648bcad08f1a40a4a59769451fb8af03e234c21771e4b18a38cb63c460e2d1c8",
+      "record_id": "AKL-000061",
+      "unit_id": "ru:AKL-000061:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:ffda885975ed1b5dcbce1b1cdf09a2f4cc4bd7fd90a9d33ca67e7f785d779dbf",
+      "record_id": "AKL-000062",
+      "unit_id": "ru:AKL-000062:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:718200e4851a86d5b7a5dd71d696b507ce09d21528ed1d4b94dc39f9fe313fae",
+      "record_id": "AKL-000063",
+      "unit_id": "ru:AKL-000063:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:e25d743aea554975cc4cc2f91d9c0a2972458e23d38f80fd78a642af69b4172c",
+      "record_id": "AKL-000064",
+      "unit_id": "ru:AKL-000064:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:ccf544a591e16b73efe28fef58c93ac1c0f2de18f2da8d3fffadfa00f349a9ae",
+      "record_id": "AKL-000065",
+      "unit_id": "ru:AKL-000065:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:bbf197723c9560f94e0799d6280306cb34a43dfb2fab55e0913655b0f13ca118",
+      "record_id": "AKL-000066",
+      "unit_id": "ru:AKL-000066:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:7f5d1bc0cc054c27777166dfb986445e52121e5c486dbdd2af8c5b0c1ad02f09",
+      "record_id": "AKL-000067",
+      "unit_id": "ru:AKL-000067:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:5bca5c0dcd532d1167929e75d80af31647efa845b2a393fc2ae1735e4c84cad7",
+      "record_id": "AKL-000068",
+      "unit_id": "ru:AKL-000068:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:d8fb56e5276b21c4969f7281234494a1e0e3d7853167f8402a150b7fa7d48c1a",
+      "record_id": "AKL-000069",
+      "unit_id": "ru:AKL-000069:claim:claim:0",
+      "unit_kind": "claim"
+    },
+    {
+      "content_hash": "sha256:18405992b95b2085c1e4daa3c6ca154970398b6d946b83e56d972e1f6fd731db",
+      "record_id": "AKR-000001",
+      "unit_id": "ru:AKR-000001:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:8952d11e355cb8e0393905f58e6b6ce6aa0620650378e1fb4caa57e7ceb0ad32",
+      "record_id": "AKR-000002",
+      "unit_id": "ru:AKR-000002:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:39760e467e29ed4836400789ddc6733e3c5565632d0abc408dfcb374efa36572",
+      "record_id": "AKR-000003",
+      "unit_id": "ru:AKR-000003:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:cc94a0cb7e2a5a5e1e5e7f08bf658b5c173b55b5baface6b7351ad4bdb90a725",
+      "record_id": "AKR-000004",
+      "unit_id": "ru:AKR-000004:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:71b1766012398504a0b1ad4980f485f231c9bbeaf6ad3fa66665cd77c976456c",
+      "record_id": "AKR-000005",
+      "unit_id": "ru:AKR-000005:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:61f9281adb0f46934860938116ba56c1cc6f5112aab5aba7dfefca3b2c7d0433",
+      "record_id": "AKR-000006",
+      "unit_id": "ru:AKR-000006:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:c7fa4fed701cb264a6bb7c5a0af41fe33feab9e2e3fd87b171ad6e4cde0f1b52",
+      "record_id": "AKR-000007",
+      "unit_id": "ru:AKR-000007:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:5399206dfccab53517d14c7a1ea920718f80db4ab16a359601f82ed61b6b087a",
+      "record_id": "AKR-000008",
+      "unit_id": "ru:AKR-000008:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:f610b8a818ae53d9d68fc998ba497ed939f42c0f4bf5b86975bbcc47fc2617dd",
+      "record_id": "AKR-000009",
+      "unit_id": "ru:AKR-000009:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:6bc1ea88dc0da8678c3344654932fec9db3e042fd94ec9be04629a8331daf0b3",
+      "record_id": "AKR-000010",
+      "unit_id": "ru:AKR-000010:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:8d943acf4d3c7df8d2300c9d5b2bbcdfd0025c3217e79a183157ea7006e4362c",
+      "record_id": "AKR-000011",
+      "unit_id": "ru:AKR-000011:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:a4579a070d0ce95c908edc99bbacf26db675167e55155847a91630b4ca5da549",
+      "record_id": "AKR-000012",
+      "unit_id": "ru:AKR-000012:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:9d27262942db400136444e3c051b4db2a1407cc04da77b8d86381b3751840110",
+      "record_id": "AKR-000013",
+      "unit_id": "ru:AKR-000013:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:a69e691aff4fcac121789269a875218532f5ddd8b47f09836ce3bb3926322d17",
+      "record_id": "AKR-000014",
+      "unit_id": "ru:AKR-000014:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:174448d733173a52a138343b5b9aaf0b97e1ef657b8ab201cb06362454dbbdcf",
+      "record_id": "AKR-000015",
+      "unit_id": "ru:AKR-000015:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:1ff39e161dbd387c7500f943ae906b72f5249972c3f12ed1f615a53246144587",
+      "record_id": "AKR-000016",
+      "unit_id": "ru:AKR-000016:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:ec8eee14026ebfb3b7a8e371635466ad6d62714cd55eaa0dbd83935829ae548e",
+      "record_id": "AKR-000017",
+      "unit_id": "ru:AKR-000017:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:a91daad3314c7dc3498de1102ec5107343bb0f3107394ab5148cb245f893ab73",
+      "record_id": "AKR-000018",
+      "unit_id": "ru:AKR-000018:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:57d72400acf49adec2ab8b8b8fae5b5140cef176a2a6796789204e86eb58b293",
+      "record_id": "AKR-000019",
+      "unit_id": "ru:AKR-000019:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:2c8ede2608d625d067c2099e7d2350780adba55baac9f4b9194c595a2e441485",
+      "record_id": "AKR-000020",
+      "unit_id": "ru:AKR-000020:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:12345756002c38015dd0f07c3fdffad04a1658500481506996803118f9b93a30",
+      "record_id": "AKR-000021",
+      "unit_id": "ru:AKR-000021:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:48215f6f142875a448e24bbf48304378324d266b9b70726a64284c7c7c3a5558",
+      "record_id": "AKR-000022",
+      "unit_id": "ru:AKR-000022:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:ec34ef16d10c42164f02cc8801d02ff8c26b0c5ed8558d6bb1457b5a9c07c682",
+      "record_id": "AKR-000023",
+      "unit_id": "ru:AKR-000023:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:da6c1217e8e8d6a9fb9b451c9c05b0727224f8393bbffd904f8c8b1754c8afb9",
+      "record_id": "AKR-000024",
+      "unit_id": "ru:AKR-000024:relationship:relationship:0",
+      "unit_kind": "relationship"
+    },
+    {
+      "content_hash": "sha256:e97bce48775bd783f403870090fdf82b48ad8921a59c3cea41531777f8af2920",
+      "record_id": "AKS-000001",
+      "unit_id": "ru:AKS-000001:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:30a2da722fa2abefbb42d65abbf95fc9b4c097efa46b9a15ddd0ef7c7504ead8",
+      "record_id": "AKS-000002",
+      "unit_id": "ru:AKS-000002:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:d51c56cd6d8e70d8f5bb6e5e2038eb8961d911fc22f6a0f718c28f9301cd08d9",
+      "record_id": "AKS-000003",
+      "unit_id": "ru:AKS-000003:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:be54994c4bb498791af0a594c94aa1a889155c4a93003dfd9164040169e07d25",
+      "record_id": "AKS-000004",
+      "unit_id": "ru:AKS-000004:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:964874c85d898d86d8c68927d3f88bdf63e719965f44d2ec2be4e6e4c63c9b1c",
+      "record_id": "AKS-000005",
+      "unit_id": "ru:AKS-000005:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:7d62b5ac0f6085a2b82e64ff6beddfefa960ec4f0a666a980a24b0c580f725f5",
+      "record_id": "AKS-000006",
+      "unit_id": "ru:AKS-000006:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:923e4a1b0885fae38b9acc117a865ed788128775dc7969d55ab25d0c8089e445",
+      "record_id": "AKS-000007",
+      "unit_id": "ru:AKS-000007:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:952903f20e969b45b32a257b1e453afe51244415a2e021d6a67fea4822da6fb2",
+      "record_id": "AKS-000008",
+      "unit_id": "ru:AKS-000008:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:bb0a11a31e59b0b78c51109c92a04e6c58c8c8f86db605f20d5b2cc9d7ffa52a",
+      "record_id": "AKS-000009",
+      "unit_id": "ru:AKS-000009:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:9f5499a92a0380663b98a84dbc4a75dbbb93af04cece6649f946a6cc9b58c22c",
+      "record_id": "AKS-000010",
+      "unit_id": "ru:AKS-000010:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:0c65e00bfc9972a868316b79b04dc9dc8b0206c86746a60e71eb22fddd29f0b1",
+      "record_id": "AKS-000011",
+      "unit_id": "ru:AKS-000011:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:93ea4b92d036e848bfd847b04064d4d659c1b7f1068562d556dd35d86cee3338",
+      "record_id": "AKS-000012",
+      "unit_id": "ru:AKS-000012:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:792f8a4f1954a0403106e4effbbcb1a449a212d797e52a0dfce2a99f17b0280f",
+      "record_id": "AKS-000013",
+      "unit_id": "ru:AKS-000013:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:cad282f1b05f255ab76fbbd5c7cb6170988f0a8367bf6c78bbc27fe015b0dfb4",
+      "record_id": "AKS-000014",
+      "unit_id": "ru:AKS-000014:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:ed829f60143a0cdcfa080b98af89a097dcfd512f66b5f5d9aac135eef687f478",
+      "record_id": "AKS-000015",
+      "unit_id": "ru:AKS-000015:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:d0de8c74fe23c3aabc5d3d85983b77057e8c6d5cb27bd340642eb4c0664c471d",
+      "record_id": "AKS-000016",
+      "unit_id": "ru:AKS-000016:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:81a9e0aad9aa57e00028469d928ed8ac32297733bbfcbf6ab47d28a78226782b",
+      "record_id": "AKS-000017",
+      "unit_id": "ru:AKS-000017:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:748f52da56cb6ab112f26d6825f68f6b007044d6fcab9a82fd086bd1607338c9",
+      "record_id": "AKS-000018",
+      "unit_id": "ru:AKS-000018:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:4fbb05fd04c34dd873cc42792eebcfbe0b46bc6382be6efed68339c699a8e7ac",
+      "record_id": "AKS-000019",
+      "unit_id": "ru:AKS-000019:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:05fe5c8ad589edc73ca3c2895dcf52aa0b25a77106d2e0240f0e01eaa093341e",
+      "record_id": "AKS-000020",
+      "unit_id": "ru:AKS-000020:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:41dc8105ef9fb67a178cc82e5c3608328a33a2afe29313f7c5fc65aa5372b5a3",
+      "record_id": "AKS-000021",
+      "unit_id": "ru:AKS-000021:source:metadata:0",
+      "unit_kind": "source"
+    },
+    {
+      "content_hash": "sha256:7f1ea04e4dbc3c8b85ac542f1253dbcb1bcf856bfd60149df03224e5c0ffb46e",
+      "record_id": "AKS-000022",
+      "unit_id": "ru:AKS-000022:source:metadata:0",
+      "unit_kind": "source"
+    }
+  ]
+}

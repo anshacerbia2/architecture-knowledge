@@ -17,7 +17,7 @@ M1 Knowledge Kernel            → implemented; ontology questions remain open
 M2 Validation Kernel           → implemented; hosted CI proven
 M3 Reference Knowledge Corpus  → implemented; final independent re-audit passed
 M4 Knowledge Graph             → implemented; independent audit passed
-M5 Hybrid Retrieval            → M5 READY; not started
+M5 Hybrid Retrieval            → implemented; independent audit pending
 M6 Architecture RAG            → future
 M7 Decision Assistant          → future
 M8 Review Platform             → future
@@ -161,7 +161,8 @@ records, and permits 8 governed relationships in default traversal while
 preserving 16 explicit exclusions. Audit hardening is on
 `7c40879963ffe1c1f647bfa35d36f47045786a8c`; exact-SHA hosted Ubuntu, Windows,
 legacy mutation, focused graph mutation, and graph-currentness evidence is in
-`docs/m4-independent-audit-report.md`. M5 has not started.
+`docs/m4-independent-audit-report.md`. At that historical M4 exit, M5 had not
+started; the M5 section below records the subsequent implementation.
 
 ## M5 — Search and Hybrid Retrieval
 
@@ -190,7 +191,14 @@ Exit criteria:
 - related concepts can be expanded through governed edges;
 - evidence and citations remain attached.
 
-Status: future; depends on M4 and sufficient corpus coverage.
+Status: implemented; independent M5 audit pending. The implementation provides
+487 deterministic semantic units, a generation-safe PostgreSQL 16/pgvector
+schema, `simple` weighted full-text search, pinned 1536-dimensional production
+embedding contract plus deterministic CI adapter, weighted RRF, default-deny
+M4 graph expansion, fail-closed filters, token budgeting, a 46-case draft
+benchmark, and separate Linux/Windows/PostgreSQL CI boundaries. See
+`docs/m5-hybrid-retrieval.md`, ADR 0006, and the implementation report. This
+status does not start M6 or elevate any content lifecycle state.
 
 ## M6 — Architecture RAG MVP
 

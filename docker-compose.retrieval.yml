@@ -1,0 +1,19 @@
+services:
+  retrieval-postgres:
+    image: pgvector/pgvector:0.8.2-pg16-bookworm
+    environment:
+      POSTGRES_DB: architecture_knowledge
+      POSTGRES_USER: aks
+      POSTGRES_PASSWORD: aks
+    ports:
+      - "127.0.0.1:54329:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aks -d architecture_knowledge"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    volumes:
+      - retrieval-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  retrieval-postgres-data:

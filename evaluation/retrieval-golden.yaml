@@ -1,0 +1,51 @@
+version: 1
+status: draft
+notes: >-
+  M5 implementation benchmark. It is not reviewed or canonical architecture knowledge.
+cases:
+  - { id: RET-001, category: exact-record-id, text: "AKC-000014", relevant_record_ids: [AKC-000014], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-002, category: exact-concept-name, text: "Transactional Outbox", relevant_record_ids: [AKC-000014], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-003, category: alias, text: "Outbox pattern", relevant_record_ids: [AKC-000014], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-004, category: paraphrase, text: "How can I avoid saving data successfully while losing the event?", relevant_record_ids: [AKC-000014], acceptable_record_ids: [AKC-000010], filters: {}, no_answer: false, holdout: true }
+  - { id: RET-005, category: exact-record-id, text: "AKC-000011", relevant_record_ids: [AKC-000011], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-006, category: problem-query, text: "prevent duplicate payment processing with idempotent operation semantics", relevant_record_ids: [AKC-000011], acceptable_record_ids: [AKC-000012], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-007, category: exact-concept-name, text: "Retry", relevant_record_ids: [AKC-000012], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-008, category: risk-query, text: "retry pattern failure amplification and duplicate effects", relevant_record_ids: [AKC-000012], acceptable_record_ids: [AKC-000021, AKC-000011], filters: {}, no_answer: false, holdout: true }
+  - { id: RET-009, category: alias, text: "Circuit breaker pattern", relevant_record_ids: [AKC-000013], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-010, category: problem-query, text: "stop callers from overwhelming a failing dependency", relevant_record_ids: [AKC-000013], acceptable_record_ids: [AKC-000021], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-011, category: exact-concept-name, text: "Eventual Consistency", relevant_record_ids: [AKC-000016], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-012, category: paraphrase, text: "replicas converge later instead of in one atomic instant", relevant_record_ids: [AKC-000016], filters: {}, no_answer: false, holdout: true }
+  - { id: RET-013, category: exact-concept-name, text: "Saga", relevant_record_ids: [AKC-000015], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-014, category: tradeoff-query, text: "distributed transaction with compensating actions and eventual consistency", relevant_record_ids: [AKC-000015], acceptable_record_ids: [AKC-000016], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-015, category: exact-record-id, text: "AKC-000018", relevant_record_ids: [AKC-000018], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-016, category: alias, text: "OIDC", relevant_record_ids: [AKC-000018], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-017, category: security-query, text: "What should I validate in an identity token?", relevant_record_ids: [AKC-000018], filters: {}, no_answer: false, holdout: true }
+  - { id: RET-018, category: exact-concept-name, text: "OAuth 2.0 Authorization Framework", relevant_record_ids: [AKC-000017], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-019, category: security-query, text: "authorization code redirect URI and PKCE OAuth", relevant_record_ids: [AKC-000017], filters: { domains: [security-privacy] }, no_answer: false, holdout: false }
+  - { id: RET-020, category: failure-mode-query, text: "OAuth token confusion", relevant_record_ids: [AKC-000023], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-021, category: exact-concept-name, text: "Modular Monolith", relevant_record_ids: [AKC-000007], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-022, category: tradeoff-query, text: "modular monolithic architecture versus microservice architecture", relevant_record_ids: [AKC-000007, AKC-000008], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-023, category: exact-concept-name, text: "Microservices", relevant_record_ids: [AKC-000008], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-024, category: risk-query, text: "independent services can erode boundaries", relevant_record_ids: [AKC-000022], acceptable_record_ids: [AKC-000008], filters: {}, no_answer: false, holdout: true }
+  - { id: RET-025, category: alias, text: "Ports and Adapters", relevant_record_ids: [AKC-000009], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-026, category: technical-keyword, text: "EDA event-driven architecture", relevant_record_ids: [AKC-000010], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-027, category: exact-concept-name, text: "Availability", relevant_record_ids: [AKC-000004], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-028, category: multi-concept-query, text: "availability compared with reliability", relevant_record_ids: [AKC-000004, AKC-000005], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-029, category: alias, text: "QAS", relevant_record_ids: [AKC-000006], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-030, category: problem-query, text: "quality attribute scenario stimulus response measure", relevant_record_ids: [AKC-000006], filters: { domains: [quality] }, no_answer: false, holdout: true }
+  - { id: RET-031, category: exact-concept-name, text: "Observability", relevant_record_ids: [AKC-000019], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-032, category: problem-query, text: "investigate system behavior through telemetry", relevant_record_ids: [AKC-000019], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-033, category: alias, text: "ADR", relevant_record_ids: [AKC-000020], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-034, category: documentation-query, text: "record architecture decision context consequences alternatives", relevant_record_ids: [AKC-000020], filters: {}, no_answer: false, holdout: true }
+  - { id: RET-035, category: exact-concept-name, text: "First-Principles Thinking", relevant_record_ids: [AKC-000001], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-036, category: alias, text: "Whole-system reasoning", relevant_record_ids: [AKC-000002], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-037, category: structured-filter, text: "protocol", relevant_record_ids: [AKC-000017, AKC-000018], filters: { concept_types: [protocol], domains: [security-privacy] }, no_answer: false, holdout: false }
+  - { id: RET-038, category: structured-filter, text: "failure mode", relevant_record_ids: [AKC-000021, AKC-000022, AKC-000023, AKC-000024], filters: { concept_types: [failure-mode] }, no_answer: false, holdout: false }
+  - { id: RET-039, category: exact-relationship-id, text: "AKR-000014", relevant_record_ids: [AKR-000014], filters: { unit_kinds: [relationship] }, no_answer: false, holdout: false }
+  - { id: RET-040, category: exact-claim-id, text: "AKL-000061", relevant_record_ids: [AKL-000061], filters: { unit_kinds: [claim] }, no_answer: false, holdout: false }
+  - { id: RET-041, category: source-query, text: "OpenID Connect Core source", relevant_record_ids: [AKS-000019], filters: { unit_kinds: [source] }, no_answer: false, holdout: true }
+  - { id: RET-042, category: failure-mode-query, text: "unreconciled state divergence", relevant_record_ids: [AKC-000024], filters: {}, no_answer: false, holdout: false }
+  - { id: RET-043, category: negative-no-answer, text: "quantum error correction topology", relevant_record_ids: [], filters: { domains: [not-in-corpus] }, no_answer: true, holdout: true }
+  - { id: RET-044, category: negative-no-answer, text: "GPU shader rasterization", relevant_record_ids: [], filters: { concept_types: [not-in-corpus] }, no_answer: true, holdout: false }
+  - { id: RET-045, category: adversarial-broad, text: "' OR 1=1; DROP TABLE retrieval_units; --", relevant_record_ids: [], filters: { domains: [not-in-corpus] }, prohibited_record_ids: [AKC-000001], no_answer: true, holdout: false }
+  - { id: RET-046, category: negative-no-answer, text: "mobile push notification vendor pricing", relevant_record_ids: [], filters: { statuses: [not-in-corpus] }, no_answer: true, holdout: true }

@@ -59,6 +59,16 @@
     },
     {
       "path": "docs/README.md",
+      "target": "adr/0006-hybrid-retrieval-architecture.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "adr/0006-hybrid-retrieval-architecture.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "kernel-decisions.md",
       "status": "valid"
     },
@@ -129,6 +139,16 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m5-hybrid-retrieval.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m5-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "ontology-stress-test.md",
       "status": "valid"
     },
@@ -184,12 +204,12 @@
     },
     {
       "path": "README.md",
-      "target": "docs/m4-implementation-report.md",
+      "target": "docs/m4-independent-audit-report.md",
       "status": "valid"
     },
     {
       "path": "README.md",
-      "target": "docs/m4-independent-audit-report.md",
+      "target": "docs/m5-hybrid-retrieval.md",
       "status": "valid"
     },
     {
@@ -229,8 +249,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 45,
+    "checked_link_count": 49,
     "broken_link_count": 0,
-    "markdown_file_count": 70
+    "markdown_file_count": 73
   }
 }

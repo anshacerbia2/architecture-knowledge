@@ -7,9 +7,10 @@ knowledge units are authored.
 
 ## Current scope
 
-The repository currently implements M0 through M4: project definition,
-knowledge and validation kernels, the reference corpus, and a deterministic
-knowledge graph/query layer:
+The repository currently implements M0 through M5: project definition,
+knowledge and validation kernels, the reference corpus, a deterministic
+knowledge graph/query layer, and a hybrid retrieval implementation awaiting
+independent M5 audit:
 
 - ontology registries and architecture classification facets;
 - stable canonical identifier rules;
@@ -21,11 +22,14 @@ knowledge graph/query layer:
 - deterministic TypeScript validators, fixtures, CI, and integrity reports;
 - twenty drafted reference knowledge units plus four supporting failure-mode
   concepts, with first-class claims, admitted evidence, and typed relationships;
-- versioned graph and exact metadata indexes with a default-deny query CLI.
+- versioned graph and exact metadata indexes with a default-deny query CLI;
+- deterministic semantic retrieval units, PostgreSQL full-text search,
+  pgvector, weighted rank fusion, governed graph expansion, and bounded
+  evidence packets.
 
-It intentionally contains no decision-guide examples, full-text or vector
-search, natural-language query parsing, RAG, graph database, or publication
-output. Those belong to later milestones.
+It intentionally contains no decision-guide examples, RAG answer generation,
+LLM prompt orchestration, graph database, or publication output. Those belong
+to later milestones.
 
 ## Classification model
 
@@ -94,6 +98,8 @@ knowledge unit.
 - `generated/integrity/`: deterministic, generated integrity reports.
 - `generated/graph/` and `generated/indexes/`: deterministic M4 graph and exact
   metadata views; never hand-edit them.
+- `generated/retrieval/`: deterministic M5 retrieval units and manifest;
+  vectors remain operational database state and are not committed.
 
 ## Extending the kernel
 
@@ -107,8 +113,9 @@ M4 passed its independent adversarial audit and the exact audit-fix SHA passed
 hosted clean-checkout validation on Ubuntu and Windows, including graph
 currentness and mutation gates. See
 [`docs/m4-independent-audit-report.md`](docs/m4-independent-audit-report.md)
-for the `M5 READY` decision and [`docs/m4-implementation-report.md`](docs/m4-implementation-report.md)
-for the historical implementation handoff. M5 has not started.
+for the historical `M5 READY` entry decision. M5 is implemented and awaiting an
+independent M5 audit; see [`docs/m5-hybrid-retrieval.md`](docs/m5-hybrid-retrieval.md).
+M6 has not started.
 
 ## Validation commands
 
@@ -126,6 +133,16 @@ pnpm graph:generate
 pnpm graph:check
 pnpm graph:query -- get AKC-000018
 pnpm test:mutation:graph
+pnpm retrieval:units:check
+pnpm retrieval:db:up
+pnpm retrieval:migrate
+pnpm retrieval:index
+pnpm retrieval:check
+pnpm retrieval:query -- "AKC-000014" --mode hybrid --json
+pnpm retrieval:evaluate
+pnpm retrieval:benchmark
+pnpm retrieval:benchmark
+pnpm test:mutation:retrieval
 ```
 
 Focused `validate:*` commands are listed in the root `AGENTS.md` and

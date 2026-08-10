@@ -43,6 +43,9 @@ jobs:
       - name: Verify generated graph and indexes
         run: pnpm graph:check
 
+      - name: Verify generated retrieval units
+        run: pnpm retrieval:units:check
+
       - name: Run unit and regression tests
         run: pnpm test
 
@@ -78,3 +81,58 @@ jobs:
 
       - name: Enforce focused graph mutation threshold
         run: pnpm test:mutation:graph
+
+      - name: Enforce focused retrieval mutation threshold
+        run: pnpm test:mutation:retrieval
+
+  retrieval-integration:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.2-pg16-bookworm
+        env:
+          POSTGRES_DB: architecture_knowledge
+          POSTGRES_USER: aks
+          POSTGRES_PASSWORD: aks
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U aks -d architecture_knowledge" --health-interval 2s
+          --health-timeout 3s --health-retries 30
+    env:
+      RETRIEVAL_DATABASE_URL: postgresql://aks:aks@127.0.0.1:5432/architecture_knowledge
+      RETRIEVAL_EMBEDDING_PROVIDER: fake
+      RETRIEVAL_DATA_CLASSIFICATION: public
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.23.0
+          run_install: false
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Migrate retrieval database
+        run: pnpm retrieval:migrate
+      - name: Build deterministic retrieval generation
+        run: pnpm retrieval:index
+      - name: Verify retrieval currentness
+        run: pnpm retrieval:check
+      - name: Run PostgreSQL retrieval integration tests
+        run:
+          pnpm exec vitest run tests/retrieval-database.integration.test.ts
+          tests/retrieval-query.test.ts
+      - name: Evaluate all retrieval modes
+        run: pnpm retrieval:evaluate
+      - name: Record informational retrieval performance
+        run: pnpm retrieval:benchmark
+      - name: Smoke hybrid graph query
+        run:
+          pnpm retrieval:query -- "What should I validate in an identity token?" --mode hybrid-graph
+          --top-k 5 --json
