@@ -1,0 +1,1248 @@
+﻿2026-08-10T07:57:00.0112328Z Current runner version: '2.336.0'
+2026-08-10T07:57:00.0140675Z ##[group]Runner Image Provisioner
+2026-08-10T07:57:00.0141591Z Hosted Compute Agent
+2026-08-10T07:57:00.0142205Z Version: 20260707.563
+2026-08-10T07:57:00.0143017Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+2026-08-10T07:57:00.0143732Z Build Date: 2026-07-07T19:33:50Z
+2026-08-10T07:57:00.0144667Z Worker ID: {9ced83a7-ff23-4b80-854b-183aa0fc8c13}
+2026-08-10T07:57:00.0145450Z Azure Region: westus
+2026-08-10T07:57:00.0146043Z ##[endgroup]
+2026-08-10T07:57:00.0147682Z ##[group]Operating System
+2026-08-10T07:57:00.0148337Z Ubuntu
+2026-08-10T07:57:00.0148849Z 24.04.4
+2026-08-10T07:57:00.0149838Z LTS
+2026-08-10T07:57:00.0150382Z ##[endgroup]
+2026-08-10T07:57:00.0151193Z ##[group]Runner Image
+2026-08-10T07:57:00.0151953Z Image: ubuntu-24.04
+2026-08-10T07:57:00.0152514Z Version: 20260720.247.2
+2026-08-10T07:57:00.0153866Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+2026-08-10T07:57:00.0155867Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+2026-08-10T07:57:00.0156907Z ##[endgroup]
+2026-08-10T07:57:00.0157981Z ##[group]GITHUB_TOKEN Permissions
+2026-08-10T07:57:00.0160162Z Contents: read
+2026-08-10T07:57:00.0160798Z Metadata: read
+2026-08-10T07:57:00.0161418Z ##[endgroup]
+2026-08-10T07:57:00.0163757Z Secret source: Actions
+2026-08-10T07:57:00.0165128Z Prepare workflow directory
+2026-08-10T07:57:00.0707687Z Prepare all required actions
+2026-08-10T07:57:00.0758921Z Getting action download info
+2026-08-10T07:57:00.4190203Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-08-10T07:57:00.9187436Z Download action repository 'pnpm/action-setup@v4' (SHA:b906affcce14559ad1aafd4ab0e942779e9f58b1)
+2026-08-10T07:57:01.3968737Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-08-10T07:57:01.6210209Z Complete job name: retrieval-integration
+2026-08-10T07:57:01.6907385Z ##[group]Checking docker version
+2026-08-10T07:57:01.6921188Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-08-10T07:57:01.8227803Z '1.48'
+2026-08-10T07:57:01.8239460Z Docker daemon API version: '1.48'
+2026-08-10T07:57:01.8240882Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2026-08-10T07:57:01.8513485Z '1.48'
+2026-08-10T07:57:01.8516931Z Docker client API version: '1.48'
+2026-08-10T07:57:01.8527212Z ##[endgroup]
+2026-08-10T07:57:01.8532378Z ##[group]Clean up resources from previous jobs
+2026-08-10T07:57:01.8541005Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=e46c56"
+2026-08-10T07:57:01.8730654Z ##[command]/usr/bin/docker network prune --force --filter "label=e46c56"
+2026-08-10T07:57:01.8901099Z ##[endgroup]
+2026-08-10T07:57:01.8901702Z ##[group]Create local container network
+2026-08-10T07:57:01.8912757Z ##[command]/usr/bin/docker network create --label e46c56 github_network_14120e2806854964b42d9b808596d5c3
+2026-08-10T07:57:01.9698118Z 1351ff59485b40a93ac851323e7606c2d82471c670342f8886a0123fce0ebf9e
+2026-08-10T07:57:01.9709107Z ##[endgroup]
+2026-08-10T07:57:01.9741807Z ##[group]Starting postgres service container
+2026-08-10T07:57:01.9765594Z ##[command]/usr/bin/docker pull pgvector/pgvector:0.8.2-pg16-bookworm
+2026-08-10T07:57:02.8824505Z 0.8.2-pg16-bookworm: Pulling from pgvector/pgvector
+2026-08-10T07:57:03.1602896Z 9b02e9fcb401: Pulling fs layer
+2026-08-10T07:57:03.1604516Z 00cbddfda95d: Pulling fs layer
+2026-08-10T07:57:03.1605422Z abba0514855b: Pulling fs layer
+2026-08-10T07:57:03.1605857Z ab7008ef24f7: Pulling fs layer
+2026-08-10T07:57:03.1606471Z 58306f588cc8: Pulling fs layer
+2026-08-10T07:57:03.1607315Z dcd19d131e85: Pulling fs layer
+2026-08-10T07:57:03.1608025Z b9bd4f060e77: Pulling fs layer
+2026-08-10T07:57:03.1612634Z 3ef6f5cde6ed: Pulling fs layer
+2026-08-10T07:57:03.1613639Z 1a02645c4ae0: Pulling fs layer
+2026-08-10T07:57:03.1614929Z 4a542bded99f: Pulling fs layer
+2026-08-10T07:57:03.1616404Z 0ef25a3a59d4: Pulling fs layer
+2026-08-10T07:57:03.1618463Z b56c991682ce: Pulling fs layer
+2026-08-10T07:57:03.1619737Z d05653db956a: Pulling fs layer
+2026-08-10T07:57:03.1621070Z f0a3f2ba6a7b: Pulling fs layer
+2026-08-10T07:57:03.1622225Z 0f084233221f: Pulling fs layer
+2026-08-10T07:57:03.1622795Z 169a0405fdd2: Pulling fs layer
+2026-08-10T07:57:03.1623562Z ab7008ef24f7: Waiting
+2026-08-10T07:57:03.1624789Z 58306f588cc8: Waiting
+2026-08-10T07:57:03.1625322Z dcd19d131e85: Waiting
+2026-08-10T07:57:03.1625894Z b9bd4f060e77: Waiting
+2026-08-10T07:57:03.1626330Z 3ef6f5cde6ed: Waiting
+2026-08-10T07:57:03.1626752Z 1a02645c4ae0: Waiting
+2026-08-10T07:57:03.1627180Z 4a542bded99f: Waiting
+2026-08-10T07:57:03.1627616Z 0ef25a3a59d4: Waiting
+2026-08-10T07:57:03.1628050Z b56c991682ce: Waiting
+2026-08-10T07:57:03.1628555Z d05653db956a: Waiting
+2026-08-10T07:57:03.1629022Z f0a3f2ba6a7b: Waiting
+2026-08-10T07:57:03.1629364Z 0f084233221f: Waiting
+2026-08-10T07:57:03.1629645Z 169a0405fdd2: Waiting
+2026-08-10T07:57:03.3977331Z 00cbddfda95d: Verifying Checksum
+2026-08-10T07:57:03.3978449Z 00cbddfda95d: Download complete
+2026-08-10T07:57:03.4216115Z abba0514855b: Verifying Checksum
+2026-08-10T07:57:03.4225148Z abba0514855b: Download complete
+2026-08-10T07:57:03.5344366Z 9b02e9fcb401: Verifying Checksum
+2026-08-10T07:57:03.5365142Z 9b02e9fcb401: Download complete
+2026-08-10T07:57:03.6445179Z ab7008ef24f7: Verifying Checksum
+2026-08-10T07:57:03.6475294Z ab7008ef24f7: Download complete
+2026-08-10T07:57:03.7448090Z 58306f588cc8: Download complete
+2026-08-10T07:57:03.7761281Z dcd19d131e85: Verifying Checksum
+2026-08-10T07:57:03.7761987Z dcd19d131e85: Download complete
+2026-08-10T07:57:03.8786696Z b9bd4f060e77: Verifying Checksum
+2026-08-10T07:57:03.8807193Z b9bd4f060e77: Download complete
+2026-08-10T07:57:03.9727240Z 3ef6f5cde6ed: Verifying Checksum
+2026-08-10T07:57:03.9735684Z 3ef6f5cde6ed: Download complete
+2026-08-10T07:57:04.1265141Z 4a542bded99f: Verifying Checksum
+2026-08-10T07:57:04.1269478Z 4a542bded99f: Download complete
+2026-08-10T07:57:04.1991162Z 0ef25a3a59d4: Verifying Checksum
+2026-08-10T07:57:04.1995152Z 0ef25a3a59d4: Download complete
+2026-08-10T07:57:04.3895130Z b56c991682ce: Verifying Checksum
+2026-08-10T07:57:04.3904334Z b56c991682ce: Download complete
+2026-08-10T07:57:04.4667540Z d05653db956a: Verifying Checksum
+2026-08-10T07:57:04.4668271Z d05653db956a: Download complete
+2026-08-10T07:57:04.4911187Z 1a02645c4ae0: Verifying Checksum
+2026-08-10T07:57:04.4911781Z 1a02645c4ae0: Download complete
+2026-08-10T07:57:04.6246736Z f0a3f2ba6a7b: Verifying Checksum
+2026-08-10T07:57:04.6248115Z f0a3f2ba6a7b: Download complete
+2026-08-10T07:57:04.7109029Z 0f084233221f: Verifying Checksum
+2026-08-10T07:57:04.7109699Z 0f084233221f: Download complete
+2026-08-10T07:57:04.7290492Z 169a0405fdd2: Verifying Checksum
+2026-08-10T07:57:04.7292596Z 169a0405fdd2: Download complete
+2026-08-10T07:57:05.2521451Z 9b02e9fcb401: Pull complete
+2026-08-10T07:57:07.7608002Z 00cbddfda95d: Pull complete
+2026-08-10T07:57:07.9334869Z abba0514855b: Pull complete
+2026-08-10T07:57:07.9886897Z ab7008ef24f7: Pull complete
+2026-08-10T07:57:08.3697288Z 58306f588cc8: Pull complete
+2026-08-10T07:57:08.4837019Z dcd19d131e85: Pull complete
+2026-08-10T07:57:08.4937334Z b9bd4f060e77: Pull complete
+2026-08-10T07:57:08.5113536Z 3ef6f5cde6ed: Pull complete
+2026-08-10T07:57:12.8571722Z 1a02645c4ae0: Pull complete
+2026-08-10T07:57:12.8777196Z 4a542bded99f: Pull complete
+2026-08-10T07:57:12.8963986Z 0ef25a3a59d4: Pull complete
+2026-08-10T07:57:12.9106802Z b56c991682ce: Pull complete
+2026-08-10T07:57:12.9248188Z d05653db956a: Pull complete
+2026-08-10T07:57:12.9354695Z f0a3f2ba6a7b: Pull complete
+2026-08-10T07:57:12.9955793Z 0f084233221f: Pull complete
+2026-08-10T07:57:13.0797374Z 169a0405fdd2: Pull complete
+2026-08-10T07:57:13.0848281Z Digest: sha256:00ba258a66dac104fd5171074a0084462a64a1369d8513f3d0a634e2f24d15bc
+2026-08-10T07:57:13.0861368Z Status: Downloaded newer image for pgvector/pgvector:0.8.2-pg16-bookworm
+2026-08-10T07:57:13.0873629Z docker.io/pgvector/pgvector:0.8.2-pg16-bookworm
+2026-08-10T07:57:13.0946210Z ##[command]/usr/bin/docker create --name 1d1ec8d560a24ea385f86a65cbff5df7_pgvectorpgvector082pg16bookworm_7cee8e --label e46c56 --network github_network_14120e2806854964b42d9b808596d5c3 --network-alias postgres -p 5432:5432 --health-cmd "pg_isready -U aks -d architecture_knowledge" --health-interval 2s --health-timeout 3s --health-retries 30 -e "POSTGRES_DB=architecture_knowledge" -e "POSTGRES_USER=aks" -e "POSTGRES_PASSWORD=aks" -e GITHUB_ACTIONS=true -e CI=true pgvector/pgvector:0.8.2-pg16-bookworm
+2026-08-10T07:57:13.1277388Z 2dec329532f98e4e37f0bf05895f008472ab0f85636079f3cbe144e009bd337b
+2026-08-10T07:57:13.1302959Z ##[command]/usr/bin/docker start 2dec329532f98e4e37f0bf05895f008472ab0f85636079f3cbe144e009bd337b
+2026-08-10T07:57:13.4311687Z 2dec329532f98e4e37f0bf05895f008472ab0f85636079f3cbe144e009bd337b
+2026-08-10T07:57:13.4350191Z ##[command]/usr/bin/docker ps --all --filter id=2dec329532f98e4e37f0bf05895f008472ab0f85636079f3cbe144e009bd337b --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-08-10T07:57:13.4597478Z 2dec329532f98e4e37f0bf05895f008472ab0f85636079f3cbe144e009bd337b Up Less than a second (health: starting)
+2026-08-10T07:57:13.4640863Z ##[command]/usr/bin/docker port 2dec329532f98e4e37f0bf05895f008472ab0f85636079f3cbe144e009bd337b
+2026-08-10T07:57:13.4876379Z 5432/tcp -> 0.0.0.0:5432
+2026-08-10T07:57:13.4885296Z 5432/tcp -> [::]:5432
+2026-08-10T07:57:13.4944584Z ##[endgroup]
+2026-08-10T07:57:13.4964056Z ##[group]Waiting for all services to be ready
+2026-08-10T07:57:13.4987407Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 2dec329532f98e4e37f0bf05895f008472ab0f85636079f3cbe144e009bd337b
+2026-08-10T07:57:13.5203357Z starting
+2026-08-10T07:57:13.5262132Z postgres service is starting, waiting 2 seconds before checking again.
+2026-08-10T07:57:15.5265815Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 2dec329532f98e4e37f0bf05895f008472ab0f85636079f3cbe144e009bd337b
+2026-08-10T07:57:15.5428186Z healthy
+2026-08-10T07:57:15.5456948Z postgres service is healthy.
+2026-08-10T07:57:15.5457812Z ##[endgroup]
+2026-08-10T07:57:15.5843755Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T07:57:15.5852534Z ##[group]Run actions/checkout@v4
+2026-08-10T07:57:15.5852971Z with:
+2026-08-10T07:57:15.5853232Z   repository: anshacerbia2/architecture-knowledge
+2026-08-10T07:57:15.5856100Z   token: ***
+2026-08-10T07:57:15.5856314Z   ssh-strict: true
+2026-08-10T07:57:15.5856517Z   ssh-user: git
+2026-08-10T07:57:15.5856724Z   persist-credentials: true
+2026-08-10T07:57:15.5856954Z   clean: true
+2026-08-10T07:57:15.5857161Z   sparse-checkout-cone-mode: true
+2026-08-10T07:57:15.5857434Z   fetch-depth: 1
+2026-08-10T07:57:15.5857629Z   fetch-tags: false
+2026-08-10T07:57:15.5857836Z   show-progress: true
+2026-08-10T07:57:15.5858039Z   lfs: false
+2026-08-10T07:57:15.5858273Z   submodules: false
+2026-08-10T07:57:15.5858483Z   set-safe-directory: true
+2026-08-10T07:57:15.5858727Z   allow-unsafe-pr-checkout: false
+2026-08-10T07:57:15.5859209Z env:
+2026-08-10T07:57:15.5859704Z   RETRIEVAL_DATABASE_URL: ***127.0.0.1:5432/architecture_knowledge
+2026-08-10T07:57:15.5860072Z   RETRIEVAL_EMBEDDING_PROVIDER: fake
+2026-08-10T07:57:15.5860346Z   RETRIEVAL_DATA_CLASSIFICATION: public
+2026-08-10T07:57:15.5860606Z ##[endgroup]
+2026-08-10T07:57:15.7091423Z Syncing repository: anshacerbia2/architecture-knowledge
+2026-08-10T07:57:15.7093461Z ##[group]Getting Git version info
+2026-08-10T07:57:15.7094527Z Working directory is '/home/runner/work/architecture-knowledge/architecture-knowledge'
+2026-08-10T07:57:15.7100071Z [command]/usr/bin/git version
+2026-08-10T07:57:15.7331590Z git version 2.54.0
+2026-08-10T07:57:15.7336670Z ##[endgroup]
+2026-08-10T07:57:15.7365955Z Temporarily overriding HOME='/home/runner/work/_temp/5f4f3b93-a471-419d-b9cd-a9d7f327cd2c' before making global git config changes
+2026-08-10T07:57:15.7367644Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-10T07:57:15.7369683Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/architecture-knowledge/architecture-knowledge
+2026-08-10T07:57:15.7457601Z Deleting the contents of '/home/runner/work/architecture-knowledge/architecture-knowledge'
+2026-08-10T07:57:15.7476173Z ##[group]Initializing the repository
+2026-08-10T07:57:15.7485790Z [command]/usr/bin/git init /home/runner/work/architecture-knowledge/architecture-knowledge
+2026-08-10T07:57:15.7619471Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-08-10T07:57:15.7620856Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-08-10T07:57:15.7645317Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-08-10T07:57:15.7646405Z hint: call:
+2026-08-10T07:57:15.7683428Z hint:
+2026-08-10T07:57:15.7685152Z hint: 	git config --global init.defaultBranch <name>
+2026-08-10T07:57:15.7687591Z hint:
+2026-08-10T07:57:15.7688406Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-08-10T07:57:15.7689983Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-08-10T07:57:15.7690933Z hint:
+2026-08-10T07:57:15.7692559Z hint: 	git branch -m <name>
+2026-08-10T07:57:15.7693230Z hint:
+2026-08-10T07:57:15.7694637Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-08-10T07:57:15.7696175Z Initialized empty Git repository in /home/runner/work/architecture-knowledge/architecture-knowledge/.git/
+2026-08-10T07:57:15.7722429Z [command]/usr/bin/git remote add origin https://github.com/anshacerbia2/architecture-knowledge
+2026-08-10T07:57:15.7736072Z ##[endgroup]
+2026-08-10T07:57:15.7736819Z ##[group]Disabling automatic garbage collection
+2026-08-10T07:57:15.7737736Z [command]/usr/bin/git config --local gc.auto 0
+2026-08-10T07:57:15.7846235Z ##[endgroup]
+2026-08-10T07:57:15.7848001Z ##[group]Setting up auth
+2026-08-10T07:57:15.7849554Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-10T07:57:15.7886220Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-10T07:57:15.8465996Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-10T07:57:15.8639955Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-10T07:57:15.9007725Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-10T07:57:15.9011764Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-10T07:57:15.9259038Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-08-10T07:57:15.9307237Z ##[endgroup]
+2026-08-10T07:57:15.9308535Z ##[group]Fetching the repository
+2026-08-10T07:57:15.9319290Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +6ce4f701dea01aa85439651f6d9929f8597afe69:refs/remotes/origin/main
+2026-08-10T07:57:16.6555800Z From https://github.com/anshacerbia2/architecture-knowledge
+2026-08-10T07:57:16.6556707Z  * [new ref]         6ce4f701dea01aa85439651f6d9929f8597afe69 -> origin/main
+2026-08-10T07:57:16.6595132Z ##[endgroup]
+2026-08-10T07:57:16.6595995Z ##[group]Determining the checkout info
+2026-08-10T07:57:16.6598820Z ##[endgroup]
+2026-08-10T07:57:16.6606027Z [command]/usr/bin/git sparse-checkout disable
+2026-08-10T07:57:16.6677459Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-08-10T07:57:16.6750833Z ##[group]Checking out the ref
+2026-08-10T07:57:16.6751906Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-08-10T07:57:16.7207122Z Switched to a new branch 'main'
+2026-08-10T07:57:16.7208238Z branch 'main' set up to track 'origin/main'.
+2026-08-10T07:57:16.7253779Z ##[endgroup]
+2026-08-10T07:57:16.7335367Z [command]/usr/bin/git log -1 --format=%H
+2026-08-10T07:57:16.7369292Z 6ce4f701dea01aa85439651f6d9929f8597afe69
+2026-08-10T07:57:16.7603575Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T07:57:16.7605866Z ##[group]Run pnpm/action-setup@v4
+2026-08-10T07:57:16.7606147Z with:
+2026-08-10T07:57:16.7606330Z   version: 10.23.0
+2026-08-10T07:57:16.7606528Z   run_install: false
+2026-08-10T07:57:16.7606754Z   dest: ~/setup-pnpm
+2026-08-10T07:57:16.7606963Z   cache: false
+2026-08-10T07:57:16.7607179Z   cache_dependency_path: pnpm-lock.yaml
+2026-08-10T07:57:16.7607466Z   package_json_file: package.json
+2026-08-10T07:57:16.7607715Z   standalone: false
+2026-08-10T07:57:16.7607916Z env:
+2026-08-10T07:57:16.7608438Z   RETRIEVAL_DATABASE_URL: ***127.0.0.1:5432/architecture_knowledge
+2026-08-10T07:57:16.7608817Z   RETRIEVAL_EMBEDDING_PROVIDER: fake
+2026-08-10T07:57:16.7609151Z   RETRIEVAL_DATA_CLASSIFICATION: public
+2026-08-10T07:57:16.7609427Z ##[endgroup]
+2026-08-10T07:57:16.9266161Z ##[group]Running self-installer...
+2026-08-10T07:57:17.5691763Z (node:2426) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-08-10T07:57:17.5705059Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-10T07:57:17.7395574Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-08-10T07:57:17.7625608Z Packages: +1
+2026-08-10T07:57:17.7655183Z +
+2026-08-10T07:57:18.2060529Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
+2026-08-10T07:57:18.2369131Z 
+2026-08-10T07:57:18.2369913Z dependencies:
+2026-08-10T07:57:18.2370854Z + pnpm 10.23.0 (11.21.0 is available)
+2026-08-10T07:57:18.2371432Z 
+2026-08-10T07:57:18.2398035Z Done in 940ms
+2026-08-10T07:57:18.2572317Z ##[endgroup]
+2026-08-10T07:57:18.2573341Z Installation Completed!
+2026-08-10T07:57:18.2752398Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T07:57:18.2753797Z ##[group]Run actions/setup-node@v4
+2026-08-10T07:57:18.2754053Z with:
+2026-08-10T07:57:18.2754556Z   node-version-file: .nvmrc
+2026-08-10T07:57:18.2754790Z   cache: pnpm
+2026-08-10T07:57:18.2754983Z   always-auth: false
+2026-08-10T07:57:18.2755198Z   check-latest: false
+2026-08-10T07:57:18.2757672Z   token: ***
+2026-08-10T07:57:18.2757863Z env:
+2026-08-10T07:57:18.2758274Z   RETRIEVAL_DATABASE_URL: ***127.0.0.1:5432/architecture_knowledge
+2026-08-10T07:57:18.2758641Z   RETRIEVAL_EMBEDDING_PROVIDER: fake
+2026-08-10T07:57:18.2758913Z   RETRIEVAL_DATA_CLASSIFICATION: public
+2026-08-10T07:57:18.2759288Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-08-10T07:57:18.2759595Z ##[endgroup]
+2026-08-10T07:57:18.4330275Z Node version file is not JSON file
+2026-08-10T07:57:18.4332363Z Resolved .nvmrc as 24.11.1
+2026-08-10T07:57:18.4355919Z Attempting to download 24.11.1...
+2026-08-10T07:57:18.4477692Z (node:2462) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-10T07:57:18.4479868Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-10T07:57:19.2028909Z Acquiring 24.11.1 - x64 from https://github.com/actions/node-versions/releases/download/24.11.1-19282993875/node-24.11.1-linux-x64.tar.gz
+2026-08-10T07:57:19.8828521Z Extracting ...
+2026-08-10T07:57:19.8988771Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/c09fa379-bfbf-4346-9c27-725f7a30bfab -f /home/runner/work/_temp/0a1a6aba-c9dd-4801-94af-d6b6617162b9
+2026-08-10T07:57:21.2713511Z Adding to the cache ...
+2026-08-10T07:57:24.0187708Z ##[group]Environment details
+2026-08-10T07:57:24.3318267Z node: v24.11.1
+2026-08-10T07:57:24.3334805Z npm: 11.6.2
+2026-08-10T07:57:24.3338536Z yarn: 1.22.22
+2026-08-10T07:57:24.3339804Z ##[endgroup]
+2026-08-10T07:57:24.3347939Z [command]/home/runner/setup-pnpm/node_modules/.bin/pnpm store path --silent
+2026-08-10T07:57:24.7422399Z /home/runner/setup-pnpm/node_modules/.bin/store/v10
+2026-08-10T07:57:25.0031022Z Cache hit for: node-cache-Linux-x64-pnpm-1e3137200eb7f7f9e33d94e731a1c4330dca12f756b18bada6bd042666dbca8c
+2026-08-10T07:57:25.0167492Z (node:2462) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-08-10T07:57:26.3061821Z Received 0 of 31338769 (0.0%), 0.0 MBs/sec
+2026-08-10T07:57:26.7366413Z Received 31338769 of 31338769 (100.0%), 20.9 MBs/sec
+2026-08-10T07:57:26.7367333Z Cache Size: ~30 MB (31338769 B)
+2026-08-10T07:57:26.7400507Z [command]/usr/bin/tar -xf /home/runner/work/_temp/57be78ba-9347-49c1-a156-f4314e38f115/cache.tzst -P -C /home/runner/work/architecture-knowledge/architecture-knowledge --use-compress-program unzstd
+2026-08-10T07:57:27.3587110Z Cache restored successfully
+2026-08-10T07:57:27.3625674Z Cache restored from key: node-cache-Linux-x64-pnpm-1e3137200eb7f7f9e33d94e731a1c4330dca12f756b18bada6bd042666dbca8c
+2026-08-10T07:57:27.3819838Z ##[group]Run pnpm install --frozen-lockfile
+2026-08-10T07:57:27.3820271Z [36;1mpnpm install --frozen-lockfile[0m
+2026-08-10T07:57:27.3871046Z shell: /usr/bin/bash -e {0}
+2026-08-10T07:57:27.3897274Z env:
+2026-08-10T07:57:27.3898149Z   RETRIEVAL_DATABASE_URL: ***127.0.0.1:5432/architecture_knowledge
+2026-08-10T07:57:27.3898633Z   RETRIEVAL_EMBEDDING_PROVIDER: fake
+2026-08-10T07:57:27.3898932Z   RETRIEVAL_DATA_CLASSIFICATION: public
+2026-08-10T07:57:27.3899271Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-08-10T07:57:27.3899585Z ##[endgroup]
+2026-08-10T07:57:27.8023263Z Lockfile is up to date, resolution step is skipped
+2026-08-10T07:57:27.8404676Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-08-10T07:57:27.8889043Z Packages: +241
+2026-08-10T07:57:27.8896206Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-08-10T07:57:28.7191389Z Progress: resolved 241, reused 241, downloaded 0, added 241, done
+2026-08-10T07:57:28.9034753Z 
+2026-08-10T07:57:28.9044849Z dependencies:
+2026-08-10T07:57:28.9045396Z + ajv 8.17.1
+2026-08-10T07:57:28.9045876Z + ajv-formats 3.0.1
+2026-08-10T07:57:28.9046496Z + pg 8.16.3
+2026-08-10T07:57:28.9046988Z + yaml 2.8.1
+2026-08-10T07:57:28.9047252Z 
+2026-08-10T07:57:28.9051182Z devDependencies:
+2026-08-10T07:57:28.9058179Z + @stryker-mutator/core 9.6.1
+2026-08-10T07:57:28.9059172Z + @stryker-mutator/vitest-runner 9.6.1
+2026-08-10T07:57:28.9060080Z + @types/node 24.10.1
+2026-08-10T07:57:28.9060831Z + @types/pg 8.15.5
+2026-08-10T07:57:28.9061505Z + @vitest/coverage-v8 4.0.16
+2026-08-10T07:57:28.9062242Z + prettier 3.8.1
+2026-08-10T07:57:28.9062876Z + tsx 4.20.6
+2026-08-10T07:57:28.9063522Z + typescript 5.9.3
+2026-08-10T07:57:28.9064445Z + vitest 4.0.16
+2026-08-10T07:57:28.9064935Z 
+2026-08-10T07:57:28.9066111Z ╭ Warning ─────────────────────────────────────────────────────────────────────╮
+2026-08-10T07:57:28.9067447Z │                                                                              │
+2026-08-10T07:57:28.9069275Z │   Ignored build scripts: esbuild.                                            │
+2026-08-10T07:57:28.9070778Z │   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+2026-08-10T07:57:28.9072239Z │   to run scripts.                                                            │
+2026-08-10T07:57:28.9073566Z │                                                                              │
+2026-08-10T07:57:28.9079099Z ╰──────────────────────────────────────────────────────────────────────────────╯
+2026-08-10T07:57:28.9079889Z 
+2026-08-10T07:57:28.9196780Z Done in 1.4s using pnpm v10.23.0
+2026-08-10T07:57:28.9376341Z ##[group]Run pnpm retrieval:migrate
+2026-08-10T07:57:28.9376713Z [36;1mpnpm retrieval:migrate[0m
+2026-08-10T07:57:28.9422244Z shell: /usr/bin/bash -e {0}
+2026-08-10T07:57:28.9422527Z env:
+2026-08-10T07:57:28.9423092Z   RETRIEVAL_DATABASE_URL: ***127.0.0.1:5432/architecture_knowledge
+2026-08-10T07:57:28.9423522Z   RETRIEVAL_EMBEDDING_PROVIDER: fake
+2026-08-10T07:57:28.9423873Z   RETRIEVAL_DATA_CLASSIFICATION: public
+2026-08-10T07:57:28.9424585Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-08-10T07:57:28.9424948Z ##[endgroup]
+2026-08-10T07:57:29.2798696Z 
+2026-08-10T07:57:29.2800461Z > architecture-knowledge-system@0.2.0 retrieval:migrate /home/runner/work/architecture-knowledge/architecture-knowledge
+2026-08-10T07:57:29.2802208Z > tsx src/retrieval-cli.ts migrate
+2026-08-10T07:57:29.2802917Z 
+2026-08-10T07:57:30.1116923Z Applied 1 retrieval migration(s).
+2026-08-10T07:57:30.1407421Z ##[group]Run pnpm retrieval:index
+2026-08-10T07:57:30.1408010Z [36;1mpnpm retrieval:index[0m
+2026-08-10T07:57:30.1479902Z shell: /usr/bin/bash -e {0}
+2026-08-10T07:57:30.1480372Z env:
+2026-08-10T07:57:30.1481484Z   RETRIEVAL_DATABASE_URL: ***127.0.0.1:5432/architecture_knowledge
+2026-08-10T07:57:30.1482207Z   RETRIEVAL_EMBEDDING_PROVIDER: fake
+2026-08-10T07:57:30.1482739Z   RETRIEVAL_DATA_CLASSIFICATION: public
+2026-08-10T07:57:30.1483379Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-08-10T07:57:30.1483990Z ##[endgroup]
+2026-08-10T07:57:30.5271160Z 
+2026-08-10T07:57:30.5272958Z > architecture-knowledge-system@0.2.0 retrieval:index /home/runner/work/architecture-knowledge/architecture-knowledge
+2026-08-10T07:57:30.5275100Z > tsx src/retrieval-cli.ts index
+2026-08-10T07:57:30.5275731Z 
+2026-08-10T07:57:33.1090106Z {
+2026-08-10T07:57:33.1091000Z   "embedding_dimension": 1536,
+2026-08-10T07:57:33.1091941Z   "embedding_model": "token-hash-v1",
+2026-08-10T07:57:33.1103578Z   "embedding_provider": "deterministic-fake",
+2026-08-10T07:57:33.1105257Z   "generation_id": "rg:sha256:bf55d08944f7f21c8b84f31a9",
+2026-08-10T07:57:33.1106703Z   "graph_input_fingerprint": "sha256:ad827bcfa37e9cb0a0510dbc51ab2149598e2e3200b2fa68c25490faa34ddc68",
+2026-08-10T07:57:33.1108384Z   "manifest_hash": "sha256:7d0cc14860c46a54459441d7282a89fec165fad36577f0fc2a24f1b8218ff817",
+2026-08-10T07:57:33.1109525Z   "performance": {
+2026-08-10T07:57:33.1110171Z     "embedding_cache_hit_count": 0,
+2026-08-10T07:57:33.1110882Z     "embedding_provider_duration_ms": 108.327,
+2026-08-10T07:57:33.1111559Z     "embedding_requested_count": 487,
+2026-08-10T07:57:33.1112182Z     "index_build_duration_ms": 1155.533,
+2026-08-10T07:57:33.1112790Z     "reused_active_generation": false
+2026-08-10T07:57:33.1113308Z   },
+2026-08-10T07:57:33.1114041Z   "repository_commit": "6ce4f701dea01aa85439651f6d9929f8597afe69",
+2026-08-10T07:57:33.1115592Z   "retrieval_manifest_root": "sha256:a3998c4b4a24dd12caefd22389b3c59b13f9b947f842c6ae10881121c92de0e2",
+2026-08-10T07:57:33.1116685Z   "status": "active",
+2026-08-10T07:57:33.1117454Z   "unit_count": 487
+2026-08-10T07:57:33.1117994Z }
+2026-08-10T07:57:33.1118252Z 
+2026-08-10T07:57:33.1521899Z ##[group]Run pnpm retrieval:check
+2026-08-10T07:57:33.1522441Z [36;1mpnpm retrieval:check[0m
+2026-08-10T07:57:33.1588782Z shell: /usr/bin/bash -e {0}
+2026-08-10T07:57:33.1589220Z env:
+2026-08-10T07:57:33.1590072Z   RETRIEVAL_DATABASE_URL: ***127.0.0.1:5432/architecture_knowledge
+2026-08-10T07:57:33.1591075Z   RETRIEVAL_EMBEDDING_PROVIDER: fake
+2026-08-10T07:57:33.1591594Z   RETRIEVAL_DATA_CLASSIFICATION: public
+2026-08-10T07:57:33.1592203Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-08-10T07:57:33.1592764Z ##[endgroup]
+2026-08-10T07:57:33.4755510Z 
+2026-08-10T07:57:33.4768298Z > architecture-knowledge-system@0.2.0 retrieval:check /home/runner/work/architecture-knowledge/architecture-knowledge
+2026-08-10T07:57:33.4778439Z > tsx src/retrieval-cli.ts check
+2026-08-10T07:57:33.4787232Z 
+2026-08-10T07:57:35.0920990Z {
+2026-08-10T07:57:35.0921970Z   "embedding_dimension": 1536,
+2026-08-10T07:57:35.0923112Z   "embedding_model": "token-hash-v1",
+2026-08-10T07:57:35.0924555Z   "embedding_provider": "deterministic-fake",
+2026-08-10T07:57:35.0944422Z   "generation_id": "rg:sha256:bf55d08944f7f21c8b84f31a9",
+2026-08-10T07:57:35.0945901Z   "graph_input_fingerprint": "sha256:ad827bcfa37e9cb0a0510dbc51ab2149598e2e3200b2fa68c25490faa34ddc68",
+2026-08-10T07:57:35.0948901Z   "manifest_hash": "sha256:7d0cc14860c46a54459441d7282a89fec165fad36577f0fc2a24f1b8218ff817",
+2026-08-10T07:57:35.0950277Z   "repository_commit": "6ce4f701dea01aa85439651f6d9929f8597afe69",
+2026-08-10T07:57:35.0951719Z   "retrieval_manifest_root": "sha256:a3998c4b4a24dd12caefd22389b3c59b13f9b947f842c6ae10881121c92de0e2",
+2026-08-10T07:57:35.0952851Z   "status": "active",
+2026-08-10T07:57:35.0953411Z   "unit_count": 487
+2026-08-10T07:57:35.0954305Z }
+2026-08-10T07:57:35.0954763Z 
+2026-08-10T07:57:35.1351581Z ##[group]Run pnpm exec vitest run tests/retrieval-database.integration.test.ts tests/retrieval-query.test.ts
+2026-08-10T07:57:35.1353164Z [36;1mpnpm exec vitest run tests/retrieval-database.integration.test.ts tests/retrieval-query.test.ts[0m
+2026-08-10T07:57:35.1414499Z shell: /usr/bin/bash -e {0}
+2026-08-10T07:57:35.1414792Z env:
+2026-08-10T07:57:35.1415564Z   RETRIEVAL_DATABASE_URL: ***127.0.0.1:5432/architecture_knowledge
+2026-08-10T07:57:35.1416241Z   RETRIEVAL_EMBEDDING_PROVIDER: fake
+2026-08-10T07:57:35.1416797Z   RETRIEVAL_DATA_CLASSIFICATION: public
+2026-08-10T07:57:35.1417393Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-08-10T07:57:35.1417967Z ##[endgroup]
+2026-08-10T07:57:35.7985306Z 
+2026-08-10T07:57:35.7996287Z [1m[46m RUN [49m[22m [36mv4.0.16 [39m[90m/home/runner/work/architecture-knowledge/architecture-knowledge[39m
+2026-08-10T07:57:35.8014515Z 
+2026-08-10T07:57:36.8433807Z  [32m✓[39m tests/retrieval-query.test.ts [2m([22m[2m11 tests[22m[2m)[22m[33m 513[2mms[22m[39m
+2026-08-10T07:57:39.8509950Z  [32m✓[39m tests/retrieval-database.integration.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 2560[2mms[22m[39m
+2026-08-10T07:57:39.8516403Z      [33m[2m✓[22m[39m builds, queries, and verifies a complete active generation [33m 908[2mms[22m[39m
+2026-08-10T07:57:39.8530100Z      [33m[2m✓[22m[39m keeps the active generation when malformed embeddings fail [33m 943[2mms[22m[39m
+2026-08-10T07:57:39.8531503Z      [33m[2m✓[22m[39m detects row and generation tampering [33m 675[2mms[22m[39m
+2026-08-10T07:57:39.8634921Z 
+2026-08-10T07:57:39.8676270Z [2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+2026-08-10T07:57:39.8677635Z [2m      Tests [22m [1m[32m15 passed[39m[22m[90m (15)[39m
+2026-08-10T07:57:39.8681019Z [2m   Start at [22m 07:57:35
+2026-08-10T07:57:39.8682318Z [2m   Duration [22m 4.03s[2m (transform 384ms, setup 0ms, import 616ms, tests 3.07s, environment 0ms)[22m
+2026-08-10T07:57:39.8683087Z 
+2026-08-10T07:57:39.9019623Z ##[group]Run pnpm retrieval:evaluate
+2026-08-10T07:57:39.9019979Z [36;1mpnpm retrieval:evaluate[0m
+2026-08-10T07:57:39.9069704Z shell: /usr/bin/bash -e {0}
+2026-08-10T07:57:39.9070135Z env:
+2026-08-10T07:57:39.9070945Z   RETRIEVAL_DATABASE_URL: ***127.0.0.1:5432/architecture_knowledge
+2026-08-10T07:57:39.9071607Z   RETRIEVAL_EMBEDDING_PROVIDER: fake
+2026-08-10T07:57:39.9072100Z   RETRIEVAL_DATA_CLASSIFICATION: public
+2026-08-10T07:57:39.9072648Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-08-10T07:57:39.9073458Z ##[endgroup]
+2026-08-10T07:57:40.2482241Z 
+2026-08-10T07:57:40.2498604Z > architecture-knowledge-system@0.2.0 retrieval:evaluate /home/runner/work/architecture-knowledge/architecture-knowledge
+2026-08-10T07:57:40.2506714Z > tsx src/retrieval-cli.ts evaluate
+2026-08-10T07:57:40.2507088Z 
+2026-08-10T07:57:43.3679897Z {
+2026-08-10T07:57:43.3680791Z   "benchmark_status": "draft",
+2026-08-10T07:57:43.3681741Z   "benchmark_version": 1,
+2026-08-10T07:57:43.3683024Z   "case_count": 46,
+2026-08-10T07:57:43.3688857Z   "evidence_class": "deterministic-provider functional benchmark; not real-provider semantic-quality evidence",
+2026-08-10T07:57:43.3690221Z   "gates": {
+2026-08-10T07:57:43.3691016Z     "failures": [],
+2026-08-10T07:57:43.3691922Z     "passed": true
+2026-08-10T07:57:43.3692540Z   },
+2026-08-10T07:57:43.3693168Z   "modes": {
+2026-08-10T07:57:43.3693796Z     "hybrid": {
+2026-08-10T07:57:43.3694662Z       "case_count": 46,
+2026-08-10T07:57:43.3695394Z       "citation_completeness": 1,
+2026-08-10T07:57:43.3696273Z       "excluded_edge_leakage": 0,
+2026-08-10T07:57:43.3697061Z       "mrr_at_10": 0.8405797101449276,
+2026-08-10T07:57:43.3697862Z       "ndcg_at_10": 0.9232813191878061,
+2026-08-10T07:57:43.3698653Z       "no_answer_accuracy": 1,
+2026-08-10T07:57:43.3699447Z       "precision_at_5": 0.2130434782608696,
+2026-08-10T07:57:43.3700208Z       "prohibited_result_count": 0,
+2026-08-10T07:57:43.3700857Z       "recall_at_1": 0.8315217391304348,
+2026-08-10T07:57:43.3701539Z       "recall_at_10": 0.967391304347826,
+2026-08-10T07:57:43.3702153Z       "recall_at_5": 0.9565217391304348,
+2026-08-10T07:57:43.3702796Z       "source_locator_completeness": 1
+2026-08-10T07:57:43.3703492Z     },
+2026-08-10T07:57:43.3703955Z     "hybrid-graph": {
+2026-08-10T07:57:43.3704708Z       "case_count": 46,
+2026-08-10T07:57:43.3705337Z       "citation_completeness": 1,
+2026-08-10T07:57:43.3706036Z       "excluded_edge_leakage": 0,
+2026-08-10T07:57:43.3706476Z       "mrr_at_10": 0.8405797101449276,
+2026-08-10T07:57:43.3706965Z       "ndcg_at_10": 0.9232813191878061,
+2026-08-10T07:57:43.3707429Z       "no_answer_accuracy": 1,
+2026-08-10T07:57:43.3707872Z       "precision_at_5": 0.2130434782608696,
+2026-08-10T07:57:43.3708380Z       "prohibited_result_count": 0,
+2026-08-10T07:57:43.3708832Z       "recall_at_1": 0.8315217391304348,
+2026-08-10T07:57:43.3709290Z       "recall_at_10": 0.967391304347826,
+2026-08-10T07:57:43.3709784Z       "recall_at_5": 0.9565217391304348,
+2026-08-10T07:57:43.3710397Z       "source_locator_completeness": 1
+2026-08-10T07:57:43.3710838Z     },
+2026-08-10T07:57:43.3711144Z     "lexical": {
+2026-08-10T07:57:43.3711485Z       "case_count": 46,
+2026-08-10T07:57:43.3711914Z       "citation_completeness": 1,
+2026-08-10T07:57:43.3712402Z       "excluded_edge_leakage": 0,
+2026-08-10T07:57:43.3712868Z       "mrr_at_10": 0.6739130434782609,
+2026-08-10T07:57:43.3713319Z       "ndcg_at_10": 0.7608695652173914,
+2026-08-10T07:57:43.3713622Z       "no_answer_accuracy": 1,
+2026-08-10T07:57:43.3713926Z       "precision_at_5": 0.15217391304347833,
+2026-08-10T07:57:43.3714930Z       "prohibited_result_count": 0,
+2026-08-10T07:57:43.3715478Z       "recall_at_1": 0.7336956521739131,
+2026-08-10T07:57:43.3716019Z       "recall_at_10": 0.7608695652173914,
+2026-08-10T07:57:43.3716557Z       "recall_at_5": 0.7608695652173914,
+2026-08-10T07:57:43.3717104Z       "source_locator_completeness": 1
+2026-08-10T07:57:43.3717554Z     },
+2026-08-10T07:57:43.3717867Z     "vector": {
+2026-08-10T07:57:43.3718780Z       "case_count": 46,
+2026-08-10T07:57:43.3719285Z       "citation_completeness": 1,
+2026-08-10T07:57:43.3719786Z       "excluded_edge_leakage": 0,
+2026-08-10T07:57:43.3720290Z       "mrr_at_10": 0.7536231884057972,
+2026-08-10T07:57:43.3720866Z       "ndcg_at_10": 0.8363247974486757,
+2026-08-10T07:57:43.3721338Z       "no_answer_accuracy": 1,
+2026-08-10T07:57:43.3721803Z       "precision_at_5": 0.1869565217391305,
+2026-08-10T07:57:43.3722305Z       "prohibited_result_count": 0,
+2026-08-10T07:57:43.3723039Z       "recall_at_1": 0.7445652173913043,
+2026-08-10T07:57:43.3723533Z       "recall_at_10": 0.8641304347826086,
+2026-08-10T07:57:43.3724021Z       "recall_at_5": 0.8532608695652174,
+2026-08-10T07:57:43.3724736Z       "source_locator_completeness": 1
+2026-08-10T07:57:43.3725178Z     }
+2026-08-10T07:57:43.3725451Z   }
+2026-08-10T07:57:43.3725715Z }
+2026-08-10T07:57:43.3725861Z 
+2026-08-10T07:57:43.4159098Z ##[group]Run pnpm retrieval:benchmark
+2026-08-10T07:57:43.4159716Z [36;1mpnpm retrieval:benchmark[0m
+2026-08-10T07:57:43.4206513Z shell: /usr/bin/bash -e {0}
+2026-08-10T07:57:43.4206808Z env:
+2026-08-10T07:57:43.4207411Z   RETRIEVAL_DATABASE_URL: ***127.0.0.1:5432/architecture_knowledge
+2026-08-10T07:57:43.4207819Z   RETRIEVAL_EMBEDDING_PROVIDER: fake
+2026-08-10T07:57:43.4208118Z   RETRIEVAL_DATA_CLASSIFICATION: public
+2026-08-10T07:57:43.4208904Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-08-10T07:57:43.4209438Z ##[endgroup]
+2026-08-10T07:57:43.7385050Z 
+2026-08-10T07:57:43.7386539Z > architecture-knowledge-system@0.2.0 retrieval:benchmark /home/runner/work/architecture-knowledge/architecture-knowledge
+2026-08-10T07:57:43.7387826Z > tsx src/retrieval-cli.ts benchmark
+2026-08-10T07:57:43.7388163Z 
+2026-08-10T07:57:46.8986422Z {
+2026-08-10T07:57:46.9005223Z   "durations": {
+2026-08-10T07:57:46.9196651Z     "end_to_end_hybrid_graph": {
+2026-08-10T07:57:46.9205195Z       "p50_ms": 7.878,
+2026-08-10T07:57:46.9302872Z       "p95_ms": 10.444,
+2026-08-10T07:57:46.9303755Z       "samples": 20
+2026-08-10T07:57:46.9305119Z     },
+2026-08-10T07:57:46.9305735Z     "graph_expansion": {
+2026-08-10T07:57:46.9306661Z       "p50_ms": 0.046,
+2026-08-10T07:57:46.9307290Z       "p95_ms": 0.112,
+2026-08-10T07:57:46.9312760Z       "samples": 20
+2026-08-10T07:57:46.9316412Z     },
+2026-08-10T07:57:46.9316783Z     "hybrid_database": {
+2026-08-10T07:57:46.9317187Z       "p50_ms": 6.627,
+2026-08-10T07:57:46.9317547Z       "p95_ms": 7.236,
+2026-08-10T07:57:46.9317897Z       "samples": 20
+2026-08-10T07:57:46.9318210Z     },
+2026-08-10T07:57:46.9318548Z     "lexical_database": {
+2026-08-10T07:57:46.9318916Z       "p50_ms": 0.945,
+2026-08-10T07:57:46.9319254Z       "p95_ms": 1.481,
+2026-08-10T07:57:46.9319591Z       "samples": 20
+2026-08-10T07:57:46.9319917Z     },
+2026-08-10T07:57:46.9320229Z     "query_embedding": {
+2026-08-10T07:57:46.9320592Z       "p50_ms": 0.272,
+2026-08-10T07:57:46.9320935Z       "p95_ms": 0.341,
+2026-08-10T07:57:46.9321270Z       "samples": 20
+2026-08-10T07:57:46.9321571Z     },
+2026-08-10T07:57:46.9321875Z     "vector_database": {
+2026-08-10T07:57:46.9322237Z       "p50_ms": 5.757,
+2026-08-10T07:57:46.9322566Z       "p95_ms": 6.628,
+2026-08-10T07:57:46.9322909Z       "samples": 20
+2026-08-10T07:57:46.9323232Z     }
+2026-08-10T07:57:46.9323524Z   },
+2026-08-10T07:57:46.9323905Z   "embedding_model": "token-hash-v1",
+2026-08-10T07:57:46.9324790Z   "embedding_provider": "deterministic-fake",
+2026-08-10T07:57:46.9325438Z   "evidence_class": "informational-host-performance",
+2026-08-10T07:57:46.9326074Z   "external_provider_latency_included": false,
+2026-08-10T07:57:46.9326722Z   "generation_id": "rg:sha256:bf55d08944f7f21c8b84f31a9",
+2026-08-10T07:57:46.9327242Z   "inventory": {
+2026-08-10T07:57:46.9327631Z     "database_row_count": 487,
+2026-08-10T07:57:46.9328091Z     "database_size_bytes": 18988055,
+2026-08-10T07:57:46.9328579Z     "embedding_cache_count": 487,
+2026-08-10T07:57:46.9329004Z     "embedding_count": 487,
+2026-08-10T07:57:46.9329528Z     "retrieval_unit_count": 487
+2026-08-10T07:57:46.9329908Z   },
+2026-08-10T07:57:46.9330200Z   "measured_runs": 20,
+2026-08-10T07:57:46.9330556Z   "warmup_runs": 3
+2026-08-10T07:57:46.9330919Z }
+2026-08-10T07:57:46.9331098Z 
+2026-08-10T07:57:46.9606106Z ##[group]Run pnpm retrieval:query -- "What should I validate in an identity token?" --mode hybrid-graph --top-k 5 --json
+2026-08-10T07:57:46.9607651Z [36;1mpnpm retrieval:query -- "What should I validate in an identity token?" --mode hybrid-graph --top-k 5 --json[0m
+2026-08-10T07:57:46.9708896Z shell: /usr/bin/bash -e {0}
+2026-08-10T07:57:46.9709589Z env:
+2026-08-10T07:57:46.9710475Z   RETRIEVAL_DATABASE_URL: ***127.0.0.1:5432/architecture_knowledge
+2026-08-10T07:57:46.9711132Z   RETRIEVAL_EMBEDDING_PROVIDER: fake
+2026-08-10T07:57:46.9711620Z   RETRIEVAL_DATA_CLASSIFICATION: public
+2026-08-10T07:57:46.9712179Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-08-10T07:57:46.9712710Z ##[endgroup]
+2026-08-10T07:57:47.4917106Z 
+2026-08-10T07:57:47.4935841Z > architecture-knowledge-system@0.2.0 retrieval:query /home/runner/work/architecture-knowledge/architecture-knowledge
+2026-08-10T07:57:47.4966445Z > tsx src/retrieval-cli.ts query -- 'What should I validate in an identity token?' --mode hybrid-graph --top-k 5 --json
+2026-08-10T07:57:47.4984725Z 
+2026-08-10T07:57:50.4521820Z {
+2026-08-10T07:57:50.4545108Z   "degradation_reason": null,
+2026-08-10T07:57:50.4560062Z   "degraded": false,
+2026-08-10T07:57:50.4564851Z   "diagnostics": [],
+2026-08-10T07:57:50.4605233Z   "estimated_tokens": 688,
+2026-08-10T07:57:50.4625122Z   "generation": {
+2026-08-10T07:57:50.4644955Z     "embedding_dimension": 1536,
+2026-08-10T07:57:50.4664890Z     "embedding_model": "token-hash-v1",
+2026-08-10T07:57:50.4665943Z     "embedding_provider": "deterministic-fake",
+2026-08-10T07:57:50.4685036Z     "generation_id": "rg:sha256:bf55d08944f7f21c8b84f31a9",
+2026-08-10T07:57:50.4705409Z     "graph_input_fingerprint": "sha256:ad827bcfa37e9cb0a0510dbc51ab2149598e2e3200b2fa68c25490faa34ddc68",
+2026-08-10T07:57:50.4725431Z     "retrieval_manifest_root": "sha256:a3998c4b4a24dd12caefd22389b3c59b13f9b947f842c6ae10881121c92de0e2"
+2026-08-10T07:57:50.4726991Z   },
+2026-08-10T07:57:50.4744929Z   "query": {
+2026-08-10T07:57:50.4764931Z     "allow_degraded_lexical_fallback": false,
+2026-08-10T07:57:50.4785018Z     "budget": {
+2026-08-10T07:57:50.4804798Z       "max_estimated_tokens": 4000,
+2026-08-10T07:57:50.4805353Z       "max_units": 5,
+2026-08-10T07:57:50.4824664Z       "max_units_per_concept": 3
+2026-08-10T07:57:50.4834783Z     },
+2026-08-10T07:57:50.4855188Z     "candidate_k": 40,
+2026-08-10T07:57:50.4856646Z     "explain": true,
+2026-08-10T07:57:50.4857465Z     "filters": {
+2026-08-10T07:57:50.4860513Z       "claim_types": [],
+2026-08-10T07:57:50.4861072Z       "concept_types": [],
+2026-08-10T07:57:50.4897701Z       "domains": [],
+2026-08-10T07:57:50.4903722Z       "minimum_confidence": null,
+2026-08-10T07:57:50.4914724Z       "normative_forces": [],
+2026-08-10T07:57:50.4915268Z       "semantic_scopes": [],
+2026-08-10T07:57:50.4915711Z       "statuses": [],
+2026-08-10T07:57:50.4916118Z       "unit_kinds": []
+2026-08-10T07:57:50.4916525Z     },
+2026-08-10T07:57:50.4916858Z     "graph": {
+2026-08-10T07:57:50.4917264Z       "enabled": true,
+2026-08-10T07:57:50.4917690Z       "max_depth": 1,
+2026-08-10T07:57:50.4918085Z       "predicates": []
+2026-08-10T07:57:50.4918457Z     },
+2026-08-10T07:57:50.4918788Z     "mode": "hybrid-graph",
+2026-08-10T07:57:50.4919428Z     "text": "What should I validate in an identity token?",
+2026-08-10T07:57:50.4919996Z     "top_k": 5
+2026-08-10T07:57:50.4934808Z   },
+2026-08-10T07:57:50.4946079Z   "result_count": 5,
+2026-08-10T07:57:50.4964888Z   "results": [
+2026-08-10T07:57:50.4984564Z     {
+2026-08-10T07:57:50.4991528Z       "graph_distance": null,
+2026-08-10T07:57:50.4992293Z       "graph_path": [],
+2026-08-10T07:57:50.4992926Z       "graph_relationship_ids": [],
+2026-08-10T07:57:50.4993544Z       "lexical_rank": null,
+2026-08-10T07:57:50.4994435Z       "lexical_score": null,
+2026-08-10T07:57:50.4995076Z       "score": 0.01639344262295082,
+2026-08-10T07:57:50.4995677Z       "score_breakdown": {
+2026-08-10T07:57:50.4996265Z         "exact_match_boost": 0,
+2026-08-10T07:57:50.4997360Z         "graph_penalty": 0,
+2026-08-10T07:57:50.4997980Z         "lexical_rrf": 0,
+2026-08-10T07:57:50.4998577Z         "vector_rrf": 0.01639344262295082
+2026-08-10T07:57:50.4999166Z       },
+2026-08-10T07:57:50.4999625Z       "selection": {
+2026-08-10T07:57:50.5000134Z         "reason": "selected",
+2026-08-10T07:57:50.5000689Z         "selected": true
+2026-08-10T07:57:50.5001442Z       },
+2026-08-10T07:57:50.5001903Z       "unit": {
+2026-08-10T07:57:50.5002376Z         "citations": [
+2026-08-10T07:57:50.5002875Z           {
+2026-08-10T07:57:50.5003329Z             "locators": [],
+2026-08-10T07:57:50.5003917Z             "source_id": "AKS-000017",
+2026-08-10T07:57:50.5008063Z             "title": "RFC 6749 — The OAuth 2.0 Authorization Framework",
+2026-08-10T07:57:50.5009064Z             "url": "https://www.rfc-editor.org/rfc/rfc6749.html"
+2026-08-10T07:57:50.5009777Z           },
+2026-08-10T07:57:50.5010234Z           {
+2026-08-10T07:57:50.5010704Z             "locators": [],
+2026-08-10T07:57:50.5011325Z             "source_id": "AKS-000018",
+2026-08-10T07:57:50.5012310Z             "title": "RFC 9700 — Best Current Practice for OAuth 2.0 Security",
+2026-08-10T07:57:50.5013278Z             "url": "https://www.rfc-editor.org/rfc/rfc9700.html"
+2026-08-10T07:57:50.5013978Z           },
+2026-08-10T07:57:50.5014782Z           {
+2026-08-10T07:57:50.5015265Z             "locators": [],
+2026-08-10T07:57:50.5015884Z             "source_id": "AKS-000019",
+2026-08-10T07:57:50.5016705Z             "title": "OpenID Connect Core 1.0 incorporating errata set 2",
+2026-08-10T07:57:50.5017707Z             "url": "https://openid.net/specs/openid-connect-core-1_0.html"
+2026-08-10T07:57:50.5018463Z           }
+2026-08-10T07:57:50.5018906Z         ],
+2026-08-10T07:57:50.5019420Z         "concept_id": "AKC-000023",
+2026-08-10T07:57:50.5020009Z         "confidence": null,
+2026-08-10T07:57:50.5020985Z         "content_hash": "sha256:500062e1a4c20bf37e72e0d15fba6323b0b55e439d6410dc7ba3cd3e60e87b23",
+2026-08-10T07:57:50.5022016Z         "estimated_tokens": 49,
+2026-08-10T07:57:50.5022652Z         "lifecycle_status": "proposed",
+2026-08-10T07:57:50.5023259Z         "metadata": {
+2026-08-10T07:57:50.5023756Z           "aliases": [
+2026-08-10T07:57:50.5025422Z             "OAuth token confusion"
+2026-08-10T07:57:50.5036764Z           ],
+2026-08-10T07:57:50.5039569Z           "concept_id": "AKC-000023",
+2026-08-10T07:57:50.5062153Z           "concept_type": "failure-mode",
+2026-08-10T07:57:50.5066049Z           "confidence": null,
+2026-08-10T07:57:50.5066756Z           "domain": "security-privacy",
+2026-08-10T07:57:50.5067484Z           "human_key": "token-role-confusion",
+2026-08-10T07:57:50.5068201Z           "record_id": "AKC-000023",
+2026-08-10T07:57:50.5068840Z           "record_kind": "concept",
+2026-08-10T07:57:50.5069481Z           "section_field": "examples",
+2026-08-10T07:57:50.5070121Z           "semantic_scope": null,
+2026-08-10T07:57:50.5070692Z           "sources": [
+2026-08-10T07:57:50.5071195Z             "AKS-000017",
+2026-08-10T07:57:50.5071740Z             "AKS-000018",
+2026-08-10T07:57:50.5072251Z             "AKS-000019"
+2026-08-10T07:57:50.5072760Z           ],
+2026-08-10T07:57:50.5073278Z           "status": "proposed",
+2026-08-10T07:57:50.5073826Z           "tags": [
+2026-08-10T07:57:50.5075099Z             "failure-mode",
+2026-08-10T07:57:50.5075662Z             "oauth",
+2026-08-10T07:57:50.5076166Z             "tokens"
+2026-08-10T07:57:50.5076638Z           ],
+2026-08-10T07:57:50.5077188Z           "title": "Token Role Confusion"
+2026-08-10T07:57:50.5077792Z         },
+2026-08-10T07:57:50.5078240Z         "ordinal": 0,
+2026-08-10T07:57:50.5078791Z         "record_id": "AKC-000023",
+2026-08-10T07:57:50.5080726Z         "retrieval_text": "Concept: AKC-000023 Token Role Confusion\nExamples:\n- {\"concept_ids\":[],\"scope\":\"edge-local\",\"statement\":\"An API accepts an ID Token minted for a web client as though it were an API access token.\"}",
+2026-08-10T07:57:50.5082694Z         "retrieval_unit_contract_version": 1,
+2026-08-10T07:57:50.5083682Z         "section_key": "examples",
+2026-08-10T07:57:50.5084709Z         "semantic_scope": null,
+2026-08-10T07:57:50.5085546Z         "source_path": "knowledge/supporting/token-role-confusion.md",
+2026-08-10T07:57:50.5086687Z         "title": "Token Role Confusion — Examples",
+2026-08-10T07:57:50.5087525Z         "unit_id": "ru:AKC-000023:concept-section:examples:0",
+2026-08-10T07:57:50.5090269Z         "unit_kind": "concept-section"
+2026-08-10T07:57:50.5090943Z       },
+2026-08-10T07:57:50.5091445Z       "vector_rank": 1,
+2026-08-10T07:57:50.5092082Z       "vector_similarity": 0.30942637650449223
+2026-08-10T07:57:50.5092784Z     },
+2026-08-10T07:57:50.5093246Z     {
+2026-08-10T07:57:50.5093735Z       "graph_distance": null,
+2026-08-10T07:57:50.5094934Z       "graph_path": [],
+2026-08-10T07:57:50.5095581Z       "graph_relationship_ids": [],
+2026-08-10T07:57:50.5096211Z       "lexical_rank": null,
+2026-08-10T07:57:50.5096792Z       "lexical_score": null,
+2026-08-10T07:57:50.5097429Z       "score": 0.016129032258064516,
+2026-08-10T07:57:50.5098046Z       "score_breakdown": {
+2026-08-10T07:57:50.5098647Z         "exact_match_boost": 0,
+2026-08-10T07:57:50.5099236Z         "graph_penalty": 0,
+2026-08-10T07:57:50.5099797Z         "lexical_rrf": 0,
+2026-08-10T07:57:50.5100419Z         "vector_rrf": 0.016129032258064516
+2026-08-10T07:57:50.5101042Z       },
+2026-08-10T07:57:50.5101522Z       "selection": {
+2026-08-10T07:57:50.5102056Z         "reason": "selected",
+2026-08-10T07:57:50.5102631Z         "selected": true
+2026-08-10T07:57:50.5103158Z       },
+2026-08-10T07:57:50.5103621Z       "unit": {
+2026-08-10T07:57:50.5104394Z         "citations": [
+2026-08-10T07:57:50.5104964Z           {
+2026-08-10T07:57:50.5105468Z             "locators": [],
+2026-08-10T07:57:50.5106085Z             "source_id": "AKS-000017",
+2026-08-10T07:57:50.5107114Z             "title": "RFC 6749 — The OAuth 2.0 Authorization Framework",
+2026-08-10T07:57:50.5108084Z             "url": "https://www.rfc-editor.org/rfc/rfc6749.html"
+2026-08-10T07:57:50.5108827Z           },
+2026-08-10T07:57:50.5109307Z           {
+2026-08-10T07:57:50.5109791Z             "locators": [],
+2026-08-10T07:57:50.5110417Z             "source_id": "AKS-000018",
+2026-08-10T07:57:50.5111412Z             "title": "RFC 9700 — Best Current Practice for OAuth 2.0 Security",
+2026-08-10T07:57:50.5112411Z             "url": "https://www.rfc-editor.org/rfc/rfc9700.html"
+2026-08-10T07:57:50.5113145Z           },
+2026-08-10T07:57:50.5113617Z           {
+2026-08-10T07:57:50.5114806Z             "locators": [],
+2026-08-10T07:57:50.5115519Z             "source_id": "AKS-000019",
+2026-08-10T07:57:50.5116390Z             "title": "OpenID Connect Core 1.0 incorporating errata set 2",
+2026-08-10T07:57:50.5117436Z             "url": "https://openid.net/specs/openid-connect-core-1_0.html"
+2026-08-10T07:57:50.5118215Z           }
+2026-08-10T07:57:50.5118677Z         ],
+2026-08-10T07:57:50.5119222Z         "concept_id": "AKC-000018",
+2026-08-10T07:57:50.5119860Z         "confidence": null,
+2026-08-10T07:57:50.5120870Z         "content_hash": "sha256:59ce3ea803626a4f7c96205beed785a73aea0561c8519b4a982497e063b07966",
+2026-08-10T07:57:50.5121900Z         "estimated_tokens": 82,
+2026-08-10T07:57:50.5122549Z         "lifecycle_status": "drafted",
+2026-08-10T07:57:50.5123171Z         "metadata": {
+2026-08-10T07:57:50.5123692Z           "aliases": [
+2026-08-10T07:57:50.5124606Z             "OIDC"
+2026-08-10T07:57:50.5125013Z           ],
+2026-08-10T07:57:50.5125414Z           "concept_id": "AKC-000018",
+2026-08-10T07:57:50.5125943Z           "concept_type": "protocol",
+2026-08-10T07:57:50.5126423Z           "confidence": null,
+2026-08-10T07:57:50.5126914Z           "domain": "security-privacy",
+2026-08-10T07:57:50.5127446Z           "human_key": "openid-connect",
+2026-08-10T07:57:50.5127956Z           "record_id": "AKC-000018",
+2026-08-10T07:57:50.5128444Z           "record_kind": "concept",
+2026-08-10T07:57:50.5128972Z           "section_field": "counterexamples",
+2026-08-10T07:57:50.5130126Z           "semantic_scope": null,
+2026-08-10T07:57:50.5130604Z           "sources": [
+2026-08-10T07:57:50.5130980Z             "AKS-000017",
+2026-08-10T07:57:50.5131364Z             "AKS-000018",
+2026-08-10T07:57:50.5131758Z             "AKS-000019"
+2026-08-10T07:57:50.5132128Z           ],
+2026-08-10T07:57:50.5132497Z           "status": "drafted",
+2026-08-10T07:57:50.5132936Z           "tags": [
+2026-08-10T07:57:50.5133170Z             "openid-connect",
+2026-08-10T07:57:50.5133417Z             "authentication",
+2026-08-10T07:57:50.5133650Z             "identity"
+2026-08-10T07:57:50.5133883Z           ],
+2026-08-10T07:57:50.5134733Z           "title": "OpenID Connect"
+2026-08-10T07:57:50.5135195Z         },
+2026-08-10T07:57:50.5135519Z         "ordinal": 0,
+2026-08-10T07:57:50.5135944Z         "record_id": "AKC-000018",
+2026-08-10T07:57:50.5138265Z         "retrieval_text": "Concept: AKC-000018 OpenID Connect\nCounterexamples:\n- {\"concept_ids\":[],\"scope\":\"edge-local\",\"statement\":\"Sending an ID Token to an unrelated API as a bearer credential, accepting an access token as a universal identity assertion, or assuming every OAuth access token is a JWT violates the token-role and format boundaries.\"}",
+2026-08-10T07:57:50.5139751Z         "retrieval_unit_contract_version": 1,
+2026-08-10T07:57:50.5140098Z         "section_key": "counterexamples",
+2026-08-10T07:57:50.5140420Z         "semantic_scope": null,
+2026-08-10T07:57:50.5140776Z         "source_path": "knowledge/security/openid-connect.md",
+2026-08-10T07:57:50.5141340Z         "title": "OpenID Connect — Counterexamples",
+2026-08-10T07:57:50.5141777Z         "unit_id": "ru:AKC-000018:concept-section:counterexamples:0",
+2026-08-10T07:57:50.5142167Z         "unit_kind": "concept-section"
+2026-08-10T07:57:50.5142428Z       },
+2026-08-10T07:57:50.5142626Z       "vector_rank": 2,
+2026-08-10T07:57:50.5142897Z       "vector_similarity": 0.2937134591851671
+2026-08-10T07:57:50.5143168Z     },
+2026-08-10T07:57:50.5143347Z     {
+2026-08-10T07:57:50.5143550Z       "graph_distance": null,
+2026-08-10T07:57:50.5143802Z       "graph_path": [],
+2026-08-10T07:57:50.5154453Z       "graph_relationship_ids": [],
+2026-08-10T07:57:50.5155025Z       "lexical_rank": null,
+2026-08-10T07:57:50.5155450Z       "lexical_score": null,
+2026-08-10T07:57:50.5155895Z       "score": 0.015873015873015872,
+2026-08-10T07:57:50.5156364Z       "score_breakdown": {
+2026-08-10T07:57:50.5156797Z         "exact_match_boost": 0,
+2026-08-10T07:57:50.5157215Z         "graph_penalty": 0,
+2026-08-10T07:57:50.5157606Z         "lexical_rrf": 0,
+2026-08-10T07:57:50.5158074Z         "vector_rrf": 0.015873015873015872
+2026-08-10T07:57:50.5158519Z       },
+2026-08-10T07:57:50.5158825Z       "selection": {
+2026-08-10T07:57:50.5159200Z         "reason": "selected",
+2026-08-10T07:57:50.5159608Z         "selected": true
+2026-08-10T07:57:50.5159969Z       },
+2026-08-10T07:57:50.5160266Z       "unit": {
+2026-08-10T07:57:50.5160597Z         "citations": [
+2026-08-10T07:57:50.5160951Z           {
+2026-08-10T07:57:50.5161275Z             "locators": [
+2026-08-10T07:57:50.5161643Z               {
+2026-08-10T07:57:50.5162184Z                 "locator": "OpenID Connect Core Section 3.1.3.7, item 6",
+2026-08-10T07:57:50.5162851Z                 "source_id": "AKS-000019"
+2026-08-10T07:57:50.5163297Z               }
+2026-08-10T07:57:50.5163607Z             ],
+2026-08-10T07:57:50.5163991Z             "source_id": "AKS-000019",
+2026-08-10T07:57:50.5164840Z             "title": "OpenID Connect Core 1.0 incorporating errata set 2",
+2026-08-10T07:57:50.5165695Z             "url": "https://openid.net/specs/openid-connect-core-1_0.html"
+2026-08-10T07:57:50.5166291Z           }
+2026-08-10T07:57:50.5166586Z         ],
+2026-08-10T07:57:50.5166971Z         "concept_id": "AKC-000018",
+2026-08-10T07:57:50.5167411Z         "confidence": "high",
+2026-08-10T07:57:50.5168272Z         "content_hash": "sha256:7f5d1bc0cc054c27777166dfb986445e52121e5c486dbdd2af8c5b0c1ad02f09",
+2026-08-10T07:57:50.5169245Z         "estimated_tokens": 222,
+2026-08-10T07:57:50.5169977Z         "lifecycle_status": "sourced",
+2026-08-10T07:57:50.5170444Z         "metadata": {
+2026-08-10T07:57:50.5170813Z           "aliases": [],
+2026-08-10T07:57:50.5171255Z           "applicable_concept_ids": [],
+2026-08-10T07:57:50.5171831Z           "claim_type": "normalized-source-claim",
+2026-08-10T07:57:50.5172395Z           "concept_id": "AKC-000018",
+2026-08-10T07:57:50.5173057Z           "concept_type": null,
+2026-08-10T07:57:50.5173470Z           "conditions": [
+2026-08-10T07:57:50.5173836Z             {
+2026-08-10T07:57:50.5174477Z               "concept_ids": [],
+2026-08-10T07:57:50.5174946Z               "scope": "edge-local",
+2026-08-10T07:57:50.5175807Z               "statement": "The ID Token is received by direct communication from the Token Endpoint."
+2026-08-10T07:57:50.5176579Z             }
+2026-08-10T07:57:50.5176882Z           ],
+2026-08-10T07:57:50.5177239Z           "confidence": "high",
+2026-08-10T07:57:50.5177694Z           "derived_from_claims": [],
+2026-08-10T07:57:50.5178148Z           "domain": null,
+2026-08-10T07:57:50.5178528Z           "exceptions": [],
+2026-08-10T07:57:50.5178930Z           "human_key": null,
+2026-08-10T07:57:50.5179368Z           "normative_force": "may",
+2026-08-10T07:57:50.5179794Z           "object": {
+2026-08-10T07:57:50.5180636Z             "literal": "TLS issuer validation in place of signature checking for a directly received ID Token"
+2026-08-10T07:57:50.5181475Z           },
+2026-08-10T07:57:50.5182048Z           "predicate": "permits-direct-token-endpoint-tls-validation",
+2026-08-10T07:57:50.5182739Z           "record_id": "AKL-000067",
+2026-08-10T07:57:50.5183220Z           "record_kind": "claim",
+2026-08-10T07:57:50.5183722Z           "semantic_scope": "concept-global",
+2026-08-10T07:57:50.5184476Z           "source_locations": [
+2026-08-10T07:57:50.5184872Z             {
+2026-08-10T07:57:50.5185391Z               "locator": "OpenID Connect Core Section 3.1.3.7, item 6",
+2026-08-10T07:57:50.5186039Z               "source_id": "AKS-000019"
+2026-08-10T07:57:50.5186475Z             }
+2026-08-10T07:57:50.5186780Z           ],
+2026-08-10T07:57:50.5187093Z           "sources": [
+2026-08-10T07:57:50.5187456Z             "AKS-000019"
+2026-08-10T07:57:50.5187808Z           ],
+2026-08-10T07:57:50.5188161Z           "status": "sourced",
+2026-08-10T07:57:50.5188606Z           "subject": "AKC-000018",
+2026-08-10T07:57:50.5189032Z           "title": null
+2026-08-10T07:57:50.5189396Z         },
+2026-08-10T07:57:50.5189702Z         "ordinal": 0,
+2026-08-10T07:57:50.5190101Z         "record_id": "AKL-000067",
+2026-08-10T07:57:50.5197405Z         "retrieval_text": "Claim AKL-000067: When an ID Token is received by direct communication from the Token Endpoint, OpenID Connect clients MAY use TLS server validation to validate the issuer in place of checking that token's signature.\nSubject: AKC-000018\nPredicate: permits-direct-token-endpoint-tls-validation\nObject: {\"literal\":\"TLS issuer validation in place of signature checking for a directly received ID Token\"}\nClaim type: normalized-source-claim\nConfidence: high\nSemantic scope: concept-global\nConditions: [{\"concept_ids\":[],\"scope\":\"edge-local\",\"statement\":\"The ID Token is received by direct communication from the Token Endpoint.\"}]\nNormative: {\"applies_to\":\"OpenID Connect clients receiving an ID Token directly from the Token Endpoint.\",\"exceptions\":[],\"force\":\"may\"}\nSources: AKS-000019\nSource locators: [{\"locator\":\"OpenID Connect Core Section 3.1.3.7, item 6\",\"source_id\":\"AKS-000019\"}]",
+2026-08-10T07:57:50.5203631Z         "retrieval_unit_contract_version": 1,
+2026-08-10T07:57:50.5204309Z         "section_key": "claim",
+2026-08-10T07:57:50.5204801Z         "semantic_scope": "concept-global",
+2026-08-10T07:57:50.5205370Z         "source_path": "claims/AKL-000067.yaml",
+2026-08-10T07:57:50.5205917Z         "title": "Claim AKL-000067",
+2026-08-10T07:57:50.5206449Z         "unit_id": "ru:AKL-000067:claim:claim:0",
+2026-08-10T07:57:50.5206947Z         "unit_kind": "claim"
+2026-08-10T07:57:50.5207539Z       },
+2026-08-10T07:57:50.5207873Z       "vector_rank": 3,
+2026-08-10T07:57:50.5208328Z       "vector_similarity": 0.2703643521775113
+2026-08-10T07:57:50.5208780Z     },
+2026-08-10T07:57:50.5209064Z     {
+2026-08-10T07:57:50.5209385Z       "graph_distance": null,
+2026-08-10T07:57:50.5209794Z       "graph_path": [],
+2026-08-10T07:57:50.5210420Z       "graph_relationship_ids": [],
+2026-08-10T07:57:50.5210897Z       "lexical_rank": null,
+2026-08-10T07:57:50.5211299Z       "lexical_score": null,
+2026-08-10T07:57:50.5211696Z       "score": 0.015625,
+2026-08-10T07:57:50.5212077Z       "score_breakdown": {
+2026-08-10T07:57:50.5212509Z         "exact_match_boost": 0,
+2026-08-10T07:57:50.5212919Z         "graph_penalty": 0,
+2026-08-10T07:57:50.5213306Z         "lexical_rrf": 0,
+2026-08-10T07:57:50.5213719Z         "vector_rrf": 0.015625
+2026-08-10T07:57:50.5214363Z       },
+2026-08-10T07:57:50.5214687Z       "selection": {
+2026-08-10T07:57:50.5215058Z         "reason": "selected",
+2026-08-10T07:57:50.5215472Z         "selected": true
+2026-08-10T07:57:50.5215825Z       },
+2026-08-10T07:57:50.5216120Z       "unit": {
+2026-08-10T07:57:50.5216444Z         "citations": [
+2026-08-10T07:57:50.5216787Z           {
+2026-08-10T07:57:50.5217098Z             "locators": [],
+2026-08-10T07:57:50.5217538Z             "source_id": "AKS-000017",
+2026-08-10T07:57:50.5218446Z             "title": "RFC 6749 — The OAuth 2.0 Authorization Framework",
+2026-08-10T07:57:50.5219220Z             "url": "https://www.rfc-editor.org/rfc/rfc6749.html"
+2026-08-10T07:57:50.5219780Z           },
+2026-08-10T07:57:50.5220083Z           {
+2026-08-10T07:57:50.5220394Z             "locators": [],
+2026-08-10T07:57:50.5220836Z             "source_id": "AKS-000018",
+2026-08-10T07:57:50.5221650Z             "title": "RFC 9700 — Best Current Practice for OAuth 2.0 Security",
+2026-08-10T07:57:50.5222465Z             "url": "https://www.rfc-editor.org/rfc/rfc9700.html"
+2026-08-10T07:57:50.5223014Z           },
+2026-08-10T07:57:50.5223333Z           {
+2026-08-10T07:57:50.5223649Z             "locators": [],
+2026-08-10T07:57:50.5224280Z             "source_id": "AKS-000019",
+2026-08-10T07:57:50.5224962Z             "title": "OpenID Connect Core 1.0 incorporating errata set 2",
+2026-08-10T07:57:50.5225807Z             "url": "https://openid.net/specs/openid-connect-core-1_0.html"
+2026-08-10T07:57:50.5226423Z           }
+2026-08-10T07:57:50.5226712Z         ],
+2026-08-10T07:57:50.5227073Z         "concept_id": "AKC-000018",
+2026-08-10T07:57:50.5227510Z         "confidence": null,
+2026-08-10T07:57:50.5228344Z         "content_hash": "sha256:f4234296e1b2253f2a99147d42eb7ed3333bc477d06ef3fd033e6c46dc39dbee",
+2026-08-10T07:57:50.5229200Z         "estimated_tokens": 187,
+2026-08-10T07:57:50.5229685Z         "lifecycle_status": "drafted",
+2026-08-10T07:57:50.5230124Z         "metadata": {
+2026-08-10T07:57:50.5230494Z           "aliases": [
+2026-08-10T07:57:50.5230852Z             "OIDC"
+2026-08-10T07:57:50.5231175Z           ],
+2026-08-10T07:57:50.5231566Z           "concept_id": "AKC-000018",
+2026-08-10T07:57:50.5232069Z           "concept_type": "protocol",
+2026-08-10T07:57:50.5232529Z           "confidence": null,
+2026-08-10T07:57:50.5232993Z           "domain": "security-privacy",
+2026-08-10T07:57:50.5233512Z           "human_key": "openid-connect",
+2026-08-10T07:57:50.5234012Z           "record_id": "AKC-000018",
+2026-08-10T07:57:50.5235159Z           "record_kind": "concept",
+2026-08-10T07:57:50.5235647Z           "semantic_scope": null,
+2026-08-10T07:57:50.5236065Z           "sources": [
+2026-08-10T07:57:50.5236425Z             "AKS-000017",
+2026-08-10T07:57:50.5236790Z             "AKS-000018",
+2026-08-10T07:57:50.5237153Z             "AKS-000019"
+2026-08-10T07:57:50.5237517Z           ],
+2026-08-10T07:57:50.5237951Z           "status": "drafted",
+2026-08-10T07:57:50.5238346Z           "tags": [
+2026-08-10T07:57:50.5238691Z             "openid-connect",
+2026-08-10T07:57:50.5239107Z             "authentication",
+2026-08-10T07:57:50.5239755Z             "identity"
+2026-08-10T07:57:50.5240107Z           ],
+2026-08-10T07:57:50.5240472Z           "title": "OpenID Connect"
+2026-08-10T07:57:50.5240879Z         },
+2026-08-10T07:57:50.5241182Z         "ordinal": 0,
+2026-08-10T07:57:50.5241592Z         "record_id": "AKC-000018",
+2026-08-10T07:57:50.5247895Z         "retrieval_text": "Concept: AKC-000018 OpenID Connect\nHuman key: openid-connect\nAliases: OIDC\nSummary: An identity layer built on OAuth 2.0 that lets a relying party verify an end user's authentication and obtain interoperable identity claims.\nProblem: OAuth access tokens authorize resource access but do not by themselves define an interoperable end-user authentication result for a client.\nContext: Clients need federated authentication through an OpenID Provider and can validate issuer, audience, nonce, signatures, and protocol state.\nIntent: Provide standardized authentication assertions and identity claims without redefining OAuth resource authorization.\nType: protocol\nDomain: security-privacy\nStatus: drafted\nTags: openid-connect, authentication, identity",
+2026-08-10T07:57:50.5253674Z         "retrieval_unit_contract_version": 1,
+2026-08-10T07:57:50.5254390Z         "section_key": "overview",
+2026-08-10T07:57:50.5254863Z         "semantic_scope": null,
+2026-08-10T07:57:50.5255462Z         "source_path": "knowledge/security/openid-connect.md",
+2026-08-10T07:57:50.5256256Z         "title": "OpenID Connect — Overview",
+2026-08-10T07:57:50.5256905Z         "unit_id": "ru:AKC-000018:concept-overview:overview:0",
+2026-08-10T07:57:50.5257530Z         "unit_kind": "concept-overview"
+2026-08-10T07:57:50.5257967Z       },
+2026-08-10T07:57:50.5258285Z       "vector_rank": 4,
+2026-08-10T07:57:50.5258734Z       "vector_similarity": 0.24192146284090588
+2026-08-10T07:57:50.5259190Z     },
+2026-08-10T07:57:50.5259473Z     {
+2026-08-10T07:57:50.5259786Z       "graph_distance": null,
+2026-08-10T07:57:50.5260197Z       "graph_path": [],
+2026-08-10T07:57:50.5260618Z       "graph_relationship_ids": [],
+2026-08-10T07:57:50.5261070Z       "lexical_rank": null,
+2026-08-10T07:57:50.5261470Z       "lexical_score": null,
+2026-08-10T07:57:50.5261916Z       "score": 0.015151515151515152,
+2026-08-10T07:57:50.5262350Z       "score_breakdown": {
+2026-08-10T07:57:50.5262778Z         "exact_match_boost": 0,
+2026-08-10T07:57:50.5263187Z         "graph_penalty": 0,
+2026-08-10T07:57:50.5263591Z         "lexical_rrf": 0,
+2026-08-10T07:57:50.5264034Z         "vector_rrf": 0.015151515151515152
+2026-08-10T07:57:50.5264640Z       },
+2026-08-10T07:57:50.5264944Z       "selection": {
+2026-08-10T07:57:50.5265299Z         "reason": "selected",
+2026-08-10T07:57:50.5265696Z         "selected": true
+2026-08-10T07:57:50.5266062Z       },
+2026-08-10T07:57:50.5266377Z       "unit": {
+2026-08-10T07:57:50.5266704Z         "citations": [
+2026-08-10T07:57:50.5267051Z           {
+2026-08-10T07:57:50.5267367Z             "locators": [],
+2026-08-10T07:57:50.5267815Z             "source_id": "AKS-000018",
+2026-08-10T07:57:50.5268657Z             "title": "RFC 9700 — Best Current Practice for OAuth 2.0 Security",
+2026-08-10T07:57:50.5269472Z             "url": "https://www.rfc-editor.org/rfc/rfc9700.html"
+2026-08-10T07:57:50.5270018Z           },
+2026-08-10T07:57:50.5270327Z           {
+2026-08-10T07:57:50.5270643Z             "locators": [],
+2026-08-10T07:57:50.5271084Z             "source_id": "AKS-000019",
+2026-08-10T07:57:50.5271758Z             "title": "OpenID Connect Core 1.0 incorporating errata set 2",
+2026-08-10T07:57:50.5272603Z             "url": "https://openid.net/specs/openid-connect-core-1_0.html"
+2026-08-10T07:57:50.5273348Z           }
+2026-08-10T07:57:50.5273772Z         ],
+2026-08-10T07:57:50.5295339Z         "concept_id": "AKC-000023",
+2026-08-10T07:57:50.5295873Z         "confidence": "medium",
+2026-08-10T07:57:50.5296743Z         "content_hash": "sha256:e622f529d500614fd2c268dd8407265767c7f14af4d104aed62fc1fa1f49e001",
+2026-08-10T07:57:50.5297607Z         "estimated_tokens": 148,
+2026-08-10T07:57:50.5298378Z         "lifecycle_status": "proposed",
+2026-08-10T07:57:50.5298860Z         "metadata": {
+2026-08-10T07:57:50.5299222Z           "aliases": [],
+2026-08-10T07:57:50.5299668Z           "applicable_concept_ids": [],
+2026-08-10T07:57:50.5300177Z           "claim_type": "synthesis",
+2026-08-10T07:57:50.5300674Z           "concept_id": "AKC-000023",
+2026-08-10T07:57:50.5301331Z           "concept_type": null,
+2026-08-10T07:57:50.5301752Z           "conditions": [
+2026-08-10T07:57:50.5302125Z             {
+2026-08-10T07:57:50.5302496Z               "concept_ids": [],
+2026-08-10T07:57:50.5302972Z               "scope": "edge-local",
+2026-08-10T07:57:50.5304269Z               "statement": "Token consumers do not validate the complete issuer, audience, client, token role, and protocol context."
+2026-08-10T07:57:50.5305267Z             }
+2026-08-10T07:57:50.5305583Z           ],
+2026-08-10T07:57:50.5305957Z           "confidence": "medium",
+2026-08-10T07:57:50.5306434Z           "derived_from_claims": [],
+2026-08-10T07:57:50.5306891Z           "domain": null,
+2026-08-10T07:57:50.5307275Z           "exceptions": [],
+2026-08-10T07:57:50.5307674Z           "human_key": null,
+2026-08-10T07:57:50.5308126Z           "normative_force": null,
+2026-08-10T07:57:50.5308552Z           "object": {
+2026-08-10T07:57:50.5308960Z             "record_id": "AKC-000018"
+2026-08-10T07:57:50.5309382Z           },
+2026-08-10T07:57:50.5309822Z           "predicate": "can-occur-in-context-of",
+2026-08-10T07:57:50.5310386Z           "record_id": "AKL-000047",
+2026-08-10T07:57:50.5310866Z           "record_kind": "claim",
+2026-08-10T07:57:50.5311382Z           "semantic_scope": "claim-context-only",
+2026-08-10T07:57:50.5311924Z           "source_locations": [],
+2026-08-10T07:57:50.5312346Z           "sources": [
+2026-08-10T07:57:50.5312704Z             "AKS-000018",
+2026-08-10T07:57:50.5313073Z             "AKS-000019"
+2026-08-10T07:57:50.5313430Z           ],
+2026-08-10T07:57:50.5313794Z           "status": "proposed",
+2026-08-10T07:57:50.5334805Z           "subject": "AKC-000023",
+2026-08-10T07:57:50.5335298Z           "title": null
+2026-08-10T07:57:50.5335668Z         },
+2026-08-10T07:57:50.5335983Z         "ordinal": 0,
+2026-08-10T07:57:50.5336401Z         "record_id": "AKL-000047",
+2026-08-10T07:57:50.5341421Z         "retrieval_text": "Claim AKL-000047: Token-role confusion can occur in an OpenID Connect integration when a token consumer fails to enforce issuer, audience, client, intended-recipient, and token-role validation context.\nSubject: AKC-000023\nPredicate: can-occur-in-context-of\nObject: {\"record_id\":\"AKC-000018\"}\nClaim type: synthesis\nConfidence: medium\nSemantic scope: claim-context-only\nConditions: [{\"concept_ids\":[],\"scope\":\"edge-local\",\"statement\":\"Token consumers do not validate the complete issuer, audience, client, token role, and protocol context.\"}]\nSources: AKS-000018, AKS-000019\nSource locators: []",
+2026-08-10T07:57:50.5346000Z         "retrieval_unit_contract_version": 1,
+2026-08-10T07:57:50.5346549Z         "section_key": "claim",
+2026-08-10T07:57:50.5347080Z         "semantic_scope": "claim-context-only",
+2026-08-10T07:57:50.5347676Z         "source_path": "claims/AKL-000047.yaml",
+2026-08-10T07:57:50.5348217Z         "title": "Claim AKL-000047",
+2026-08-10T07:57:50.5348752Z         "unit_id": "ru:AKL-000047:claim:claim:0",
+2026-08-10T07:57:50.5349249Z         "unit_kind": "claim"
+2026-08-10T07:57:50.5349648Z       },
+2026-08-10T07:57:50.5349963Z       "vector_rank": 6,
+2026-08-10T07:57:50.5350412Z       "vector_similarity": 0.2287478664144239
+2026-08-10T07:57:50.5350885Z     }
+2026-08-10T07:57:50.5351174Z   ],
+2026-08-10T07:57:50.5351540Z   "retrieval_contract_version": 1,
+2026-08-10T07:57:50.5352001Z   "selection_decisions": [
+2026-08-10T07:57:50.5352377Z     {
+2026-08-10T07:57:50.5352695Z       "reason": "selected",
+2026-08-10T07:57:50.5353092Z       "selected": true,
+2026-08-10T07:57:50.5353623Z       "unit_id": "ru:AKC-000023:concept-section:examples:0"
+2026-08-10T07:57:50.5364526Z     },
+2026-08-10T07:57:50.5364909Z     {
+2026-08-10T07:57:50.5365636Z       "reason": "selected",
+2026-08-10T07:57:50.5366135Z       "selected": true,
+2026-08-10T07:57:50.5366743Z       "unit_id": "ru:AKC-000018:concept-section:counterexamples:0"
+2026-08-10T07:57:50.5367326Z     },
+2026-08-10T07:57:50.5367626Z     {
+2026-08-10T07:57:50.5367944Z       "reason": "selected",
+2026-08-10T07:57:50.5368549Z       "selected": true,
+2026-08-10T07:57:50.5369017Z       "unit_id": "ru:AKL-000067:claim:claim:0"
+2026-08-10T07:57:50.5369496Z     },
+2026-08-10T07:57:50.5369790Z     {
+2026-08-10T07:57:50.5370103Z       "reason": "selected",
+2026-08-10T07:57:50.5370496Z       "selected": true,
+2026-08-10T07:57:50.5371054Z       "unit_id": "ru:AKC-000018:concept-overview:overview:0"
+2026-08-10T07:57:50.5371594Z     },
+2026-08-10T07:57:50.5371888Z     {
+2026-08-10T07:57:50.5372260Z       "reason": "concept-diversity",
+2026-08-10T07:57:50.5372715Z       "selected": false,
+2026-08-10T07:57:50.5373178Z       "unit_id": "ru:AKL-000018:claim:claim:0"
+2026-08-10T07:57:50.5373651Z     },
+2026-08-10T07:57:50.5373949Z     {
+2026-08-10T07:57:50.5374469Z       "reason": "selected",
+2026-08-10T07:57:50.5374897Z       "selected": true,
+2026-08-10T07:57:50.5375380Z       "unit_id": "ru:AKL-000047:claim:claim:0"
+2026-08-10T07:57:50.5375893Z     },
+2026-08-10T07:57:50.5376215Z     {
+2026-08-10T07:57:50.5376570Z       "reason": "max-units",
+2026-08-10T07:57:50.5377035Z       "selected": false,
+2026-08-10T07:57:50.5377552Z       "unit_id": "ru:AKL-000066:claim:claim:0"
+2026-08-10T07:57:50.5378078Z     },
+2026-08-10T07:57:50.5378398Z     {
+2026-08-10T07:57:50.5378733Z       "reason": "max-units",
+2026-08-10T07:57:50.5379156Z       "selected": false,
+2026-08-10T07:57:50.5379643Z       "unit_id": "ru:AKL-000062:claim:claim:0"
+2026-08-10T07:57:50.5380115Z     },
+2026-08-10T07:57:50.5380406Z     {
+2026-08-10T07:57:50.5380714Z       "reason": "max-units",
+2026-08-10T07:57:50.5381113Z       "selected": false,
+2026-08-10T07:57:50.5381719Z       "unit_id": "ru:AKC-000017:concept-section:counterexamples:0"
+2026-08-10T07:57:50.5382305Z     },
+2026-08-10T07:57:50.5382587Z     {
+2026-08-10T07:57:50.5382895Z       "reason": "max-units",
+2026-08-10T07:57:50.5383294Z       "selected": false,
+2026-08-10T07:57:50.5383897Z       "unit_id": "ru:AKC-000018:concept-section:security_implications:0"
+2026-08-10T07:57:50.5384802Z     },
+2026-08-10T07:57:50.5385125Z     {
+2026-08-10T07:57:50.5385444Z       "reason": "max-units",
+2026-08-10T07:57:50.5385842Z       "selected": false,
+2026-08-10T07:57:50.5386392Z       "unit_id": "ru:AKC-000023:concept-section:assumptions:0"
+2026-08-10T07:57:50.5386930Z     },
+2026-08-10T07:57:50.5387213Z     {
+2026-08-10T07:57:50.5387524Z       "reason": "max-units",
+2026-08-10T07:57:50.5387922Z       "selected": false,
+2026-08-10T07:57:50.5388523Z       "unit_id": "ru:AKC-000023:concept-section:security_implications:0"
+2026-08-10T07:57:50.5389117Z     },
+2026-08-10T07:57:50.5389403Z     {
+2026-08-10T07:57:50.5389716Z       "reason": "max-units",
+2026-08-10T07:57:50.5390120Z       "selected": false,
+2026-08-10T07:57:50.5390697Z       "unit_id": "ru:AKC-000023:concept-section:counterexamples:0"
+2026-08-10T07:57:50.5391264Z     },
+2026-08-10T07:57:50.5391550Z     {
+2026-08-10T07:57:50.5391852Z       "reason": "max-units",
+2026-08-10T07:57:50.5392244Z       "selected": false,
+2026-08-10T07:57:50.5392789Z       "unit_id": "ru:AKC-000023:concept-section:avoid_when:0"
+2026-08-10T07:57:50.5393326Z     },
+2026-08-10T07:57:50.5393617Z     {
+2026-08-10T07:57:50.5393928Z       "reason": "max-units",
+2026-08-10T07:57:50.5394576Z       "selected": false,
+2026-08-10T07:57:50.5395125Z       "unit_id": "ru:AKC-000023:concept-overview:overview:0"
+2026-08-10T07:57:50.5395653Z     },
+2026-08-10T07:57:50.5395936Z     {
+2026-08-10T07:57:50.5396243Z       "reason": "max-units",
+2026-08-10T07:57:50.5396639Z       "selected": false,
+2026-08-10T07:57:50.5397093Z       "unit_id": "ru:AKL-000065:claim:claim:0"
+2026-08-10T07:57:50.5397549Z     },
+2026-08-10T07:57:50.5397833Z     {
+2026-08-10T07:57:50.5398412Z       "reason": "max-units",
+2026-08-10T07:57:50.5398823Z       "selected": false,
+2026-08-10T07:57:50.5399371Z       "unit_id": "ru:AKC-000023:concept-section:constraints:0"
+2026-08-10T07:57:50.5399915Z     },
+2026-08-10T07:57:50.5400198Z     {
+2026-08-10T07:57:50.5400503Z       "reason": "max-units",
+2026-08-10T07:57:50.5400891Z       "selected": false,
+2026-08-10T07:57:50.5401528Z       "unit_id": "ru:AKL-000064:claim:claim:0"
+2026-08-10T07:57:50.5401984Z     },
+2026-08-10T07:57:50.5402267Z     {
+2026-08-10T07:57:50.5402575Z       "reason": "max-units",
+2026-08-10T07:57:50.5402973Z       "selected": false,
+2026-08-10T07:57:50.5403427Z       "unit_id": "ru:AKL-000060:claim:claim:0"
+2026-08-10T07:57:50.5403876Z     },
+2026-08-10T07:57:50.5404345Z     {
+2026-08-10T07:57:50.5404657Z       "reason": "max-units",
+2026-08-10T07:57:50.5405063Z       "selected": false,
+2026-08-10T07:57:50.5405511Z       "unit_id": "ru:AKL-000069:claim:claim:0"
+2026-08-10T07:57:50.5405964Z     }
+2026-08-10T07:57:50.5406243Z   ]
+2026-08-10T07:57:50.5406538Z }
+2026-08-10T07:57:50.5406708Z 
+2026-08-10T07:57:50.5521717Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T07:57:50.5524006Z Post job cleanup.
+2026-08-10T07:57:50.7502605Z (node:3218) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-10T07:57:50.7505014Z Cache hit occurred on the primary key node-cache-Linux-x64-pnpm-1e3137200eb7f7f9e33d94e731a1c4330dca12f756b18bada6bd042666dbca8c, not saving cache.
+2026-08-10T07:57:50.7526078Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-10T07:57:50.7679253Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T07:57:50.7681533Z Post job cleanup.
+2026-08-10T07:57:51.0283147Z Pruning is unnecessary.
+2026-08-10T07:57:51.0496767Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T07:57:51.0499101Z Post job cleanup.
+2026-08-10T07:57:51.2005254Z [command]/usr/bin/git version
+2026-08-10T07:57:51.2057692Z git version 2.54.0
+2026-08-10T07:57:51.2225791Z Temporarily overriding HOME='/home/runner/work/_temp/f7c2b60d-8f06-424f-b683-d93391f28622' before making global git config changes
+2026-08-10T07:57:51.2265558Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-10T07:57:51.2285693Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/architecture-knowledge/architecture-knowledge
+2026-08-10T07:57:51.2385649Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-10T07:57:51.2426424Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-10T07:57:51.2837183Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-10T07:57:51.2926220Z http.https://github.com/.extraheader
+2026-08-10T07:57:51.2975287Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-08-10T07:57:51.3106623Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-10T07:57:51.3713596Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-10T07:57:51.3827725Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-10T07:57:51.4999241Z Print service container logs: 1d1ec8d560a24ea385f86a65cbff5df7_pgvectorpgvector082pg16bookworm_7cee8e
+2026-08-10T07:57:51.5005840Z ##[command]/usr/bin/docker logs --details 2dec329532f98e4e37f0bf05895f008472ab0f85636079f3cbe144e009bd337b
+2026-08-10T07:57:51.5188002Z  The files belonging to this database system will be owned by user "postgres".
+2026-08-10T07:57:51.5191074Z  initdb: warning: enabling "trust" authentication for local connections
+2026-08-10T07:57:51.5191552Z  This user must also own the server process.
+2026-08-10T07:57:51.5192794Z  initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+2026-08-10T07:57:51.5193577Z  
+2026-08-10T07:57:51.5194525Z  The database cluster will be initialized with locale "en_US.utf8".
+2026-08-10T07:57:51.5196101Z  The default database encoding has accordingly been set to "UTF8".
+2026-08-10T07:57:51.5197547Z  The default text search configuration will be set to "english".
+2026-08-10T07:57:51.5198230Z  
+2026-08-10T07:57:51.5199018Z  Data page checksums are disabled.
+2026-08-10T07:57:51.5200683Z  2026-08-10 07:57:14.527 UTC [1] LOG:  starting PostgreSQL 16.14 (Debian 16.14-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+2026-08-10T07:57:51.5201843Z  
+2026-08-10T07:57:51.5202354Z  2026-08-10 07:57:14.527 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-08-10T07:57:51.5203191Z  2026-08-10 07:57:14.527 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-08-10T07:57:51.5204343Z  2026-08-10 07:57:14.528 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-08-10T07:57:51.5205369Z  2026-08-10 07:57:14.533 UTC [63] LOG:  database system was shut down at 2026-08-10 07:57:14 UTC
+2026-08-10T07:57:51.5206275Z  2026-08-10 07:57:14.538 UTC [1] LOG:  database system is ready to accept connections
+2026-08-10T07:57:51.5207198Z  fixing permissions on existing directory /var/lib/postgresql/data ... ok
+2026-08-10T07:57:51.5207909Z  creating subdirectories ... ok
+2026-08-10T07:57:51.5208457Z  selecting dynamic shared memory implementation ... posix
+2026-08-10T07:57:51.5209058Z  selecting default max_connections ... 100
+2026-08-10T07:57:51.5209383Z  selecting default shared_buffers ... 128MB
+2026-08-10T07:57:51.5209695Z  selecting default time zone ... Etc/UTC
+2026-08-10T07:57:51.5209984Z  creating configuration files ... ok
+2026-08-10T07:57:51.5210268Z  running bootstrap script ... ok
+2026-08-10T07:57:51.5210575Z  performing post-bootstrap initialization ... ok
+2026-08-10T07:57:51.5210895Z  syncing data to disk ... ok
+2026-08-10T07:57:51.5211126Z  
+2026-08-10T07:57:51.5211292Z  
+2026-08-10T07:57:51.5211541Z  Success. You can now start the database server using:
+2026-08-10T07:57:51.5211854Z  
+2026-08-10T07:57:51.5212099Z      pg_ctl -D /var/lib/postgresql/data -l logfile start
+2026-08-10T07:57:51.5212414Z  
+2026-08-10T07:57:51.5213121Z  waiting for server to start....2026-08-10 07:57:14.204 UTC [47] LOG:  starting PostgreSQL 16.14 (Debian 16.14-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+2026-08-10T07:57:51.5227599Z  2026-08-10 07:57:14.205 UTC [47] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-08-10T07:57:51.5228674Z  2026-08-10 07:57:14.208 UTC [50] LOG:  database system was shut down at 2026-08-10 07:57:14 UTC
+2026-08-10T07:57:51.5229615Z  2026-08-10 07:57:14.215 UTC [47] LOG:  database system is ready to accept connections
+2026-08-10T07:57:51.5230269Z   done
+2026-08-10T07:57:51.5230596Z  server started
+2026-08-10T07:57:51.5230933Z  CREATE DATABASE
+2026-08-10T07:57:51.5231251Z  
+2026-08-10T07:57:51.5231523Z  
+2026-08-10T07:57:51.5232060Z  /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+2026-08-10T07:57:51.5232753Z  
+2026-08-10T07:57:51.5233339Z  waiting for server to shut down....2026-08-10 07:57:14.401 UTC [47] LOG:  received fast shutdown request
+2026-08-10T07:57:51.5234938Z  2026-08-10 07:57:14.402 UTC [47] LOG:  aborting any active transactions
+2026-08-10T07:57:51.5236291Z  2026-08-10 07:57:14.405 UTC [47] LOG:  background worker "logical replication launcher" (PID 53) exited with exit code 1
+2026-08-10T07:57:51.5237246Z  2026-08-10 07:57:14.405 UTC [48] LOG:  shutting down
+2026-08-10T07:57:51.5237914Z  2026-08-10 07:57:14.406 UTC [48] LOG:  checkpoint starting: shutdown immediate
+2026-08-10T07:57:51.5239070Z  2026-08-10 07:57:14.423 UTC [48] LOG:  checkpoint complete: wrote 922 buffers (5.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.014 s, sync=0.003 s, total=0.018 s; sync files=301, longest=0.002 s, average=0.001 s; distance=4255 kB, estimate=4255 kB; lsn=0/1912118, redo lsn=0/1912118
+2026-08-10T07:57:51.5240171Z  2026-08-10 07:57:14.431 UTC [47] LOG:  database system is shut down
+2026-08-10T07:57:51.5240517Z   done
+2026-08-10T07:57:51.5240774Z  server stopped
+2026-08-10T07:57:51.5241493Z  
+2026-08-10T07:57:51.5242199Z  PostgreSQL init process complete; ready for start up.
+2026-08-10T07:57:51.5242947Z  
+2026-08-10T07:57:51.5271488Z Stop and remove container: 1d1ec8d560a24ea385f86a65cbff5df7_pgvectorpgvector082pg16bookworm_7cee8e
+2026-08-10T07:57:51.5278862Z ##[command]/usr/bin/docker rm --force 2dec329532f98e4e37f0bf05895f008472ab0f85636079f3cbe144e009bd337b
+2026-08-10T07:57:51.9596388Z 2dec329532f98e4e37f0bf05895f008472ab0f85636079f3cbe144e009bd337b
+2026-08-10T07:57:51.9640119Z Remove container network: github_network_14120e2806854964b42d9b808596d5c3
+2026-08-10T07:57:51.9645316Z ##[command]/usr/bin/docker network rm github_network_14120e2806854964b42d9b808596d5c3
+2026-08-10T07:57:52.0462518Z github_network_14120e2806854964b42d9b808596d5c3
+2026-08-10T07:57:52.0545298Z Cleaning up orphan processes
+2026-08-10T07:57:52.0897284Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, pnpm/action-setup@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

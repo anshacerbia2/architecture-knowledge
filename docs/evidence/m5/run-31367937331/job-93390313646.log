@@ -1,0 +1,637 @@
+﻿2026-08-10T07:57:01.7228221Z Current runner version: '2.336.0'
+2026-08-10T07:57:01.7266979Z ##[group]Runner Image Provisioner
+2026-08-10T07:57:01.7268430Z Hosted Compute Agent
+2026-08-10T07:57:01.7269438Z Version: 20260729.566
+2026-08-10T07:57:01.7270595Z Commit: cf7153fe6e25b664e8693c24944bf2b00355d109
+2026-08-10T07:57:01.7271882Z Build Date: 2026-07-29T19:17:02Z
+2026-08-10T07:57:01.7273087Z Worker ID: {9a93614c-9e6b-41ce-831d-11be231a8f21}
+2026-08-10T07:57:01.7274322Z Azure Region: westus
+2026-08-10T07:57:01.7275299Z ##[endgroup]
+2026-08-10T07:57:01.7277848Z ##[group]Operating System
+2026-08-10T07:57:01.7278880Z Microsoft Windows Server 2025
+2026-08-10T07:57:01.7279898Z 10.0.26100
+2026-08-10T07:57:01.7280730Z Datacenter
+2026-08-10T07:57:01.7281553Z ##[endgroup]
+2026-08-10T07:57:01.7282405Z ##[group]Runner Image
+2026-08-10T07:57:01.7283310Z Image: windows-2025-vs2026
+2026-08-10T07:57:01.7284236Z Version: 20260803.193.1
+2026-08-10T07:57:01.7287150Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20260803.193/images/windows/Windows2025-VS2026-Readme.md
+2026-08-10T07:57:01.7290116Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20260803.193
+2026-08-10T07:57:01.7291826Z ##[endgroup]
+2026-08-10T07:57:01.7293565Z ##[group]GITHUB_TOKEN Permissions
+2026-08-10T07:57:01.7296211Z Contents: read
+2026-08-10T07:57:01.7297022Z Metadata: read
+2026-08-10T07:57:01.7298216Z ##[endgroup]
+2026-08-10T07:57:01.7300640Z Secret source: Actions
+2026-08-10T07:57:01.7301735Z Prepare workflow directory
+2026-08-10T07:57:01.7675570Z Prepare all required actions
+2026-08-10T07:57:01.7753372Z Getting action download info
+2026-08-10T07:57:02.1211930Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-08-10T07:57:02.3078895Z Download action repository 'pnpm/action-setup@v4' (SHA:b906affcce14559ad1aafd4ab0e942779e9f58b1)
+2026-08-10T07:57:02.7050991Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-08-10T07:57:03.0090965Z Complete job name: validate (windows-latest)
+2026-08-10T07:57:03.1981945Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T07:57:03.1993019Z ##[group]Run actions/checkout@v4
+2026-08-10T07:57:03.1993684Z with:
+2026-08-10T07:57:03.1994130Z   repository: anshacerbia2/architecture-knowledge
+2026-08-10T07:57:03.1997987Z   token: ***
+2026-08-10T07:57:03.1998363Z   ssh-strict: true
+2026-08-10T07:57:03.1998747Z   ssh-user: git
+2026-08-10T07:57:03.1999132Z   persist-credentials: true
+2026-08-10T07:57:03.1999562Z   clean: true
+2026-08-10T07:57:03.1999999Z   sparse-checkout-cone-mode: true
+2026-08-10T07:57:03.2000469Z   fetch-depth: 1
+2026-08-10T07:57:03.2000839Z   fetch-tags: false
+2026-08-10T07:57:03.2001252Z   show-progress: true
+2026-08-10T07:57:03.2001640Z   lfs: false
+2026-08-10T07:57:03.2002019Z   submodules: false
+2026-08-10T07:57:03.2002412Z   set-safe-directory: true
+2026-08-10T07:57:03.2002860Z   allow-unsafe-pr-checkout: false
+2026-08-10T07:57:03.2003513Z ##[endgroup]
+2026-08-10T07:57:05.4896901Z Syncing repository: anshacerbia2/architecture-knowledge
+2026-08-10T07:57:05.4899423Z ##[group]Getting Git version info
+2026-08-10T07:57:05.4900668Z Working directory is 'D:\a\architecture-knowledge\architecture-knowledge'
+2026-08-10T07:57:05.4902425Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-08-10T07:57:05.4903422Z git version 2.55.0.windows.3
+2026-08-10T07:57:05.4912400Z ##[endgroup]
+2026-08-10T07:57:05.4918432Z Temporarily overriding HOME='D:\a\_temp\e89dd964-df27-49de-ad1b-70432b87b550' before making global git config changes
+2026-08-10T07:57:05.4920253Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-10T07:57:05.4925786Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\architecture-knowledge\architecture-knowledge
+2026-08-10T07:57:05.4930325Z Deleting the contents of 'D:\a\architecture-knowledge\architecture-knowledge'
+2026-08-10T07:57:05.4932235Z ##[group]Initializing the repository
+2026-08-10T07:57:05.4937235Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\architecture-knowledge\architecture-knowledge
+2026-08-10T07:57:05.4939361Z Initialized empty Git repository in D:/a/architecture-knowledge/architecture-knowledge/.git/
+2026-08-10T07:57:05.4943077Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/anshacerbia2/architecture-knowledge
+2026-08-10T07:57:05.4946416Z ##[endgroup]
+2026-08-10T07:57:05.4947872Z ##[group]Disabling automatic garbage collection
+2026-08-10T07:57:05.4949095Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-08-10T07:57:05.4952370Z ##[endgroup]
+2026-08-10T07:57:05.4953741Z ##[group]Setting up auth
+2026-08-10T07:57:05.4955108Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-08-10T07:57:05.4959246Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-08-10T07:57:05.5977353Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-10T07:57:05.6434739Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-08-10T07:57:06.2524397Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-10T07:57:06.3025878Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-08-10T07:57:06.9652419Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-08-10T07:57:06.9980596Z ##[endgroup]
+2026-08-10T07:57:07.0002382Z ##[group]Fetching the repository
+2026-08-10T07:57:07.0020912Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +6ce4f701dea01aa85439651f6d9929f8597afe69:refs/remotes/origin/main
+2026-08-10T07:57:08.3663012Z From https://github.com/anshacerbia2/architecture-knowledge
+2026-08-10T07:57:08.3665576Z  * [new ref]         6ce4f701dea01aa85439651f6d9929f8597afe69 -> origin/main
+2026-08-10T07:57:08.3714100Z ##[endgroup]
+2026-08-10T07:57:08.3715570Z ##[group]Determining the checkout info
+2026-08-10T07:57:08.3718602Z ##[endgroup]
+2026-08-10T07:57:08.3729818Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-08-10T07:57:08.4305183Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-08-10T07:57:08.4642034Z ##[group]Checking out the ref
+2026-08-10T07:57:08.4643690Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B main refs/remotes/origin/main
+2026-08-10T07:57:08.6044345Z Switched to a new branch 'main'
+2026-08-10T07:57:08.6112678Z branch 'main' set up to track 'origin/main'.
+2026-08-10T07:57:08.6159040Z ##[endgroup]
+2026-08-10T07:57:08.6555763Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-08-10T07:57:08.6896573Z 6ce4f701dea01aa85439651f6d9929f8597afe69
+2026-08-10T07:57:08.7542299Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T07:57:08.7545390Z ##[group]Run pnpm/action-setup@v4
+2026-08-10T07:57:08.7545643Z with:
+2026-08-10T07:57:08.7545810Z   version: 10.23.0
+2026-08-10T07:57:08.7546000Z   run_install: false
+2026-08-10T07:57:08.7546195Z   dest: ~/setup-pnpm
+2026-08-10T07:57:08.7546372Z   cache: false
+2026-08-10T07:57:08.7546569Z   cache_dependency_path: pnpm-lock.yaml
+2026-08-10T07:57:08.7546834Z   package_json_file: package.json
+2026-08-10T07:57:08.7547059Z   standalone: false
+2026-08-10T07:57:08.7547242Z ##[endgroup]
+2026-08-10T07:57:08.9720062Z ##[group]Running self-installer...
+2026-08-10T07:57:09.5992898Z (node:792) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-08-10T07:57:09.5996913Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-10T07:57:09.7874036Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-08-10T07:57:09.8181219Z Packages: +1
+2026-08-10T07:57:09.8186268Z +
+2026-08-10T07:57:11.9836027Z Progress: resolved 1, reused 0, downloaded 1, added 0
+2026-08-10T07:57:13.0941380Z Progress: resolved 1, reused 0, downloaded 1, added 1
+2026-08-10T07:57:13.0942955Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
+2026-08-10T07:57:13.1698960Z 
+2026-08-10T07:57:13.1699626Z dependencies:
+2026-08-10T07:57:13.1700318Z + pnpm 10.23.0 (11.21.0 is available)
+2026-08-10T07:57:13.1700906Z 
+2026-08-10T07:57:13.1802113Z Done in 3.9s
+2026-08-10T07:57:13.1991417Z ##[endgroup]
+2026-08-10T07:57:13.1992150Z Installation Completed!
+2026-08-10T07:57:13.2366296Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T07:57:13.2367897Z ##[group]Run actions/setup-node@v4
+2026-08-10T07:57:13.2368140Z with:
+2026-08-10T07:57:13.2368320Z   node-version-file: .nvmrc
+2026-08-10T07:57:13.2368528Z   cache: pnpm
+2026-08-10T07:57:13.2368699Z   always-auth: false
+2026-08-10T07:57:13.2368889Z   check-latest: false
+2026-08-10T07:57:13.2371560Z   token: ***
+2026-08-10T07:57:13.2371740Z env:
+2026-08-10T07:57:13.2372015Z   PNPM_HOME: C:\Users\runneradmin\setup-pnpm\node_modules\.bin
+2026-08-10T07:57:13.2372328Z ##[endgroup]
+2026-08-10T07:57:13.4346968Z Node version file is not JSON file
+2026-08-10T07:57:13.4349943Z Resolved .nvmrc as 24.11.1
+2026-08-10T07:57:13.4370062Z Attempting to download 24.11.1...
+2026-08-10T07:57:13.4584319Z (node:3156) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-10T07:57:13.4585571Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-10T07:57:14.4777228Z Acquiring 24.11.1 - x64 from https://github.com/actions/node-versions/releases/download/24.11.1-19282993875/node-24.11.1-win32-x64.7z
+2026-08-10T07:57:15.0455570Z Extracting ...
+2026-08-10T07:57:17.7095209Z Adding to the cache ...
+2026-08-10T07:57:25.6017779Z ##[group]Environment details
+2026-08-10T07:57:27.2393104Z node: v24.11.1
+2026-08-10T07:57:27.2393898Z npm: 11.6.2
+2026-08-10T07:57:27.2394423Z yarn: 1.22.22
+2026-08-10T07:57:27.2395369Z ##[endgroup]
+2026-08-10T07:57:27.3533691Z [command]C:\Windows\system32\cmd.exe /D /S /C "C:\Users\runneradmin\setup-pnpm\node_modules\.bin\pnpm.CMD store path --silent"
+2026-08-10T07:57:27.8521671Z D:\.pnpm-store\v10
+2026-08-10T07:57:28.2831865Z Cache hit for: node-cache-Windows-x64-pnpm-1e3137200eb7f7f9e33d94e731a1c4330dca12f756b18bada6bd042666dbca8c
+2026-08-10T07:57:28.2983380Z (node:3156) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-08-10T07:57:29.5909121Z Received 19171218 of 31754130 (60.4%), 18.3 MBs/sec
+2026-08-10T07:57:29.7171665Z Received 31754130 of 31754130 (100.0%), 26.9 MBs/sec
+2026-08-10T07:57:29.7173988Z Cache Size: ~30 MB (31754130 B)
+2026-08-10T07:57:29.7206884Z [command]"C:\Program Files\Git\usr\bin\tar.exe" -xf D:/a/_temp/04b844a2-2c32-450b-b450-5c92a66fccb9/cache.tzst -P -C D:/a/architecture-knowledge/architecture-knowledge --force-local --use-compress-program "zstd -d"
+2026-08-10T07:57:33.9235147Z Cache restored successfully
+2026-08-10T07:57:33.9274662Z Cache restored from key: node-cache-Windows-x64-pnpm-1e3137200eb7f7f9e33d94e731a1c4330dca12f756b18bada6bd042666dbca8c
+2026-08-10T07:57:33.9624429Z ##[group]Run pnpm install --frozen-lockfile
+2026-08-10T07:57:33.9624842Z [36;1mpnpm install --frozen-lockfile[0m
+2026-08-10T07:57:34.0345730Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-08-10T07:57:34.0346470Z env:
+2026-08-10T07:57:34.0347001Z   PNPM_HOME: C:\Users\runneradmin\setup-pnpm\node_modules\.bin
+2026-08-10T07:57:34.0347717Z ##[endgroup]
+2026-08-10T07:57:34.9942981Z Lockfile is up to date, resolution step is skipped
+2026-08-10T07:57:35.0221526Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-08-10T07:57:35.0821869Z Packages: +241
+2026-08-10T07:57:35.0838162Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-08-10T07:57:36.0375588Z Progress: resolved 241, reused 241, downloaded 0, added 21
+2026-08-10T07:57:37.0393928Z Progress: resolved 241, reused 241, downloaded 0, added 146
+2026-08-10T07:57:38.0416127Z Progress: resolved 241, reused 241, downloaded 0, added 179
+2026-08-10T07:57:38.5677061Z Progress: resolved 241, reused 241, downloaded 0, added 241, done
+2026-08-10T07:57:39.0815026Z 
+2026-08-10T07:57:39.0819149Z dependencies:
+2026-08-10T07:57:39.0828376Z + ajv 8.17.1
+2026-08-10T07:57:39.0829417Z + ajv-formats 3.0.1
+2026-08-10T07:57:39.0830716Z + pg 8.16.3
+2026-08-10T07:57:39.0857442Z + yaml 2.8.1
+2026-08-10T07:57:39.0859938Z 
+2026-08-10T07:57:39.0861356Z devDependencies:
+2026-08-10T07:57:39.0885758Z + @stryker-mutator/core 9.6.1
+2026-08-10T07:57:39.0888391Z + @stryker-mutator/vitest-runner 9.6.1
+2026-08-10T07:57:39.0891106Z + @types/node 24.10.1
+2026-08-10T07:57:39.0893347Z + @types/pg 8.15.5
+2026-08-10T07:57:39.0896325Z + @vitest/coverage-v8 4.0.16
+2026-08-10T07:57:39.0898454Z + prettier 3.8.1
+2026-08-10T07:57:39.0900706Z + tsx 4.20.6
+2026-08-10T07:57:39.0903349Z + typescript 5.9.3
+2026-08-10T07:57:39.0906166Z + vitest 4.0.16
+2026-08-10T07:57:39.0908953Z 
+2026-08-10T07:57:39.0911453Z ╭ Warning ─────────────────────────────────────────────────────────────────────╮
+2026-08-10T07:57:39.0913618Z │                                                                              │
+2026-08-10T07:57:39.0915881Z │   Ignored build scripts: esbuild.                                            │
+2026-08-10T07:57:39.0918332Z │   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+2026-08-10T07:57:39.0961006Z │   to run scripts.                                                            │
+2026-08-10T07:57:39.0985303Z │                                                                              │
+2026-08-10T07:57:39.0990641Z ╰──────────────────────────────────────────────────────────────────────────────╯
+2026-08-10T07:57:39.0992417Z 
+2026-08-10T07:57:39.1252038Z Done in 4.5s using pnpm v10.23.0
+2026-08-10T07:57:39.3519549Z ##[group]Run pnpm format:check
+2026-08-10T07:57:39.3520059Z [36;1mpnpm format:check[0m
+2026-08-10T07:57:39.3617410Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-08-10T07:57:39.3617978Z env:
+2026-08-10T07:57:39.3618394Z   PNPM_HOME: C:\Users\runneradmin\setup-pnpm\node_modules\.bin
+2026-08-10T07:57:39.3618940Z ##[endgroup]
+2026-08-10T07:57:40.4403993Z 
+2026-08-10T07:57:40.4424778Z > architecture-knowledge-system@0.2.0 format:check D:\a\architecture-knowledge\architecture-knowledge
+2026-08-10T07:57:40.4426898Z > prettier --check "src/**/*.ts" "tests/**/*.ts" "*.json" "*.ts" "schemas/**/*.json" ".github/**/*.yml" "*.yml"
+2026-08-10T07:57:40.4428533Z 
+2026-08-10T07:57:40.6288843Z Checking formatting...
+2026-08-10T07:57:44.1220329Z All matched files use Prettier code style!
+2026-08-10T07:57:44.3088788Z ##[group]Run pnpm validate
+2026-08-10T07:57:44.3089138Z [36;1mpnpm validate[0m
+2026-08-10T07:57:44.3165418Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-08-10T07:57:44.3165784Z env:
+2026-08-10T07:57:44.3166049Z   PNPM_HOME: C:\Users\runneradmin\setup-pnpm\node_modules\.bin
+2026-08-10T07:57:44.3166389Z ##[endgroup]
+2026-08-10T07:57:45.0645810Z 
+2026-08-10T07:57:45.0647317Z > architecture-knowledge-system@0.2.0 validate D:\a\architecture-knowledge\architecture-knowledge
+2026-08-10T07:57:45.0648699Z > pnpm run typecheck && tsx src/cli.ts validate
+2026-08-10T07:57:45.0649323Z 
+2026-08-10T07:57:45.4460750Z 
+2026-08-10T07:57:45.4462203Z > architecture-knowledge-system@0.2.0 typecheck D:\a\architecture-knowledge\architecture-knowledge
+2026-08-10T07:57:45.4463446Z > tsc --noEmit
+2026-08-10T07:57:45.4463863Z 
+2026-08-10T07:57:50.5364861Z Validation schema,vocabulary,ids,sources,claims,relationships,lifecycle,markdown,links: 0 error(s), 0 warning(s).
+2026-08-10T07:57:50.7181072Z ##[group]Run pnpm graph:check
+2026-08-10T07:57:50.7181576Z [36;1mpnpm graph:check[0m
+2026-08-10T07:57:50.7284146Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-08-10T07:57:50.7284739Z env:
+2026-08-10T07:57:50.7285193Z   PNPM_HOME: C:\Users\runneradmin\setup-pnpm\node_modules\.bin
+2026-08-10T07:57:50.7285748Z ##[endgroup]
+2026-08-10T07:57:51.4918377Z 
+2026-08-10T07:57:51.4919807Z > architecture-knowledge-system@0.2.0 graph:check D:\a\architecture-knowledge\architecture-knowledge
+2026-08-10T07:57:51.4921099Z > tsx src/graph-cli.ts check
+2026-08-10T07:57:51.4921659Z 
+2026-08-10T07:57:53.0420396Z Graph artifact check: 12/12 current.
+2026-08-10T07:57:53.2112389Z ##[group]Run pnpm retrieval:units:check
+2026-08-10T07:57:53.2112816Z [36;1mpnpm retrieval:units:check[0m
+2026-08-10T07:57:53.2196158Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-08-10T07:57:53.2196507Z env:
+2026-08-10T07:57:53.2196770Z   PNPM_HOME: C:\Users\runneradmin\setup-pnpm\node_modules\.bin
+2026-08-10T07:57:53.2197094Z ##[endgroup]
+2026-08-10T07:57:53.9702154Z 
+2026-08-10T07:57:53.9703982Z > architecture-knowledge-system@0.2.0 retrieval:units:check D:\a\architecture-knowledge\architecture-knowledge
+2026-08-10T07:57:53.9705432Z > tsx src/retrieval-cli.ts units-check
+2026-08-10T07:57:53.9714886Z 
+2026-08-10T07:57:55.7538178Z Retrieval artifact check: 2/2 current.
+2026-08-10T07:57:55.7862022Z ##[group]Run pnpm test
+2026-08-10T07:57:55.7862478Z [36;1mpnpm test[0m
+2026-08-10T07:57:55.7941105Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-08-10T07:57:55.7941467Z env:
+2026-08-10T07:57:55.7941738Z   PNPM_HOME: C:\Users\runneradmin\setup-pnpm\node_modules\.bin
+2026-08-10T07:57:55.7942068Z ##[endgroup]
+2026-08-10T07:58:00.6022709Z 
+2026-08-10T07:58:00.6023663Z > architecture-knowledge-system@0.2.0 test D:\a\architecture-knowledge\architecture-knowledge
+2026-08-10T07:58:00.6024619Z > vitest run --maxWorkers=2
+2026-08-10T07:58:00.6024891Z 
+2026-08-10T07:58:00.6024900Z 
+2026-08-10T07:58:00.6025924Z [1m[46m RUN [49m[22m [36mv4.0.16 [39m[90mD:/a/architecture-knowledge/architecture-knowledge[39m
+2026-08-10T07:58:00.6026570Z 
+2026-08-10T07:58:01.2980824Z  [32m✓[39m tests/graph-artifacts.test.ts [2m([22m[2m57 tests[22m[2m)[22m[33m 3113[2mms[22m[39m
+2026-08-10T07:58:02.5939928Z  [32m✓[39m tests/graph-projection.test.ts [2m([22m[2m32 tests[22m[2m)[22m[33m 863[2mms[22m[39m
+2026-08-10T07:58:03.9270579Z  [32m✓[39m tests/graph-query.test.ts [2m([22m[2m41 tests[22m[2m)[22m[33m 855[2mms[22m[39m
+2026-08-10T07:58:05.3251995Z  [32m✓[39m tests/retrieval-query.test.ts [2m([22m[2m11 tests[22m[2m)[22m[33m 841[2mms[22m[39m
+2026-08-10T07:58:10.3394929Z  [32m✓[39m tests/audit-gap-regressions.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 4461[2mms[22m[39m
+2026-08-10T07:58:10.3405607Z      [33m[2m✓[22m[39m rejects missing, duplicate, inconsistent, and orphaned ledger allocations [33m 769[2mms[22m[39m
+2026-08-10T07:58:10.3408385Z      [33m[2m✓[22m[39m rejects unallocated and malformed records with unknown kinds [33m 562[2mms[22m[39m
+2026-08-10T07:58:10.3411266Z      [33m[2m✓[22m[39m rejects normalized label and human-key collisions [33m 604[2mms[22m[39m
+2026-08-10T07:58:10.3419761Z      [33m[2m✓[22m[39m rejects admitted unassessed, restricted, and unreplaced sources [33m 567[2mms[22m[39m
+2026-08-10T07:58:10.3439566Z      [33m[2m✓[22m[39m rejects unknown, unsupported, and unconditional evidence-required claims [33m 510[2mms[22m[39m
+2026-08-10T07:58:10.3443024Z      [33m[2m✓[22m[39m rejects duplicate, discontinuous lifecycle events and missing replacements [33m 479[2mms[22m[39m
+2026-08-10T07:58:10.3446273Z      [33m[2m✓[22m[39m enforces relationship direction, conditions, evidence, kinds, and ordering [33m 479[2mms[22m[39m
+2026-08-10T07:58:10.3477148Z      [33m[2m✓[22m[39m detects duplicate, conflicting, ambiguous, and unknown relationship policy [33m 487[2mms[22m[39m
+2026-08-10T07:58:11.5892975Z  [32m✓[39m tests/m3-semantic-remediation.test.ts [2m([22m[2m15 tests[22m[2m)[22m[33m 809[2mms[22m[39m
+2026-08-10T07:58:18.4782790Z  [32m✓[39m tests/security-claim.test.ts [2m([22m[2m36 tests[22m[2m)[22m[33m 20300[2mms[22m[39m
+2026-08-10T07:58:18.4784641Z      [33m[2m✓[22m[39m accepts an exact structured normative claim with direct admitted evidence [33m 948[2mms[22m[39m
+2026-08-10T07:58:18.4900949Z      [33m[2m✓[22m[39m rejects normative security prose that is not structured [33m 618[2mms[22m[39m
+2026-08-10T07:58:18.4943781Z      [33m[2m✓[22m[39m rejects missing and merely adjacent claim or source evidence [33m 559[2mms[22m[39m
+2026-08-10T07:58:18.5195823Z      [33m[2m✓[22m[39m rejects unresolved, non-sourced, and unlocated security evidence [33m 617[2mms[22m[39m
+2026-08-10T07:58:18.5226604Z      [33m[2m✓[22m[39m rejects broadened normative prose even when notes or adjacency look plausible [33m 617[2mms[22m[39m
+2026-08-10T07:58:18.5232520Z      [33m[2m✓[22m[39m rejects protocol force hidden under security-risk [33m 782[2mms[22m[39m
+2026-08-10T07:58:18.5236119Z      [33m[2m✓[22m[39m rejects protocol force hidden under implementation-observation [33m 629[2mms[22m[39m
+2026-08-10T07:58:18.5242561Z      [33m[2m✓[22m[39m rejects security-risk with normative claim despite non-uppercase prose [33m 660[2mms[22m[39m
+2026-08-10T07:58:18.5263429Z      [33m[2m✓[22m[39m rejects security-risk with normative claim despite non-uppercase prose [33m 482[2mms[22m[39m
+2026-08-10T07:58:23.0164610Z      [33m[2m✓[22m[39m rejects implementation-observation with normative claim despite non-uppercase prose [33m 684[2mms[22m[39m
+2026-08-10T07:58:23.0166464Z      [33m[2m✓[22m[39m rejects implementation-observation with normative claim despite non-uppercase prose [33m 551[2mms[22m[39m
+2026-08-10T07:58:23.0168226Z      [33m[2m✓[22m[39m rejects an operational recommendation binding a normative claim with neutral prose [33m 495[2mms[22m[39m
+2026-08-10T07:58:23.0170145Z      [33m[2m✓[22m[39m rejects protocol force hidden under an operational recommendation [33m 660[2mms[22m[39m
+2026-08-10T07:58:23.0171491Z      [33m[2m✓[22m[39m rejects a normative control with no claim binding [33m 562[2mms[22m[39m
+2026-08-10T07:58:23.0172832Z      [33m[2m✓[22m[39m rejects a claim force weakened while its MUST statement remains [33m 519[2mms[22m[39m
+2026-08-10T07:58:23.0174185Z      [33m[2m✓[22m[39m rejects a claim force stronger than its SHOULD statement [33m 514[2mms[22m[39m
+2026-08-10T07:58:23.0175352Z      [33m[2m✓[22m[39m rejects removal of a material exception [33m 471[2mms[22m[39m
+2026-08-10T07:58:23.0176971Z      [33m[2m✓[22m[39m rejects a conditional requirement made structurally unconditional [33m 453[2mms[22m[39m
+2026-08-10T07:58:23.0178480Z      [33m[2m✓[22m[39m rejects a structured condition that does not preserve the claim qualifier [33m 503[2mms[22m[39m
+2026-08-10T07:58:23.0180093Z      [33m[2m✓[22m[39m rejects structured exception metadata that does not preserve the claim exception [33m 490[2mms[22m[39m
+2026-08-10T07:58:23.0181562Z      [33m[2m✓[22m[39m rejects sourced normative guidance with no direct source [33m 559[2mms[22m[39m
+2026-08-10T07:58:23.0182986Z      [33m[2m✓[22m[39m rejects sourced normative guidance supported only by a derived claim [33m 638[2mms[22m[39m
+2026-08-10T07:58:23.0184402Z      [33m[2m✓[22m[39m rejects normative guidance without a direct source locator [33m 578[2mms[22m[39m
+2026-08-10T07:58:23.0185678Z      [33m[2m✓[22m[39m rejects a locator that belongs to a different source [33m 698[2mms[22m[39m
+2026-08-10T07:58:23.0186968Z      [33m[2m✓[22m[39m rejects a non-admitted direct source for normative guidance [33m 590[2mms[22m[39m
+2026-08-10T07:58:23.0188329Z      [33m[2m✓[22m[39m rejects an unrelated claim attached across a semantic boundary [33m 569[2mms[22m[39m
+2026-08-10T07:58:23.0190003Z      [33m[2m✓[22m[39m rejects reverse cross-boundary reuse without explicit applicability [33m 533[2mms[22m[39m
+2026-08-10T07:58:23.0191611Z      [33m[2m✓[22m[39m rejects removal of an applicable normative implication and declaration together [33m 466[2mms[22m[39m
+2026-08-10T07:58:23.0193150Z      [33m[2m✓[22m[39m rejects a recommendation projected as a protocol-level MUST NOT [33m 458[2mms[22m[39m
+2026-08-10T07:58:23.0194655Z      [33m[2m✓[22m[39m rejects an operational recommendation backed by a non-recommendation claim [33m 489[2mms[22m[39m
+2026-08-10T07:58:23.0196125Z      [33m[2m✓[22m[39m accepts claim reuse with explicit cross-concept applicability [33m 485[2mms[22m[39m
+2026-08-10T07:58:23.0197401Z      [33m[2m✓[22m[39m accepts a non-normative unbound security-risk [33m 491[2mms[22m[39m
+2026-08-10T07:58:23.0198671Z      [33m[2m✓[22m[39m accepts a non-normative unbound implementation-observation [33m 506[2mms[22m[39m
+2026-08-10T07:58:23.0200162Z      [33m[2m✓[22m[39m accepts a descriptive implication bound to a non-normative descriptive claim [33m 506[2mms[22m[39m
+2026-08-10T07:58:23.0201799Z      [33m[2m✓[22m[39m accepts a repository-authored operational recommendation without protocol force [33m 448[2mms[22m[39m
+2026-08-10T07:58:23.0204399Z      [33m[2m✓[22m[39m encodes the production OAuth and OIDC qualifiers as governed fields [33m 453[2mms[22m[39m
+2026-08-10T07:58:23.0205814Z  [32m✓[39m tests/relationship.test.ts [2m([22m[2m13 tests[22m[2m)[22m[33m 6782[2mms[22m[39m
+2026-08-10T07:58:23.0207073Z      [33m[2m✓[22m[39m accepts a typed, conditional, evidenced relationship [33m 755[2mms[22m[39m
+2026-08-10T07:58:23.0208437Z      [33m[2m✓[22m[39m rejects prohibited self-relations and endpoint type violations [33m 534[2mms[22m[39m
+2026-08-10T07:58:23.0209676Z      [33m[2m✓[22m[39m applies predicate-specific cycle policy [33m 603[2mms[22m[39m
+2026-08-10T07:58:23.0211376Z      [33m[2m✓[22m[39m rejects related-to when a precise predicate exists for the same pair [33m 517[2mms[22m[39m
+2026-08-10T07:58:23.0212703Z      [33m[2m✓[22m[39m rejects inconsistent explicit inverse metadata [33m 521[2mms[22m[39m
+2026-08-10T07:58:23.0214108Z      [33m[2m✓[22m[39m requires explicit edge-local or reusable-concept condition scope [33m 458[2mms[22m[39m
+2026-08-10T07:58:23.0215611Z      [33m[2m✓[22m[39m blocks proposed and claim-context-only relationships from traversal [33m 508[2mms[22m[39m
+2026-08-10T07:58:23.0217121Z      [33m[2m✓[22m[39m blocks inferential quality impacts and causal quality-taxonomy edges [33m 475[2mms[22m[39m
+2026-08-10T07:58:23.0218784Z      [33m[2m✓[22m[39m accepts concept-global traversal only when structured proof is exact [33m 494[2mms[22m[39m
+2026-08-10T07:58:23.0220253Z      [33m[2m✓[22m[39m rejects relationship scope, confidence, and strength above evidence [33m 444[2mms[22m[39m
+2026-08-10T07:58:23.0221785Z      [33m[2m✓[22m[39m rejects evidence whose subject, object, or predicate does not prove the edge [33m 458[2mms[22m[39m
+2026-08-10T07:58:23.0223350Z      [33m[2m✓[22m[39m rejects omitted claim conditions even when a note claims a narrower meaning [33m 498[2mms[22m[39m
+2026-08-10T07:58:23.0224829Z      [33m[2m✓[22m[39m rejects a multi-claim edge when any supporting claim narrows it [33m 508[2mms[22m[39m
+2026-08-10T07:58:23.0226191Z  [32m✓[39m tests/embedding-provider.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 72[2mms[22m[39m
+2026-08-10T07:58:23.0227511Z  [32m✓[39m tests/retrieval-units.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 1147[2mms[22m[39m
+2026-08-10T07:58:23.0232499Z  [32m✓[39m tests/retrieval-currentness.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 1924[2mms[22m[39m
+2026-08-10T07:58:23.0234429Z      [33m[2m✓[22m[39m fails closed for every active-generation contract mismatch and row-root tampering [33m 455[2mms[22m[39m
+2026-08-10T07:58:23.0236176Z  [2m[90m↓[39m[22m tests/retrieval-database.integration.test.ts [2m([22m[2m4 tests[22m[2m | [22m[33m4 skipped[39m[2m)[22m
+2026-08-10T07:58:26.0606980Z  [32m✓[39m tests/schema.test.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 3979[2mms[22m[39m
+2026-08-10T07:58:26.0609939Z      [33m[2m✓[22m[39m accepts valid source, claim, relationship, and Markdown fixtures [33m 1542[2mms[22m[39m
+2026-08-10T07:58:26.0612446Z      [33m[2m✓[22m[39m rejects unknown properties with a precise path [33m 962[2mms[22m[39m
+2026-08-10T07:58:26.0615378Z      [33m[2m✓[22m[39m rejects normative claims without direct source and locator arrays [33m 773[2mms[22m[39m
+2026-08-10T07:58:26.0625406Z      [33m[2m✓[22m[39m rejects protocol normative metadata on a repository recommendation [33m 695[2mms[22m[39m
+2026-08-10T07:58:26.6693792Z  [32m✓[39m tests/retrieval-evaluation.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 102[2mms[22m[39m
+2026-08-10T07:58:28.4262759Z  [32m✓[39m tests/evidence.test.ts [2m([22m[2m10 tests[22m[2m)[22m[33m 6316[2mms[22m[39m
+2026-08-10T07:58:28.4269547Z      [33m[2m✓[22m[39m accepts admitted assessed sources and explicitly typed claims [33m 850[2mms[22m[39m
+2026-08-10T07:58:28.4309671Z      [33m[2m✓[22m[39m rejects candidate or rejected evidence and disguised direct derivation [33m 751[2mms[22m[39m
+2026-08-10T07:58:28.4333121Z      [33m[2m✓[22m[39m warns when deprecated evidence remains in use [33m 573[2mms[22m[39m
+2026-08-10T07:58:28.4358174Z      [33m[2m✓[22m[39m rejects source locators that are unresolved, undeclared, or duplicated [33m 587[2mms[22m[39m
+2026-08-10T07:58:28.4389831Z      [33m[2m✓[22m[39m accepts a normative claim with direct admitted in-scope evidence and a locator [33m 614[2mms[22m[39m
+2026-08-10T07:58:28.4454711Z      [33m[2m✓[22m[39m rejects a sourced normative claim with no direct source [33m 539[2mms[22m[39m
+2026-08-10T07:58:28.4548500Z      [33m[2m✓[22m[39m rejects a sourced normative claim supported only by derivation [33m 620[2mms[22m[39m
+2026-08-10T07:58:28.4615043Z      [33m[2m✓[22m[39m rejects a normative direct source without a locator [33m 575[2mms[22m[39m
+2026-08-10T07:58:28.4657545Z      [33m[2m✓[22m[39m rejects a non-admitted normative source [33m 640[2mms[22m[39m
+2026-08-10T07:58:28.4663554Z      [33m[2m✓[22m[39m rejects normative evidence outside the subject domain boundary [33m 560[2mms[22m[39m
+2026-08-10T07:58:32.7668538Z  [32m✓[39m tests/registry-consistency.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 5526[2mms[22m[39m
+2026-08-10T07:58:32.7678237Z      [33m[2m✓[22m[39m accepts every declared vocabulary contract [33m 1225[2mms[22m[39m
+2026-08-10T07:58:32.7681275Z      [33m[2m✓[22m[39m rejects registry-only assignable values [33m 1172[2mms[22m[39m
+2026-08-10T07:58:32.7683565Z      [33m[2m✓[22m[39m rejects schema-only values [33m 877[2mms[22m[39m
+2026-08-10T07:58:32.7692208Z      [33m[2m✓[22m[39m rejects invalid assignability changes [33m 766[2mms[22m[39m
+2026-08-10T07:58:32.7694435Z      [33m[2m✓[22m[39m detects a missing required mapping declaration [33m 734[2mms[22m[39m
+2026-08-10T07:58:32.7696729Z      [33m[2m✓[22m[39m detects stale and duplicate mapping declarations [33m 748[2mms[22m[39m
+2026-08-10T07:58:33.7363705Z  [32m✓[39m tests/markdown.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 4763[2mms[22m[39m
+2026-08-10T07:58:33.7365849Z      [33m[2m✓[22m[39m accepts a complete synthetic knowledge unit [33m 828[2mms[22m[39m
+2026-08-10T07:58:33.7374379Z      [33m[2m✓[22m[39m rejects missing and duplicate sections, placeholders, absolutes, and missing trade-offs [33m 607[2mms[22m[39m
+2026-08-10T07:58:33.7377348Z      [33m[2m✓[22m[39m accepts explicit not-applicable reasons but rejects an empty marker [33m 628[2mms[22m[39m
+2026-08-10T07:58:33.7386658Z      [33m[2m✓[22m[39m allows a terminal failure-mode analysis without invented peer failures [33m 483[2mms[22m[39m
+2026-08-10T07:58:33.7389502Z      [33m[2m✓[22m[39m rejects empty structured context and generic related-concept boilerplate [33m 519[2mms[22m[39m
+2026-08-10T07:58:33.7409635Z      [33m[2m✓[22m[39m rejects drift between structured metadata and its Markdown projection [33m 480[2mms[22m[39m
+2026-08-10T07:58:33.7426027Z      [33m[2m✓[22m[39m accepts the repository's resolvable local links [33m 556[2mms[22m[39m
+2026-08-10T07:58:33.7665232Z      [33m[2m✓[22m[39m rejects a missing local target [33m 656[2mms[22m[39m
+2026-08-10T07:58:37.0646641Z  [32m✓[39m tests/claim-grounding-regressions.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 2841[2mms[22m[39m
+2026-08-10T07:58:41.3837418Z      [33m[2m✓[22m[39m reports a direct cycle with an explicit closed path [33m 842[2mms[22m[39m
+2026-08-10T07:58:41.3838845Z      [33m[2m✓[22m[39m reports an unresolved derived claim reference precisely [33m 544[2mms[22m[39m
+2026-08-10T07:58:41.3841026Z      [33m[2m✓[22m[39m does not allow a rejected source to ground a claim [33m 724[2mms[22m[39m
+2026-08-10T07:58:41.3860057Z      [33m[2m✓[22m[39m requires every branch of mixed source and claim evidence to be grounded [33m 728[2mms[22m[39m
+2026-08-10T07:58:41.3862036Z  [32m✓[39m tests/human-key-history.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 3299[2mms[22m[39m
+2026-08-10T07:58:41.3863946Z      [33m[2m✓[22m[39m keeps current and previous keys resolvable to the same opaque ID [33m 1044[2mms[22m[39m
+2026-08-10T07:58:41.3865431Z      [33m[2m✓[22m[39m prevents an old key from being assigned to another concept [33m 746[2mms[22m[39m
+2026-08-10T07:58:41.3866768Z      [33m[2m✓[22m[39m reserves retired keys against silent reuse [33m 670[2mms[22m[39m
+2026-08-10T07:58:41.3868069Z      [33m[2m✓[22m[39m rejects an alias colliding with another active human key [33m 836[2mms[22m[39m
+2026-08-10T07:58:43.6161187Z  [32m✓[39m tests/evidence-derivation.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 2304[2mms[22m[39m
+2026-08-10T07:58:47.9993348Z      [33m[2m✓[22m[39m rejects cyclic claims with no admitted source foundation [33m 1006[2mms[22m[39m
+2026-08-10T07:58:47.9995014Z      [33m[2m✓[22m[39m accepts a derivation chain grounded in an admitted source [33m 570[2mms[22m[39m
+2026-08-10T07:58:47.9996639Z      [33m[2m✓[22m[39m does not treat an unsupported hypothesis as grounding for a synthesis [33m 724[2mms[22m[39m
+2026-08-10T07:58:47.9998546Z  [32m✓[39m tests/human-key.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 1436[2mms[22m[39m
+2026-08-10T07:58:47.9999903Z      [33m[2m✓[22m[39m enforces the same rule through the ledger schema [33m 638[2mms[22m[39m
+2026-08-10T07:58:52.0582963Z  [32m✓[39m tests/source-lifecycle-registry.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 2257[2mms[22m[39m
+2026-08-10T07:58:52.0584627Z      [33m[2m✓[22m[39m drives transition acceptance from the governed registry [33m 879[2mms[22m[39m
+2026-08-10T07:58:52.0588413Z      [33m[2m✓[22m[39m rejects outgoing transitions from terminal states [33m 586[2mms[22m[39m
+2026-08-10T07:58:52.0589885Z      [33m[2m✓[22m[39m detects drift between lifecycle states and source status vocabulary [33m 788[2mms[22m[39m
+2026-08-10T07:58:52.0591262Z  [32m✓[39m tests/id.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 2372[2mms[22m[39m
+2026-08-10T07:58:52.0592597Z      [33m[2m✓[22m[39m accepts globally unique allocated records and references [33m 947[2mms[22m[39m
+2026-08-10T07:58:52.0594106Z      [33m[2m✓[22m[39m rejects duplicate IDs, wrong prefixes, and unresolved references [33m 743[2mms[22m[39m
+2026-08-10T07:58:52.0595384Z      [33m[2m✓[22m[39m rejects reuse of a retired allocation [33m 677[2mms[22m[39m
+2026-08-10T07:58:54.3519213Z  [32m✓[39m tests/lifecycle.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 2400[2mms[22m[39m
+2026-08-10T07:58:54.3528860Z      [33m[2m✓[22m[39m accepts an explicitly authorized human source-admission event [33m 832[2mms[22m[39m
+2026-08-10T07:58:54.3537751Z      [33m[2m✓[22m[39m rejects an unauthorized human-only transition [33m 735[2mms[22m[39m
+2026-08-10T07:58:54.3540811Z      [33m[2m✓[22m[39m rejects an invalid transition and unexplained final status [33m 831[2mms[22m[39m
+2026-08-10T07:58:56.8348077Z  [32m✓[39m tests/reports.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 1743[2mms[22m[39m
+2026-08-10T07:58:56.8560111Z      [33m[2m✓[22m[39m writes deterministic reports and detects stale output [33m 1740[2mms[22m[39m
+2026-08-10T07:58:57.7036226Z  [32m✓[39m tests/graph-cli.test.ts [2m([22m[2m10 tests[22m[2m)[22m[33m 24566[2mms[22m[39m
+2026-08-10T07:58:57.7039898Z      [33m[2m✓[22m[39m returns stable JSON for a successful query [33m 2474[2mms[22m[39m
+2026-08-10T07:58:57.7062067Z      [33m[2m✓[22m[39m accepts an explicit package-manager argument separator [33m 2373[2mms[22m[39m
+2026-08-10T07:58:57.7078218Z      [33m[2m✓[22m[39m accepts source and target positionals for a path query [33m 2272[2mms[22m[39m
+2026-08-10T07:58:57.7144106Z      [33m[2m✓[22m[39m rejects an extra positional after the path target [33m 2535[2mms[22m[39m
+2026-08-10T07:58:57.7156377Z      [33m[2m✓[22m[39m returns non-zero for an unknown ID without a stack trace [33m 2503[2mms[22m[39m
+2026-08-10T07:58:57.7162486Z      [33m[2m✓[22m[39m rejects an invalid direction deterministically [33m 2566[2mms[22m[39m
+2026-08-10T07:58:57.7191650Z      [33m[2m✓[22m[39m rejects invalid depth deterministically [33m 2392[2mms[22m[39m
+2026-08-10T07:58:57.7194691Z      [33m[2m✓[22m[39m rejects an unsupported filter deterministically [33m 2401[2mms[22m[39m
+2026-08-10T07:58:57.7197504Z      [33m[2m✓[22m[39m rejects malformed query JSON deterministically [33m 2357[2mms[22m[39m
+2026-08-10T07:58:57.7200075Z      [33m[2m✓[22m[39m rejects mutually conflicting traversal flags [33m 2690[2mms[22m[39m
+2026-08-10T07:58:58.3043983Z  [32m✓[39m tests/relationship-policy.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 994[2mms[22m[39m
+2026-08-10T07:58:58.3097701Z      [33m[2m✓[22m[39m requires exactly one cycle policy for every predicate [33m 990[2mms[22m[39m
+2026-08-10T07:58:58.7518675Z  [32m✓[39m tests/id-controlled-key.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 521[2mms[22m[39m
+2026-08-10T07:58:58.7520258Z      [33m[2m✓[22m[39m rejects duplicate keys within one registry [33m 519[2mms[22m[39m
+2026-08-10T07:58:58.7619180Z 
+2026-08-10T07:58:58.7624180Z [2m Test Files [22m [1m[32m27 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (28)[39m
+2026-08-10T07:58:58.7755480Z [2m      Tests [22m [1m[32m306 passed[39m[22m[2m | [22m[33m4 skipped[39m[90m (310)[39m
+2026-08-10T07:58:58.7756707Z [2m   Start at [22m 07:57:57
+2026-08-10T07:58:58.7757950Z [2m   Duration [22m 61.48s[2m (transform 1.38s, setup 0ms, import 5.52s, tests 106.59s, environment 8ms)[22m
+2026-08-10T07:58:58.7758798Z 
+2026-08-10T07:58:58.9424355Z ##[group]Run pnpm test:coverage
+2026-08-10T07:58:58.9424875Z [36;1mpnpm test:coverage[0m
+2026-08-10T07:58:58.9510552Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-08-10T07:58:58.9510895Z env:
+2026-08-10T07:58:58.9511161Z   PNPM_HOME: C:\Users\runneradmin\setup-pnpm\node_modules\.bin
+2026-08-10T07:58:58.9511485Z ##[endgroup]
+2026-08-10T07:58:59.7100862Z 
+2026-08-10T07:58:59.7134662Z > architecture-knowledge-system@0.2.0 test:coverage D:\a\architecture-knowledge\architecture-knowledge
+2026-08-10T07:58:59.7157672Z > vitest run --coverage --maxWorkers=2
+2026-08-10T07:58:59.7166162Z 
+2026-08-10T07:59:00.5520333Z 
+2026-08-10T07:59:00.5527963Z [1m[46m RUN [49m[22m [36mv4.0.16 [39m[90mD:/a/architecture-knowledge/architecture-knowledge[39m
+2026-08-10T07:59:00.5529214Z       [2mCoverage enabled with [22m[33mv8[39m
+2026-08-10T07:59:00.5529872Z 
+2026-08-10T07:59:22.0546865Z  [32m✓[39m tests/graph-cli.test.ts [2m([22m[2m10 tests[22m[2m)[22m[33m 20915[2mms[22m[39m
+2026-08-10T07:59:22.0610904Z      [33m[2m✓[22m[39m returns stable JSON for a successful query [33m 2347[2mms[22m[39m
+2026-08-10T07:59:22.0614339Z      [33m[2m✓[22m[39m accepts an explicit package-manager argument separator [33m 2154[2mms[22m[39m
+2026-08-10T07:59:22.0617073Z      [33m[2m✓[22m[39m accepts source and target positionals for a path query [33m 2176[2mms[22m[39m
+2026-08-10T07:59:22.0619817Z      [33m[2m✓[22m[39m rejects an extra positional after the path target [33m 2101[2mms[22m[39m
+2026-08-10T07:59:22.0622994Z      [33m[2m✓[22m[39m returns non-zero for an unknown ID without a stack trace [33m 2026[2mms[22m[39m
+2026-08-10T07:59:22.0626113Z      [33m[2m✓[22m[39m rejects an invalid direction deterministically [33m 1981[2mms[22m[39m
+2026-08-10T07:59:22.0628932Z      [33m[2m✓[22m[39m rejects invalid depth deterministically [33m 2007[2mms[22m[39m
+2026-08-10T07:59:22.0631670Z      [33m[2m✓[22m[39m rejects an unsupported filter deterministically [33m 2027[2mms[22m[39m
+2026-08-10T07:59:22.0635080Z      [33m[2m✓[22m[39m rejects malformed query JSON deterministically [33m 2018[2mms[22m[39m
+2026-08-10T07:59:22.0637796Z      [33m[2m✓[22m[39m rejects mutually conflicting traversal flags [33m 2077[2mms[22m[39m
+2026-08-10T07:59:32.4685881Z  [32m✓[39m tests/relationship.test.ts [2m([22m[2m13 tests[22m[2m)[22m[33m 9841[2mms[22m[39m
+2026-08-10T07:59:32.4688666Z      [33m[2m✓[22m[39m accepts a typed, conditional, evidenced relationship [33m 1064[2mms[22m[39m
+2026-08-10T07:59:32.4691593Z      [33m[2m✓[22m[39m rejects prohibited self-relations and endpoint type violations [33m 754[2mms[22m[39m
+2026-08-10T07:59:32.4693923Z      [33m[2m✓[22m[39m applies predicate-specific cycle policy [33m 857[2mms[22m[39m
+2026-08-10T07:59:32.4706906Z      [33m[2m✓[22m[39m rejects related-to when a precise predicate exists for the same pair [33m 720[2mms[22m[39m
+2026-08-10T07:59:32.4709787Z      [33m[2m✓[22m[39m rejects inconsistent explicit inverse metadata [33m 701[2mms[22m[39m
+2026-08-10T07:59:32.4712387Z      [33m[2m✓[22m[39m requires explicit edge-local or reusable-concept condition scope [33m 754[2mms[22m[39m
+2026-08-10T07:59:32.4714853Z      [33m[2m✓[22m[39m blocks proposed and claim-context-only relationships from traversal [33m 744[2mms[22m[39m
+2026-08-10T07:59:32.4727568Z      [33m[2m✓[22m[39m blocks inferential quality impacts and causal quality-taxonomy edges [33m 713[2mms[22m[39m
+2026-08-10T07:59:32.4731520Z      [33m[2m✓[22m[39m accepts concept-global traversal only when structured proof is exact [33m 713[2mms[22m[39m
+2026-08-10T07:59:32.4740336Z      [33m[2m✓[22m[39m rejects relationship scope, confidence, and strength above evidence [33m 724[2mms[22m[39m
+2026-08-10T07:59:32.4745925Z      [33m[2m✓[22m[39m rejects evidence whose subject, object, or predicate does not prove the edge [33m 674[2mms[22m[39m
+2026-08-10T07:59:32.4758814Z      [33m[2m✓[22m[39m rejects omitted claim conditions even when a note claims a narrower meaning [33m 669[2mms[22m[39m
+2026-08-10T07:59:32.4761376Z      [33m[2m✓[22m[39m rejects a multi-claim edge when any supporting claim narrows it [33m 747[2mms[22m[39m
+2026-08-10T07:59:33.8778319Z  [32m✓[39m tests/security-claim.test.ts [2m([22m[2m36 tests[22m[2m)[22m[33m 32547[2mms[22m[39m
+2026-08-10T07:59:33.8801571Z      [33m[2m✓[22m[39m accepts an exact structured normative claim with direct admitted evidence [33m 1593[2mms[22m[39m
+2026-08-10T07:59:33.8813948Z      [33m[2m✓[22m[39m rejects normative security prose that is not structured [33m 1017[2mms[22m[39m
+2026-08-10T07:59:33.8816046Z      [33m[2m✓[22m[39m rejects missing and merely adjacent claim or source evidence [33m 951[2mms[22m[39m
+2026-08-10T07:59:33.8818135Z      [33m[2m✓[22m[39m rejects unresolved, non-sourced, and unlocated security evidence [33m 870[2mms[22m[39m
+2026-08-10T07:59:33.8820292Z      [33m[2m✓[22m[39m rejects broadened normative prose even when notes or adjacency look plausible [33m 910[2mms[22m[39m
+2026-08-10T07:59:33.8822286Z      [33m[2m✓[22m[39m rejects protocol force hidden under security-risk [33m 927[2mms[22m[39m
+2026-08-10T07:59:33.8827072Z      [33m[2m✓[22m[39m rejects protocol force hidden under implementation-observation [33m 1064[2mms[22m[39m
+2026-08-10T07:59:33.8833113Z      [33m[2m✓[22m[39m rejects security-risk with normative claim despite non-uppercase prose [33m 1042[2mms[22m[39m
+2026-08-10T07:59:33.8836855Z      [33m[2m✓[22m[39m rejects security-risk with normative claim despite non-uppercase prose [33m 1005[2mms[22m[39m
+2026-08-10T07:59:33.8841257Z      [33m[2m✓[22m[39m rejects implementation-observation with normative claim despite non-uppercase prose [33m 1052[2mms[22m[39m
+2026-08-10T07:59:33.8846377Z      [33m[2m✓[22m[39m rejects implementation-observation with normative claim despite non-uppercase prose [33m 1032[2mms[22m[39m
+2026-08-10T07:59:33.8849152Z      [33m[2m✓[22m[39m rejects an operational recommendation binding a normative claim with neutral prose [33m 921[2mms[22m[39m
+2026-08-10T07:59:33.8852863Z      [33m[2m✓[22m[39m rejects protocol force hidden under an operational recommendation [33m 993[2mms[22m[39m
+2026-08-10T07:59:33.8855197Z      [33m[2m✓[22m[39m rejects a normative control with no claim binding [33m 936[2mms[22m[39m
+2026-08-10T07:59:33.8862351Z      [33m[2m✓[22m[39m rejects a claim force weakened while its MUST statement remains [33m 958[2mms[22m[39m
+2026-08-10T07:59:33.8866219Z      [33m[2m✓[22m[39m rejects a claim force stronger than its SHOULD statement [33m 951[2mms[22m[39m
+2026-08-10T07:59:33.8870101Z      [33m[2m✓[22m[39m rejects removal of a material exception [33m 983[2mms[22m[39m
+2026-08-10T07:59:33.8872317Z      [33m[2m✓[22m[39m rejects a conditional requirement made structurally unconditional [33m 987[2mms[22m[39m
+2026-08-10T07:59:33.8876635Z      [33m[2m✓[22m[39m rejects a structured condition that does not preserve the claim qualifier [33m 1052[2mms[22m[39m
+2026-08-10T07:59:33.8886857Z      [33m[2m✓[22m[39m rejects structured exception metadata that does not preserve the claim exception [33m 936[2mms[22m[39m
+2026-08-10T07:59:33.8889311Z      [33m[2m✓[22m[39m rejects sourced normative guidance with no direct source [33m 816[2mms[22m[39m
+2026-08-10T07:59:33.8892629Z      [33m[2m✓[22m[39m rejects sourced normative guidance supported only by a derived claim [33m 1062[2mms[22m[39m
+2026-08-10T07:59:33.8896605Z      [33m[2m✓[22m[39m rejects normative guidance without a direct source locator [33m 829[2mms[22m[39m
+2026-08-10T07:59:33.8900440Z      [33m[2m✓[22m[39m rejects a locator that belongs to a different source [33m 748[2mms[22m[39m
+2026-08-10T07:59:33.8905448Z      [33m[2m✓[22m[39m rejects a non-admitted direct source for normative guidance [33m 693[2mms[22m[39m
+2026-08-10T07:59:33.8909531Z      [33m[2m✓[22m[39m rejects an unrelated claim attached across a semantic boundary [33m 742[2mms[22m[39m
+2026-08-10T07:59:33.8913031Z      [33m[2m✓[22m[39m rejects reverse cross-boundary reuse without explicit applicability [33m 737[2mms[22m[39m
+2026-08-10T07:59:33.8917828Z      [33m[2m✓[22m[39m rejects removal of an applicable normative implication and declaration together [33m 699[2mms[22m[39m
+2026-08-10T07:59:33.8920305Z      [33m[2m✓[22m[39m rejects a recommendation projected as a protocol-level MUST NOT [33m 715[2mms[22m[39m
+2026-08-10T07:59:33.8923562Z      [33m[2m✓[22m[39m rejects an operational recommendation backed by a non-recommendation claim [33m 688[2mms[22m[39m
+2026-08-10T07:59:33.8927926Z      [33m[2m✓[22m[39m accepts claim reuse with explicit cross-concept applicability [33m 685[2mms[22m[39m
+2026-08-10T07:59:33.8931307Z      [33m[2m✓[22m[39m accepts a non-normative unbound security-risk [33m 666[2mms[22m[39m
+2026-08-10T07:59:33.8934855Z      [33m[2m✓[22m[39m accepts a non-normative unbound implementation-observation [33m 767[2mms[22m[39m
+2026-08-10T07:59:33.8938330Z      [33m[2m✓[22m[39m accepts a descriptive implication bound to a non-normative descriptive claim [33m 699[2mms[22m[39m
+2026-08-10T07:59:33.8942114Z      [33m[2m✓[22m[39m accepts a repository-authored operational recommendation without protocol force [33m 859[2mms[22m[39m
+2026-08-10T07:59:33.9103821Z      [33m[2m✓[22m[39m encodes the production OAuth and OIDC qualifiers as governed fields [33m 941[2mms[22m[39m
+2026-08-10T07:59:41.4951294Z  [32m✓[39m tests/evidence.test.ts [2m([22m[2m10 tests[22m[2m)[22m[33m 8496[2mms[22m[39m
+2026-08-10T07:59:41.4976197Z      [33m[2m✓[22m[39m accepts admitted assessed sources and explicitly typed claims [33m 914[2mms[22m[39m
+2026-08-10T07:59:41.5025227Z      [33m[2m✓[22m[39m rejects candidate or rejected evidence and disguised direct derivation [33m 1130[2mms[22m[39m
+2026-08-10T07:59:41.5027995Z      [33m[2m✓[22m[39m warns when deprecated evidence remains in use [33m 908[2mms[22m[39m
+2026-08-10T07:59:41.5081271Z      [33m[2m✓[22m[39m rejects source locators that are unresolved, undeclared, or duplicated [33m 890[2mms[22m[39m
+2026-08-10T07:59:41.5112561Z      [33m[2m✓[22m[39m accepts a normative claim with direct admitted in-scope evidence and a locator [33m 812[2mms[22m[39m
+2026-08-10T07:59:41.5344891Z      [33m[2m✓[22m[39m rejects a sourced normative claim with no direct source [33m 798[2mms[22m[39m
+2026-08-10T07:59:41.5377169Z      [33m[2m✓[22m[39m rejects a sourced normative claim supported only by derivation [33m 828[2mms[22m[39m
+2026-08-10T07:59:41.5459396Z      [33m[2m✓[22m[39m rejects a normative direct source without a locator [33m 720[2mms[22m[39m
+2026-08-10T07:59:41.5470112Z      [33m[2m✓[22m[39m rejects a non-admitted normative source [33m 789[2mms[22m[39m
+2026-08-10T07:59:41.5472859Z      [33m[2m✓[22m[39m rejects normative evidence outside the subject domain boundary [33m 699[2mms[22m[39m
+2026-08-10T07:59:41.7940532Z  [32m✓[39m tests/registry-consistency.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 7233[2mms[22m[39m
+2026-08-10T07:59:41.7942718Z      [33m[2m✓[22m[39m accepts every declared vocabulary contract [33m 1713[2mms[22m[39m
+2026-08-10T07:59:41.7944863Z      [33m[2m✓[22m[39m rejects registry-only assignable values [33m 1269[2mms[22m[39m
+2026-08-10T07:59:41.7954581Z      [33m[2m✓[22m[39m rejects schema-only values [33m 1053[2mms[22m[39m
+2026-08-10T07:59:41.7957383Z      [33m[2m✓[22m[39m rejects invalid assignability changes [33m 1020[2mms[22m[39m
+2026-08-10T07:59:41.7974977Z      [33m[2m✓[22m[39m detects a missing required mapping declaration [33m 1042[2mms[22m[39m
+2026-08-10T07:59:41.7977906Z      [33m[2m✓[22m[39m detects stale and duplicate mapping declarations [33m 1132[2mms[22m[39m
+2026-08-10T07:59:48.8453849Z  [32m✓[39m tests/markdown.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 6718[2mms[22m[39m
+2026-08-10T07:59:48.8463898Z      [33m[2m✓[22m[39m accepts a complete synthetic knowledge unit [33m 1379[2mms[22m[39m
+2026-08-10T07:59:48.8467414Z      [33m[2m✓[22m[39m rejects missing and duplicate sections, placeholders, absolutes, and missing trade-offs [33m 852[2mms[22m[39m
+2026-08-10T07:59:48.8531185Z      [33m[2m✓[22m[39m accepts explicit not-applicable reasons but rejects an empty marker [33m 876[2mms[22m[39m
+2026-08-10T07:59:48.8591197Z      [33m[2m✓[22m[39m allows a terminal failure-mode analysis without invented peer failures [33m 723[2mms[22m[39m
+2026-08-10T07:59:48.8619332Z      [33m[2m✓[22m[39m rejects empty structured context and generic related-concept boilerplate [33m 705[2mms[22m[39m
+2026-08-10T07:59:48.8840776Z      [33m[2m✓[22m[39m rejects drift between structured metadata and its Markdown projection [33m 700[2mms[22m[39m
+2026-08-10T07:59:48.8875715Z      [33m[2m✓[22m[39m accepts the repository's resolvable local links [33m 742[2mms[22m[39m
+2026-08-10T07:59:48.9096365Z      [33m[2m✓[22m[39m rejects a missing local target [33m 736[2mms[22m[39m
+2026-08-10T07:59:48.9102238Z  [32m✓[39m tests/audit-gap-regressions.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 6407[2mms[22m[39m
+2026-08-10T07:59:48.9113965Z      [33m[2m✓[22m[39m rejects missing, duplicate, inconsistent, and orphaned ledger allocations [33m 1140[2mms[22m[39m
+2026-08-10T07:59:48.9123227Z      [33m[2m✓[22m[39m rejects unallocated and malformed records with unknown kinds [33m 867[2mms[22m[39m
+2026-08-10T07:59:48.9126286Z      [33m[2m✓[22m[39m rejects normalized label and human-key collisions [33m 783[2mms[22m[39m
+2026-08-10T07:59:48.9129817Z      [33m[2m✓[22m[39m rejects admitted unassessed, restricted, and unreplaced sources [33m 759[2mms[22m[39m
+2026-08-10T07:59:48.9140334Z      [33m[2m✓[22m[39m rejects unknown, unsupported, and unconditional evidence-required claims [33m 734[2mms[22m[39m
+2026-08-10T07:59:48.9284315Z      [33m[2m✓[22m[39m rejects duplicate, discontinuous lifecycle events and missing replacements [33m 689[2mms[22m[39m
+2026-08-10T07:59:48.9485330Z      [33m[2m✓[22m[39m enforces relationship direction, conditions, evidence, kinds, and ordering [33m 704[2mms[22m[39m
+2026-08-10T07:59:48.9499970Z      [33m[2m✓[22m[39m detects duplicate, conflicting, ambiguous, and unknown relationship policy [33m 726[2mms[22m[39m
+2026-08-10T07:59:53.3699538Z  [32m✓[39m tests/human-key-history.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 3882[2mms[22m[39m
+2026-08-10T07:59:53.3702395Z      [33m[2m✓[22m[39m keeps current and previous keys resolvable to the same opaque ID [33m 1196[2mms[22m[39m
+2026-08-10T07:59:53.3705070Z      [33m[2m✓[22m[39m prevents an old key from being assigned to another concept [33m 927[2mms[22m[39m
+2026-08-10T07:59:53.3707506Z      [33m[2m✓[22m[39m reserves retired keys against silent reuse [33m 859[2mms[22m[39m
+2026-08-10T07:59:53.3735354Z      [33m[2m✓[22m[39m rejects an alias colliding with another active human key [33m 896[2mms[22m[39m
+2026-08-10T07:59:55.4257738Z  [32m✓[39m tests/schema.test.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 5885[2mms[22m[39m
+2026-08-10T07:59:55.4260761Z      [33m[2m✓[22m[39m accepts valid source, claim, relationship, and Markdown fixtures [33m 1969[2mms[22m[39m
+2026-08-10T07:59:55.4262640Z      [33m[2m✓[22m[39m rejects unknown properties with a precise path [33m 1331[2mms[22m[39m
+2026-08-10T07:59:55.4264541Z      [33m[2m✓[22m[39m rejects normative claims without direct source and locator arrays [33m 1335[2mms[22m[39m
+2026-08-10T07:59:55.4266180Z      [33m[2m✓[22m[39m rejects protocol normative metadata on a repository recommendation [33m 1244[2mms[22m[39m
+2026-08-10T07:59:57.6053375Z  [32m✓[39m tests/graph-artifacts.test.ts [2m([22m[2m57 tests[22m[2m)[22m[33m 3600[2mms[22m[39m
+2026-08-10T08:00:02.8250815Z  [32m✓[39m tests/claim-grounding-regressions.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 3957[2mms[22m[39m
+2026-08-10T08:00:02.8252364Z      [33m[2m✓[22m[39m reports a direct cycle with an explicit closed path [33m 1266[2mms[22m[39m
+2026-08-10T08:00:02.8254167Z      [33m[2m✓[22m[39m reports an unresolved derived claim reference precisely [33m 848[2mms[22m[39m
+2026-08-10T08:00:02.8255528Z      [33m[2m✓[22m[39m does not allow a rejected source to ground a claim [33m 994[2mms[22m[39m
+2026-08-10T08:00:02.8257048Z      [33m[2m✓[22m[39m requires every branch of mixed source and claim evidence to be grounded [33m 844[2mms[22m[39m
+2026-08-10T08:00:02.8258548Z  [32m✓[39m tests/lifecycle.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 2898[2mms[22m[39m
+2026-08-10T08:00:02.8259976Z      [33m[2m✓[22m[39m accepts an explicitly authorized human source-admission event [33m 1065[2mms[22m[39m
+2026-08-10T08:00:02.8261355Z      [33m[2m✓[22m[39m rejects an unauthorized human-only transition [33m 814[2mms[22m[39m
+2026-08-10T08:00:02.8262745Z      [33m[2m✓[22m[39m rejects an invalid transition and unexplained final status [33m 1016[2mms[22m[39m
+2026-08-10T08:00:03.4032310Z  [32m✓[39m tests/id.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 3018[2mms[22m[39m
+2026-08-10T08:00:03.4058172Z      [33m[2m✓[22m[39m accepts globally unique allocated records and references [33m 1151[2mms[22m[39m
+2026-08-10T08:00:03.4060996Z      [33m[2m✓[22m[39m rejects duplicate IDs, wrong prefixes, and unresolved references [33m 1022[2mms[22m[39m
+2026-08-10T08:00:03.4075335Z      [33m[2m✓[22m[39m rejects reuse of a retired allocation [33m 842[2mms[22m[39m
+2026-08-10T08:00:04.4341115Z  [32m✓[39m tests/evidence-derivation.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 2939[2mms[22m[39m
+2026-08-10T08:00:04.4344223Z      [33m[2m✓[22m[39m rejects cyclic claims with no admitted source foundation [33m 1098[2mms[22m[39m
+2026-08-10T08:00:04.4477202Z      [33m[2m✓[22m[39m accepts a derivation chain grounded in an admitted source [33m 839[2mms[22m[39m
+2026-08-10T08:00:04.4531785Z      [33m[2m✓[22m[39m does not treat an unsupported hypothesis as grounding for a synthesis [33m 998[2mms[22m[39m
+2026-08-10T08:00:07.0033178Z  [32m✓[39m tests/source-lifecycle-registry.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 3081[2mms[22m[39m
+2026-08-10T08:00:07.0085857Z      [33m[2m✓[22m[39m drives transition acceptance from the governed registry [33m 1242[2mms[22m[39m
+2026-08-10T08:00:07.0097859Z      [33m[2m✓[22m[39m rejects outgoing transitions from terminal states [33m 1032[2mms[22m[39m
+2026-08-10T08:00:07.0107423Z      [33m[2m✓[22m[39m detects drift between lifecycle states and source status vocabulary [33m 805[2mms[22m[39m
+2026-08-10T08:00:07.0214614Z  [32m✓[39m tests/retrieval-currentness.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 1850[2mms[22m[39m
+2026-08-10T08:00:07.0241507Z      [33m[2m✓[22m[39m fails closed for every active-generation contract mismatch and row-root tampering [33m 457[2mms[22m[39m
+2026-08-10T08:00:09.7323092Z  [32m✓[39m tests/human-key.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 1934[2mms[22m[39m
+2026-08-10T08:00:09.7333037Z      [33m[2m✓[22m[39m enforces the same rule through the ledger schema [33m 706[2mms[22m[39m
+2026-08-10T08:00:09.8504363Z  [32m✓[39m tests/reports.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 2096[2mms[22m[39m
+2026-08-10T08:00:09.8513463Z      [33m[2m✓[22m[39m writes deterministic reports and detects stale output [33m 2092[2mms[22m[39m
+2026-08-10T08:00:15.7779223Z  [32m✓[39m tests/relationship-policy.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 1292[2mms[22m[39m
+2026-08-10T08:00:15.7783267Z      [33m[2m✓[22m[39m requires exactly one cycle policy for every predicate [33m 1289[2mms[22m[39m
+2026-08-10T08:00:15.7785085Z  [32m✓[39m tests/retrieval-units.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 1641[2mms[22m[39m
+2026-08-10T08:00:15.7786822Z  [32m✓[39m tests/graph-projection.test.ts [2m([22m[2m32 tests[22m[2m)[22m[33m 1477[2mms[22m[39m
+2026-08-10T08:00:15.7790324Z  [32m✓[39m tests/graph-query.test.ts [2m([22m[2m41 tests[22m[2m)[22m[33m 1315[2mms[22m[39m
+2026-08-10T08:00:17.0194606Z  [32m✓[39m tests/retrieval-query.test.ts [2m([22m[2m11 tests[22m[2m)[22m[33m 2536[2mms[22m[39m
+2026-08-10T08:00:17.5412626Z  [32m✓[39m tests/m3-semantic-remediation.test.ts [2m([22m[2m15 tests[22m[2m)[22m[33m 2093[2mms[22m[39m
+2026-08-10T08:00:19.8717136Z  [32m✓[39m tests/retrieval-evaluation.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 137[2mms[22m[39m
+2026-08-10T08:00:19.8718618Z  [32m✓[39m tests/embedding-provider.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 186[2mms[22m[39m
+2026-08-10T08:00:19.8720049Z  [32m✓[39m tests/id-controlled-key.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 1752[2mms[22m[39m
+2026-08-10T08:00:19.8721431Z      [33m[2m✓[22m[39m rejects duplicate keys within one registry [33m 1749[2mms[22m[39m
+2026-08-10T08:00:19.8723030Z  [2m[90m↓[39m[22m tests/retrieval-database.integration.test.ts [2m([22m[2m4 tests[22m[2m | [22m[33m4 skipped[39m[2m)[22m
+2026-08-10T08:00:20.6013495Z 
+2026-08-10T08:00:20.6015004Z [2m Test Files [22m [1m[32m27 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (28)[39m
+2026-08-10T08:00:20.6016332Z [2m      Tests [22m [1m[32m306 passed[39m[22m[2m | [22m[33m4 skipped[39m[90m (310)[39m
+2026-08-10T08:00:20.6017223Z [2m   Start at [22m 07:59:00
+2026-08-10T08:00:20.6018348Z [2m   Duration [22m 79.85s[2m (transform 1.30s, setup 0ms, import 6.08s, tests 139.73s, environment 7ms)[22m
+2026-08-10T08:00:20.6019076Z 
+2026-08-10T08:00:20.6019525Z [34m % [39m[2mCoverage report from [22m[33mv8[39m
+2026-08-10T08:00:20.6020314Z -------------------|---------|----------|---------|---------|-------------------
+2026-08-10T08:00:20.6021207Z File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+2026-08-10T08:00:20.6022101Z -------------------|---------|----------|---------|---------|-------------------
+2026-08-10T08:00:20.6022930Z All files          |   92.37 |    81.29 |    95.2 |   94.84 |                   
+2026-08-10T08:00:20.6023758Z  ...n-validator.ts |   96.52 |    80.89 |     100 |      99 | 159               
+2026-08-10T08:00:20.6024608Z  ...ng-provider.ts |   89.43 |    85.04 |   81.48 |      97 | 45,157-158        
+2026-08-10T08:00:20.6025479Z  ...e-validator.ts |   98.82 |    87.12 |     100 |   98.79 | 181               
+2026-08-10T08:00:20.6026302Z  ...h-artifacts.ts |   91.43 |    86.78 |     100 |    93.5 | ...73,386,517-518 
+2026-08-10T08:00:20.6027407Z  ...h-projector.ts |   96.36 |    79.82 |   97.05 |   98.95 | 467,474           
+2026-08-10T08:00:20.6028284Z  graph-query.ts    |   87.69 |    86.48 |   93.75 |   92.37 | ...93,205,263,515 
+2026-08-10T08:00:20.6029091Z  id-validator.ts   |   97.85 |    89.79 |     100 |   97.77 | 118,147,163       
+2026-08-10T08:00:20.6029864Z  ...e-validator.ts |   96.38 |    79.34 |     100 |   97.46 | 113,124           
+2026-08-10T08:00:20.6030695Z  ...n-validator.ts |   80.88 |    70.68 |   91.66 |   81.39 | ...72-375,414-426 
+2026-08-10T08:00:20.6031524Z  ...y-validator.ts |   88.67 |    74.32 |     100 |   90.52 | ...21,126-134,179 
+2026-08-10T08:00:20.6032315Z  ...p-validator.ts |   97.78 |    83.04 |   97.77 |   98.44 | 39,43-51,56       
+2026-08-10T08:00:20.6033408Z  ...-evaluation.ts |   90.43 |    76.92 |     100 |    92.7 | ...12,214,252,259 
+2026-08-10T08:00:20.6034249Z  ...ry-contract.ts |   91.17 |    88.88 |     100 |     100 | ...00,110-119,187 
+2026-08-10T08:00:20.6035040Z  ...ieval-query.ts |   83.43 |    78.89 |   75.67 |   87.07 | ...50,477-479,497 
+2026-08-10T08:00:20.6035984Z  ...ieval-units.ts |   96.55 |     64.7 |     100 |   98.98 | 193               
+2026-08-10T08:00:20.6036844Z  ...m-validator.ts |   97.58 |    85.29 |     100 |    98.3 | 130,268           
+2026-08-10T08:00:20.6037703Z -------------------|---------|----------|---------|---------|-------------------
+2026-08-10T08:00:20.6339298Z ##[group]Run pnpm report:check
+2026-08-10T08:00:20.6339800Z [36;1mpnpm report:check[0m
+2026-08-10T08:00:20.6439785Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-08-10T08:00:20.6440349Z env:
+2026-08-10T08:00:20.6440759Z   PNPM_HOME: C:\Users\runneradmin\setup-pnpm\node_modules\.bin
+2026-08-10T08:00:20.6441324Z ##[endgroup]
+2026-08-10T08:00:21.3882643Z 
+2026-08-10T08:00:21.3883802Z > architecture-knowledge-system@0.2.0 report:check D:\a\architecture-knowledge\architecture-knowledge
+2026-08-10T08:00:21.3884945Z > tsx src/cli.ts report check
+2026-08-10T08:00:21.3885343Z 
+2026-08-10T08:00:22.9490930Z Integrity report check: 12/12 current.
+2026-08-10T08:00:23.1546723Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T08:00:23.1548081Z Post job cleanup.
+2026-08-10T08:00:23.3225541Z (node:6040) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-10T08:00:23.3227571Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-10T08:00:23.3235195Z Cache hit occurred on the primary key node-cache-Windows-x64-pnpm-1e3137200eb7f7f9e33d94e731a1c4330dca12f756b18bada6bd042666dbca8c, not saving cache.
+2026-08-10T08:00:23.3530968Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T08:00:23.3532432Z Post job cleanup.
+2026-08-10T08:00:23.6217134Z Pruning is unnecessary.
+2026-08-10T08:00:23.6745344Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-10T08:00:23.6747632Z Post job cleanup.
+2026-08-10T08:00:23.9258987Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-08-10T08:00:23.9660788Z git version 2.55.0.windows.3
+2026-08-10T08:00:23.9857001Z Temporarily overriding HOME='D:\a\_temp\e201aacf-f26a-4184-904d-56e72235030e' before making global git config changes
+2026-08-10T08:00:23.9862197Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-10T08:00:23.9864668Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\architecture-knowledge\architecture-knowledge
+2026-08-10T08:00:24.0159186Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-08-10T08:00:24.0494672Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-08-10T08:00:24.6236542Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-10T08:00:24.6530814Z http.https://github.com/.extraheader
+2026-08-10T08:00:24.6580844Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+2026-08-10T08:00:24.6906773Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-08-10T08:00:25.2747017Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-10T08:00:25.3055574Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-08-10T08:00:25.8583171Z Cleaning up orphan processes
+2026-08-10T08:00:25.9061601Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, pnpm/action-setup@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

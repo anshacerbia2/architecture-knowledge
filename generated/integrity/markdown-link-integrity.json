@@ -3,8 +3,48 @@
   "report": "markdown-link-integrity",
   "items": [
     {
+      "path": "docs/evidence/m5/run-31367937331/README.md",
+      "target": "job-93390313632.log",
+      "status": "valid"
+    },
+    {
+      "path": "docs/evidence/m5/run-31367937331/README.md",
+      "target": "job-93390313646.log",
+      "status": "valid"
+    },
+    {
+      "path": "docs/evidence/m5/run-31367937331/README.md",
+      "target": "job-93390313716.log",
+      "status": "valid"
+    },
+    {
+      "path": "docs/evidence/m5/run-31367937331/README.md",
+      "target": "job-93390313723.log",
+      "status": "valid"
+    },
+    {
+      "path": "docs/evidence/m5/run-31367937331/README.md",
+      "target": "jobs.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/evidence/m5/run-31367937331/README.md",
+      "target": "run.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/evidence/m5/run-31367937331/README.md",
+      "target": "SHA256SUMS",
+      "status": "valid"
+    },
+    {
       "path": "docs/m4-implementation-report.md",
       "target": "m4-independent-audit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m5-focused-evidence-closure.md",
+      "target": "evidence/m5/run-31367937331/README.md",
       "status": "valid"
     },
     {
@@ -139,12 +179,22 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m5-focused-evidence-closure.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m5-hybrid-retrieval.md",
       "status": "valid"
     },
     {
       "path": "docs/README.md",
       "target": "m5-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m5-independent-audit-report.md",
       "status": "valid"
     },
     {
@@ -249,8 +299,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 49,
+    "checked_link_count": 59,
     "broken_link_count": 0,
-    "markdown_file_count": 73
+    "markdown_file_count": 76
   }
 }

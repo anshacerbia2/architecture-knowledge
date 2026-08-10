@@ -54,6 +54,8 @@ any document reviewed, approved, published, or canonical.
 | M5-01 | [ADR 0006: Hybrid Retrieval Architecture](adr/0006-hybrid-retrieval-architecture.md) | Defines the PostgreSQL/pgvector, embedding, fusion, generation, graph-expansion, privacy, and M6 boundaries. |
 | M5-02 | [M5 Hybrid Search and Retrieval](m5-hybrid-retrieval.md) | Documents setup, indexing, query/result contracts, evaluation, diagnostics, and safety behavior. |
 | M5-03 | [M5 Implementation Report](m5-implementation-report.md) | Records implementation inventory, validation, quality, performance, hosted provenance, residuals, and audit handoff. |
+| M5-04 | [Independent M5 Audit](m5-independent-audit-report.md) | Verifies the local deterministic boundary and records three environment evidence gaps with an `M5 AUDIT INCONCLUSIVE` verdict. |
+| M5-05 | [M5 Focused Audit Evidence Closure](m5-focused-evidence-closure.md) | Preserves authenticated exact-SHA CI, PostgreSQL/pgvector, evaluation, performance, and mutation evidence for independent finding closure. |
 
 ## Architecture Decision Records
 
@@ -90,6 +92,9 @@ describe.
 | 2026-08-02 22:29 | `0bdc241` | ADR 0005; M4 graph/query guide |
 | 2026-08-03 | report commit; see post-commit handoff | M4 implementation report |
 | 2026-08-03 | audit-report commit; see post-commit handoff | Independent M4 audit report |
+| 2026-08-10 | `9b36aa6` | ADR 0006; M5 hybrid-retrieval guide; M5 implementation report |
+| 2026-08-10 | `d2a9a57` | Independent M5 audit report |
+| 2026-08-10 | evidence-closure commit; see post-commit handoff | M5 focused audit evidence closure and hosted-run export |
 
 ## Maintenance Rule
 

@@ -5,3 +5,8 @@
 *.ts text eol=lf
 *.yaml text eol=lf
 *.yml text eol=lf
+
+# Preserve exported audit evidence byte-for-byte across operating systems.
+docs/evidence/**/*.log -text
+docs/evidence/**/run.json -text
+docs/evidence/**/jobs.json -text
