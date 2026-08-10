@@ -16,7 +16,7 @@ describe.runIf(Boolean(connectionString))("M5 PostgreSQL and pgvector integratio
   it("migrates repeatedly with extension, constraints, and indexes", async () => {
     const database = new RetrievalDatabase({ connectionString: connectionString! });
     try {
-      expect(await database.migrate(process.cwd())).toContain("0001_retrieval.sql");
+      expect([[], ["0001_retrieval.sql"]]).toContainEqual(await database.migrate(process.cwd()));
       expect(await database.migrate(process.cwd())).toEqual([]);
       const extension = await database.pool.query(
         "SELECT extversion FROM pg_extension WHERE extname='vector'",
