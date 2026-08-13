@@ -56,6 +56,7 @@ any document reviewed, approved, published, or canonical.
 | M5-03 | [M5 Implementation Report](m5-implementation-report.md) | Records implementation inventory, validation, quality, performance, hosted provenance, residuals, and audit handoff. |
 | M5-04 | [Independent M5 Audit](m5-independent-audit-report.md) | Verifies the local deterministic boundary and records three environment evidence gaps with an `M5 AUDIT INCONCLUSIVE` verdict. |
 | M5-05 | [M5 Focused Audit Evidence Closure](m5-focused-evidence-closure.md) | Preserves authenticated exact-SHA CI, PostgreSQL/pgvector, evaluation, performance, and mutation evidence for independent finding closure. |
+| M5-06 | [M5 Focused Evidence Re-Audit](m5-focused-evidence-reaudit-report.md) | Independently closes or accepts the three scoped evidence findings and records the final `M6 READY` entry decision. |
 
 ## Architecture Decision Records
 
@@ -94,7 +95,8 @@ describe.
 | 2026-08-03 | audit-report commit; see post-commit handoff | Independent M4 audit report |
 | 2026-08-10 | `9b36aa6` | ADR 0006; M5 hybrid-retrieval guide; M5 implementation report |
 | 2026-08-10 | `d2a9a57` | Independent M5 audit report |
-| 2026-08-10 | evidence-closure commit; see post-commit handoff | M5 focused audit evidence closure and hosted-run export |
+| 2026-08-10 | `f77e089` | M5 focused audit evidence closure and hosted-run export |
+| 2026-08-13 | audit-exit commit; see post-commit handoff | M5 focused evidence re-audit report |
 
 ## Maintenance Rule
 

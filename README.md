@@ -9,8 +9,8 @@ knowledge units are authored.
 
 The repository currently implements M0 through M5: project definition,
 knowledge and validation kernels, the reference corpus, a deterministic
-knowledge graph/query layer, and a hybrid retrieval implementation awaiting
-independent M5 audit:
+knowledge graph/query layer, and a hybrid retrieval implementation whose
+focused independent evidence re-audit recorded `M6 READY`:
 
 - ontology registries and architecture classification facets;
 - stable canonical identifier rules;
@@ -109,13 +109,11 @@ between the repository root and the target file. Follow
 [`CODE_OF_KNOWLEDGE.md`](CODE_OF_KNOWLEDGE.md) for evidence rules.
 
 M2 hardening is complete. M3 passed its final independent regression re-audit.
-M4 passed its independent adversarial audit and the exact audit-fix SHA passed
-hosted clean-checkout validation on Ubuntu and Windows, including graph
-currentness and mutation gates. See
-[`docs/m4-independent-audit-report.md`](docs/m4-independent-audit-report.md)
-for the historical `M5 READY` entry decision. M5 is implemented and awaiting an
-independent M5 audit; see [`docs/m5-hybrid-retrieval.md`](docs/m5-hybrid-retrieval.md).
-M6 has not started.
+M4 passed its independent adversarial audit. M5 then passed its focused
+independent evidence re-audit after its initial audit returned inconclusive only
+because runtime evidence was unavailable in that environment. See
+[`docs/m5-focused-evidence-reaudit-report.md`](docs/m5-focused-evidence-reaudit-report.md)
+for the `M6 READY` entry decision. M6 is eligible but has not started.
 
 ## Validation commands
 

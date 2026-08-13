@@ -17,8 +17,8 @@ M1 Knowledge Kernel            → implemented; ontology questions remain open
 M2 Validation Kernel           → implemented; hosted CI proven
 M3 Reference Knowledge Corpus  → implemented; final independent re-audit passed
 M4 Knowledge Graph             → implemented; independent audit passed
-M5 Hybrid Retrieval            → implemented; independent audit pending
-M6 Architecture RAG            → future
+M5 Hybrid Retrieval            → implemented; independent audit passed
+M6 Architecture RAG            → eligible; not started
 M7 Decision Assistant          → future
 M8 Review Platform             → future
 M9 Production Platform         → future
@@ -191,14 +191,15 @@ Exit criteria:
 - related concepts can be expanded through governed edges;
 - evidence and citations remain attached.
 
-Status: implemented; independent M5 audit pending. The implementation provides
-487 deterministic semantic units, a generation-safe PostgreSQL 16/pgvector
-schema, `simple` weighted full-text search, pinned 1536-dimensional production
-embedding contract plus deterministic CI adapter, weighted RRF, default-deny
-M4 graph expansion, fail-closed filters, token budgeting, a 46-case draft
-benchmark, and separate Linux/Windows/PostgreSQL CI boundaries. See
-`docs/m5-hybrid-retrieval.md`, ADR 0006, and the implementation report. This
-status does not start M6 or elevate any content lifecycle state.
+Status: implemented and independently cleared `M6 READY`. The initial audit was
+inconclusive because its environment could not reproduce PostgreSQL, hosted
+exact-SHA, or mutation evidence; it found no implementation defect. Authenticated
+evidence closure and a focused independent re-audit subsequently closed
+`M5-AUD-001` and `M5-AUD-003`, accepted the bounded provenance limitation in
+`M5-AUD-002`, and removed all M6 entry blockers. See
+`docs/m5-independent-audit-report.md`, `docs/m5-focused-evidence-closure.md`, and
+`docs/m5-focused-evidence-reaudit-report.md`. This status makes M6 eligible but
+does not start it or elevate any content lifecycle state.
 
 ## M6 — Architecture RAG MVP
 
@@ -222,7 +223,8 @@ Exit criteria:
 - retrieval relevance and unsupported claims are measurable;
 - recommendations incorporate context and constraints.
 
-Status: future; depends on M5.
+Status: eligible but not started; M5's focused independent evidence re-audit
+recorded `M6 READY`. A separately scoped implementation run is still required.
 
 ## M7 — Architecture Decision Assistant
 

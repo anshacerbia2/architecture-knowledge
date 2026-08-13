@@ -184,6 +184,11 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m5-focused-evidence-reaudit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m5-hybrid-retrieval.md",
       "status": "valid"
     },
@@ -254,12 +259,7 @@
     },
     {
       "path": "README.md",
-      "target": "docs/m4-independent-audit-report.md",
-      "status": "valid"
-    },
-    {
-      "path": "README.md",
-      "target": "docs/m5-hybrid-retrieval.md",
+      "target": "docs/m5-focused-evidence-reaudit-report.md",
       "status": "valid"
     },
     {
@@ -301,6 +301,6 @@
   "summary": {
     "checked_link_count": 59,
     "broken_link_count": 0,
-    "markdown_file_count": 76
+    "markdown_file_count": 77
   }
 }

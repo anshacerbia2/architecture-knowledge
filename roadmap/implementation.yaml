@@ -100,7 +100,7 @@ milestones:
       - active database generations are fidelity-checked against current repository and graph inputs
       - excluded M4 relationships cannot enter graph expansion
       - retrieval quality and safety metrics are independently auditable
-    notes: Implemented with PostgreSQL 16, pgvector 0.8.2, deterministic units, pinned OpenAI embedding contract, fake CI adapter, weighted RRF, bounded graph expansion, and a draft 46-case evaluation corpus. Independent M5 audit is pending; M6 has not started.
+    notes: Implemented with PostgreSQL 16, pgvector 0.8.2, deterministic units, pinned OpenAI embedding contract, fake CI adapter, weighted RRF, bounded graph expansion, and a draft 46-case evaluation corpus. The focused independent evidence re-audit closed M5-AUD-001 and M5-AUD-003, accepted the bounded M5-AUD-002 evidence limitation, and recorded M6 READY. M6 has not started.
   - id: m6
     title: Architecture RAG MVP
     status: future
@@ -115,7 +115,7 @@ milestones:
       - answers include resolvable citations
       - retrieval relevance and unsupported claims are measurable
       - recommendations incorporate context and constraints
-    notes: Answers must preserve epistemic claim distinctions.
+    notes: Eligible but not started after the focused independent M5 evidence re-audit recorded M6 READY. Answers must preserve epistemic claim distinctions.
   - id: m7
     title: Architecture Decision Assistant
     status: future
