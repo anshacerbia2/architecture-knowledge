@@ -7,10 +7,10 @@ knowledge units are authored.
 
 ## Current scope
 
-The repository currently implements M0 through M5: project definition,
+The repository currently implements M0 through M6: project definition,
 knowledge and validation kernels, the reference corpus, a deterministic
-knowledge graph/query layer, and a hybrid retrieval implementation whose
-focused independent evidence re-audit recorded `M6 READY`:
+knowledge graph/query layer, hybrid retrieval, and a governed architecture RAG
+implementation pending independent M6 audit:
 
 - ontology registries and architecture classification facets;
 - stable canonical identifier rules;
@@ -26,10 +26,13 @@ focused independent evidence re-audit recorded `M6 READY`:
 - deterministic semantic retrieval units, PostgreSQL full-text search,
   pgvector, weighted rank fusion, governed graph expansion, and bounded
   evidence packets.
+- versioned RAG request/context/output contracts, epistemically labeled answers,
+  application-resolved citations, fail-closed grounding checks, deterministic
+  evaluation, and a production OpenAI Responses adapter.
 
-It intentionally contains no decision-guide examples, RAG answer generation,
-LLM prompt orchestration, graph database, or publication output. Those belong
-to later milestones.
+It intentionally contains no decision-guide examples, decision-assistant
+workflow, ADR generation, conversational memory, graph database, or publication
+output. Those belong to later milestones.
 
 ## Classification model
 
@@ -113,7 +116,8 @@ M4 passed its independent adversarial audit. M5 then passed its focused
 independent evidence re-audit after its initial audit returned inconclusive only
 because runtime evidence was unavailable in that environment. See
 [`docs/m5-focused-evidence-reaudit-report.md`](docs/m5-focused-evidence-reaudit-report.md)
-for the `M6 READY` entry decision. M6 is eligible but has not started.
+for the `M6 READY` entry decision. M6 is now implemented and remains pending an
+independent audit; M7 is not open.
 
 ## Validation commands
 
@@ -139,8 +143,11 @@ pnpm retrieval:check
 pnpm retrieval:query -- "AKC-000014" --mode hybrid --json
 pnpm retrieval:evaluate
 pnpm retrieval:benchmark
-pnpm retrieval:benchmark
 pnpm test:mutation:retrieval
+pnpm rag:context -- "What issuer check is required for an OpenID Connect ID Token?"
+pnpm rag:answer -- "What issuer check is required for an OpenID Connect ID Token?" --json
+pnpm rag:evaluate
+pnpm test:mutation:rag
 ```
 
 Focused `validate:*` commands are listed in the root `AGENTS.md` and

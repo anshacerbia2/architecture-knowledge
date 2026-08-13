@@ -18,7 +18,7 @@ M2 Validation Kernel           → implemented; hosted CI proven
 M3 Reference Knowledge Corpus  → implemented; final independent re-audit passed
 M4 Knowledge Graph             → implemented; independent audit passed
 M5 Hybrid Retrieval            → implemented; independent audit passed
-M6 Architecture RAG            → eligible; not started
+M6 Architecture RAG            → implemented; independent audit pending
 M7 Decision Assistant          → future
 M8 Review Platform             → future
 M9 Production Platform         → future
@@ -205,14 +205,17 @@ does not start it or elevate any content lifecycle state.
 
 Purpose: answer architecture questions from governed repository evidence.
 
-Planned outputs:
+Implemented outputs:
 
 - ingestion and chunking pipeline;
 - embedding and hybrid retrieval pipeline;
 - graph-aware context builder;
 - citation generation;
-- prompt and tool contracts;
-- evaluation dataset.
+- strict prompt, structured output, and provider contracts;
+- post-generation grounding and epistemic validation;
+- deterministic fake and production OpenAI Responses adapters;
+- a draft functional evaluation dataset;
+- CLI, coverage, mutation, and hosted PostgreSQL gates.
 
 Answers must distinguish sourced claims, synthesis, inference, recommendation,
 and unresolved uncertainty.
@@ -223,8 +226,10 @@ Exit criteria:
 - retrieval relevance and unsupported claims are measurable;
 - recommendations incorporate context and constraints.
 
-Status: eligible but not started; M5's focused independent evidence re-audit
-recorded `M6 READY`. A separately scoped implementation run is still required.
+Status: implemented and locally validated; independent M6 audit and exact-SHA
+hosted validation are pending. The deterministic benchmark is functional
+evidence only and does not establish real-provider semantic quality. M7 remains
+closed.
 
 ## M7 — Architecture Decision Assistant
 

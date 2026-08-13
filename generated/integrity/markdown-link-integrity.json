@@ -109,6 +109,16 @@
     },
     {
       "path": "docs/README.md",
+      "target": "adr/0007-governed-architecture-rag.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "adr/0007-governed-architecture-rag.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "kernel-decisions.md",
       "status": "valid"
     },
@@ -200,6 +210,16 @@
     {
       "path": "docs/README.md",
       "target": "m5-independent-audit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m6-architecture-rag.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m6-implementation-report.md",
       "status": "valid"
     },
     {
@@ -299,8 +319,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 59,
+    "checked_link_count": 63,
     "broken_link_count": 0,
-    "markdown_file_count": 77
+    "markdown_file_count": 80
   }
 }

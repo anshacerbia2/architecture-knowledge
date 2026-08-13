@@ -85,6 +85,9 @@ jobs:
       - name: Enforce focused retrieval mutation threshold
         run: pnpm test:mutation:retrieval
 
+      - name: Enforce focused RAG mutation threshold
+        run: pnpm test:mutation:rag
+
   retrieval-integration:
     runs-on: ubuntu-latest
     services:
@@ -103,6 +106,7 @@ jobs:
       RETRIEVAL_DATABASE_URL: postgresql://aks:aks@127.0.0.1:5432/architecture_knowledge
       RETRIEVAL_EMBEDDING_PROVIDER: fake
       RETRIEVAL_DATA_CLASSIFICATION: public
+      RAG_MODEL_PROVIDER: fake
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -130,9 +134,14 @@ jobs:
           tests/retrieval-query.test.ts
       - name: Evaluate all retrieval modes
         run: pnpm retrieval:evaluate
+      - name: Evaluate deterministic governed RAG
+        run: pnpm rag:evaluate
       - name: Record informational retrieval performance
         run: pnpm retrieval:benchmark
       - name: Smoke hybrid graph query
         run:
           pnpm retrieval:query -- "What should I validate in an identity token?" --mode hybrid-graph
           --top-k 5 --json
+      - name: Smoke governed RAG answer
+        run:
+          pnpm rag:answer -- "What issuer check is required for an OpenID Connect ID Token?" --json
