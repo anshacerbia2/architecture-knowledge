@@ -10,7 +10,7 @@ knowledge units are authored.
 The repository currently implements M0 through M6: project definition,
 knowledge and validation kernels, the reference corpus, a deterministic
 knowledge graph/query layer, hybrid retrieval, and a governed architecture RAG
-implementation pending independent M6 audit:
+implementation under focused audit remediation:
 
 - ontology registries and architecture classification facets;
 - stable canonical identifier rules;
@@ -116,8 +116,9 @@ M4 passed its independent adversarial audit. M5 then passed its focused
 independent evidence re-audit after its initial audit returned inconclusive only
 because runtime evidence was unavailable in that environment. See
 [`docs/m5-focused-evidence-reaudit-report.md`](docs/m5-focused-evidence-reaudit-report.md)
-for the `M6 READY` entry decision. M6 is now implemented and remains pending an
-independent audit; M7 is not open.
+for the `M6 READY` entry decision. The first M6 audit recorded `M6 NOT READY`;
+focused remediation is implemented locally and requires exact-SHA hosted
+validation plus independent re-audit. M7 is not open.
 
 ## Validation commands
 

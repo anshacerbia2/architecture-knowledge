@@ -3,12 +3,17 @@ import {
   RAG_PROVIDER_TIMEOUT_MS,
   PRODUCTION_RAG_MODEL,
 } from "./rag-config.js";
+import {
+  assertRagClassificationAllowed,
+  parseAllowedRagClassifications,
+} from "./rag-classification.js";
 import { RAG_MODEL_OUTPUT_SCHEMA, parseRagModelOutput } from "./rag-output-contract.js";
 import type {
   RagContextPacket,
   RagModelOutput,
   RagModelProvider,
   RagRequest,
+  RagDataClassification,
 } from "./rag-types.js";
 
 export interface OpenAIRagProviderOptions {
@@ -24,7 +29,7 @@ export interface OpenAIRagProviderOptions {
 export class OpenAIRagProvider implements RagModelProvider {
   readonly provider = PRODUCTION_RAG_MODEL.provider;
   readonly model = PRODUCTION_RAG_MODEL.model;
-  readonly allowedDataClassifications: readonly string[];
+  readonly allowedDataClassifications: readonly RagDataClassification[];
   private readonly baseUrl: string;
   private readonly timeoutMs: number;
   private readonly maxAttempts: number;
@@ -36,7 +41,9 @@ export class OpenAIRagProvider implements RagModelProvider {
     this.baseUrl = (options.baseUrl ?? "https://api.openai.com/v1").replace(/\/$/, "");
     this.timeoutMs = boundedInteger(options.timeoutMs ?? RAG_PROVIDER_TIMEOUT_MS, 100, 120_000);
     this.maxAttempts = boundedInteger(options.maxAttempts ?? RAG_PROVIDER_MAX_RETRIES, 1, 5);
-    this.allowedDataClassifications = options.allowedDataClassifications ?? ["public"];
+    this.allowedDataClassifications = parseAllowedRagClassifications(
+      options.allowedDataClassifications ?? ["public"],
+    );
     this.fetchImplementation = options.fetchImplementation ?? fetch;
     this.sleep =
       options.sleep ??
@@ -44,6 +51,7 @@ export class OpenAIRagProvider implements RagModelProvider {
   }
 
   async generate(context: RagContextPacket, request: RagRequest): Promise<RagModelOutput> {
+    assertRagClassificationAllowed(context, request, this.allowedDataClassifications);
     const body = {
       model: this.model,
       store: false,
@@ -119,14 +127,26 @@ export class DeterministicFakeRagProvider implements RagModelProvider {
   constructor(private readonly options: FakeRagProviderOptions = {}) {}
 
   async generate(context: RagContextPacket, request: RagRequest): Promise<RagModelOutput> {
+    assertRagClassificationAllowed(context, request, this.allowedDataClassifications);
     if (this.options.fail) throw new Error("RAG_MODEL_FAKE_FAILURE");
     if (this.options.output !== undefined) return parseRagModelOutput(this.options.output);
+    if (isAdversarialInstruction(request.question)) {
+      return {
+        status: "refused",
+        summary:
+          "The request contains an instruction that conflicts with the governed evidence boundary.",
+        statements: [],
+        uncertainties: [],
+        refusal_reason: "unsafe-instruction",
+      };
+    }
     const claims = context.evidence
       .filter(
         (item) =>
           item.unit_kind === "claim" &&
-          item.citations.length > 0 &&
-          /^AKL-\d{6}$/.test(item.record_id),
+          context.citation_catalog.some((citation) => citation.evidence_id === item.evidence_id) &&
+          /^AKL-\d{6}$/.test(item.record_id) &&
+          relevantToQuestion(request.question, item.record_id, `${item.title} ${item.text}`),
       )
       .slice(0, request.answer.max_statements);
     if (claims.length === 0) {
@@ -157,6 +177,52 @@ export class DeterministicFakeRagProvider implements RagModelProvider {
       refusal_reason: null,
     };
   }
+}
+
+function isAdversarialInstruction(question: string): boolean {
+  return /(ignore (?:the )?(?:evidence|instructions)|drop table|reveal (?:a )?(?:secret|credential)|approve (?:the )?(?:adr|decision))/i.test(
+    question,
+  );
+}
+
+function relevantToQuestion(question: string, recordId: string, evidenceText: string): boolean {
+  if (question.toUpperCase().includes(recordId)) return true;
+  if (/^what does the evidence say\??$/i.test(question.trim())) return true;
+  const questionTerms = significantTerms(question);
+  const evidenceTerms = significantTerms(evidenceText);
+  let overlap = 0;
+  for (const term of questionTerms) {
+    if (evidenceTerms.has(term)) overlap += 1;
+  }
+  return overlap >= 2;
+}
+
+function significantTerms(value: string): Set<string> {
+  const ignored = new Set([
+    "about",
+    "after",
+    "architecture",
+    "does",
+    "from",
+    "have",
+    "should",
+    "system",
+    "that",
+    "their",
+    "these",
+    "this",
+    "using",
+    "what",
+    "when",
+    "which",
+    "with",
+  ]);
+  return new Set(
+    value
+      .toLowerCase()
+      .match(/[a-z0-9-]+/g)
+      ?.filter((term) => term.length >= 4 && !ignored.has(term)) ?? [],
+  );
 }
 
 function parseOpenAIResponse(value: unknown, expectedModel: string): RagModelOutput {

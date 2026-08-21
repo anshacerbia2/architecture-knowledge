@@ -1,6 +1,7 @@
 import { RAG_CONTRACT_VERSION, RAG_PROMPT_VERSION } from "./rag-types.js";
 import { buildRagContext } from "./rag-context.js";
 import { parseRagModelOutput } from "./rag-output-contract.js";
+import { assertRagClassificationAllowed } from "./rag-classification.js";
 import type {
   RagAnswerPacket,
   RagContextPacket,
@@ -37,10 +38,12 @@ export class RagEngine {
           refusal_reason: null,
         },
         [{ code: "RAG_INSUFFICIENT_EVIDENCE", message: "No governed evidence matched." }],
+        false,
       );
     }
     let output: RagModelOutput;
     try {
+      assertRagClassificationAllowed(context, request, this.provider.allowedDataClassifications);
       output = parseRagModelOutput(await this.provider.generate(context, request));
     } catch (error) {
       if (stableCode(error) !== "RAG_MODEL_REFUSAL") throw error;
@@ -55,6 +58,7 @@ export class RagEngine {
           refusal_reason: "provider-refusal",
         },
         [{ code: "RAG_MODEL_REFUSAL", message: "The model refused the request." }],
+        true,
       );
     }
     const diagnostics = validateGrounding(output, context, request);
@@ -66,7 +70,7 @@ export class RagEngine {
           .join(",")}`,
       );
     }
-    return packet(context, this.provider, output, retrieval.diagnostics);
+    return packet(context, this.provider, output, retrieval.diagnostics, true);
   }
 }
 
@@ -94,7 +98,7 @@ export function validateGrounding(
         code: "RAG_STATEMENT_UNSUPPORTED",
         message: `${statement.statement_id} has no evidence.`,
       });
-    const resolvedSources = cited.flatMap((item) => item.citations);
+    const resolvedSources = resolvedCitations(statement.evidence_ids, context);
     if (assertive && resolvedSources.length === 0)
       diagnostics.push({
         code: "RAG_CITATION_MISSING",
@@ -163,6 +167,7 @@ function packet(
   provider: RagModelProvider,
   output: RagModelOutput,
   diagnostics: Array<{ code: string; message: string }>,
+  modelInvoked: boolean,
 ): RagAnswerPacket {
   const statements = output.statements.map<RagGroundedStatement>((statement) => ({
     ...statement,
@@ -172,6 +177,7 @@ function packet(
     rag_contract_version: RAG_CONTRACT_VERSION,
     question: context.question,
     status: output.status,
+    model_invoked: modelInvoked,
     provider: {
       provider: provider.provider,
       model: provider.model,
@@ -182,6 +188,7 @@ function packet(
       retrieval_generation_id: context.retrieval.generation.generation_id,
       graph_input_fingerprint: context.retrieval.generation.graph_input_fingerprint,
       retrieval_manifest_root: context.retrieval.generation.retrieval_manifest_root,
+      data_classification: context.data_classification,
     },
     summary: output.summary,
     statements,
@@ -198,7 +205,7 @@ function packet(
   };
 }
 
-function resolvedCitations(
+export function resolvedCitations(
   evidenceIds: string[],
   context: RagContextPacket,
 ): RagResolvedCitation[] {

@@ -45,6 +45,46 @@ describe("RAG context and grounding", () => {
   });
 
   it.each([
+    ["title", (unit: ReturnType<typeof retrievalUnit>) => ({ ...unit, title: "changed" })],
+    ["text", (unit: ReturnType<typeof retrievalUnit>) => ({ ...unit, retrieval_text: "injected" })],
+    ["unit ID", (unit: ReturnType<typeof retrievalUnit>) => ({ ...unit, unit_id: "ru:changed" })],
+    [
+      "record ID",
+      (unit: ReturnType<typeof retrievalUnit>) => ({ ...unit, record_id: "AKL-000002" }),
+    ],
+    [
+      "concept ID",
+      (unit: ReturnType<typeof retrievalUnit>) => ({ ...unit, concept_id: "AKC-000002" }),
+    ],
+    [
+      "source path",
+      (unit: ReturnType<typeof retrievalUnit>) => ({ ...unit, source_path: "changed.yaml" }),
+    ],
+    [
+      "lifecycle",
+      (unit: ReturnType<typeof retrievalUnit>) => ({ ...unit, lifecycle_status: "changed" }),
+    ],
+    ["scope", (unit: ReturnType<typeof retrievalUnit>) => ({ ...unit, semantic_scope: "changed" })],
+    ["confidence", (unit: ReturnType<typeof retrievalUnit>) => ({ ...unit, confidence: "medium" })],
+  ])("binds prompt-visible evidence %s even when the declared hash is stale", (_name, change) => {
+    const baseline = buildRagContext(ragRequest(), retrievalPacket()).context_fingerprint;
+    const changed = change(retrievalUnit());
+    expect(buildRagContext(ragRequest(), retrievalPacket([changed])).context_fingerprint).not.toBe(
+      baseline,
+    );
+  });
+
+  it("binds classification and answer controls into the context fingerprint", () => {
+    const baseline = buildRagContext(ragRequest(), retrievalPacket()).context_fingerprint;
+    const classified = ragRequest({ data_classification: "internal" });
+    const bounded = ragRequest({
+      answer: { allow_recommendations: false, max_statements: 7, max_output_tokens: 1800 },
+    });
+    expect(buildRagContext(classified, retrievalPacket()).context_fingerprint).not.toBe(baseline);
+    expect(buildRagContext(bounded, retrievalPacket()).context_fingerprint).not.toBe(baseline);
+  });
+
+  it.each([
     [
       "query",
       () => {
@@ -198,6 +238,45 @@ describe("RAG context and grounding", () => {
     ).toContain("RAG_CITATION_MISSING");
   });
 
+  it.each([
+    [null, "https://example.com/source"],
+    ["Synthetic source", null],
+    [null, null],
+    ["   ", "https://example.com/source"],
+    ["Synthetic source", "   "],
+  ])("rejects raw citations excluded from the final catalog (title=%s url=%s)", (title, url) => {
+    const context = buildRagContext(
+      ragRequest(),
+      retrievalPacket([
+        retrievalUnit({ citations: [{ source_id: "AKS-000001", title, url, locators: [] }] }),
+      ]),
+    );
+    expect(context.citation_catalog).toEqual([]);
+    expect(
+      validateGrounding(modelOutput(), context, ragRequest()).map((item) => item.code),
+    ).toContain("RAG_CITATION_MISSING");
+  });
+
+  it("accepts mixed raw citations only when at least one resolves through the catalog", () => {
+    const context = buildRagContext(
+      ragRequest(),
+      retrievalPacket([
+        retrievalUnit({
+          citations: [
+            { source_id: "AKS-000001", title: null, url: null, locators: [] },
+            {
+              source_id: "AKS-000002",
+              title: "Resolvable source",
+              url: "https://example.com/resolvable",
+              locators: [],
+            },
+          ],
+        }),
+      ]),
+    );
+    expect(validateGrounding(modelOutput(), context, ragRequest())).toEqual([]);
+  });
+
   it("requires complete recommendation framing when recommendations are enabled", () => {
     const request = ragRequest({
       project_context: {
@@ -243,6 +322,25 @@ describe("RAG context and grounding", () => {
     expect(answer.diagnostics[0]?.code).toBe("RAG_INSUFFICIENT_EVIDENCE");
   });
 
+  it("enforces classification at the reusable engine boundary", async () => {
+    let called = false;
+    const provider = {
+      provider: "synthetic",
+      model: "synthetic-v1",
+      allowedDataClassifications: ["public"] as const,
+      generate: async () => {
+        called = true;
+        return modelOutput();
+      },
+    };
+    await expect(
+      new RagEngine({ query: async () => retrievalPacket() }, provider).answer(
+        ragRequest({ data_classification: "internal" }),
+      ),
+    ).rejects.toThrow("RAG_DATA_CLASSIFICATION_DENIED");
+    expect(called).toBe(false);
+  });
+
   it("fails closed when model grounding is invalid", async () => {
     const provider = new DeterministicFakeRagProvider({
       output: modelOutput({
@@ -257,7 +355,7 @@ describe("RAG context and grounding", () => {
     const provider = {
       provider: "synthetic",
       model: "synthetic-v1",
-      allowedDataClassifications: ["public"],
+      allowedDataClassifications: ["public"] as const,
       generate: async () => {
         throw new Error("RAG_MODEL_REFUSAL policy");
       },

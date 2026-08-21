@@ -42,13 +42,17 @@ database.
 
 ## Request contract
 
-The smallest request is a question. Defaults select bounded `hybrid-graph`
+The smallest structured request contains a question and
+`data_classification`. The CLI injects the runtime classification from
+`RETRIEVAL_DATA_CLASSIFICATION` (default `public`) and rejects a conflicting
+file value. Defaults select bounded `hybrid-graph`
 retrieval with graph depth 1 and disable recommendations. Structured file input
 can add project context, retrieval filters/budgets, and answer bounds:
 
 ```json
 {
   "question": "Which approach fits this payment workflow?",
+  "data_classification": "internal",
   "project_context": {
     "system_description": "Regional payment processing service",
     "constraints": ["at-least-once delivery", "PCI scope"],
@@ -86,6 +90,7 @@ text/list sizes, and out-of-range limits fail with `RAG_REQUEST_SHAPE`.
 An answer packet preserves:
 
 - status: `answered`, `insufficient-evidence`, or `refused`;
+- whether the model was invoked;
 - provider, exact model, prompt and contract versions;
 - context fingerprint and M5 generation/graph/manifest provenance;
 - statements labeled `sourced-claim`, `synthesis`, `inference`,
@@ -114,10 +119,14 @@ from the context catalog only after grounding checks pass.
 
 ## Evaluation and limitations
 
-`evaluation/rag-golden.yaml` is a draft 15-case functional benchmark. The fake
-provider gates exact claim recall and perfect citation/safety behavior. It is
-not human-reviewed architecture knowledge and does not establish real-provider
-semantic quality.
+`evaluation/rag-golden.yaml` is a draft 20-case functional benchmark. Exact-ID
+cases are capped at 25%; no-answer cases use natural queries without impossible
+filters; three adversarial cases must reach the model boundary; and the
+committed holdout is scored separately. Gates cover status, model invocation,
+expected and forbidden claims, citations, epistemic types, unsupported output,
+and prohibited text. The committed holdout is a regression partition, not a
+secret independent benchmark. The corpus is not human-reviewed architecture
+knowledge and does not establish real-provider semantic quality.
 
 Post-generation validation proves structural support: cited IDs exist, source
 metadata resolves, and epistemic obligations are met. It cannot prove textual
@@ -130,4 +139,3 @@ semantic audit is required before production claims.
 The CLI does not create decision records, ADRs, recommendations without explicit
 context, memory, feedback loops, or repository mutations. M7 remains unopened
 until M6 receives an independent audit and explicit entry decision.
-

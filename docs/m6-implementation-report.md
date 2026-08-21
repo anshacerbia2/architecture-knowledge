@@ -26,13 +26,13 @@ audit or lifecycle transition.
 |---|---|
 | Request | closed, bounded object contract; retrieval text bound to question |
 | Retrieval | current M5 `hybrid-graph` packet; no second index or graph |
-| Context | evidence/citation catalog, graph provenance, token bound, SHA-256 fingerprint |
+| Context | evidence/citation catalog, graph provenance, classification, token bound, full prompt-visible SHA-256 fingerprint |
 | Model | strict structured output; exact provider/model/prompt metadata |
 | Grounding | evidence, claim, citation, epistemic, confidence, and recommendation validation |
 | Citation | application-resolved from retrieved catalog; never model-authored |
 | No answer | empty retrieval skips model and returns explicit insufficient evidence |
 | Rendering | stable Markdown plus complete machine-readable answer packet |
-| Evaluation | 15 draft deterministic cases with functional and safety gates |
+| Evaluation | 20 draft cases with corpus-quality rules, invocation checks, and split functional/safety gates |
 
 The answer model contract distinguishes sourced claim, synthesis, inference,
 recommendation, and uncertainty. Recommendations require explicit permission,
@@ -41,11 +41,14 @@ lifecycle state is modified.
 
 ## Provider boundary
 
-The production adapter is OpenAI Responses with exact model `gpt-5.6`, strict
+The production adapter is OpenAI Responses with concrete routing model
+`gpt-5.6-sol`, strict
 `text.format` JSON Schema, `store: false`, bounded output and timeout, explicit
 refusal/incomplete handling, model verification, and bounded retries. External
-classification defaults to `public`. The API key is environment-only; request
-and response payloads are not logged by the adapter.
+classification is required in the request, bound into the context fingerprint,
+and enforced by the engine and provider before external invocation. The CLI
+runtime defaults to `public`. The API key is environment-only; request and
+response payloads are not logged by the adapter.
 
 The deterministic fake provider copies only first-class claim evidence and is
 used for CI. Its results are functional correctness evidence, not real-provider
@@ -68,14 +71,15 @@ answer smoke test inside its pinned PostgreSQL/pgvector service job.
 
 ## Evaluation contract
 
-The draft benchmark includes exact claims, natural-language security,
-reliability and data questions, holdout cases, governed no-answer filters, and
-an adversarial prompt. Gates require:
+The version 2 draft benchmark includes four exact-ID cases, eleven natural
+answerable questions, two natural no-answer questions, three adversarial
+questions, and a seven-case committed regression holdout. Impossible filters
+are forbidden and adversarial cases must invoke the model. Gates require:
 
-- answer-status accuracy, citation completeness, citation resolvability, and
-  epistemic-label completeness of 1.0;
+- answer-status, model-invocation, citation, epistemic-label, and expected-type
+  accuracy of 1.0 for the full corpus and holdout;
 - expected-claim recall of at least 0.8;
-- zero unsupported statements and prohibited output.
+- zero forbidden claims, unsupported statements, and prohibited output.
 
 Hosted results remain pending until the implementation commit is pushed and an
 exact-SHA run is observed. A real OpenAI provider benchmark is also pending
@@ -102,9 +106,9 @@ separate authorization and must not be conflated with fake-provider results.
   required before production clearance.
 - Medium: the draft corpus and deterministic provider do not measure real-model
   answer quality, calibration, latency, or cost.
-- Low: focused mutation passes, but the provider adapter is the weakest file at
-  61.35%; raise it progressively with timeout, retry-boundary, and malformed
-  response regressions.
+- Low: `gpt-5.6-sol` avoids the broad `gpt-5.6` alias but is not an immutable
+  dated snapshot. Exact real-provider reproducibility remains bounded by the
+  provider's routing contract.
 - Observation: hosted exact-SHA PostgreSQL and cross-platform evidence is not
   available until the implementation is committed and pushed.
 
@@ -117,6 +121,7 @@ M7 or later concerns.
 
 ## Handoff
 
-Implementation is ready for exact-SHA hosted validation and then an independent
-M6 semantic, security, provenance, and runtime audit. M7 is not cleared by this
-report.
+The first independent audit returned `M6 NOT READY`. Focused remediation is
+recorded separately in `docs/m6-focused-remediation-report.md`; a new exact-SHA
+hosted run and independent focused re-audit are required. M7 is not cleared by
+this report.

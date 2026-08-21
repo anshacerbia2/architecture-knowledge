@@ -29,7 +29,9 @@ validated question and project context
 
 The context packet contains only M5-selected evidence, a local evidence ID for
 each item, a citation catalog, graph-path provenance, project context, token
-estimate, retrieval generation identity, and a SHA-256 fingerprint. Model
+estimate, retrieval generation identity, data classification, and a SHA-256
+fingerprint over every prompt-visible evidence field, the resolved citation
+catalog, request controls, and generation provenance. Model
 output may refer only to the supplied evidence IDs and governed claim IDs.
 Citation metadata is resolved by application code from the catalog; the model
 cannot author URLs, source IDs, titles, or locators.
@@ -46,8 +48,10 @@ Every answer statement has exactly one visible epistemic type:
   context, and requires conditions, alternatives, and trade-offs;
 - `uncertainty`: non-assertive and low-confidence.
 
-Every assertive statement requires evidence and at least one resolvable source
-citation. A model refusal is returned as `refused`; empty retrieval is returned
+Every assertive statement requires evidence and at least one citation that
+survives application resolution into the final answer packet. Raw citation
+objects with missing or blank titles or URLs do not satisfy grounding. A model
+refusal is returned as `refused`; empty retrieval is returned
 without calling a model as `insufficient-evidence`. Malformed output, dangling
 evidence or claims, missing citations, incomplete recommendation framing, or
 excessive derived confidence fails the request with stable diagnostics.
@@ -59,14 +63,26 @@ separate human or governed-evaluator evidence class.
 
 ## Model and output contract
 
-The production adapter uses the OpenAI Responses API with exact model
-`gpt-5.6`, `store: false`, bounded output, timeout, retry, and data-classification
-controls. It uses strict Structured Outputs through `text.format` with a JSON
+The production adapter uses the OpenAI Responses API with the concrete routing
+model ID `gpt-5.6-sol`, `store: false`, bounded output, timeout, retry, and
+data-classification controls enforced by the reusable engine and again at the
+external provider boundary. This is a concrete routing ID, not an immutable
+dated model snapshot; that remaining reproducibility limit is explicit. The
+official [latest-model guide](https://developers.openai.com/api/docs/guides/latest-model)
+distinguishes the `gpt-5.6` alias from `gpt-5.6-sol`.
+
+The adapter uses strict Structured Outputs through `text.format` with a JSON
 Schema. The official
 [Structured Outputs guide](https://developers.openai.com/api/docs/guides/structured-outputs)
 defines the Responses API `text.format` contract and requires closed object
 schemas; the runtime schema therefore declares every property required and
 sets `additionalProperties: false` on every object.
+
+Supported array-count bounds are present in the provider schema. Application
+parsing independently enforces statement, reference, qualifier, uncertainty,
+summary, statement-text, and refusal-text limits, including exact boundary
+tests. This keeps bounds fail-closed where a provider schema keyword is not
+part of the supported Structured Outputs subset.
 
 The adapter handles refusal and incomplete responses explicitly, verifies the
 returned model, parses the JSON payload, and then applies a stricter
@@ -80,15 +96,19 @@ semantic quality.
 
 ## Evaluation
 
-The draft M6 benchmark contains exact-claim, natural-language, filtered
-no-answer, and adversarial cases. It measures answer-status accuracy, expected
-claim recall, citation completeness and resolvability, epistemic-label
-completeness, unsupported statements, and prohibited output. Safety metrics
-must be perfect; expected-claim recall must be at least 0.8.
+The draft M6 benchmark contains 20 exact-claim, natural-language, natural
+no-answer, and adversarial cases. Exact IDs are capped at 25%; impossible
+filter sentinels are rejected; adversarial cases must reach the model boundary;
+and at least 25% of cases form a separately scored committed regression
+holdout. It measures answer status, model invocation, expected and forbidden
+claims, citation completeness and resolvability, expected epistemic types,
+unsupported statements, and prohibited output. Safety metrics must be perfect;
+expected-claim recall must be at least 0.8 for both the full set and holdout.
 
-The committed evaluation is intentionally deterministic. A future authorized
-real-provider run must report its provider/model/prompt version and remain a
-separate evidence class.
+The committed holdout is not secret or independently maintained, and the
+evaluation is intentionally deterministic. A future authorized real-provider
+run must report its provider/model/prompt version and remain a separate evidence
+class.
 
 ## Rejected alternatives
 
@@ -112,4 +132,3 @@ context-qualified recommendations. It does not extract architectural drivers,
 generate candidate option sets, approve decisions, draft ADR/RFC/PAD artifacts,
 create memory, alter knowledge, or cross a human lifecycle boundary. Those
 capabilities remain M7 or later.
-

@@ -5,7 +5,10 @@ export interface RagCliInput {
   json: boolean;
 }
 
-export async function parseRagCliInput(arguments_: readonly string[]): Promise<RagCliInput> {
+export async function parseRagCliInput(
+  arguments_: readonly string[],
+  dataClassification = "public",
+): Promise<RagCliInput> {
   const args = [...arguments_];
   if (args[0] === "--") args.shift();
   const flags = new Map<string, string[]>();
@@ -49,8 +52,12 @@ export async function parseRagCliInput(arguments_: readonly string[]): Promise<R
     if (question !== undefined || [...flags.keys()].some((key) => !["file", "json"].includes(key)))
       throw new Error("RAG_FLAG_CONFLICT --file cannot be combined with inline request options.");
     try {
+      const parsed = JSON.parse(await readFile(file, "utf8")) as unknown;
+      if (!isObject(parsed)) throw new Error("request must be an object");
+      if ("data_classification" in parsed && parsed.data_classification !== dataClassification)
+        throw new Error("data_classification conflicts with the runtime classification");
       return {
-        input: JSON.parse(await readFile(file, "utf8")) as unknown,
+        input: { ...parsed, data_classification: dataClassification },
         json: flags.has("json"),
       };
     } catch (error) {
@@ -66,6 +73,7 @@ export async function parseRagCliInput(arguments_: readonly string[]): Promise<R
     json: flags.has("json"),
     input: {
       question,
+      data_classification: dataClassification,
       project_context: {
         system_description: single(flags, "context") ?? null,
         constraints: flags.get("constraint") ?? [],
@@ -85,6 +93,10 @@ export async function parseRagCliInput(arguments_: readonly string[]): Promise<R
       },
     },
   };
+}
+
+function isObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 function optionalNumber(flags: Map<string, string[]>, key: string, output: string) {

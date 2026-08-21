@@ -25,6 +25,7 @@ describe("RAG CLI arguments", () => {
     expect(parsed.json).toBe(true);
     expect(parsed.input).toMatchObject({
       question: "Which option fits?",
+      data_classification: "public",
       project_context: { constraints: ["regional"], quality_priorities: ["availability"] },
       answer: { allow_recommendations: true, max_statements: 4 },
     });
@@ -35,8 +36,24 @@ describe("RAG CLI arguments", () => {
     const file = path.join(directory, "request.json");
     await writeFile(file, JSON.stringify({ question: "file question" }), "utf8");
     await expect(parseRagCliInput(["--file", file, "--json"])).resolves.toEqual({
-      input: { question: "file question" },
+      input: { question: "file question", data_classification: "public" },
       json: true,
+    });
+  });
+
+  it("injects the runtime classification and rejects file conflicts", async () => {
+    const directory = await mkdtemp(path.join(tmpdir(), "rag-cli-classification-"));
+    const file = path.join(directory, "request.json");
+    await writeFile(
+      file,
+      JSON.stringify({ question: "file question", data_classification: "public" }),
+      "utf8",
+    );
+    await expect(parseRagCliInput(["--file", file], "internal")).rejects.toThrow(
+      "data_classification conflicts",
+    );
+    await expect(parseRagCliInput(["inline question"], "confidential")).resolves.toMatchObject({
+      input: { data_classification: "confidential" },
     });
   });
 
