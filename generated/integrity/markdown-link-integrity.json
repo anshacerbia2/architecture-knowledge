@@ -219,7 +219,17 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m6-focused-remediation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m6-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m6-independent-audit-report.md",
       "status": "valid"
     },
     {
@@ -319,8 +329,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 63,
+    "checked_link_count": 65,
     "broken_link_count": 0,
-    "markdown_file_count": 80
+    "markdown_file_count": 82
   }
 }

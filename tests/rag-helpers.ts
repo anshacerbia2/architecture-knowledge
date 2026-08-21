@@ -4,6 +4,7 @@ import type { RetrievalPacket, RetrievalResult, RetrievalUnit } from "../src/ret
 export function ragRequest(overrides: Partial<RagRequest> = {}): RagRequest {
   return {
     question: "What does the evidence say?",
+    data_classification: "public",
     project_context: { system_description: null, constraints: [], quality_priorities: [] },
     retrieval: {
       text: "What does the evidence say?",

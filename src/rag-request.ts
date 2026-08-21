@@ -8,9 +8,16 @@ import {
   MIN_RAG_OUTPUT_TOKENS,
 } from "./rag-config.js";
 import type { RagProjectContext, RagRequest } from "./rag-types.js";
+import { parseRagDataClassification } from "./rag-classification.js";
 import { parseRetrievalRequest } from "./retrieval-query-contract.js";
 
-const TOP_LEVEL = new Set(["question", "project_context", "retrieval", "answer"]);
+const TOP_LEVEL = new Set([
+  "question",
+  "data_classification",
+  "project_context",
+  "retrieval",
+  "answer",
+]);
 const PROJECT_CONTEXT = new Set(["system_description", "constraints", "quality_priorities"]);
 const ANSWER = new Set(["allow_recommendations", "max_statements", "max_output_tokens"]);
 
@@ -18,6 +25,7 @@ export function parseRagRequest(input: unknown): RagRequest {
   if (!isPlainObject(input)) fail("request must be an object");
   rejectUnknown(input, TOP_LEVEL, "request");
   const question = requiredText(input.question, "question", MAX_RAG_QUESTION_CHARACTERS);
+  const dataClassification = parseRagDataClassification(input.data_classification);
   const projectContext = parseProjectContext(input.project_context);
   const answer = parseAnswer(input.answer);
   if (
@@ -44,7 +52,13 @@ export function parseRagRequest(input: unknown): RagRequest {
     allow_degraded_lexical_fallback: false,
     ...(retrievalInput ?? {}),
   });
-  return { question, project_context: projectContext, retrieval, answer };
+  return {
+    question,
+    data_classification: dataClassification,
+    project_context: projectContext,
+    retrieval,
+    answer,
+  };
 }
 
 function parseProjectContext(value: unknown): RagProjectContext {

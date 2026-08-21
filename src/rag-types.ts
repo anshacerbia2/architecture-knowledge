@@ -6,9 +6,12 @@ import type {
   RetrievalUnitKind,
 } from "./retrieval-types.js";
 
-export const RAG_CONTRACT_VERSION = 1 as const;
-export const RAG_CONTEXT_CONTRACT_VERSION = 1 as const;
-export const RAG_PROMPT_VERSION = 1 as const;
+export const RAG_CONTRACT_VERSION = 2 as const;
+export const RAG_CONTEXT_CONTRACT_VERSION = 2 as const;
+export const RAG_PROMPT_VERSION = 2 as const;
+export const RAG_DATA_CLASSIFICATIONS = ["public", "internal", "confidential"] as const;
+
+export type RagDataClassification = (typeof RAG_DATA_CLASSIFICATIONS)[number];
 
 export type RagAnswerStatus = "answered" | "insufficient-evidence" | "refused";
 export type RagEpistemicType =
@@ -26,6 +29,7 @@ export interface RagProjectContext {
 
 export interface RagRequest {
   question: string;
+  data_classification: RagDataClassification;
   project_context: RagProjectContext;
   retrieval: RetrievalRequest;
   answer: {
@@ -66,6 +70,7 @@ export interface RagContextPacket {
   rag_context_contract_version: number;
   prompt_version: number;
   question: string;
+  data_classification: RagDataClassification;
   project_context: RagProjectContext;
   retrieval: RetrievalPacket;
   evidence: RagEvidence[];
@@ -106,12 +111,14 @@ export interface RagAnswerPacket {
   rag_contract_version: number;
   question: string;
   status: RagAnswerStatus;
+  model_invoked: boolean;
   provider: { provider: string; model: string; prompt_version: number };
   provenance: {
     context_fingerprint: string;
     retrieval_generation_id: string;
     graph_input_fingerprint: string;
     retrieval_manifest_root: string;
+    data_classification: RagDataClassification;
   };
   summary: string;
   statements: RagGroundedStatement[];
@@ -125,6 +132,6 @@ export interface RagAnswerPacket {
 export interface RagModelProvider {
   readonly provider: string;
   readonly model: string;
-  readonly allowedDataClassifications: readonly string[];
+  readonly allowedDataClassifications: readonly RagDataClassification[];
   generate(context: RagContextPacket, request: RagRequest): Promise<RagModelOutput>;
 }

@@ -118,7 +118,7 @@ milestones:
       - answers include resolvable citations
       - retrieval relevance and unsupported claims are measurable
       - recommendations incorporate context and constraints
-    notes: Implemented with governed context assembly, structured output, application-resolved citations, epistemic labels, fail-closed grounding, deterministic evaluation, and focused quality gates. Independent M6 audit and exact-SHA hosted evidence are pending; M7 is not open.
+    notes: Implemented with governed context assembly, structured output, application-resolved citations, epistemic labels, fail-closed grounding, deterministic evaluation, and focused quality gates. The first independent audit recorded M6 NOT READY; focused remediation is pending exact-SHA hosted validation and independent re-audit. M7 is not open.
   - id: m7
     title: Architecture Decision Assistant
     status: future

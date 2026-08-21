@@ -30,7 +30,7 @@ try {
   if (args[0] === "--") args.shift();
   const command = args.shift();
   if (command === "answer" || command === "context") {
-    const cli = await parseRagCliInput(args);
+    const cli = await parseRagCliInput(args, process.env.RETRIEVAL_DATA_CLASSIFICATION ?? "public");
     const request = parseRagRequest(cli.input);
     const runtime = await createRuntime();
     const retrieval = await runtime.retriever.query(request.retrieval);
@@ -38,7 +38,6 @@ try {
       console.log(serializeGraphValue(buildRagContext(request, retrieval)));
     } else {
       const provider = createRagProvider();
-      assertClassificationAllowed(provider);
       const engine = new RagEngine({ query: async () => retrieval }, provider);
       const answer = await engine.answer(request);
       console.log(cli.json ? serializeGraphValue(answer) : answer.rendered_markdown);
@@ -47,7 +46,6 @@ try {
     assertNoArguments(args);
     const runtime = await createRuntime();
     const provider = createRagProvider();
-    assertClassificationAllowed(provider);
     const engine = new RagEngine(runtime.retriever, provider);
     const benchmark = await loadRagGolden(`${root}/evaluation/rag-golden.yaml`);
     const report = await evaluateRag(benchmark, (request) => engine.answer(request));

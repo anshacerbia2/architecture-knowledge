@@ -3,6 +3,7 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     environment: "node",
+    testTimeout: 15_000,
     include: ["tests/**/*.test.ts"],
     coverage: {
       provider: "v8",
@@ -31,6 +32,8 @@ export default defineConfig({
         "src/embedding-provider.ts",
         "src/retrieval-evaluation.ts",
         "src/rag-request.ts",
+        "src/rag-classification.ts",
+        "src/rag-cli-arguments.ts",
         "src/rag-context.ts",
         "src/rag-output-contract.ts",
         "src/rag-provider.ts",

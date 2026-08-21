@@ -4,7 +4,10 @@ import { parseRagRequest } from "../src/rag-request.js";
 
 describe("RAG request contract", () => {
   it("builds a bounded hybrid-graph request by default", () => {
-    const request = parseRagRequest({ question: "  What is idempotency?  " });
+    const request = parseRagRequest({
+      question: "  What is idempotency?  ",
+      data_classification: "public",
+    });
     expect(request.question).toBe("What is idempotency?");
     expect(request.retrieval.text).toBe(request.question);
     expect(request.retrieval.mode).toBe("hybrid-graph");
@@ -19,6 +22,7 @@ describe("RAG request contract", () => {
   it("normalizes bounded project context and explicit answer controls", () => {
     const request = parseRagRequest({
       question: "Choose an approach",
+      data_classification: "internal",
       project_context: {
         system_description: " payments ",
         constraints: ["PCI", "PCI", "regional"],
@@ -31,30 +35,39 @@ describe("RAG request contract", () => {
       constraints: ["PCI", "regional"],
       quality_priorities: ["availability"],
     });
+    expect(request.data_classification).toBe("internal");
   });
 
   it.each([
     [{}, "question must be a string"],
     [{ question: " " }, "question must not be empty"],
-    [{ question: "x", extra: true }, "request has unsupported field 'extra'"],
+    [{ question: "x", data_classification: "unknown" }, "data_classification 'unknown' is unknown"],
     [
-      { question: "x", retrieval: { text: "override" } },
+      { question: "x", data_classification: "public", extra: true },
+      "request has unsupported field 'extra'",
+    ],
+    [
+      { question: "x", data_classification: "public", retrieval: { text: "override" } },
       "retrieval.text is derived from question and cannot be overridden",
     ],
     [
-      { question: "x", project_context: { unknown: [] } },
+      { question: "x", data_classification: "public", project_context: { unknown: [] } },
       "project_context has unsupported field 'unknown'",
     ],
     [
-      { question: "x", answer: { max_statements: 21 } },
+      { question: "x", data_classification: "public", answer: { max_statements: 21 } },
       "answer.max_statements must be an integer from 1 to 20",
     ],
     [
-      { question: "x", answer: { max_output_tokens: 100 } },
+      { question: "x", data_classification: "public", answer: { max_output_tokens: 100 } },
       "answer.max_output_tokens must be an integer from 256 to 4096",
     ],
     [
-      { question: "choose", answer: { allow_recommendations: true } },
+      {
+        question: "choose",
+        data_classification: "public",
+        answer: { allow_recommendations: true },
+      },
       "recommendations require project context",
     ],
   ])("rejects malformed request %#", (value, message) => {

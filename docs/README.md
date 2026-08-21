@@ -65,6 +65,8 @@ any document reviewed, approved, published, or canonical.
 | M6-01 | [ADR 0007: Governed Architecture RAG](adr/0007-governed-architecture-rag.md) | Defines the context, epistemic, structured-output, citation, provider, failure, and M7 boundaries. |
 | M6-02 | [M6 Architecture RAG](m6-architecture-rag.md) | Documents setup, request and answer contracts, commands, safety behavior, evaluation, and limitations. |
 | M6-03 | [M6 Implementation Report](m6-implementation-report.md) | Records implementation inventory, local validation, residual risks, and the independent-audit handoff. |
+| M6-04 | [Independent M6 Audit](m6-independent-audit-report.md) | Records the exact-SHA audit, four M7 blockers, lower-severity findings, and the `M6 NOT READY` decision. |
+| M6-05 | [M6 Focused Remediation](m6-focused-remediation-report.md) | Disposes M6-AUD-001 through M6-AUD-008 and records the validation and re-audit boundary. |
 
 ## Architecture Decision Records
 
@@ -80,7 +82,7 @@ decision.
 | [0004: Security Claim Applicability and Projection](adr/0004-security-claim-applicability-and-projection.md) | M3-07 through M3-09 |
 | [0005: Knowledge Graph Projection and Traversal](adr/0005-knowledge-graph-projection-and-traversal.md) | M4-01 through M4-04 |
 | [0006: Hybrid Retrieval Architecture](adr/0006-hybrid-retrieval-architecture.md) | M5-01 through M5-03 |
-| [0007: Governed Architecture RAG](adr/0007-governed-architecture-rag.md) | M6-01 through M6-03 |
+| [0007: Governed Architecture RAG](adr/0007-governed-architecture-rag.md) | M6-01 through M6-05 |
 
 ## Git Creation Timeline
 
@@ -107,6 +109,8 @@ describe.
 | 2026-08-10 | `f77e089` | M5 focused audit evidence closure and hosted-run export |
 | 2026-08-13 | audit-exit commit; see post-commit handoff | M5 focused evidence re-audit report |
 | 2026-08-13 | implementation commit; see post-commit handoff | ADR 0007; M6 architecture RAG guide; M6 implementation report |
+| 2026-08-22 | `adcf535` | Independent M6 audit report |
+| 2026-08-22 | remediation commit; see post-commit handoff | M6 focused remediation report |
 
 ## Maintenance Rule
 

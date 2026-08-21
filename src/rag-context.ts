@@ -42,22 +42,21 @@ export function buildRagContext(request: RagRequest, retrieval: RetrievalPacket)
     contract: RAG_CONTEXT_CONTRACT_VERSION,
     prompt: RAG_PROMPT_VERSION,
     question: request.question,
+    data_classification: request.data_classification,
     project_context: request.project_context,
+    answer: request.answer,
     generation: retrieval.generation,
     degraded: retrieval.degraded,
-    evidence: evidence.map((item) => ({
-      evidence_id: item.evidence_id,
-      unit_id: item.unit_id,
-      content_hash: item.content_hash,
-      citations: item.citations,
-      graph_path: item.graph_path,
-      graph_relationship_ids: item.graph_relationship_ids,
-    })),
+    degradation_reason: retrieval.degradation_reason,
+    estimated_tokens: retrieval.estimated_tokens,
+    evidence,
+    citation_catalog: citationCatalog,
   };
   return {
     rag_context_contract_version: RAG_CONTEXT_CONTRACT_VERSION,
     prompt_version: RAG_PROMPT_VERSION,
     question: request.question,
+    data_classification: request.data_classification,
     project_context: request.project_context,
     retrieval,
     evidence,
@@ -73,13 +72,15 @@ function citations(evidence: RagEvidence[]): RagCitationCatalogEntry[] {
   const output: RagCitationCatalogEntry[] = [];
   for (const item of evidence) {
     for (const citation of item.citations) {
-      if (!citation.title || !citation.url) continue;
+      const title = citation.title?.trim();
+      const url = citation.url?.trim();
+      if (!title || !url) continue;
       output.push({
         citation_id: `C${String(output.length + 1).padStart(4, "0")}`,
         evidence_id: item.evidence_id,
         source_id: citation.source_id,
-        title: citation.title,
-        url: citation.url,
+        title,
+        url,
         locators: citation.locators,
       });
     }
