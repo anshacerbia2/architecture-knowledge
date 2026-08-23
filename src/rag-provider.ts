@@ -130,13 +130,21 @@ export class DeterministicFakeRagProvider implements RagModelProvider {
     assertRagClassificationAllowed(context, request, this.allowedDataClassifications);
     if (this.options.fail) throw new Error("RAG_MODEL_FAKE_FAILURE");
     if (this.options.output !== undefined) return parseRagModelOutput(this.options.output);
+    const retrievalByUnitId = new Map(
+      context.retrieval.results.map((result) => [result.unit.unit_id, result]),
+    );
     const claims = context.evidence
       .filter(
         (item) =>
           item.unit_kind === "claim" &&
           context.citation_catalog.some((citation) => citation.evidence_id === item.evidence_id) &&
           /^AKL-\d{6}$/.test(item.record_id) &&
-          relevantToQuestion(request.question, item.record_id, `${item.title} ${item.text}`),
+          relevantToQuestion(
+            request.question,
+            item.record_id,
+            `${item.title} ${item.text}`,
+            retrievalByUnitId.get(item.unit_id),
+          ),
       )
       .slice(0, request.answer.max_statements);
     if (claims.length === 0) {
@@ -169,7 +177,12 @@ export class DeterministicFakeRagProvider implements RagModelProvider {
   }
 }
 
-function relevantToQuestion(question: string, recordId: string, evidenceText: string): boolean {
+function relevantToQuestion(
+  question: string,
+  recordId: string,
+  evidenceText: string,
+  retrieval: RagContextPacket["retrieval"]["results"][number] | undefined,
+): boolean {
   if (question.toUpperCase().includes(recordId)) return true;
   if (/^what does the evidence say\??$/i.test(question.trim())) return true;
   const questionTerms = significantTerms(question);
@@ -178,7 +191,13 @@ function relevantToQuestion(question: string, recordId: string, evidenceText: st
   for (const term of questionTerms) {
     if (evidenceTerms.has(term)) overlap += 1;
   }
-  return overlap >= 2;
+  if (overlap >= 2) return true;
+  return (
+    overlap === 1 &&
+    retrieval !== undefined &&
+    retrieval.graph_distance === null &&
+    (retrieval.lexical_rank !== null || retrieval.vector_rank !== null)
+  );
 }
 
 function significantTerms(value: string): Set<string> {

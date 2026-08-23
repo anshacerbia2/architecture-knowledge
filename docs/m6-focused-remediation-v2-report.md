@@ -26,7 +26,7 @@ assistance and every M7 capability remain excluded.
 | Finding | Remediation disposition | Implementation evidence |
 |---|---|---|
 | M6-AUD-001 — raw citation versus final resolved-citation grounding | Implemented; requires independent verification | `RagEngine` and direct context construction now require a separate citation authority. The CLI constructs it from the current validated graph. Resolution requires an `AKS-NNNNNN` identifier, an `approved` source with a valid HTTPS registry URL, and an explicit record-to-source authorization. Final title and URL values come from that source record; retriever-supplied title and URL values are not authoritative. Blank, malformed, unregistered, non-admitted, and record-unauthorized probes cannot enter the final citation catalog or ground an assertion. |
-| M6-AUD-004 — evaluation credibility and resistance to benchmark gaming | Implemented; requires independent verification | The benchmark advances to version 3 with 23 cases, including the three reproduced paraphrases as regression cases. The fake provider no longer contains an adversarial phrase/refusal regular expression and never copies question text; it only copies governed claim evidence. Adversarial cases accept a safely grounded answer or explicit refusal while model invocation, forbidden claims, prohibited outcome text, citations, and epistemic obligations remain gated. Exact-ID case classification is derived from question text and must agree with metadata. |
+| M6-AUD-004 — evaluation credibility and resistance to benchmark gaming | Implemented; requires independent verification | The benchmark advances to version 3 with 23 cases, including the three reproduced paraphrases as regression cases. The fake provider no longer contains an adversarial phrase/refusal regular expression and never copies question text; it only copies governed claim evidence. Its deterministic relevance check can accept one matching domain term only for a direct result that carries a retriever rank; unranked graph expansion and zero-overlap evidence remain insufficient. Adversarial cases accept a safely grounded answer or explicit refusal while model invocation, forbidden claims, prohibited outcome text, citations, and epistemic obligations remain gated. Exact-ID case classification is derived from question text and must agree with metadata. |
 
 ## Contract migrations
 
@@ -55,6 +55,8 @@ The focused fixtures cover:
 - duplicate source and cross-family authority records;
 - claim, concept, relationship, and source-self authorization paths;
 - all three paraphrased hostile requests reproduced by the independent audit;
+- one-term domain anchors backed by direct ranked retrieval, with negative
+  coverage for unranked graph expansion and zero-overlap evidence;
 - safe grounded-answer and explicit-refusal adversarial outcomes;
 - exact-ID/category disagreement and impossible-filter benchmark gaming; and
 - prompt instructions that identify question, context, evidence, source
@@ -64,17 +66,30 @@ The focused fixtures cover:
 
 | Gate | Result |
 |---|---|
-| Focused RAG tests | Passed: 94/94 |
+| Focused RAG mutation dry run | Passed: 116/116 |
 | Repository validation | Passed: 0 errors, 0 warnings |
-| Full test suite | Passed: 419; 4 conditional local PostgreSQL tests skipped |
-| Coverage | Passed: 92.03% statements, 82.38% branches, 95.47% functions, 94.66% lines; citation authority reached 100% in every dimension |
-| Focused RAG mutation | Passed: 74.92% total, 76.00% covered; 740 killed, 234 survived, 14 no coverage, 1 timeout, 0 errors |
+| Full test suite | Passed: 422; 4 conditional local PostgreSQL tests skipped |
+| Coverage | Passed: 92.04% statements, 82.39% branches, 95.48% functions, 94.67% lines; citation authority reached 100% in every dimension |
+| Focused RAG mutation | Passed: 74.63% total, 75.83% covered; 752 killed, 240 survived, 16 no coverage, 1 timeout, 0 errors |
 | Citation-authority mutation | Passed: 100%; 35 killed, 0 survived, 0 no coverage, 0 timeout/error |
 
 The Docker CLI and a local PostgreSQL/pgvector runtime were unavailable, so
 local integration and `pnpm rag:evaluate` could not run. The hosted integration
 job must supply that evidence for the final implementation SHA. No live or paid
 model invocation was authorized or performed.
+
+## Hosted evaluation follow-up
+
+The first hosted integration evaluation of implementation commit
+`9da9a6980d8100c3638921b37bb84576a8ef8be9` preserved perfect citation
+completeness and resolvability but failed the version 3 answer-status and
+expected-claim/type gates. The failure exposed a deterministic-provider
+relevance mismatch: direct retrieved evidence with one strong domain term was
+discarded by a second provider-local two-term overlap rule. The follow-up
+removes that mismatch by requiring the one matching term to belong to a direct
+ranked retrieval result. It does not add hostile phrases, expected claim IDs,
+or benchmark case IDs to provider logic. A new exact-SHA hosted run remains
+required to verify the correction against PostgreSQL/pgvector.
 
 ## Residual risks and handoff
 
