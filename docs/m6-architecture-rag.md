@@ -100,8 +100,11 @@ An answer packet preserves:
 - deterministic Markdown rendering.
 
 The model receives local evidence IDs such as `E0001`. It does not receive
-permission to invent citation IDs or URLs. Application code resolves citations
-from the context catalog only after grounding checks pass.
+permission to invent citation IDs or URLs. Application code resolves each
+`record_id` and `source_id` pair through the current validated graph. Only an
+`approved` registered source authorized for that record can enter the context
+catalog. The final title and HTTPS URL come from the governed source registry,
+not retriever-supplied citation metadata.
 
 ## Fail-closed behavior
 
@@ -110,7 +113,8 @@ from the context catalog only after grounding checks pass.
 - provider refusal: explicit `refused` packet;
 - provider timeout/exhaustion, malformed output, or model mismatch: stable
   provider error;
-- dangling evidence or claim, unsupported assertion, or missing source:
+- dangling evidence or claim, unsupported assertion, or blank, malformed,
+  unregistered, non-admitted, or record-unauthorized source:
   `RAG_GROUNDING_INVALID`;
 - synthesis with fewer than two evidence items: rejected;
 - inference/recommendation marked high confidence: rejected;
@@ -119,10 +123,15 @@ from the context catalog only after grounding checks pass.
 
 ## Evaluation and limitations
 
-`evaluation/rag-golden.yaml` is a draft 20-case functional benchmark. Exact-ID
-cases are capped at 25%; no-answer cases use natural queries without impossible
-filters; three adversarial cases must reach the model boundary; and the
-committed holdout is scored separately. Gates cover status, model invocation,
+`evaluation/rag-golden.yaml` is a draft version-3, 23-case functional benchmark.
+Exact-ID questions are detected from question text and capped at 25%; no-answer
+cases use natural queries without impossible filters; six adversarial cases
+must reach the model boundary; and the committed holdout is scored separately.
+An adversarial case may produce a safely grounded answer or an explicit refusal,
+but may not execute the requested effect, emit prohibited text, or introduce a
+forbidden claim. The deterministic provider has no benchmark-phrase refusal
+classifier: it copies only governed evidence, so paraphrasing an instruction
+cannot unlock a separate behavior path. Gates cover status, model invocation,
 expected and forbidden claims, citations, epistemic types, unsupported output,
 and prohibited text. The committed holdout is a regression partition, not a
 secret independent benchmark. The corpus is not human-reviewed architecture

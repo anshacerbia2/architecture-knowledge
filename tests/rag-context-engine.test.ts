@@ -1,9 +1,15 @@
 import { describe, expect, it } from "vitest";
 
-import { buildRagContext } from "../src/rag-context.js";
+import { buildRagContext as buildGovernedRagContext } from "../src/rag-context.js";
 import { RagEngine, renderRagAnswer, validateGrounding } from "../src/rag-engine.js";
 import { DeterministicFakeRagProvider } from "../src/rag-provider.js";
-import { modelOutput, ragRequest, retrievalPacket, retrievalUnit } from "./rag-helpers.js";
+import {
+  modelOutput,
+  ragCitationAuthority,
+  ragRequest,
+  retrievalPacket,
+  retrievalUnit,
+} from "./rag-helpers.js";
 
 describe("RAG context and grounding", () => {
   it("builds deterministic evidence and citation catalogs", () => {
@@ -11,6 +17,8 @@ describe("RAG context and grounding", () => {
     const first = buildRagContext(request, retrievalPacket());
     const second = buildRagContext(request, retrievalPacket());
     expect(first).toEqual(second);
+    expect(first.rag_context_contract_version).toBe(3);
+    expect(first.prompt_version).toBe(3);
     expect(first.evidence[0]?.evidence_id).toBe("E0001");
     expect(first.citation_catalog[0]).toMatchObject({
       citation_id: "C0001",
@@ -238,43 +246,98 @@ describe("RAG context and grounding", () => {
     ).toContain("RAG_CITATION_MISSING");
   });
 
-  it.each([
-    [null, "https://example.com/source"],
-    ["Synthetic source", null],
-    [null, null],
-    ["   ", "https://example.com/source"],
-    ["Synthetic source", "   "],
-  ])("rejects raw citations excluded from the final catalog (title=%s url=%s)", (title, url) => {
-    const context = buildRagContext(
-      ragRequest(),
-      retrievalPacket([
-        retrievalUnit({ citations: [{ source_id: "AKS-000001", title, url, locators: [] }] }),
-      ]),
-    );
-    expect(context.citation_catalog).toEqual([]);
-    expect(
-      validateGrounding(modelOutput(), context, ragRequest()).map((item) => item.code),
-    ).toContain("RAG_CITATION_MISSING");
-  });
+  it.each(["", "   ", "AKS-999999", "not-a-source-id"])(
+    "rejects blank, unregistered, or malformed raw source ID '%s'",
+    (sourceId) => {
+      const context = buildRagContext(
+        ragRequest(),
+        retrievalPacket([
+          retrievalUnit({
+            citations: [
+              {
+                source_id: sourceId,
+                title: "Untrusted title",
+                url: "https://untrusted.example/source",
+                locators: [],
+              },
+            ],
+          }),
+        ]),
+      );
+      expect(context.citation_catalog).toEqual([]);
+      expect(
+        validateGrounding(modelOutput(), context, ragRequest()).map((item) => item.code),
+      ).toContain("RAG_CITATION_MISSING");
+    },
+  );
 
-  it("accepts mixed raw citations only when at least one resolves through the catalog", () => {
+  it("replaces untrusted citation metadata with governed registry metadata", () => {
     const context = buildRagContext(
       ragRequest(),
       retrievalPacket([
         retrievalUnit({
           citations: [
-            { source_id: "AKS-000001", title: null, url: null, locators: [] },
             {
-              source_id: "AKS-000002",
-              title: "Resolvable source",
-              url: "https://example.com/resolvable",
-              locators: [],
+              source_id: "AKS-000001",
+              title: null,
+              url: "not-a-url",
+              locators: [{ locator: "section 1" }],
             },
           ],
         }),
       ]),
     );
+    expect(context.citation_catalog[0]).toMatchObject({
+      source_id: "AKS-000001",
+      title: "Synthetic source",
+      url: "https://example.com/source",
+    });
     expect(validateGrounding(modelOutput(), context, ragRequest())).toEqual([]);
+  });
+
+  it("rejects a registered source that is not authorized for the evidence record", () => {
+    const context = buildRagContext(
+      ragRequest(),
+      retrievalPacket(),
+      ragCitationAuthority({ claims: [{ id: "AKL-000001", sources: ["AKS-000002"] }] }),
+    );
+    expect(context.citation_catalog).toEqual([]);
+  });
+
+  it("rejects duplicate authority records", () => {
+    expect(() =>
+      ragCitationAuthority({
+        sources: [
+          {
+            id: "AKS-000001",
+            title: "Synthetic source",
+            url: "https://example.com/source",
+            status: "approved",
+          },
+          {
+            id: "AKS-000001",
+            title: "Duplicate source",
+            url: "https://example.com/duplicate",
+            status: "candidate",
+          },
+        ],
+      }),
+    ).toThrow("RAG_CITATION_AUTHORITY_DUPLICATE AKS-000001");
+  });
+
+  it.each([
+    ["candidate", "https://example.com/source"],
+    ["approved", "not-a-url"],
+    ["approved", "http://example.com/source"],
+  ])("rejects a non-admitted or URL-invalid authority source (%s, %s)", (status, url) => {
+    const context = buildRagContext(
+      ragRequest(),
+      retrievalPacket(),
+      ragCitationAuthority({
+        sources: [{ id: "AKS-000001", title: "Synthetic source", url, status }],
+      }),
+    );
+    expect(context.citation_catalog).toEqual([]);
   });
 
   it("requires complete recommendation framing when recommendations are enabled", () => {
@@ -307,8 +370,11 @@ describe("RAG context and grounding", () => {
     const engine = new RagEngine(
       { query: async () => retrievalPacket() },
       new DeterministicFakeRagProvider(),
+      ragCitationAuthority(),
     );
     const answer = await engine.answer(ragRequest());
+    expect(answer.rag_contract_version).toBe(3);
+    expect(answer.provider.prompt_version).toBe(3);
     expect(answer.status).toBe("answered");
     expect(answer.statements[0]?.citations[0]?.source_id).toBe("AKS-000001");
     expect(answer.rendered_markdown).toContain("[AKS-000001](https://example.com/source)");
@@ -316,7 +382,11 @@ describe("RAG context and grounding", () => {
 
   it("returns insufficient evidence without calling the provider", async () => {
     const provider = new DeterministicFakeRagProvider({ fail: true });
-    const engine = new RagEngine({ query: async () => retrievalPacket([]) }, provider);
+    const engine = new RagEngine(
+      { query: async () => retrievalPacket([]) },
+      provider,
+      ragCitationAuthority(),
+    );
     const answer = await engine.answer(ragRequest());
     expect(answer.status).toBe("insufficient-evidence");
     expect(answer.diagnostics[0]?.code).toBe("RAG_INSUFFICIENT_EVIDENCE");
@@ -334,9 +404,11 @@ describe("RAG context and grounding", () => {
       },
     };
     await expect(
-      new RagEngine({ query: async () => retrievalPacket() }, provider).answer(
-        ragRequest({ data_classification: "internal" }),
-      ),
+      new RagEngine(
+        { query: async () => retrievalPacket() },
+        provider,
+        ragCitationAuthority(),
+      ).answer(ragRequest({ data_classification: "internal" })),
     ).rejects.toThrow("RAG_DATA_CLASSIFICATION_DENIED");
     expect(called).toBe(false);
   });
@@ -347,7 +419,11 @@ describe("RAG context and grounding", () => {
         statements: [{ ...modelOutput().statements[0]!, evidence_ids: ["E9999"] }],
       }),
     });
-    const engine = new RagEngine({ query: async () => retrievalPacket() }, provider);
+    const engine = new RagEngine(
+      { query: async () => retrievalPacket() },
+      provider,
+      ragCitationAuthority(),
+    );
     await expect(engine.answer(ragRequest())).rejects.toThrow("RAG_GROUNDING_INVALID");
   });
 
@@ -360,9 +436,11 @@ describe("RAG context and grounding", () => {
         throw new Error("RAG_MODEL_REFUSAL policy");
       },
     };
-    const answer = await new RagEngine({ query: async () => retrievalPacket() }, provider).answer(
-      ragRequest(),
-    );
+    const answer = await new RagEngine(
+      { query: async () => retrievalPacket() },
+      provider,
+      ragCitationAuthority(),
+    ).answer(ragRequest());
     expect(answer.status).toBe("refused");
     expect(answer.diagnostics).toEqual([
       { code: "RAG_MODEL_REFUSAL", message: "The model refused the request." },
@@ -375,7 +453,11 @@ describe("RAG context and grounding", () => {
       },
     };
     await expect(
-      new RagEngine({ query: async () => retrievalPacket() }, unavailable).answer(ragRequest()),
+      new RagEngine(
+        { query: async () => retrievalPacket() },
+        unavailable,
+        ragCitationAuthority(),
+      ).answer(ragRequest()),
     ).rejects.toThrow("network failure");
   });
 
@@ -385,3 +467,11 @@ describe("RAG context and grounding", () => {
     ).toContain("Uncertainties:\n- Missing evidence.");
   });
 });
+
+function buildRagContext(
+  request: Parameters<typeof buildGovernedRagContext>[0],
+  retrieval: Parameters<typeof buildGovernedRagContext>[1],
+  authority = ragCitationAuthority(),
+) {
+  return buildGovernedRagContext(request, retrieval, authority);
+}

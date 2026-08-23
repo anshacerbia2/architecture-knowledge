@@ -6,12 +6,13 @@ import {
 } from "./embedding-provider.js";
 import { serializeGraphValue } from "./graph-projector.js";
 import { parseRagCliInput } from "./rag-cli-arguments.js";
+import { createRagCitationAuthority } from "./rag-citation-authority.js";
 import { buildRagContext } from "./rag-context.js";
 import { RagEngine } from "./rag-engine.js";
 import { evaluateRag, loadRagGolden } from "./rag-evaluation.js";
 import { DeterministicFakeRagProvider, OpenAIRagProvider } from "./rag-provider.js";
 import { parseRagRequest } from "./rag-request.js";
-import type { RagModelProvider } from "./rag-types.js";
+import type { RagCitationAuthority, RagModelProvider } from "./rag-types.js";
 import {
   expectedRetrievalArtifacts,
   loadCurrentRetrievalArtifacts,
@@ -35,10 +36,16 @@ try {
     const runtime = await createRuntime();
     const retrieval = await runtime.retriever.query(request.retrieval);
     if (command === "context") {
-      console.log(serializeGraphValue(buildRagContext(request, retrieval)));
+      console.log(
+        serializeGraphValue(buildRagContext(request, retrieval, runtime.citationAuthority)),
+      );
     } else {
       const provider = createRagProvider();
-      const engine = new RagEngine({ query: async () => retrieval }, provider);
+      const engine = new RagEngine(
+        { query: async () => retrieval },
+        provider,
+        runtime.citationAuthority,
+      );
       const answer = await engine.answer(request);
       console.log(cli.json ? serializeGraphValue(answer) : answer.rendered_markdown);
     }
@@ -46,7 +53,7 @@ try {
     assertNoArguments(args);
     const runtime = await createRuntime();
     const provider = createRagProvider();
-    const engine = new RagEngine(runtime.retriever, provider);
+    const engine = new RagEngine(runtime.retriever, provider, runtime.citationAuthority);
     const benchmark = await loadRagGolden(`${root}/evaluation/rag-golden.yaml`);
     const report = await evaluateRag(benchmark, (request) => engine.answer(request));
     console.log(serializeGraphValue(report));
@@ -61,7 +68,10 @@ try {
   if (database) await database.close();
 }
 
-async function createRuntime(): Promise<{ retriever: RetrievalEngine }> {
+async function createRuntime(): Promise<{
+  retriever: RetrievalEngine;
+  citationAuthority: RagCitationAuthority;
+}> {
   database = new RetrievalDatabase({
     connectionString:
       process.env.RETRIEVAL_DATABASE_URL ??
@@ -81,6 +91,7 @@ async function createRuntime(): Promise<{ retriever: RetrievalEngine }> {
       graph,
       generation,
     ),
+    citationAuthority: createRagCitationAuthority(graph),
   };
 }
 

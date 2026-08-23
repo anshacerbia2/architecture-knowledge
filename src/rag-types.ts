@@ -6,9 +6,9 @@ import type {
   RetrievalUnitKind,
 } from "./retrieval-types.js";
 
-export const RAG_CONTRACT_VERSION = 2 as const;
-export const RAG_CONTEXT_CONTRACT_VERSION = 2 as const;
-export const RAG_PROMPT_VERSION = 2 as const;
+export const RAG_CONTRACT_VERSION = 3 as const;
+export const RAG_CONTEXT_CONTRACT_VERSION = 3 as const;
+export const RAG_PROMPT_VERSION = 3 as const;
 export const RAG_DATA_CLASSIFICATIONS = ["public", "internal", "confidential"] as const;
 
 export type RagDataClassification = (typeof RAG_DATA_CLASSIFICATIONS)[number];
@@ -64,6 +64,16 @@ export interface RagCitationCatalogEntry {
   title: string;
   url: string;
   locators: unknown[];
+}
+
+export interface RagAuthoritativeCitation {
+  source_id: string;
+  title: string;
+  url: string;
+}
+
+export interface RagCitationAuthority {
+  resolve(recordId: string, sourceId: string): RagAuthoritativeCitation | undefined;
 }
 
 export interface RagContextPacket {

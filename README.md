@@ -116,9 +116,10 @@ M4 passed its independent adversarial audit. M5 then passed its focused
 independent evidence re-audit after its initial audit returned inconclusive only
 because runtime evidence was unavailable in that environment. See
 [`docs/m5-focused-evidence-reaudit-report.md`](docs/m5-focused-evidence-reaudit-report.md)
-for the `M6 READY` entry decision. The first M6 audit recorded `M6 NOT READY`;
-focused remediation is implemented locally and requires exact-SHA hosted
-validation plus independent re-audit. M7 is not open.
+for the `M6 READY` entry decision. The first M6 audit and its focused re-audit
+both recorded `M6 NOT READY`. A second focused remediation addresses the two
+remaining citation-authority and adversarial-evaluation blockers, but still
+requires exact-SHA hosted validation and independent re-audit. M7 is not open.
 
 ## Validation commands
 

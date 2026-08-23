@@ -34,6 +34,7 @@ export default defineConfig({
         "src/rag-request.ts",
         "src/rag-classification.ts",
         "src/rag-cli-arguments.ts",
+        "src/rag-citation-authority.ts",
         "src/rag-context.ts",
         "src/rag-output-contract.ts",
         "src/rag-provider.ts",
