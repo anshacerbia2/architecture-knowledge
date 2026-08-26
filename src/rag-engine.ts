@@ -4,6 +4,7 @@ import { parseRagModelOutput } from "./rag-output-contract.js";
 import { assertRagClassificationAllowed } from "./rag-classification.js";
 import type {
   RagAnswerPacket,
+  RagCitationAuthority,
   RagContextPacket,
   RagGroundedStatement,
   RagModelOutput,
@@ -21,11 +22,12 @@ export class RagEngine {
   constructor(
     private readonly retriever: RagRetriever,
     private readonly provider: RagModelProvider,
+    private readonly citationAuthority: RagCitationAuthority,
   ) {}
 
   async answer(request: RagRequest): Promise<RagAnswerPacket> {
     const retrieval = await this.retriever.query(request.retrieval);
-    const context = buildRagContext(request, retrieval);
+    const context = buildRagContext(request, retrieval, this.citationAuthority);
     if (context.evidence.length === 0) {
       return packet(
         context,

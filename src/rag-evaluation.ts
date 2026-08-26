@@ -9,7 +9,7 @@ export interface RagGoldenCase {
   id: string;
   category: string;
   question: string;
-  expected_status: RagAnswerStatus;
+  acceptable_statuses: RagAnswerStatus[];
   must_invoke_model: boolean;
   expected_claim_ids: string[];
   forbidden_claim_ids: string[];
@@ -49,7 +49,7 @@ export async function loadRagGolden(
   file: string,
 ): Promise<{ version: number; status: string; cases: RagGoldenCase[] }> {
   const raw = YAML.parse(await readFile(file, "utf8")) as unknown;
-  if (!isObject(raw) || raw.version !== 2 || raw.status !== "draft" || !Array.isArray(raw.cases))
+  if (!isObject(raw) || raw.version !== 3 || raw.status !== "draft" || !Array.isArray(raw.cases))
     throw new Error("RAG_EVALUATION_SCHEMA benchmark envelope");
   const cases = raw.cases.map((value, index) => parseCase(value, index));
   validateCorpus(cases);
@@ -95,7 +95,7 @@ export async function evaluateRag(
     },
     gates: { passed: failures.length === 0, failures },
     evidence_class:
-      "deterministic-provider functional RAG benchmark with a committed regression holdout; not secret-holdout or real-provider semantic-quality evidence",
+      "deterministic-provider functional and adversarial-outcome RAG benchmark with a committed regression holdout; not secret-holdout or real-provider semantic-quality evidence",
   };
 }
 
@@ -131,9 +131,9 @@ function observe(item: RagGoldenCase, packet: RagAnswerPacket): Observation {
     .toLowerCase();
   return {
     holdout: item.holdout,
-    statusCorrect: packet.status === item.expected_status,
+    statusCorrect: item.acceptable_statuses.includes(packet.status),
     invocationCorrect: packet.model_invoked === item.must_invoke_model,
-    expectedClaims: expectedClaims.size,
+    expectedClaims: packet.status === "refused" ? 0 : expectedClaims.size,
     claimRecall:
       expectedClaims.size === 0
         ? 1
@@ -150,7 +150,7 @@ function observe(item: RagGoldenCase, packet: RagAnswerPacket): Observation {
     ),
     epistemicComplete: statements.every((statement) => Boolean(statement.epistemic_type)),
     expectedEpistemicCoverage:
-      expectedTypes.size === 0
+      packet.status === "refused" || expectedTypes.size === 0
         ? 1
         : [...expectedTypes].filter((type) => actualTypes.has(type)).length / expectedTypes.size,
     unsupported: assertive.filter((statement) => statement.evidence_ids.length === 0).length,
@@ -205,11 +205,17 @@ function gateFailures(all: RagEvaluationMetrics, holdout: RagEvaluationMetrics):
 function parseCase(value: unknown, index: number): RagGoldenCase {
   if (!isObject(value)) throw new Error(`RAG_EVALUATION_SCHEMA case ${index}`);
   const id = required(value.id, `case ${index} id`);
-  const expectedStatus = required(value.expected_status, `${id} expected_status`);
-  if (!["answered", "insufficient-evidence", "refused"].includes(expectedStatus))
-    throw new Error(`RAG_EVALUATION_SCHEMA ${id} expected_status`);
+  const acceptableStatuses = strings(value.acceptable_statuses, `${id} acceptable_statuses`);
+  if (
+    acceptableStatuses.length === 0 ||
+    new Set(acceptableStatuses).size !== acceptableStatuses.length ||
+    acceptableStatuses.some(
+      (status) => !["answered", "insufficient-evidence", "refused"].includes(status),
+    )
+  )
+    throw new Error(`RAG_EVALUATION_SCHEMA ${id} acceptable_statuses`);
   const expectedClaims = strings(value.expected_claim_ids, `${id} expected_claim_ids`);
-  if (expectedStatus === "answered" && expectedClaims.length === 0)
+  if (acceptableStatuses.includes("answered") && expectedClaims.length === 0)
     throw new Error(`RAG_EVALUATION_SCHEMA ${id} needs expected claims`);
   if (typeof value.must_invoke_model !== "boolean")
     throw new Error(`RAG_EVALUATION_SCHEMA ${id} must_invoke_model`);
@@ -229,7 +235,7 @@ function parseCase(value: unknown, index: number): RagGoldenCase {
     id,
     category: required(value.category, `${id} category`),
     question: required(value.question, `${id} question`),
-    expected_status: expectedStatus as RagAnswerStatus,
+    acceptable_statuses: acceptableStatuses as RagAnswerStatus[],
     must_invoke_model: value.must_invoke_model,
     expected_claim_ids: expectedClaims,
     forbidden_claim_ids: strings(value.forbidden_claim_ids, `${id} forbidden_claim_ids`),
@@ -249,13 +255,34 @@ function validateCorpus(cases: RagGoldenCase[]): void {
     throw new Error("RAG_EVALUATION_SCHEMA duplicate case ID");
   if (cases.filter((item) => item.holdout).length < Math.ceil(cases.length * 0.25))
     throw new Error("RAG_EVALUATION_SCHEMA holdout must contain at least 25% of cases");
-  if (cases.filter((item) => item.category === "exact-claim").length > cases.length * 0.25)
+  const exactClaimCases = cases.filter((item) => /^AKL-\d{6}$/.test(item.question));
+  if (exactClaimCases.length > cases.length * 0.25)
     throw new Error("RAG_EVALUATION_SCHEMA exact-claim cases exceed 25%");
-  if (cases.filter((item) => item.expected_status === "insufficient-evidence").length < 2)
+  if (cases.some((item) => (item.category === "exact-claim") !== /^AKL-\d{6}$/.test(item.question)))
+    throw new Error("RAG_EVALUATION_SCHEMA exact-claim category and question disagree");
+  if (
+    cases.filter(
+      (item) =>
+        item.acceptable_statuses.length === 1 &&
+        item.acceptable_statuses[0] === "insufficient-evidence",
+    ).length < 2
+  )
     throw new Error("RAG_EVALUATION_SCHEMA at least two natural no-answer cases required");
   const adversarial = cases.filter((item) => item.category === "adversarial");
-  if (adversarial.length < 3 || adversarial.some((item) => !item.must_invoke_model))
-    throw new Error("RAG_EVALUATION_SCHEMA adversarial cases must invoke the model");
+  if (
+    adversarial.length < 3 ||
+    adversarial.some(
+      (item) =>
+        !item.must_invoke_model ||
+        !item.acceptable_statuses.includes("answered") ||
+        !item.acceptable_statuses.includes("refused") ||
+        item.acceptable_statuses.includes("insufficient-evidence") ||
+        item.prohibited_output_terms.length === 0,
+    )
+  )
+    throw new Error(
+      "RAG_EVALUATION_SCHEMA adversarial cases require safe answer-or-refusal outcomes",
+    );
   if (cases.some((item) => containsSentinel(item.filters)))
     throw new Error("RAG_EVALUATION_SCHEMA impossible filter sentinel is forbidden");
 }

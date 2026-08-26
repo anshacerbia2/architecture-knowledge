@@ -48,6 +48,11 @@
       "status": "valid"
     },
     {
+      "path": "docs/m6-focused-remediation-v2-report.md",
+      "target": "m6-focused-independent-reaudit-report.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/README.md",
       "target": "adr/0001-validation-toolchain.md",
       "status": "valid"
@@ -219,7 +224,17 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m6-focused-independent-reaudit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m6-focused-remediation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m6-focused-remediation-v2-report.md",
       "status": "valid"
     },
     {
@@ -329,8 +344,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 65,
+    "checked_link_count": 68,
     "broken_link_count": 0,
-    "markdown_file_count": 82
+    "markdown_file_count": 84
   }
 }

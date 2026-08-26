@@ -6,13 +6,18 @@ import {
   RAG_CONTEXT_CONTRACT_VERSION,
   RAG_PROMPT_VERSION,
   type RagCitationCatalogEntry,
+  type RagCitationAuthority,
   type RagContextPacket,
   type RagEvidence,
   type RagRequest,
 } from "./rag-types.js";
 import type { RetrievalPacket } from "./retrieval-types.js";
 
-export function buildRagContext(request: RagRequest, retrieval: RetrievalPacket): RagContextPacket {
+export function buildRagContext(
+  request: RagRequest,
+  retrieval: RetrievalPacket,
+  citationAuthority: RagCitationAuthority,
+): RagContextPacket {
   if (retrieval.query.text.trim() !== request.question)
     throw new Error("RAG_RETRIEVAL_QUERY_MISMATCH");
   if (retrieval.result_count !== retrieval.results.length)
@@ -37,7 +42,7 @@ export function buildRagContext(request: RagRequest, retrieval: RetrievalPacket)
     graph_path: result.graph_path,
     graph_relationship_ids: result.graph_relationship_ids,
   }));
-  const citationCatalog = citations(evidence);
+  const citationCatalog = citations(evidence, citationAuthority);
   const fingerprintInput = {
     contract: RAG_CONTEXT_CONTRACT_VERSION,
     prompt: RAG_PROMPT_VERSION,
@@ -68,19 +73,21 @@ export function buildRagContext(request: RagRequest, retrieval: RetrievalPacket)
   };
 }
 
-function citations(evidence: RagEvidence[]): RagCitationCatalogEntry[] {
+function citations(
+  evidence: RagEvidence[],
+  citationAuthority: RagCitationAuthority,
+): RagCitationCatalogEntry[] {
   const output: RagCitationCatalogEntry[] = [];
   for (const item of evidence) {
     for (const citation of item.citations) {
-      const title = citation.title?.trim();
-      const url = citation.url?.trim();
-      if (!title || !url) continue;
+      const governed = citationAuthority.resolve(item.record_id, citation.source_id);
+      if (!governed) continue;
       output.push({
         citation_id: `C${String(output.length + 1).padStart(4, "0")}`,
         evidence_id: item.evidence_id,
-        source_id: citation.source_id,
-        title,
-        url,
+        source_id: governed.source_id,
+        title: governed.title,
+        url: governed.url,
         locators: citation.locators,
       });
     }

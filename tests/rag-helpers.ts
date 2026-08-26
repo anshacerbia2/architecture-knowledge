@@ -1,4 +1,8 @@
-import type { RagModelOutput, RagRequest } from "../src/rag-types.js";
+import {
+  createRagCitationAuthority,
+  type RagCitationAuthorityRecord,
+} from "../src/rag-citation-authority.js";
+import type { RagCitationAuthority, RagModelOutput, RagRequest } from "../src/rag-types.js";
 import type { RetrievalPacket, RetrievalResult, RetrievalUnit } from "../src/retrieval-types.js";
 
 export function ragRequest(overrides: Partial<RagRequest> = {}): RagRequest {
@@ -126,4 +130,25 @@ export function modelOutput(overrides: Partial<RagModelOutput> = {}): RagModelOu
     refusal_reason: null,
     ...overrides,
   };
+}
+
+export function ragCitationAuthority(
+  overrides: {
+    claims?: RagCitationAuthorityRecord[];
+    sources?: RagCitationAuthorityRecord[];
+  } = {},
+): RagCitationAuthority {
+  return createRagCitationAuthority({
+    concepts: [],
+    claims: overrides.claims ?? [{ id: "AKL-000001", sources: ["AKS-000001"] }],
+    relationships: [],
+    sources: overrides.sources ?? [
+      {
+        id: "AKS-000001",
+        title: "Synthetic source",
+        url: "https://example.com/source",
+        status: "approved",
+      },
+    ],
+  });
 }

@@ -33,8 +33,12 @@ estimate, retrieval generation identity, data classification, and a SHA-256
 fingerprint over every prompt-visible evidence field, the resolved citation
 catalog, request controls, and generation provenance. Model
 output may refer only to the supplied evidence IDs and governed claim IDs.
-Citation metadata is resolved by application code from the catalog; the model
-cannot author URLs, source IDs, titles, or locators.
+Citation metadata is resolved by application code through a citation authority
+constructed from the current validated graph. A citation survives only when
+its nonblank `source_id` is registered, admitted with source status `approved`,
+and authorized for the evidence record. Its final title and HTTPS URL come from
+the governed source record, so neither the retriever nor the model can author
+final URLs, source IDs, or titles.
 
 ## Epistemic contract
 
@@ -49,8 +53,10 @@ Every answer statement has exactly one visible epistemic type:
 - `uncertainty`: non-assertive and low-confidence.
 
 Every assertive statement requires evidence and at least one citation that
-survives application resolution into the final answer packet. Raw citation
-objects with missing or blank titles or URLs do not satisfy grounding. A model
+survives application resolution into the final answer packet. Blank, malformed,
+unregistered, non-admitted, or record-unauthorized source identifiers do not
+satisfy grounding; malformed raw metadata is replaced only when a governed
+record/source authorization resolves it. A model
 refusal is returned as `refused`; empty retrieval is returned
 without calling a model as `insufficient-evidence`. Malformed output, dangling
 evidence or claims, missing citations, incomplete recommendation framing, or
@@ -90,19 +96,23 @@ application-level contract. Only timeouts, network failures, HTTP 408/409/429,
 and 5xx responses are retried. Credentials are environment-only and provider
 payloads are not logged or persisted by this implementation.
 
-A deterministic fake model copies only directly cited claim text. It supports
-secret-free CI and functional evaluation but is not evidence of generative
-semantic quality.
+A deterministic fake model copies only directly cited claim text. It does not
+classify hostile intent from benchmark phrases or reproduce question text.
+This supports secret-free orchestration and adversarial-outcome evaluation but
+is not evidence of generative semantic quality.
 
 ## Evaluation
 
-The draft M6 benchmark contains 20 exact-claim, natural-language, natural
-no-answer, and adversarial cases. Exact IDs are capped at 25%; impossible
-filter sentinels are rejected; adversarial cases must reach the model boundary;
-and at least 25% of cases form a separately scored committed regression
-holdout. It measures answer status, model invocation, expected and forbidden
-claims, citation completeness and resolvability, expected epistemic types,
-unsupported statements, and prohibited output. Safety metrics must be perfect;
+The draft M6 benchmark version 3 contains 23 exact-claim, natural-language,
+natural no-answer, and adversarial-outcome cases. Exact-ID questions are
+detected from their text and capped at 25%; impossible filter sentinels are
+rejected; adversarial cases must reach the model boundary; and at least 25% of
+cases form a separately scored committed regression holdout. Adversarial cases
+accept a safely grounded answer or an explicit refusal, while forbidden claims
+and prohibited outcome text remain disallowed in either path. It measures
+acceptable status, model invocation, expected and forbidden claims, citation
+completeness and resolvability, expected epistemic types, unsupported
+statements, and prohibited output. Safety metrics must be perfect;
 expected-claim recall must be at least 0.8 for both the full set and holdout.
 
 The committed holdout is not secret or independently maintained, and the
