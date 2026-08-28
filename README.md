@@ -116,10 +116,13 @@ M4 passed its independent adversarial audit. M5 then passed its focused
 independent evidence re-audit after its initial audit returned inconclusive only
 because runtime evidence was unavailable in that environment. See
 [`docs/m5-focused-evidence-reaudit-report.md`](docs/m5-focused-evidence-reaudit-report.md)
-for the `M6 READY` entry decision. The first M6 audit and its focused re-audit
-both recorded `M6 NOT READY`. A second focused remediation addresses the two
-remaining citation-authority and adversarial-evaluation blockers, but still
-requires exact-SHA hosted validation and independent re-audit. M7 is not open.
+for the `M6 READY` entry decision. The M6 audits continue to record
+`M6 NOT READY`. The second focused remediation closed citation authority, but
+its final independent re-audit exposed a category-metadata bypass in
+adversarial evaluation. Focused remediation V3 binds safety cases to a separate
+versioned contract registry and adds the exact bypass as a regression. It still
+requires exact-SHA hosted validation and an independent re-audit. M7 is not
+open.
 
 ## Validation commands
 

@@ -65,6 +65,35 @@ describe("schema validation", () => {
     );
   });
 
+  it("rejects unknown properties in the RAG case-contract registry", async () => {
+    const model = await loadRepository(process.cwd());
+    const governed = model.governedFiles.find(
+      (file) => file.path === "evaluation/rag-case-contracts.yaml",
+    )!;
+    const data = structuredClone(governed.data) as {
+      contracts: Array<Record<string, unknown>>;
+    };
+    data.contracts[0]!.unknown_property = true;
+    const fixturePath = "tests/fixtures/synthetic/rag-contract-extra-property.yaml";
+    model.governedFiles.push({
+      path: fixturePath,
+      absolutePath: path.join(process.cwd(), fixturePath),
+      schemaRef: "schemas/rag-evaluation.schema.json#/$defs/caseContractRegistry",
+      data,
+      format: "yaml",
+    });
+    const result = await validateSchemas(model);
+    expect(result.diagnostics).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: "SCHEMA_INSTANCE",
+          path: fixturePath,
+          message: expect.stringContaining("unknown_property"),
+        }),
+      ]),
+    );
+  });
+
   it("rejects duplicate YAML keys without coercion", () => {
     const parsed = parseYaml("status: proposed\nstatus: reviewed\n", "duplicate.yaml");
     expect(parsed.diagnostics).toEqual(

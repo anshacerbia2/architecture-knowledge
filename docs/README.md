@@ -69,6 +69,8 @@ any document reviewed, approved, published, or canonical.
 | M6-05 | [M6 Focused Remediation](m6-focused-remediation-report.md) | Disposes M6-AUD-001 through M6-AUD-008 and records the validation and re-audit boundary. |
 | M6-06 | [M6 Focused Independent Re-Audit](m6-focused-independent-reaudit-report.md) | Independently closes three blockers, accepts or defers the bounded residuals, and reproduces the remaining citation-authority and benchmark-gaming blockers. |
 | M6-07 | [M6 Focused Remediation V2](m6-focused-remediation-v2-report.md) | Replaces retriever-trusted citation resolution with governed authority and replaces benchmark-phrase refusal logic with adversarial-outcome evaluation. |
+| M6-08 | [Final Independent M6 Re-Audit](m6-final-independent-reaudit-report.md) | Independently closes citation authority, reproduces the category-metadata benchmark bypass, and retains the `M6 NOT READY` decision. |
+| M6-09 | [M6 Focused Remediation V3](m6-focused-remediation-v3-report.md) | Binds safety cases to a separate versioned contract registry and records the exact bypass regression and validation handoff. |
 
 ## Architecture Decision Records
 
@@ -84,7 +86,7 @@ decision.
 | [0004: Security Claim Applicability and Projection](adr/0004-security-claim-applicability-and-projection.md) | M3-07 through M3-09 |
 | [0005: Knowledge Graph Projection and Traversal](adr/0005-knowledge-graph-projection-and-traversal.md) | M4-01 through M4-04 |
 | [0006: Hybrid Retrieval Architecture](adr/0006-hybrid-retrieval-architecture.md) | M5-01 through M5-03 |
-| [0007: Governed Architecture RAG](adr/0007-governed-architecture-rag.md) | M6-01 through M6-07 |
+| [0007: Governed Architecture RAG](adr/0007-governed-architecture-rag.md) | M6-01 through M6-09 |
 
 ## Git Creation Timeline
 
@@ -115,6 +117,8 @@ describe.
 | 2026-08-22 | remediation commit; see post-commit handoff | M6 focused remediation report |
 | 2026-08-23 | `75c7527` | M6 focused independent re-audit report |
 | 2026-08-23 | remediation-v2 commit; see post-commit handoff | M6 focused remediation v2 report |
+| 2026-08-28 | `03932d7` | Final independent M6 re-audit report |
+| 2026-08-28 | implementation commit; see post-commit handoff | M6 focused remediation v3 report |
 
 ## Maintenance Rule
 
