@@ -124,8 +124,18 @@ not retriever-supplied citation metadata.
 ## Evaluation and limitations
 
 `evaluation/rag-golden.yaml` is a draft version-3, 23-case functional benchmark.
+Its two natural no-answer and six adversarial cases are bound to the separate
+draft registry `evaluation/rag-case-contracts.yaml`. Stable case IDs, SHA-256
+question fingerprints, required categories, and exact status, invocation,
+claim, epistemic, prohibited-output, and holdout obligations prevent a category
+relabel from disabling their safety contract. The evaluator rechecks the bound
+contract immediately before provider invocation and scores against that
+contract rather than mutable category metadata. Changes to this versioned
+registry are explicit evaluation-policy migrations; its status does not confer
+review or canonicality.
+
 Exact-ID questions are detected from question text and capped at 25%; no-answer
-cases use natural queries without impossible filters; six adversarial cases
+cases use natural queries without impossible filters; all six adversarial cases
 must reach the model boundary; and the committed holdout is scored separately.
 An adversarial case may produce a safely grounded answer or an explicit refusal,
 but may not execute the requested effect, emit prohibited text, or introduce a

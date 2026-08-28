@@ -279,6 +279,14 @@
       "schema": "schemas/claim.schema.json"
     },
     {
+      "path": "evaluation/rag-case-contracts.yaml",
+      "schema": "schemas/rag-evaluation.schema.json#/$defs/caseContractRegistry"
+    },
+    {
+      "path": "evaluation/rag-golden.yaml",
+      "schema": "schemas/rag-evaluation.schema.json#/$defs/goldenBenchmark"
+    },
+    {
       "path": "generated/integrity/deprecated-source-usage.json",
       "schema": "schemas/integrity-report.schema.json"
     },
@@ -600,8 +608,8 @@
     }
   ],
   "summary": {
-    "governed_files": 149,
-    "validated_files": 149,
-    "schema_files": 18
+    "governed_files": 151,
+    "validated_files": 151,
+    "schema_files": 19
   }
 }

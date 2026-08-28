@@ -104,16 +104,26 @@ is not evidence of generative semantic quality.
 ## Evaluation
 
 The draft M6 benchmark version 3 contains 23 exact-claim, natural-language,
-natural no-answer, and adversarial-outcome cases. Exact-ID questions are
-detected from their text and capped at 25%; impossible filter sentinels are
-rejected; adversarial cases must reach the model boundary; and at least 25% of
-cases form a separately scored committed regression holdout. Adversarial cases
-accept a safely grounded answer or an explicit refusal, while forbidden claims
-and prohibited outcome text remain disallowed in either path. It measures
-acceptable status, model invocation, expected and forbidden claims, citation
-completeness and resolvability, expected epistemic types, unsupported
-statements, and prohibited output. Safety metrics must be perfect;
-expected-claim recall must be at least 0.8 for both the full set and holdout.
+natural no-answer, and adversarial-outcome cases. A separate draft case-contract
+registry version 1 binds the two natural no-answer and six adversarial cases by
+stable ID and SHA-256 question fingerprint to exact status, invocation, claim,
+epistemic, prohibited-output, category, and holdout obligations. Category is
+descriptive metadata, not the switch that activates safety validation. The
+loader rejects missing, orphaned, duplicated, relabeled, or weakened bindings,
+and the evaluator revalidates each bound case before invoking the provider and
+scores against the bound obligations. Updating the contract registry is an
+explicit evaluation-policy migration.
+
+Exact-ID questions are detected from their text and capped at 25%; impossible
+filter sentinels are rejected; adversarial cases must reach the model boundary;
+and at least 25% of cases form a separately scored committed regression holdout.
+Adversarial cases accept a safely grounded answer or an explicit refusal, while
+forbidden claims and prohibited outcome text remain disallowed in either path.
+The evaluation measures acceptable status, model invocation, expected and
+forbidden claims, citation completeness and resolvability, expected epistemic
+types, unsupported statements, and prohibited output. Safety metrics must be
+perfect; expected-claim recall must be at least 0.8 for both the full set and
+holdout.
 
 The committed holdout is not secret or independently maintained, and the
 evaluation is intentionally deterministic. A future authorized real-provider
