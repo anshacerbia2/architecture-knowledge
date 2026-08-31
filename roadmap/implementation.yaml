@@ -118,7 +118,7 @@ milestones:
       - answers include resolvable citations
       - retrieval relevance and unsupported claims are measurable
       - recommendations incorporate context and constraints
-    notes: Implemented with governed context assembly, structured output, application-resolved citations, epistemic labels, fail-closed grounding, deterministic evaluation, and focused quality gates. Independent audits continue to record M6 NOT READY. Remediation V3 binds safety and natural no-answer cases to a separate versioned contract registry after the final V2 re-audit found a category-metadata bypass. Exact-SHA hosted validation and independent re-audit remain required. M7 is not open.
+    notes: Implemented with governed context assembly, structured output, application-resolved citations, epistemic labels, fail-closed grounding, deterministic evaluation, and focused quality gates. Independent audits continue to record M6 NOT READY. Remediation V3 closed the category-metadata bypass with a separate versioned contract registry. After the V3 re-audit identified forgeable caller-controlled evidence classification, remediation V4 replaced that marker with private attestation restricted to the registered artifact pair and bound to the full parsed benchmark. Exact-SHA hosted validation and independent re-audit remain required. M7 is not open.
   - id: m7
     title: Architecture Decision Assistant
     status: future

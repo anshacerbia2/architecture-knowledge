@@ -112,7 +112,14 @@ descriptive metadata, not the switch that activates safety validation. The
 loader rejects missing, orphaned, duplicated, relabeled, or weakened bindings,
 and the evaluator revalidates each bound case before invoking the provider and
 scores against the bound obligations. Updating the contract registry is an
-explicit evaluation-policy migration.
+explicit evaluation-policy migration. Only the registered benchmark and
+contract artifact paths receive a module-private loader attestation after both
+validate. That attestation is bound to a fingerprint of the complete parsed
+benchmark and cannot be supplied as caller-controlled data. Programmatic
+fixtures and unregistered copies remain usable but are explicitly reported as
+synthetic. Evaluation fingerprints and validates an isolated snapshot, so
+mutation before evaluation fails closed and mutation during a provider callback
+cannot alter the scored cases or reported benchmark identity.
 
 Exact-ID questions are detected from their text and capped at 25%; impossible
 filter sentinels are rejected; adversarial cases must reach the model boundary;

@@ -130,9 +130,16 @@ question fingerprints, required categories, and exact status, invocation,
 claim, epistemic, prohibited-output, and holdout obligations prevent a category
 relabel from disabling their safety contract. The evaluator rechecks the bound
 contract immediately before provider invocation and scores against that
-contract rather than mutable category metadata. Changes to this versioned
-registry are explicit evaluation-policy migrations; its status does not confer
-review or canonicality.
+contract rather than mutable category metadata. Governed evidence classification
+is issued only to the registered benchmark and contract artifact pair after the
+loader validates both. A module-private attestation binds the complete parsed
+benchmark fingerprint to that exact object. Evaluation verifies an isolated
+snapshot, then uses that snapshot for every request and reported benchmark
+field. Programmatic objects, copied files, mixed artifact pairs, and post-load
+or mid-run mutations therefore cannot obtain, retain, or alter governed
+evidence. Changes to this versioned registry are
+explicit evaluation-policy migrations; its status does not confer review or
+canonicality.
 
 Exact-ID questions are detected from question text and capped at 25%; no-answer
 cases use natural queries without impossible filters; all six adversarial cases

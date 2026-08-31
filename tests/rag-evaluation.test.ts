@@ -15,7 +15,7 @@ describe("RAG evaluation", () => {
       path.join(process.cwd(), "evaluation", "rag-golden.yaml"),
     );
     expect(benchmark.version).toBe(3);
-    expect(benchmark.contract_registry_version).toBe(1);
+    expect("contract_registry_version" in benchmark).toBe(false);
     expect(benchmark.cases).toHaveLength(23);
     expect(benchmark.cases.filter((item) => item.category === "exact-claim")).toHaveLength(4);
     expect(benchmark.cases.filter((item) => item.holdout)).toHaveLength(8);
@@ -73,6 +73,66 @@ describe("RAG evaluation", () => {
       citation_completeness: 1,
       unsupported_statement_count: 0,
     });
+  });
+
+  it("cannot forge governed evidence classification from public benchmark data", async () => {
+    const loaded = await loadRagGolden(path.join(process.cwd(), "evaluation", "rag-golden.yaml"));
+    const forged = {
+      version: 999,
+      status: "synthetic-programmatic",
+      contract_registry_version: 1 as const,
+      cases: loaded.cases.map((item, index) =>
+        item.evaluation_contract
+          ? { ...item }
+          : { ...item, question: `Synthetic ordinary question ${index + 1}` },
+      ),
+    };
+    const report = await evaluateRag(forged, async (request) => {
+      const item = forged.cases.find((candidate) => candidate.question === request.question)!;
+      return passingPacket(item, request.question);
+    });
+
+    expect(report.gates).toEqual({ passed: true, failures: [] });
+    expect(report.evidence_class).toContain("synthetic ungoverned evaluator fixture");
+    expect(report.evidence_class).not.toContain("contract-registry-validated");
+  });
+
+  it("does not attest a valid but unregistered artifact copy", async () => {
+    const file = await writeBenchmarkVariant("valid-unregistered-copy");
+    const benchmark = await loadRagGolden(file);
+    const report = await evaluateRag(benchmark, async (request) => {
+      const item = benchmark.cases.find((candidate) => candidate.question === request.question)!;
+      return passingPacket(item, request.question);
+    });
+
+    expect(report.gates).toEqual({ passed: true, failures: [] });
+    expect(report.evidence_class).toContain("synthetic ungoverned evaluator fixture");
+  });
+
+  it("attests the registered artifact pair only after validation", async () => {
+    const benchmark = await loadRagGolden(
+      path.join(process.cwd(), "evaluation", "rag-golden.yaml"),
+    );
+    const report = await evaluatePassingBenchmark(benchmark);
+
+    expect(report.gates).toEqual({ passed: true, failures: [] });
+    expect(report.evidence_class).toContain("contract-registry-validated");
+  });
+
+  it("requires both registered artifact paths for attestation", async () => {
+    const copiedBenchmark = await writeBenchmarkVariant("mixed-artifact-pair");
+    const copiedContracts = path.join(path.dirname(copiedBenchmark), "rag-case-contracts.yaml");
+    const registeredBenchmark = path.join(process.cwd(), "evaluation", "rag-golden.yaml");
+    const registeredContracts = path.join(process.cwd(), "evaluation", "rag-case-contracts.yaml");
+
+    for (const [benchmarkFile, contractFile] of [
+      [registeredBenchmark, copiedContracts],
+      [copiedBenchmark, registeredContracts],
+    ]) {
+      const benchmark = await loadRagGolden(benchmarkFile!, contractFile!);
+      const report = await evaluatePassingBenchmark(benchmark);
+      expect(report.evidence_class).toContain("synthetic ungoverned evaluator fixture");
+    }
   });
 
   it("fails gates for status, recall, citations, unsupported, and prohibited output", async () => {
@@ -346,7 +406,7 @@ describe("RAG evaluation", () => {
     await expect(loadRagGolden(unregistered)).rejects.toThrow("unregistered case ID RAG-099");
   });
 
-  it("revalidates bound obligations immediately before evaluation", async () => {
+  it("rejects mutation of a loader-attested benchmark before evaluation", async () => {
     const benchmark = await loadRagGolden(
       path.join(process.cwd(), "evaluation", "rag-golden.yaml"),
     );
@@ -358,7 +418,7 @@ describe("RAG evaluation", () => {
         invoked = true;
         return noAnswer(request.question);
       }),
-    ).rejects.toThrow("acceptable statuses mismatch RAG-018");
+    ).rejects.toThrow("governed benchmark integrity mismatch");
     expect(invoked).toBe(false);
   });
 
@@ -373,8 +433,64 @@ describe("RAG evaluation", () => {
         invoked = true;
         return noAnswer(request.question);
       }),
-    ).rejects.toThrow("expected exactly 8 governed contracts");
+    ).rejects.toThrow("governed benchmark integrity mismatch");
     expect(invoked).toBe(false);
+  });
+
+  it.each([
+    [
+      "version",
+      (benchmark: Awaited<ReturnType<typeof loadRagGolden>>) => (benchmark.version = 999),
+    ],
+    [
+      "status",
+      (benchmark: Awaited<ReturnType<typeof loadRagGolden>>) => (benchmark.status = "synthetic"),
+    ],
+    [
+      "ordinary question",
+      (benchmark: Awaited<ReturnType<typeof loadRagGolden>>) =>
+        (benchmark.cases.find((item) => !item.evaluation_contract)!.question = "replacement"),
+    ],
+  ])("binds the loader attestation to benchmark %s", async (_label, mutate) => {
+    const benchmark = await loadRagGolden(
+      path.join(process.cwd(), "evaluation", "rag-golden.yaml"),
+    );
+    mutate(benchmark);
+    let invoked = false;
+    await expect(
+      evaluateRag(benchmark, async (request) => {
+        invoked = true;
+        return noAnswer(request.question);
+      }),
+    ).rejects.toThrow("governed benchmark integrity mismatch");
+    expect(invoked).toBe(false);
+  });
+
+  it("evaluates an immutable snapshot after attestation", async () => {
+    const benchmark = await loadRagGolden(
+      path.join(process.cwd(), "evaluation", "rag-golden.yaml"),
+    );
+    const packets = new Map(
+      benchmark.cases.map((item) => [item.question, passingPacket(item, item.question)]),
+    );
+    let calls = 0;
+    const report = await evaluateRag(benchmark, async (request) => {
+      const packet = packets.get(request.question)!;
+      if (calls++ === 0) {
+        benchmark.version = 999;
+        benchmark.status = "mutated-during-evaluation";
+        benchmark.cases.splice(1);
+      }
+      return packet;
+    });
+
+    expect(report).toMatchObject({
+      benchmark_version: 3,
+      benchmark_status: "draft",
+      case_count: 23,
+      gates: { passed: true, failures: [] },
+    });
+    expect(report.evidence_class).toContain("contract-registry-validated");
   });
 });
 
@@ -482,4 +598,27 @@ function refused(question: string): RagAnswerPacket {
   packet.statements = [];
   packet.refusal_reason = "policy-refusal";
   return packet;
+}
+
+function passingPacket(
+  item: Awaited<ReturnType<typeof loadRagGolden>>["cases"][number],
+  question: string,
+): RagAnswerPacket {
+  if (
+    item.acceptable_statuses.length === 1 &&
+    item.acceptable_statuses[0] === "insufficient-evidence"
+  )
+    return noAnswer(question);
+  if (item.evaluation_contract?.contract_kind === "adversarial-safety") return refused(question);
+  const packet = answered(question);
+  packet.statements[0]!.claim_ids = [...item.expected_claim_ids];
+  packet.statements[0]!.epistemic_type = item.expected_epistemic_types[0] ?? "sourced-claim";
+  return packet;
+}
+
+async function evaluatePassingBenchmark(benchmark: Awaited<ReturnType<typeof loadRagGolden>>) {
+  return evaluateRag(benchmark, async (request) => {
+    const item = benchmark.cases.find((candidate) => candidate.question === request.question)!;
+    return passingPacket(item, request.question);
+  });
 }

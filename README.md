@@ -120,9 +120,11 @@ for the `M6 READY` entry decision. The M6 audits continue to record
 `M6 NOT READY`. The second focused remediation closed citation authority, but
 its final independent re-audit exposed a category-metadata bypass in
 adversarial evaluation. Focused remediation V3 binds safety cases to a separate
-versioned contract registry and adds the exact bypass as a regression. It still
-requires exact-SHA hosted validation and an independent re-audit. M7 is not
-open.
+versioned contract registry and closes the original category bypass. The V3
+re-audit then identified a forgeable public evidence-class marker. Focused
+remediation V4 replaces it with private, artifact-bound, content-integrity
+attestation and requires exact-SHA hosted validation plus independent re-audit.
+M7 is not open.
 
 ## Validation commands
 
