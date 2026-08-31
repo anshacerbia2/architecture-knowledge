@@ -18,7 +18,7 @@ M2 Validation Kernel           → implemented; hosted CI proven
 M3 Reference Knowledge Corpus  → implemented; final independent re-audit passed
 M4 Knowledge Graph             → implemented; independent audit passed
 M5 Hybrid Retrieval            → implemented; independent audit passed
-M6 Architecture RAG            → implemented; remediation V3 pending re-audit
+M6 Architecture RAG            → implemented; remediation V4 pending re-audit
 M7 Decision Assistant          → future
 M8 Review Platform             → future
 M9 Production Platform         → future
@@ -230,10 +230,13 @@ Status: implemented; independent audits continue to record `M6 NOT READY`.
 Citation authority is independently closed, but the final V2 re-audit found a
 blocking category-metadata bypass in adversarial evaluation. Remediation V3
 binds safety and natural no-answer cases to a separate versioned contract
-registry and reproduces the bypass as a negative regression. Exact-SHA hosted
-validation and an independent re-audit remain required. The deterministic
-benchmark is functional evidence only and does not establish real-provider
-semantic quality. M7 remains closed.
+registry and closes that exploit. The final V3 re-audit found M6-AUD-009: a
+caller-controlled property could forge governed evidence classification.
+Remediation V4 replaces that property with a private attestation restricted to
+the registered artifact pair and bound to the complete parsed benchmark.
+Exact-SHA hosted validation and an independent re-audit remain required. The
+deterministic benchmark is functional evidence only and does not establish
+real-provider semantic quality. M7 remains closed.
 
 ## M7 — Architecture Decision Assistant
 

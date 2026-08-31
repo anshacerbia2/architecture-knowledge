@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import YAML from "yaml";
 
@@ -68,8 +69,12 @@ export interface RagBenchmark {
   version: number;
   status: string;
   cases: RagGoldenCase[];
-  contract_registry_version?: 1;
 }
+
+const governedBenchmarkAttestations = new WeakMap<RagBenchmark, string>();
+const REPOSITORY_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const GOVERNED_BENCHMARK_FILE = path.join(REPOSITORY_ROOT, "evaluation", "rag-golden.yaml");
+const GOVERNED_CONTRACT_FILE = path.join(REPOSITORY_ROOT, "evaluation", "rag-case-contracts.yaml");
 
 const REQUIRED_CONTRACT_KINDS = new Map<string, RagCaseContractKind>([
   ["RAG-016", "natural-no-answer"],
@@ -92,30 +97,38 @@ export async function loadRagGolden(
   const cases = raw.cases.map((value, index) => parseCase(value, index));
   validateCorpus(cases);
   const contracts = await loadCaseContracts(contractFile);
-  return {
+  const benchmark: RagBenchmark = {
     version: raw.version,
     status: raw.status,
     cases: bindCaseContracts(cases, contracts),
-    contract_registry_version: 1,
   };
+  if (isGovernedArtifactPair(file, contractFile))
+    governedBenchmarkAttestations.set(benchmark, fingerprintBenchmark(benchmark));
+  return benchmark;
 }
 
 export async function evaluateRag(
   benchmark: RagBenchmark,
   run: (request: ReturnType<typeof parseRagRequest>) => Promise<RagAnswerPacket>,
 ): Promise<RagEvaluationReport> {
-  const governedContracts = benchmark.contract_registry_version === 1;
+  const expectedFingerprint = governedBenchmarkAttestations.get(benchmark);
+  const governedContracts = expectedFingerprint !== undefined;
+  let evaluatedBenchmark = benchmark;
   if (governedContracts) {
-    validateCorpus(benchmark.cases);
+    const snapshot = structuredClone(benchmark);
+    if (fingerprintBenchmark(snapshot) !== expectedFingerprint)
+      throw new Error("RAG_EVALUATION_CONTRACT governed benchmark integrity mismatch");
+    validateCorpus(snapshot.cases);
     bindCaseContracts(
-      benchmark.cases,
-      benchmark.cases.flatMap((item) =>
+      snapshot.cases,
+      snapshot.cases.flatMap((item) =>
         item.evaluation_contract ? [item.evaluation_contract] : [],
       ),
     );
+    evaluatedBenchmark = snapshot;
   }
   const observations: Observation[] = [];
-  for (const item of benchmark.cases) {
+  for (const item of evaluatedBenchmark.cases) {
     if (item.evaluation_contract) assertCaseMatchesContract(item, item.evaluation_contract);
     const request = parseRagRequest({
       question: item.question,
@@ -140,9 +153,9 @@ export async function evaluateRag(
   const holdoutMetrics = calculateMetrics(holdout);
   const failures = gateFailures(metrics, holdoutMetrics);
   return {
-    benchmark_version: benchmark.version,
-    benchmark_status: benchmark.status,
-    case_count: benchmark.cases.length,
+    benchmark_version: evaluatedBenchmark.version,
+    benchmark_status: evaluatedBenchmark.status,
+    case_count: evaluatedBenchmark.cases.length,
     metrics,
     partitions: {
       development: { case_count: development.length, metrics: calculateMetrics(development) },
@@ -153,6 +166,25 @@ export async function evaluateRag(
       ? "contract-registry-validated deterministic-provider functional and adversarial-outcome RAG benchmark with a committed regression holdout; not secret-holdout or real-provider semantic-quality evidence"
       : "synthetic ungoverned evaluator fixture; not benchmark or semantic-quality evidence",
   };
+}
+
+function fingerprintBenchmark(benchmark: RagBenchmark): string {
+  return `sha256:${createHash("sha256")
+    .update(
+      JSON.stringify({
+        version: benchmark.version,
+        status: benchmark.status,
+        cases: benchmark.cases,
+      }),
+    )
+    .digest("hex")}`;
+}
+
+function isGovernedArtifactPair(file: string, contractFile: string): boolean {
+  return (
+    path.resolve(file) === GOVERNED_BENCHMARK_FILE &&
+    path.resolve(contractFile) === GOVERNED_CONTRACT_FILE
+  );
 }
 
 interface Observation {

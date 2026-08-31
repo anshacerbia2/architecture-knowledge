@@ -58,6 +58,11 @@
       "status": "valid"
     },
     {
+      "path": "docs/m6-focused-remediation-v4-report.md",
+      "target": "m6-final-independent-reaudit-v3-report.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/README.md",
       "target": "adr/0001-validation-toolchain.md",
       "status": "valid"
@@ -234,6 +239,11 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m6-final-independent-reaudit-v3-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m6-focused-independent-reaudit-report.md",
       "status": "valid"
     },
@@ -250,6 +260,11 @@
     {
       "path": "docs/README.md",
       "target": "m6-focused-remediation-v3-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m6-focused-remediation-v4-report.md",
       "status": "valid"
     },
     {
@@ -359,8 +374,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 71,
+    "checked_link_count": 74,
     "broken_link_count": 0,
-    "markdown_file_count": 87
+    "markdown_file_count": 88
   }
 }
