@@ -7,10 +7,10 @@ knowledge units are authored.
 
 ## Current scope
 
-The repository currently implements M0 through M6: project definition,
-knowledge and validation kernels, the reference corpus, a deterministic
-knowledge graph/query layer, hybrid retrieval, and a governed architecture RAG
-implementation under focused audit remediation:
+The repository currently implements M0 through M6 and has completed the M7.0
+entry-alignment and decision-model audit: project definition, knowledge and
+validation kernels, the reference corpus, a deterministic knowledge graph/query
+layer, hybrid retrieval, and a governed architecture RAG implementation:
 
 - ontology registries and architecture classification facets;
 - stable canonical identifier rules;
@@ -31,8 +31,9 @@ implementation under focused audit remediation:
   evaluation, and a production OpenAI Responses adapter.
 
 It intentionally contains no decision-guide examples, decision-assistant
-workflow, ADR generation, conversational memory, graph database, or publication
-output. Those belong to later milestones.
+runtime, project decision sessions, ADR generation, conversational memory,
+graph database, or publication output. Those belong to separately authorized
+later scopes.
 
 ## Classification model
 
@@ -116,15 +117,14 @@ M4 passed its independent adversarial audit. M5 then passed its focused
 independent evidence re-audit after its initial audit returned inconclusive only
 because runtime evidence was unavailable in that environment. See
 [`docs/m5-focused-evidence-reaudit-report.md`](docs/m5-focused-evidence-reaudit-report.md)
-for the `M6 READY` entry decision. The M6 audits continue to record
-`M6 NOT READY`. The second focused remediation closed citation authority, but
-its final independent re-audit exposed a category-metadata bypass in
-adversarial evaluation. Focused remediation V3 binds safety cases to a separate
-versioned contract registry and closes the original category bypass. The V3
-re-audit then identified a forgeable public evidence-class marker. Focused
-remediation V4 replaces it with private, artifact-bound, content-integrity
-attestation and requires exact-SHA hosted validation plus independent re-audit.
-M7 is not open.
+for the `M6 READY` entry decision. The final independent M6 V4 re-audit closed
+the remaining evaluation-provenance finding and recorded `M6 READY`; Ansha
+Cerbia then explicitly approved M6 completion and authorized M7.0 only. The
+M7.0 audit fixes the boundaries among reusable guides, project sessions,
+recommendations, and draft artifacts, and identifies the semantic-validation,
+graph, retrieval, evidence, privacy, and authority preconditions for M7.1. No
+decision-guide corpus or assistant runtime has started. See
+[`docs/m7-entry-alignment-decision-model-audit.md`](docs/m7-entry-alignment-decision-model-audit.md).
 
 ## Validation commands
 

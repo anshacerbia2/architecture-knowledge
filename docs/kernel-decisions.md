@@ -80,6 +80,22 @@ preserves nuance while references enable queries.
    attributes, constraints, stakeholder concerns, or context-dependent roles?
 8. Should `risk` and `failure-mode` remain knowledge concepts, or become
    contextual records scoped to a system or decision?
+9. Should active decision guides require a unique stable `human_key`, or is the
+   opaque `AKG` identifier plus title sufficient for authoring and lookup?
+10. Should persisted project decision sessions and ADR/RFC/PAD drafts become
+    separate record kinds, remain external artifacts, or use redacted snapshot
+    records with distinct lifecycle and privacy controls?
+11. Should decision-guide matrices require every option-criterion pair, allow
+    explicit `not-applicable` cells, or use sparse rules with a separately
+    provable completeness contract?
+12. Should decision guides join the existing graph and retrieval contracts as a
+    first-class family, or use a separate decision projection that references
+    the knowledge graph?
+13. Which decision conditions require reusable first-class concept references,
+    and which may remain guide-local or session-local qualified text?
+14. How should missing, conflicting, low-confidence, and context-dependent
+    evidence be represented in recommendations without implying false numeric
+    precision?
 
 ## Ontology risks
 

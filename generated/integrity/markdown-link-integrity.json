@@ -244,6 +244,11 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m6-final-independent-reaudit-v4-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m6-focused-independent-reaudit-report.md",
       "status": "valid"
     },
@@ -275,6 +280,11 @@
     {
       "path": "docs/README.md",
       "target": "m6-independent-audit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-entry-alignment-decision-model-audit.md",
       "status": "valid"
     },
     {
@@ -339,6 +349,11 @@
     },
     {
       "path": "README.md",
+      "target": "docs/m7-entry-alignment-decision-model-audit.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
       "target": "docs/README.md",
       "status": "valid"
     },
@@ -374,8 +389,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 74,
+    "checked_link_count": 77,
     "broken_link_count": 0,
-    "markdown_file_count": 89
+    "markdown_file_count": 90
   }
 }
