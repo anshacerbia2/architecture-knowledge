@@ -18,8 +18,8 @@ M2 Validation Kernel           → implemented; hosted CI proven
 M3 Reference Knowledge Corpus  → implemented; final independent re-audit passed
 M4 Knowledge Graph             → implemented; independent audit passed
 M5 Hybrid Retrieval            → implemented; independent audit passed
-M6 Architecture RAG            → implemented; remediation V4 pending re-audit
-M7 Decision Assistant          → future
+M6 Architecture RAG            → implemented; final independent re-audit passed
+M7 Decision Assistant          → M7.0 entry/model audit complete; implementation not started
 M8 Review Platform             → future
 M9 Production Platform         → future
 ```
@@ -226,17 +226,12 @@ Exit criteria:
 - retrieval relevance and unsupported claims are measurable;
 - recommendations incorporate context and constraints.
 
-Status: implemented; independent audits continue to record `M6 NOT READY`.
-Citation authority is independently closed, but the final V2 re-audit found a
-blocking category-metadata bypass in adversarial evaluation. Remediation V3
-binds safety and natural no-answer cases to a separate versioned contract
-registry and closes that exploit. The final V3 re-audit found M6-AUD-009: a
-caller-controlled property could forge governed evidence classification.
-Remediation V4 replaces that property with a private attestation restricted to
-the registered artifact pair and bound to the complete parsed benchmark.
-Exact-SHA hosted validation and an independent re-audit remain required. The
-deterministic benchmark is functional evidence only and does not establish
-real-provider semantic quality. M7 remains closed.
+Status: implemented and independently cleared `M6 READY`. The final V4 re-audit
+closed M6-AUD-009 after verifying private, artifact-bound, content-integrity
+attestation, local validation, focused mutation, and exact-SHA hosted evidence.
+The deterministic benchmark remains functional evidence only and does not
+establish real-provider semantic quality. Ansha Cerbia explicitly approved M6
+completion and authorized the bounded M7.0 entry/model audit on 2026-09-01.
 
 ## M7 — Architecture Decision Assistant
 
@@ -263,7 +258,14 @@ Project Context
 
 Automation must not approve decisions.
 
-Status: future; depends on M6 and representative decision guides.
+Status: proposed. M7.0 entry alignment and decision-model audit is complete;
+see `docs/m7-entry-alignment-decision-model-audit.md`. It establishes that a
+reusable decision guide, project-specific decision session, recommendation, and
+draft decision artifact are separate concerns. M7.1 implementation, a
+representative guide corpus, and assistant runtime have not started and are not
+authorized. The recommended next scope is a decision-guide validation kernel,
+including semantic validation and first-class graph/retrieval support, before
+any corpus is authored.
 
 ## M8 — Architecture Review Platform
 
