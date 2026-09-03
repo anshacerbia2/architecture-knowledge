@@ -80,6 +80,9 @@ any document reviewed, approved, published, or canonical.
 | Sequence | Document | Why it comes here |
 |---|---|---|
 | M7-01 | [M7.0 Entry Alignment and Decision Model Audit](m7-entry-alignment-decision-model-audit.md) | Aligns the M6 exit, separates reusable guides from sessions and draft decisions, stress-tests the bootstrap model, and defines the preconditions for a separately authorized M7.1 kernel run. |
+| M7-02 | [ADR 0008: Decision Guide Validation Kernel](adr/0008-decision-guide-validation-kernel.md) | Records the guide/session/recommendation/artifact separation and versioned schema, graph, retrieval, privacy, and authority migrations. |
+| M7-03 | [M7.1 Decision Guide Validation Kernel](m7-decision-guide-kernel.md) | Documents contracts, invariants, graph/retrieval behavior, CLI gates, and explicit exclusions. |
+| M7-04 | [M7.1 Implementation Report](m7-1-implementation-report.md) | Records scope, governance interpretation, migrations, validation evidence, and the independent-audit handoff. |
 
 ## Architecture Decision Records
 
@@ -96,6 +99,7 @@ decision.
 | [0005: Knowledge Graph Projection and Traversal](adr/0005-knowledge-graph-projection-and-traversal.md) | M4-01 through M4-04 |
 | [0006: Hybrid Retrieval Architecture](adr/0006-hybrid-retrieval-architecture.md) | M5-01 through M5-03 |
 | [0007: Governed Architecture RAG](adr/0007-governed-architecture-rag.md) | M6-01 through M6-12 |
+| [0008: Decision Guide Validation Kernel](adr/0008-decision-guide-validation-kernel.md) | M7-02 through M7-04 |
 
 ## Git Creation Timeline
 
@@ -132,6 +136,7 @@ describe.
 | 2026-08-31 | implementation commit; see post-commit handoff | M6 focused remediation v4 report |
 | 2026-09-01 | `ca9dc44` | Final independent M6 V4 re-audit report |
 | 2026-09-01 | entry-audit commit; see post-commit handoff | M7.0 entry alignment and decision-model audit |
+| 2026-09-03 | implementation commit; see post-commit handoff | ADR 0008; M7.1 kernel guide; M7.1 implementation report |
 
 ## Maintenance Rule
 

@@ -4,6 +4,7 @@ import { validateGraphArtifacts } from "../src/graph-artifacts.js";
 import { buildGraphArtifacts, relationshipTraversalDecision } from "../src/graph-projector.js";
 import { asStringArray } from "../src/io.js";
 import { loadRepository, type RecordEntry, type RepositoryModel } from "../src/model.js";
+import { recordFromData } from "./helpers.js";
 
 describe("M4 graph projection production contract", () => {
   let model: RepositoryModel;
@@ -85,6 +86,50 @@ describe("M4 graph projection production contract", () => {
     );
     const relationship = graph.edges.find((edge) => edge.relationship_id === "AKR-000014");
     expect(relationship?.source_ids.length).toBeGreaterThan(0);
+  });
+
+  it("projects decision guides as first-class indexed nodes with governed provenance", () => {
+    const withGuide = structuredClone(model);
+    const guide = syntheticGuide();
+    withGuide.records.push(guide);
+    withGuide.decisionGuides = [guide];
+    const projected = buildGraphArtifacts(withGuide);
+    expect(validateGraphArtifacts(withGuide, projected)).toEqual([]);
+    expect(projected.decisionGuides).toContainEqual(
+      expect.objectContaining({
+        id: "AKG-900001",
+        record_kind: "decision-guide",
+        evidence_chain_claim_ids: ["AKL-000061"],
+        evidence_source_ids: ["AKS-000019"],
+      }),
+    );
+    expect(projected.nodes).toContainEqual(
+      expect.objectContaining({ id: "AKG-900001", family: "decision-guide" }),
+    );
+    expect(projected.edges).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          family: "decision-guide-supported-by-claim",
+          from: "AKG-900001",
+          to: "AKL-000061",
+        }),
+        expect.objectContaining({
+          family: "decision-guide-considers-option",
+          from: "AKG-900001",
+          to: "AKC-000018",
+        }),
+        expect.objectContaining({
+          family: "decision-guide-constrained-by-concept",
+          from: "AKG-900001",
+          to: "AKC-000003",
+        }),
+        expect.objectContaining({
+          family: "decision-guide-evaluates-quality-attribute",
+          from: "AKG-900001",
+          to: "AKC-000007",
+        }),
+      ]),
+    );
   });
 
   it("preserves relationship conditions and semantic scope", () => {
@@ -341,6 +386,24 @@ describe("M4 graph projection production contract", () => {
     });
   });
 });
+
+function syntheticGuide(): RecordEntry {
+  return recordFromData(
+    {
+      id: "AKG-900001",
+      record_kind: "decision-guide",
+      title: "Synthetic graph decision guide",
+      decision_question: "Which synthetic option?",
+      status: "proposed",
+      evidence: ["AKL-000061"],
+      options: [{ concept_id: "AKC-000018" }],
+      constraints: [{ concept_id: "AKC-000003" }],
+      quality_attributes: [{ concept_id: "AKC-000007" }],
+      authority: { recommendation_only: true, human_decision_required: true },
+    },
+    "tests/fixtures/synthetic/AKG-900001.yaml",
+  );
+}
 
 function decision(relationship: RecordEntry, model: RepositoryModel) {
   return relationshipTraversalDecision(

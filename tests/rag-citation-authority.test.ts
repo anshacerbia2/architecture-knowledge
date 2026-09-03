@@ -7,6 +7,7 @@ describe("RAG citation authority", () => {
     const authority = createRagCitationAuthority({
       concepts: [{ id: "AKC-000001", sources: ["AKS-000001"] }],
       claims: [{ id: "AKL-000001", sources: ["AKS-000001"] }],
+      decisionGuides: [{ id: "AKG-000001", evidence_source_ids: ["AKS-000001"] }],
       relationships: [{ id: "AKR-000001", direct_source_ids: ["AKS-000001"] }],
       sources: [
         {
@@ -25,6 +26,7 @@ describe("RAG citation authority", () => {
     };
     expect(authority.resolve("AKC-000001", "AKS-000001")).toEqual(expected);
     expect(authority.resolve("AKL-000001", "AKS-000001")).toEqual(expected);
+    expect(authority.resolve("AKG-000001", "AKS-000001")).toEqual(expected);
     expect(authority.resolve("AKR-000001", "AKS-000001")).toEqual(expected);
     expect(authority.resolve("AKS-000001", "AKS-000001")).toEqual(expected);
   });
@@ -41,6 +43,7 @@ describe("RAG citation authority", () => {
     const authority = createRagCitationAuthority({
       concepts: [],
       claims: [{ id: "AKL-000001", sources: [id] }],
+      decisionGuides: [],
       relationships: [],
       sources: [{ id, title, url, status }],
     });
@@ -54,6 +57,7 @@ describe("RAG citation authority", () => {
         { id: "AKL-000001", sources: ["AKS-000001"] },
         { id: "AKL-000002", sources: [] },
       ],
+      decisionGuides: [],
       relationships: [],
       sources: [
         {
@@ -82,6 +86,7 @@ describe("RAG citation authority", () => {
       createRagCitationAuthority({
         concepts: [],
         claims: [],
+        decisionGuides: [],
         relationships: [],
         sources: [source, { ...source }],
       }),
@@ -90,6 +95,7 @@ describe("RAG citation authority", () => {
       createRagCitationAuthority({
         concepts: [{ id: "AKL-000001", sources: [] }],
         claims: [{ id: "AKL-000001", sources: [] }],
+        decisionGuides: [],
         relationships: [],
         sources: [source],
       }),

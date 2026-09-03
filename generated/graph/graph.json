@@ -6596,7 +6596,7 @@
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
     }
   ],
-  "graph_contract_version": 1,
+  "graph_contract_version": 2,
   "nodes": [
     {
       "family": "claim",

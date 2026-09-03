@@ -16,7 +16,11 @@ describe.runIf(Boolean(connectionString))("M5 PostgreSQL and pgvector integratio
   it("migrates repeatedly with extension, constraints, and indexes", async () => {
     const database = new RetrievalDatabase({ connectionString: connectionString! });
     try {
-      expect([[], ["0001_retrieval.sql"]]).toContainEqual(await database.migrate(process.cwd()));
+      expect([
+        [],
+        ["0002_decision_guide_retrieval.sql"],
+        ["0001_retrieval.sql", "0002_decision_guide_retrieval.sql"],
+      ]).toContainEqual(await database.migrate(process.cwd()));
       expect(await database.migrate(process.cwd())).toEqual([]);
       const extension = await database.pool.query(
         "SELECT extversion FROM pg_extension WHERE extname='vector'",
@@ -26,6 +30,11 @@ describe.runIf(Boolean(connectionString))("M5 PostgreSQL and pgvector integratio
         "SELECT indexname FROM pg_indexes WHERE tablename='retrieval_units'",
       );
       expect(indexes.rows.map((row) => row.indexname)).toContain("retrieval_units_search_gin");
+      const unitKindConstraint = await database.pool.query<{ definition: string }>(
+        "SELECT pg_get_constraintdef(oid) AS definition FROM pg_constraint WHERE conname='retrieval_units_unit_kind_check'",
+      );
+      expect(unitKindConstraint.rows[0]?.definition).toContain("decision-guide-overview");
+      expect(unitKindConstraint.rows[0]?.definition).toContain("decision-guide-section");
     } finally {
       await database.close();
     }

@@ -1,4 +1,5 @@
 import { type Diagnostic } from "./diagnostics.js";
+import { validateDecisionGuides, type DecisionGuideAnalysis } from "./decision-guide-validator.js";
 import { validateEvidence, type EvidenceAnalysis } from "./evidence-validator.js";
 import { validateIdentities, type IdentityAnalysis } from "./id-validator.js";
 import { validateLifecycle, type LifecycleAnalysis } from "./lifecycle-validator.js";
@@ -22,6 +23,7 @@ export type ValidationCategory =
   | "ids"
   | "sources"
   | "claims"
+  | "decision-guides"
   | "relationships"
   | "lifecycle"
   | "markdown"
@@ -33,6 +35,7 @@ export const validationCategories: ValidationCategory[] = [
   "ids",
   "sources",
   "claims",
+  "decision-guides",
   "relationships",
   "lifecycle",
   "markdown",
@@ -45,6 +48,7 @@ export interface KernelAnalysis {
   vocabulary: VocabularyAnalysis;
   identity: IdentityAnalysis;
   evidence: EvidenceAnalysis;
+  decisionGuides: DecisionGuideAnalysis;
   relationships: RelationshipAnalysis;
   lifecycle: LifecycleAnalysis;
   markdown: MarkdownAnalysis;
@@ -60,6 +64,7 @@ export async function analyzeRepository(root: string): Promise<KernelAnalysis> {
     vocabulary: validateRegistrySchemaConsistency(model, schema.documents),
     identity: validateIdentities(model),
     evidence: validateEvidence(model),
+    decisionGuides: validateDecisionGuides(model),
     relationships: validateRelationships(model),
     lifecycle: validateLifecycle(model),
     markdown: validateMarkdown(model),
@@ -88,6 +93,9 @@ export function diagnosticsFor(
         break;
       case "claims":
         diagnostics.push(...analysis.model.diagnostics, ...analysis.evidence.claimDiagnostics);
+        break;
+      case "decision-guides":
+        diagnostics.push(...analysis.model.diagnostics, ...analysis.decisionGuides.diagnostics);
         break;
       case "relationships":
         diagnostics.push(...analysis.model.diagnostics, ...analysis.relationships.diagnostics);

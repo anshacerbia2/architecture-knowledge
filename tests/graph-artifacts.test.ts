@@ -337,7 +337,7 @@ describe("M4 graph validation and currentness", () => {
     const mutated = cloneGraph(graph);
     mutated.files.set(
       "generated/graph/nodes.json",
-      '{"artifact_type":"nodes","graph_contract_version":2,"records":[]}\n',
+      '{"artifact_type":"nodes","graph_contract_version":1,"records":[]}\n',
     );
     expect(codes(validateGraphArtifacts(model, mutated))).toContain("GRAPH_SCHEMA_VERSION");
   });
@@ -376,6 +376,7 @@ function cloneGraph(graph: GraphArtifacts): GraphArtifacts {
     claims: structuredClone(graph.claims),
     sources: structuredClone(graph.sources),
     relationships: structuredClone(graph.relationships),
+    decisionGuides: structuredClone(graph.decisionGuides),
     manifest: structuredClone(graph.manifest),
     traversalPolicy: structuredClone(graph.traversalPolicy),
   };

@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/decision-session.schema.json",
+  "title": "Ephemeral Decision Session Contract",
+  "description": "Runtime-neutral contract for ephemeral decision context. A session is not governed knowledge and cannot approve a decision.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "session_id",
+    "guide_id",
+    "context",
+    "drivers",
+    "constraints",
+    "privacy",
+    "authority"
+  ],
+  "properties": {
+    "contract_version": { "const": 1 },
+    "session_id": { "type": "string", "format": "uuid" },
+    "guide_id": { "$ref": "_defs.schema.json#/$defs/decisionGuideId" },
+    "context": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "value", "classification", "provenance", "confirmed_by_human"],
+        "properties": {
+          "key": { "$ref": "_defs.schema.json#/$defs/slug" },
+          "value": { "type": ["string", "number", "integer", "boolean", "null"] },
+          "classification": { "enum": ["public", "internal", "confidential", "restricted"] },
+          "provenance": { "enum": ["human-provided", "system-observed", "inferred"] },
+          "confirmed_by_human": { "type": "boolean" }
+        }
+      }
+    },
+    "drivers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["concept_id", "role", "priority"],
+        "properties": {
+          "concept_id": { "$ref": "_defs.schema.json#/$defs/conceptId" },
+          "role": { "enum": ["quality-attribute", "constraint", "assumption", "context"] },
+          "priority": { "enum": ["required", "high", "medium", "low"] }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["concept_id", "satisfied", "notes"],
+        "properties": {
+          "concept_id": { "$ref": "_defs.schema.json#/$defs/conceptId" },
+          "satisfied": { "type": ["boolean", "null"] },
+          "notes": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "persistence",
+        "external_provider_authorized",
+        "external_provider_authorization",
+        "redacted_keys"
+      ],
+      "properties": {
+        "persistence": { "const": "ephemeral-only" },
+        "external_provider_authorized": { "type": "boolean" },
+        "external_provider_authorization": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "authorized_by",
+                "authorized_at",
+                "purpose",
+                "provider_id",
+                "classifications",
+                "expires_at"
+              ],
+              "properties": {
+                "authorized_by": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+                "authorized_at": { "type": "string", "format": "date-time" },
+                "purpose": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+                "provider_id": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+                "classifications": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": { "enum": ["public", "internal", "confidential", "restricted"] },
+                  "uniqueItems": true
+                },
+                "expires_at": {
+                  "oneOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+                }
+              }
+            }
+          ]
+        },
+        "redacted_keys": {
+          "type": "array",
+          "items": { "$ref": "_defs.schema.json#/$defs/slug" },
+          "uniqueItems": true
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "external_provider_authorized": { "const": true } },
+            "required": ["external_provider_authorized"]
+          },
+          "then": { "properties": { "external_provider_authorization": { "type": "object" } } },
+          "else": { "properties": { "external_provider_authorization": { "type": "null" } } }
+        }
+      ]
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recommendation_only", "human_decision_required", "automation_may_approve"],
+      "properties": {
+        "recommendation_only": { "const": true },
+        "human_decision_required": { "const": true },
+        "automation_may_approve": { "const": false }
+      }
+    }
+  }
+}

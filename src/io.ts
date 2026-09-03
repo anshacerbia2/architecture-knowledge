@@ -24,7 +24,7 @@ export interface MarkdownHeading {
   line: number;
 }
 
-const ignoredDirectories = new Set([".git", "node_modules", "coverage", ".tmp"]);
+const ignoredDirectories = new Set([".git", ".stryker-tmp", "node_modules", "coverage", ".tmp"]);
 
 export function toPosix(value: string): string {
   return value.replaceAll("\\", "/");

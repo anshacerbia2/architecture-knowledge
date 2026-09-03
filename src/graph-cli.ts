@@ -221,6 +221,15 @@ function listFilterFlags(): Record<string, Record<string, string>> {
       authority: "authority",
       domain: "domain",
     },
+    "decision-guides": {
+      id: "id",
+      title: "title",
+      status: "status",
+      option: "option",
+      evidence: "evidence",
+      constraint: "constraint",
+      "quality-attribute": "quality_attribute",
+    },
   };
 }
 

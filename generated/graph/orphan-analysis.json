@@ -1,6 +1,6 @@
 {
   "artifact_type": "orphan-analysis",
-  "graph_contract_version": 1,
+  "graph_contract_version": 2,
   "intentional_or_explained": {
     "concepts_referenced_only_through_non_traversable_edges": [
       "AKC-000001",

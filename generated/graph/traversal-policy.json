@@ -122,7 +122,7 @@
       "relationship_id": "AKR-000024"
     }
   ],
-  "graph_contract_version": 1,
+  "graph_contract_version": 2,
   "policy": {
     "default_max_depth": 3,
     "hard_max_depth": 8,

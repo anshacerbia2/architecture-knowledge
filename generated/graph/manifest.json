@@ -15,14 +15,16 @@
     "generated/indexes/concepts.json",
     "generated/indexes/claims.json",
     "generated/indexes/relationships.json",
-    "generated/indexes/sources.json"
+    "generated/indexes/sources.json",
+    "generated/indexes/decision-guides.json"
   ],
-  "generator_contract_version": 1,
-  "graph_contract_version": 1,
+  "generator_contract_version": 2,
+  "graph_contract_version": 2,
   "input_fingerprint": "sha256:ad827bcfa37e9cb0a0510dbc51ab2149598e2e3200b2fa68c25490faa34ddc68",
   "input_record_counts": {
     "claims": 69,
     "concepts": 24,
+    "decision_guides": 0,
     "relationships": 24,
     "sources": 22
   },

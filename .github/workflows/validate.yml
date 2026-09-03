@@ -88,6 +88,9 @@ jobs:
       - name: Enforce focused RAG mutation threshold
         run: pnpm test:mutation:rag
 
+      - name: Enforce focused decision-guide mutation threshold
+        run: pnpm test:mutation:decision-guides
+
   retrieval-integration:
     runs-on: ubuntu-latest
     services:

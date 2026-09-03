@@ -16,7 +16,7 @@ describe("M4 graph CLI contract", () => {
   it("returns stable JSON for a successful query", () => {
     const result = run("get", "AKC-000018");
     expect(result.status).toBe(0);
-    expect(JSON.parse(result.stdout)).toMatchObject({ graph_contract_version: 1, result_count: 1 });
+    expect(JSON.parse(result.stdout)).toMatchObject({ graph_contract_version: 2, result_count: 1 });
   });
 
   it("accepts an explicit package-manager argument separator", () => {

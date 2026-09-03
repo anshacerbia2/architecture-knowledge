@@ -40,6 +40,24 @@ const CONCEPT_SECTIONS: Array<[string, string]> = [
   ["evolution_triggers", "Evolution Triggers"],
 ];
 
+const DECISION_GUIDE_SECTIONS: Array<[string, string]> = [
+  ["context_variables", "Context Variables"],
+  ["constraints", "Constraints"],
+  ["assumptions", "Assumptions"],
+  ["quality_attributes", "Quality Attributes"],
+  ["options", "Options"],
+  ["evaluation_criteria", "Evaluation Criteria"],
+  ["tradeoff_matrix", "Trade-off Matrix"],
+  ["disqualifiers", "Disqualifiers"],
+  ["risk_questions", "Risk Questions"],
+  ["recommended_when", "Recommended When"],
+  ["avoid_when", "Avoid When"],
+  ["evolution_triggers", "Evolution Triggers"],
+  ["uncertainty_policy", "Uncertainty Policy"],
+  ["privacy", "Privacy Boundary"],
+  ["authority", "Human Authority Boundary"],
+];
+
 export function buildRetrievalArtifacts(graph: GraphArtifacts): RetrievalArtifacts {
   const sourceById = new Map(graph.sources.map((record) => [record.id, record]));
   const units: RetrievalUnit[] = [];
@@ -51,6 +69,7 @@ export function buildRetrievalArtifacts(graph: GraphArtifacts): RetrievalArtifac
     units.push(relationshipUnit(relationship, sourceById));
   }
   for (const source of graph.sources) units.push(sourceUnit(source, graph.claims));
+  for (const guide of graph.decisionGuides) units.push(...decisionGuideUnits(guide, sourceById));
   units.sort((left, right) => left.unit_id.localeCompare(right.unit_id));
   assertUniqueUnits(units);
 
@@ -297,6 +316,74 @@ function sourceUnit(source: GraphIndexRecord, claims: GraphIndexRecord[]): Retri
   });
 }
 
+function decisionGuideUnits(
+  guide: GraphIndexRecord,
+  sourceById: ReadonlyMap<string, GraphIndexRecord>,
+): RetrievalUnit[] {
+  const locations = asArray(guide.evidence_source_locations);
+  const citations = citationsFor(asStringArray(guide.evidence_source_ids), locations, sourceById);
+  const metadata = {
+    decision_question: guide.decision_question ?? null,
+    option_ids: asArray(guide.options)
+      .filter(isPlainObject)
+      .map((item) => asString(item.concept_id))
+      .filter(Boolean),
+    evidence_claim_ids: asStringArray(guide.evidence_chain_claim_ids),
+    recommendation_only: isPlainObject(guide.authority)
+      ? guide.authority.recommendation_only === true
+      : false,
+    human_decision_required: isPlainObject(guide.authority)
+      ? guide.authority.human_decision_required === true
+      : false,
+  };
+  const units: RetrievalUnit[] = [
+    createUnit({
+      kind: "decision-guide-overview",
+      record: guide,
+      conceptId: null,
+      sectionKey: "overview",
+      ordinal: 0,
+      title: `${asString(guide.title) ?? guide.id} — Decision Guide`,
+      text: compactLines([
+        `Decision guide: ${guide.id} ${asString(guide.title) ?? ""}`,
+        `Question: ${asString(guide.decision_question) ?? ""}`,
+        `Options: ${asArray(guide.options)
+          .filter(isPlainObject)
+          .map((item) => asString(item.concept_id))
+          .filter(Boolean)
+          .join(", ")}`,
+        "Authority: recommendation only; a human must decide; automation cannot approve.",
+      ]),
+      metadata,
+      citations,
+    }),
+  ];
+  for (const [field, label] of DECISION_GUIDE_SECTIONS) {
+    const value = guide[field];
+    if (value === undefined || (Array.isArray(value) && value.length === 0)) continue;
+    const text = compactLines([
+      `Decision guide: ${guide.id} ${asString(guide.title) ?? ""}`,
+      `${label}: ${renderValue(value)}`,
+    ]);
+    for (const [ordinal, part] of splitSemanticText(text, MAX_SEMANTIC_UNIT_TOKENS).entries()) {
+      units.push(
+        createUnit({
+          kind: "decision-guide-section",
+          record: guide,
+          conceptId: null,
+          sectionKey: field,
+          ordinal,
+          title: `${asString(guide.title) ?? guide.id} — ${label}`,
+          text: part,
+          metadata: { ...metadata, section_field: field },
+          citations,
+        }),
+      );
+    }
+  }
+  return units;
+}
+
 function createUnit(input: {
   kind: RetrievalUnitKind;
   record: GraphIndexRecord;
@@ -432,6 +519,8 @@ function countKinds(units: RetrievalUnit[]): Record<RetrievalUnitKind, number> {
     claim: 0,
     relationship: 0,
     source: 0,
+    "decision-guide-overview": 0,
+    "decision-guide-section": 0,
   };
   for (const unit of units) counts[unit.unit_kind] += 1;
   return counts;

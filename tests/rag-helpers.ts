@@ -141,6 +141,7 @@ export function ragCitationAuthority(
   return createRagCitationAuthority({
     concepts: [],
     claims: overrides.claims ?? [{ id: "AKL-000001", sources: ["AKS-000001"] }],
+    decisionGuides: [],
     relationships: [],
     sources: overrides.sources ?? [
       {

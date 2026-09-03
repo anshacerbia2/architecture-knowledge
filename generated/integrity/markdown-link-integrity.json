@@ -134,6 +134,16 @@
     },
     {
       "path": "docs/README.md",
+      "target": "adr/0008-decision-guide-validation-kernel.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "adr/0008-decision-guide-validation-kernel.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "kernel-decisions.md",
       "status": "valid"
     },
@@ -284,6 +294,16 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m7-1-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-decision-guide-kernel.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m7-entry-alignment-decision-model-audit.md",
       "status": "valid"
     },
@@ -349,7 +369,7 @@
     },
     {
       "path": "README.md",
-      "target": "docs/m7-entry-alignment-decision-model-audit.md",
+      "target": "docs/m7-decision-guide-kernel.md",
       "status": "valid"
     },
     {
@@ -389,8 +409,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 77,
+    "checked_link_count": 81,
     "broken_link_count": 0,
-    "markdown_file_count": 90
+    "markdown_file_count": 93
   }
 }

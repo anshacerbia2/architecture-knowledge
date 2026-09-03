@@ -1,16 +1,20 @@
-export const GRAPH_CONTRACT_VERSION = 1 as const;
-export const GRAPH_GENERATOR_VERSION = 1 as const;
+export const GRAPH_CONTRACT_VERSION = 2 as const;
+export const GRAPH_GENERATOR_VERSION = 2 as const;
 export const DEFAULT_MAX_DEPTH = 3;
 export const HARD_MAX_DEPTH = 8;
 
-export type GraphNodeFamily = "concept" | "claim" | "source" | "relationship";
+export type GraphNodeFamily = "concept" | "claim" | "source" | "relationship" | "decision-guide";
 export type GraphEdgeFamily =
   | "relationship"
   | "concept-declares-claim"
   | "claim-supported-by-source"
   | "claim-derived-from-claim"
   | "claim-applicable-to-concept"
-  | "relationship-supported-by-claim";
+  | "relationship-supported-by-claim"
+  | "decision-guide-supported-by-claim"
+  | "decision-guide-considers-option"
+  | "decision-guide-constrained-by-concept"
+  | "decision-guide-evaluates-quality-attribute";
 
 export interface GraphNode {
   id: string;
@@ -69,6 +73,7 @@ export interface GraphArtifacts {
   claims: GraphIndexRecord[];
   sources: GraphIndexRecord[];
   relationships: GraphIndexRecord[];
+  decisionGuides: GraphIndexRecord[];
   manifest: Record<string, unknown>;
   traversalPolicy: Record<string, unknown>;
 }

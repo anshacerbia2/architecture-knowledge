@@ -7,8 +7,8 @@ knowledge units are authored.
 
 ## Current scope
 
-The repository currently implements M0 through M6 and has completed the M7.0
-entry-alignment and decision-model audit: project definition, knowledge and
+The repository currently implements M0 through M6, has completed M7.0, and
+implements the bounded M7.1 decision-guide validation kernel: project definition, knowledge and
 validation kernels, the reference corpus, a deterministic knowledge graph/query
 layer, hybrid retrieval, and a governed architecture RAG implementation:
 
@@ -119,12 +119,12 @@ because runtime evidence was unavailable in that environment. See
 [`docs/m5-focused-evidence-reaudit-report.md`](docs/m5-focused-evidence-reaudit-report.md)
 for the `M6 READY` entry decision. The final independent M6 V4 re-audit closed
 the remaining evaluation-provenance finding and recorded `M6 READY`; Ansha
-Cerbia then explicitly approved M6 completion and authorized M7.0 only. The
-M7.0 audit fixes the boundaries among reusable guides, project sessions,
-recommendations, and draft artifacts, and identifies the semantic-validation,
-graph, retrieval, evidence, privacy, and authority preconditions for M7.1. No
-decision-guide corpus or assistant runtime has started. See
-[`docs/m7-entry-alignment-decision-model-audit.md`](docs/m7-entry-alignment-decision-model-audit.md).
+Cerbia then explicitly approved M6 completion and M7.0, and authorized M7.1's
+validation kernel. M7.1 implements closed guide, session, recommendation, and
+draft-artifact contracts plus semantic, graph, retrieval, privacy, authority,
+coverage, and mutation gates. No decision-guide corpus, assistant runtime,
+model integration, or artifact generator has started. See
+[`docs/m7-decision-guide-kernel.md`](docs/m7-decision-guide-kernel.md).
 
 ## Validation commands
 
