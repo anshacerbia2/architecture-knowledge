@@ -63,10 +63,10 @@ unqualified universal language such as "always," "never," and "best."
 Use pnpm only. The committed validation boundary is:
 
 - `pnpm validate`: strict typecheck plus schema, ID, source, claim,
-  relationship, lifecycle, Markdown, and link validation.
+  decision-guide, relationship, lifecycle, Markdown, and link validation.
 - `pnpm validate:schema`: YAML/JSON parsing, metaschema, reference resolution,
   and registered instance validation without coercion.
-- `pnpm validate:ids`, `validate:sources`, `validate:claims`,
+- `pnpm validate:ids`, `validate:sources`, `validate:claims`, `validate:decision-guides`,
   `validate:relationships`, `validate:lifecycle`, `validate:markdown`, and
   `validate:links`: focused semantic gates.
 - `pnpm report:integrity`: regenerate deterministic reports under

@@ -8,6 +8,7 @@ import { checkRetrievalArtifacts } from "../src/retrieval-artifacts.js";
 import { buildGraphArtifacts } from "../src/graph-projector.js";
 import { loadRepository } from "../src/model.js";
 import type { RepositoryModel } from "../src/model.js";
+import { recordFromData } from "./helpers.js";
 import {
   buildRetrievalArtifacts,
   estimateTokens,
@@ -72,6 +73,51 @@ describe("M5 deterministic retrieval units", () => {
     });
     expect((excluded?.metadata.conditions as unknown[]).length).toBeGreaterThan(0);
     expect(excluded?.metadata.traversal_exclusion_reason).toBeTruthy();
+  });
+
+  it("creates cited, authority-preserving units for first-class decision guides", () => {
+    const changedModel = structuredClone(model);
+    const guide = recordFromData(
+      {
+        id: "AKG-900001",
+        record_kind: "decision-guide",
+        title: "Synthetic retrieval decision guide",
+        decision_question: "Which bounded option?",
+        status: "proposed",
+        evidence: ["AKL-000061"],
+        options: [{ concept_id: "AKC-000018", label: "Synthetic option" }],
+        constraints: [],
+        assumptions: [],
+        quality_attributes: [],
+        evaluation_criteria: [],
+        tradeoff_matrix: [],
+        disqualifiers: [],
+        risk_questions: [],
+        recommended_when: [],
+        avoid_when: [],
+        evolution_triggers: [],
+        uncertainty_policy: { missing_evidence: "insufficient-evidence" },
+        privacy: { session_persistence: "ephemeral-only" },
+        authority: {
+          recommendation_only: true,
+          human_decision_required: true,
+          automation_may_approve: false,
+        },
+      },
+      "tests/fixtures/synthetic/AKG-900001.yaml",
+    );
+    changedModel.records.push(guide);
+    changedModel.decisionGuides = [guide];
+    const changed = buildRetrievalArtifacts(buildGraphArtifacts(changedModel));
+    expect(changed.manifest.unit_counts["decision-guide-overview"]).toBe(1);
+    const overview = changed.units.find((unit) => unit.unit_kind === "decision-guide-overview");
+    expect(overview).toMatchObject({
+      record_id: "AKG-900001",
+      lifecycle_status: "proposed",
+      metadata: { recommendation_only: true, human_decision_required: true },
+      citations: [expect.objectContaining({ source_id: "AKS-000019" })],
+    });
+    expect(changed.units.some((unit) => unit.unit_kind === "decision-guide-section")).toBe(true);
   });
 
   it("is byte deterministic", () => {

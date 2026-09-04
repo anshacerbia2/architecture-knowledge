@@ -287,6 +287,10 @@
       "schema": "schemas/rag-evaluation.schema.json#/$defs/goldenBenchmark"
     },
     {
+      "path": "generated/integrity/decision-guide-validation.json",
+      "schema": "schemas/integrity-report.schema.json"
+    },
+    {
       "path": "generated/integrity/deprecated-source-usage.json",
       "schema": "schemas/integrity-report.schema.json"
     },
@@ -608,8 +612,8 @@
     }
   ],
   "summary": {
-    "governed_files": 151,
-    "validated_files": 151,
-    "schema_files": 19
+    "governed_files": 152,
+    "validated_files": 152,
+    "schema_files": 22
   }
 }

@@ -124,6 +124,9 @@ milestones:
     status: proposed
     dependencies: [m6]
     deliverables:
+      - decision-guide schema and semantic validation kernel
+      - first-class decision-guide graph and retrieval projection
+      - ephemeral session, recommendation, and draft-artifact contracts
       - context and constraint intake
       - option and trade-off analysis
       - risk and evolution-trigger analysis
@@ -131,7 +134,7 @@ milestones:
     exit_criteria:
       - recommendations are contextual and explainable
       - automation cannot approve decisions
-    notes: M7.0 entry alignment and decision-model audit is complete. It separates reusable governed guides, ephemeral project sessions, recommendations, and draft decision artifacts, and records semantic-validation, graph, retrieval, evidence, privacy, and human-authority preconditions. M7.1 implementation, representative decision guides, and assistant runtime are not started or authorized.
+    notes: M7.0 is explicitly approved complete. The authorized M7.1 validation kernel is implemented without production decision guides or runtime behavior. Representative guide corpus, assistant runtime, model integration, and artifact generation remain unstarted and require a separate post-audit authorization.
   - id: m8
     title: Architecture Review Platform
     status: future

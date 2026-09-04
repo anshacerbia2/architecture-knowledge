@@ -1,13 +1,15 @@
-export const RETRIEVAL_CONTRACT_VERSION = 1 as const;
-export const RETRIEVAL_UNIT_CONTRACT_VERSION = 1 as const;
-export const RETRIEVAL_GENERATOR_VERSION = 1 as const;
+export const RETRIEVAL_CONTRACT_VERSION = 2 as const;
+export const RETRIEVAL_UNIT_CONTRACT_VERSION = 2 as const;
+export const RETRIEVAL_GENERATOR_VERSION = 2 as const;
 
 export type RetrievalUnitKind =
   | "concept-overview"
   | "concept-section"
   | "claim"
   | "relationship"
-  | "source";
+  | "source"
+  | "decision-guide-overview"
+  | "decision-guide-section";
 
 export interface RetrievalCitation {
   source_id: string;

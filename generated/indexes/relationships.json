@@ -1,7 +1,7 @@
 {
   "artifact_type": "relationships-index",
   "exact_match_normalization": "case-sensitive-unicode-code-point",
-  "graph_contract_version": 1,
+  "graph_contract_version": 2,
   "records": [
     {
       "conditions": [

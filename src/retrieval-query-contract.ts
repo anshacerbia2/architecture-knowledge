@@ -20,6 +20,8 @@ const UNIT_KINDS = new Set<RetrievalUnitKind>([
   "claim",
   "relationship",
   "source",
+  "decision-guide-overview",
+  "decision-guide-section",
 ]);
 const TOP_LEVEL = new Set([
   "text",

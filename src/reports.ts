@@ -50,6 +50,12 @@ export function buildIntegrityReports(analysis: KernelAnalysis): Map<string, Int
   addReport(reports, "deprecated-source-usage", analysis.evidence.deprecatedUsage, {
     usage_count: analysis.evidence.deprecatedUsage.length,
   });
+  addReport(reports, "decision-guide-validation", analysis.decisionGuides.diagnostics, {
+    guide_count: analysis.decisionGuides.guide_count,
+    evidence_binding_count: analysis.decisionGuides.evidence_binding_count,
+    matrix_cell_count: analysis.decisionGuides.matrix_cell_count,
+    error_count: analysis.decisionGuides.diagnostics.length,
+  });
   addReport(
     reports,
     "lifecycle-distribution",

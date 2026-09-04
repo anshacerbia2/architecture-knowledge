@@ -31,9 +31,13 @@ export class GraphQueryEngine {
 
   constructor(private readonly graph: GraphArtifacts) {
     this.recordById = new Map(
-      [...graph.concepts, ...graph.claims, ...graph.sources, ...graph.relationships].map(
-        (record) => [record.id, record],
-      ),
+      [
+        ...graph.concepts,
+        ...graph.claims,
+        ...graph.sources,
+        ...graph.relationships,
+        ...graph.decisionGuides,
+      ].map((record) => [record.id, record]),
     );
     this.edgeById = new Map(graph.edges.map((edge) => [edge.id, edge]));
     this.relationshipEdges = graph.edges
@@ -77,8 +81,10 @@ export class GraphQueryEngine {
     };
     const resolution = this.resolveIdentifier(identifier);
     if (!resolution.record) return failure(query, resolution.diagnostics);
-    if (resolution.record.record_kind !== "concept") {
-      return failure(query, [diagnostic("GRAPH_QUERY_FAMILY", "Neighbors require a concept ID.")]);
+    if (!isNavigable(resolution.record)) {
+      return failure(query, [
+        diagnostic("GRAPH_QUERY_FAMILY", "Neighbors require a concept or decision-guide ID."),
+      ]);
     }
     return envelope(query, this.neighborResults(resolution.record.id, options));
   }
@@ -96,8 +102,10 @@ export class GraphQueryEngine {
     };
     const resolution = this.resolveIdentifier(identifier);
     if (!resolution.record) return failure(query, resolution.diagnostics);
-    if (resolution.record.record_kind !== "concept") {
-      return failure(query, [diagnostic("GRAPH_QUERY_FAMILY", "Traversal requires a concept ID.")]);
+    if (!isNavigable(resolution.record)) {
+      return failure(query, [
+        diagnostic("GRAPH_QUERY_FAMILY", "Traversal requires a concept or decision-guide ID."),
+      ]);
     }
     const paths = this.walk(resolution.record.id, maxDepth, options, undefined);
     return envelope(query, paths);
@@ -121,8 +129,10 @@ export class GraphQueryEngine {
     const to = this.resolveIdentifier(toIdentifier);
     const diagnostics = [...from.diagnostics, ...to.diagnostics];
     if (!from.record || !to.record) return failure(query, diagnostics);
-    if (from.record.record_kind !== "concept" || to.record.record_kind !== "concept") {
-      return failure(query, [diagnostic("GRAPH_QUERY_FAMILY", "Path endpoints must be concepts.")]);
+    if (!isNavigable(from.record) || !isNavigable(to.record)) {
+      return failure(query, [
+        diagnostic("GRAPH_QUERY_FAMILY", "Path endpoints must be concepts or decision guides."),
+      ]);
     }
     const paths = this.walk(from.record.id, maxDepth, options, to.record.id);
     return envelope(query, paths);
@@ -258,7 +268,9 @@ export class GraphQueryEngine {
             ? this.graph.relationships
             : family === "sources"
               ? this.graph.sources
-              : undefined;
+              : family === "decision-guides"
+                ? this.graph.decisionGuides
+                : undefined;
     if (!records)
       return failure(query, [diagnostic("GRAPH_QUERY_FAMILY", `Unknown index '${family}'.`)]);
     try {
@@ -412,7 +424,7 @@ export class GraphQueryEngine {
         const edge = candidate.edge as unknown as GraphEdge;
         if (!nextId || state.nodeIds.includes(nextId)) continue;
         const nextRecord = this.recordById.get(nextId);
-        if (!nextRecord || nextRecord.record_kind !== "concept") continue;
+        if (!nextRecord || !isNavigable(nextRecord)) continue;
         if (!matchesAny(nextRecord.type, options.conceptTypes ?? [])) continue;
         if (!matchesAny(nextRecord.domain, options.domains ?? [])) continue;
         const nextState: WalkState = {
@@ -477,6 +489,15 @@ function filterRecords(
       publisher: "publisher",
       authority: "authority_level",
       domain: "domains",
+    },
+    "decision-guides": {
+      id: "id",
+      title: "title",
+      status: "status",
+      option: "option_concept_ids",
+      evidence: "evidence",
+      constraint: "constraint_concept_ids",
+      quality_attribute: "quality_attribute_ids",
     },
   };
   const permitted = aliases[family] ?? aliases.claims ?? {};
@@ -607,6 +628,10 @@ function compareEdges(left: GraphEdge, right: GraphEdge): number {
 
 function matchesAny(value: unknown, filters: readonly string[]): boolean {
   return filters.length === 0 || (typeof value === "string" && filters.includes(value));
+}
+
+function isNavigable(record: GraphIndexRecord): boolean {
+  return record.record_kind === "concept" || record.record_kind === "decision-guide";
 }
 
 function diagnostic(code: string, message: string): GraphQueryDiagnostic {

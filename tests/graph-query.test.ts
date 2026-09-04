@@ -4,6 +4,7 @@ import { buildGraphArtifacts } from "../src/graph-projector.js";
 import { GraphQueryEngine } from "../src/graph-query.js";
 import type { GraphArtifacts } from "../src/graph-types.js";
 import { loadRepository } from "../src/model.js";
+import { recordFromData } from "./helpers.js";
 
 describe("M4 graph query engine", () => {
   let engine: GraphQueryEngine;
@@ -19,6 +20,31 @@ describe("M4 graph query engine", () => {
     expect(engine.get("AKL-000061").results[0]).toMatchObject({ family: "claim" });
     expect(engine.get("AKR-000010").results[0]).toMatchObject({ family: "relationship" });
     expect(engine.get("AKS-000019").results[0]).toMatchObject({ family: "source" });
+  });
+
+  it("gets, lists, and finds dependents for a first-class decision guide", async () => {
+    const model = await loadRepository(process.cwd());
+    const guide = recordFromData(
+      {
+        id: "AKG-900001",
+        record_kind: "decision-guide",
+        title: "Synthetic query guide",
+        status: "proposed",
+        evidence: ["AKL-000061"],
+        options: [{ concept_id: "AKC-000018" }],
+        constraints: [],
+        quality_attributes: [],
+      },
+      "tests/fixtures/synthetic/AKG-900001.yaml",
+    );
+    model.records.push(guide);
+    model.decisionGuides = [guide];
+    const guideEngine = new GraphQueryEngine(buildGraphArtifacts(model));
+    expect(guideEngine.get("AKG-900001").results[0]).toMatchObject({ family: "decision-guide" });
+    expect(guideEngine.list("decision-guides", { status: ["proposed"] }).result_count).toBe(1);
+    expect(guideEngine.dependents("AKL-000061").results).toEqual(
+      expect.arrayContaining([expect.objectContaining({ referencing_record_id: "AKG-900001" })]),
+    );
   });
 
   it("resolves an exact current human key without fuzzy matching", () => {
@@ -351,7 +377,7 @@ describe("M4 graph query engine", () => {
         result_count: 1,
         results: expect.any(Array),
         diagnostics: [],
-        graph_contract_version: 1,
+        graph_contract_version: 2,
       }),
     );
   });

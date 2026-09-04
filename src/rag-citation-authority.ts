@@ -8,6 +8,7 @@ export interface RagCitationAuthorityRecord extends Record<string, unknown> {
 export interface RagCitationAuthorityRecords {
   concepts: readonly RagCitationAuthorityRecord[];
   claims: readonly RagCitationAuthorityRecord[];
+  decisionGuides: readonly RagCitationAuthorityRecord[];
   relationships: readonly RagCitationAuthorityRecord[];
   sources: readonly RagCitationAuthorityRecord[];
 }
@@ -32,6 +33,7 @@ export function createRagCitationAuthority(
   };
   for (const concept of records.concepts) add(concept, asStringArray(concept.sources));
   for (const claim of records.claims) add(claim, asStringArray(claim.sources));
+  for (const guide of records.decisionGuides) add(guide, asStringArray(guide.evidence_source_ids));
   for (const relationship of records.relationships)
     add(relationship, asStringArray(relationship.direct_source_ids));
   for (const source of records.sources) add(source, [source.id]);

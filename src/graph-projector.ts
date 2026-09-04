@@ -27,6 +27,7 @@ const artifactPaths = [
   "generated/indexes/claims.json",
   "generated/indexes/relationships.json",
   "generated/indexes/sources.json",
+  "generated/indexes/decision-guides.json",
 ] as const;
 
 export function buildGraphArtifacts(model: RepositoryModel): GraphArtifacts {
@@ -47,17 +48,42 @@ export function buildGraphArtifacts(model: RepositoryModel): GraphArtifacts {
       traversal_exclusion_reason: traversal.reason,
     });
   });
+  const decisionGuides = model.decisionGuides.map((record) => {
+    const evidence = collectClaimEvidence(asStringArray(record.data.evidence), claimById);
+    return indexRecord(record, humanKeys, {
+      evidence_chain_claim_ids: evidence.claimIds,
+      evidence_source_ids: evidence.sourceIds,
+      evidence_source_locations: evidence.sourceLocations,
+      option_concept_ids: asArray(record.data.options)
+        .filter(isPlainObject)
+        .map((item) => asString(item.concept_id))
+        .filter((item): item is string => Boolean(item))
+        .sort(),
+      constraint_concept_ids: asArray(record.data.constraints)
+        .filter(isPlainObject)
+        .map((item) => asString(item.concept_id))
+        .filter((item): item is string => Boolean(item))
+        .sort(),
+      quality_attribute_ids: asArray(record.data.quality_attributes)
+        .filter(isPlainObject)
+        .map((item) => asString(item.concept_id))
+        .filter((item): item is string => Boolean(item))
+        .sort(),
+    });
+  });
 
   sortById(concepts);
   sortById(claims);
   sortById(sources);
   sortById(relationships);
+  sortById(decisionGuides);
 
   const nodes = [
     ...model.concepts.map((record) => graphNode(record, "concept")),
     ...model.claims.map((record) => graphNode(record, "claim")),
     ...model.sources.map((record) => graphNode(record, "source")),
     ...model.relationships.map((record) => graphNode(record, "relationship")),
+    ...model.decisionGuides.map((record) => graphNode(record, "decision-guide")),
   ].sort(compareNodes);
   const edges = buildEdges(model, claimById, sourceById);
   const adjacency = buildAdjacency(nodes, edges, false);
@@ -110,6 +136,7 @@ export function buildGraphArtifacts(model: RepositoryModel): GraphArtifacts {
       claims: model.claims.length,
       sources: model.sources.length,
       relationships: model.relationships.length,
+      decision_guides: model.decisionGuides.length,
     },
     output_node_counts: nodeCounts,
     output_edge_counts: edgeCounts,
@@ -162,6 +189,7 @@ export function buildGraphArtifacts(model: RepositoryModel): GraphArtifacts {
   addIndex(files, "claims", claims);
   addIndex(files, "relationships", relationships);
   addIndex(files, "sources", sources);
+  addIndex(files, "decision-guides", decisionGuides);
 
   return {
     files,
@@ -171,6 +199,7 @@ export function buildGraphArtifacts(model: RepositoryModel): GraphArtifacts {
     claims,
     sources,
     relationships,
+    decisionGuides,
     manifest,
     traversalPolicy,
   };
@@ -362,6 +391,62 @@ function buildEdges(
       );
     }
   }
+  for (const guide of model.decisionGuides) {
+    for (const claimId of asStringArray(guide.data.evidence).sort()) {
+      edges.push(
+        provenanceEdge(
+          `edge:decision-guide-claim:${guide.id}:${claimId}`,
+          "decision-guide-supported-by-claim",
+          guide.id,
+          claimId,
+          "supported-by-claim",
+          guide.path,
+        ),
+      );
+    }
+    for (const option of asArray(guide.data.options).filter(isPlainObject)) {
+      const conceptId = asString(option.concept_id);
+      if (conceptId)
+        edges.push(
+          provenanceEdge(
+            `edge:decision-guide-option:${guide.id}:${conceptId}`,
+            "decision-guide-considers-option",
+            guide.id,
+            conceptId,
+            "considers-option",
+            guide.path,
+          ),
+        );
+    }
+    for (const constraint of asArray(guide.data.constraints).filter(isPlainObject)) {
+      const conceptId = asString(constraint.concept_id);
+      if (conceptId)
+        edges.push(
+          provenanceEdge(
+            `edge:decision-guide-constraint:${guide.id}:${conceptId}`,
+            "decision-guide-constrained-by-concept",
+            guide.id,
+            conceptId,
+            "constrained-by",
+            guide.path,
+          ),
+        );
+    }
+    for (const quality of asArray(guide.data.quality_attributes).filter(isPlainObject)) {
+      const conceptId = asString(quality.concept_id);
+      if (conceptId)
+        edges.push(
+          provenanceEdge(
+            `edge:decision-guide-quality:${guide.id}:${conceptId}`,
+            "decision-guide-evaluates-quality-attribute",
+            guide.id,
+            conceptId,
+            "evaluates-quality-attribute",
+            guide.path,
+          ),
+        );
+    }
+  }
   return edges.sort(compareEdges);
 }
 
@@ -400,6 +485,13 @@ function collectRelationshipEvidence(
   relationship: RecordEntry,
   claimById: ReadonlyMap<string, RecordEntry>,
 ): { claimIds: string[]; sourceIds: string[]; sourceLocations: unknown[] } {
+  return collectClaimEvidence(asStringArray(relationship.data.evidence), claimById);
+}
+
+function collectClaimEvidence(
+  initialClaimIds: string[],
+  claimById: ReadonlyMap<string, RecordEntry>,
+): { claimIds: string[]; sourceIds: string[]; sourceLocations: unknown[] } {
   const claimIds = new Set<string>();
   const sourceIds = new Set<string>();
   const locations = new Map<string, unknown>();
@@ -414,7 +506,7 @@ function collectRelationshipEvidence(
     }
     for (const parentId of asStringArray(claim.data.derived_from_claims)) visit(parentId);
   };
-  for (const claimId of asStringArray(relationship.data.evidence)) visit(claimId);
+  for (const claimId of initialClaimIds) visit(claimId);
   return {
     claimIds: [...claimIds].sort(),
     sourceIds: [...sourceIds].sort(),
@@ -577,7 +669,7 @@ function humanKeyMap(
 
 function addIndex(
   files: Map<string, string>,
-  family: "concepts" | "claims" | "relationships" | "sources",
+  family: "concepts" | "claims" | "relationships" | "sources" | "decision-guides",
   records: GraphIndexRecord[],
 ): void {
   addArtifact(files, `generated/indexes/${family}.json`, {

@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/decision-recommendation.schema.json",
+  "title": "Decision Recommendation Contract",
+  "description": "Runtime-neutral, evidence-bearing recommendation result. It is never an approved decision.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "session_id",
+    "guide_id",
+    "status",
+    "applicable_context",
+    "constraint_results",
+    "viable_options",
+    "rejected_options",
+    "tradeoffs",
+    "risks",
+    "uncertainty",
+    "verification",
+    "evolution_triggers",
+    "claim_ids",
+    "source_ids",
+    "authority"
+  ],
+  "properties": {
+    "contract_version": { "const": 1 },
+    "session_id": { "type": "string", "format": "uuid" },
+    "guide_id": { "$ref": "_defs.schema.json#/$defs/decisionGuideId" },
+    "status": {
+      "enum": [
+        "recommendation",
+        "multiple-viable-options",
+        "insufficient-evidence",
+        "needs-human-clarification"
+      ]
+    },
+    "applicable_context": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/contextValue" }
+    },
+    "constraint_results": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/constraintResult" }
+    },
+    "viable_options": {
+      "type": "array",
+      "items": { "$ref": "_defs.schema.json#/$defs/conceptId" },
+      "uniqueItems": true
+    },
+    "rejected_options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["concept_id", "reason", "claim_ids"],
+        "properties": {
+          "concept_id": { "$ref": "_defs.schema.json#/$defs/conceptId" },
+          "reason": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+          "claim_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "_defs.schema.json#/$defs/claimId" },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "tradeoffs": { "type": "array", "items": { "$ref": "#/$defs/evidenceStatement" } },
+    "risks": { "type": "array", "items": { "$ref": "#/$defs/evidenceStatement" } },
+    "uncertainty": { "type": "array", "items": { "$ref": "#/$defs/uncertaintyStatement" } },
+    "verification": { "type": "array", "items": { "$ref": "#/$defs/evidenceStatement" } },
+    "evolution_triggers": { "type": "array", "items": { "$ref": "#/$defs/evidenceStatement" } },
+    "claim_ids": {
+      "type": "array",
+      "items": { "$ref": "_defs.schema.json#/$defs/claimId" },
+      "uniqueItems": true
+    },
+    "source_ids": {
+      "type": "array",
+      "items": { "$ref": "_defs.schema.json#/$defs/sourceId" },
+      "uniqueItems": true
+    },
+    "authority": { "$ref": "#/$defs/authority" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": { "enum": ["recommendation", "multiple-viable-options"] }
+        },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "viable_options": { "type": "array", "minItems": 1 },
+          "tradeoffs": { "type": "array", "minItems": 1 },
+          "verification": { "type": "array", "minItems": 1 },
+          "claim_ids": { "type": "array", "minItems": 1 },
+          "source_ids": { "type": "array", "minItems": 1 }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": { "enum": ["insufficient-evidence", "needs-human-clarification"] }
+        },
+        "required": ["status"]
+      },
+      "then": { "properties": { "uncertainty": { "type": "array", "minItems": 1 } } }
+    }
+  ],
+  "$defs": {
+    "contextValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "value", "classification", "provenance", "confirmed_by_human"],
+      "properties": {
+        "key": { "$ref": "_defs.schema.json#/$defs/slug" },
+        "value": { "type": ["string", "number", "integer", "boolean", "null"] },
+        "classification": { "enum": ["public", "internal", "confidential", "restricted"] },
+        "provenance": { "enum": ["human-provided", "system-observed", "inferred"] },
+        "confirmed_by_human": { "type": "boolean" }
+      }
+    },
+    "constraintResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["concept_id", "hardness", "status", "rationale", "claim_ids"],
+      "properties": {
+        "concept_id": { "$ref": "_defs.schema.json#/$defs/conceptId" },
+        "hardness": { "enum": ["hard", "preference"] },
+        "status": { "enum": ["satisfied", "unsatisfied", "unknown"] },
+        "rationale": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+        "claim_ids": {
+          "type": "array",
+          "items": { "$ref": "_defs.schema.json#/$defs/claimId" },
+          "uniqueItems": true
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "enum": ["satisfied", "unsatisfied"] } },
+            "required": ["status"]
+          },
+          "then": { "properties": { "claim_ids": { "type": "array", "minItems": 1 } } }
+        }
+      ]
+    },
+    "evidenceStatement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statement", "claim_ids"],
+      "properties": {
+        "statement": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+        "claim_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "_defs.schema.json#/$defs/claimId" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "uncertaintyStatement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statement", "basis", "claim_ids"],
+      "properties": {
+        "statement": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+        "basis": {
+          "enum": [
+            "missing-evidence",
+            "conflicting-evidence",
+            "unknown-context",
+            "tie",
+            "low-confidence"
+          ]
+        },
+        "claim_ids": {
+          "type": "array",
+          "items": { "$ref": "_defs.schema.json#/$defs/claimId" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recommendation_only", "human_decision_required", "automation_may_approve"],
+      "properties": {
+        "recommendation_only": { "const": true },
+        "human_decision_required": { "const": true },
+        "automation_may_approve": { "const": false }
+      }
+    }
+  }
+}

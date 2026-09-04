@@ -1,6 +1,6 @@
 {
   "artifact_type": "forward-adjacency",
-  "graph_contract_version": 1,
+  "graph_contract_version": 2,
   "records": [
     {
       "edge_ids": [

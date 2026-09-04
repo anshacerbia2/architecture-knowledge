@@ -75,16 +75,25 @@ export async function loadCurrentGraph(
     }
     return value;
   };
-  const [graph, conceptIndex, claimIndex, sourceIndex, relationshipIndex, manifest, policy] =
-    await Promise.all([
-      read("generated/graph/graph.json"),
-      read("generated/indexes/concepts.json"),
-      read("generated/indexes/claims.json"),
-      read("generated/indexes/sources.json"),
-      read("generated/indexes/relationships.json"),
-      read("generated/graph/manifest.json"),
-      read("generated/graph/traversal-policy.json"),
-    ]);
+  const [
+    graph,
+    conceptIndex,
+    claimIndex,
+    sourceIndex,
+    relationshipIndex,
+    decisionGuideIndex,
+    manifest,
+    policy,
+  ] = await Promise.all([
+    read("generated/graph/graph.json"),
+    read("generated/indexes/concepts.json"),
+    read("generated/indexes/claims.json"),
+    read("generated/indexes/sources.json"),
+    read("generated/indexes/relationships.json"),
+    read("generated/indexes/decision-guides.json"),
+    read("generated/graph/manifest.json"),
+    read("generated/graph/traversal-policy.json"),
+  ]);
   const loaded = {
     files: new Map(),
     nodes: asArray(graph.nodes) as GraphNode[],
@@ -93,6 +102,7 @@ export async function loadCurrentGraph(
     claims: asArray(claimIndex.records) as GraphIndexRecord[],
     sources: asArray(sourceIndex.records) as GraphIndexRecord[],
     relationships: asArray(relationshipIndex.records) as GraphIndexRecord[],
+    decisionGuides: asArray(decisionGuideIndex.records) as GraphIndexRecord[],
     manifest,
     traversalPolicy: policy,
   };
@@ -146,6 +156,7 @@ export function validateGraphArtifacts(
     ["claim", artifacts.claims, model.claims.length],
     ["source", artifacts.sources, model.sources.length],
     ["relationship", artifacts.relationships, model.relationships.length],
+    ["decision-guide", artifacts.decisionGuides, model.decisionGuides.length],
   ];
   for (const [family, records, expected] of familyExpectations) {
     const ids = records.map((record) => record.id);
@@ -177,6 +188,7 @@ export function validateGraphArtifacts(
     ["claim", artifacts.claims, model.claims],
     ["source", artifacts.sources, model.sources],
     ["relationship", artifacts.relationships, model.relationships],
+    ["decision-guide", artifacts.decisionGuides, model.decisionGuides],
   ];
   for (const [family, indexedRecords, authoritativeRecords] of recordsByFamily) {
     const indexedById = new Map(indexedRecords.map((record) => [record.id, record]));
@@ -351,7 +363,11 @@ export function validateGraphArtifacts(
   validateAdjacencyArtifact(artifacts, false, add);
   validateAdjacencyArtifact(artifacts, true, add);
   const expectedNodes =
-    model.concepts.length + model.claims.length + model.sources.length + model.relationships.length;
+    model.concepts.length +
+    model.claims.length +
+    model.sources.length +
+    model.relationships.length +
+    model.decisionGuides.length;
   if (artifacts.nodes.length !== expectedNodes) {
     add("GRAPH_NODE_COUNT", "generated/graph/manifest.json", String(artifacts.nodes.length));
   }
@@ -472,6 +488,54 @@ function expectedProvenanceEdges(model: RepositoryModel): Map<string, ExpectedPr
         "supported-by-claim",
         relationship.path,
       );
+    }
+  }
+  for (const guide of model.decisionGuides) {
+    for (const claimId of asStringArray(guide.data.evidence)) {
+      add(
+        "edge:decision-guide-claim:" + guide.id + ":" + claimId,
+        "decision-guide-supported-by-claim",
+        guide.id,
+        claimId,
+        "supported-by-claim",
+        guide.path,
+      );
+    }
+    for (const option of asArray(guide.data.options).filter(isPlainObject)) {
+      const conceptId = asString(option.concept_id);
+      if (conceptId)
+        add(
+          "edge:decision-guide-option:" + guide.id + ":" + conceptId,
+          "decision-guide-considers-option",
+          guide.id,
+          conceptId,
+          "considers-option",
+          guide.path,
+        );
+    }
+    for (const constraint of asArray(guide.data.constraints).filter(isPlainObject)) {
+      const conceptId = asString(constraint.concept_id);
+      if (conceptId)
+        add(
+          "edge:decision-guide-constraint:" + guide.id + ":" + conceptId,
+          "decision-guide-constrained-by-concept",
+          guide.id,
+          conceptId,
+          "constrained-by",
+          guide.path,
+        );
+    }
+    for (const quality of asArray(guide.data.quality_attributes).filter(isPlainObject)) {
+      const conceptId = asString(quality.concept_id);
+      if (conceptId)
+        add(
+          "edge:decision-guide-quality:" + guide.id + ":" + conceptId,
+          "decision-guide-evaluates-quality-attribute",
+          guide.id,
+          conceptId,
+          "evaluates-quality-attribute",
+          guide.path,
+        );
     }
   }
   return expected;

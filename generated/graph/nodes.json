@@ -1,6 +1,6 @@
 {
   "artifact_type": "nodes",
-  "graph_contract_version": 1,
+  "graph_contract_version": 2,
   "records": [
     {
       "family": "claim",

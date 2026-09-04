@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architecture-knowledge.local/schemas/decision-artifact-draft.schema.json",
+  "title": "Decision Artifact Draft Contract",
+  "description": "Portable draft contract only; no generator or approval transition is implied.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "format",
+    "status",
+    "title",
+    "sections",
+    "guide_id",
+    "session_id",
+    "claim_ids",
+    "source_ids",
+    "authority"
+  ],
+  "properties": {
+    "contract_version": { "const": 1 },
+    "format": { "enum": ["adr", "rfc", "pad"] },
+    "status": { "const": "draft" },
+    "title": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "content", "claim_ids"],
+        "properties": {
+          "key": { "$ref": "_defs.schema.json#/$defs/slug" },
+          "content": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
+          "claim_ids": {
+            "type": "array",
+            "items": { "$ref": "_defs.schema.json#/$defs/claimId" },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "guide_id": { "$ref": "_defs.schema.json#/$defs/decisionGuideId" },
+    "session_id": { "type": "string", "format": "uuid" },
+    "claim_ids": {
+      "type": "array",
+      "items": { "$ref": "_defs.schema.json#/$defs/claimId" },
+      "uniqueItems": true
+    },
+    "source_ids": {
+      "type": "array",
+      "items": { "$ref": "_defs.schema.json#/$defs/sourceId" },
+      "uniqueItems": true
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["draft_only", "human_acceptance_required", "automation_may_approve"],
+      "properties": {
+        "draft_only": { "const": true },
+        "human_acceptance_required": { "const": true },
+        "automation_may_approve": { "const": false }
+      }
+    }
+  }
+}
