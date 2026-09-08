@@ -14,8 +14,7 @@
   },
   "coverageAnalysis": "perTest",
   "mutate": [
-    "src/retrieval-units.ts:45-112",
-    "src/retrieval-units.ts:300-390",
+    "src/retrieval-units.ts",
     "src/retrieval-query-contract.ts",
     "src/retrieval-query.ts:49-183",
     "src/retrieval-query.ts:190-399",

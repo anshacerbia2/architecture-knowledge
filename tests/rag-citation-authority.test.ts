@@ -26,7 +26,7 @@ describe("RAG citation authority", () => {
     };
     expect(authority.resolve("AKC-000001", "AKS-000001")).toEqual(expected);
     expect(authority.resolve("AKL-000001", "AKS-000001")).toEqual(expected);
-    expect(authority.resolve("AKG-000001", "AKS-000001")).toEqual(expected);
+    expect(authority.resolve("AKG-000001", "AKS-000001")).toBeUndefined();
     expect(authority.resolve("AKR-000001", "AKS-000001")).toEqual(expected);
     expect(authority.resolve("AKS-000001", "AKS-000001")).toEqual(expected);
   });

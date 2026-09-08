@@ -13,10 +13,11 @@
     "drivers",
     "constraints",
     "privacy",
-    "authority"
+    "authority",
+    "condition_evaluations"
   ],
   "properties": {
-    "contract_version": { "const": 1 },
+    "contract_version": { "const": 2 },
     "session_id": { "type": "string", "format": "uuid" },
     "guide_id": { "$ref": "_defs.schema.json#/$defs/decisionGuideId" },
     "context": {
@@ -31,6 +32,25 @@
           "classification": { "enum": ["public", "internal", "confidential", "restricted"] },
           "provenance": { "enum": ["human-provided", "system-observed", "inferred"] },
           "confirmed_by_human": { "type": "boolean" }
+        }
+      }
+    },
+    "condition_evaluations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["condition", "satisfied", "confirmed_by_human"],
+        "properties": {
+          "condition": {
+            "$ref": "decision-guide.schema.json#/$defs/qualifiedCondition"
+          },
+          "satisfied": {
+            "type": ["boolean", "null"]
+          },
+          "confirmed_by_human": {
+            "type": "boolean"
+          }
         }
       }
     },

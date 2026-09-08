@@ -66,6 +66,9 @@ Use pnpm only. The committed validation boundary is:
   decision-guide, relationship, lifecycle, Markdown, and link validation.
 - `pnpm validate:schema`: YAML/JSON parsing, metaschema, reference resolution,
   and registered instance validation without coercion.
+- `pnpm decision:validate -- session.json recommendation.json`: read-only
+  ephemeral output schema and semantic validation against the validated repository.
+  Schema success alone is not evidence closure, authentication, or human approval.
 - `pnpm validate:ids`, `validate:sources`, `validate:claims`, `validate:decision-guides`,
   `validate:relationships`, `validate:lifecycle`, `validate:markdown`, and
   `validate:links`: focused semantic gates.

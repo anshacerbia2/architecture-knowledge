@@ -18,6 +18,7 @@ export default defineConfig({
         "src/id-validator.ts",
         "src/evidence-validator.ts",
         "src/decision-guide-validator.ts",
+        "src/decision-recommendation-validator.ts",
         "src/claim-derivation-validator.ts",
         "src/relationship-validator.ts",
         "src/markdown-validator.ts",

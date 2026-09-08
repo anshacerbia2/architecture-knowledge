@@ -68,6 +68,13 @@ These are contracts for a future runtime, not a runtime implementation.
 
 ## Validation commands
 
+The subsequent [focused hardening migration](m7-1-hardening-report.md) adds the
+v3 guide and v2 session/recommendation boundary. Schema success alone is not
+recommendation clearance: use the pure semantic validator or
+`pnpm decision:validate -- session.json recommendation.json`. No input is persisted
+by this command. Guide citation support is binding-local; whole-guide provenance
+is separate metadata, not a section's evidence.
+
 ```bash
 pnpm validate:decision-guides
 pnpm graph:check

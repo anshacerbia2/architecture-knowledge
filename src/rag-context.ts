@@ -80,7 +80,7 @@ function citations(
   const output: RagCitationCatalogEntry[] = [];
   for (const item of evidence) {
     for (const citation of item.citations) {
-      const governed = citationAuthority.resolve(item.record_id, citation.source_id);
+      const governed = citationAuthority.resolve(item.record_id, citation.source_id, item.unit_id);
       if (!governed) continue;
       output.push({
         citation_id: `C${String(output.length + 1).padStart(4, "0")}`,
@@ -88,7 +88,7 @@ function citations(
         source_id: governed.source_id,
         title: governed.title,
         url: governed.url,
-        locators: citation.locators,
+        locators: governed.locators ?? citation.locators,
       });
     }
   }

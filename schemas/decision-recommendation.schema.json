@@ -21,10 +21,11 @@
     "evolution_triggers",
     "claim_ids",
     "source_ids",
-    "authority"
+    "authority",
+    "evidence_claims"
   ],
   "properties": {
-    "contract_version": { "const": 1 },
+    "contract_version": { "const": 2 },
     "session_id": { "type": "string", "format": "uuid" },
     "guide_id": { "$ref": "_defs.schema.json#/$defs/decisionGuideId" },
     "status": {
@@ -82,34 +83,116 @@
       "items": { "$ref": "_defs.schema.json#/$defs/sourceId" },
       "uniqueItems": true
     },
-    "authority": { "$ref": "#/$defs/authority" }
+    "authority": { "$ref": "#/$defs/authority" },
+    "evidence_claims": {
+      "type": "array",
+      "items": { "$ref": "claim.schema.json" },
+      "uniqueItems": true
+    }
   },
   "allOf": [
     {
       "if": {
         "properties": {
-          "status": { "enum": ["recommendation", "multiple-viable-options"] }
+          "status": {
+            "enum": ["recommendation", "multiple-viable-options"]
+          }
         },
         "required": ["status"]
       },
       "then": {
         "properties": {
-          "viable_options": { "type": "array", "minItems": 1 },
-          "tradeoffs": { "type": "array", "minItems": 1 },
-          "verification": { "type": "array", "minItems": 1 },
-          "claim_ids": { "type": "array", "minItems": 1 },
-          "source_ids": { "type": "array", "minItems": 1 }
+          "viable_options": {
+            "type": "array",
+            "minItems": 1
+          },
+          "tradeoffs": {
+            "type": "array",
+            "minItems": 1
+          },
+          "verification": {
+            "type": "array",
+            "minItems": 1
+          },
+          "claim_ids": {
+            "type": "array",
+            "minItems": 1
+          },
+          "source_ids": {
+            "type": "array",
+            "minItems": 1
+          }
         }
       }
     },
     {
       "if": {
         "properties": {
-          "status": { "enum": ["insufficient-evidence", "needs-human-clarification"] }
+          "status": {
+            "enum": ["insufficient-evidence", "needs-human-clarification"]
+          }
         },
         "required": ["status"]
       },
-      "then": { "properties": { "uncertainty": { "type": "array", "minItems": 1 } } }
+      "then": {
+        "properties": {
+          "uncertainty": {
+            "type": "array",
+            "minItems": 1
+          },
+          "viable_options": {
+            "type": "array",
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "multiple-viable-options"
+          }
+        },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "viable_options": {
+            "type": "array",
+            "minItems": 2
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "constraint_results": {
+            "type": "array",
+            "contains": {
+              "type": "object",
+              "properties": {
+                "hardness": {
+                  "const": "hard"
+                },
+                "status": {
+                  "enum": ["unknown", "unsatisfied"]
+                }
+              },
+              "required": ["hardness", "status"]
+            }
+          }
+        },
+        "required": ["constraint_results"]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "enum": ["insufficient-evidence", "needs-human-clarification"]
+          }
+        }
+      }
     }
   ],
   "$defs": {

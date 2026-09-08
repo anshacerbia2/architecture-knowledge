@@ -13,11 +13,11 @@
     "provider": "openai"
   },
   "estimated_token_total": 38862,
-  "generator_version": 2,
+  "generator_version": 3,
   "governed_input_hash": "sha256:e3f76b02356ff982760b1a9b6683e362c9fd234d62cf7c89324e42b404535c90",
   "graph_contract_version": 2,
   "graph_input_fingerprint": "sha256:ad827bcfa37e9cb0a0510dbc51ab2149598e2e3200b2fa68c25490faa34ddc68",
-  "manifest_root_hash": "sha256:b4264be498bcf0ddd501430c2cec13340a754ce5378d530f65259d36163fe331",
+  "manifest_root_hash": "sha256:3840238bd0c558f22e479c7dbe2bb3d964c07a9246758e0f9e6a08b022848a27",
   "normalization_version": "retrieval-normalization-v1",
   "retrieval_contract_version": 2,
   "retrieval_unit_contract_version": 2,

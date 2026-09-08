@@ -83,6 +83,8 @@ any document reviewed, approved, published, or canonical.
 | M7-02 | [ADR 0008: Decision Guide Validation Kernel](adr/0008-decision-guide-validation-kernel.md) | Records the guide/session/recommendation/artifact separation and versioned schema, graph, retrieval, privacy, and authority migrations. |
 | M7-03 | [M7.1 Decision Guide Validation Kernel](m7-decision-guide-kernel.md) | Documents contracts, invariants, graph/retrieval behavior, CLI gates, and explicit exclusions. |
 | M7-04 | [M7.1 Implementation Report](m7-1-implementation-report.md) | Records scope, governance interpretation, migrations, validation evidence, and the independent-audit handoff. |
+| M7-05 | [M7.1 Audit](m7-1-independent-audit-report.md) | Records four blocking kernel findings and same-assistant reviewer limitations. |
+| M7-06 | [M7.1 Focused Hardening](m7-1-hardening-report.md) | Records output validation, measurement compatibility, binding-local citations, migrations, and remediation evidence without corpus/runtime entry. |
 
 ## Architecture Decision Records
 

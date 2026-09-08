@@ -129,6 +129,32 @@ export function validateDecisionGuides(model: RepositoryModel): DecisionGuideAna
       }
       actualCells.add(signature);
       const criterion = criterionByKey.get(criterionKey);
+      if (criterion) {
+        const assessment = isPlainObject(cell.assessment) ? cell.assessment : {};
+        const empty = ["unknown", "not-applicable"].includes(asString(assessment.rating) ?? "");
+        const quantitative = criterion.scale === "quantitative";
+        const valid = empty
+          ? assessment.value === null &&
+            assessment.unit === null &&
+            assessment.uncertainty !== "none"
+          : quantitative
+            ? typeof assessment.value === "number" &&
+              Number.isFinite(assessment.value) &&
+              typeof criterion.unit === "string" &&
+              criterion.unit.trim().length > 0 &&
+              assessment.unit === criterion.unit
+            : assessment.unit === null &&
+              criterion.unit === null &&
+              (assessment.value === null || typeof assessment.value === "string");
+        if (!valid)
+          add(
+            diagnostics,
+            guide,
+            "DG_MEASUREMENT_INCOMPATIBLE",
+            "Assessment must preserve the criterion scale/unit; unknown and not-applicable values are explicitly null and uncertain.",
+            `/tradeoff_matrix/${index}/assessment`,
+          );
+      }
       const qualityId =
         criterion && isPlainObject(criterion)
           ? asString(criterion.quality_attribute_id)
@@ -183,6 +209,7 @@ export function validateDecisionGuides(model: RepositoryModel): DecisionGuideAna
     }
 
     evidenceBindingCount += bindings.length;
+    checkConditions(data, "", concepts, diagnostics, guide);
     const usedClaims = new Set(bindings.flatMap((item) => item.claimIds));
     const inventory = new Set(asStringArray(data.evidence));
     for (const claimId of usedClaims) {
@@ -291,6 +318,35 @@ export function validateDecisionGuides(model: RepositoryModel): DecisionGuideAna
     evidence_binding_count: evidenceBindingCount,
     matrix_cell_count: matrixCellCount,
   };
+}
+
+function checkConditions(
+  value: unknown,
+  pointer: string,
+  concepts: Map<string, RecordEntry>,
+  diagnostics: Diagnostic[],
+  guide: RecordEntry,
+): void {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) =>
+      checkConditions(item, `${pointer}/${index}`, concepts, diagnostics, guide),
+    );
+  } else if (isPlainObject(value)) {
+    if (value.scope === "reusable-concept") {
+      for (const id of asStringArray(value.concept_ids)) {
+        checkConceptType(
+          id,
+          ["constraint", "assumption", "context-condition"],
+          concepts,
+          diagnostics,
+          guide,
+          `${pointer}/concept_ids`,
+        );
+      }
+    }
+    for (const [key, item] of Object.entries(value))
+      checkConditions(item, `${pointer}/${key}`, concepts, diagnostics, guide);
+  }
 }
 
 function binding(

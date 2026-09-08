@@ -21,6 +21,7 @@
     "validate:sources": "tsx src/cli.ts validate sources",
     "validate:claims": "tsx src/cli.ts validate claims",
     "validate:decision-guides": "tsx src/cli.ts validate decision-guides",
+    "decision:validate": "tsx src/decision-validation-cli.ts",
     "validate:claim-grounding": "tsx src/cli.ts validate claims",
     "validate:relationships": "tsx src/cli.ts validate relationships",
     "validate:lifecycle": "tsx src/cli.ts validate lifecycle",
@@ -54,7 +55,7 @@
     "test:mutation:graph": "stryker run stryker.graph.config.json",
     "test:mutation:retrieval": "stryker run stryker.retrieval.config.json",
     "test:mutation:rag": "stryker run stryker.rag.config.json",
-    "test:mutation:decision-guides": "stryker run stryker.decision-guide.config.json"
+    "test:mutation:decision-guides": "stryker run stryker.decision-guide.config.json && stryker run stryker.decision-recommendation.config.json"
   },
   "dependencies": {
     "ajv": "8.17.1",

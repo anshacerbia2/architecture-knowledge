@@ -63,6 +63,76 @@
       "status": "valid"
     },
     {
+      "path": "docs/m7-1-hardening-report.md",
+      "target": "../src/decision-recommendation-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-hardening-report.md",
+      "target": "../src/decision-validation-cli.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-hardening-report.md",
+      "target": "m7-1-independent-audit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-independent-audit-report.md",
+      "target": "../schemas/decision-guide.schema.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-independent-audit-report.md",
+      "target": "../schemas/decision-guide.schema.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-independent-audit-report.md",
+      "target": "../schemas/decision-recommendation.schema.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-independent-audit-report.md",
+      "target": "../schemas/decision-recommendation.schema.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-independent-audit-report.md",
+      "target": "../src/decision-guide-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-independent-audit-report.md",
+      "target": "../src/decision-guide-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-independent-audit-report.md",
+      "target": "../src/kernel.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-independent-audit-report.md",
+      "target": "../src/rag-citation-authority.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-independent-audit-report.md",
+      "target": "../src/rag-context.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-independent-audit-report.md",
+      "target": "../src/retrieval-units.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-decision-guide-kernel.md",
+      "target": "m7-1-hardening-report.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/README.md",
       "target": "adr/0001-validation-toolchain.md",
       "status": "valid"
@@ -294,7 +364,17 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m7-1-hardening-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m7-1-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-1-independent-audit-report.md",
       "status": "valid"
     },
     {
@@ -409,8 +489,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 81,
+    "checked_link_count": 97,
     "broken_link_count": 0,
-    "markdown_file_count": 93
+    "markdown_file_count": 95
   }
 }

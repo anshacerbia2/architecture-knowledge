@@ -69,7 +69,9 @@ export function buildRetrievalArtifacts(graph: GraphArtifacts): RetrievalArtifac
     units.push(relationshipUnit(relationship, sourceById));
   }
   for (const source of graph.sources) units.push(sourceUnit(source, graph.claims));
-  for (const guide of graph.decisionGuides) units.push(...decisionGuideUnits(guide, sourceById));
+  const claimById = new Map(graph.claims.map((record) => [record.id, record]));
+  for (const guide of graph.decisionGuides)
+    units.push(...decisionGuideUnits(guide, sourceById, claimById));
   units.sort((left, right) => left.unit_id.localeCompare(right.unit_id));
   assertUniqueUnits(units);
 
@@ -316,19 +318,21 @@ function sourceUnit(source: GraphIndexRecord, claims: GraphIndexRecord[]): Retri
   });
 }
 
-function decisionGuideUnits(
+export function decisionGuideUnits(
   guide: GraphIndexRecord,
   sourceById: ReadonlyMap<string, GraphIndexRecord>,
+  claimById: ReadonlyMap<string, GraphIndexRecord>,
 ): RetrievalUnit[] {
-  const locations = asArray(guide.evidence_source_locations);
-  const citations = citationsFor(asStringArray(guide.evidence_source_ids), locations, sourceById);
   const metadata = {
     decision_question: guide.decision_question ?? null,
     option_ids: asArray(guide.options)
       .filter(isPlainObject)
       .map((item) => asString(item.concept_id))
       .filter(Boolean),
-    evidence_claim_ids: asStringArray(guide.evidence_chain_claim_ids),
+    evidence_claim_ids: [] as string[],
+    guide_provenance_claim_ids: asStringArray(guide.evidence_chain_claim_ids),
+    guide_provenance_source_ids: asStringArray(guide.evidence_source_ids),
+    evidence_scope: "binding-local",
     recommendation_only: isPlainObject(guide.authority)
       ? guide.authority.recommendation_only === true
       : false,
@@ -355,30 +359,57 @@ function decisionGuideUnits(
         "Authority: recommendation only; a human must decide; automation cannot approve.",
       ]),
       metadata,
-      citations,
+      citations: [],
     }),
   ];
   for (const [field, label] of DECISION_GUIDE_SECTIONS) {
     const value = guide[field];
     if (value === undefined || (Array.isArray(value) && value.length === 0)) continue;
-    const text = compactLines([
-      `Decision guide: ${guide.id} ${asString(guide.title) ?? ""}`,
-      `${label}: ${renderValue(value)}`,
-    ]);
-    for (const [ordinal, part] of splitSemanticText(text, MAX_SEMANTIC_UNIT_TOKENS).entries()) {
-      units.push(
-        createUnit({
-          kind: "decision-guide-section",
-          record: guide,
-          conceptId: null,
-          sectionKey: field,
-          ordinal,
-          title: `${asString(guide.title) ?? guide.id} — ${label}`,
-          text: part,
-          metadata: { ...metadata, section_field: field },
-          citations,
-        }),
-      );
+    let ordinal = 0;
+    for (const [bindingIndex, item] of (Array.isArray(value) ? value : [value]).entries()) {
+      const claimIds = new Set<string>();
+      const sourceIds = new Set<string>();
+      const locations: unknown[] = [];
+      const visiting = new Set<string>();
+      const visit = (id: string): void => {
+        if (visiting.has(id)) throw new Error(`RETRIEVAL_GUIDE_EVIDENCE_CYCLE ${id}`);
+        if (claimIds.has(id)) return;
+        const claim = claimById.get(id);
+        if (!claim || claim.status !== "sourced")
+          throw new Error(`RETRIEVAL_GUIDE_CLAIM_INVALID ${id}`);
+        claimIds.add(id);
+        visiting.add(id);
+        asStringArray(claim.sources).forEach((id) => sourceIds.add(id));
+        locations.push(...asArray(claim.source_locations));
+        asStringArray(claim.derived_from_claims).forEach(visit);
+        visiting.delete(id);
+      };
+      if (isPlainObject(item)) asStringArray(item.claim_ids).forEach(visit);
+      const citations = citationsFor([...sourceIds].sort(), locations, sourceById);
+      const text = compactLines([
+        `Decision guide: ${guide.id} ${asString(guide.title) ?? ""}`,
+        `${label}: ${renderValue(item)}`,
+      ]);
+      for (const part of splitSemanticText(text, MAX_SEMANTIC_UNIT_TOKENS)) {
+        units.push(
+          createUnit({
+            kind: "decision-guide-section",
+            record: guide,
+            conceptId: null,
+            sectionKey: field,
+            ordinal: ordinal++,
+            title: `${asString(guide.title) ?? guide.id} — ${label}`,
+            text: part,
+            metadata: {
+              ...metadata,
+              section_field: field,
+              binding_pointer: `/${field}/${bindingIndex}`,
+              evidence_claim_ids: [...claimIds].sort(),
+            },
+            citations,
+          }),
+        );
+      }
     }
   }
   return units;

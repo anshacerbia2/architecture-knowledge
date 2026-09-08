@@ -67,13 +67,18 @@ export interface RagCitationCatalogEntry {
 }
 
 export interface RagAuthoritativeCitation {
+  locators?: unknown[];
   source_id: string;
   title: string;
   url: string;
 }
 
 export interface RagCitationAuthority {
-  resolve(recordId: string, sourceId: string): RagAuthoritativeCitation | undefined;
+  resolve(
+    recordId: string,
+    sourceId: string,
+    unitId?: string,
+  ): RagAuthoritativeCitation | undefined;
 }
 
 export interface RagContextPacket {

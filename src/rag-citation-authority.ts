@@ -1,4 +1,5 @@
 import { asString, asStringArray } from "./io.js";
+import { decisionGuideUnits } from "./retrieval-units.js";
 import type { RagAuthoritativeCitation, RagCitationAuthority } from "./rag-types.js";
 
 export interface RagCitationAuthorityRecord extends Record<string, unknown> {
@@ -33,16 +34,54 @@ export function createRagCitationAuthority(
   };
   for (const concept of records.concepts) add(concept, asStringArray(concept.sources));
   for (const claim of records.claims) add(claim, asStringArray(claim.sources));
-  for (const guide of records.decisionGuides) add(guide, asStringArray(guide.evidence_source_ids));
+  const guideUnitSources = new Map<string, ReadonlyMap<string, unknown[]>>();
+  const guideIds = new Set(records.decisionGuides.map((guide) => guide.id));
+  const sourceRecords = new Map(
+    records.sources.map((source) => [
+      source.id,
+      { ...source, record_kind: "source" as const, source_path: "" },
+    ]),
+  );
+  const claimRecords = new Map(
+    records.claims.map((claim) => [
+      claim.id,
+      { ...claim, record_kind: "claim" as const, source_path: "" },
+    ]),
+  );
+  for (const guide of records.decisionGuides) {
+    add(guide, []);
+    for (const unit of decisionGuideUnits(
+      { ...guide, record_kind: "decision-guide", source_path: "" },
+      sourceRecords,
+      claimRecords,
+    )) {
+      guideUnitSources.set(
+        unit.unit_id,
+        new Map(unit.citations.map((citation) => [citation.source_id, citation.locators])),
+      );
+    }
+  }
   for (const relationship of records.relationships)
     add(relationship, asStringArray(relationship.direct_source_ids));
   for (const source of records.sources) add(source, [source.id]);
 
   return {
-    resolve(recordId: string, sourceId: string): RagAuthoritativeCitation | undefined {
-      if (!isSourceId(sourceId) || !sourceIdsByRecord.get(recordId)?.has(sourceId))
-        return undefined;
-      return sources.get(sourceId);
+    resolve(
+      recordId: string,
+      sourceId: string,
+      unitId?: string,
+    ): RagAuthoritativeCitation | undefined {
+      const allowed = guideIds.has(recordId)
+        ? unitId?.startsWith(`ru:${recordId}:`)
+          ? guideUnitSources.get(unitId)
+          : undefined
+        : sourceIdsByRecord.get(recordId);
+      if (!isSourceId(sourceId) || !allowed?.has(sourceId)) return undefined;
+      const source = sources.get(sourceId);
+      if (!source) return undefined;
+      return guideIds.has(recordId) && unitId
+        ? { ...source, locators: structuredClone(guideUnitSources.get(unitId)!.get(sourceId)!) }
+        : source;
     },
   };
 }

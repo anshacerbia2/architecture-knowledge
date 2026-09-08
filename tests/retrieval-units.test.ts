@@ -115,7 +115,7 @@ describe("M5 deterministic retrieval units", () => {
       record_id: "AKG-900001",
       lifecycle_status: "proposed",
       metadata: { recommendation_only: true, human_decision_required: true },
-      citations: [expect.objectContaining({ source_id: "AKS-000019" })],
+      citations: [],
     });
     expect(changed.units.some((unit) => unit.unit_kind === "decision-guide-section")).toBe(true);
   });
