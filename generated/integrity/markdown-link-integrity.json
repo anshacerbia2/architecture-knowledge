@@ -63,6 +63,41 @@
       "status": "valid"
     },
     {
+      "path": "docs/m7-1-decision-basis-remediation-report.md",
+      "target": "m7-1-focused-reaudit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-focused-reaudit-report.md",
+      "target": "../schemas/decision-recommendation.schema.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-focused-reaudit-report.md",
+      "target": "../schemas/decision-session.schema.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-focused-reaudit-report.md",
+      "target": "../src/decision-guide-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-focused-reaudit-report.md",
+      "target": "../src/decision-recommendation-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-focused-reaudit-report.md",
+      "target": "m7-1-hardening-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-focused-reaudit-report.md",
+      "target": "m7-1-independent-audit-report.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/m7-1-hardening-report.md",
       "target": "../src/decision-recommendation-validator.ts",
       "status": "valid"
@@ -125,6 +160,11 @@
     {
       "path": "docs/m7-1-independent-audit-report.md",
       "target": "../src/retrieval-units.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-decision-guide-kernel.md",
+      "target": "m7-1-decision-basis-remediation-report.md",
       "status": "valid"
     },
     {
@@ -364,6 +404,16 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m7-1-decision-basis-remediation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-1-focused-reaudit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m7-1-hardening-report.md",
       "status": "valid"
     },
@@ -489,8 +539,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 97,
+    "checked_link_count": 107,
     "broken_link_count": 0,
-    "markdown_file_count": 95
+    "markdown_file_count": 97
   }
 }

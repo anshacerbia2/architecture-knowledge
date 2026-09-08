@@ -85,6 +85,8 @@ any document reviewed, approved, published, or canonical.
 | M7-04 | [M7.1 Implementation Report](m7-1-implementation-report.md) | Records scope, governance interpretation, migrations, validation evidence, and the independent-audit handoff. |
 | M7-05 | [M7.1 Audit](m7-1-independent-audit-report.md) | Records four blocking kernel findings and same-assistant reviewer limitations. |
 | M7-06 | [M7.1 Focused Hardening](m7-1-hardening-report.md) | Records output validation, measurement compatibility, binding-local citations, migrations, and remediation evidence without corpus/runtime entry. |
+| M7-07 | [M7.1 Focused Re-Audit](m7-1-focused-reaudit-report.md) | Verifies exact-SHA CI and reproduces omitted selection evidence, condition identity, unresolved drivers, and empty-context clarification gaps. |
+| M7-08 | [M7.1 Decision-Basis Remediation](m7-1-decision-basis-remediation-report.md) | Records deterministic decision support, v4/v3 migrations, structured condition identity, driver checks, and the four finding dispositions. |
 
 ## Architecture Decision Records
 
@@ -139,6 +141,8 @@ describe.
 | 2026-09-01 | `ca9dc44` | Final independent M6 V4 re-audit report |
 | 2026-09-01 | entry-audit commit; see post-commit handoff | M7.0 entry alignment and decision-model audit |
 | 2026-09-03 | implementation commit; see post-commit handoff | ADR 0008; M7.1 kernel guide; M7.1 implementation report |
+| 2026-09-08 | `c34daab` | M7.1 initial audit and focused hardening reports |
+| 2026-09-08 | decision-basis remediation commit; see post-commit handoff | M7.1 focused re-audit and decision-basis remediation reports |
 
 ## Maintenance Rule
 

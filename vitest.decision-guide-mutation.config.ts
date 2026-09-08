@@ -5,6 +5,10 @@ export default defineConfig({
   ...base,
   test: {
     ...base.test,
-    include: ["tests/decision-guide.test.ts", "tests/m7-matrix-regressions.test.ts"],
+    include: [
+      "tests/decision-guide.test.ts",
+      "tests/m7-matrix-regressions.test.ts",
+      "tests/m7-condition-identity.test.ts",
+    ],
   },
 });

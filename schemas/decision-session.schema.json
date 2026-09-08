@@ -9,6 +9,7 @@
     "contract_version",
     "session_id",
     "guide_id",
+    "guide_version",
     "context",
     "drivers",
     "constraints",
@@ -17,9 +18,10 @@
     "condition_evaluations"
   ],
   "properties": {
-    "contract_version": { "const": 2 },
+    "contract_version": { "const": 3 },
     "session_id": { "type": "string", "format": "uuid" },
     "guide_id": { "$ref": "_defs.schema.json#/$defs/decisionGuideId" },
+    "guide_version": { "type": "integer", "minimum": 1 },
     "context": {
       "type": "array",
       "items": {

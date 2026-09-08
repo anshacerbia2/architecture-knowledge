@@ -32,7 +32,7 @@
     "version"
   ],
   "properties": {
-    "schema_version": { "const": 3 },
+    "schema_version": { "const": 4 },
     "id": { "$ref": "_defs.schema.json#/$defs/decisionGuideId" },
     "record_kind": { "const": "decision-guide" },
     "title": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },

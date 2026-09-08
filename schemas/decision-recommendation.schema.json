@@ -9,6 +9,7 @@
     "contract_version",
     "session_id",
     "guide_id",
+    "guide_version",
     "status",
     "applicable_context",
     "constraint_results",
@@ -22,12 +23,14 @@
     "claim_ids",
     "source_ids",
     "authority",
-    "evidence_claims"
+    "evidence_claims",
+    "decision_basis"
   ],
   "properties": {
-    "contract_version": { "const": 2 },
+    "contract_version": { "const": 3 },
     "session_id": { "type": "string", "format": "uuid" },
     "guide_id": { "$ref": "_defs.schema.json#/$defs/decisionGuideId" },
+    "guide_version": { "type": "integer", "minimum": 1 },
     "status": {
       "enum": [
         "recommendation",
@@ -38,7 +41,6 @@
     },
     "applicable_context": {
       "type": "array",
-      "minItems": 1,
       "items": { "$ref": "#/$defs/contextValue" }
     },
     "constraint_results": {
@@ -84,6 +86,24 @@
       "uniqueItems": true
     },
     "authority": { "$ref": "#/$defs/authority" },
+    "decision_basis": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["guide_pointer", "claim_ids"],
+        "properties": {
+          "guide_pointer": {
+            "type": "string",
+            "pattern": "^/(options|constraints|assumptions|quality_attributes|recommended_when|avoid_when|disqualifiers)/(0|[1-9][0-9]*)$"
+          },
+          "claim_ids": {
+            "$ref": "decision-guide.schema.json#/$defs/claimIds"
+          }
+        }
+      }
+    },
     "evidence_claims": {
       "type": "array",
       "items": { "$ref": "claim.schema.json" },
@@ -102,6 +122,7 @@
       },
       "then": {
         "properties": {
+          "applicable_context": { "type": "array", "minItems": 1 },
           "viable_options": {
             "type": "array",
             "minItems": 1

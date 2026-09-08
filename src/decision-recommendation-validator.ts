@@ -2,7 +2,7 @@ import { diagnostic, hasErrors, type Diagnostic } from "./diagnostics.js";
 import { asArray, asStringArray, isPlainObject } from "./io.js";
 import type { RepositoryModel } from "./model.js";
 import { validateSchemas } from "./schema-validator.js";
-import { validateDecisionGuides } from "./decision-guide-validator.js";
+import { decisionConditionKey, validateDecisionGuides } from "./decision-guide-validator.js";
 import { validateEvidence } from "./evidence-validator.js";
 import { serializeGraphValue } from "./graph-projector.js";
 
@@ -86,6 +86,8 @@ export async function validateDecisionRecommendation(
   if (hasErrors(diagnostics)) return diagnostics;
 
   const guide = guideRecord.data;
+  if (session.guide_version !== guide.version || output.guide_version !== guide.version)
+    fail("DR_GUIDE_VERSION", "/guide_version");
   const affirmative = ["recommendation", "multiple-viable-options"].includes(String(output.status));
   const viable = asStringArray(output.viable_options);
   const rejected = objects(output.rejected_options);
@@ -134,6 +136,33 @@ export async function validateDecisionRecommendation(
     fail("DR_CONTEXT_REQUIRED", "/applicable_context");
 
   const constraints = objects(guide.constraints);
+  const concepts = new Map(model.concepts.map((record) => [record.id, record]));
+  const drivers = objects(session.drivers);
+  if (new Set(drivers.map((driver) => driver.concept_id)).size !== drivers.length)
+    fail("DR_DRIVER_DUPLICATE", "/drivers");
+  for (const driver of drivers) {
+    const concept = concepts.get(String(driver.concept_id));
+    if (!concept) {
+      fail("DR_DRIVER_UNRESOLVED", "/drivers");
+      continue;
+    }
+    const expectedType = driver.role === "context" ? "context-condition" : driver.role;
+    if (concept.data.type !== expectedType) fail("DR_DRIVER_TYPE", "/drivers");
+    const members =
+      driver.role === "constraint"
+        ? constraints
+        : driver.role === "quality-attribute"
+          ? objects(guide.quality_attributes)
+          : objects(guide.assumptions);
+    const declared = members.find((item) => item.concept_id === driver.concept_id);
+    if (!declared) fail("DR_DRIVER_OUTSIDE_GUIDE", "/drivers");
+    if (
+      driver.role === "constraint" &&
+      driver.priority === "required" &&
+      declared?.hardness !== "hard"
+    )
+      fail("DR_DRIVER_REQUIRED_HARDNESS", "/drivers");
+  }
   const results = objects(output.constraint_results);
   const supplied = objects(session.constraints);
   for (const items of [results, supplied]) {
@@ -168,21 +197,33 @@ export async function validateDecisionRecommendation(
         typeof value.scope === "string" &&
         Array.isArray(value.concept_ids)
       )
-        knownConditions.add(serializeGraphValue(value));
+        knownConditions.add(decisionConditionKey(value));
       Object.values(value).forEach(collectConditions);
     }
   };
   collectConditions(guide);
+  const claims = new Map(model.claims.map((record) => [record.id, record]));
+  const sources = new Map(model.sources.map((record) => [record.id, record]));
+  const conditionClaims = new Set<string>();
+  const collectEvidenceConditions = (id: string): void => {
+    if (conditionClaims.has(id)) return;
+    conditionClaims.add(id);
+    const claim = claims.get(id)?.data;
+    if (!claim) return;
+    collectConditions(claim.conditions);
+    asStringArray(claim.derived_from_claims).forEach(collectEvidenceConditions);
+  };
+  asStringArray(guide.evidence).forEach(collectEvidenceConditions);
   const evaluations = objects(session.condition_evaluations);
   const byCondition = new Map<string, ObjectValue>();
   for (const evaluation of evaluations) {
-    const key = serializeGraphValue(evaluation.condition);
+    const key = decisionConditionKey(evaluation.condition);
     if (byCondition.has(key) || !knownConditions.has(key))
       fail("DR_CONDITION_INVENTORY", "/condition_evaluations");
     byCondition.set(key, evaluation);
   }
   const conditionHolds = (condition: unknown): boolean | null => {
-    const item = byCondition.get(serializeGraphValue(condition));
+    const item = byCondition.get(decisionConditionKey(condition));
     return item?.confirmed_by_human === true && typeof item.satisfied === "boolean"
       ? item.satisfied
       : null;
@@ -207,8 +248,75 @@ export async function validateDecisionRecommendation(
         fail("DR_OPTION_DISQUALIFIED_OR_UNKNOWN", "/viable_options");
     }
 
-  const claims = new Map(model.claims.map((record) => [record.id, record]));
-  const sources = new Map(model.sources.map((record) => [record.id, record]));
+  // Derive mandatory support from the current guide/session, never from caller inventories.
+  // All active selection/exclusion rules participate, so parallel rules cannot hide evidence.
+  const basis: Array<{ pointer: string; item: ObjectValue; targets: string[] }> = [];
+  const include = (
+    field: string,
+    predicate: (item: ObjectValue) => boolean,
+    targetKey: string,
+  ): void => {
+    objects(guide[field]).forEach((item, index) => {
+      if (predicate(item))
+        basis.push({ pointer: `/${field}/${index}`, item, targets: [String(item[targetKey])] });
+    });
+  };
+  include("options", (item) => partition.includes(String(item.concept_id)), "concept_id");
+  include(
+    "constraints",
+    (item) =>
+      results.some(
+        (result) => result.concept_id === item.concept_id && result.status !== "unknown",
+      ),
+    "concept_id",
+  );
+  include("assumptions", () => affirmative, "concept_id");
+  include(
+    "quality_attributes",
+    (item) => affirmative && drivers.some((driver) => driver.concept_id === item.concept_id),
+    "concept_id",
+  );
+  include(
+    "recommended_when",
+    (item) => partition.includes(String(item.option_id)) && ruleHolds(item) === true,
+    "option_id",
+  );
+  const rejectedIds = rejected.map((item) => String(item.concept_id));
+  for (const field of ["disqualifiers", "avoid_when"])
+    include(
+      field,
+      (item) => partition.includes(String(item.option_id)) && ruleHolds(item) === true,
+      "option_id",
+    );
+  for (const id of rejectedIds)
+    if (
+      !basis.some(
+        (entry) =>
+          ["/disqualifiers/", "/avoid_when/"].some((prefix) => entry.pointer.startsWith(prefix)) &&
+          entry.item.option_id === id,
+      )
+    )
+      fail("DR_REJECTION_NOT_JUSTIFIED", "/rejected_options");
+  const expectedBasis = basis.map((entry) => ({
+    guide_pointer: entry.pointer,
+    claim_ids: asStringArray(entry.item.claim_ids).sort(),
+  }));
+  const normalizeBasis = (items: ObjectValue[]) =>
+    items
+      .map((item) => ({
+        guide_pointer: item.guide_pointer,
+        claim_ids: asStringArray(item.claim_ids).sort(),
+      }))
+      .sort((a, b) => String(a.guide_pointer).localeCompare(String(b.guide_pointer)));
+  if (!equal(normalizeBasis(objects(output.decision_basis)), normalizeBasis(expectedBasis)))
+    fail("DR_DECISION_BASIS", "/decision_basis");
+  if (
+    affirmative &&
+    basis.some((entry) =>
+      asArray(entry.item.conditions).some((condition) => conditionHolds(condition) !== true),
+    )
+  )
+    fail("DR_BASIS_CONDITION", "/decision_basis");
   if (
     claims.size !== model.claims.length ||
     sources.size !== model.sources.length ||
@@ -216,6 +324,7 @@ export async function validateDecisionRecommendation(
   )
     fail("DR_MODEL_DUPLICATE", "/guide_id");
   const bindings = [
+    ...basis,
     ...results.map((item) => ({ item, targets: [String(item.concept_id)] })),
     ...rejected.map((item) => ({ item, targets: [String(item.concept_id)] })),
     ...["tradeoffs", "risks", "verification", "evolution_triggers"].flatMap((key) =>

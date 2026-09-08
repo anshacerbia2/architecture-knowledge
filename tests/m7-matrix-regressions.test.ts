@@ -50,11 +50,16 @@ describe("M7.1-AUD-003 matrix comparability", () => {
     const model = await guideModel();
     const cell = (model.decisionGuides[0]!.data.tradeoff_matrix as Record<string, unknown>[])[0]!;
     const conditions = cell.conditions as Record<string, unknown>[];
+    const original = structuredClone(conditions[0]!);
     conditions[0] = { ...conditions[0], scope: "reusable-concept", concept_ids: ["AKC-900001"] };
     expect(validateDecisionGuides(model).diagnostics.map((d) => d.code)).toContain(
       "DG_CONCEPT_TYPE",
     );
     conditions[0]!.concept_ids = ["AKC-900005"];
+    const codes = validateDecisionGuides(model).diagnostics.map((d) => d.code);
+    expect(codes).not.toContain("DG_CONCEPT_TYPE");
+    expect(codes).toContain("DG_CLAIM_CONDITION_LOST");
+    conditions[0] = original;
     expect(validateDecisionGuides(model).diagnostics).toEqual([]);
   });
 });

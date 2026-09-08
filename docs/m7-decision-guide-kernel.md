@@ -68,12 +68,30 @@ These are contracts for a future runtime, not a runtime implementation.
 
 ## Validation commands
 
-The subsequent [focused hardening migration](m7-1-hardening-report.md) adds the
-v3 guide and v2 session/recommendation boundary. Schema success alone is not
+The [first focused hardening migration](m7-1-hardening-report.md) introduced the
+v3 guide and v2 session/recommendation boundary. The subsequent
+[decision-basis migration](m7-1-decision-basis-remediation-report.md) requires
+guide schema v4 and session/recommendation contract v3, with current
+`guide_version` and a deterministic `decision_basis` evidence inventory.
+Schema success alone is not
 recommendation clearance: use the pure semantic validator or
 `pnpm decision:validate -- session.json recommendation.json`. No input is persisted
 by this command. Guide citation support is binding-local; whole-guide provenance
 is separate metadata, not a section's evidence.
+
+For every selected or rejected option, the semantic gate includes its option
+binding and all active recommendation/avoidance/disqualifier rules. Known
+constraint outcomes, affirmative guide assumptions and declared quality drivers
+also contribute their own binding evidence. The output lists exact
+`guide_pointer`/`claim_ids` entries; the validator reconstructs them independently
+and verifies the transitive evidence. Unrelated risk-section provenance does not
+become decision support. Rejection requires an active exclusion rule; comparative
+ranking without such a rule is not implemented by this kernel.
+
+Condition matching preserves statement text, scope and the concept-reference set.
+Driver IDs must resolve with the declared role and guide membership; a required
+constraint driver must be a hard constraint. Empty context is supported for
+non-affirmative clarification, while affirmative required-context checks remain.
 
 ```bash
 pnpm validate:decision-guides
