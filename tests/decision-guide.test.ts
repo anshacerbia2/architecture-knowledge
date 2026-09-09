@@ -7,6 +7,7 @@ import { validateSchemas } from "../src/schema-validator.js";
 import type { RepositoryModel } from "../src/model.js";
 import { recordFromData } from "./helpers.js";
 import { guideModel } from "./decision-guide-helpers.js";
+import { recommendationFixture } from "./decision-recommendation-helpers.js";
 
 describe("decision-guide validation kernel", () => {
   it("accepts a complete, sourced, applicable synthetic guide", async () => {
@@ -212,11 +213,14 @@ describe("decision-guide validation kernel", () => {
     ];
     for (const [name, schemaRef, data] of contracts) {
       if (name === "decision-session") {
-        data.contract_version = 2;
+        data.contract_version = 3;
+        data.guide_version = 1;
         data.condition_evaluations = [];
       }
       if (name === "decision-recommendation") {
-        data.contract_version = 2;
+        data.contract_version = 3;
+        data.guide_version = 1;
+        data.decision_basis = [];
         data.evidence_claims = [structuredClone(model.claims[0]!.data)];
       }
       model.governedFiles.push({
@@ -233,12 +237,8 @@ describe("decision-guide validation kernel", () => {
   });
 
   it("rejects evidence-free recommendations and unscoped provider authorization", async () => {
-    const model = await guideModel();
-    const authority = {
-      recommendation_only: true,
-      human_decision_required: true,
-      automation_may_approve: false,
-    };
+    const fixture = await recommendationFixture();
+    const model = fixture.model;
     model.governedFiles.push(
       {
         path: "tests/fixtures/synthetic/invalid-recommendation.json",
@@ -248,32 +248,7 @@ describe("decision-guide validation kernel", () => {
         ),
         schemaRef: "schemas/decision-recommendation.schema.json",
         format: "json",
-        data: {
-          contract_version: 1,
-          session_id: "11111111-1111-4111-8111-111111111111",
-          guide_id: "AKG-900001",
-          status: "recommendation",
-          applicable_context: [
-            {
-              key: "classification",
-              value: "one",
-              classification: "internal",
-              provenance: "human-provided",
-              confirmed_by_human: true,
-            },
-          ],
-          constraint_results: [],
-          viable_options: ["AKC-900001"],
-          rejected_options: [],
-          tradeoffs: [],
-          risks: [],
-          uncertainty: [],
-          verification: [],
-          evolution_triggers: [],
-          claim_ids: [],
-          source_ids: [],
-          authority,
-        },
+        data: structuredClone(fixture.output),
       },
       {
         path: "tests/fixtures/synthetic/invalid-provider-authorization.json",
@@ -283,29 +258,34 @@ describe("decision-guide validation kernel", () => {
         ),
         schemaRef: "schemas/decision-session.schema.json",
         format: "json",
-        data: {
-          contract_version: 1,
-          session_id: "11111111-1111-4111-8111-111111111111",
-          guide_id: "AKG-900001",
-          context: [],
-          drivers: [],
-          constraints: [],
-          privacy: {
-            persistence: "ephemeral-only",
-            external_provider_authorized: true,
-            external_provider_authorization: null,
-            redacted_keys: [],
-          },
-          authority,
-        },
+        data: structuredClone(fixture.session),
       },
     );
+    // Start from current, schema-valid controls: an obsolete version must not
+    // accidentally satisfy these evidence/privacy rejection assertions.
+    const recommendationFile = model.governedFiles.find((file) =>
+      file.path.endsWith("invalid-recommendation.json"),
+    )!;
+    const sessionFile = model.governedFiles.find((file) =>
+      file.path.endsWith("invalid-provider-authorization.json"),
+    )!;
+    expect((await validateSchemas(model)).diagnostics).toEqual([]);
+    (recommendationFile.data as Record<string, unknown>).claim_ids = [];
+    (
+      (sessionFile.data as Record<string, unknown>).privacy as Record<string, unknown>
+    ).external_provider_authorized = true;
     const diagnostics = (await validateSchemas(model)).diagnostics;
     expect(diagnostics).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ path: "tests/fixtures/synthetic/invalid-recommendation.json" }),
         expect.objectContaining({
+          code: "SCHEMA_INSTANCE",
+          path: "tests/fixtures/synthetic/invalid-recommendation.json",
+          pointer: "/claim_ids",
+        }),
+        expect.objectContaining({
+          code: "SCHEMA_INSTANCE",
           path: "tests/fixtures/synthetic/invalid-provider-authorization.json",
+          pointer: "/privacy/external_provider_authorization",
         }),
       ]),
     );

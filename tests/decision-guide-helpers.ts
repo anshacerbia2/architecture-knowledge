@@ -18,7 +18,7 @@ export async function guideModel(): Promise<RepositoryModel> {
   const bound = { conditions: [condition], claim_ids: [claim.id] };
   const guide = recordFromData(
     {
-      schema_version: 3,
+      schema_version: 4,
       id: "AKG-900001",
       record_kind: "decision-guide",
       title: "Synthetic Decision Guide",

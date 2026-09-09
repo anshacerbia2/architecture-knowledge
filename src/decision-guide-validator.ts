@@ -275,10 +275,10 @@ export function validateDecisionGuides(model: RepositoryModel): DecisionGuideAna
             );
           }
         }
-        const preserved = new Set(item.conditions.map(normalize));
+        const preserved = new Set(item.conditions);
         for (const condition of asArray(claim.data.conditions).filter(isPlainObject)) {
           const statement = asString(condition.statement);
-          if (statement && !preserved.has(normalize(statement))) {
+          if (statement && !preserved.has(decisionConditionKey(condition))) {
             add(
               diagnostics,
               guide,
@@ -363,8 +363,7 @@ function binding(
       ...(isPlainObject(value.condition) ? [value.condition] : []),
     ]
       .filter(isPlainObject)
-      .map((item) => asString(item.statement))
-      .filter((item): item is string => Boolean(item)),
+      .map(decisionConditionKey),
   };
 }
 
@@ -497,8 +496,14 @@ function isGrounded(
   return derivedIds.every((parent) => isGrounded(parent, claims, sources, next));
 }
 
-function normalize(value: string): string {
-  return value.trim().replace(/\s+/g, " ").toLowerCase();
+/** Structural condition identity; concept IDs are a set, text remains case-sensitive. */
+export function decisionConditionKey(value: unknown): string {
+  const condition = isPlainObject(value) ? value : {};
+  return JSON.stringify([
+    (asString(condition.statement) ?? "").trim().replace(/\s+/g, " "),
+    condition.scope,
+    asStringArray(condition.concept_ids).sort(),
+  ]);
 }
 
 function add(
