@@ -90,6 +90,7 @@ counterexamples:
     scope: edge-local
     concept_ids: []
 claims:
+  - AKL-000082
   - AKL-000004
   - AKL-000026
   - AKL-000027
@@ -100,10 +101,10 @@ review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-30
+  updated_at: 2026-09-09
   reviewed_at: null
   review_due_at: null
-version: 3
+version: 4
 contextual_roles:
   - role: operational-quality
     context: Readiness for usable service is evaluated against a specified service boundary, valid demand, conditions, and window.

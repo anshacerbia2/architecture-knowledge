@@ -166,6 +166,318 @@
     },
     {
       "claim_ids": [
+        "AKL-000070",
+        "AKL-000007"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-derived-from-claim",
+      "from": "AKL-000070",
+      "id": "edge:claim-derived:AKL-000070:AKL-000007",
+      "predicate": "derived-from",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "claims/AKL-000070.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000007",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000071",
+        "AKL-000008"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-derived-from-claim",
+      "from": "AKL-000071",
+      "id": "edge:claim-derived:AKL-000071:AKL-000008",
+      "predicate": "derived-from",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "claims/AKL-000071.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000008",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000072",
+        "AKL-000007"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-derived-from-claim",
+      "from": "AKL-000072",
+      "id": "edge:claim-derived:AKL-000072:AKL-000007",
+      "predicate": "derived-from",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "claims/AKL-000072.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000007",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000073",
+        "AKL-000036"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-derived-from-claim",
+      "from": "AKL-000073",
+      "id": "edge:claim-derived:AKL-000073:AKL-000036",
+      "predicate": "derived-from",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "claims/AKL-000073.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000036",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000074",
+        "AKL-000012"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-derived-from-claim",
+      "from": "AKL-000074",
+      "id": "edge:claim-derived:AKL-000074:AKL-000012",
+      "predicate": "derived-from",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "claims/AKL-000074.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000012",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000075",
+        "AKL-000027"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-derived-from-claim",
+      "from": "AKL-000075",
+      "id": "edge:claim-derived:AKL-000075:AKL-000027",
+      "predicate": "derived-from",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "claims/AKL-000075.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000027",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000076",
+        "AKL-000013"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-derived-from-claim",
+      "from": "AKL-000076",
+      "id": "edge:claim-derived:AKL-000076:AKL-000013",
+      "predicate": "derived-from",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "claims/AKL-000076.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000013",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000077",
+        "AKL-000001"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-derived-from-claim",
+      "from": "AKL-000077",
+      "id": "edge:claim-derived:AKL-000077:AKL-000001",
+      "predicate": "derived-from",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "claims/AKL-000077.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000001",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000078",
+        "AKL-000002"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-derived-from-claim",
+      "from": "AKL-000078",
+      "id": "edge:claim-derived:AKL-000078:AKL-000002",
+      "predicate": "derived-from",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "claims/AKL-000078.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000002",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000079",
+        "AKL-000001"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-derived-from-claim",
+      "from": "AKL-000079",
+      "id": "edge:claim-derived:AKL-000079:AKL-000001",
+      "predicate": "derived-from",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "claims/AKL-000079.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000001",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000079",
+        "AKL-000002"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-derived-from-claim",
+      "from": "AKL-000079",
+      "id": "edge:claim-derived:AKL-000079:AKL-000002",
+      "predicate": "derived-from",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "claims/AKL-000079.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000002",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000080",
+        "AKL-000001"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-derived-from-claim",
+      "from": "AKL-000080",
+      "id": "edge:claim-derived:AKL-000080:AKL-000001",
+      "predicate": "derived-from",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "claims/AKL-000080.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000001",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000080",
+        "AKL-000002"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-derived-from-claim",
+      "from": "AKL-000080",
+      "id": "edge:claim-derived:AKL-000080:AKL-000002",
+      "predicate": "derived-from",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "claims/AKL-000080.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000002",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
         "AKL-000001"
       ],
       "conditions": [],
@@ -181,7 +493,12 @@
       "source_ids": [
         "AKS-000001"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Section 2, The Structure of a Mathematical Science: First Principles (historical scope only)",
+          "source_id": "AKS-000001"
+        }
+      ],
       "source_path": "claims/AKL-000001.yaml",
       "status": null,
       "strength": null,
@@ -206,7 +523,12 @@
       "source_ids": [
         "AKS-000002"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Chapter 2, Fundamentals of Systems Engineering, printed pages 3-4; sections 2.1 and 2.2",
+          "source_id": "AKS-000002"
+        }
+      ],
       "source_path": "claims/AKL-000002.yaml",
       "status": null,
       "strength": null,
@@ -406,7 +728,12 @@
       "source_ids": [
         "AKS-000006"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Hexagonal Rails Monolith, Summary; Details: Application domain and Enforcing boundaries (first-party case)",
+          "source_id": "AKS-000006"
+        }
+      ],
       "source_path": "claims/AKL-000007.yaml",
       "status": null,
       "strength": null,
@@ -431,7 +758,12 @@
       "source_ids": [
         "AKS-000007"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Componentization via Services; monolith and independent deployment comparison",
+          "source_id": "AKS-000007"
+        }
+      ],
       "source_path": "claims/AKL-000007.yaml",
       "status": null,
       "strength": null,
@@ -456,7 +788,12 @@
       "source_ids": [
         "AKS-000007"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Componentization via Services; Organized around Business Capabilities",
+          "source_id": "AKS-000007"
+        }
+      ],
       "source_path": "claims/AKL-000008.yaml",
       "status": null,
       "strength": null,
@@ -481,7 +818,12 @@
       "source_ids": [
         "AKS-000008"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Characteristics and Challenges",
+          "source_id": "AKS-000008"
+        }
+      ],
       "source_path": "claims/AKL-000008.yaml",
       "status": null,
       "strength": null,
@@ -581,7 +923,12 @@
       "source_ids": [
         "AKS-000012"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Solution; Retry strategies; Issues and considerations; General guidance",
+          "source_id": "AKS-000012"
+        }
+      ],
       "source_path": "claims/AKL-000012.yaml",
       "status": null,
       "strength": null,
@@ -606,7 +953,12 @@
       "source_ids": [
         "AKS-000013"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Solution, Closed/Open/Half-Open states; Issues and considerations",
+          "source_id": "AKS-000013"
+        }
+      ],
       "source_path": "claims/AKL-000013.yaml",
       "status": null,
       "strength": null,
@@ -896,7 +1248,12 @@
       "source_ids": [
         "AKS-000001"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Section 2, The Structure of a Mathematical Science: First Principles (historical input only)",
+          "source_id": "AKS-000001"
+        }
+      ],
       "source_path": "claims/AKL-000021.yaml",
       "status": null,
       "strength": null,
@@ -921,7 +1278,12 @@
       "source_ids": [
         "AKS-000002"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Chapter 2, Fundamentals of Systems Engineering (systems input only)",
+          "source_id": "AKS-000002"
+        }
+      ],
       "source_path": "claims/AKL-000021.yaml",
       "status": null,
       "strength": null,
@@ -946,7 +1308,12 @@
       "source_ids": [
         "AKS-000006"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Hexagonal Rails Monolith, Summary; Details: Application domain and Enforcing boundaries (first-party case)",
+          "source_id": "AKS-000006"
+        }
+      ],
       "source_path": "claims/AKL-000022.yaml",
       "status": null,
       "strength": null,
@@ -971,7 +1338,12 @@
       "source_ids": [
         "AKS-000007"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Componentization via Services",
+          "source_id": "AKS-000007"
+        }
+      ],
       "source_path": "claims/AKL-000022.yaml",
       "status": null,
       "strength": null,
@@ -996,7 +1368,12 @@
       "source_ids": [
         "AKS-000008"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Characteristics; Benefits; Challenges",
+          "source_id": "AKS-000008"
+        }
+      ],
       "source_path": "claims/AKL-000022.yaml",
       "status": null,
       "strength": null,
@@ -1171,7 +1548,12 @@
       "source_ids": [
         "AKS-000012"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Issues and considerations: Impact on performance, Idempotency; When to use this pattern",
+          "source_id": "AKS-000012"
+        }
+      ],
       "source_path": "claims/AKL-000026.yaml",
       "status": null,
       "strength": null,
@@ -1196,7 +1578,12 @@
       "source_ids": [
         "AKS-000013"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Context and problem; Solution; Issues and considerations, open-state exception handling",
+          "source_id": "AKS-000013"
+        }
+      ],
       "source_path": "claims/AKL-000027.yaml",
       "status": null,
       "strength": null,
@@ -1221,7 +1608,12 @@
       "source_ids": [
         "AKS-000012"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Related resources, Circuit Breaker pattern",
+          "source_id": "AKS-000012"
+        }
+      ],
       "source_path": "claims/AKL-000028.yaml",
       "status": null,
       "strength": null,
@@ -1246,7 +1638,12 @@
       "source_ids": [
         "AKS-000013"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Solution, distinction from Retry and composition",
+          "source_id": "AKS-000013"
+        }
+      ],
       "source_path": "claims/AKL-000028.yaml",
       "status": null,
       "strength": null,
@@ -1561,7 +1958,12 @@
       "source_ids": [
         "AKS-000007"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Design for failure",
+          "source_id": "AKS-000007"
+        }
+      ],
       "source_path": "claims/AKL-000036.yaml",
       "status": null,
       "strength": null,
@@ -1586,7 +1988,12 @@
       "source_ids": [
         "AKS-000008"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Challenges, Complexity, Management and Skill set",
+          "source_id": "AKS-000008"
+        }
+      ],
       "source_path": "claims/AKL-000036.yaml",
       "status": null,
       "strength": null,
@@ -3056,6 +3463,126 @@
     },
     {
       "claim_ids": [
+        "AKL-000071"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-supported-by-source",
+      "from": "AKL-000071",
+      "id": "edge:claim-source:AKL-000071:AKS-000008",
+      "predicate": "supported-by",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [
+        "AKS-000008"
+      ],
+      "source_locations": [
+        {
+          "locator": "Challenges, Management and Skill set",
+          "source_id": "AKS-000008"
+        }
+      ],
+      "source_path": "claims/AKL-000071.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKS-000008",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000074"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-supported-by-source",
+      "from": "AKL-000074",
+      "id": "edge:claim-source:AKL-000074:AKS-000012",
+      "predicate": "supported-by",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [
+        "AKS-000012"
+      ],
+      "source_locations": [
+        {
+          "locator": "Issues and considerations, Impact on performance and Idempotency",
+          "source_id": "AKS-000012"
+        }
+      ],
+      "source_path": "claims/AKL-000074.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKS-000012",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000081"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-supported-by-source",
+      "from": "AKL-000081",
+      "id": "edge:claim-source:AKL-000081:AKS-000002",
+      "predicate": "supported-by",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [
+        "AKS-000002"
+      ],
+      "source_locations": [
+        {
+          "locator": "NASA/SP-2016-6105 Rev2, section 4.1.1.2.2, printed page 48 (PDF page 58), paragraph defining constraint",
+          "source_id": "AKS-000002"
+        }
+      ],
+      "source_path": "claims/AKL-000081.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKS-000002",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000082"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "claim-supported-by-source",
+      "from": "AKL-000082",
+      "id": "edge:claim-source:AKL-000082:AKS-000005",
+      "predicate": "supported-by",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [
+        "AKS-000005"
+      ],
+      "source_locations": [
+        {
+          "locator": "Service Level Objectives, Indicators section, paragraph beginning Another kind of SLI important to SREs",
+          "source_id": "AKS-000005"
+        }
+      ],
+      "source_path": "claims/AKL-000082.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKS-000005",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
         "AKL-000001"
       ],
       "conditions": [],
@@ -3097,6 +3624,52 @@
       "status": null,
       "strength": null,
       "to": "AKL-000021",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000077"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "concept-declares-claim",
+      "from": "AKC-000001",
+      "id": "edge:concept-claim:AKC-000001:AKL-000077",
+      "predicate": "declares-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "knowledge/foundations/first-principles-thinking.md",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000077",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000079"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "concept-declares-claim",
+      "from": "AKC-000001",
+      "id": "edge:concept-claim:AKC-000001:AKL-000079",
+      "predicate": "declares-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "knowledge/foundations/first-principles-thinking.md",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000079",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
     },
@@ -3171,6 +3744,52 @@
     },
     {
       "claim_ids": [
+        "AKL-000078"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "concept-declares-claim",
+      "from": "AKC-000002",
+      "id": "edge:concept-claim:AKC-000002:AKL-000078",
+      "predicate": "declares-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "knowledge/foundations/systems-thinking.md",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000078",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000080"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "concept-declares-claim",
+      "from": "AKC-000002",
+      "id": "edge:concept-claim:AKC-000002:AKL-000080",
+      "predicate": "declares-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "knowledge/foundations/systems-thinking.md",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000080",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
         "AKL-000003"
       ],
       "conditions": [],
@@ -3212,6 +3831,29 @@
       "status": null,
       "strength": null,
       "to": "AKL-000038",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000081"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "concept-declares-claim",
+      "from": "AKC-000003",
+      "id": "edge:concept-claim:AKC-000003:AKL-000081",
+      "predicate": "declares-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "knowledge/constraints-assumptions/constraint.md",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000081",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
     },
@@ -3281,6 +3923,29 @@
       "status": null,
       "strength": null,
       "to": "AKL-000027",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000082"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "concept-declares-claim",
+      "from": "AKC-000004",
+      "id": "edge:concept-claim:AKC-000004:AKL-000082",
+      "predicate": "declares-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "knowledge/quality/availability.md",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000082",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
     },
@@ -3539,6 +4204,52 @@
     },
     {
       "claim_ids": [
+        "AKL-000070"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "concept-declares-claim",
+      "from": "AKC-000007",
+      "id": "edge:concept-claim:AKC-000007:AKL-000070",
+      "predicate": "declares-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "knowledge/application-architecture/modular-monolith.md",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000070",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000072"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "concept-declares-claim",
+      "from": "AKC-000007",
+      "id": "edge:concept-claim:AKC-000007:AKL-000072",
+      "predicate": "declares-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "knowledge/application-architecture/modular-monolith.md",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000072",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
         "AKL-000008"
       ],
       "conditions": [],
@@ -3649,6 +4360,52 @@
       "status": null,
       "strength": null,
       "to": "AKL-000038",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000071"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "concept-declares-claim",
+      "from": "AKC-000008",
+      "id": "edge:concept-claim:AKC-000008:AKL-000071",
+      "predicate": "declares-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "knowledge/distributed-systems/microservices.md",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000071",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000073"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "concept-declares-claim",
+      "from": "AKC-000008",
+      "id": "edge:concept-claim:AKC-000008:AKL-000073",
+      "predicate": "declares-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "knowledge/distributed-systems/microservices.md",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000073",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
     },
@@ -3976,6 +4733,29 @@
     },
     {
       "claim_ids": [
+        "AKL-000074"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "concept-declares-claim",
+      "from": "AKC-000012",
+      "id": "edge:concept-claim:AKC-000012:AKL-000074",
+      "predicate": "declares-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "knowledge/reliability-operability/retry.md",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000074",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
         "AKL-000013"
       ],
       "conditions": [],
@@ -4040,6 +4820,52 @@
       "status": null,
       "strength": null,
       "to": "AKL-000028",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000075"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "concept-declares-claim",
+      "from": "AKC-000013",
+      "id": "edge:concept-claim:AKC-000013:AKL-000075",
+      "predicate": "declares-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "knowledge/reliability-operability/circuit-breaker.md",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000075",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000076"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "concept-declares-claim",
+      "from": "AKC-000013",
+      "id": "edge:concept-claim:AKC-000013:AKL-000076",
+      "predicate": "declares-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "knowledge/reliability-operability/circuit-breaker.md",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000076",
       "traversable": false,
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
     },
@@ -5263,6 +6089,925 @@
       "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
     },
     {
+      "claim_ids": [],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-considers-option",
+      "from": "AKG-000001",
+      "id": "edge:decision-guide-option:AKG-000001:AKC-000007",
+      "predicate": "considers-option",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKC-000007",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-considers-option",
+      "from": "AKG-000001",
+      "id": "edge:decision-guide-option:AKG-000001:AKC-000008",
+      "predicate": "considers-option",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKC-000008",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-considers-option",
+      "from": "AKG-000002",
+      "id": "edge:decision-guide-option:AKG-000002:AKC-000012",
+      "predicate": "considers-option",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKC-000012",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-considers-option",
+      "from": "AKG-000002",
+      "id": "edge:decision-guide-option:AKG-000002:AKC-000013",
+      "predicate": "considers-option",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKC-000013",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-considers-option",
+      "from": "AKG-000003",
+      "id": "edge:decision-guide-option:AKG-000003:AKC-000001",
+      "predicate": "considers-option",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKC-000001",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-considers-option",
+      "from": "AKG-000003",
+      "id": "edge:decision-guide-option:AKG-000003:AKC-000002",
+      "predicate": "considers-option",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKC-000002",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-constrained-by-concept",
+      "from": "AKG-000001",
+      "id": "edge:decision-guide-constraint:AKG-000001:AKC-000003",
+      "predicate": "constrained-by",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKC-000003",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-constrained-by-concept",
+      "from": "AKG-000002",
+      "id": "edge:decision-guide-constraint:AKG-000002:AKC-000003",
+      "predicate": "constrained-by",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKC-000003",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-constrained-by-concept",
+      "from": "AKG-000003",
+      "id": "edge:decision-guide-constraint:AKG-000003:AKC-000003",
+      "predicate": "constrained-by",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKC-000003",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-evaluates-quality-attribute",
+      "from": "AKG-000001",
+      "id": "edge:decision-guide-quality:AKG-000001:AKC-000004",
+      "predicate": "evaluates-quality-attribute",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKC-000004",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-evaluates-quality-attribute",
+      "from": "AKG-000002",
+      "id": "edge:decision-guide-quality:AKG-000002:AKC-000004",
+      "predicate": "evaluates-quality-attribute",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKC-000004",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-evaluates-quality-attribute",
+      "from": "AKG-000003",
+      "id": "edge:decision-guide-quality:AKG-000003:AKC-000004",
+      "predicate": "evaluates-quality-attribute",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKC-000004",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000007"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000001",
+      "id": "edge:decision-guide-claim:AKG-000001:AKL-000007",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000007",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000008"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000001",
+      "id": "edge:decision-guide-claim:AKG-000001:AKL-000008",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000008",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000022"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000001",
+      "id": "edge:decision-guide-claim:AKG-000001:AKL-000022",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000022",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000036"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000001",
+      "id": "edge:decision-guide-claim:AKG-000001:AKL-000036",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000036",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000070"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000001",
+      "id": "edge:decision-guide-claim:AKG-000001:AKL-000070",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000070",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000071"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000001",
+      "id": "edge:decision-guide-claim:AKG-000001:AKL-000071",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000071",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000072"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000001",
+      "id": "edge:decision-guide-claim:AKG-000001:AKL-000072",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000072",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000073"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000001",
+      "id": "edge:decision-guide-claim:AKG-000001:AKL-000073",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000073",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000081"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000001",
+      "id": "edge:decision-guide-claim:AKG-000001:AKL-000081",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000081",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000082"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000001",
+      "id": "edge:decision-guide-claim:AKG-000001:AKL-000082",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000082",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000012"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000002",
+      "id": "edge:decision-guide-claim:AKG-000002:AKL-000012",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000012",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000013"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000002",
+      "id": "edge:decision-guide-claim:AKG-000002:AKL-000013",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000013",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000026"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000002",
+      "id": "edge:decision-guide-claim:AKG-000002:AKL-000026",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000026",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000027"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000002",
+      "id": "edge:decision-guide-claim:AKG-000002:AKL-000027",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000027",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000028"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000002",
+      "id": "edge:decision-guide-claim:AKG-000002:AKL-000028",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000028",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000074"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000002",
+      "id": "edge:decision-guide-claim:AKG-000002:AKL-000074",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000074",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000075"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000002",
+      "id": "edge:decision-guide-claim:AKG-000002:AKL-000075",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000075",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000076"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000002",
+      "id": "edge:decision-guide-claim:AKG-000002:AKL-000076",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000076",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000081"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000002",
+      "id": "edge:decision-guide-claim:AKG-000002:AKL-000081",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000081",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000082"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000002",
+      "id": "edge:decision-guide-claim:AKG-000002:AKL-000082",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000082",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000001"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000003",
+      "id": "edge:decision-guide-claim:AKG-000003:AKL-000001",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000001",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000002"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000003",
+      "id": "edge:decision-guide-claim:AKG-000003:AKL-000002",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000002",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000021"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000003",
+      "id": "edge:decision-guide-claim:AKG-000003:AKL-000021",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000021",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000077"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000003",
+      "id": "edge:decision-guide-claim:AKG-000003:AKL-000077",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000077",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000078"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000003",
+      "id": "edge:decision-guide-claim:AKG-000003:AKL-000078",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000078",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000079"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000003",
+      "id": "edge:decision-guide-claim:AKG-000003:AKL-000079",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000079",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000080"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000003",
+      "id": "edge:decision-guide-claim:AKG-000003:AKL-000080",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000080",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000081"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000003",
+      "id": "edge:decision-guide-claim:AKG-000003:AKL-000081",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000081",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
+      "claim_ids": [
+        "AKL-000082"
+      ],
+      "conditions": [],
+      "confidence": null,
+      "direction": "directed",
+      "exceptions": [],
+      "family": "decision-guide-supported-by-claim",
+      "from": "AKG-000003",
+      "id": "edge:decision-guide-claim:AKG-000003:AKL-000082",
+      "predicate": "supported-by-claim",
+      "relationship_id": null,
+      "semantic_scope": null,
+      "source_ids": [],
+      "source_locations": [],
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": null,
+      "strength": null,
+      "to": "AKL-000082",
+      "traversable": false,
+      "traversal_exclusion_reason": "policy:provenance-edge-not-concept-traversal"
+    },
+    {
       "claim_ids": [
         "AKL-000021"
       ],
@@ -5286,7 +7031,16 @@
         "AKS-000001",
         "AKS-000002"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Chapter 2, Fundamentals of Systems Engineering (systems input only)",
+          "source_id": "AKS-000002"
+        },
+        {
+          "locator": "Section 2, The Structure of a Mathematical Science: First Principles (historical input only)",
+          "source_id": "AKS-000001"
+        }
+      ],
       "source_path": "relationships/AKR-000001.yaml",
       "status": "sourced",
       "strength": "weak",
@@ -5450,7 +7204,20 @@
         "AKS-000007",
         "AKS-000008"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Characteristics; Benefits; Challenges",
+          "source_id": "AKS-000008"
+        },
+        {
+          "locator": "Componentization via Services",
+          "source_id": "AKS-000007"
+        },
+        {
+          "locator": "Hexagonal Rails Monolith, Summary; Details: Application domain and Enforcing boundaries (first-party case)",
+          "source_id": "AKS-000006"
+        }
+      ],
       "source_path": "relationships/AKR-000002.yaml",
       "status": "sourced",
       "strength": "moderate",
@@ -5579,7 +7346,16 @@
         "AKS-000007",
         "AKS-000008"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Challenges, Complexity, Management and Skill set",
+          "source_id": "AKS-000008"
+        },
+        {
+          "locator": "Design for failure",
+          "source_id": "AKS-000007"
+        }
+      ],
       "source_path": "relationships/AKR-000016.yaml",
       "status": "sourced",
       "strength": "weak",
@@ -5643,7 +7419,16 @@
         "AKS-000012",
         "AKS-000013"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Related resources, Circuit Breaker pattern",
+          "source_id": "AKS-000012"
+        },
+        {
+          "locator": "Solution, distinction from Retry and composition",
+          "source_id": "AKS-000013"
+        }
+      ],
       "source_path": "relationships/AKR-000008.yaml",
       "status": "sourced",
       "strength": "moderate",
@@ -5674,7 +7459,12 @@
       "source_ids": [
         "AKS-000012"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Issues and considerations: Impact on performance, Idempotency; When to use this pattern",
+          "source_id": "AKS-000012"
+        }
+      ],
       "source_path": "relationships/AKR-000006.yaml",
       "status": "sourced",
       "strength": "weak",
@@ -5767,7 +7557,12 @@
       "source_ids": [
         "AKS-000013"
       ],
-      "source_locations": [],
+      "source_locations": [
+        {
+          "locator": "Context and problem; Solution; Issues and considerations, open-state exception handling",
+          "source_id": "AKS-000013"
+        }
+      ],
       "source_path": "relationships/AKR-000007.yaml",
       "status": "sourced",
       "strength": "weak",
@@ -7082,6 +8877,97 @@
       "title": "When a nonce was sent in the Authentication Request, OpenID Connect clients MUST require a nonce claim in the ID Token and validate that its value equals the sent nonce."
     },
     {
+      "family": "claim",
+      "id": "AKL-000070",
+      "source_path": "claims/AKL-000070.yaml",
+      "status": "sourced",
+      "title": "Consider a modular monolith when one release boundary is acceptable and explicit modules can be maintained; this is a bounded candidate, not a claim of superior quality."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000071",
+      "source_path": "claims/AKL-000071.yaml",
+      "status": "sourced",
+      "title": "Consider microservices when independent deployment is material and the team has demonstrated the required service-operation capability; validate benefits for the actual product."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000072",
+      "source_path": "claims/AKL-000072.yaml",
+      "status": "sourced",
+      "title": "Exclude a modular monolith for the selected scope when a mandatory independent-deployment requirement cannot be met by its single primary deployable."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000073",
+      "source_path": "claims/AKL-000073.yaml",
+      "status": "sourced",
+      "title": "Defer microservices in the scoped decision when the operating capability identified by the risk input is absent; reassess after capability evidence changes."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000074",
+      "source_path": "claims/AKL-000074.yaml",
+      "status": "sourced",
+      "title": "Avoid retrying the current operation when it is not safely repeatable or when no attempts fit the caller's deadline and load budget."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000075",
+      "source_path": "claims/AKL-000075.yaml",
+      "status": "sourced",
+      "title": "Consider a circuit breaker to contain dependency-call resource consumption when the caller can accept its open-state response; this is not a measured availability guarantee."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000076",
+      "source_path": "claims/AKL-000076.yaml",
+      "status": "sourced",
+      "title": "Do not select a circuit breaker for this call boundary until the caller has an acceptable response while dependency calls are blocked."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000077",
+      "source_path": "claims/AKL-000077.yaml",
+      "status": "sourced",
+      "title": "Consider bounded premise examination when a material architecture premise is uncertain; the software-method transfer remains a low-confidence repository recommendation."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000078",
+      "source_path": "claims/AKL-000078.yaml",
+      "status": "sourced",
+      "title": "Consider systems thinking when the architecture inquiry must examine material interactions across boundaries or lifecycle stages."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000079",
+      "source_path": "claims/AKL-000079.yaml",
+      "status": "sourced",
+      "title": "Avoid using premise examination as the sole inquiry lens when that choice would leave required cross-boundary analysis unaddressed."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000080",
+      "source_path": "claims/AKL-000080.yaml",
+      "status": "sourced",
+      "title": "Avoid using an interaction-oriented analysis as the sole inquiry lens when it leaves a material uncertain premise unexamined."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000081",
+      "source_path": "claims/AKL-000081.yaml",
+      "status": "sourced",
+      "title": "In NASA's stakeholder-expectations process, a constraint is a condition to be met, including externally imposed restrictions."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000082",
+      "source_path": "claims/AKL-000082.yaml",
+      "status": "sourced",
+      "title": "Google SRE describes availability as service usability and notes that it is often measured by the fraction of well-formed requests that succeed."
+    },
+    {
       "family": "concept",
       "id": "AKC-000001",
       "source_path": "knowledge/foundations/first-principles-thinking.md",
@@ -7248,6 +9134,27 @@
       "source_path": "knowledge/supporting/unreconciled-state-divergence.md",
       "status": "proposed",
       "title": "Unreconciled State Divergence"
+    },
+    {
+      "family": "decision-guide",
+      "id": "AKG-000001",
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": "proposed",
+      "title": "Deployment boundary selection"
+    },
+    {
+      "family": "decision-guide",
+      "id": "AKG-000002",
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": "proposed",
+      "title": "Dependency fault-response selection"
+    },
+    {
+      "family": "decision-guide",
+      "id": "AKG-000003",
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": "proposed",
+      "title": "Service-availability inquiry lens selection"
     },
     {
       "family": "relationship",

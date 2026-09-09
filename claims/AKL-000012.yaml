@@ -14,4 +14,7 @@ sources:
 derived_from_claims: []
 status: sourced
 notes: Mechanism and safeguards are supported by AKS-000012; the prescriptive combination is retained as qualified synthesis.
-version: 2
+version: 3
+source_locations:
+  - source_id: AKS-000012
+    locator: "Solution; Retry strategies; Issues and considerations; General guidance"

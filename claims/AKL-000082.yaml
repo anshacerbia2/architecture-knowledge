@@ -1,0 +1,23 @@
+id: AKL-000082
+record_kind: claim
+subject: AKC-000004
+predicate: measures
+object:
+  literal: successful well-formed requests as an operational availability indicator
+statement: Google SRE describes availability as service usability and notes that it is often
+  measured by the fraction of well-formed requests that succeed.
+claim_type: normalized-source-claim
+semantic_scope: claim-context-only
+conditions: []
+confidence: medium
+sources:
+  - AKS-000005
+source_locations:
+  - source_id: AKS-000005
+    locator: Service Level Objectives, Indicators section, paragraph beginning Another kind of SLI
+      important to SREs
+derived_from_claims: []
+status: sourced
+notes: An operational measurement framing, not a universal availability definition or evidence that
+  a candidate architecture improves it.
+version: 1

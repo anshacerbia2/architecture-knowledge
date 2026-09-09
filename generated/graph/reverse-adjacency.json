@@ -4,22 +4,31 @@
   "records": [
     {
       "edge_ids": [
+        "edge:decision-guide-option:AKG-000003:AKC-000001",
         "edge:relationship:AKR-000001"
       ],
       "node_id": "AKC-000001"
     },
     {
       "edge_ids": [
+        "edge:decision-guide-option:AKG-000003:AKC-000002",
         "edge:relationship:AKR-000001"
       ],
       "node_id": "AKC-000002"
     },
     {
-      "edge_ids": [],
+      "edge_ids": [
+        "edge:decision-guide-constraint:AKG-000001:AKC-000003",
+        "edge:decision-guide-constraint:AKG-000002:AKC-000003",
+        "edge:decision-guide-constraint:AKG-000003:AKC-000003"
+      ],
       "node_id": "AKC-000003"
     },
     {
       "edge_ids": [
+        "edge:decision-guide-quality:AKG-000001:AKC-000004",
+        "edge:decision-guide-quality:AKG-000002:AKC-000004",
+        "edge:decision-guide-quality:AKG-000003:AKC-000004",
         "edge:relationship:AKR-000006",
         "edge:relationship:AKR-000007",
         "edge:relationship:AKR-000020"
@@ -41,6 +50,7 @@
     },
     {
       "edge_ids": [
+        "edge:decision-guide-option:AKG-000001:AKC-000007",
         "edge:relationship:AKR-000002",
         "edge:relationship:AKR-000003"
       ],
@@ -48,6 +58,7 @@
     },
     {
       "edge_ids": [
+        "edge:decision-guide-option:AKG-000001:AKC-000008",
         "edge:relationship:AKR-000002",
         "edge:relationship:AKR-000004",
         "edge:relationship:AKR-000018"
@@ -76,12 +87,14 @@
     },
     {
       "edge_ids": [
+        "edge:decision-guide-option:AKG-000002:AKC-000012",
         "edge:relationship:AKR-000008"
       ],
       "node_id": "AKC-000012"
     },
     {
       "edge_ids": [
+        "edge:decision-guide-option:AKG-000002:AKC-000013",
         "edge:relationship:AKR-000008"
       ],
       "node_id": "AKC-000013"
@@ -152,14 +165,34 @@
       "node_id": "AKC-000024"
     },
     {
+      "edge_ids": [],
+      "node_id": "AKG-000001"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKG-000002"
+    },
+    {
+      "edge_ids": [],
+      "node_id": "AKG-000003"
+    },
+    {
       "edge_ids": [
-        "edge:concept-claim:AKC-000001:AKL-000001"
+        "edge:claim-derived:AKL-000077:AKL-000001",
+        "edge:claim-derived:AKL-000079:AKL-000001",
+        "edge:claim-derived:AKL-000080:AKL-000001",
+        "edge:concept-claim:AKC-000001:AKL-000001",
+        "edge:decision-guide-claim:AKG-000003:AKL-000001"
       ],
       "node_id": "AKL-000001"
     },
     {
       "edge_ids": [
-        "edge:concept-claim:AKC-000002:AKL-000002"
+        "edge:claim-derived:AKL-000078:AKL-000002",
+        "edge:claim-derived:AKL-000079:AKL-000002",
+        "edge:claim-derived:AKL-000080:AKL-000002",
+        "edge:concept-claim:AKC-000002:AKL-000002",
+        "edge:decision-guide-claim:AKG-000003:AKL-000002"
       ],
       "node_id": "AKL-000002"
     },
@@ -189,13 +222,18 @@
     },
     {
       "edge_ids": [
-        "edge:concept-claim:AKC-000007:AKL-000007"
+        "edge:claim-derived:AKL-000070:AKL-000007",
+        "edge:claim-derived:AKL-000072:AKL-000007",
+        "edge:concept-claim:AKC-000007:AKL-000007",
+        "edge:decision-guide-claim:AKG-000001:AKL-000007"
       ],
       "node_id": "AKL-000007"
     },
     {
       "edge_ids": [
-        "edge:concept-claim:AKC-000008:AKL-000008"
+        "edge:claim-derived:AKL-000071:AKL-000008",
+        "edge:concept-claim:AKC-000008:AKL-000008",
+        "edge:decision-guide-claim:AKG-000001:AKL-000008"
       ],
       "node_id": "AKL-000008"
     },
@@ -219,13 +257,17 @@
     },
     {
       "edge_ids": [
-        "edge:concept-claim:AKC-000012:AKL-000012"
+        "edge:claim-derived:AKL-000074:AKL-000012",
+        "edge:concept-claim:AKC-000012:AKL-000012",
+        "edge:decision-guide-claim:AKG-000002:AKL-000012"
       ],
       "node_id": "AKL-000012"
     },
     {
       "edge_ids": [
-        "edge:concept-claim:AKC-000013:AKL-000013"
+        "edge:claim-derived:AKL-000076:AKL-000013",
+        "edge:concept-claim:AKC-000013:AKL-000013",
+        "edge:decision-guide-claim:AKG-000002:AKL-000013"
       ],
       "node_id": "AKL-000013"
     },
@@ -275,6 +317,7 @@
       "edge_ids": [
         "edge:concept-claim:AKC-000001:AKL-000021",
         "edge:concept-claim:AKC-000002:AKL-000021",
+        "edge:decision-guide-claim:AKG-000003:AKL-000021",
         "edge:relationship-claim:AKR-000001:AKL-000021"
       ],
       "node_id": "AKL-000021"
@@ -283,6 +326,7 @@
       "edge_ids": [
         "edge:concept-claim:AKC-000007:AKL-000022",
         "edge:concept-claim:AKC-000008:AKL-000022",
+        "edge:decision-guide-claim:AKG-000001:AKL-000022",
         "edge:relationship-claim:AKR-000002:AKL-000022"
       ],
       "node_id": "AKL-000022"
@@ -315,14 +359,17 @@
       "edge_ids": [
         "edge:concept-claim:AKC-000004:AKL-000026",
         "edge:concept-claim:AKC-000012:AKL-000026",
+        "edge:decision-guide-claim:AKG-000002:AKL-000026",
         "edge:relationship-claim:AKR-000006:AKL-000026"
       ],
       "node_id": "AKL-000026"
     },
     {
       "edge_ids": [
+        "edge:claim-derived:AKL-000075:AKL-000027",
         "edge:concept-claim:AKC-000004:AKL-000027",
         "edge:concept-claim:AKC-000013:AKL-000027",
+        "edge:decision-guide-claim:AKG-000002:AKL-000027",
         "edge:relationship-claim:AKR-000007:AKL-000027"
       ],
       "node_id": "AKL-000027"
@@ -331,6 +378,7 @@
       "edge_ids": [
         "edge:concept-claim:AKC-000012:AKL-000028",
         "edge:concept-claim:AKC-000013:AKL-000028",
+        "edge:decision-guide-claim:AKG-000002:AKL-000028",
         "edge:relationship-claim:AKR-000008:AKL-000028"
       ],
       "node_id": "AKL-000028"
@@ -392,8 +440,10 @@
     },
     {
       "edge_ids": [
+        "edge:claim-derived:AKL-000073:AKL-000036",
         "edge:concept-claim:AKC-000005:AKL-000036",
         "edge:concept-claim:AKC-000008:AKL-000036",
+        "edge:decision-guide-claim:AKG-000001:AKL-000036",
         "edge:relationship-claim:AKR-000016:AKL-000036"
       ],
       "node_id": "AKL-000036"
@@ -619,6 +669,101 @@
       "node_id": "AKL-000069"
     },
     {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000007:AKL-000070",
+        "edge:decision-guide-claim:AKG-000001:AKL-000070"
+      ],
+      "node_id": "AKL-000070"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000008:AKL-000071",
+        "edge:decision-guide-claim:AKG-000001:AKL-000071"
+      ],
+      "node_id": "AKL-000071"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000007:AKL-000072",
+        "edge:decision-guide-claim:AKG-000001:AKL-000072"
+      ],
+      "node_id": "AKL-000072"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000008:AKL-000073",
+        "edge:decision-guide-claim:AKG-000001:AKL-000073"
+      ],
+      "node_id": "AKL-000073"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000012:AKL-000074",
+        "edge:decision-guide-claim:AKG-000002:AKL-000074"
+      ],
+      "node_id": "AKL-000074"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000013:AKL-000075",
+        "edge:decision-guide-claim:AKG-000002:AKL-000075"
+      ],
+      "node_id": "AKL-000075"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000013:AKL-000076",
+        "edge:decision-guide-claim:AKG-000002:AKL-000076"
+      ],
+      "node_id": "AKL-000076"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000001:AKL-000077",
+        "edge:decision-guide-claim:AKG-000003:AKL-000077"
+      ],
+      "node_id": "AKL-000077"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000002:AKL-000078",
+        "edge:decision-guide-claim:AKG-000003:AKL-000078"
+      ],
+      "node_id": "AKL-000078"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000001:AKL-000079",
+        "edge:decision-guide-claim:AKG-000003:AKL-000079"
+      ],
+      "node_id": "AKL-000079"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000002:AKL-000080",
+        "edge:decision-guide-claim:AKG-000003:AKL-000080"
+      ],
+      "node_id": "AKL-000080"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000003:AKL-000081",
+        "edge:decision-guide-claim:AKG-000001:AKL-000081",
+        "edge:decision-guide-claim:AKG-000002:AKL-000081",
+        "edge:decision-guide-claim:AKG-000003:AKL-000081"
+      ],
+      "node_id": "AKL-000081"
+    },
+    {
+      "edge_ids": [
+        "edge:concept-claim:AKC-000004:AKL-000082",
+        "edge:decision-guide-claim:AKG-000001:AKL-000082",
+        "edge:decision-guide-claim:AKG-000002:AKL-000082",
+        "edge:decision-guide-claim:AKG-000003:AKL-000082"
+      ],
+      "node_id": "AKL-000082"
+    },
+    {
       "edge_ids": [],
       "node_id": "AKR-000001"
     },
@@ -727,7 +872,8 @@
         "edge:claim-source:AKL-000003:AKS-000002",
         "edge:claim-source:AKL-000021:AKS-000002",
         "edge:claim-source:AKL-000038:AKS-000002",
-        "edge:claim-source:AKL-000039:AKS-000002"
+        "edge:claim-source:AKL-000039:AKS-000002",
+        "edge:claim-source:AKL-000081:AKS-000002"
       ],
       "node_id": "AKS-000002"
     },
@@ -749,7 +895,8 @@
       "edge_ids": [
         "edge:claim-source:AKL-000004:AKS-000005",
         "edge:claim-source:AKL-000005:AKS-000005",
-        "edge:claim-source:AKL-000040:AKS-000005"
+        "edge:claim-source:AKL-000040:AKS-000005",
+        "edge:claim-source:AKL-000082:AKS-000005"
       ],
       "node_id": "AKS-000005"
     },
@@ -782,7 +929,8 @@
         "edge:claim-source:AKL-000024:AKS-000008",
         "edge:claim-source:AKL-000036:AKS-000008",
         "edge:claim-source:AKL-000038:AKS-000008",
-        "edge:claim-source:AKL-000041:AKS-000008"
+        "edge:claim-source:AKL-000041:AKS-000008",
+        "edge:claim-source:AKL-000071:AKS-000008"
       ],
       "node_id": "AKS-000008"
     },
@@ -820,7 +968,8 @@
         "edge:claim-source:AKL-000026:AKS-000012",
         "edge:claim-source:AKL-000028:AKS-000012",
         "edge:claim-source:AKL-000041:AKS-000012",
-        "edge:claim-source:AKL-000045:AKS-000012"
+        "edge:claim-source:AKL-000045:AKS-000012",
+        "edge:claim-source:AKL-000074:AKS-000012"
       ],
       "node_id": "AKS-000012"
     },

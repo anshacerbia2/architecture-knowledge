@@ -43,6 +43,8 @@
         "Supports traceable rationale."
       ],
       "claims": [
+        "AKL-000077",
+        "AKL-000079",
         "AKL-000001",
         "AKL-000021"
       ],
@@ -111,7 +113,7 @@
         "review_due_at": null,
         "reviewed_at": null,
         "reviewers": [],
-        "updated_at": "2026-07-30"
+        "updated_at": "2026-09-09"
       },
       "risks": [
         {
@@ -144,7 +146,7 @@
         "Reduction can underrepresent emergence."
       ],
       "type": "reasoning-model",
-      "version": 2
+      "version": 3
     },
     {
       "aliases": [
@@ -186,6 +188,8 @@
         "Connects technical and organizational behavior."
       ],
       "claims": [
+        "AKL-000078",
+        "AKL-000080",
         "AKL-000002",
         "AKL-000021",
         "AKL-000039"
@@ -258,7 +262,7 @@
         "review_due_at": null,
         "reviewed_at": null,
         "reviewers": [],
-        "updated_at": "2026-07-30"
+        "updated_at": "2026-09-09"
       },
       "risks": [
         {
@@ -292,7 +296,7 @@
         "Analysis costs grow with boundary size."
       ],
       "type": "reasoning-model",
-      "version": 2
+      "version": 3
     },
     {
       "aliases": [
@@ -332,6 +336,7 @@
         "Supports revisiting decisions when limits change."
       ],
       "claims": [
+        "AKL-000081",
         "AKL-000003",
         "AKL-000038"
       ],
@@ -401,7 +406,7 @@
         "review_due_at": null,
         "reviewed_at": null,
         "reviewers": [],
-        "updated_at": "2026-07-30"
+        "updated_at": "2026-09-09"
       },
       "risks": [
         {
@@ -435,7 +440,7 @@
         "Conflicting limits require escalation."
       ],
       "type": "constraint",
-      "version": 2
+      "version": 3
     },
     {
       "aliases": [
@@ -478,6 +483,7 @@
         "Supports service-level objectives."
       ],
       "claims": [
+        "AKL-000082",
         "AKL-000004",
         "AKL-000026",
         "AKL-000027"
@@ -562,7 +568,7 @@
         "review_due_at": null,
         "reviewed_at": null,
         "reviewers": [],
-        "updated_at": "2026-07-30"
+        "updated_at": "2026-09-09"
       },
       "risks": [
         {
@@ -596,7 +602,7 @@
         "Exclusions can distort the result."
       ],
       "type": "quality-attribute",
-      "version": 3
+      "version": 4
     },
     {
       "aliases": [
@@ -948,6 +954,8 @@
         "Simpler transactions and deployment."
       ],
       "claims": [
+        "AKL-000070",
+        "AKL-000072",
         "AKL-000007",
         "AKL-000022",
         "AKL-000023",
@@ -1036,7 +1044,7 @@
         "review_due_at": null,
         "reviewed_at": null,
         "reviewers": [],
-        "updated_at": "2026-07-30"
+        "updated_at": "2026-09-09"
       },
       "risks": [
         {
@@ -1071,7 +1079,7 @@
         "Boundary erosion is easy without enforcement."
       ],
       "type": "architectural-style",
-      "version": 2
+      "version": 3
     },
     {
       "aliases": [
@@ -1113,6 +1121,8 @@
         "Fault and technology isolation when boundaries hold."
       ],
       "claims": [
+        "AKL-000071",
+        "AKL-000073",
         "AKL-000008",
         "AKL-000022",
         "AKL-000024",
@@ -1198,7 +1208,7 @@
         "review_due_at": null,
         "reviewed_at": null,
         "reviewers": [],
-        "updated_at": "2026-07-30"
+        "updated_at": "2026-09-09"
       },
       "risks": [
         {
@@ -1233,7 +1243,7 @@
         "More demanding observability and testing."
       ],
       "type": "architectural-style",
-      "version": 2
+      "version": 3
     },
     {
       "aliases": [
@@ -1740,6 +1750,7 @@
         "Provides bounded recovery behavior."
       ],
       "claims": [
+        "AKL-000074",
         "AKL-000012",
         "AKL-000025",
         "AKL-000026",
@@ -1834,7 +1845,7 @@
         "review_due_at": null,
         "reviewed_at": null,
         "reviewers": [],
-        "updated_at": "2026-07-30"
+        "updated_at": "2026-09-09"
       },
       "risks": [
         {
@@ -1868,7 +1879,7 @@
         "Potential duplicate effects."
       ],
       "type": "tactic",
-      "version": 2
+      "version": 3
     },
     {
       "aliases": [
@@ -1910,6 +1921,8 @@
         "Creates controlled recovery probes."
       ],
       "claims": [
+        "AKL-000075",
+        "AKL-000076",
         "AKL-000013",
         "AKL-000027",
         "AKL-000028"
@@ -1999,7 +2012,7 @@
         "review_due_at": null,
         "reviewed_at": null,
         "reviewers": [],
-        "updated_at": "2026-07-30"
+        "updated_at": "2026-09-09"
       },
       "risks": [
         {
@@ -2032,7 +2045,7 @@
         "Fallback correctness burden."
       ],
       "type": "tactic",
-      "version": 2
+      "version": 3
     },
     {
       "aliases": [

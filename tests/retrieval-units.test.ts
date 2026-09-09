@@ -30,7 +30,7 @@ describe("M5 deterministic retrieval units", () => {
   it("generates every required family with stable unique IDs", () => {
     expect(artifacts.manifest.unit_counts).toMatchObject({
       "concept-overview": 24,
-      claim: 69,
+      claim: model.claims.length,
       relationship: 24,
       source: 22,
     });
@@ -56,7 +56,7 @@ describe("M5 deterministic retrieval units", () => {
 
   it("keeps claims atomic and preserves exact evidence locators", () => {
     const claims = artifacts.units.filter((unit) => unit.unit_kind === "claim");
-    expect(claims).toHaveLength(69);
+    expect(claims).toHaveLength(model.claims.length);
     expect(claims.every((unit) => unit.ordinal === 0)).toBe(true);
     const issuer = claims.find((unit) => unit.record_id === "AKL-000061");
     expect(issuer?.metadata.source_locations).toEqual([

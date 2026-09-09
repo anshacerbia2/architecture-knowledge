@@ -1,0 +1,272 @@
+schema_version: 4
+id: AKG-000003
+record_kind: decision-guide
+title: Service-availability inquiry lens selection
+decision_question: For a bounded service-availability inquiry, which lenses should examine uncertain
+  premises and cross-boundary behavior? First-principles and systems thinking may be combined;
+  neither is an implementation architecture or proof of an availability improvement.
+context_variables:
+  - key: decision-scope
+    question: What exact system, call boundary, or inquiry is being decided?
+    description: Human-provided, scoped pilot context; no secrets or personal data. This text is not an
+      automatically evaluated condition.
+    value_type: string
+    required: true
+    sensitivity: internal
+    unit: null
+    allowed_values: []
+  - key: premise-uncertainty
+    question: Which material premises need examination and what could refute them?
+    description: Human-provided, scoped pilot context; no secrets or personal data. This text is not an
+      automatically evaluated condition.
+    value_type: string
+    required: true
+    sensitivity: internal
+    unit: null
+    allowed_values: []
+  - key: interaction-scope
+    question: Which stakeholder, feedback, boundary, or lifecycle interactions must be examined?
+    description: Human-provided, scoped pilot context; no secrets or personal data. This text is not an
+      automatically evaluated condition.
+    value_type: string
+    required: true
+    sensitivity: internal
+    unit: null
+    allowed_values: []
+  - key: analysis-plan
+    question: Will each required analysis be covered by a single lens or a coordinated combination?
+    description: Human-provided, scoped pilot context; no secrets or personal data. This text is not an
+      automatically evaluated condition.
+    value_type: string
+    required: true
+    sensitivity: internal
+    unit: null
+    allowed_values: []
+constraints:
+  - concept_id: AKC-000003
+    hardness: hard
+    rationale: "Pilot scope constraint: The inquiry has a named service-availability question and bounded
+      analysis scope; no inquiry result is treated as proof or an accepted architecture decision.
+      The generic Constraint concept classifies this single explicitly qualified binding; it does
+      not prove project compliance or represent several independently checkable constraints."
+    conditions:
+      - statement: The inquiry has a named service-availability question and bounded analysis scope; no inquiry
+          result is treated as proof or an accepted architecture decision.
+        scope: edge-local
+        concept_ids: []
+    claim_ids:
+      - AKL-000081
+assumptions: []
+quality_attributes:
+  - concept_id: AKC-000004
+    priority: medium
+    rationale: Availability is a measurement question for the affected service, not a guaranteed benefit
+      of an option or an assessment of reasoning-method superiority.
+    conditions: []
+    claim_ids:
+      - AKL-000082
+options:
+  - concept_id: AKC-000001
+    label: First-Principles Thinking
+    summary: This corpus transfers first-principles reasoning from the examination of foundational
+      propositions to bounded architecture inquiries; the software-architecture method is a
+      repository synthesis, not a directly normalized historical source claim.
+    conditions: []
+    claim_ids:
+      - AKL-000001
+  - concept_id: AKC-000002
+    label: Systems Thinking
+    summary: For this corpus, systems thinking combines explicit purpose and boundaries with interacting
+      elements, stakeholders, feedback, and lifecycle effects when analyzing architecture decisions.
+    conditions: []
+    claim_ids:
+      - AKL-000002
+evaluation_criteria:
+  - key: inquiry-focus
+    question: Which questions does this repository's qualified lens formulation address?
+    quality_attribute_id: null
+    scale: qualitative
+    direction: context-dependent
+    unit: null
+    conditions: []
+    claim_ids:
+      - AKL-000001
+      - AKL-000002
+  - key: combined-coverage
+    question: Does the inquiry require both premise examination and cross-boundary analysis?
+    quality_attribute_id: null
+    scale: qualitative
+    direction: context-dependent
+    unit: null
+    conditions:
+      - statement: The inquiry has both uncertain premises and material cross-boundary interactions.
+        concept_ids: []
+        scope: edge-local
+    claim_ids:
+      - AKL-000021
+tradeoff_matrix:
+  - option_id: AKC-000001
+    criterion: inquiry-focus
+    assessment:
+      rating: mixed
+      rationale: The corpus transfers premise examination to architecture as a synthesis, not a
+        historically specified software method.
+      value: null
+      unit: null
+      uncertainty: high
+    conditions: []
+    claim_ids:
+      - AKL-000001
+  - option_id: AKC-000002
+    criterion: inquiry-focus
+    assessment:
+      rating: mixed
+      rationale: The corpus synthesizes boundary, interaction, stakeholder, feedback, and lifecycle
+        questions from a systems-engineering scope.
+      value: null
+      unit: null
+      uncertainty: high
+    conditions: []
+    claim_ids:
+      - AKL-000002
+  - option_id: AKC-000001
+    criterion: combined-coverage
+    assessment:
+      rating: unknown
+      rationale: Combined use is a low-confidence repository inference; premise analysis alone is not
+        asserted to cover interactions.
+      value: null
+      unit: null
+      uncertainty: unresolved
+    conditions:
+      - statement: The inquiry has both uncertain premises and material cross-boundary interactions.
+        concept_ids: []
+        scope: edge-local
+    claim_ids:
+      - AKL-000021
+  - option_id: AKC-000002
+    criterion: combined-coverage
+    assessment:
+      rating: unknown
+      rationale: Combined use is a low-confidence repository inference; interaction analysis alone is not
+        asserted to validate premises.
+      value: null
+      unit: null
+      uncertainty: unresolved
+    conditions:
+      - statement: The inquiry has both uncertain premises and material cross-boundary interactions.
+        concept_ids: []
+        scope: edge-local
+    claim_ids:
+      - AKL-000021
+disqualifiers: []
+risk_questions:
+  - question: Which software-method assumptions are repository transfers rather than instructions in the
+      historical source?
+    affected_option_ids:
+      - AKC-000001
+    conditions: []
+    claim_ids:
+      - AKL-000001
+  - question: Which aerospace-to-software assumptions, omitted boundaries, security stakeholders, or
+      lifecycle effects need explicit checking?
+    affected_option_ids:
+      - AKC-000002
+    conditions: []
+    claim_ids:
+      - AKL-000002
+recommended_when:
+  - option_id: AKC-000001
+    rationale: Consider bounded premise examination when a material architecture premise is uncertain;
+      the software-method transfer remains a low-confidence repository recommendation.
+    conditions:
+      - statement: A material architecture premise is uncertain and premise examination is within the
+          inquiry scope.
+        scope: edge-local
+        concept_ids: []
+    claim_ids:
+      - AKL-000077
+  - option_id: AKC-000002
+    rationale: Consider systems thinking when the architecture inquiry must examine material
+      interactions across boundaries or lifecycle stages.
+    conditions:
+      - statement: The inquiry includes material cross-boundary interactions or lifecycle consequences.
+        scope: edge-local
+        concept_ids: []
+    claim_ids:
+      - AKL-000078
+avoid_when:
+  - option_id: AKC-000001
+    rationale: Avoid using premise examination as the sole inquiry lens when that choice would leave
+      required cross-boundary analysis unaddressed.
+    conditions:
+      - statement: Premise examination would be the sole lens and required cross-boundary analysis would
+          remain unaddressed.
+        scope: edge-local
+        concept_ids: []
+    claim_ids:
+      - AKL-000079
+  - option_id: AKC-000002
+    rationale: Avoid using an interaction-oriented analysis as the sole inquiry lens when it leaves a
+      material uncertain premise unexamined.
+    conditions:
+      - statement: Interaction analysis would be the sole lens and a material uncertain premise would remain
+          unexamined.
+        scope: edge-local
+        concept_ids: []
+    claim_ids:
+      - AKL-000080
+evolution_triggers:
+  - condition:
+      statement: New evidence challenges a material architecture premise.
+      scope: edge-local
+      concept_ids: []
+    rationale: Reopen premise examination; a prior inquiry is not permanent evidence of truth.
+    affected_option_ids:
+      - AKC-000001
+    claim_ids:
+      - AKL-000001
+  - condition:
+      statement: The system boundary or affected stakeholders change.
+      scope: edge-local
+      concept_ids: []
+    rationale: Reopen interaction and lifecycle analysis within a newly stated scope.
+    affected_option_ids:
+      - AKC-000002
+    claim_ids:
+      - AKL-000002
+evidence:
+  - AKL-000001
+  - AKL-000002
+  - AKL-000021
+  - AKL-000077
+  - AKL-000078
+  - AKL-000079
+  - AKL-000080
+  - AKL-000081
+  - AKL-000082
+uncertainty_policy:
+  missing_evidence: insufficient-evidence
+  conflicting_evidence: preserve-conflict-and-escalate
+  unknown_context: request-clarification
+  tie: escalate-human
+privacy:
+  allowed_context_classifications:
+    - public
+    - internal
+  external_provider_policy: prohibited
+  session_persistence: ephemeral-only
+authority:
+  recommendation_only: true
+  human_decision_required: true
+  automation_may_approve: false
+  generated_artifact_status: draft
+status: proposed
+review:
+  owner: null
+  reviewers: []
+  created_at: 2026-09-09
+  updated_at: 2026-09-09
+  reviewed_at: null
+  review_due_at: null
+version: 1

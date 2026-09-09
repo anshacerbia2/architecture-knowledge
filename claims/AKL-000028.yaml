@@ -18,4 +18,9 @@ sources:
 derived_from_claims: []
 status: sourced
 notes: Uncoordinated policies can create oscillation or amplification.
-version: 1
+version: 2
+source_locations:
+  - source_id: AKS-000012
+    locator: "Related resources, Circuit Breaker pattern"
+  - source_id: AKS-000013
+    locator: "Solution, distinction from Retry and composition"

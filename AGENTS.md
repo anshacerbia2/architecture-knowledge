@@ -97,6 +97,7 @@ boundaries.
 - `schemas/AGENTS.md`: schema compatibility and validation contracts.
 - `sources/AGENTS.md`: source admission and quality assessment.
 - `claims/AGENTS.md`: claim and evidence representation.
+- `decisions/AGENTS.md`: bounded decision-guide authoring and pilot lookup policy.
 - `relationships/AGENTS.md`: edge semantics.
 - `knowledge/AGENTS.md`: future knowledge-unit authoring.
 - `knowledge/security/AGENTS.md`: security evidence rules.

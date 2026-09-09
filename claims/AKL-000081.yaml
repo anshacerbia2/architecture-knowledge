@@ -1,0 +1,23 @@
+id: AKL-000081
+record_kind: claim
+subject: AKC-000003
+predicate: defines
+object:
+  literal: a condition to be met in the system design scope
+statement: In NASA's stakeholder-expectations process, a constraint is a condition to be met,
+  including externally imposed restrictions.
+claim_type: normalized-source-claim
+semantic_scope: claim-context-only
+conditions: []
+confidence: medium
+sources:
+  - AKS-000002
+source_locations:
+  - source_id: AKS-000002
+    locator: NASA/SP-2016-6105 Rev2, section 4.1.1.2.2, printed page 48 (PDF page 58), paragraph defining
+      constraint
+derived_from_claims: []
+status: sourced
+notes: Supports the meaning of a constraint, not the truth or authority of any project-specific
+  constraint. No ISO definition is asserted.
+version: 1

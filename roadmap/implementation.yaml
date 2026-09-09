@@ -134,7 +134,7 @@ milestones:
     exit_criteria:
       - recommendations are contextual and explainable
       - automation cannot approve decisions
-    notes: M7.0 is explicitly approved complete. The authorized M7.1 validation kernel is implemented without production decision guides or runtime behavior. Representative guide corpus, assistant runtime, model integration, and artifact generation remain unstarted and require a separate post-audit authorization.
+    notes: M7.0 is explicitly approved complete. The M7.1 validation kernel is implemented. The owner subsequently authorized a bounded M7.2 corpus pilot; three proposed guides and their evidence are implemented, with local validation and exact-change hosted evidence tracked in docs/m7-2-implementation-report.md. This does not approve guide content or complete M7. Assistant runtime, model integration, broader corpus expansion, and artifact generation remain unstarted and outside this authorization.
   - id: m8
     title: Architecture Review Platform
     status: future

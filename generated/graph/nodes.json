@@ -486,6 +486,97 @@
       "title": "When a nonce was sent in the Authentication Request, OpenID Connect clients MUST require a nonce claim in the ID Token and validate that its value equals the sent nonce."
     },
     {
+      "family": "claim",
+      "id": "AKL-000070",
+      "source_path": "claims/AKL-000070.yaml",
+      "status": "sourced",
+      "title": "Consider a modular monolith when one release boundary is acceptable and explicit modules can be maintained; this is a bounded candidate, not a claim of superior quality."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000071",
+      "source_path": "claims/AKL-000071.yaml",
+      "status": "sourced",
+      "title": "Consider microservices when independent deployment is material and the team has demonstrated the required service-operation capability; validate benefits for the actual product."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000072",
+      "source_path": "claims/AKL-000072.yaml",
+      "status": "sourced",
+      "title": "Exclude a modular monolith for the selected scope when a mandatory independent-deployment requirement cannot be met by its single primary deployable."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000073",
+      "source_path": "claims/AKL-000073.yaml",
+      "status": "sourced",
+      "title": "Defer microservices in the scoped decision when the operating capability identified by the risk input is absent; reassess after capability evidence changes."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000074",
+      "source_path": "claims/AKL-000074.yaml",
+      "status": "sourced",
+      "title": "Avoid retrying the current operation when it is not safely repeatable or when no attempts fit the caller's deadline and load budget."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000075",
+      "source_path": "claims/AKL-000075.yaml",
+      "status": "sourced",
+      "title": "Consider a circuit breaker to contain dependency-call resource consumption when the caller can accept its open-state response; this is not a measured availability guarantee."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000076",
+      "source_path": "claims/AKL-000076.yaml",
+      "status": "sourced",
+      "title": "Do not select a circuit breaker for this call boundary until the caller has an acceptable response while dependency calls are blocked."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000077",
+      "source_path": "claims/AKL-000077.yaml",
+      "status": "sourced",
+      "title": "Consider bounded premise examination when a material architecture premise is uncertain; the software-method transfer remains a low-confidence repository recommendation."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000078",
+      "source_path": "claims/AKL-000078.yaml",
+      "status": "sourced",
+      "title": "Consider systems thinking when the architecture inquiry must examine material interactions across boundaries or lifecycle stages."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000079",
+      "source_path": "claims/AKL-000079.yaml",
+      "status": "sourced",
+      "title": "Avoid using premise examination as the sole inquiry lens when that choice would leave required cross-boundary analysis unaddressed."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000080",
+      "source_path": "claims/AKL-000080.yaml",
+      "status": "sourced",
+      "title": "Avoid using an interaction-oriented analysis as the sole inquiry lens when it leaves a material uncertain premise unexamined."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000081",
+      "source_path": "claims/AKL-000081.yaml",
+      "status": "sourced",
+      "title": "In NASA's stakeholder-expectations process, a constraint is a condition to be met, including externally imposed restrictions."
+    },
+    {
+      "family": "claim",
+      "id": "AKL-000082",
+      "source_path": "claims/AKL-000082.yaml",
+      "status": "sourced",
+      "title": "Google SRE describes availability as service usability and notes that it is often measured by the fraction of well-formed requests that succeed."
+    },
+    {
       "family": "concept",
       "id": "AKC-000001",
       "source_path": "knowledge/foundations/first-principles-thinking.md",
@@ -652,6 +743,27 @@
       "source_path": "knowledge/supporting/unreconciled-state-divergence.md",
       "status": "proposed",
       "title": "Unreconciled State Divergence"
+    },
+    {
+      "family": "decision-guide",
+      "id": "AKG-000001",
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": "proposed",
+      "title": "Deployment boundary selection"
+    },
+    {
+      "family": "decision-guide",
+      "id": "AKG-000002",
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": "proposed",
+      "title": "Dependency fault-response selection"
+    },
+    {
+      "family": "decision-guide",
+      "id": "AKG-000003",
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": "proposed",
+      "title": "Service-availability inquiry lens selection"
     },
     {
       "family": "relationship",

@@ -92,7 +92,7 @@ describe("M4 graph projection production contract", () => {
     const withGuide = structuredClone(model);
     const guide = syntheticGuide();
     withGuide.records.push(guide);
-    withGuide.decisionGuides = [guide];
+    withGuide.decisionGuides.push(guide);
     const projected = buildGraphArtifacts(withGuide);
     expect(validateGraphArtifacts(withGuide, projected)).toEqual([]);
     expect(projected.decisionGuides).toContainEqual(
@@ -229,7 +229,7 @@ describe("M4 graph projection production contract", () => {
       semantic_relationship_edges: 24,
       forward_relationship_adjacency_entries: 31,
       reverse_relationship_adjacency_entries: 31,
-      provenance_edges: 237,
+      provenance_edges: 308,
     });
   });
 

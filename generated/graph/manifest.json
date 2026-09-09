@@ -20,11 +20,11 @@
   ],
   "generator_contract_version": 2,
   "graph_contract_version": 2,
-  "input_fingerprint": "sha256:ad827bcfa37e9cb0a0510dbc51ab2149598e2e3200b2fa68c25490faa34ddc68",
+  "input_fingerprint": "sha256:3228129c26c7c6c3d687efa1684f1b74c16c6194e67072c2c32221cb2790b849",
   "input_record_counts": {
-    "claims": 69,
+    "claims": 82,
     "concepts": 24,
-    "decision_guides": 0,
+    "decision_guides": 3,
     "relationships": 24,
     "sources": 22
   },
@@ -32,23 +32,28 @@
   "orphan_count": 1,
   "output_edge_counts": {
     "claim-applicable-to-concept": 5,
-    "claim-derived-from-claim": 2,
-    "claim-supported-by-source": 110,
-    "concept-declares-claim": 96,
+    "claim-derived-from-claim": 15,
+    "claim-supported-by-source": 114,
+    "concept-declares-claim": 109,
+    "decision-guide-considers-option": 6,
+    "decision-guide-constrained-by-concept": 3,
+    "decision-guide-evaluates-quality-attribute": 3,
+    "decision-guide-supported-by-claim": 29,
     "relationship": 24,
     "relationship-supported-by-claim": 24
   },
   "output_node_counts": {
-    "claim": 69,
+    "claim": 82,
     "concept": 24,
+    "decision-guide": 3,
     "relationship": 24,
     "source": 22
   },
-  "provenance_edges": 237,
+  "provenance_edges": 308,
   "reverse_relationship_adjacency_entries": 31,
   "semantic_relationship_edges": 24,
-  "total_edges": 261,
-  "total_nodes": 139,
+  "total_edges": 332,
+  "total_nodes": 155,
   "traversal_eligible_relationships": 8,
   "unresolved_reference_count": 0
 }

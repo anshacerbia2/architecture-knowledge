@@ -15,4 +15,9 @@ sources:
 derived_from_claims: []
 status: sourced
 notes: The GitLab source is a first-party case, not universal evidence.
-version: 1
+version: 2
+source_locations:
+  - source_id: AKS-000006
+    locator: "Hexagonal Rails Monolith, Summary; Details: Application domain and Enforcing boundaries (first-party case)"
+  - source_id: AKS-000007
+    locator: "Componentization via Services; monolith and independent deployment comparison"

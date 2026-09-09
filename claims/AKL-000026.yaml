@@ -17,4 +17,7 @@ sources:
 derived_from_claims: []
 status: sourced
 notes: Qualified operational recommendation. AKS-000012 supports the mechanism and overload risk, not a measured general availability improvement.
-version: 2
+version: 3
+source_locations:
+  - source_id: AKS-000012
+    locator: "Issues and considerations: Impact on performance, Idempotency; When to use this pattern"
