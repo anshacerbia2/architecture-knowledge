@@ -95,6 +95,7 @@ any document reviewed, approved, published, or canonical.
 | M7-09 | [M7.1 Second-Reviewer Confirmation](m7-1-second-reviewer-confirmation.md) | Distinct AI review of the M7.1 boundary; not human content approval. |
 | M7-10 | [M7.2 Corpus Pilot](m7-2-corpus-pilot.md) | Three-guide catalog, lookup choice, semantic boundaries, and source fidelity. |
 | M7-11 | [M7.2 Implementation Report](m7-2-implementation-report.md) | Scoped changes, validation evidence, residual risks, and next-run boundary. |
+| M7-12 | [M7.2 Retrieval Regression](m7-2-retrieval-regression.md) | Post-merge fake-vector false hit, bounded correction, regression tests, and hosted verification boundary. |
 
 ## Architecture Decision Records
 

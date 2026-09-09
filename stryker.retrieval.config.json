@@ -16,8 +16,8 @@
   "mutate": [
     "src/retrieval-units.ts",
     "src/retrieval-query-contract.ts",
-    "src/retrieval-query.ts:49-183",
-    "src/retrieval-query.ts:190-399",
+    "src/retrieval-query.ts",
+    "src/fake-embedding-relevance.ts",
     "src/embedding-provider.ts:20-145",
     "src/embedding-provider.ts:184-228",
     "src/retrieval-evaluation.ts:109-241",

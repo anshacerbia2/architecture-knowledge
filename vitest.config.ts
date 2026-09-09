@@ -32,6 +32,7 @@ export default defineConfig({
         "src/retrieval-query-contract.ts",
         "src/retrieval-query.ts",
         "src/embedding-provider.ts",
+        "src/fake-embedding-relevance.ts",
         "src/retrieval-evaluation.ts",
         "src/rag-request.ts",
         "src/rag-classification.ts",
