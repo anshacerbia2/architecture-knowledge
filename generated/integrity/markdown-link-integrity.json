@@ -68,6 +68,21 @@
       "status": "valid"
     },
     {
+      "path": "docs/m7-1-final-technical-reaudit-report.md",
+      "target": "m7-1-decision-basis-remediation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-final-technical-reaudit-report.md",
+      "target": "m7-1-focused-reaudit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-final-technical-reaudit-report.md",
+      "target": "m7-1-independent-audit-report.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/m7-1-focused-reaudit-report.md",
       "target": "../schemas/decision-recommendation.schema.json",
       "status": "valid"
@@ -539,8 +554,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 107,
+    "checked_link_count": 110,
     "broken_link_count": 0,
-    "markdown_file_count": 97
+    "markdown_file_count": 98
   }
 }
