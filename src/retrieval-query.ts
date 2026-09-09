@@ -2,7 +2,11 @@ import type pg from "pg";
 
 import { asArray, asString, isPlainObject } from "./io.js";
 import type { GraphArtifacts, GraphEdge } from "./graph-types.js";
-import { validateEmbeddingVector } from "./embedding-provider.js";
+import {
+  DeterministicFakeEmbeddingProvider,
+  validateEmbeddingVector,
+} from "./embedding-provider.js";
+import { fakeEmbeddingHasTokenOverlap } from "./fake-embedding-relevance.js";
 import {
   EXACT_ID_BOOST,
   EXACT_TITLE_OR_KEY_BOOST,
@@ -149,6 +153,21 @@ export class RetrievalEngine {
         degradationReason = stableErrorCode(error);
       }
     }
+    const rejectedFakeVectors: RetrievalPacket["selection_decisions"] = [];
+    if (this.provider instanceof DeterministicFakeEmbeddingProvider) {
+      const lexicalIds = new Set(lexical.map(({ unit }) => unit.unit_id));
+      vector = vector.filter(({ unit }) => {
+        if (fakeEmbeddingHasTokenOverlap(request.text, unit.retrieval_text)) return true;
+        if (!lexicalIds.has(unit.unit_id)) {
+          rejectedFakeVectors.push({
+            unit_id: unit.unit_id,
+            selected: false,
+            reason: "fake-vector-no-token-overlap",
+          });
+        }
+        return false;
+      });
+    }
     const fused = fuseCandidates(request.text, lexical, vector);
     const expanded =
       request.mode === "hybrid-graph" && request.graph.enabled && request.graph.max_depth > 0
@@ -178,7 +197,7 @@ export class RetrievalEngine {
       degraded,
       degradation_reason: degradationReason,
       results,
-      selection_decisions: selected.decisions,
+      selection_decisions: [...rejectedFakeVectors, ...selected.decisions],
       diagnostics:
         results.length === 0
           ? [{ code: "RETRIEVAL_QUERY_EMPTY", message: "No governed retrieval unit matched." }]

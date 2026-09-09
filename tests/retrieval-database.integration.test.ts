@@ -1,14 +1,18 @@
 import { describe, expect, it } from "vitest";
 
 import { DeterministicFakeEmbeddingProvider } from "../src/embedding-provider.js";
-import { expectedRetrievalArtifacts } from "../src/retrieval-artifacts.js";
+import { expectedRetrievalArtifacts, loadValidatedGraph } from "../src/retrieval-artifacts.js";
+import { createRagCitationAuthority } from "../src/rag-citation-authority.js";
+import { RagEngine } from "../src/rag-engine.js";
+import { evaluateRag, loadRagGolden } from "../src/rag-evaluation.js";
+import { DeterministicFakeRagProvider } from "../src/rag-provider.js";
 import { RetrievalDatabase } from "../src/retrieval-database.js";
 import {
   checkRetrievalCurrent,
   indexRetrievalGeneration,
   repositoryCommit,
 } from "../src/retrieval-indexer.js";
-import { PostgresRetrievalStore } from "../src/retrieval-query.js";
+import { PostgresRetrievalStore, RetrievalEngine } from "../src/retrieval-query.js";
 
 const connectionString = process.env.RETRIEVAL_DATABASE_URL;
 
@@ -60,6 +64,36 @@ describe.runIf(Boolean(connectionString))("M5 PostgreSQL and pgvector integratio
       expect(
         (await store.vector(generation.generation_id, queryVector, emptyFilters(), 5)).length,
       ).toBeGreaterThan(0);
+    } finally {
+      await database.close();
+    }
+  }, 120_000);
+
+  it("preserves every governed RAG invocation contract against the indexed corpus", async () => {
+    const database = new RetrievalDatabase({ connectionString: connectionString! });
+    const provider = new DeterministicFakeEmbeddingProvider();
+    try {
+      const artifacts = await expectedRetrievalArtifacts(process.cwd());
+      const generation = await checkRetrievalCurrent(
+        database,
+        artifacts,
+        provider,
+        await repositoryCommit(process.cwd()),
+      );
+      const graph = await loadValidatedGraph(process.cwd());
+      const engine = new RagEngine(
+        new RetrievalEngine(new PostgresRetrievalStore(database.pool), provider, graph, generation),
+        new DeterministicFakeRagProvider(),
+        createRagCitationAuthority(graph),
+      );
+      const benchmark = await loadRagGolden("evaluation/rag-golden.yaml");
+      const report = await evaluateRag(benchmark, async (request) => {
+        const packet = await engine.answer(request);
+        const expected = benchmark.cases.find((item) => item.question === request.question)!;
+        expect(packet.model_invoked, expected.id).toBe(expected.must_invoke_model);
+        return packet;
+      });
+      expect(report.gates).toEqual({ passed: true, failures: [] });
     } finally {
       await database.close();
     }

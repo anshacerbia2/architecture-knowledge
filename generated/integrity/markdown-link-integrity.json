@@ -514,6 +514,11 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m7-2-retrieval-regression.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m7-decision-guide-kernel.md",
       "status": "valid"
     },
@@ -624,8 +629,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 124,
+    "checked_link_count": 125,
     "broken_link_count": 0,
-    "markdown_file_count": 102
+    "markdown_file_count": 103
   }
 }
