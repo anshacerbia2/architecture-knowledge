@@ -23,7 +23,16 @@
       "evidence_chain_claim_ids": [
         "AKL-000021"
       ],
-      "evidence_source_locations": [],
+      "evidence_source_locations": [
+        {
+          "locator": "Chapter 2, Fundamentals of Systems Engineering (systems input only)",
+          "source_id": "AKS-000002"
+        },
+        {
+          "locator": "Section 2, The Structure of a Mathematical Science: First Principles (historical input only)",
+          "source_id": "AKS-000001"
+        }
+      ],
       "id": "AKR-000001",
       "notes": "Compatibility is contextual and does not merge the reasoning models.",
       "object": "AKC-000002",
@@ -63,7 +72,20 @@
       "evidence_chain_claim_ids": [
         "AKL-000022"
       ],
-      "evidence_source_locations": [],
+      "evidence_source_locations": [
+        {
+          "locator": "Characteristics; Benefits; Challenges",
+          "source_id": "AKS-000008"
+        },
+        {
+          "locator": "Componentization via Services",
+          "source_id": "AKS-000007"
+        },
+        {
+          "locator": "Hexagonal Rails Monolith, Summary; Details: Application domain and Enforcing boundaries (first-party case)",
+          "source_id": "AKS-000006"
+        }
+      ],
       "id": "AKR-000002",
       "notes": "The alternatives can coexist at different system scopes.",
       "object": "AKC-000008",
@@ -218,7 +240,12 @@
       "evidence_chain_claim_ids": [
         "AKL-000026"
       ],
-      "evidence_source_locations": [],
+      "evidence_source_locations": [
+        {
+          "locator": "Issues and considerations: Impact on performance, Idempotency; When to use this pattern",
+          "source_id": "AKS-000012"
+        }
+      ],
       "id": "AKR-000006",
       "notes": "Persistent failure can reverse the effect.",
       "object": "AKC-000004",
@@ -256,7 +283,12 @@
       "evidence_chain_claim_ids": [
         "AKL-000027"
       ],
-      "evidence_source_locations": [],
+      "evidence_source_locations": [
+        {
+          "locator": "Context and problem; Solution; Issues and considerations, open-state exception handling",
+          "source_id": "AKS-000013"
+        }
+      ],
       "id": "AKR-000007",
       "notes": "The edge concerns broader caller availability.",
       "object": "AKC-000004",
@@ -295,7 +327,16 @@
       "evidence_chain_claim_ids": [
         "AKL-000028"
       ],
-      "evidence_source_locations": [],
+      "evidence_source_locations": [
+        {
+          "locator": "Related resources, Circuit Breaker pattern",
+          "source_id": "AKS-000012"
+        },
+        {
+          "locator": "Solution, distinction from Retry and composition",
+          "source_id": "AKS-000013"
+        }
+      ],
       "id": "AKR-000008",
       "notes": "Uncoordinated policies can amplify failure.",
       "object": "AKC-000013",
@@ -618,7 +659,16 @@
       "evidence_chain_claim_ids": [
         "AKL-000036"
       ],
-      "evidence_source_locations": [],
+      "evidence_source_locations": [
+        {
+          "locator": "Challenges, Complexity, Management and Skill set",
+          "source_id": "AKS-000008"
+        },
+        {
+          "locator": "Design for failure",
+          "source_id": "AKS-000007"
+        }
+      ],
       "id": "AKR-000016",
       "notes": "Qualified risk association only; measurable reliability degradation is not established.",
       "object": "AKC-000005",

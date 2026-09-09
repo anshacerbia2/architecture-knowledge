@@ -1,0 +1,265 @@
+schema_version: 4
+id: AKG-000001
+record_kind: decision-guide
+title: Deployment boundary selection
+decision_question: For one product scope, should deployment remain one primary unit or use
+  independently deployable services? This is not a choice of internal ports/adapters or messaging
+  style.
+context_variables:
+  - key: decision-scope
+    question: What exact system, call boundary, or inquiry is being decided?
+    description: Human-provided, scoped pilot context; no secrets or personal data. This text is not an
+      automatically evaluated condition.
+    value_type: string
+    required: true
+    sensitivity: internal
+    unit: null
+    allowed_values: []
+  - key: deployment-needs
+    question: Which independent-release requirements are mandatory, and is one deployment boundary
+      acceptable?
+    description: Human-provided, scoped pilot context; no secrets or personal data. This text is not an
+      automatically evaluated condition.
+    value_type: string
+    required: true
+    sensitivity: internal
+    unit: null
+    allowed_values: []
+  - key: operating-capability
+    question: What evidence demonstrates service ownership, delivery, failure handling, and operational
+      capability?
+    description: Human-provided, scoped pilot context; no secrets or personal data. This text is not an
+      automatically evaluated condition.
+    value_type: string
+    required: true
+    sensitivity: internal
+    unit: null
+    allowed_values: []
+constraints:
+  - concept_id: AKC-000003
+    hardness: hard
+    rationale: "Pilot scope constraint: The deployment decision concerns one named product scope and its
+      authoritative deployment limits have been recorded. The generic Constraint concept classifies
+      this single explicitly qualified binding; it does not prove project compliance or represent
+      several independently checkable constraints."
+    conditions:
+      - statement: The deployment decision concerns one named product scope and its authoritative deployment
+          limits have been recorded.
+        scope: edge-local
+        concept_ids: []
+    claim_ids:
+      - AKL-000081
+assumptions: []
+quality_attributes:
+  - concept_id: AKC-000004
+    priority: medium
+    rationale: Availability is a measurement question for the affected service, not a guaranteed benefit
+      of an option or an assessment of reasoning-method superiority.
+    conditions: []
+    claim_ids:
+      - AKL-000082
+options:
+  - concept_id: AKC-000007
+    label: Modular Monolith
+    summary: A modular monolith organizes an application into explicit internal modules while retaining
+      one primary deployment and runtime boundary.
+    conditions: []
+    claim_ids:
+      - AKL-000007
+  - concept_id: AKC-000008
+    label: Microservices
+    summary: Microservice architecture organizes a system as independently deployable services aligned
+      to bounded capabilities and communicating through explicit contracts.
+    conditions: []
+    claim_ids:
+      - AKL-000008
+evaluation_criteria:
+  - key: deployment-shape
+    question: Which deployment shape is required within the same product scope?
+    quality_attribute_id: null
+    scale: qualitative
+    direction: context-dependent
+    unit: null
+    conditions:
+      - statement: The decision concerns deployment and ownership boundaries for the same product scope.
+        concept_ids: []
+        scope: edge-local
+    claim_ids:
+      - AKL-000022
+  - key: project-fit
+    question: What remains unverified before treating the option as a project fit?
+    quality_attribute_id: null
+    scale: qualitative
+    direction: context-dependent
+    unit: null
+    conditions:
+      - statement: The decision concerns deployment and ownership boundaries for the same product scope.
+        concept_ids: []
+        scope: edge-local
+    claim_ids:
+      - AKL-000022
+tradeoff_matrix:
+  - option_id: AKC-000007
+    criterion: deployment-shape
+    assessment:
+      rating: mixed
+      rationale: Explicit modules retain one primary deployment boundary; this is not independent
+        deployment per module.
+      value: null
+      unit: null
+      uncertainty: high
+    conditions: []
+    claim_ids:
+      - AKL-000007
+  - option_id: AKC-000008
+    criterion: deployment-shape
+    assessment:
+      rating: mixed
+      rationale: Services are independently deployable around bounded capabilities; service size alone is
+        insufficient.
+      value: null
+      unit: null
+      uncertainty: high
+    conditions: []
+    claim_ids:
+      - AKL-000008
+  - option_id: AKC-000007
+    criterion: project-fit
+    assessment:
+      rating: unknown
+      rationale: The deployment definition supplies no project-specific module-enforcement or
+        operating-cost measurement.
+      value: null
+      unit: null
+      uncertainty: unresolved
+    conditions: []
+    claim_ids:
+      - AKL-000007
+  - option_id: AKC-000008
+    criterion: project-fit
+    assessment:
+      rating: unknown
+      rationale: Independent deployability supplies no project-specific ownership, reliability, or
+        operating-cost measurement.
+      value: null
+      unit: null
+      uncertainty: unresolved
+    conditions: []
+    claim_ids:
+      - AKL-000008
+disqualifiers: []
+risk_questions:
+  - question: Can module boundaries be demonstrated inside the shared deployable, including data access
+      and security ownership?
+    affected_option_ids:
+      - AKC-000007
+    conditions: []
+    claim_ids:
+      - AKL-000007
+  - question: What tests establish service contracts under network, state, delivery, and ownership failures?
+    affected_option_ids:
+      - AKC-000008
+    conditions:
+      - statement: The system is distributed into services without adequate resilience, observability,
+          delivery, or ownership capability.
+        concept_ids: []
+        scope: edge-local
+    claim_ids:
+      - AKL-000036
+recommended_when:
+  - option_id: AKC-000007
+    rationale: Consider a modular monolith when one release boundary is acceptable and explicit modules
+      can be maintained; this is a bounded candidate, not a claim of superior quality.
+    conditions:
+      - statement: One primary deployment boundary is acceptable and explicit module boundaries can be
+          maintained.
+        scope: edge-local
+        concept_ids: []
+    claim_ids:
+      - AKL-000070
+  - option_id: AKC-000008
+    rationale: Consider microservices when independent deployment is material and the team has
+      demonstrated the required service-operation capability; validate benefits for the actual
+      product.
+    conditions:
+      - statement: Independent deployment is material and service-operation capability has been demonstrated.
+        scope: edge-local
+        concept_ids: []
+    claim_ids:
+      - AKL-000071
+avoid_when:
+  - option_id: AKC-000007
+    rationale: Exclude a modular monolith for the selected scope when a mandatory independent-deployment
+      requirement cannot be met by its single primary deployable.
+    conditions:
+      - statement: Independent deployment within the selected scope is mandatory and cannot be met by one
+          primary deployable.
+        scope: edge-local
+        concept_ids: []
+    claim_ids:
+      - AKL-000072
+  - option_id: AKC-000008
+    rationale: Defer microservices in the scoped decision when the operating capability identified by
+      the risk input is absent; reassess after capability evidence changes.
+    conditions:
+      - statement: The system is distributed into services without adequate resilience, observability,
+          delivery, or ownership capability.
+        scope: edge-local
+        concept_ids: []
+    claim_ids:
+      - AKL-000073
+evolution_triggers:
+  - condition:
+      statement: The acceptable product deployment boundary changes.
+      scope: edge-local
+      concept_ids: []
+    rationale: Reopen the single-deployment fit question with the decision owner.
+    affected_option_ids:
+      - AKC-000007
+    claim_ids:
+      - AKL-000007
+  - condition:
+      statement: Required service boundaries or independent deployment needs change.
+      scope: edge-local
+      concept_ids: []
+    rationale: Reassess the service decomposition against the new product scope.
+    affected_option_ids:
+      - AKC-000008
+    claim_ids:
+      - AKL-000008
+evidence:
+  - AKL-000007
+  - AKL-000008
+  - AKL-000022
+  - AKL-000036
+  - AKL-000070
+  - AKL-000071
+  - AKL-000072
+  - AKL-000073
+  - AKL-000081
+  - AKL-000082
+uncertainty_policy:
+  missing_evidence: insufficient-evidence
+  conflicting_evidence: preserve-conflict-and-escalate
+  unknown_context: request-clarification
+  tie: escalate-human
+privacy:
+  allowed_context_classifications:
+    - public
+    - internal
+  external_provider_policy: prohibited
+  session_persistence: ephemeral-only
+authority:
+  recommendation_only: true
+  human_decision_required: true
+  automation_may_approve: false
+  generated_artifact_status: draft
+status: proposed
+review:
+  owner: null
+  reviewers: []
+  created_at: 2026-09-09
+  updated_at: 2026-09-09
+  reviewed_at: null
+  review_due_at: null
+version: 1

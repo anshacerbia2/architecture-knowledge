@@ -3,6 +3,11 @@
   "report": "markdown-link-integrity",
   "items": [
     {
+      "path": "decisions/AGENTS.md",
+      "target": "../docs/m7-2-corpus-pilot.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/evidence/m5/run-31367937331/README.md",
       "target": "job-93390313632.log",
       "status": "valid"
@@ -175,6 +180,56 @@
     {
       "path": "docs/m7-1-independent-audit-report.md",
       "target": "../src/retrieval-units.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-second-reviewer-confirmation.md",
+      "target": "../schemas/decision-recommendation.schema.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-second-reviewer-confirmation.md",
+      "target": "../src/decision-guide-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-second-reviewer-confirmation.md",
+      "target": "../src/decision-recommendation-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-second-reviewer-confirmation.md",
+      "target": "../src/rag-citation-authority.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-1-second-reviewer-confirmation.md",
+      "target": "m7-1-final-technical-reaudit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-corpus-pilot.md",
+      "target": "../decisions/AKG-000001.yaml",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-corpus-pilot.md",
+      "target": "../decisions/AKG-000002.yaml",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-corpus-pilot.md",
+      "target": "../decisions/AKG-000003.yaml",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-corpus-pilot.md",
+      "target": "m7-2-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-implementation-report.md",
+      "target": "m7-2-corpus-pilot.md",
       "status": "valid"
     },
     {
@@ -444,6 +499,21 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m7-1-second-reviewer-confirmation.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-2-corpus-pilot.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-2-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m7-decision-guide-kernel.md",
       "status": "valid"
     },
@@ -554,8 +624,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 110,
+    "checked_link_count": 124,
     "broken_link_count": 0,
-    "markdown_file_count": 98
+    "markdown_file_count": 102
   }
 }

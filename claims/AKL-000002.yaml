@@ -14,4 +14,7 @@ sources:
 derived_from_claims: []
 status: sourced
 notes: Qualified transfer from the aerospace systems-engineering scope of AKS-000002; the bundled software-oriented formulation is a synthesis.
-version: 2
+version: 3
+source_locations:
+  - source_id: AKS-000002
+    locator: "Chapter 2, Fundamentals of Systems Engineering, printed pages 3-4; sections 2.1 and 2.2"

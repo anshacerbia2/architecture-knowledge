@@ -1,0 +1,24 @@
+id: AKL-000073
+record_kind: claim
+subject: AKC-000008
+predicate: guides-selection
+object:
+  literal: a bounded architecture decision
+statement: Defer microservices in the scoped decision when the operating capability identified by
+  the risk input is absent; reassess after capability evidence changes.
+claim_type: recommendation
+semantic_scope: claim-context-only
+conditions:
+  - statement: The system is distributed into services without adequate resilience, observability,
+      delivery, or ownership capability.
+    scope: edge-local
+    concept_ids: []
+confidence: low
+sources: []
+derived_from_claims:
+  - AKL-000036
+status: sourced
+notes: M7.2 repository recommendation, not a source mandate or human-approved decision. Parent
+  claims support the mechanism or risk; the conditional selection judgment is explicit. Validate
+  context and alternatives with a human.
+version: 1

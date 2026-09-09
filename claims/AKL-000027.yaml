@@ -17,4 +17,7 @@ sources:
 derived_from_claims: []
 status: sourced
 notes: Qualified inference from the supported stability/capacity mechanism; no general measured availability gain is claimed.
-version: 2
+version: 3
+source_locations:
+  - source_id: AKS-000013
+    locator: "Context and problem; Solution; Issues and considerations, open-state exception handling"

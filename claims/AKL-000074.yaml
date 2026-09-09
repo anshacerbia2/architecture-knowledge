@@ -1,0 +1,27 @@
+id: AKL-000074
+record_kind: claim
+subject: AKC-000012
+predicate: guides-selection
+object:
+  literal: a bounded architecture decision
+statement: Avoid retrying the current operation when it is not safely repeatable or when no attempts
+  fit the caller's deadline and load budget.
+claim_type: recommendation
+semantic_scope: claim-context-only
+conditions:
+  - statement: The current operation is not safely repeatable or no attempts fit its deadline and load budget.
+    scope: edge-local
+    concept_ids: []
+confidence: low
+sources:
+  - AKS-000012
+source_locations:
+  - source_id: AKS-000012
+    locator: Issues and considerations, Impact on performance and Idempotency
+derived_from_claims:
+  - AKL-000012
+status: sourced
+notes: M7.2 repository recommendation, not a source mandate or human-approved decision. Parent
+  claims support the mechanism or risk; the conditional selection judgment is explicit. Validate
+  context and alternatives with a human.
+version: 1

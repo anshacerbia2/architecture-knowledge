@@ -88,6 +88,14 @@ any document reviewed, approved, published, or canonical.
 | M7-07 | [M7.1 Focused Re-Audit](m7-1-focused-reaudit-report.md) | Verifies exact-SHA CI and reproduces omitted selection evidence, condition identity, unresolved drivers, and empty-context clarification gaps. |
 | M7-08 | [M7.1 Decision-Basis Remediation](m7-1-decision-basis-remediation-report.md) | Records deterministic decision support, v4/v3 migrations, structured condition identity, driver checks, and the four finding dispositions. |
 
+## M7.2 Corpus Pilot
+
+| Order | Document | Purpose |
+|---|---|---|
+| M7-09 | [M7.1 Second-Reviewer Confirmation](m7-1-second-reviewer-confirmation.md) | Distinct AI review of the M7.1 boundary; not human content approval. |
+| M7-10 | [M7.2 Corpus Pilot](m7-2-corpus-pilot.md) | Three-guide catalog, lookup choice, semantic boundaries, and source fidelity. |
+| M7-11 | [M7.2 Implementation Report](m7-2-implementation-report.md) | Scoped changes, validation evidence, residual risks, and next-run boundary. |
+
 ## Architecture Decision Records
 
 ADRs are supporting decision artifacts rather than a separate execution
@@ -145,6 +153,10 @@ describe.
 | 2026-09-08 | decision-basis remediation commit; see post-commit handoff | M7.1 focused re-audit and decision-basis remediation reports |
 
 ## Maintenance Rule
+
+M7-09 through M7-11 were authored on 2026-09-09 and have not yet received a first
+Git commit in this handoff. Add exact creation commits when they are committed;
+do not infer Git provenance from a document date.
 
 - Keep historical filenames stable.
 - Add each new audit or remediation to both the logical path and Git timeline.

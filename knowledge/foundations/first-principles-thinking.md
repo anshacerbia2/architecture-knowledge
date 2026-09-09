@@ -83,6 +83,8 @@ counterexamples:
     scope: edge-local
     concept_ids: []
 claims:
+  - AKL-000077
+  - AKL-000079
   - AKL-000001
   - AKL-000021
 sources:
@@ -91,10 +93,10 @@ review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-30
+  updated_at: 2026-09-09
   reviewed_at: null
   review_due_at: null
-version: 2
+version: 3
 contextual_roles: []
 ---
 

@@ -8,7 +8,7 @@
     },
     {
       "state": "claim:sourced",
-      "count": 61
+      "count": 74
     },
     {
       "state": "concept:drafted",
@@ -17,6 +17,10 @@
     {
       "state": "concept:proposed",
       "count": 4
+    },
+    {
+      "state": "decision-guide:proposed",
+      "count": 3
     },
     {
       "state": "relationship:proposed",
@@ -32,6 +36,6 @@
     }
   ],
   "summary": {
-    "record_count": 139
+    "record_count": 155
   }
 }

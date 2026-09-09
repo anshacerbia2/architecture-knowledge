@@ -15,4 +15,9 @@ sources:
 derived_from_claims: []
 status: sourced
 notes: Service size alone does not establish the style.
-version: 1
+version: 2
+source_locations:
+  - source_id: AKS-000007
+    locator: "Componentization via Services; Organized around Business Capabilities"
+  - source_id: AKS-000008
+    locator: "Characteristics and Challenges"

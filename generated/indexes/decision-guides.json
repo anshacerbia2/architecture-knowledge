@@ -2,5 +2,1292 @@
   "artifact_type": "decision-guides-index",
   "exact_match_normalization": "case-sensitive-unicode-code-point",
   "graph_contract_version": 2,
-  "records": []
+  "records": [
+    {
+      "assumptions": [],
+      "authority": {
+        "automation_may_approve": false,
+        "generated_artifact_status": "draft",
+        "human_decision_required": true,
+        "recommendation_only": true
+      },
+      "avoid_when": [
+        {
+          "claim_ids": [
+            "AKL-000072"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "Independent deployment within the selected scope is mandatory and cannot be met by one primary deployable."
+            }
+          ],
+          "option_id": "AKC-000007",
+          "rationale": "Exclude a modular monolith for the selected scope when a mandatory independent-deployment requirement cannot be met by its single primary deployable."
+        },
+        {
+          "claim_ids": [
+            "AKL-000073"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "The system is distributed into services without adequate resilience, observability, delivery, or ownership capability."
+            }
+          ],
+          "option_id": "AKC-000008",
+          "rationale": "Defer microservices in the scoped decision when the operating capability identified by the risk input is absent; reassess after capability evidence changes."
+        }
+      ],
+      "constraint_concept_ids": [
+        "AKC-000003"
+      ],
+      "constraints": [
+        {
+          "claim_ids": [
+            "AKL-000081"
+          ],
+          "concept_id": "AKC-000003",
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "The deployment decision concerns one named product scope and its authoritative deployment limits have been recorded."
+            }
+          ],
+          "hardness": "hard",
+          "rationale": "Pilot scope constraint: The deployment decision concerns one named product scope and its authoritative deployment limits have been recorded. The generic Constraint concept classifies this single explicitly qualified binding; it does not prove project compliance or represent several independently checkable constraints."
+        }
+      ],
+      "context_variables": [
+        {
+          "allowed_values": [],
+          "description": "Human-provided, scoped pilot context; no secrets or personal data. This text is not an automatically evaluated condition.",
+          "key": "decision-scope",
+          "question": "What exact system, call boundary, or inquiry is being decided?",
+          "required": true,
+          "sensitivity": "internal",
+          "unit": null,
+          "value_type": "string"
+        },
+        {
+          "allowed_values": [],
+          "description": "Human-provided, scoped pilot context; no secrets or personal data. This text is not an automatically evaluated condition.",
+          "key": "deployment-needs",
+          "question": "Which independent-release requirements are mandatory, and is one deployment boundary acceptable?",
+          "required": true,
+          "sensitivity": "internal",
+          "unit": null,
+          "value_type": "string"
+        },
+        {
+          "allowed_values": [],
+          "description": "Human-provided, scoped pilot context; no secrets or personal data. This text is not an automatically evaluated condition.",
+          "key": "operating-capability",
+          "question": "What evidence demonstrates service ownership, delivery, failure handling, and operational capability?",
+          "required": true,
+          "sensitivity": "internal",
+          "unit": null,
+          "value_type": "string"
+        }
+      ],
+      "decision_question": "For one product scope, should deployment remain one primary unit or use independently deployable services? This is not a choice of internal ports/adapters or messaging style.",
+      "disqualifiers": [],
+      "evaluation_criteria": [
+        {
+          "claim_ids": [
+            "AKL-000022"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "The decision concerns deployment and ownership boundaries for the same product scope."
+            }
+          ],
+          "direction": "context-dependent",
+          "key": "deployment-shape",
+          "quality_attribute_id": null,
+          "question": "Which deployment shape is required within the same product scope?",
+          "scale": "qualitative",
+          "unit": null
+        },
+        {
+          "claim_ids": [
+            "AKL-000022"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "The decision concerns deployment and ownership boundaries for the same product scope."
+            }
+          ],
+          "direction": "context-dependent",
+          "key": "project-fit",
+          "quality_attribute_id": null,
+          "question": "What remains unverified before treating the option as a project fit?",
+          "scale": "qualitative",
+          "unit": null
+        }
+      ],
+      "evidence": [
+        "AKL-000007",
+        "AKL-000008",
+        "AKL-000022",
+        "AKL-000036",
+        "AKL-000070",
+        "AKL-000071",
+        "AKL-000072",
+        "AKL-000073",
+        "AKL-000081",
+        "AKL-000082"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000007",
+        "AKL-000008",
+        "AKL-000022",
+        "AKL-000036",
+        "AKL-000070",
+        "AKL-000071",
+        "AKL-000072",
+        "AKL-000073",
+        "AKL-000081",
+        "AKL-000082"
+      ],
+      "evidence_source_ids": [
+        "AKS-000002",
+        "AKS-000005",
+        "AKS-000006",
+        "AKS-000007",
+        "AKS-000008"
+      ],
+      "evidence_source_locations": [
+        {
+          "locator": "Challenges, Complexity, Management and Skill set",
+          "source_id": "AKS-000008"
+        },
+        {
+          "locator": "Challenges, Management and Skill set",
+          "source_id": "AKS-000008"
+        },
+        {
+          "locator": "Characteristics and Challenges",
+          "source_id": "AKS-000008"
+        },
+        {
+          "locator": "Characteristics; Benefits; Challenges",
+          "source_id": "AKS-000008"
+        },
+        {
+          "locator": "Componentization via Services; monolith and independent deployment comparison",
+          "source_id": "AKS-000007"
+        },
+        {
+          "locator": "Componentization via Services; Organized around Business Capabilities",
+          "source_id": "AKS-000007"
+        },
+        {
+          "locator": "Componentization via Services",
+          "source_id": "AKS-000007"
+        },
+        {
+          "locator": "Design for failure",
+          "source_id": "AKS-000007"
+        },
+        {
+          "locator": "Hexagonal Rails Monolith, Summary; Details: Application domain and Enforcing boundaries (first-party case)",
+          "source_id": "AKS-000006"
+        },
+        {
+          "locator": "NASA/SP-2016-6105 Rev2, section 4.1.1.2.2, printed page 48 (PDF page 58), paragraph defining constraint",
+          "source_id": "AKS-000002"
+        },
+        {
+          "locator": "Service Level Objectives, Indicators section, paragraph beginning Another kind of SLI important to SREs",
+          "source_id": "AKS-000005"
+        }
+      ],
+      "evolution_triggers": [
+        {
+          "affected_option_ids": [
+            "AKC-000007"
+          ],
+          "claim_ids": [
+            "AKL-000007"
+          ],
+          "condition": {
+            "concept_ids": [],
+            "scope": "edge-local",
+            "statement": "The acceptable product deployment boundary changes."
+          },
+          "rationale": "Reopen the single-deployment fit question with the decision owner."
+        },
+        {
+          "affected_option_ids": [
+            "AKC-000008"
+          ],
+          "claim_ids": [
+            "AKL-000008"
+          ],
+          "condition": {
+            "concept_ids": [],
+            "scope": "edge-local",
+            "statement": "Required service boundaries or independent deployment needs change."
+          },
+          "rationale": "Reassess the service decomposition against the new product scope."
+        }
+      ],
+      "id": "AKG-000001",
+      "option_concept_ids": [
+        "AKC-000007",
+        "AKC-000008"
+      ],
+      "options": [
+        {
+          "claim_ids": [
+            "AKL-000007"
+          ],
+          "concept_id": "AKC-000007",
+          "conditions": [],
+          "label": "Modular Monolith",
+          "summary": "A modular monolith organizes an application into explicit internal modules while retaining one primary deployment and runtime boundary."
+        },
+        {
+          "claim_ids": [
+            "AKL-000008"
+          ],
+          "concept_id": "AKC-000008",
+          "conditions": [],
+          "label": "Microservices",
+          "summary": "Microservice architecture organizes a system as independently deployable services aligned to bounded capabilities and communicating through explicit contracts."
+        }
+      ],
+      "privacy": {
+        "allowed_context_classifications": [
+          "public",
+          "internal"
+        ],
+        "external_provider_policy": "prohibited",
+        "session_persistence": "ephemeral-only"
+      },
+      "quality_attribute_ids": [
+        "AKC-000004"
+      ],
+      "quality_attributes": [
+        {
+          "claim_ids": [
+            "AKL-000082"
+          ],
+          "concept_id": "AKC-000004",
+          "conditions": [],
+          "priority": "medium",
+          "rationale": "Availability is a measurement question for the affected service, not a guaranteed benefit of an option or an assessment of reasoning-method superiority."
+        }
+      ],
+      "recommended_when": [
+        {
+          "claim_ids": [
+            "AKL-000070"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "One primary deployment boundary is acceptable and explicit module boundaries can be maintained."
+            }
+          ],
+          "option_id": "AKC-000007",
+          "rationale": "Consider a modular monolith when one release boundary is acceptable and explicit modules can be maintained; this is a bounded candidate, not a claim of superior quality."
+        },
+        {
+          "claim_ids": [
+            "AKL-000071"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "Independent deployment is material and service-operation capability has been demonstrated."
+            }
+          ],
+          "option_id": "AKC-000008",
+          "rationale": "Consider microservices when independent deployment is material and the team has demonstrated the required service-operation capability; validate benefits for the actual product."
+        }
+      ],
+      "record_kind": "decision-guide",
+      "review": {
+        "created_at": "2026-09-09",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-09-09"
+      },
+      "risk_questions": [
+        {
+          "affected_option_ids": [
+            "AKC-000007"
+          ],
+          "claim_ids": [
+            "AKL-000007"
+          ],
+          "conditions": [],
+          "question": "Can module boundaries be demonstrated inside the shared deployable, including data access and security ownership?"
+        },
+        {
+          "affected_option_ids": [
+            "AKC-000008"
+          ],
+          "claim_ids": [
+            "AKL-000036"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "The system is distributed into services without adequate resilience, observability, delivery, or ownership capability."
+            }
+          ],
+          "question": "What tests establish service contracts under network, state, delivery, and ownership failures?"
+        }
+      ],
+      "schema_version": 4,
+      "source_path": "decisions/AKG-000001.yaml",
+      "status": "proposed",
+      "title": "Deployment boundary selection",
+      "tradeoff_matrix": [
+        {
+          "assessment": {
+            "rating": "mixed",
+            "rationale": "Explicit modules retain one primary deployment boundary; this is not independent deployment per module.",
+            "uncertainty": "high",
+            "unit": null,
+            "value": null
+          },
+          "claim_ids": [
+            "AKL-000007"
+          ],
+          "conditions": [],
+          "criterion": "deployment-shape",
+          "option_id": "AKC-000007"
+        },
+        {
+          "assessment": {
+            "rating": "mixed",
+            "rationale": "Services are independently deployable around bounded capabilities; service size alone is insufficient.",
+            "uncertainty": "high",
+            "unit": null,
+            "value": null
+          },
+          "claim_ids": [
+            "AKL-000008"
+          ],
+          "conditions": [],
+          "criterion": "deployment-shape",
+          "option_id": "AKC-000008"
+        },
+        {
+          "assessment": {
+            "rating": "unknown",
+            "rationale": "The deployment definition supplies no project-specific module-enforcement or operating-cost measurement.",
+            "uncertainty": "unresolved",
+            "unit": null,
+            "value": null
+          },
+          "claim_ids": [
+            "AKL-000007"
+          ],
+          "conditions": [],
+          "criterion": "project-fit",
+          "option_id": "AKC-000007"
+        },
+        {
+          "assessment": {
+            "rating": "unknown",
+            "rationale": "Independent deployability supplies no project-specific ownership, reliability, or operating-cost measurement.",
+            "uncertainty": "unresolved",
+            "unit": null,
+            "value": null
+          },
+          "claim_ids": [
+            "AKL-000008"
+          ],
+          "conditions": [],
+          "criterion": "project-fit",
+          "option_id": "AKC-000008"
+        }
+      ],
+      "uncertainty_policy": {
+        "conflicting_evidence": "preserve-conflict-and-escalate",
+        "missing_evidence": "insufficient-evidence",
+        "tie": "escalate-human",
+        "unknown_context": "request-clarification"
+      },
+      "version": 1
+    },
+    {
+      "assumptions": [],
+      "authority": {
+        "automation_may_approve": false,
+        "generated_artifact_status": "draft",
+        "human_decision_required": true,
+        "recommendation_only": true
+      },
+      "avoid_when": [
+        {
+          "claim_ids": [
+            "AKL-000074"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "The current operation is not safely repeatable or no attempts fit its deadline and load budget."
+            }
+          ],
+          "option_id": "AKC-000012",
+          "rationale": "Avoid retrying the current operation when it is not safely repeatable or when no attempts fit the caller's deadline and load budget."
+        },
+        {
+          "claim_ids": [
+            "AKL-000076"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "No acceptable caller response exists while the breaker blocks dependency calls."
+            }
+          ],
+          "option_id": "AKC-000013",
+          "rationale": "Do not select a circuit breaker for this call boundary until the caller has an acceptable response while dependency calls are blocked."
+        }
+      ],
+      "constraint_concept_ids": [
+        "AKC-000003"
+      ],
+      "constraints": [
+        {
+          "claim_ids": [
+            "AKL-000081"
+          ],
+          "concept_id": "AKC-000003",
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "The decision concerns one named dependency-call boundary with caller deadline, duplicate-effect safety, and acceptable failure-response limits recorded."
+            }
+          ],
+          "hardness": "hard",
+          "rationale": "Pilot scope constraint: The decision concerns one named dependency-call boundary with caller deadline, duplicate-effect safety, and acceptable failure-response limits recorded. The generic Constraint concept classifies this single explicitly qualified binding; it does not prove project compliance or represent several independently checkable constraints."
+        }
+      ],
+      "context_variables": [
+        {
+          "allowed_values": [],
+          "description": "Human-provided, scoped pilot context; no secrets or personal data. This text is not an automatically evaluated condition.",
+          "key": "decision-scope",
+          "question": "What exact system, call boundary, or inquiry is being decided?",
+          "required": true,
+          "sensitivity": "internal",
+          "unit": null,
+          "value_type": "string"
+        },
+        {
+          "allowed_values": [],
+          "description": "Human-provided, scoped pilot context; no secrets or personal data. This text is not an automatically evaluated condition.",
+          "key": "failure-profile",
+          "question": "Which failures are transient and which persist or consume shared capacity?",
+          "required": true,
+          "sensitivity": "internal",
+          "unit": null,
+          "value_type": "string"
+        },
+        {
+          "allowed_values": [],
+          "description": "Human-provided, scoped pilot context; no secrets or personal data. This text is not an automatically evaluated condition.",
+          "key": "caller-budget",
+          "question": "What deadline, aggregate attempt budget, and duplicate-effect safeguards apply?",
+          "required": true,
+          "sensitivity": "internal",
+          "unit": null,
+          "value_type": "string"
+        },
+        {
+          "allowed_values": [],
+          "description": "Human-provided, scoped pilot context; no secrets or personal data. This text is not an automatically evaluated condition.",
+          "key": "open-state-response",
+          "question": "What caller response is acceptable while calls are blocked?",
+          "required": true,
+          "sensitivity": "internal",
+          "unit": null,
+          "value_type": "string"
+        }
+      ],
+      "decision_question": "At a named dependency-call boundary, is bounded retry, circuit breaking, or a coordinated combination applicable? These controls are complementary, not interchangeable.",
+      "disqualifiers": [],
+      "evaluation_criteria": [
+        {
+          "claim_ids": [
+            "AKL-000028"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "Failure classification, attempt budgets, and breaker state are coordinated."
+            }
+          ],
+          "direction": "context-dependent",
+          "key": "mechanism",
+          "quality_attribute_id": null,
+          "question": "Does the failure profile call for another attempt, suppressing calls, or both?",
+          "scale": "qualitative",
+          "unit": null
+        },
+        {
+          "claim_ids": [
+            "AKL-000082"
+          ],
+          "conditions": [],
+          "direction": "context-dependent",
+          "key": "availability-effect",
+          "quality_attribute_id": "AKC-000004",
+          "question": "What conditional availability-related mechanism is supported, without claiming a measured gain?",
+          "scale": "qualitative",
+          "unit": null
+        }
+      ],
+      "evidence": [
+        "AKL-000012",
+        "AKL-000013",
+        "AKL-000026",
+        "AKL-000027",
+        "AKL-000028",
+        "AKL-000074",
+        "AKL-000075",
+        "AKL-000076",
+        "AKL-000081",
+        "AKL-000082"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000012",
+        "AKL-000013",
+        "AKL-000026",
+        "AKL-000027",
+        "AKL-000028",
+        "AKL-000074",
+        "AKL-000075",
+        "AKL-000076",
+        "AKL-000081",
+        "AKL-000082"
+      ],
+      "evidence_source_ids": [
+        "AKS-000002",
+        "AKS-000005",
+        "AKS-000012",
+        "AKS-000013"
+      ],
+      "evidence_source_locations": [
+        {
+          "locator": "Context and problem; Solution; Issues and considerations, open-state exception handling",
+          "source_id": "AKS-000013"
+        },
+        {
+          "locator": "Issues and considerations, Impact on performance and Idempotency",
+          "source_id": "AKS-000012"
+        },
+        {
+          "locator": "Issues and considerations: Impact on performance, Idempotency; When to use this pattern",
+          "source_id": "AKS-000012"
+        },
+        {
+          "locator": "NASA/SP-2016-6105 Rev2, section 4.1.1.2.2, printed page 48 (PDF page 58), paragraph defining constraint",
+          "source_id": "AKS-000002"
+        },
+        {
+          "locator": "Related resources, Circuit Breaker pattern",
+          "source_id": "AKS-000012"
+        },
+        {
+          "locator": "Service Level Objectives, Indicators section, paragraph beginning Another kind of SLI important to SREs",
+          "source_id": "AKS-000005"
+        },
+        {
+          "locator": "Solution, Closed/Open/Half-Open states; Issues and considerations",
+          "source_id": "AKS-000013"
+        },
+        {
+          "locator": "Solution, distinction from Retry and composition",
+          "source_id": "AKS-000013"
+        },
+        {
+          "locator": "Solution; Retry strategies; Issues and considerations; General guidance",
+          "source_id": "AKS-000012"
+        }
+      ],
+      "evolution_triggers": [
+        {
+          "affected_option_ids": [
+            "AKC-000012"
+          ],
+          "claim_ids": [
+            "AKL-000012"
+          ],
+          "condition": {
+            "concept_ids": [],
+            "scope": "edge-local",
+            "statement": "Observed failures no longer fit the transient-failure policy."
+          },
+          "rationale": "Revisit retry eligibility and budgets with observed failure evidence."
+        },
+        {
+          "affected_option_ids": [
+            "AKC-000013"
+          ],
+          "claim_ids": [
+            "AKL-000013"
+          ],
+          "condition": {
+            "concept_ids": [],
+            "scope": "edge-local",
+            "statement": "The acceptable open-state response or observed recovery behavior changes."
+          },
+          "rationale": "Revisit breaker thresholds and caller behavior without granting an automatic deployment decision."
+        }
+      ],
+      "id": "AKG-000002",
+      "option_concept_ids": [
+        "AKC-000012",
+        "AKC-000013"
+      ],
+      "options": [
+        {
+          "claim_ids": [
+            "AKL-000012"
+          ],
+          "concept_id": "AKC-000012",
+          "conditions": [],
+          "label": "Retry",
+          "summary": "A retry policy repeats an operation for failures classified as transient and should bound attempts, delay, and total elapsed time."
+        },
+        {
+          "claim_ids": [
+            "AKL-000013"
+          ],
+          "concept_id": "AKC-000013",
+          "conditions": [],
+          "label": "Circuit Breaker",
+          "summary": "A circuit breaker transitions among closed, open, and probe states to prevent repeated calls to a failing dependency and test recovery."
+        }
+      ],
+      "privacy": {
+        "allowed_context_classifications": [
+          "public",
+          "internal"
+        ],
+        "external_provider_policy": "prohibited",
+        "session_persistence": "ephemeral-only"
+      },
+      "quality_attribute_ids": [
+        "AKC-000004"
+      ],
+      "quality_attributes": [
+        {
+          "claim_ids": [
+            "AKL-000082"
+          ],
+          "concept_id": "AKC-000004",
+          "conditions": [],
+          "priority": "medium",
+          "rationale": "Availability is a measurement question for the affected service, not a guaranteed benefit of an option or an assessment of reasoning-method superiority."
+        }
+      ],
+      "recommended_when": [
+        {
+          "claim_ids": [
+            "AKL-000026",
+            "AKL-000028"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "Failures are transient, attempts fit the end-to-end deadline, and retry load remains within capacity."
+            },
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "Repetition of the scoped operation is safe, including after an ambiguous completion."
+            },
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "Failure classification, attempt budgets, and breaker state are coordinated."
+            }
+          ],
+          "option_id": "AKC-000012",
+          "rationale": "Use a bounded retry policy to pursue service success only when failures are transient, repetition is safe, attempts fit the deadline, and aggregate retry load stays within capacity."
+        },
+        {
+          "claim_ids": [
+            "AKL-000075",
+            "AKL-000028"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "Failure classification, attempt budgets, and breaker state are coordinated."
+            },
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "The dependency failure would otherwise consume shared capacity and the caller has an acceptable open-state response."
+            }
+          ],
+          "option_id": "AKC-000013",
+          "rationale": "Consider a circuit breaker to contain dependency-call resource consumption when the caller can accept its open-state response; this is not a measured availability guarantee."
+        }
+      ],
+      "record_kind": "decision-guide",
+      "review": {
+        "created_at": "2026-09-09",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-09-09"
+      },
+      "risk_questions": [
+        {
+          "affected_option_ids": [
+            "AKC-000012"
+          ],
+          "claim_ids": [
+            "AKL-000026"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "Failures are transient, attempts fit the end-to-end deadline, and retry load remains within capacity."
+            }
+          ],
+          "question": "Have ambiguity, harmful duplicate effects, aggregate retry load, nested policies, and deadline exhaustion been tested?"
+        },
+        {
+          "affected_option_ids": [
+            "AKC-000013"
+          ],
+          "claim_ids": [
+            "AKL-000013"
+          ],
+          "conditions": [],
+          "question": "Can the caller tolerate the blocked-call response and verify recovery probes without assuming recovery is guaranteed?"
+        }
+      ],
+      "schema_version": 4,
+      "source_path": "decisions/AKG-000002.yaml",
+      "status": "proposed",
+      "title": "Dependency fault-response selection",
+      "tradeoff_matrix": [
+        {
+          "assessment": {
+            "rating": "mixed",
+            "rationale": "Retry repeats transiently failing operations within bounded time and attempt policies.",
+            "uncertainty": "high",
+            "unit": null,
+            "value": null
+          },
+          "claim_ids": [
+            "AKL-000012"
+          ],
+          "conditions": [],
+          "criterion": "mechanism",
+          "option_id": "AKC-000012"
+        },
+        {
+          "assessment": {
+            "rating": "mixed",
+            "rationale": "A breaker blocks dependency calls when open and probes for recovery; it does not repeat the business operation by itself.",
+            "uncertainty": "high",
+            "unit": null,
+            "value": null
+          },
+          "claim_ids": [
+            "AKL-000013"
+          ],
+          "conditions": [],
+          "criterion": "mechanism",
+          "option_id": "AKC-000013"
+        },
+        {
+          "assessment": {
+            "rating": "unknown",
+            "rationale": "The bounded retry recommendation pursues service success; its availability gain is unmeasured for this caller.",
+            "uncertainty": "unresolved",
+            "unit": null,
+            "value": null
+          },
+          "claim_ids": [
+            "AKL-000026"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "Failures are transient, attempts fit the end-to-end deadline, and retry load remains within capacity."
+            }
+          ],
+          "criterion": "availability-effect",
+          "option_id": "AKC-000012"
+        },
+        {
+          "assessment": {
+            "rating": "unknown",
+            "rationale": "Capacity containment is a low-confidence inference, not proof of an availability target.",
+            "uncertainty": "unresolved",
+            "unit": null,
+            "value": null
+          },
+          "claim_ids": [
+            "AKL-000027"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "The dependency failure would otherwise consume shared capacity and the caller has an acceptable open-state response."
+            }
+          ],
+          "criterion": "availability-effect",
+          "option_id": "AKC-000013"
+        }
+      ],
+      "uncertainty_policy": {
+        "conflicting_evidence": "preserve-conflict-and-escalate",
+        "missing_evidence": "insufficient-evidence",
+        "tie": "escalate-human",
+        "unknown_context": "request-clarification"
+      },
+      "version": 1
+    },
+    {
+      "assumptions": [],
+      "authority": {
+        "automation_may_approve": false,
+        "generated_artifact_status": "draft",
+        "human_decision_required": true,
+        "recommendation_only": true
+      },
+      "avoid_when": [
+        {
+          "claim_ids": [
+            "AKL-000079"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "Premise examination would be the sole lens and required cross-boundary analysis would remain unaddressed."
+            }
+          ],
+          "option_id": "AKC-000001",
+          "rationale": "Avoid using premise examination as the sole inquiry lens when that choice would leave required cross-boundary analysis unaddressed."
+        },
+        {
+          "claim_ids": [
+            "AKL-000080"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "Interaction analysis would be the sole lens and a material uncertain premise would remain unexamined."
+            }
+          ],
+          "option_id": "AKC-000002",
+          "rationale": "Avoid using an interaction-oriented analysis as the sole inquiry lens when it leaves a material uncertain premise unexamined."
+        }
+      ],
+      "constraint_concept_ids": [
+        "AKC-000003"
+      ],
+      "constraints": [
+        {
+          "claim_ids": [
+            "AKL-000081"
+          ],
+          "concept_id": "AKC-000003",
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "The inquiry has a named service-availability question and bounded analysis scope; no inquiry result is treated as proof or an accepted architecture decision."
+            }
+          ],
+          "hardness": "hard",
+          "rationale": "Pilot scope constraint: The inquiry has a named service-availability question and bounded analysis scope; no inquiry result is treated as proof or an accepted architecture decision. The generic Constraint concept classifies this single explicitly qualified binding; it does not prove project compliance or represent several independently checkable constraints."
+        }
+      ],
+      "context_variables": [
+        {
+          "allowed_values": [],
+          "description": "Human-provided, scoped pilot context; no secrets or personal data. This text is not an automatically evaluated condition.",
+          "key": "decision-scope",
+          "question": "What exact system, call boundary, or inquiry is being decided?",
+          "required": true,
+          "sensitivity": "internal",
+          "unit": null,
+          "value_type": "string"
+        },
+        {
+          "allowed_values": [],
+          "description": "Human-provided, scoped pilot context; no secrets or personal data. This text is not an automatically evaluated condition.",
+          "key": "premise-uncertainty",
+          "question": "Which material premises need examination and what could refute them?",
+          "required": true,
+          "sensitivity": "internal",
+          "unit": null,
+          "value_type": "string"
+        },
+        {
+          "allowed_values": [],
+          "description": "Human-provided, scoped pilot context; no secrets or personal data. This text is not an automatically evaluated condition.",
+          "key": "interaction-scope",
+          "question": "Which stakeholder, feedback, boundary, or lifecycle interactions must be examined?",
+          "required": true,
+          "sensitivity": "internal",
+          "unit": null,
+          "value_type": "string"
+        },
+        {
+          "allowed_values": [],
+          "description": "Human-provided, scoped pilot context; no secrets or personal data. This text is not an automatically evaluated condition.",
+          "key": "analysis-plan",
+          "question": "Will each required analysis be covered by a single lens or a coordinated combination?",
+          "required": true,
+          "sensitivity": "internal",
+          "unit": null,
+          "value_type": "string"
+        }
+      ],
+      "decision_question": "For a bounded service-availability inquiry, which lenses should examine uncertain premises and cross-boundary behavior? First-principles and systems thinking may be combined; neither is an implementation architecture or proof of an availability improvement.",
+      "disqualifiers": [],
+      "evaluation_criteria": [
+        {
+          "claim_ids": [
+            "AKL-000001",
+            "AKL-000002"
+          ],
+          "conditions": [],
+          "direction": "context-dependent",
+          "key": "inquiry-focus",
+          "quality_attribute_id": null,
+          "question": "Which questions does this repository's qualified lens formulation address?",
+          "scale": "qualitative",
+          "unit": null
+        },
+        {
+          "claim_ids": [
+            "AKL-000021"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "The inquiry has both uncertain premises and material cross-boundary interactions."
+            }
+          ],
+          "direction": "context-dependent",
+          "key": "combined-coverage",
+          "quality_attribute_id": null,
+          "question": "Does the inquiry require both premise examination and cross-boundary analysis?",
+          "scale": "qualitative",
+          "unit": null
+        }
+      ],
+      "evidence": [
+        "AKL-000001",
+        "AKL-000002",
+        "AKL-000021",
+        "AKL-000077",
+        "AKL-000078",
+        "AKL-000079",
+        "AKL-000080",
+        "AKL-000081",
+        "AKL-000082"
+      ],
+      "evidence_chain_claim_ids": [
+        "AKL-000001",
+        "AKL-000002",
+        "AKL-000021",
+        "AKL-000077",
+        "AKL-000078",
+        "AKL-000079",
+        "AKL-000080",
+        "AKL-000081",
+        "AKL-000082"
+      ],
+      "evidence_source_ids": [
+        "AKS-000001",
+        "AKS-000002",
+        "AKS-000005"
+      ],
+      "evidence_source_locations": [
+        {
+          "locator": "Chapter 2, Fundamentals of Systems Engineering (systems input only)",
+          "source_id": "AKS-000002"
+        },
+        {
+          "locator": "Chapter 2, Fundamentals of Systems Engineering, printed pages 3-4; sections 2.1 and 2.2",
+          "source_id": "AKS-000002"
+        },
+        {
+          "locator": "NASA/SP-2016-6105 Rev2, section 4.1.1.2.2, printed page 48 (PDF page 58), paragraph defining constraint",
+          "source_id": "AKS-000002"
+        },
+        {
+          "locator": "Section 2, The Structure of a Mathematical Science: First Principles (historical input only)",
+          "source_id": "AKS-000001"
+        },
+        {
+          "locator": "Section 2, The Structure of a Mathematical Science: First Principles (historical scope only)",
+          "source_id": "AKS-000001"
+        },
+        {
+          "locator": "Service Level Objectives, Indicators section, paragraph beginning Another kind of SLI important to SREs",
+          "source_id": "AKS-000005"
+        }
+      ],
+      "evolution_triggers": [
+        {
+          "affected_option_ids": [
+            "AKC-000001"
+          ],
+          "claim_ids": [
+            "AKL-000001"
+          ],
+          "condition": {
+            "concept_ids": [],
+            "scope": "edge-local",
+            "statement": "New evidence challenges a material architecture premise."
+          },
+          "rationale": "Reopen premise examination; a prior inquiry is not permanent evidence of truth."
+        },
+        {
+          "affected_option_ids": [
+            "AKC-000002"
+          ],
+          "claim_ids": [
+            "AKL-000002"
+          ],
+          "condition": {
+            "concept_ids": [],
+            "scope": "edge-local",
+            "statement": "The system boundary or affected stakeholders change."
+          },
+          "rationale": "Reopen interaction and lifecycle analysis within a newly stated scope."
+        }
+      ],
+      "id": "AKG-000003",
+      "option_concept_ids": [
+        "AKC-000001",
+        "AKC-000002"
+      ],
+      "options": [
+        {
+          "claim_ids": [
+            "AKL-000001"
+          ],
+          "concept_id": "AKC-000001",
+          "conditions": [],
+          "label": "First-Principles Thinking",
+          "summary": "This corpus transfers first-principles reasoning from the examination of foundational propositions to bounded architecture inquiries; the software-architecture method is a repository synthesis, not a directly normalized historical source claim."
+        },
+        {
+          "claim_ids": [
+            "AKL-000002"
+          ],
+          "concept_id": "AKC-000002",
+          "conditions": [],
+          "label": "Systems Thinking",
+          "summary": "For this corpus, systems thinking combines explicit purpose and boundaries with interacting elements, stakeholders, feedback, and lifecycle effects when analyzing architecture decisions."
+        }
+      ],
+      "privacy": {
+        "allowed_context_classifications": [
+          "public",
+          "internal"
+        ],
+        "external_provider_policy": "prohibited",
+        "session_persistence": "ephemeral-only"
+      },
+      "quality_attribute_ids": [
+        "AKC-000004"
+      ],
+      "quality_attributes": [
+        {
+          "claim_ids": [
+            "AKL-000082"
+          ],
+          "concept_id": "AKC-000004",
+          "conditions": [],
+          "priority": "medium",
+          "rationale": "Availability is a measurement question for the affected service, not a guaranteed benefit of an option or an assessment of reasoning-method superiority."
+        }
+      ],
+      "recommended_when": [
+        {
+          "claim_ids": [
+            "AKL-000077"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "A material architecture premise is uncertain and premise examination is within the inquiry scope."
+            }
+          ],
+          "option_id": "AKC-000001",
+          "rationale": "Consider bounded premise examination when a material architecture premise is uncertain; the software-method transfer remains a low-confidence repository recommendation."
+        },
+        {
+          "claim_ids": [
+            "AKL-000078"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "The inquiry includes material cross-boundary interactions or lifecycle consequences."
+            }
+          ],
+          "option_id": "AKC-000002",
+          "rationale": "Consider systems thinking when the architecture inquiry must examine material interactions across boundaries or lifecycle stages."
+        }
+      ],
+      "record_kind": "decision-guide",
+      "review": {
+        "created_at": "2026-09-09",
+        "owner": null,
+        "review_due_at": null,
+        "reviewed_at": null,
+        "reviewers": [],
+        "updated_at": "2026-09-09"
+      },
+      "risk_questions": [
+        {
+          "affected_option_ids": [
+            "AKC-000001"
+          ],
+          "claim_ids": [
+            "AKL-000001"
+          ],
+          "conditions": [],
+          "question": "Which software-method assumptions are repository transfers rather than instructions in the historical source?"
+        },
+        {
+          "affected_option_ids": [
+            "AKC-000002"
+          ],
+          "claim_ids": [
+            "AKL-000002"
+          ],
+          "conditions": [],
+          "question": "Which aerospace-to-software assumptions, omitted boundaries, security stakeholders, or lifecycle effects need explicit checking?"
+        }
+      ],
+      "schema_version": 4,
+      "source_path": "decisions/AKG-000003.yaml",
+      "status": "proposed",
+      "title": "Service-availability inquiry lens selection",
+      "tradeoff_matrix": [
+        {
+          "assessment": {
+            "rating": "mixed",
+            "rationale": "The corpus transfers premise examination to architecture as a synthesis, not a historically specified software method.",
+            "uncertainty": "high",
+            "unit": null,
+            "value": null
+          },
+          "claim_ids": [
+            "AKL-000001"
+          ],
+          "conditions": [],
+          "criterion": "inquiry-focus",
+          "option_id": "AKC-000001"
+        },
+        {
+          "assessment": {
+            "rating": "mixed",
+            "rationale": "The corpus synthesizes boundary, interaction, stakeholder, feedback, and lifecycle questions from a systems-engineering scope.",
+            "uncertainty": "high",
+            "unit": null,
+            "value": null
+          },
+          "claim_ids": [
+            "AKL-000002"
+          ],
+          "conditions": [],
+          "criterion": "inquiry-focus",
+          "option_id": "AKC-000002"
+        },
+        {
+          "assessment": {
+            "rating": "unknown",
+            "rationale": "Combined use is a low-confidence repository inference; premise analysis alone is not asserted to cover interactions.",
+            "uncertainty": "unresolved",
+            "unit": null,
+            "value": null
+          },
+          "claim_ids": [
+            "AKL-000021"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "The inquiry has both uncertain premises and material cross-boundary interactions."
+            }
+          ],
+          "criterion": "combined-coverage",
+          "option_id": "AKC-000001"
+        },
+        {
+          "assessment": {
+            "rating": "unknown",
+            "rationale": "Combined use is a low-confidence repository inference; interaction analysis alone is not asserted to validate premises.",
+            "uncertainty": "unresolved",
+            "unit": null,
+            "value": null
+          },
+          "claim_ids": [
+            "AKL-000021"
+          ],
+          "conditions": [
+            {
+              "concept_ids": [],
+              "scope": "edge-local",
+              "statement": "The inquiry has both uncertain premises and material cross-boundary interactions."
+            }
+          ],
+          "criterion": "combined-coverage",
+          "option_id": "AKC-000002"
+        }
+      ],
+      "uncertainty_policy": {
+        "conflicting_evidence": "preserve-conflict-and-escalate",
+        "missing_evidence": "insufficient-evidence",
+        "tie": "escalate-human",
+        "unknown_context": "request-clarification"
+      },
+      "version": 1
+    }
+  ]
 }

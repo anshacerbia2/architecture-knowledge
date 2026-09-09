@@ -279,6 +279,70 @@
       "schema": "schemas/claim.schema.json"
     },
     {
+      "path": "claims/AKL-000070.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000071.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000072.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000073.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000074.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000075.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000076.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000077.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000078.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000079.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000080.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000081.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "claims/AKL-000082.yaml",
+      "schema": "schemas/claim.schema.json"
+    },
+    {
+      "path": "decisions/AKG-000001.yaml",
+      "schema": "schemas/decision-guide.schema.json"
+    },
+    {
+      "path": "decisions/AKG-000002.yaml",
+      "schema": "schemas/decision-guide.schema.json"
+    },
+    {
+      "path": "decisions/AKG-000003.yaml",
+      "schema": "schemas/decision-guide.schema.json"
+    },
+    {
       "path": "evaluation/rag-case-contracts.yaml",
       "schema": "schemas/rag-evaluation.schema.json#/$defs/caseContractRegistry"
     },
@@ -612,8 +676,8 @@
     }
   ],
   "summary": {
-    "governed_files": 152,
-    "validated_files": 152,
+    "governed_files": 168,
+    "validated_files": 168,
     "schema_files": 22
   }
 }

@@ -16,6 +16,12 @@
       "predicate": "decomposes-into",
       "record_kind": "claim",
       "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "Section 2, The Structure of a Mathematical Science: First Principles (historical scope only)",
+          "source_id": "AKS-000001"
+        }
+      ],
       "source_path": "claims/AKL-000001.yaml",
       "sources": [
         "AKS-000001"
@@ -23,7 +29,7 @@
       "statement": "This corpus transfers first-principles reasoning from the examination of foundational propositions to bounded architecture inquiries; the software-architecture method is a repository synthesis, not a directly normalized historical source claim.",
       "status": "sourced",
       "subject": "AKC-000001",
-      "version": 2
+      "version": 3
     },
     {
       "claim_type": "synthesis",
@@ -38,6 +44,12 @@
       "predicate": "examines",
       "record_kind": "claim",
       "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "Chapter 2, Fundamentals of Systems Engineering, printed pages 3-4; sections 2.1 and 2.2",
+          "source_id": "AKS-000002"
+        }
+      ],
       "source_path": "claims/AKL-000002.yaml",
       "sources": [
         "AKS-000002"
@@ -45,7 +57,7 @@
       "statement": "For this corpus, systems thinking combines explicit purpose and boundaries with interacting elements, stakeholders, feedback, and lifecycle effects when analyzing architecture decisions.",
       "status": "sourced",
       "subject": "AKC-000002",
-      "version": 2
+      "version": 3
     },
     {
       "claim_type": "synthesis",
@@ -151,6 +163,16 @@
       "predicate": "organizes",
       "record_kind": "claim",
       "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "Hexagonal Rails Monolith, Summary; Details: Application domain and Enforcing boundaries (first-party case)",
+          "source_id": "AKS-000006"
+        },
+        {
+          "locator": "Componentization via Services; monolith and independent deployment comparison",
+          "source_id": "AKS-000007"
+        }
+      ],
       "source_path": "claims/AKL-000007.yaml",
       "sources": [
         "AKS-000006",
@@ -159,7 +181,7 @@
       "statement": "A modular monolith organizes an application into explicit internal modules while retaining one primary deployment and runtime boundary.",
       "status": "sourced",
       "subject": "AKC-000007",
-      "version": 1
+      "version": 2
     },
     {
       "claim_type": "synthesis",
@@ -174,6 +196,16 @@
       "predicate": "organizes",
       "record_kind": "claim",
       "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "Componentization via Services; Organized around Business Capabilities",
+          "source_id": "AKS-000007"
+        },
+        {
+          "locator": "Characteristics and Challenges",
+          "source_id": "AKS-000008"
+        }
+      ],
       "source_path": "claims/AKL-000008.yaml",
       "sources": [
         "AKS-000007",
@@ -182,7 +214,7 @@
       "statement": "Microservice architecture organizes a system as independently deployable services aligned to bounded capabilities and communicating through explicit contracts.",
       "status": "sourced",
       "subject": "AKC-000008",
-      "version": 1
+      "version": 2
     },
     {
       "claim_type": "normalized-source-claim",
@@ -263,6 +295,12 @@
       "predicate": "repeats",
       "record_kind": "claim",
       "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "Solution; Retry strategies; Issues and considerations; General guidance",
+          "source_id": "AKS-000012"
+        }
+      ],
       "source_path": "claims/AKL-000012.yaml",
       "sources": [
         "AKS-000012"
@@ -270,7 +308,7 @@
       "statement": "A retry policy repeats an operation for failures classified as transient and should bound attempts, delay, and total elapsed time.",
       "status": "sourced",
       "subject": "AKC-000012",
-      "version": 2
+      "version": 3
     },
     {
       "claim_type": "normalized-source-claim",
@@ -285,6 +323,12 @@
       "predicate": "prevents",
       "record_kind": "claim",
       "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "Solution, Closed/Open/Half-Open states; Issues and considerations",
+          "source_id": "AKS-000013"
+        }
+      ],
       "source_path": "claims/AKL-000013.yaml",
       "sources": [
         "AKS-000013"
@@ -292,7 +336,7 @@
       "statement": "A circuit breaker transitions among closed, open, and probe states to prevent repeated calls to a failing dependency and test recovery.",
       "status": "sourced",
       "subject": "AKC-000013",
-      "version": 1
+      "version": 2
     },
     {
       "claim_type": "normalized-source-claim",
@@ -486,6 +530,16 @@
       "predicate": "compatible-with",
       "record_kind": "claim",
       "semantic_scope": "claim-context-only",
+      "source_locations": [
+        {
+          "locator": "Section 2, The Structure of a Mathematical Science: First Principles (historical input only)",
+          "source_id": "AKS-000001"
+        },
+        {
+          "locator": "Chapter 2, Fundamentals of Systems Engineering (systems input only)",
+          "source_id": "AKS-000002"
+        }
+      ],
       "source_path": "claims/AKL-000021.yaml",
       "sources": [
         "AKS-000001",
@@ -494,7 +548,7 @@
       "statement": "This corpus infers that first-principles and systems thinking can be combined when an inquiry must test premises and also examine cross-boundary interactions and feedback.",
       "status": "sourced",
       "subject": "AKC-000001",
-      "version": 2
+      "version": 3
     },
     {
       "claim_type": "synthesis",
@@ -515,6 +569,20 @@
       "predicate": "alternative-to",
       "record_kind": "claim",
       "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "Hexagonal Rails Monolith, Summary; Details: Application domain and Enforcing boundaries (first-party case)",
+          "source_id": "AKS-000006"
+        },
+        {
+          "locator": "Componentization via Services",
+          "source_id": "AKS-000007"
+        },
+        {
+          "locator": "Characteristics; Benefits; Challenges",
+          "source_id": "AKS-000008"
+        }
+      ],
       "source_path": "claims/AKL-000022.yaml",
       "sources": [
         "AKS-000006",
@@ -524,7 +592,7 @@
       "statement": "A modular monolith and microservices are alternative deployment and decomposition choices when evaluating how much independent runtime ownership a product needs.",
       "status": "sourced",
       "subject": "AKC-000007",
-      "version": 1
+      "version": 2
     },
     {
       "claim_type": "synthesis",
@@ -632,6 +700,12 @@
       "predicate": "improves",
       "record_kind": "claim",
       "semantic_scope": "claim-context-only",
+      "source_locations": [
+        {
+          "locator": "Issues and considerations: Impact on performance, Idempotency; When to use this pattern",
+          "source_id": "AKS-000012"
+        }
+      ],
       "source_path": "claims/AKL-000026.yaml",
       "sources": [
         "AKS-000012"
@@ -639,7 +713,7 @@
       "statement": "Use a bounded retry policy to pursue service success only when failures are transient, repetition is safe, attempts fit the deadline, and aggregate retry load stays within capacity.",
       "status": "sourced",
       "subject": "AKC-000012",
-      "version": 2
+      "version": 3
     },
     {
       "claim_type": "inference",
@@ -660,6 +734,12 @@
       "predicate": "improves",
       "record_kind": "claim",
       "semantic_scope": "claim-context-only",
+      "source_locations": [
+        {
+          "locator": "Context and problem; Solution; Issues and considerations, open-state exception handling",
+          "source_id": "AKS-000013"
+        }
+      ],
       "source_path": "claims/AKL-000027.yaml",
       "sources": [
         "AKS-000013"
@@ -667,7 +747,7 @@
       "statement": "A circuit breaker may preserve caller capacity during sustained dependency failure when it fails fast and an acceptable open-state response exists.",
       "status": "sourced",
       "subject": "AKC-000013",
-      "version": 2
+      "version": 3
     },
     {
       "claim_type": "synthesis",
@@ -688,6 +768,16 @@
       "predicate": "compatible-with",
       "record_kind": "claim",
       "semantic_scope": "concept-global",
+      "source_locations": [
+        {
+          "locator": "Related resources, Circuit Breaker pattern",
+          "source_id": "AKS-000012"
+        },
+        {
+          "locator": "Solution, distinction from Retry and composition",
+          "source_id": "AKS-000013"
+        }
+      ],
       "source_path": "claims/AKL-000028.yaml",
       "sources": [
         "AKS-000012",
@@ -696,7 +786,7 @@
       "statement": "Retry and circuit breaker tactics can coexist when retry handles bounded transient faults and the breaker limits attempts during sustained failure.",
       "status": "sourced",
       "subject": "AKC-000012",
-      "version": 1
+      "version": 2
     },
     {
       "claim_type": "synthesis",
@@ -933,6 +1023,16 @@
       "predicate": "presents-risk-to",
       "record_kind": "claim",
       "semantic_scope": "claim-context-only",
+      "source_locations": [
+        {
+          "locator": "Design for failure",
+          "source_id": "AKS-000007"
+        },
+        {
+          "locator": "Challenges, Complexity, Management and Skill set",
+          "source_id": "AKS-000008"
+        }
+      ],
       "source_path": "claims/AKL-000036.yaml",
       "sources": [
         "AKS-000007",
@@ -941,7 +1041,7 @@
       "statement": "This corpus infers an increased reliability risk when independently deployed services are introduced without capability for network failure, distributed state, delivery, observability, and ownership.",
       "status": "sourced",
       "subject": "AKC-000008",
-      "version": 2
+      "version": 3
     },
     {
       "claim_type": "recommendation",
@@ -2008,6 +2108,388 @@
       "statement": "When a nonce was sent in the Authentication Request, OpenID Connect clients MUST require a nonce claim in the ID Token and validate that its value equals the sent nonce.",
       "status": "sourced",
       "subject": "AKC-000018",
+      "version": 1
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "One primary deployment boundary is acceptable and explicit module boundaries can be maintained."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [
+        "AKL-000007"
+      ],
+      "id": "AKL-000070",
+      "notes": "M7.2 repository recommendation, not a source mandate or human-approved decision. Parent claims support the mechanism or risk; the conditional selection judgment is explicit. Validate context and alternatives with a human.",
+      "object": {
+        "literal": "a bounded architecture decision"
+      },
+      "predicate": "guides-selection",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000070.yaml",
+      "sources": [],
+      "statement": "Consider a modular monolith when one release boundary is acceptable and explicit modules can be maintained; this is a bounded candidate, not a claim of superior quality.",
+      "status": "sourced",
+      "subject": "AKC-000007",
+      "version": 1
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Independent deployment is material and service-operation capability has been demonstrated."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [
+        "AKL-000008"
+      ],
+      "id": "AKL-000071",
+      "notes": "M7.2 repository recommendation, not a source mandate or human-approved decision. Parent claims support the mechanism or risk; the conditional selection judgment is explicit. Validate context and alternatives with a human.",
+      "object": {
+        "literal": "a bounded architecture decision"
+      },
+      "predicate": "guides-selection",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_locations": [
+        {
+          "locator": "Challenges, Management and Skill set",
+          "source_id": "AKS-000008"
+        }
+      ],
+      "source_path": "claims/AKL-000071.yaml",
+      "sources": [
+        "AKS-000008"
+      ],
+      "statement": "Consider microservices when independent deployment is material and the team has demonstrated the required service-operation capability; validate benefits for the actual product.",
+      "status": "sourced",
+      "subject": "AKC-000008",
+      "version": 1
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Independent deployment within the selected scope is mandatory and cannot be met by one primary deployable."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [
+        "AKL-000007"
+      ],
+      "id": "AKL-000072",
+      "notes": "M7.2 repository recommendation, not a source mandate or human-approved decision. Parent claims support the mechanism or risk; the conditional selection judgment is explicit. Validate context and alternatives with a human.",
+      "object": {
+        "literal": "a bounded architecture decision"
+      },
+      "predicate": "guides-selection",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000072.yaml",
+      "sources": [],
+      "statement": "Exclude a modular monolith for the selected scope when a mandatory independent-deployment requirement cannot be met by its single primary deployable.",
+      "status": "sourced",
+      "subject": "AKC-000007",
+      "version": 1
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The system is distributed into services without adequate resilience, observability, delivery, or ownership capability."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [
+        "AKL-000036"
+      ],
+      "id": "AKL-000073",
+      "notes": "M7.2 repository recommendation, not a source mandate or human-approved decision. Parent claims support the mechanism or risk; the conditional selection judgment is explicit. Validate context and alternatives with a human.",
+      "object": {
+        "literal": "a bounded architecture decision"
+      },
+      "predicate": "guides-selection",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000073.yaml",
+      "sources": [],
+      "statement": "Defer microservices in the scoped decision when the operating capability identified by the risk input is absent; reassess after capability evidence changes.",
+      "status": "sourced",
+      "subject": "AKC-000008",
+      "version": 1
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The current operation is not safely repeatable or no attempts fit its deadline and load budget."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [
+        "AKL-000012"
+      ],
+      "id": "AKL-000074",
+      "notes": "M7.2 repository recommendation, not a source mandate or human-approved decision. Parent claims support the mechanism or risk; the conditional selection judgment is explicit. Validate context and alternatives with a human.",
+      "object": {
+        "literal": "a bounded architecture decision"
+      },
+      "predicate": "guides-selection",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_locations": [
+        {
+          "locator": "Issues and considerations, Impact on performance and Idempotency",
+          "source_id": "AKS-000012"
+        }
+      ],
+      "source_path": "claims/AKL-000074.yaml",
+      "sources": [
+        "AKS-000012"
+      ],
+      "statement": "Avoid retrying the current operation when it is not safely repeatable or when no attempts fit the caller's deadline and load budget.",
+      "status": "sourced",
+      "subject": "AKC-000012",
+      "version": 1
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The dependency failure would otherwise consume shared capacity and the caller has an acceptable open-state response."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [
+        "AKL-000027"
+      ],
+      "id": "AKL-000075",
+      "notes": "M7.2 repository recommendation, not a source mandate or human-approved decision. Parent claims support the mechanism or risk; the conditional selection judgment is explicit. Validate context and alternatives with a human.",
+      "object": {
+        "literal": "a bounded architecture decision"
+      },
+      "predicate": "guides-selection",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000075.yaml",
+      "sources": [],
+      "statement": "Consider a circuit breaker to contain dependency-call resource consumption when the caller can accept its open-state response; this is not a measured availability guarantee.",
+      "status": "sourced",
+      "subject": "AKC-000013",
+      "version": 1
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "No acceptable caller response exists while the breaker blocks dependency calls."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [
+        "AKL-000013"
+      ],
+      "id": "AKL-000076",
+      "notes": "M7.2 repository recommendation, not a source mandate or human-approved decision. Parent claims support the mechanism or risk; the conditional selection judgment is explicit. Validate context and alternatives with a human.",
+      "object": {
+        "literal": "a bounded architecture decision"
+      },
+      "predicate": "guides-selection",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000076.yaml",
+      "sources": [],
+      "statement": "Do not select a circuit breaker for this call boundary until the caller has an acceptable response while dependency calls are blocked.",
+      "status": "sourced",
+      "subject": "AKC-000013",
+      "version": 1
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "A material architecture premise is uncertain and premise examination is within the inquiry scope."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [
+        "AKL-000001"
+      ],
+      "id": "AKL-000077",
+      "notes": "M7.2 repository recommendation, not a source mandate or human-approved decision. Parent claims support the mechanism or risk; the conditional selection judgment is explicit. Validate context and alternatives with a human.",
+      "object": {
+        "literal": "a bounded architecture decision"
+      },
+      "predicate": "guides-selection",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000077.yaml",
+      "sources": [],
+      "statement": "Consider bounded premise examination when a material architecture premise is uncertain; the software-method transfer remains a low-confidence repository recommendation.",
+      "status": "sourced",
+      "subject": "AKC-000001",
+      "version": 1
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "The inquiry includes material cross-boundary interactions or lifecycle consequences."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [
+        "AKL-000002"
+      ],
+      "id": "AKL-000078",
+      "notes": "M7.2 repository recommendation, not a source mandate or human-approved decision. Parent claims support the mechanism or risk; the conditional selection judgment is explicit. Validate context and alternatives with a human.",
+      "object": {
+        "literal": "a bounded architecture decision"
+      },
+      "predicate": "guides-selection",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000078.yaml",
+      "sources": [],
+      "statement": "Consider systems thinking when the architecture inquiry must examine material interactions across boundaries or lifecycle stages.",
+      "status": "sourced",
+      "subject": "AKC-000002",
+      "version": 1
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Premise examination would be the sole lens and required cross-boundary analysis would remain unaddressed."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [
+        "AKL-000001",
+        "AKL-000002"
+      ],
+      "id": "AKL-000079",
+      "notes": "M7.2 repository recommendation, not a source mandate or human-approved decision. Parent claims support the mechanism or risk; the conditional selection judgment is explicit. Validate context and alternatives with a human.",
+      "object": {
+        "literal": "a bounded architecture decision"
+      },
+      "predicate": "guides-selection",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000079.yaml",
+      "sources": [],
+      "statement": "Avoid using premise examination as the sole inquiry lens when that choice would leave required cross-boundary analysis unaddressed.",
+      "status": "sourced",
+      "subject": "AKC-000001",
+      "version": 1
+    },
+    {
+      "claim_type": "recommendation",
+      "conditions": [
+        {
+          "concept_ids": [],
+          "scope": "edge-local",
+          "statement": "Interaction analysis would be the sole lens and a material uncertain premise would remain unexamined."
+        }
+      ],
+      "confidence": "low",
+      "derived_from_claims": [
+        "AKL-000001",
+        "AKL-000002"
+      ],
+      "id": "AKL-000080",
+      "notes": "M7.2 repository recommendation, not a source mandate or human-approved decision. Parent claims support the mechanism or risk; the conditional selection judgment is explicit. Validate context and alternatives with a human.",
+      "object": {
+        "literal": "a bounded architecture decision"
+      },
+      "predicate": "guides-selection",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_path": "claims/AKL-000080.yaml",
+      "sources": [],
+      "statement": "Avoid using an interaction-oriented analysis as the sole inquiry lens when it leaves a material uncertain premise unexamined.",
+      "status": "sourced",
+      "subject": "AKC-000002",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000081",
+      "notes": "Supports the meaning of a constraint, not the truth or authority of any project-specific constraint. No ISO definition is asserted.",
+      "object": {
+        "literal": "a condition to be met in the system design scope"
+      },
+      "predicate": "defines",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_locations": [
+        {
+          "locator": "NASA/SP-2016-6105 Rev2, section 4.1.1.2.2, printed page 48 (PDF page 58), paragraph defining constraint",
+          "source_id": "AKS-000002"
+        }
+      ],
+      "source_path": "claims/AKL-000081.yaml",
+      "sources": [
+        "AKS-000002"
+      ],
+      "statement": "In NASA's stakeholder-expectations process, a constraint is a condition to be met, including externally imposed restrictions.",
+      "status": "sourced",
+      "subject": "AKC-000003",
+      "version": 1
+    },
+    {
+      "claim_type": "normalized-source-claim",
+      "conditions": [],
+      "confidence": "medium",
+      "derived_from_claims": [],
+      "id": "AKL-000082",
+      "notes": "An operational measurement framing, not a universal availability definition or evidence that a candidate architecture improves it.",
+      "object": {
+        "literal": "successful well-formed requests as an operational availability indicator"
+      },
+      "predicate": "measures",
+      "record_kind": "claim",
+      "semantic_scope": "claim-context-only",
+      "source_locations": [
+        {
+          "locator": "Service Level Objectives, Indicators section, paragraph beginning Another kind of SLI important to SREs",
+          "source_id": "AKS-000005"
+        }
+      ],
+      "source_path": "claims/AKL-000082.yaml",
+      "sources": [
+        "AKS-000005"
+      ],
+      "statement": "Google SRE describes availability as service usability and notes that it is often measured by the fraction of well-formed requests that succeed.",
+      "status": "sourced",
+      "subject": "AKC-000004",
       "version": 1
     }
   ]

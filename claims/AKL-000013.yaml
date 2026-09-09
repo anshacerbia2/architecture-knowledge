@@ -14,4 +14,7 @@ sources:
 derived_from_claims: []
 status: sourced
 notes: State thresholds and fallback semantics are context dependent.
-version: 1
+version: 2
+source_locations:
+  - source_id: AKS-000013
+    locator: "Solution, Closed/Open/Half-Open states; Issues and considerations"

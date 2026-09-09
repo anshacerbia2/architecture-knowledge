@@ -92,6 +92,8 @@ counterexamples:
     scope: edge-local
     concept_ids: []
 claims:
+  - AKL-000070
+  - AKL-000072
   - AKL-000007
   - AKL-000022
   - AKL-000023
@@ -103,10 +105,10 @@ review:
   owner: null
   reviewers: []
   created_at: 2026-07-29
-  updated_at: 2026-07-30
+  updated_at: 2026-09-09
   reviewed_at: null
   review_due_at: null
-version: 2
+version: 3
 contextual_roles:
   - role: decomposition-model
     context: Logical modules are the principal internal decomposition.
