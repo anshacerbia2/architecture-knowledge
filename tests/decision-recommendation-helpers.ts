@@ -43,9 +43,14 @@ export async function recommendationFixture() {
     },
     authority,
   };
-  const statement = { statement: "Synthetic scoped comparison", claim_ids: ["AKL-900001"] };
+  const statement = {
+    statement: "Synthetic scoped comparison",
+    claim_ids: ["AKL-900001"],
+    option_ids: ["AKC-900004"],
+  };
   const output = {
-    contract_version: 3,
+    contract_version: 4,
+    inapplicable_options: [] as { concept_id: string; reason: string }[],
     guide_version: 1,
     decision_basis: [
       "/options/0",

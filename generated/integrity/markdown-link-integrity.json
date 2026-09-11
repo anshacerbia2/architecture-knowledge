@@ -43,6 +43,11 @@
       "status": "valid"
     },
     {
+      "path": "docs/kernel-decisions.md",
+      "target": "m7-2-output-coverage-remediation.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/m4-implementation-report.md",
       "target": "m4-independent-audit-report.md",
       "status": "valid"
@@ -208,6 +213,41 @@
       "status": "valid"
     },
     {
+      "path": "docs/m7-2-corpus-audit-report.md",
+      "target": "../decisions/AKG-000002.yaml",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-corpus-audit-report.md",
+      "target": "../decisions/AKG-000003.yaml",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-corpus-audit-report.md",
+      "target": "../schemas/decision-recommendation.schema.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-corpus-audit-report.md",
+      "target": "../src/decision-recommendation-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-corpus-audit-report.md",
+      "target": "../src/decision-recommendation-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-corpus-audit-report.md",
+      "target": "../tests/m7-2-pilot.test.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-corpus-audit-report.md",
+      "target": "m7-1-second-reviewer-confirmation.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/m7-2-corpus-pilot.md",
       "target": "../decisions/AKG-000001.yaml",
       "status": "valid"
@@ -233,6 +273,11 @@
       "status": "valid"
     },
     {
+      "path": "docs/m7-2-output-coverage-remediation.md",
+      "target": "m7-2-corpus-audit-report.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/m7-decision-guide-kernel.md",
       "target": "m7-1-decision-basis-remediation-report.md",
       "status": "valid"
@@ -240,6 +285,16 @@
     {
       "path": "docs/m7-decision-guide-kernel.md",
       "target": "m7-1-hardening-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-decision-guide-kernel.md",
+      "target": "m7-2-corpus-pilot.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-decision-guide-kernel.md",
+      "target": "m7-2-output-coverage-remediation.md",
       "status": "valid"
     },
     {
@@ -504,12 +559,22 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m7-2-corpus-audit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m7-2-corpus-pilot.md",
       "status": "valid"
     },
     {
       "path": "docs/README.md",
       "target": "m7-2-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-2-output-coverage-remediation.md",
       "status": "valid"
     },
     {
@@ -629,8 +694,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 125,
+    "checked_link_count": 138,
     "broken_link_count": 0,
-    "markdown_file_count": 103
+    "markdown_file_count": 105
   }
 }

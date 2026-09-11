@@ -91,8 +91,9 @@ export async function validateDecisionRecommendation(
   const affirmative = ["recommendation", "multiple-viable-options"].includes(String(output.status));
   const viable = asStringArray(output.viable_options);
   const rejected = objects(output.rejected_options);
+  const inactiveIds = objects(output.inapplicable_options).map((item) => String(item.concept_id));
   const options = objects(guide.options).map((item) => String(item.concept_id));
-  const partition = [...viable, ...rejected.map((item) => String(item.concept_id))];
+  const partition = [...viable, ...rejected.map((item) => String(item.concept_id)), ...inactiveIds];
   if (new Set(partition).size !== partition.length || partition.some((id) => !options.includes(id)))
     fail("DR_OPTION_PARTITION", "/viable_options");
   if (affirmative && options.some((id) => !partition.includes(id)))
@@ -248,9 +249,29 @@ export async function validateDecisionRecommendation(
         fail("DR_OPTION_DISQUALIFIED_OR_UNKNOWN", "/viable_options");
     }
 
+  for (const id of inactiveIds) {
+    const selection = objects(guide.recommended_when).filter((rule) => rule.option_id === id);
+    const rules = [
+      ...selection,
+      ...objects(guide.avoid_when),
+      ...objects(guide.disqualifiers),
+    ].filter((rule) => rule.option_id === id);
+    // A false conjunct cannot hide an unknown one. Inapplicable is not excluded or unassessed.
+    if (
+      !selection.length ||
+      rules.some(
+        (rule) =>
+          ruleHolds(rule) !== false ||
+          asArray(rule.conditions).some((c) => conditionHolds(c) === null),
+      )
+    )
+      fail("DR_INAPPLICABLE_NOT_JUSTIFIED", "/inapplicable_options");
+  }
+
   // Derive mandatory support from the current guide/session, never from caller inventories.
   // All active selection/exclusion rules participate, so parallel rules cannot hide evidence.
-  const basis: Array<{ pointer: string; item: ObjectValue; targets: string[] }> = [];
+  const basis: Array<{ pointer: string; item: ObjectValue; targets: string[]; asserted: boolean }> =
+    [];
   const include = (
     field: string,
     predicate: (item: ObjectValue) => boolean,
@@ -258,7 +279,15 @@ export async function validateDecisionRecommendation(
   ): void => {
     objects(guide[field]).forEach((item, index) => {
       if (predicate(item))
-        basis.push({ pointer: `/${field}/${index}`, item, targets: [String(item[targetKey])] });
+        basis.push({
+          pointer: `/${field}/${index}`,
+          item,
+          targets: [String(item[targetKey])],
+          asserted: !(
+            ["options", "recommended_when", "avoid_when", "disqualifiers"].includes(field) &&
+            inactiveIds.includes(String(item[targetKey]))
+          ),
+        });
     });
   };
   include("options", (item) => partition.includes(String(item.concept_id)), "concept_id");
@@ -278,14 +307,18 @@ export async function validateDecisionRecommendation(
   );
   include(
     "recommended_when",
-    (item) => partition.includes(String(item.option_id)) && ruleHolds(item) === true,
+    (item) =>
+      partition.includes(String(item.option_id)) &&
+      (inactiveIds.includes(String(item.option_id)) || ruleHolds(item) === true),
     "option_id",
   );
   const rejectedIds = rejected.map((item) => String(item.concept_id));
   for (const field of ["disqualifiers", "avoid_when"])
     include(
       field,
-      (item) => partition.includes(String(item.option_id)) && ruleHolds(item) === true,
+      (item) =>
+        partition.includes(String(item.option_id)) &&
+        (inactiveIds.includes(String(item.option_id)) || ruleHolds(item) === true),
       "option_id",
     );
   for (const id of rejectedIds)
@@ -312,8 +345,10 @@ export async function validateDecisionRecommendation(
     fail("DR_DECISION_BASIS", "/decision_basis");
   if (
     affirmative &&
-    basis.some((entry) =>
-      asArray(entry.item.conditions).some((condition) => conditionHolds(condition) !== true),
+    basis.some(
+      (entry) =>
+        entry.asserted &&
+        asArray(entry.item.conditions).some((condition) => conditionHolds(condition) !== true),
     )
   )
     fail("DR_BASIS_CONDITION", "/decision_basis");
@@ -325,12 +360,26 @@ export async function validateDecisionRecommendation(
     fail("DR_MODEL_DUPLICATE", "/guide_id");
   const bindings = [
     ...basis,
-    ...results.map((item) => ({ item, targets: [String(item.concept_id)] })),
-    ...rejected.map((item) => ({ item, targets: [String(item.concept_id)] })),
+    ...results.map((item) => ({ item, targets: [String(item.concept_id)], asserted: true })),
+    ...rejected.map((item) => ({ item, targets: [String(item.concept_id)], asserted: true })),
     ...["tradeoffs", "risks", "verification", "evolution_triggers"].flatMap((key) =>
-      objects(output[key]).map((item) => ({ item, targets: viable })),
+      objects(output[key]).map((item) => ({
+        item,
+        targets: asStringArray(item.option_ids),
+        asserted: true,
+      })),
     ),
   ];
+  for (const key of ["tradeoffs", "risks", "verification", "evolution_triggers"]) {
+    const targets = objects(output[key]).flatMap((item) => asStringArray(item.option_ids));
+    if (targets.some((id) => !viable.includes(id))) fail("DR_STATEMENT_OPTION", `/${key}`);
+    if (
+      affirmative &&
+      ["tradeoffs", "verification"].includes(key) &&
+      viable.some((id) => !targets.includes(id))
+    )
+      fail("DR_STATEMENT_COVERAGE", `/${key}`);
+  }
   const roots = [...new Set(bindings.flatMap(({ item }) => asStringArray(item.claim_ids)))].sort();
   if (!equal(roots, asStringArray(output.claim_ids).sort()))
     fail("DR_CLAIM_INVENTORY", "/claim_ids");
@@ -369,6 +418,18 @@ export async function validateDecisionRecommendation(
     parents.forEach((parent) => visit(parent, new Set(visiting).add(id)));
   };
   roots.forEach((id) => visit(id, new Set()));
+  // Evaluation evidence remains grounded, but is not asserted to apply. If the same claim
+  // (including a shared ancestor) also supports an assertion, its conditions still must hold.
+  const assertedChain = new Set<string>();
+  const assertClaim = (id: string): void => {
+    if (assertedChain.has(id)) return;
+    assertedChain.add(id);
+    asStringArray(claims.get(id)?.data.derived_from_claims).forEach(assertClaim);
+  };
+  bindings
+    .filter((binding) => binding.asserted)
+    .flatMap(({ item }) => asStringArray(item.claim_ids))
+    .forEach(assertClaim);
   for (const item of objects(output.uncertainty))
     if (asStringArray(item.claim_ids).some((id) => !chain.has(id)))
       fail("DR_UNCERTAINTY_REFERENCE", "/uncertainty");
@@ -398,17 +459,13 @@ export async function validateDecisionRecommendation(
         )
       )
         fail("DR_CLAIM_APPLICABILITY", "/claim_ids");
-      if (
-        affirmative &&
-        asArray(claim.conditions).some((condition) => conditionHolds(condition) !== true)
-      )
-        fail("DR_CLAIM_CONDITION", "/evidence_claims");
     }
   // Preserve low-confidence evidence throughout the derivation, not only direct bindings.
   for (const id of chain) {
     const claim = claims.get(id)!.data;
     if (
       affirmative &&
+      assertedChain.has(id) &&
       asArray(claim.conditions).some((condition) => conditionHolds(condition) !== true)
     )
       fail("DR_CLAIM_CONDITION", "/evidence_claims");

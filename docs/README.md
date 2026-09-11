@@ -96,6 +96,8 @@ any document reviewed, approved, published, or canonical.
 | M7-10 | [M7.2 Corpus Pilot](m7-2-corpus-pilot.md) | Three-guide catalog, lookup choice, semantic boundaries, and source fidelity. |
 | M7-11 | [M7.2 Implementation Report](m7-2-implementation-report.md) | Scoped changes, validation evidence, residual risks, and next-run boundary. |
 | M7-12 | [M7.2 Retrieval Regression](m7-2-retrieval-regression.md) | Post-merge fake-vector false hit, bounded correction, regression tests, and hosted verification boundary. |
+| M7-13 | [M7.2 Corpus Audit](m7-2-corpus-audit-report.md) | Same-agent critical review identifying two output-coverage gaps; historical evidence preserved. |
+| M7-14 | [M7.2 Output-Coverage Remediation](m7-2-output-coverage-remediation.md) | Recommendation v4 migration, explicit applicability partition, option-local evidence, and regression evidence. |
 
 ## Architecture Decision Records
 

@@ -61,6 +61,22 @@ and optional referenced concepts, rather than strings alone.
 Why: prose-only conditions cannot later support graph traversal. The statement
 preserves nuance while references enable queries.
 
+## KD-006 — Option applicability and statement targets (M7.2)
+
+Decision: recommendation contract v4 distinguishes inapplicable options from
+excluded options. Inapplicability requires fully known false selection and
+exclusion rules; it is not a synonym for unknown, prohibited, or lower-ranked.
+Evidence used to assess a false rule remains traceable without asserting that
+the rule currently applies. Evidence also used for an active assertion retains
+all applicability conditions. Statement-level `option_ids` are explicit.
+
+Alternatives not selected: treating every unused option as rejected would erase
+the active-exclusion requirement; omitting unused options would conceal whether
+they were assessed; adding unconditional exclusions to the corpus would invent
+normative content; treating every claim as applicable to every viable option
+would lose legitimate option-specific risks. Automatic ranking remains absent.
+See the [migration and validation report](m7-2-output-coverage-remediation.md).
+
 ## Unresolved taxonomy questions
 
 1. Should `alternative` remain a concept type? Current decision-guide modeling

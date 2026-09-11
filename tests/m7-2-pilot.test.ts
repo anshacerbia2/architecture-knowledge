@@ -107,9 +107,11 @@ function scenario(number: number) {
     statement:
       "Synthetic comparison and verification question, not an accepted project conclusion.",
     claim_ids: [comparison],
+    option_ids: number === 1 ? [options[0]!] : options,
   };
   const output = {
-    contract_version: 3,
+    contract_version: 4,
+    inapplicable_options: [],
     guide_version: 1,
     session_id: session.session_id,
     guide_id: guide.id,

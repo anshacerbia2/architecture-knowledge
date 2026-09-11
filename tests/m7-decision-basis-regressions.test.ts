@@ -485,6 +485,8 @@ describe("focused re-audit reproductions", () => {
     f.output.applicable_context = [];
     f.output.status = "needs-human-clarification";
     f.output.viable_options = [];
+    f.output.tradeoffs = [];
+    f.output.verification = [];
     f.output.decision_basis = [
       "/options/0",
       "/constraints/0",
