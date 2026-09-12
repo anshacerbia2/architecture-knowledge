@@ -64,6 +64,8 @@ describe("M7.1-AUD-001/002 output boundary regressions", () => {
       rule.conditions = [...(rule.conditions as unknown[]), condition];
     f.session.condition_evaluations.push({ condition, satisfied: false, confirmed_by_human: true });
     f.output.viable_options.push("AKC-900001");
+    for (const statement of [...f.output.tradeoffs, ...f.output.verification])
+      statement.option_ids = [...f.output.viable_options];
     f.output.rejected_options = [];
     f.output.status = "multiple-viable-options";
     f.output.decision_basis = [
@@ -359,6 +361,8 @@ describe("M7.1-AUD-001/002 output boundary regressions", () => {
     f.output.constraint_results[0]!.status = "unknown";
     f.output.status = "needs-human-clarification";
     f.output.viable_options = [];
+    f.output.tradeoffs = [];
+    f.output.verification = [];
     f.output.decision_basis = ["/options/0", "/disqualifiers/0", "/avoid_when/0"].map(
       (guide_pointer) => ({ guide_pointer, claim_ids: ["AKL-900001"] }),
     );

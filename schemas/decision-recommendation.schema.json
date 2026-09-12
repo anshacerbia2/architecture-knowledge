@@ -15,6 +15,7 @@
     "constraint_results",
     "viable_options",
     "rejected_options",
+    "inapplicable_options",
     "tradeoffs",
     "risks",
     "uncertainty",
@@ -27,7 +28,7 @@
     "decision_basis"
   ],
   "properties": {
-    "contract_version": { "const": 3 },
+    "contract_version": { "const": 4 },
     "session_id": { "type": "string", "format": "uuid" },
     "guide_id": { "$ref": "_defs.schema.json#/$defs/decisionGuideId" },
     "guide_version": { "type": "integer", "minimum": 1 },
@@ -67,6 +68,18 @@
             "items": { "$ref": "_defs.schema.json#/$defs/claimId" },
             "uniqueItems": true
           }
+        }
+      }
+    },
+    "inapplicable_options": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["concept_id", "reason"],
+        "properties": {
+          "concept_id": { "$ref": "_defs.schema.json#/$defs/conceptId" },
+          "reason": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" }
         }
       }
     },
@@ -257,8 +270,14 @@
     "evidenceStatement": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["statement", "claim_ids"],
+      "required": ["statement", "claim_ids", "option_ids"],
       "properties": {
+        "option_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "_defs.schema.json#/$defs/conceptId" }
+        },
         "statement": { "$ref": "_defs.schema.json#/$defs/nonEmptyString" },
         "claim_ids": {
           "type": "array",

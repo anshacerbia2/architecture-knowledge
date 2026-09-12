@@ -180,10 +180,22 @@ describe("decision-guide validation kernel", () => {
           ],
           viable_options: ["AKC-900001", "AKC-900004"],
           rejected_options: [],
-          tradeoffs: [{ statement: "Synthetic trade-off.", claim_ids: ["AKL-900001"] }],
+          tradeoffs: [
+            {
+              statement: "Synthetic trade-off.",
+              claim_ids: ["AKL-900001"],
+              option_ids: ["AKC-900001"],
+            },
+          ],
           risks: [],
           uncertainty: [],
-          verification: [{ statement: "Synthetic verification.", claim_ids: ["AKL-900001"] }],
+          verification: [
+            {
+              statement: "Synthetic verification.",
+              claim_ids: ["AKL-900001"],
+              option_ids: ["AKC-900001"],
+            },
+          ],
           evolution_triggers: [],
           claim_ids: ["AKL-900001"],
           source_ids: ["AKS-900001"],
@@ -218,7 +230,8 @@ describe("decision-guide validation kernel", () => {
         data.condition_evaluations = [];
       }
       if (name === "decision-recommendation") {
-        data.contract_version = 3;
+        data.contract_version = 4;
+        data.inapplicable_options = [];
         data.guide_version = 1;
         data.decision_basis = [];
         data.evidence_claims = [structuredClone(model.claims[0]!.data)];

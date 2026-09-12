@@ -47,8 +47,10 @@ pnpm retrieval:query -- "decision context" --unit-kind decision-guide-overview
 ```
 
 Retrieval contract v2 adds `decision-guide-overview` and `decision-guide-section`. Units retain
-source citations derived from the guide's claim evidence chain. With no production guide corpus,
-both committed counts are zero; the synthetic regression suite proves the non-empty path.
+source citations derived from the guide's claim evidence chain. At M7.1 delivery,
+both committed counts were zero; synthetic regressions proved the non-empty path.
+The subsequent [M7.2 pilot](m7-2-corpus-pilot.md) now supplies three proposed guides
+without granting content approval or runtime authorization.
 
 ## Privacy, uncertainty, and injection boundary
 
@@ -73,6 +75,12 @@ v3 guide and v2 session/recommendation boundary. The subsequent
 [decision-basis migration](m7-1-decision-basis-remediation-report.md) requires
 guide schema v4 and session/recommendation contract v3, with current
 `guide_version` and a deterministic `decision_basis` evidence inventory.
+The [M7.2 output-coverage migration](m7-2-output-coverage-remediation.md) now
+requires recommendation contract v4; session remains v3. Results explicitly
+partition assessed options into viable, rejected, and inapplicable options.
+Every trade-off, risk, verification, and evolution statement declares its
+`option_ids`, limited to viable options. Trade-off and verification coverage
+must each include every viable option.
 Schema success alone is not
 recommendation clearance: use the pure semantic validator or
 `pnpm decision:validate -- session.json recommendation.json`. No input is persisted
@@ -87,6 +95,15 @@ also contribute their own binding evidence. The output lists exact
 and verifies the transitive evidence. Unrelated risk-section provenance does not
 become decision support. Rejection requires an active exclusion rule; comparative
 ranking without such a rule is not implemented by this kernel.
+
+An inapplicable option requires at least one selection rule, all its selection
+rules false, all exclusion rules false, and every rule condition known and
+human-confirmed. Unknown applicability is not inapplicability. Its option binding
+and every selection/exclusion binding remain in the evidence basis, including
+false rules. These are evaluation evidence, not active recommendations. All
+sources, locators, snapshots and uncertainty remain mandatory. Conditions on
+evidence also used by an active assertion, including shared transitive ancestors,
+must still hold. No result grants approval or proves free-text entailment.
 
 Condition matching preserves statement text, scope and the concept-reference set.
 Driver IDs must resolve with the declared role and guide membership; a required
