@@ -213,6 +213,11 @@
       "status": "valid"
     },
     {
+      "path": "docs/m7-2-completion-approval.md",
+      "target": "m7-2-focused-closure-confirmation.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/m7-2-corpus-audit-report.md",
       "target": "../decisions/AKG-000002.yaml",
       "status": "valid"
@@ -265,6 +270,36 @@
     {
       "path": "docs/m7-2-corpus-pilot.md",
       "target": "m7-2-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-focused-closure-confirmation.md",
+      "target": "../schemas/decision-recommendation.schema.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-focused-closure-confirmation.md",
+      "target": "../src/decision-recommendation-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-focused-closure-confirmation.md",
+      "target": "../tests/m7-2-output-coverage.test.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-focused-closure-confirmation.md",
+      "target": "../tests/m7-2-output-helpers.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-focused-closure-confirmation.md",
+      "target": "m7-2-corpus-audit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-2-focused-closure-confirmation.md",
+      "target": "m7-2-output-coverage-remediation.md",
       "status": "valid"
     },
     {
@@ -559,12 +594,22 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m7-2-completion-approval.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m7-2-corpus-audit-report.md",
       "status": "valid"
     },
     {
       "path": "docs/README.md",
       "target": "m7-2-corpus-pilot.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-2-focused-closure-confirmation.md",
       "status": "valid"
     },
     {
@@ -654,6 +699,11 @@
     },
     {
       "path": "README.md",
+      "target": "docs/m7-2-completion-approval.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
       "target": "docs/m7-decision-guide-kernel.md",
       "status": "valid"
     },
@@ -689,13 +739,18 @@
     },
     {
       "path": "ROADMAP.md",
+      "target": "docs/m7-2-completion-approval.md",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
       "target": "roadmap/implementation.yaml",
       "status": "valid"
     }
   ],
   "summary": {
-    "checked_link_count": 138,
+    "checked_link_count": 149,
     "broken_link_count": 0,
-    "markdown_file_count": 105
+    "markdown_file_count": 107
   }
 }

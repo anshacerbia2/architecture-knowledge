@@ -7,8 +7,9 @@ knowledge units are authored.
 
 ## Current scope
 
-The repository currently implements M0 through M6, has completed M7.0, and
-implements the bounded M7.1 decision-guide validation kernel: project definition, knowledge and
+The repository currently implements M0 through M6, has completed M7.0, implements
+the M7.1 validation kernel, and has owner-approved completion of the bounded
+M7.2 three-guide pilot: project definition, knowledge and
 validation kernels, the reference corpus, a deterministic knowledge graph/query
 layer, hybrid retrieval, and a governed architecture RAG implementation:
 
@@ -30,8 +31,8 @@ layer, hybrid retrieval, and a governed architecture RAG implementation:
   application-resolved citations, fail-closed grounding checks, deterministic
   evaluation, and a production OpenAI Responses adapter.
 
-It intentionally contains no decision-guide examples, decision-assistant
-runtime, project decision sessions, ADR generation, conversational memory,
+The three decision guides remain proposed content. There is no decision-assistant
+runtime, persisted project decision sessions, ADR generation, conversational memory,
 graph database, or publication output. Those belong to separately authorized
 later scopes.
 
@@ -72,7 +73,8 @@ concept type changes. See
 Knowledge content begins at `proposed`. Automation may advance it only through
 validation-oriented states up to `human-review`. Only an explicitly authorized
 human may transition content to `reviewed` or `published`. Nothing in this
-repository is currently reviewed, approved, published, or canonical.
+knowledge corpus is currently reviewed, published, or canonical. Milestone
+completion approval is separate from content review and source admission.
 
 Source records use a separate source-admission lifecycle. A source marked
 `approved` means approved for use as evidence; it does not approve any claim or
@@ -92,7 +94,8 @@ knowledge unit.
 - `sources/`: source admission policy and the source registry.
 - `claims/`: instructions for first-class claim records.
 - `relationships/`: instructions for typed graph edges.
-- `knowledge/`: domain-local authoring rules; no knowledge units yet.
+- `knowledge/`: reference concepts and domain-local authoring rules.
+- `decisions/`: three proposed decision guides in the bounded M7.2 pilot.
 - [`docs/`](docs/README.md): ordered historical reports, audits, remediations,
   ADRs, and provisional kernel decisions.
 - `roadmap/`: machine-readable implementation plan.
@@ -122,8 +125,10 @@ the remaining evaluation-provenance finding and recorded `M6 READY`; Ansha
 Cerbia then explicitly approved M6 completion and M7.0, and authorized M7.1's
 validation kernel. M7.1 implements closed guide, session, recommendation, and
 draft-artifact contracts plus semantic, graph, retrieval, privacy, authority,
-coverage, and mutation gates. No decision-guide corpus, assistant runtime,
-model integration, or artifact generator has started. See
+coverage, and mutation gates. The bounded M7.2 pilot is now complete with owner
+approval; its three guides remain proposed. Assistant runtime, model integration,
+broader corpus expansion and artifact generators have not started. See
+[`docs/m7-2-completion-approval.md`](docs/m7-2-completion-approval.md) and
 [`docs/m7-decision-guide-kernel.md`](docs/m7-decision-guide-kernel.md).
 
 ## Validation commands
