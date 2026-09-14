@@ -19,7 +19,7 @@ M3 Reference Knowledge Corpus  → implemented; final independent re-audit passe
 M4 Knowledge Graph             → implemented; independent audit passed
 M5 Hybrid Retrieval            → implemented; independent audit passed
 M6 Architecture RAG            → implemented; final independent re-audit passed
-M7 Decision Assistant          → M7.1 validation kernel implemented; corpus/runtime not started
+M7 Decision Assistant          → M7.2 pilot completion approved; runtime not started
 M8 Review Platform             → future
 M9 Production Platform         → future
 ```
@@ -263,9 +263,14 @@ see `docs/m7-entry-alignment-decision-model-audit.md`. It establishes that a
 reusable decision guide, project-specific decision session, recommendation, and
 draft decision artifact are separate concerns. The authorized M7.1
 decision-guide validation kernel is implemented with semantic validation,
-separate contracts, and first-class graph/retrieval support. The representative
-guide corpus, assistant runtime, model integration, and artifact generators have
-not started and remain unauthorized pending independent M7.1 audit.
+separate contracts, and first-class graph/retrieval support. The bounded M7.2
+pilot contains three proposed decision guides. Ansha Cerbia approved M7.2
+completion after the two focused remediation findings were confirmed closed
+and exact-merge CI passed. See the
+[completion approval](docs/m7-2-completion-approval.md) and its evidence links.
+This does not complete all of M7 or approve guide content. Assistant runtime,
+model integration, broader corpus expansion and artifact generators remain
+unstarted and require separate authorization.
 
 ## M8 — Architecture Review Platform
 
