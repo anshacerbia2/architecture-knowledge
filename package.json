@@ -12,8 +12,8 @@
   "packageManager": "pnpm@10.23.0",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"*.json\" \"*.ts\" \"schemas/**/*.json\" \".github/**/*.yml\" \"*.yml\"",
-    "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\" \"*.json\" \"*.ts\" \"schemas/**/*.json\" \".github/**/*.yml\" \"*.yml\"",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"*.json\" \"*.ts\" \"schemas/**/*.json\" \".github/**/*.yml\" \".github/scripts/**/*.mjs\" \"*.yml\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\" \"*.json\" \"*.ts\" \"schemas/**/*.json\" \".github/**/*.yml\" \".github/scripts/**/*.mjs\" \"*.yml\"",
     "validate": "pnpm run typecheck && tsx src/cli.ts validate",
     "validate:schema": "tsx src/cli.ts validate schema",
     "validate:vocabulary": "tsx src/cli.ts validate vocabulary",
@@ -50,6 +50,7 @@
     "rag:context": "tsx src/rag-cli.ts context",
     "rag:evaluate": "tsx src/rag-cli.ts evaluate",
     "test": "vitest run --maxWorkers=2",
+    "test:ci": "node --test .github/scripts/ci-policy.test.mjs",
     "test:coverage": "vitest run --coverage --maxWorkers=2",
     "test:mutation": "stryker run",
     "test:mutation:graph": "stryker run stryker.graph.config.json",
