@@ -4,11 +4,38 @@ on:
   pull_request:
   push:
     branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 20 * * *"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      mutation_mode: ${{ steps.classify.outputs.mutation_mode }}
+    steps:
+      - name: Check out repository and comparison history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - name: Classify mutation scope
+        id: classify
+        env:
+          CI_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          CI_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: node .github/scripts/ci-policy.mjs classify
+
   validate:
     strategy:
       fail-fast: false
@@ -37,6 +64,9 @@ jobs:
       - name: Check formatting
         run: pnpm format:check
 
+      - name: Test CI routing and gate failures
+        run: pnpm test:ci
+
       - name: Validate repository
         run: pnpm validate
 
@@ -55,8 +85,33 @@ jobs:
       - name: Verify generated integrity reports
         run: pnpm report:check
 
-  mutation:
+  mutation-suite:
+    needs: changes
+    if: ${{ needs.changes.outputs.mutation_mode == 'full' }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - suite: kernel
+            config: stryker.config.json
+            report: .tmp/mutation-legacy.json
+          - suite: graph
+            config: stryker.graph.config.json
+            report: .tmp/mutation-graph.json
+          - suite: retrieval
+            config: stryker.retrieval.config.json
+            report: .tmp/mutation-retrieval.json
+          - suite: rag
+            config: stryker.rag.config.json
+            report: .tmp/mutation-rag.json
+          - suite: decision-guide
+            config: stryker.decision-guide.config.json
+            report: .tmp/mutation-decision-guide.json
+          - suite: decision-recommendation
+            config: stryker.decision-recommendation.config.json
+            report: .tmp/mutation-decision-recommendation.json
+    name: mutation-suite (${{ matrix.suite }})
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -77,19 +132,33 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Enforce mutation threshold
-        run: pnpm test:mutation
+        run: pnpm exec stryker run ${{ matrix.config }}
 
-      - name: Enforce focused graph mutation threshold
-        run: pnpm test:mutation:graph
+      - name: Preserve mutation evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: mutation-${{ matrix.suite }}-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ matrix.report }}
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
 
-      - name: Enforce focused retrieval mutation threshold
-        run: pnpm test:mutation:retrieval
-
-      - name: Enforce focused RAG mutation threshold
-        run: pnpm test:mutation:rag
-
-      - name: Enforce focused decision-guide mutation threshold
-        run: pnpm test:mutation:decision-guides
+  mutation:
+    needs: [changes, mutation-suite]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - name: Require complete mutation outcome
+        env:
+          CI_NEEDS: ${{ toJSON(needs) }}
+        run: node .github/scripts/ci-policy.mjs gate
 
   retrieval-integration:
     runs-on: ubuntu-latest

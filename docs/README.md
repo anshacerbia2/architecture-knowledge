@@ -11,6 +11,8 @@ any document reviewed, approved, published, or canonical.
 
 ## Recommended Reading Path
 
+Current CI operations: [Mutation scheduling and gate policy](ci-mutation-optimization.md).
+
 ### Foundation and validation kernel
 
 | Sequence | Document | Why it comes here |

@@ -8,6 +8,11 @@
       "status": "valid"
     },
     {
+      "path": "docs/ci-mutation-optimization.md",
+      "target": "../.github/workflows/validate.yml",
+      "status": "valid"
+    },
+    {
       "path": "docs/evidence/m5/run-31367937331/README.md",
       "target": "job-93390313632.log",
       "status": "valid"
@@ -414,6 +419,11 @@
     },
     {
       "path": "docs/README.md",
+      "target": "ci-mutation-optimization.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "kernel-decisions.md",
       "status": "valid"
     },
@@ -749,8 +759,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 149,
+    "checked_link_count": 151,
     "broken_link_count": 0,
-    "markdown_file_count": 107
+    "markdown_file_count": 108
   }
 }
