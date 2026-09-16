@@ -11,6 +11,11 @@ canonical status.
 
 ## Current position
 
+Structural integration hardening is being implemented before further M7 runtime work:
+Atlas joins the pnpm workspace with a compiled kernel facade and a pinned in-memory
+snapshot. See [scope, review dispositions and evidence](docs/structural-integration-hardening.md).
+This engineering work does not complete M7 or elevate knowledge lifecycle states.
+
 ```text
 M0 Project Definition          → implemented in repository
 M1 Knowledge Kernel            → implemented; ontology questions remain open

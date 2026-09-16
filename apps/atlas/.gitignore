@@ -1,9 +1,6 @@
 node_modules/
-coverage/
-reports/
-.stryker-tmp/
-.tmp/
 dist/
+coverage/
 test-results/
 playwright-report/
 .env
@@ -11,4 +8,3 @@ playwright-report/
 !.env.example
 !.env.hosted.example
 *.log
-!docs/evidence/**/*.log

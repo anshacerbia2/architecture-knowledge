@@ -11,3 +11,4 @@
 docs/evidence/**/*.log -text
 docs/evidence/**/run.json -text
 docs/evidence/**/jobs.json -text
+docs/reviews/*.original.txt -text -whitespace

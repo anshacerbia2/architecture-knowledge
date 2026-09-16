@@ -1,5 +1,8 @@
 # Documentation Reading Order
 
+Current integration work: [Structural integration hardening](structural-integration-hardening.md)
+records the supplied principal review, each disposition and Atlas workspace verification.
+
 This directory contains historical assessments, implementation reports,
 independent audits, remediation evidence, and architecture decision records.
 The filenames are intentionally stable because renaming an audit artifact can

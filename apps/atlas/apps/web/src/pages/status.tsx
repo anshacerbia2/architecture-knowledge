@@ -1,0 +1,103 @@
+import { useQuery } from "@tanstack/react-query";
+import type { SystemStatus } from "../../../../packages/contracts/src/index.js";
+import { api } from "../api/client.js";
+import { Loading, Notice, Trace } from "../components/common.js";
+
+export default function Status() {
+  const result = useQuery({
+    queryKey: ["status"],
+    queryFn: ({ signal }) => api<SystemStatus>("/status", undefined, signal),
+  });
+  const status = result.data?.data;
+  return (
+    <>
+      <section className="page-heading">
+        <div className="eyebrow">OBSERVE / 04</div>
+        <h1>Know what is running.</h1>
+        <p>Readiness, data provenance and honest boundaries for this local pilot.</p>
+        <button
+          className="secondary"
+          disabled={result.isFetching}
+          onClick={() => {
+            void result.refetch();
+          }}
+        >
+          Refresh status
+        </button>
+      </section>
+      <Notice error={result.error} />
+      {result.isPending && <Loading />}
+      {status && (
+        <>
+          <div className="status-grid">
+            <article className="panel">
+              <span className="eyebrow">KNOWLEDGE SNAPSHOT</span>
+              <h2>{status.graph === "ready" ? "Ready to explore" : "Restart required"}</h2>
+              <p>Validated graph and citation authority from the sibling repository.</p>
+            </article>
+            <article className="panel">
+              <span className="eyebrow">POSTGRESQL / PGVECTOR · {status.database_mode}</span>
+              <h2>{status.retrieval === "ready" ? "Ready to retrieve" : "Setup required"}</h2>
+              <p>
+                {status.retrieval_code ??
+                  "Active generation matches the repository and embedding contract."}
+              </p>
+            </article>
+            <article className="panel">
+              <span className="eyebrow">ANSWER PROVIDER</span>
+              <h2>Deterministic demo</h2>
+              <p>Local fake embeddings and answer provider. No external model calls or API keys.</p>
+            </article>
+          </div>
+          <section className="panel">
+            <h2>Indexed knowledge snapshot</h2>
+            <div className="metrics">
+              {Object.entries(status.counts).map(([kind, count]) => (
+                <div key={kind}>
+                  <strong>{count}</strong>
+                  <span>{kind}</span>
+                </div>
+              ))}
+            </div>
+            <dl className="fields">
+              <div>
+                <dt>Knowledge commit</dt>
+                <dd className="mono">{status.repository_commit}</dd>
+              </div>
+              <div>
+                <dt>Active retrieval generation</dt>
+                <dd className="mono">{status.generation_id ?? "Unavailable"}</dd>
+              </div>
+            </dl>
+          </section>
+          {status.retrieval !== "ready" && (
+            <section className="panel">
+              <h2>Enable search & RAG</h2>
+              <p>
+                In the sibling <code>architecture-knowledge</code> repository, follow its database
+                setup. With Docker available:
+              </p>
+              <pre>
+                {
+                  "pnpm retrieval:db:up\npnpm retrieval:migrate\npnpm retrieval:index\npnpm retrieval:check"
+                }
+              </pre>
+              <p>
+                See this app's README for the exact environment-variable setup. Do not use a
+                production database or run destructive database reset commands.
+              </p>
+            </section>
+          )}
+          <div className="info-banner">
+            <strong>Human authority stays with you</strong>
+            <span>
+              This app cannot edit knowledge, approve a claim, admit sources, or make an
+              architecture decision.
+            </span>
+          </div>
+          <Trace value={result.data!} />
+        </>
+      )}
+    </>
+  );
+}
