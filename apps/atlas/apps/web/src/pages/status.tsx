@@ -33,14 +33,17 @@ export default function Status() {
             <article className="panel">
               <span className="eyebrow">KNOWLEDGE SNAPSHOT</span>
               <h2>{status.graph === "ready" ? "Ready to explore" : "Restart required"}</h2>
-              <p>Validated graph and citation authority from the sibling repository.</p>
+              <p>
+                Validated snapshot loaded at startup. Restart the app to load committed knowledge
+                changes.
+              </p>
             </article>
             <article className="panel">
               <span className="eyebrow">POSTGRESQL / PGVECTOR · {status.database_mode}</span>
               <h2>{status.retrieval === "ready" ? "Ready to retrieve" : "Setup required"}</h2>
               <p>
                 {status.retrieval_code ??
-                  "Active generation matches the repository and embedding contract."}
+                  "Active generation matches the loaded snapshot and embedding contract."}
               </p>
             </article>
             <article className="panel">
@@ -74,14 +77,10 @@ export default function Status() {
             <section className="panel">
               <h2>Enable search & RAG</h2>
               <p>
-                In the sibling <code>architecture-knowledge</code> repository, follow its database
-                setup. With Docker available:
+                From the workspace root, configure your PostgreSQL connection and prepare the index.
+                Hosted Neon works without Docker; see apps/atlas/README.md.
               </p>
-              <pre>
-                {
-                  "pnpm retrieval:db:up\npnpm retrieval:migrate\npnpm retrieval:index\npnpm retrieval:check"
-                }
-              </pre>
+              <pre>{"pnpm retrieval:migrate\npnpm retrieval:index\npnpm retrieval:check"}</pre>
               <p>
                 See this app's README for the exact environment-variable setup. Do not use a
                 production database or run destructive database reset commands.

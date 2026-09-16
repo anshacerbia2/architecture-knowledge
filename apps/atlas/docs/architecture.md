@@ -128,7 +128,7 @@ sequenceDiagram
   H->>A: ask(input)
   A->>A: Acquire bounded slot, max 2
   A->>K: ask(input)
-  K->>K: Verify same clean repository commit
+  K->>K: Use startup-validated pinned snapshot
   K->>D: Check generation, contract and manifest currentness
   alt Missing DB or stale index
     K-->>H: Safe technical error
@@ -149,7 +149,7 @@ sequenceDiagram
         R-->>K: Answer / refusal + resolved citations
       end
     end
-    K->>K: Recheck clean commit
+    K->>K: Retain the same immutable in-memory snapshot
     K->>D: Recheck generation and manifest
     K-->>A: App-owned DTO only if still current
     A-->>H: Release slot in finally

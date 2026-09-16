@@ -1,6 +1,6 @@
 # Structural integration hardening
 
-Status: proposed engineering decision, implementation in progress.
+Status: proposed engineering decision; implemented and locally verified, hosted checks pending.
 Scope authorized by Ansha Cerbia's "oke gas" following the qualified principal-review
 disposition: workspace integration, public kernel boundary, immutable runtime snapshot,
 performance measurement and verification. M7.3 runtime and live models remain separate work.
@@ -77,5 +77,56 @@ docs-only commit requires reindexing for Search/Ask; no schema migration is requ
 - Informational catalog benchmark with/without former Git guard, serial and concurrent;
   optional DB measurements explicitly separate network/content-check costs.
 
-Results and limitations will be recorded after execution. No hosted success is inferred
-from workflow configuration. M7.3 follows hardening verification and a bounded runtime scope.
+## Local verification results
+
+Windows, Node 24.11.1, pnpm 10.23.0. Executable implementation commit:
+`d501e2472ef2408087486a53f2221f27b1bad2a6`. Later handoff changes update documentation,
+status-page explanatory wording and the deterministic Markdown inventory; hosted
+verification must identify its actual SHA.
+
+| Check | Result |
+| --- | --- |
+| Frozen workspace install and compiled kernel/frontend build | Passed |
+| Root formatting, typecheck and full repository validation | Passed; 0 errors / warnings |
+| Graph and retrieval artifact checks | 13/13 and 2/2 current |
+| Deterministic integrity reports | 13/13 current |
+| Kernel tests with coverage | 652 passed, 5 local-DB tests skipped; 93.35% statements, 84.86% branches |
+| CI policy tests | 8 passed |
+| App tests and selected backend coverage | 46 passed, DB test initially skipped; 100% statements, 98.37% branches |
+| Focused adapter/snapshot mutation | 86.27%; 132 killed, 20 survived, 1 uncovered, 0 timeouts; threshold 60; no mutation exclusions |
+| Actual Chrome browser tests | 7 passed on dedicated port 4311; no reuse of the existing app server |
+| Neon indexing/currentness | 577 units active; all embeddings reused from deterministic cache |
+| Opted-in Neon HTTP integration | 1 passed: health ready, real hybrid-graph hits and answered RAG response |
+| Original review preservation | SHA256 unchanged; archive excluded from newline/whitespace normalization only |
+
+The kernel's five local integration tests were not pointed at the hosted development DB:
+their destructive fixture setup is separate from the non-destructive Atlas HTTP test.
+The existing Linux PostgreSQL job remains responsible for that full integration suite.
+Mutation survivors are retained in the report; this score is not proof of correctness.
+No paid model call or governed content change was performed.
+
+### Informational performance
+
+Second benchmark run at the implementation commit, Windows / Node 24.11.1. Each
+catalog variant used 25 observations. The baseline adds the previous Git guard to
+the same catalog operation; HTTP, startup and browser rendering are excluded. Concurrent
+variants use five callers. Small-sample tail values are descriptive, not production SLOs.
+
+| Operation | Median ms | p95 ms |
+| --- | ---: | ---: |
+| Catalog with former Git guard | 206.007 | 258.187 |
+| Catalog from pinned snapshot | 0.329 | 0.997 |
+| Five concurrent callers with former Git guard | 554.189 | 663.175 |
+| Five concurrent callers from pinned snapshot | 1.379 | 3.798 |
+| Neon status including full content check, 5 observations | 127.483 | 476.647 |
+| Neon hybrid-graph search including before/after integrity, 5 observations | 283.236 | 315.906 |
+
+An earlier non-DB run measured catalog medians 177.467 ms and 0.155 ms respectively.
+Variation is expected; the evidence supports removing Git from this path, not a
+general speedup claim for full RAG or a guarantee under enterprise load.
+
+No hosted success is inferred from workflow configuration. New Atlas OS/mutation jobs
+must be required in branch rules if they are to block merging. M7.3 follows hardening
+verification and a bounded runtime scope. Deferred work: standalone immutable release
+packaging, cheaper integrity-preserving DB checks, corpus authoring metrics/tooling,
+larger graph navigation and live-provider semantic evaluation.
