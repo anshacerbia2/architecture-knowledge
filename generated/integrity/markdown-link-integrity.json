@@ -53,6 +53,101 @@
       "status": "valid"
     },
     {
+      "path": "docs/local-app-architecture.md",
+      "target": "../docker-compose.retrieval.yml",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../migrations/0001_retrieval.sql",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../migrations/0002_decision_guide_retrieval.sql",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../src/decision-validation-cli.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../src/graph-cli.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../src/graph-query.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../src/rag-citation-authority.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../src/rag-context.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../src/rag-engine.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../src/rag-provider.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../src/rag-request.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../src/rag-request.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../src/rag-types.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../src/retrieval-indexer.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../src/retrieval-query.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "local-app-flows.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-flows.md",
+      "target": "../src/retrieval-indexer.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-flows.md",
+      "target": "../src/retrieval-query.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-flows.md",
+      "target": "local-app-architecture.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/m4-implementation-report.md",
       "target": "m4-independent-audit-report.md",
       "status": "valid"
@@ -429,6 +524,16 @@
     },
     {
       "path": "docs/README.md",
+      "target": "local-app-architecture.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "local-app-flows.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m3-final-focused-reaudit-report.md",
       "status": "valid"
     },
@@ -759,8 +864,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 151,
+    "checked_link_count": 172,
     "broken_link_count": 0,
-    "markdown_file_count": 108
+    "markdown_file_count": 110
   }
 }
