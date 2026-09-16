@@ -13,6 +13,9 @@ any document reviewed, approved, published, or canonical.
 
 Current CI operations: [Mutation scheduling and gate policy](ci-mutation-optimization.md).
 
+Proposed local app: [Architecture](local-app-architecture.md), then
+[detailed app and RAG flows](local-app-flows.md).
+
 ### Foundation and validation kernel
 
 | Sequence | Document | Why it comes here |
