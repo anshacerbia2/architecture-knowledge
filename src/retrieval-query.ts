@@ -60,14 +60,18 @@ export class PostgresRetrievalStore implements RetrievalStore {
     limit: number,
   ): Promise<RankedRow[]> {
     const query = buildFilterSql(filters, 3);
-    const result = await this.pool.query<UnitRow & { channel_score: number }>(
-      `SELECT ${unitColumns()}, ts_rank_cd(search_document, websearch_to_tsquery('simple', $2), 32) AS channel_score
-       FROM retrieval_units WHERE generation_id=$1
-       AND search_document @@ websearch_to_tsquery('simple', $2) ${query.sql}
-       ORDER BY channel_score DESC, unit_id ASC LIMIT $${query.parameters.length + 3}`,
-      [generationId, text, ...query.parameters, limit],
-    );
-    return result.rows.map((row, index) => ({
+    const search = (searchText: string) =>
+      this.pool.query<UnitRow & { channel_score: number }>(
+        `SELECT ${unitColumns()}, ts_rank_cd(search_document, websearch_to_tsquery('simple', $2), 32) AS channel_score
+         FROM retrieval_units WHERE generation_id=$1
+         AND search_document @@ websearch_to_tsquery('simple', $2) ${query.sql}
+         ORDER BY channel_score DESC, unit_id ASC LIMIT $${query.parameters.length + 3}`,
+        [generationId, searchText, ...query.parameters, limit],
+      );
+    const result = await search(text);
+    const relaxed = result.rows.length === 0 ? lexicalOrQuery(text) : null;
+    const fallback = relaxed && relaxed !== text ? await search(relaxed) : result;
+    return fallback.rows.map((row, index) => ({
       unit: rowToUnit(row),
       rank: index + 1,
       score: Number(row.channel_score),
@@ -504,6 +508,13 @@ function baseScore(queryText: string, candidate: RetrievalCandidate): number {
   const vector =
     candidate.vector_rank === null ? 0 : VECTOR_RRF_WEIGHT / (RRF_K + candidate.vector_rank);
   return lexical + vector + exactBoost(queryText, candidate.unit);
+}
+
+function lexicalOrQuery(text: string): string | null {
+  const tokens = text.match(/[A-Za-z0-9][A-Za-z0-9_-]*/g);
+  if (!tokens || tokens.length < 2) return null;
+  const unique = [...new Set(tokens)];
+  return unique.map((token) => `"${token}"`).join(" OR ");
 }
 
 function exactBoost(queryText: string, unit: RetrievalUnit): number {

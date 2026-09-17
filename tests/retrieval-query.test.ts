@@ -261,6 +261,19 @@ describe("M5 query contract and ranking", () => {
     expect(call[1]).toContain(attack);
     expect(call[1].at(-1)).toBe(10);
   });
+
+  it("falls back to parameterized OR terms for natural-language lexical queries", async () => {
+    const query = vi
+      .fn()
+      .mockResolvedValueOnce({ rows: [], rowCount: 0 })
+      .mockResolvedValueOnce({ rows: [], rowCount: 0 });
+    const store = new PostgresRetrievalStore({ query } as never);
+    await store.lexical("generation", "What is a circuit breaker?", validRequest().filters, 10);
+    expect(query).toHaveBeenCalledTimes(2);
+    const fallback = query.mock.calls[1] as unknown as [string, unknown[]];
+    expect(fallback[1]?.[1]).toBe('"What" OR "is" OR "a" OR "circuit" OR "breaker"');
+    expect(fallback[0]).not.toContain("What is a circuit breaker?");
+  });
 });
 
 function unit(
