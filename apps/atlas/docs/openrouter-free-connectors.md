@@ -7,25 +7,32 @@ ChatGPT subscription. No M7.3 decision runtime is added.
 
 ## Free model and retrieval boundary
 
-The pinned route is `nvidia/nemotron-3-super-120b-a12b:free`. The public catalog and endpoint
-listing were read on 2026-09-17 without credentials: prompt/completion prices were zero and
-structured output support was listed. This is availability metadata, not successful inference or
-semantic-quality evidence.
+The pinned route is `nvidia/nemotron-3.5-lightning:free`. The public catalog and endpoint listing
+were read on 2026-09-17 without credentials: prompt/completion prices were zero and function calling
+and forced function selection were listed. This route did not list support for `response_format` or
+`structured_outputs`. This is availability metadata, not successful inference or semantic-quality
+evidence.
 
 Before each inference, the adapter rereads the public catalog, requires the exact route, zero prices
-and structured-output support. It uses Chat Completions with the kernel's existing JSON schema,
-instructions, input mapping and output parser. Returned model must match the requested route
+and `tools`/`tool_choice` support. It uses Chat Completions with one forced
+`submit_architecture_answer` function whose parameters are the kernel's existing answer JSON schema.
+The function is an output envelope, not an executable tool. Exactly one completed function call with
+the registered name and JSON-string arguments is required. The existing local output parser
+validates those arguments; provider-side schema enforcement is not assumed. Other message text is
+never displayed. There is no tool execution, continuation loop or second model call. Kernel
+instructions and input mapping remain in force. Returned model must match the requested route
 exactly; undocumented alias changes fail closed. The existing citation-authority and grounding
 checks still run before display.
 
 Requests specify zero maximum prompt/completion/request/image prices, no provider fallbacks,
-required parameter support and `data_collection: deny`. No tools, model fallback lists, external
-embeddings or premium options are enabled. The old direct OpenAI connector cannot be selected
-automatically. Errors, exhausted quota or no eligible free endpoint are surfaced without a paid
-retry or privacy-policy relaxation. Provider enforcement remains an external dependency; this is not
-a guarantee about all charges on an account used by other apps. Use a dedicated key with a
+required parameter support and `data_collection: deny`. No executable tools, model fallback lists,
+external embeddings or premium options are enabled. The old direct OpenAI connector cannot be
+selected automatically. Errors, exhausted quota or no eligible free endpoint are surfaced without a
+paid retry or privacy-policy relaxation. Provider enforcement remains an external dependency; this
+is not a guarantee about all charges on an account used by other apps. Use a dedicated key with a
 provider-side spending restriction if available. Reported nonzero inference cost rejects the
-response.
+response. HTTP rejection messages expose only the upstream status code, never upstream error bodies,
+credentials or prompts.
 
 Free mode retrieves **lexically from PostgreSQL**, not with semantic vectors or graph expansion. It
 uses the existing fake-contract DB generation only as indexed storage; neither fake query embedding
@@ -142,7 +149,8 @@ key or credential is added to the browser bundle, source control or DB.
 
 Unit and HTTP tests use synthetic credentials and mocked provider exchange/inference. They cover
 code replay, wrong state/browser, expiry, disconnect races, foreign origins, unchanged CSRF
-boundary, paid/missing catalogs, model switches, malformed outputs, refusal, rate limits, privacy
+boundary, paid/missing catalogs, model switches, malformed outputs, wrong/multiple function calls,
+invalid answer arguments, ignored extra prose, redacted HTTP failures, refusal, rate limits, privacy
 and lexical-only routing. Browser tests verify UI behavior with transport fixtures. Coverage and
 mutation include the new connector/provider/routes.
 
@@ -158,7 +166,7 @@ paid fallback.
 
 - [OAuth PKCE and local callbacks](https://openrouter.ai/docs/guides/overview/auth/oauth).
 - [Provider pricing, fallback and privacy controls](https://openrouter.ai/docs/guides/routing/provider-selection).
-- [Structured outputs](https://openrouter.ai/docs/guides/features/structured-outputs).
+- [Function calling and tool choice](https://openrouter.ai/docs/guides/features/tool-calling).
 - [Model catalog](https://openrouter.ai/api/v1/models).
-- [Pinned free route endpoints](https://openrouter.ai/api/v1/models/nvidia/nemotron-3-super-120b-a12b:free/endpoints).
+- [Pinned free route endpoints](https://openrouter.ai/api/v1/models/nvidia/nemotron-3.5-lightning:free/endpoints).
 - [Upstream account rate limits](https://openrouter.ai/docs/api/reference/limits).

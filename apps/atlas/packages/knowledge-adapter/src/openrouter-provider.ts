@@ -12,7 +12,8 @@ import type { AiCredentialPort } from "../../application/src/ai-credential-port.
 import { AppError } from "../../application/src/errors.js";
 
 // Fixed zero-price route verified against the public model catalog on 2026-09-17.
-export const OPENROUTER_FREE_MODEL = "nvidia/nemotron-3-super-120b-a12b:free";
+export const OPENROUTER_FREE_MODEL = "nvidia/nemotron-3.5-lightning:free";
+const ANSWER_FUNCTION = "submit_architecture_answer";
 const CATALOG = "https://openrouter.ai/api/v1/models";
 const CHAT = "https://openrouter.ai/api/v1/chat/completions";
 const problem = (code: string) =>
@@ -23,6 +24,12 @@ const problem = (code: string) =>
   );
 const object = (v: unknown): v is Record<string, unknown> =>
   typeof v === "object" && v !== null && !Array.isArray(v);
+const httpProblem = (status: number) =>
+  new AppError(
+    status === 429 ? "OPENROUTER_RATE_LIMIT" : "OPENROUTER_REQUEST_FAILED",
+    503,
+    `OpenRouter rejected the free request (HTTP ${status}). No paid fallback was attempted.`,
+  );
 
 export class OpenRouterFreeProvider implements RagModelProvider {
   readonly provider = "openrouter";
@@ -71,7 +78,8 @@ export class OpenRouterFreeProvider implements RagModelProvider {
           ([k, v]) => k !== "discount" && (typeof v !== "string" || Number(v) !== 0),
         ) ||
         !Array.isArray(entry.supported_parameters) ||
-        !entry.supported_parameters.includes("structured_outputs")
+        !entry.supported_parameters.includes("tools") ||
+        !entry.supported_parameters.includes("tool_choice")
       )
         throw problem("OPENROUTER_FREE_CONTRACT_UNAVAILABLE");
       const body = JSON.stringify({
@@ -79,17 +87,25 @@ export class OpenRouterFreeProvider implements RagModelProvider {
         stream: false,
         max_tokens: request.answer.max_output_tokens,
         messages: [
-          { role: "system", content: ragDeveloperInstructions() },
+          {
+            role: "system",
+            content: `${ragDeveloperInstructions()}\nSubmit the answer JSON as arguments to ${ANSWER_FUNCTION} exactly once. This function only submits an answer; it does not execute actions.`,
+          },
           { role: "user", content: JSON.stringify(ragModelInput(context, request)) },
         ],
-        response_format: {
-          type: "json_schema",
-          json_schema: {
-            name: "architecture_rag_answer",
-            strict: true,
-            schema: RAG_MODEL_OUTPUT_SCHEMA,
+        // This route supports function calling, not response_format/json_schema.
+        // Arguments are untrusted data: never execute calls or display raw model text.
+        tools: [
+          {
+            type: "function",
+            function: {
+              name: ANSWER_FUNCTION,
+              description: "Submit one evidence-backed architecture answer for local validation.",
+              parameters: RAG_MODEL_OUTPUT_SCHEMA,
+            },
           },
-        },
+        ],
+        tool_choice: { type: "function", function: { name: ANSWER_FUNCTION } },
         provider: {
           allow_fallbacks: false,
           require_parameters: true,
@@ -105,10 +121,7 @@ export class OpenRouterFreeProvider implements RagModelProvider {
         headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
         body,
       });
-      if (!response.ok)
-        throw problem(
-          response.status === 429 ? "OPENROUTER_RATE_LIMIT" : "OPENROUTER_REQUEST_FAILED",
-        );
+      if (!response.ok) throw httpProblem(response.status);
       const result: unknown = await response.json();
       if (
         !object(result) ||
@@ -123,12 +136,21 @@ export class OpenRouterFreeProvider implements RagModelProvider {
       if (!object(choice) || !object(choice.message)) throw problem("OPENROUTER_OUTPUT_CONTRACT");
       if (choice.message.refusal) throw new Error("RAG_MODEL_REFUSAL");
       if (
-        choice.finish_reason !== "stop" ||
-        typeof choice.message.content !== "string" ||
-        choice.message.tool_calls
+        choice.finish_reason !== "tool_calls" ||
+        !Array.isArray(choice.message.tool_calls) ||
+        choice.message.tool_calls.length !== 1
       )
         throw problem("OPENROUTER_OUTPUT_CONTRACT");
-      return parseRagModelOutput(JSON.parse(choice.message.content));
+      const call = choice.message.tool_calls[0];
+      if (
+        !object(call) ||
+        call.type !== "function" ||
+        !object(call.function) ||
+        call.function.name !== ANSWER_FUNCTION ||
+        typeof call.function.arguments !== "string"
+      )
+        throw problem("OPENROUTER_OUTPUT_CONTRACT");
+      return parseRagModelOutput(JSON.parse(call.function.arguments));
     } catch (error) {
       if (
         error instanceof AppError ||

@@ -1,5 +1,9 @@
 import { afterEach, expect, it, vi } from "vitest";
-import { parseRagRequest, type RagContextPacket } from "architecture-knowledge-system/runtime";
+import {
+  parseRagRequest,
+  RAG_MODEL_OUTPUT_SCHEMA,
+  type RagContextPacket,
+} from "architecture-knowledge-system/runtime";
 import {
   OpenRouterFreeProvider,
   OPENROUTER_FREE_MODEL,
@@ -22,7 +26,7 @@ const request = () =>
 const entry = () => ({
   id: OPENROUTER_FREE_MODEL,
   pricing: { prompt: "0", completion: "0" },
-  supported_parameters: ["structured_outputs"],
+  supported_parameters: ["tools", "tool_choice"],
 });
 const output = {
   status: "insufficient-evidence",
@@ -31,9 +35,16 @@ const output = {
   uncertainties: [],
   refusal_reason: null,
 };
+const answerCall = () => ({
+  id: "call_synthetic",
+  type: "function",
+  function: { name: "submit_architecture_answer", arguments: JSON.stringify(output) },
+});
 const response = () => ({
   model: OPENROUTER_FREE_MODEL,
-  choices: [{ finish_reason: "stop", message: { content: JSON.stringify(output) } }],
+  choices: [
+    { finish_reason: "tool_calls", message: { content: null, tool_calls: [answerCall()] } },
+  ],
   usage: { cost: 0 },
 });
 const json = (value: unknown) => new Response(JSON.stringify(value));
@@ -78,6 +89,7 @@ it("sends only the pinned zero-price structured request and validates the return
     .mockResolvedValueOnce(json(response()));
   const provider = make(transport);
   expect(provider.provider).toBe("openrouter");
+  expect(provider.model).toBe("nvidia/nemotron-3.5-lightning:free");
   expect(provider.allowedDataClassifications).toEqual(["public"]);
   expect(await provider.generate(context, request())).toEqual(output);
   expect(transport.mock.calls[0]![0]).toBe("https://openrouter.ai/api/v1/models");
@@ -100,12 +112,15 @@ it("sends only the pinned zero-price structured request and validates the return
       data_collection: "deny",
       max_price: { prompt: 0, completion: 0, request: 0, image: 0 },
     },
-    response_format: {
-      type: "json_schema",
-      json_schema: { strict: true, name: "architecture_rag_answer" },
-    },
+    tool_choice: { type: "function", function: { name: "submit_architecture_answer" } },
   });
-  expect(body.tools).toBeUndefined();
+  expect(body.tools).toHaveLength(1);
+  expect(body.tools[0]).toMatchObject({
+    type: "function",
+    function: { name: "submit_architecture_answer", parameters: RAG_MODEL_OUTPUT_SCHEMA },
+  });
+  expect(body.tools[0].function.strict).toBeUndefined();
+  expect(body.response_format).toBeUndefined();
   expect(body.models).toBeUndefined();
   expect(body.messages[0].role).toBe("system");
   expect(body.messages[1].content).toContain("synthetic public question");
@@ -137,6 +152,9 @@ it.each([
   { data: [{ ...entry(), pricing: { prompt: "0", completion: "0", request: "NaN" } }] },
   { data: [{ ...entry(), pricing: { prompt: "0", completion: "0", request: 0 } }] },
   { data: [{ ...entry(), supported_parameters: [] }] },
+  { data: [{ ...entry(), supported_parameters: ["tools"] }] },
+  { data: [{ ...entry(), supported_parameters: ["tool_choice"] }] },
+  { data: [{ ...entry(), supported_parameters: ["structured_outputs"] }] },
 ])("blocks missing/paid/incompatible catalog without sending evidence (%j)", async (catalog) => {
   const transport = vi.fn<typeof fetch>().mockResolvedValue(json(catalog));
   await expect(make(transport).generate(context, request())).rejects.toMatchObject({
@@ -164,6 +182,81 @@ it.each([
   await expect(make(transport).generate(context, request())).rejects.toThrow();
   expect(transport).toHaveBeenCalledTimes(2);
 });
+it.each(
+  [
+    [],
+    [answerCall(), answerCall()],
+    [null],
+    [{ ...answerCall(), type: "other" }],
+    [{ ...answerCall(), function: null }],
+    [{ ...answerCall(), function: { name: "execute_shell", arguments: "{}" } }],
+    [{ ...answerCall(), function: { ...answerCall().function, arguments: output } }],
+    [{ ...answerCall(), function: { ...answerCall().function, arguments: "not json" } }],
+    [{ ...answerCall(), function: { ...answerCall().function, arguments: "{}" } }],
+  ].map((calls) => ({ calls })),
+)(
+  "rejects invalid answer submissions without execution or a second inference (%j)",
+  async ({ calls }) => {
+    const transport = vi
+      .fn<typeof fetch>()
+      .mockResolvedValueOnce(json({ data: [entry()] }))
+      .mockResolvedValueOnce(
+        json({
+          ...response(),
+          choices: [{ finish_reason: "tool_calls", message: { tool_calls: calls } }],
+        }),
+      );
+    await expect(make(transport).generate(context, request())).rejects.toThrow();
+    expect(transport).toHaveBeenCalledTimes(2);
+  },
+);
+it.each(["stop", "length", "error"])(
+  "rejects answer arguments with incomplete finish reason %s",
+  async (finishReason) => {
+    const result = response();
+    const transport = vi
+      .fn<typeof fetch>()
+      .mockResolvedValueOnce(json({ data: [entry()] }))
+      .mockResolvedValueOnce(
+        json({ ...result, choices: [{ ...result.choices[0], finish_reason: finishReason }] }),
+      );
+    await expect(make(transport).generate(context, request())).rejects.toMatchObject({
+      code: "OPENROUTER_OUTPUT_CONTRACT",
+    });
+  },
+);
+it("never displays unvalidated content alongside the answer submission", async () => {
+  const result = response();
+  const transport = vi
+    .fn<typeof fetch>()
+    .mockResolvedValueOnce(json({ data: [entry()] }))
+    .mockResolvedValueOnce(
+      json({
+        ...result,
+        choices: [
+          {
+            ...result.choices[0],
+            message: { ...result.choices[0]!.message, content: "Untrusted extra prose" },
+          },
+        ],
+      }),
+    );
+  expect(await make(transport).generate(context, request())).toEqual(output);
+});
+it.each([400, 401, 402, 403, 404, 429, 502, 503])(
+  "reports only safe HTTP status %i without leaking upstream details",
+  async (status) => {
+    const transport = vi
+      .fn<typeof fetch>()
+      .mockResolvedValueOnce(json({ data: [entry()] }))
+      .mockResolvedValueOnce(new Response("secret provider error", { status }));
+    await expect(make(transport).generate(context, request())).rejects.toMatchObject({
+      code: status === 429 ? "OPENROUTER_RATE_LIMIT" : "OPENROUTER_REQUEST_FAILED",
+      message: `OpenRouter rejected the free request (HTTP ${status}). No paid fallback was attempted.`,
+    });
+    expect(transport).toHaveBeenCalledTimes(2);
+  },
+);
 it("honors refusal, HTTP failures, timeout errors and payload/output bounds without retry", async () => {
   for (const result of [
     json({ ...response(), choices: [{ message: { refusal: "unsafe" } }] }),
