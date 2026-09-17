@@ -1,6 +1,9 @@
 schema_version: 2
 status: proposed
 roadmap_id: architecture-knowledge-platform
+# Authorized engineering prerequisite before further M7 runtime work:
+# Atlas workspace/public facade + pinned snapshot; docs/structural-integration-hardening.md.
+# This does not change milestone/content approval or authorize assistant runtime.
 milestones:
   - id: m0
     title: Project Definition

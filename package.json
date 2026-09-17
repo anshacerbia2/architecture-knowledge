@@ -5,12 +5,26 @@
   "description": "Validation kernel for a version-controlled architecture knowledge system.",
   "license": "UNLICENSED",
   "type": "module",
+  "exports": {
+    "./runtime": {
+      "types": "./dist/runtime-api.d.ts",
+      "import": "./dist/runtime-api.js"
+    }
+  },
   "engines": {
     "node": "24.11.1",
     "pnpm": "10.23.0"
   },
   "packageManager": "pnpm@10.23.0",
   "scripts": {
+    "build:kernel": "tsc -p tsconfig.build.json",
+    "build": "pnpm build:kernel && pnpm --filter architecture-knowledge-app build",
+    "app:start": "pnpm --filter architecture-knowledge-app start",
+    "app:dev": "pnpm build:kernel && pnpm --filter architecture-knowledge-app dev",
+    "app:check": "pnpm build:kernel && pnpm --filter architecture-knowledge-app check",
+    "app:test:coverage": "pnpm --filter architecture-knowledge-app test:coverage",
+    "app:test:e2e": "pnpm --filter architecture-knowledge-app test:e2e",
+    "app:benchmark": "pnpm --filter architecture-knowledge-app benchmark",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"*.json\" \"*.ts\" \"schemas/**/*.json\" \".github/**/*.yml\" \".github/scripts/**/*.mjs\" \"*.yml\"",
     "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\" \"*.json\" \"*.ts\" \"schemas/**/*.json\" \".github/**/*.yml\" \".github/scripts/**/*.mjs\" \"*.yml\"",

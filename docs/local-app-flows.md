@@ -1,5 +1,8 @@
 # App and RAG Flows
 
+Historical design diagrams. Current implemented flows are maintained in
+[Atlas architecture](../apps/atlas/docs/architecture.md).
+
 Tanggal: 2026-09-16. Status: **proposed design**.
 Mulai dari [Local Knowledge App Architecture](local-app-architecture.md).
 

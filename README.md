@@ -5,6 +5,15 @@ system. It defines how architecture knowledge will be identified, classified,
 supported by evidence, related, governed, and evolved before substantive
 knowledge units are authored.
 
+## Local app workspace
+
+Atlas lives in [apps/atlas](apps/atlas/README.md), with a compiled public kernel API
+and one pnpm lockfile. From this repository root: `pnpm install --frozen-lockfile`,
+`pnpm build`, then `pnpm app:start`. Open http://127.0.0.1:4310.
+Server configuration belongs in `apps/atlas/.env` (ignored by Git).
+See [structural hardening](docs/structural-integration-hardening.md) for snapshot
+semantics, principal-review dispositions and validation evidence.
+
 ## Current scope
 
 The repository currently implements M0 through M6, has completed M7.0, implements

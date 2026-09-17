@@ -3,6 +3,41 @@
   "report": "markdown-link-integrity",
   "items": [
     {
+      "path": "apps/atlas/docs/architecture.md",
+      "target": "../../../docs/structural-integration-hardening.md",
+      "status": "valid"
+    },
+    {
+      "path": "apps/atlas/docs/implementation-handoff.md",
+      "target": "../../../docs/structural-integration-hardening.md",
+      "status": "valid"
+    },
+    {
+      "path": "apps/atlas/docs/implementation-handoff.md",
+      "target": "../README.md",
+      "status": "valid"
+    },
+    {
+      "path": "apps/atlas/README.md",
+      "target": "../../docs/structural-integration-hardening.md",
+      "status": "valid"
+    },
+    {
+      "path": "apps/atlas/README.md",
+      "target": "docs/architecture.md",
+      "status": "valid"
+    },
+    {
+      "path": "apps/atlas/README.md",
+      "target": "docs/implementation-handoff.md",
+      "status": "valid"
+    },
+    {
+      "path": "apps/atlas/README.md",
+      "target": "docs/traceability.md",
+      "status": "valid"
+    },
+    {
       "path": "decisions/AGENTS.md",
       "target": "../docs/m7-2-corpus-pilot.md",
       "status": "valid"
@@ -50,6 +85,11 @@
     {
       "path": "docs/kernel-decisions.md",
       "target": "m7-2-output-coverage-remediation.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "../apps/atlas/docs/architecture.md",
       "status": "valid"
     },
     {
@@ -130,6 +170,16 @@
     {
       "path": "docs/local-app-architecture.md",
       "target": "local-app-flows.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-architecture.md",
+      "target": "structural-integration-hardening.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/local-app-flows.md",
+      "target": "../apps/atlas/docs/architecture.md",
       "status": "valid"
     },
     {
@@ -773,6 +823,16 @@
       "status": "valid"
     },
     {
+      "path": "docs/README.md",
+      "target": "structural-integration-hardening.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/structural-integration-hardening.md",
+      "target": "reviews/principal-architect-assessment.original.txt",
+      "status": "valid"
+    },
+    {
       "path": "PROJECT_CHARTER.md",
       "target": "CODE_OF_KNOWLEDGE.md",
       "status": "valid"
@@ -795,6 +855,11 @@
     {
       "path": "PROJECT_CHARTER.md",
       "target": "roadmap/implementation.yaml",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
+      "target": "apps/atlas/README.md",
       "status": "valid"
     },
     {
@@ -829,6 +894,11 @@
     },
     {
       "path": "README.md",
+      "target": "docs/structural-integration-hardening.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
       "target": "ontology/",
       "status": "valid"
     },
@@ -859,13 +929,18 @@
     },
     {
       "path": "ROADMAP.md",
+      "target": "docs/structural-integration-hardening.md",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
       "target": "roadmap/implementation.yaml",
       "status": "valid"
     }
   ],
   "summary": {
-    "checked_link_count": 172,
+    "checked_link_count": 187,
     "broken_link_count": 0,
-    "markdown_file_count": 110
+    "markdown_file_count": 116
   }
 }

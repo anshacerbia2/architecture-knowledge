@@ -3,5 +3,12 @@ coverage/
 reports/
 .stryker-tmp/
 .tmp/
+dist/
+test-results/
+playwright-report/
+.env
+.env.*
+!.env.example
+!.env.hosted.example
 *.log
 !docs/evidence/**/*.log

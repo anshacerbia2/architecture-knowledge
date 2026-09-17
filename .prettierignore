@@ -2,3 +2,6 @@ node_modules/
 coverage/
 generated/
 pnpm-lock.yaml
+dist/
+test-results/
+playwright-report/

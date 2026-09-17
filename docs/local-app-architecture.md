@@ -1,5 +1,9 @@
 # Local Knowledge App Architecture
 
+Historical design baseline. Current workspace implementation and snapshot semantics:
+[Atlas architecture](../apps/atlas/docs/architecture.md) and
+[structural hardening](structural-integration-hardening.md).
+
 Tanggal: 2026-09-16. Status: **proposed design**.
 Baseline inspeksi: `aa627019c3c29c08a1de94bdfa2f1e7c6f9b0c4f`.
 
