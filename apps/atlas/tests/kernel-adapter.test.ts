@@ -38,6 +38,10 @@ vi.mock("architecture-knowledge-system/runtime", async (importOriginal) => ({
 }));
 import { KernelAdapter } from "../packages/knowledge-adapter/src/kernel-adapter.js";
 import { answer, node } from "./fixture.js";
+import { mkdtempSync, rmSync } from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import { PilotBudget } from "../packages/knowledge-adapter/src/pilot-budget.js";
 
 const graph = () => ({
   nodes: [{ ...node }, { ...node, id: "AKC-000013", title: null }],
@@ -256,4 +260,44 @@ it("reports readiness and leaves lifecycle unchanged", async () => {
     provider_mode: "deterministic-demo",
   });
   expect((await adapter.catalog())[0]?.status).toBe("proposed");
+});
+
+it("rejects non-public live questions before DB access or query embedding; exposes safe mode only", async () => {
+  const directory = mkdtempSync(path.join(os.tmpdir(), "atlas-classification-test-"));
+  try {
+    const budgetFile = path.join(directory, "budget.txt");
+    new PilotBudget(budgetFile).initialize();
+    const manifest = `sha256:${"a".repeat(64)}`;
+    state.loadArtifacts.mockResolvedValue({
+      units: [],
+      manifest: { manifest_root_hash: manifest },
+    });
+    const adapter = await KernelAdapter.create(
+      "synthetic-root",
+      "postgresql://localhost/synthetic",
+      "local",
+      {
+        mode: "openai",
+        apiKey: "synthetic-secret",
+        publicManifest: manifest,
+        budgetFile,
+      },
+    );
+    for (const data_classification of ["internal", "confidential"] as const)
+      await expect(
+        adapter.ask({ question: "private synthetic", data_classification }),
+      ).rejects.toMatchObject({ code: "PILOT_PUBLIC_ONLY" });
+    expect(state.current).not.toHaveBeenCalled();
+    expect(state.query).not.toHaveBeenCalled();
+    expect(state.answer).not.toHaveBeenCalled();
+    const status = await adapter.status();
+    expect(status.provider_mode).toBe("openai-live-pilot");
+    expect(status.pilot_budget?.reserved_cents).toBe(0);
+    expect(JSON.stringify(status)).not.toContain("synthetic-secret");
+    expect(JSON.stringify(status)).not.toContain(budgetFile);
+    await adapter.ask({ question: "public synthetic", data_classification: "public" });
+    expect(state.answer).toHaveBeenCalledOnce();
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
+  }
 });

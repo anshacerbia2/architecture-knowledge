@@ -1,6 +1,48 @@
 import { test, expect } from "@playwright/test";
 import { KNOWLEDGE_ID_PATTERN } from "../../packages/contracts/src/index.js";
 
+test("live pilot disclosures show budget and public egress without making live calls", async ({
+  page,
+}) => {
+  // UI transport fixture, not live-provider or billing evidence.
+  await page.route("**/api/v1/status", async (route) => {
+    await route.fulfill({
+      json: {
+        contract_version: 1,
+        request_id: "synthetic-status",
+        repository_commit: "synthetic-sha",
+        data: {
+          repository_commit: "synthetic-sha",
+          graph: "ready",
+          retrieval: "unavailable",
+          retrieval_code: "RETRIEVAL_GENERATION_MISSING",
+          generation_id: null,
+          database_mode: "hosted",
+          counts: {},
+          provider_mode: "openai-live-pilot",
+          recommendations_enabled: false,
+          pilot_budget: {
+            limit_cents: 500,
+            reserved_cents: 51,
+            remaining_cents: 449,
+            expires_at: "2026-10-01T00:00:00.000Z",
+          },
+        },
+      },
+    });
+  });
+  await page.goto("/status");
+  await expect(page.getByRole("link", { name: "PROVIDER STATUS" })).toBeVisible();
+  await expect(page.getByText("DETERMINISTIC DEMO", { exact: true })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "OpenAI live pilot" })).toBeVisible();
+  await expect(page.getByText(/Reserved \$0.51 \/ \$5.00/)).toBeVisible();
+  await expect(page.getByText(/pnpm app:pilot index/)).toBeVisible();
+  await page.goto("/ask");
+  await expect(
+    page.getByText(/submitting sends your question and retrieved public evidence/),
+  ).toBeVisible();
+});
+
 test("every real identifier family is accepted, including AKL claims", async ({
   request,
   page,

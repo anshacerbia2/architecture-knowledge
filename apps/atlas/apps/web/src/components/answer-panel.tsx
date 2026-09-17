@@ -73,8 +73,10 @@ export function AnswerPanel({ answer }: { answer: Answer }) {
         </div>
       )}
       <p className="hint">
-        Citation resolution and structural grounding do not prove semantic entailment. This
-        deterministic provider demonstrates the pipeline, not live-model quality.
+        Citation resolution and structural grounding do not prove semantic entailment.{" "}
+        {answer.provider.provider === "deterministic-fake"
+          ? "This deterministic provider demonstrates the pipeline, not live-model quality."
+          : "Live model output requires source checking; confidence labels are not calibrated probabilities."}
       </p>
       <details className="trace">
         <summary>Evidence & model provenance</summary>

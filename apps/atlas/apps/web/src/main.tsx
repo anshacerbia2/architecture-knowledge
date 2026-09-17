@@ -58,7 +58,9 @@ function App() {
           <span>
             Architecture Knowledge System <span className="divider">/</span> Local app
           </span>
-          <span className="demo-pill">DETERMINISTIC DEMO</span>
+          <NavLink to="/status" className="demo-pill">
+            PROVIDER STATUS
+          </NavLink>
         </header>
         <main id="main">
           <Suspense fallback={<Loading />}>

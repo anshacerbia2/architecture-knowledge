@@ -1,9 +1,25 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { RetrievalDatabaseMode } from "../../../packages/contracts/src/index.js";
+import type { ProviderSettings } from "../../../packages/knowledge-adapter/src/providers.js";
 
 export const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 export function configuration(env: NodeJS.ProcessEnv) {
+  const mode = env.ATLAS_PROVIDER_MODE ?? "fake";
+  if (mode !== "fake" && mode !== "openai") throw new Error("PROVIDER_MODE_INVALID");
+  let provider: ProviderSettings = { mode: "fake" };
+  if (mode === "openai") {
+    if (env.ATLAS_LIVE_CONSENT !== "public-only-usd5") throw new Error("PILOT_CONSENT_REQUIRED");
+    if (!env.OPENAI_API_KEY?.trim()) throw new Error("OPENAI_API_KEY_REQUIRED");
+    if (!/^sha256:[a-f0-9]{64}$/.test(env.ATLAS_PUBLIC_MANIFEST ?? ""))
+      throw new Error("PILOT_PUBLIC_MANIFEST_REQUIRED");
+    provider = {
+      mode,
+      apiKey: env.OPENAI_API_KEY.trim(),
+      publicManifest: env.ATLAS_PUBLIC_MANIFEST!,
+      budgetFile: path.join(appRoot, ".tmp/live-pilot/budget.txt"),
+    };
+  }
   const port = Number(env.PORT ?? "4310");
   if (!Number.isInteger(port) || port < 1024 || port > 65535) throw new Error("INVALID_PORT");
   const repoRoot = path.resolve(env.KNOWLEDGE_REPO_ROOT ?? path.join(appRoot, "../.."));
@@ -34,5 +50,6 @@ export function configuration(env: NodeJS.ProcessEnv) {
     repoRoot,
     databaseUrl,
     databaseMode: databaseMode as RetrievalDatabaseMode,
+    provider,
   };
 }

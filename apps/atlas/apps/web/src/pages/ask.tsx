@@ -23,10 +23,11 @@ export default function Ask() {
         <p>Single-turn knowledge Q&A. Recommendations and automated decisions are disabled.</p>
       </section>
       <div className="info-banner">
-        <strong>Local deterministic demo</strong>
+        <strong>Check provider mode in System status</strong>
         <span>
-          No external model calls. A current PostgreSQL index is required. Each question is
-          independent.
+          In OpenAI live pilot mode, submitting sends your question and retrieved public evidence to
+          OpenAI and consumes the shared pilot budget. Use only non-secret public test questions.
+          Fake mode makes no external model calls. Each question is independent.
         </span>
       </div>
       <form

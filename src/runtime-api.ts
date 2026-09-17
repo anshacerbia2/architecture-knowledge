@@ -2,9 +2,12 @@
 export { loadValidatedGraph, loadCurrentRetrievalArtifacts } from "./retrieval-artifacts.js";
 export { buildRetrievalArtifacts } from "./retrieval-units.js";
 export { RetrievalDatabase } from "./retrieval-database.js";
-export { checkRetrievalCurrent } from "./retrieval-indexer.js";
-export { DeterministicFakeEmbeddingProvider } from "./embedding-provider.js";
-export { DeterministicFakeRagProvider } from "./rag-provider.js";
+export { checkRetrievalCurrent, indexRetrievalGeneration } from "./retrieval-indexer.js";
+export {
+  DeterministicFakeEmbeddingProvider,
+  OpenAIEmbeddingProvider,
+} from "./embedding-provider.js";
+export { DeterministicFakeRagProvider, OpenAIRagProvider } from "./rag-provider.js";
 export { RetrievalEngine, PostgresRetrievalStore } from "./retrieval-query.js";
 export { parseRetrievalRequest } from "./retrieval-query-contract.js";
 export { parseRagRequest } from "./rag-request.js";

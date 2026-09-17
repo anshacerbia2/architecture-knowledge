@@ -5,7 +5,11 @@
   "coverageAnalysis": "perTest",
   "mutate": [
     "packages/knowledge-adapter/src/snapshot.ts",
-    "packages/knowledge-adapter/src/kernel-adapter.ts"
+    "packages/knowledge-adapter/src/kernel-adapter.ts",
+    "packages/knowledge-adapter/src/pilot-budget.ts",
+    "packages/knowledge-adapter/src/providers.ts",
+    "packages/knowledge-adapter/src/pilot-index.ts",
+    "apps/api/src/config.ts"
   ],
   "reporters": ["clear-text", "progress", "json"],
   "jsonReporter": { "fileName": "reports/mutation.json" },

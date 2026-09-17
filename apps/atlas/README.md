@@ -72,8 +72,15 @@ show retrieval ready before Search or Ask can work.
 - Search PostgreSQL using lexical, hybrid or hybrid-graph retrieval.
 - Ask a single question and inspect citations, uncertainty and provenance.
 
-Embedding and answer providers remain deterministic demos. They exercise real storage and retrieval,
-but do not establish live-model quality. Try: `Can Retry and Circuit Breaker be combined?`
+Embedding and answer providers default to deterministic demos. They exercise real storage and
+retrieval, but do not establish live-model quality. Try:
+`Can Retry and Circuit Breaker be combined?`
+
+The opt-in [OpenAI live-provider pilot](docs/live-provider-pilot.md) uses a shared conservative USD
+5 allowance, explicit public-corpus consent and server-only credentials. Follow that guide to
+configure `apps/atlas/.env`, plan, initialize budget, index, check and activate. Do not use the
+unbudgeted root retrieval CLI with live credentials for this pilot. No live calls occur just because
+an API key exists.
 
 Citation resolution does not prove semantic entailment. No decision approval or ADR/RFC/PAD
 generator is provided. This app is loopback-only for one trusted OS user.
