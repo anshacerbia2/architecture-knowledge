@@ -40,7 +40,19 @@ test("OAuth callback redirects through cross-site navigation to a connected stat
         body: `<a href="${callback.href}">Authorize synthetic account</a>`,
       });
     });
-    await page.goto(`${origin}/status`);
+    await page.route("https://entry.example/", (route) =>
+      route.fulfill({
+        contentType: "text/html",
+        body: `<a href="${origin}/status">Open Atlas status</a>`,
+      }),
+    );
+    await page.goto("https://entry.example/");
+    await page.getByRole("link", { name: "Open Atlas status" }).click();
+    await expect(
+      page.getByText("Account connection (OAuth PKCE): Not connected.", { exact: true }),
+    ).toBeVisible();
+    expect(landingSites).toContain("cross-site");
+    landingSites.length = 0;
     await page.getByRole("button", { name: "Connect OpenRouter" }).click();
     await page.getByRole("link", { name: "Authorize synthetic account" }).click();
     await expect(
@@ -68,7 +80,7 @@ test("OAuth callback redirects through cross-site navigation to a connected stat
       403,
     );
     connector.disconnect();
-    expect((await page.request.get(`${origin}/status`, { headers: nav })).status()).toBe(403);
+    expect((await page.request.get(`${origin}/status`, { headers: nav })).status()).toBe(200);
   } finally {
     await app.close();
   }

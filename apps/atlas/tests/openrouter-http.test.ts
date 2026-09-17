@@ -130,7 +130,7 @@ it("API mode cannot initiate OAuth; malformed callbacks cannot exchange credenti
   expect(transport).not.toHaveBeenCalled();
 });
 
-it("allows only the connected OAuth document landing while cross-site APIs remain denied", async () => {
+it("allows the public OAuth document landing while cross-site APIs remain denied", async () => {
   const connector = new OpenRouterOAuthConnector(
     async () => new Response(JSON.stringify({ key: KEY })),
   );
@@ -149,7 +149,7 @@ it("allows only the connected OAuth document landing while cross-site APIs remai
     "sec-fetch-mode": "navigate",
     "sec-fetch-dest": "document",
   };
-  expect((await app.inject({ url: "/status", headers: nav })).statusCode).toBe(403);
+  expect((await app.inject({ url: "/status", headers: nav })).statusCode).toBe(200);
   const flow = connector.begin("http://127.0.0.1:4310");
   const callback = new URL(new URL(flow.authorization_url).searchParams.get("callback_url")!);
   await connector.complete(callback.pathname.split("/").at(-1)!, "synthetic", flow.browser);
@@ -170,5 +170,5 @@ it("allows only the connected OAuth document landing while cross-site APIs remai
     expect((await app.inject({ url: "/status", headers })).statusCode).toBe(403);
   expect((await app.inject({ method: "POST", url: "/status", headers: nav })).statusCode).toBe(403);
   connector.disconnect();
-  expect((await app.inject({ url: "/status", headers: nav })).statusCode).toBe(403);
+  expect((await app.inject({ url: "/status", headers: nav })).statusCode).toBe(200);
 });

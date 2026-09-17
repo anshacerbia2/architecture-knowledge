@@ -65,10 +65,10 @@ export async function createServer(
       request.method === "GET" &&
       request.routeOptions.url === OAUTH_CALLBACK_ROUTE;
     // Browsers retain cross-site Fetch Metadata through the callback's 303 redirect.
-    // Permit only the public HTML landing page after a successful OAuth exchange.
+    // The public HTML landing page must work before login and after disconnect too.
+    // Its data and bootstrap API requests remain subject to the normal origin checks.
     const oauthLanding =
       options.connector instanceof OpenRouterOAuthConnector &&
-      options.connector.connected() &&
       Boolean(options.staticRoot) &&
       request.method === "GET" &&
       request.url === "/status" &&
