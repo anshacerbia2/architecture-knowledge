@@ -19,7 +19,7 @@
   "scripts": {
     "build:kernel": "tsc -p tsconfig.build.json",
     "build": "pnpm build:kernel && pnpm --filter architecture-knowledge-app build",
-    "app:start": "pnpm --filter architecture-knowledge-app start",
+    "app:start": "pnpm build:kernel && pnpm --filter architecture-knowledge-app start",
     "app:dev": "pnpm build:kernel && pnpm --filter architecture-knowledge-app dev",
     "app:check": "pnpm build:kernel && pnpm --filter architecture-knowledge-app check",
     "app:test:coverage": "pnpm --filter architecture-knowledge-app test:coverage",

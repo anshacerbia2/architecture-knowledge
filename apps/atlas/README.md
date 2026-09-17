@@ -15,7 +15,8 @@ pnpm app:start
 
 Open http://127.0.0.1:4310. Stop with Ctrl+C. For development use `pnpm app:dev` and open
 http://127.0.0.1:5173. The development proxy expects API port 4310. Rebuild the kernel after kernel
-implementation changes; restart to load a new snapshot.
+implementation changes when using the package start command directly. The root `pnpm app:start`
+command rebuilds the kernel automatically; restart to load a new snapshot.
 
 Startup requires a clean checkout, validated knowledge, and current generated artifacts. It detaches
 and freezes the loaded graph and retrieval records. Authoring edits after startup do not change the
