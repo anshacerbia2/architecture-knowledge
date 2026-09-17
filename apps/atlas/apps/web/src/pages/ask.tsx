@@ -25,9 +25,10 @@ export default function Ask() {
       <div className="info-banner">
         <strong>Check provider mode in System status</strong>
         <span>
-          In OpenAI live pilot mode, submitting sends your question and retrieved public evidence to
-          OpenAI and consumes the shared pilot budget. Use only non-secret public test questions.
-          Fake mode makes no external model calls. Each question is independent.
+          In live mode, submitting sends your question and retrieved public evidence to the
+          configured AI service. OpenRouter free mode uses lexical retrieval with no paid fallback;
+          direct OpenAI consumes the pilot budget. Use only non-secret public test questions. Fake
+          mode makes no external model calls. Each question is independent.
         </span>
       </div>
       <form

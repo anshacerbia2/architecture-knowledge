@@ -67,6 +67,12 @@ show retrieval ready before Search or Ask can work.
 
 ## Features and evidence limits
 
+For a no-credit setup use
+[OpenRouter free mode with OAuth or API key](docs/openrouter-free-connectors.md). OAuth adds a
+Connect OpenRouter button in System status; credentials remain server-side. This mode uses lexical
+retrieval in Neon and a pinned free answer model, with no paid fallback. The direct OpenAI paid
+pilot below is an alternative, not a dependency of free mode.
+
 - Explore concepts, claims, sources, relationships and decision guides.
 - Inspect a one-hop graph (40-edge display limit), exclusions and conditions.
 - Search PostgreSQL using lexical, hybrid or hybrid-graph retrieval.

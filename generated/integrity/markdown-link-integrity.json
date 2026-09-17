@@ -44,6 +44,11 @@
     },
     {
       "path": "apps/atlas/README.md",
+      "target": "docs/openrouter-free-connectors.md",
+      "status": "valid"
+    },
+    {
+      "path": "apps/atlas/README.md",
       "target": "docs/traceability.md",
       "status": "valid"
     },
@@ -949,8 +954,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 189,
+    "checked_link_count": 190,
     "broken_link_count": 0,
-    "markdown_file_count": 117
+    "markdown_file_count": 118
   }
 }

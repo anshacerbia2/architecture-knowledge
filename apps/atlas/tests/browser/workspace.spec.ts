@@ -1,6 +1,71 @@
 import { test, expect } from "@playwright/test";
 import { KNOWLEDGE_ID_PATTERN } from "../../packages/contracts/src/index.js";
 
+for (const mode of ["oauth", "api"] as const) {
+  test(`free OpenRouter ${mode} connector UI keeps credentials out of the browser`, async ({
+    page,
+  }, testInfo) => {
+    // Mock transport only, never an actual login or inference call.
+    let connected = true;
+    await page.route("**/api/v1/status", (route) =>
+      route.fulfill({
+        json: {
+          contract_version: 1,
+          request_id: "synthetic-status",
+          repository_commit: "synthetic-sha",
+          data: {
+            repository_commit: "synthetic-sha",
+            graph: "ready",
+            retrieval: "unavailable",
+            retrieval_code: "RETRIEVAL_GENERATION_MISSING",
+            generation_id: null,
+            database_mode: "hosted",
+            counts: {},
+            provider_mode: "openrouter-free",
+            recommendations_enabled: false,
+            ai_connection: { mode, connected },
+            retrieval_strategy: "lexical",
+            pilot_budget: null,
+          },
+        },
+      }),
+    );
+    await page.route("**/api/v1/connectors/openrouter/disconnect", (route) => {
+      expect(route.request().method()).toBe("POST");
+      expect(route.request().headers()["x-app-token"]).toMatch(/^[a-f0-9]{64}$/);
+      connected = false;
+      return route.fulfill({ json: { data: { connected: false } } });
+    });
+    await page.goto("/status");
+    await expect(page.getByRole("heading", { name: "OpenRouter free", exact: true })).toBeVisible();
+    await expect(page.getByText(/Lexical-only retrieval in Neon/)).toBeVisible();
+    await expect(page.getByText(/pnpm app:pilot index/)).toBeVisible();
+    await expect(page.locator('input[type="password"]')).toHaveCount(0);
+    if (mode === "api") {
+      await expect(page.getByRole("button", { name: "Connect OpenRouter" })).toHaveCount(0);
+      await expect(page.getByText(/Configure OPENROUTER_API_KEY/)).toBeVisible();
+      return;
+    }
+    await page.getByRole("button", { name: "Disconnect locally" }).click();
+    await expect(page.getByText(/Account connection \(OAuth PKCE\): Not connected/)).toBeVisible();
+    await expect(page.getByRole("button", { name: "Disconnect locally" })).toBeDisabled();
+    await page.screenshot({ path: testInfo.outputPath("openrouter-status.png"), fullPage: true });
+    await page.route("**/api/v1/connectors/openrouter/start", (route) =>
+      route.fulfill({
+        json: {
+          data: { authorization_url: "https://openrouter.ai/auth?code_challenge=synthetic" },
+        },
+      }),
+    );
+    await page.route("https://openrouter.ai/auth?*", (route) =>
+      route.fulfill({ contentType: "text/html", body: "Mock authorization page" }),
+    );
+    await page.getByRole("button", { name: "Connect OpenRouter" }).click();
+    await expect(page).toHaveURL("https://openrouter.ai/auth?code_challenge=synthetic");
+    await expect(page.getByText("Mock authorization page")).toBeVisible();
+  });
+}
+
 test("live pilot disclosures show budget and public egress without making live calls", async ({
   page,
 }) => {

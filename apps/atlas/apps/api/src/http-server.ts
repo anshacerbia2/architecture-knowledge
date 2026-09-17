@@ -5,10 +5,20 @@ import type { KnowledgeService } from "../../../packages/application/src/knowled
 import { AppError } from "../../../packages/application/src/errors.js";
 import { KNOWLEDGE_ID_PATTERN } from "../../../packages/contracts/src/index.js";
 import type { AskInput, SearchInput } from "../../../packages/contracts/src/index.js";
+import {
+  OpenRouterOAuthConnector,
+  type OpenRouterApiConnector,
+} from "../../../packages/ai-connectors/src/openrouter-connectors.js";
+import { OAUTH_CALLBACK_ROUTE, registerOpenRouterRoutes } from "./openrouter-routes.js";
 
 export async function createServer(
   service: KnowledgeService,
-  options: { port: number; staticRoot?: string; logger?: boolean },
+  options: {
+    port: number;
+    staticRoot?: string;
+    logger?: boolean;
+    connector?: OpenRouterOAuthConnector | OpenRouterApiConnector;
+  },
 ) {
   const app = Fastify({
     bodyLimit: 65536,
@@ -50,9 +60,20 @@ export async function createServer(
       .header("X-Request-ID", request.id);
     if (!hosts.has(request.headers.host ?? ""))
       throw new AppError("HOST_DENIED", 403, "Unrecognized local host.");
-    if (request.headers.origin && !origins.has(request.headers.origin))
+    const oauthCallback =
+      options.connector instanceof OpenRouterOAuthConnector &&
+      request.method === "GET" &&
+      request.routeOptions.url === OAUTH_CALLBACK_ROUTE;
+    if (
+      request.headers.origin &&
+      !origins.has(request.headers.origin) &&
+      !(oauthCallback && request.headers.origin === "https://openrouter.ai")
+    )
       throw new AppError("ORIGIN_DENIED", 403, "Cross-origin access denied.");
-    if (request.headers["sec-fetch-site"] === "cross-site")
+    if (
+      request.headers["sec-fetch-site"] === "cross-site" &&
+      !(oauthCallback && request.headers["sec-fetch-mode"] === "navigate")
+    )
       throw new AppError("ORIGIN_DENIED", 403, "Cross-site access denied.");
     if (!["GET", "HEAD"].includes(request.method) && !validToken(request.headers["x-app-token"]))
       throw new AppError("TOKEN_REQUIRED", 403, "Refresh this local app to establish a session.");
@@ -104,6 +125,7 @@ export async function createServer(
     repository_commit: service.commit,
     data,
   });
+  if (options.connector) registerOpenRouterRoutes(app, options.connector, service.commit);
   app.get("/health/live", async () => ({ live: true }));
   app.get("/health/ready", async (req, reply) => {
     const status = await service.status();

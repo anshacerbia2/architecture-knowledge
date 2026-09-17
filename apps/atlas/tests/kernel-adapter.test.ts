@@ -42,6 +42,7 @@ import { mkdtempSync, rmSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { PilotBudget } from "../packages/knowledge-adapter/src/pilot-budget.js";
+import { OpenRouterOAuthConnector } from "../packages/ai-connectors/src/openrouter-connectors.js";
 
 const graph = () => ({
   nodes: [{ ...node }, { ...node, id: "AKC-000013", title: null }],
@@ -91,6 +92,38 @@ beforeEach(() => {
   });
 });
 const create = () => KernelAdapter.create("synthetic-root", "postgresql://localhost/synthetic");
+it("free mode uses lexical retrieval only and denies private inputs before any retrieval", async () => {
+  const manifest = `sha256:${"a".repeat(64)}`;
+  state.loadArtifacts.mockResolvedValue({ units: [], manifest: { manifest_root_hash: manifest } });
+  const adapter = await KernelAdapter.create(
+    "synthetic-root",
+    "postgresql://localhost/synthetic",
+    "local",
+    {
+      mode: "openrouter-free",
+      publicManifest: manifest,
+      credential: new OpenRouterOAuthConnector(),
+    },
+  );
+  await expect(
+    adapter.ask({ question: "secret", data_classification: "confidential" }),
+  ).rejects.toMatchObject({ code: "PILOT_PUBLIC_ONLY" });
+  await expect(adapter.search({ text: "public", mode: "hybrid-graph" })).rejects.toMatchObject({
+    code: "FREE_MODE_LEXICAL_ONLY",
+  });
+  expect(state.current).not.toHaveBeenCalled();
+  await adapter.ask({ question: "public", data_classification: "public" });
+  expect(state.answer.mock.calls[0]![0]).toMatchObject({
+    retrieval: { mode: "lexical", graph: { enabled: false, max_depth: 0 } },
+  });
+  await adapter.search({ text: "public", mode: "lexical" });
+  expect(state.query.mock.calls[0]![0].mode).toBe("lexical");
+  expect(await adapter.status()).toMatchObject({
+    provider_mode: "openrouter-free",
+    retrieval_strategy: "lexical",
+    ai_connection: { mode: "oauth", connected: false },
+  });
+});
 it("maps governed records without reclassifying excluded relationships", async () => {
   const adapter = await create();
   expect(await adapter.catalog()).toHaveLength(2);

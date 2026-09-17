@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { SystemStatus } from "../../../../packages/contracts/src/index.js";
 import { api } from "../api/client.js";
 import { Loading, Notice, Trace } from "../components/common.js";
+import { AiConnection } from "../components/ai-connection.js";
 
 export default function Status() {
   const result = useQuery({
@@ -49,14 +50,18 @@ export default function Status() {
             <article className="panel">
               <span className="eyebrow">ANSWER PROVIDER</span>
               <h2>
-                {status.provider_mode === "openai-live-pilot"
-                  ? "OpenAI live pilot"
-                  : "Deterministic demo"}
+                {status.provider_mode === "openrouter-free"
+                  ? "OpenRouter free"
+                  : status.provider_mode === "openai-live-pilot"
+                    ? "OpenAI live pilot"
+                    : "Deterministic demo"}
               </h2>
               <p>
-                {status.provider_mode === "openai-live-pilot"
-                  ? "gpt-5.6-sol answers + text-embedding-3-small embeddings. Public non-secret inputs only; external API calls consume budget."
-                  : "Local fake embeddings and answer provider. No external model calls or API keys."}
+                {status.provider_mode === "openrouter-free"
+                  ? "NVIDIA Nemotron 3 Super (:free). Lexical-only retrieval in Neon; no external embeddings or paid fallback."
+                  : status.provider_mode === "openai-live-pilot"
+                    ? "gpt-5.6-sol answers + text-embedding-3-small embeddings. Public non-secret inputs only; external API calls consume budget."
+                    : "Local fake embeddings and answer provider. No external model calls or API keys."}
               </p>
               {status.pilot_budget && (
                 <p>
@@ -67,6 +72,14 @@ export default function Status() {
               )}
             </article>
           </div>
+          {status.ai_connection && (
+            <AiConnection
+              connection={status.ai_connection}
+              refresh={() => {
+                void result.refetch();
+              }}
+            />
+          )}
           <section className="panel">
             <h2>Indexed knowledge snapshot</h2>
             <div className="metrics">
@@ -96,7 +109,7 @@ export default function Status() {
                 Hosted Neon works without Docker; see apps/atlas/README.md.
               </p>
               <pre>
-                {status.provider_mode === "openai-live-pilot"
+                {status.provider_mode !== "deterministic-demo"
                   ? "pnpm app:pilot index\npnpm app:pilot check"
                   : "pnpm retrieval:migrate\npnpm retrieval:index\npnpm retrieval:check"}
               </pre>

@@ -140,7 +140,16 @@ export class KernelAdapter implements KnowledgePort {
       generation_id,
       database_mode: this.databaseMode,
       counts,
-      provider_mode: this.runtime.budget ? "openai-live-pilot" : "deterministic-demo",
+      provider_mode:
+        this.runtime.mode === "openrouter-free"
+          ? "openrouter-free"
+          : this.runtime.budget
+            ? "openai-live-pilot"
+            : "deterministic-demo",
+      ai_connection: this.runtime.credential
+        ? { mode: this.runtime.credential.mode, connected: this.runtime.credential.connected() }
+        : null,
+      retrieval_strategy: this.runtime.mode === "openrouter-free" ? "lexical" : "hybrid-graph",
       pilot_budget: this.runtime.budget?.status() ?? null,
       recommendations_enabled: false,
     };
@@ -198,6 +207,12 @@ export class KernelAdapter implements KnowledgePort {
       );
   }
   async search(input: SearchInput): Promise<SearchOutput> {
+    if (this.runtime.mode === "openrouter-free" && input.mode !== "lexical")
+      throw new AppError(
+        "FREE_MODE_LEXICAL_ONLY",
+        400,
+        "Select Lexical search in free mode. No paid or fake semantic retrieval is used.",
+      );
     const { engine, generation } = await this.engine();
     const packet = await engine.query(
       parseRetrievalRequest({ text: input.text, mode: input.mode, top_k: 10 }),
@@ -219,7 +234,7 @@ export class KernelAdapter implements KnowledgePort {
   }
   async ask(input: AskInput): Promise<Answer> {
     // Must precede retrieval: query embedding itself sends the question externally.
-    if (this.runtime.budget && input.data_classification !== "public")
+    if (this.runtime.mode !== "fake" && input.data_classification !== "public")
       throw new AppError(
         "PILOT_PUBLIC_ONLY",
         403,
@@ -227,7 +242,16 @@ export class KernelAdapter implements KnowledgePort {
       );
     const { engine, generation } = await this.engine();
     const rag = new RagEngine(engine, this.provider, createRagCitationAuthority(this.bundle));
-    const packet = await rag.answer(parseRagRequest(input));
+    const packet = await rag.answer(
+      parseRagRequest({
+        ...input,
+        ...(this.runtime.mode === "openrouter-free"
+          ? {
+              retrieval: { mode: "lexical", graph: { enabled: false, max_depth: 0 } },
+            }
+          : {}),
+      }),
+    );
     await this.verifyAfter(generation.generation_id);
     // Explicit DTO: never leak retrieval internals or unvalidated provider output.
     return {

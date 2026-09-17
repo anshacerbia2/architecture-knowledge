@@ -5,6 +5,8 @@ source admission, claim approval, decision approval or corpus writes.
 
 - `packages/contracts`: transport-neutral app DTOs; no runtime dependencies.
 - `packages/application`: use cases and ports; depends only on contracts.
+- `packages/ai-connectors`: backend-only credential adapters implementing application ports; never
+  expose credentials to browser DTOs or import the knowledge kernel.
 - `packages/knowledge-adapter`: the only module allowed to import the compiled
   `architecture-knowledge-system/runtime` public facade. Never import root `src/` directly.
 - `apps/api`: HTTP delivery, validation, security and composition root.

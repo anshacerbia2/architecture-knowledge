@@ -53,6 +53,7 @@ function permitted(file: string, dependency: string): boolean {
       !resolved.includes("apps/api/") &&
       !resolved.includes("packages/application/") &&
       !resolved.includes("packages/knowledge-adapter/") &&
+      !resolved.includes("packages/ai-connectors/") &&
       !dependency.startsWith("node:")
     );
   return true;
@@ -114,6 +115,12 @@ it("detects representative forbidden dependency regressions", () => {
     false,
   );
   expect(permitted("packages/contracts/src/index.ts", "node:fs")).toBe(false);
+  expect(
+    permitted(
+      "apps/web/src/page.ts",
+      "../../../packages/ai-connectors/src/openrouter-connectors.js",
+    ),
+  ).toBe(false);
   expect(
     permitted(
       "packages/knowledge-adapter/src/a.ts",

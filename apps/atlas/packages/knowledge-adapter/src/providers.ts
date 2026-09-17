@@ -6,9 +6,12 @@ import {
 } from "architecture-knowledge-system/runtime";
 import { AppError } from "../../application/src/errors.js";
 import { PilotBudget, pilotFetch } from "./pilot-budget.js";
+import type { AiCredentialPort } from "../../application/src/ai-credential-port.js";
+import { OpenRouterFreeProvider } from "./openrouter-provider.js";
 
 export type ProviderSettings =
   | { mode: "fake" }
+  | { mode: "openrouter-free"; publicManifest: string; credential: AiCredentialPort }
   | {
       mode: "openai";
       apiKey: string;
@@ -22,6 +25,8 @@ export function providers(settings: ProviderSettings, manifest: string) {
       embedding: new DeterministicFakeEmbeddingProvider(),
       answer: new DeterministicFakeRagProvider(),
       budget: null,
+      mode: "fake" as const,
+      credential: null,
     };
   if (
     !/^sha256:[a-f0-9]{64}$/.test(settings.publicManifest) ||
@@ -32,6 +37,14 @@ export function providers(settings: ProviderSettings, manifest: string) {
       503,
       "Confirm the exact retrieval manifest is public before enabling external providers.",
     );
+  if (settings.mode === "openrouter-free")
+    return {
+      embedding: new DeterministicFakeEmbeddingProvider(),
+      answer: new OpenRouterFreeProvider(settings.credential),
+      budget: null,
+      mode: "openrouter-free" as const,
+      credential: settings.credential,
+    };
   const budget = new PilotBudget(settings.budgetFile);
   budget.status();
   const fetchImplementation = pilotFetch(budget);
@@ -51,5 +64,7 @@ export function providers(settings: ProviderSettings, manifest: string) {
       fetchImplementation,
     }),
     budget,
+    mode: "openai" as const,
+    credential: null,
   };
 }

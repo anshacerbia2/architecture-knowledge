@@ -4,6 +4,7 @@ import { loadEnvFile } from "node:process";
 import { appRoot, configuration } from "../apps/api/src/config.js";
 import { PilotBudget } from "../packages/knowledge-adapter/src/pilot-budget.js";
 import { pilotIndex, pilotManifest } from "../packages/knowledge-adapter/src/pilot-index.js";
+import { OPENROUTER_FREE_MODEL } from "../packages/knowledge-adapter/src/openrouter-provider.js";
 
 if (existsSync(path.join(appRoot, ".env"))) loadEnvFile(path.join(appRoot, ".env"));
 const command = process.argv.slice(2).filter((arg) => arg !== "--");
@@ -31,8 +32,14 @@ try {
           repository_commit: commit,
           unit_count: artifacts.units.length,
           public_manifest_to_review: artifacts.manifest.manifest_root_hash,
-          embedding_model: "text-embedding-3-small",
-          answer_model: "gpt-5.6-sol",
+          embedding_model:
+            process.env.ATLAS_PROVIDER_MODE === "openrouter-free"
+              ? "token-hash-v1 (stored only; lexical retrieval)"
+              : "text-embedding-3-small",
+          answer_model:
+            process.env.ATLAS_PROVIDER_MODE === "openrouter-free"
+              ? OPENROUTER_FREE_MODEL
+              : "gpt-5.6-sol",
           network_calls: 0,
         },
         null,

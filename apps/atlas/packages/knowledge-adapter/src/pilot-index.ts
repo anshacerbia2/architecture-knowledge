@@ -24,7 +24,7 @@ export async function pilotIndex(
   settings: ProviderSettings,
   action: "index" | "check",
 ) {
-  if (settings.mode !== "openai") throw new Error("PILOT_LIVE_CONFIG_REQUIRED");
+  if (settings.mode === "fake") throw new Error("PILOT_LIVE_CONFIG_REQUIRED");
   const { commit, artifacts } = await pilotManifest(root);
   const runtime = providers(settings, artifacts.manifest.manifest_root_hash);
   const database = new RetrievalDatabase({
