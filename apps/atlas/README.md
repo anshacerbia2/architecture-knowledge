@@ -56,6 +56,16 @@ try {
 }
 ```
 
+If `apps/atlas/.env` already contains the hosted Neon `DATABASE_URL`, the same setup can be run
+without temporary environment commands:
+
+```powershell
+pnpm retrieval:hosted:setup
+```
+
+This reads the URL only for the child processes, uses the deterministic stored embedding contract,
+and runs migration, indexing and currentness check in order. It never prints the URL.
+
 Migration is needed on first setup or when new migrations arrive. Index after changing the pinned
 commit, including documentation-only commits under the current generation contract. Password
 rotation alone does not require indexing. No HTTP endpoint migrates or indexes automatically. The

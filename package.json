@@ -57,6 +57,7 @@
     "retrieval:units:check": "tsx src/retrieval-cli.ts units-check",
     "retrieval:index": "tsx src/retrieval-cli.ts index",
     "retrieval:check": "tsx src/retrieval-cli.ts check",
+    "retrieval:hosted:setup": "tsx scripts/retrieval-hosted-setup.ts",
     "retrieval:query": "tsx src/retrieval-cli.ts query",
     "retrieval:evaluate": "tsx src/retrieval-cli.ts evaluate",
     "retrieval:benchmark": "tsx src/retrieval-cli.ts benchmark",

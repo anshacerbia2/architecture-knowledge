@@ -114,6 +114,16 @@ pnpm app:pilot check
 pnpm app:start
 ```
 
+When `apps/atlas/.env` already contains the hosted Neon URL, the root helper performs the same three
+operations without manually setting a temporary environment variable:
+
+```powershell
+pnpm retrieval:hosted:setup
+```
+
+It keeps the URL out of output and forces the stored deterministic embedding contract used by free
+mode.
+
 In this mode indexing uses deterministic local vectors, incurs no model-provider calls and does not
 require a budget ledger or `init-budget`. The exact-commit DB contract still requires indexing after
 merge/commit changes. No new DB migration is introduced. Runtime can use a read-only DB role;
