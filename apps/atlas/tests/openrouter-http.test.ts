@@ -1,4 +1,5 @@
 import { afterEach, expect, it, vi } from "vitest";
+import path from "node:path";
 import { createServer } from "../apps/api/src/http-server.js";
 import { KnowledgeService } from "../packages/application/src/knowledge-service.js";
 import { fakePort } from "./fixture.js";
@@ -127,4 +128,47 @@ it("API mode cannot initiate OAuth; malformed callbacks cannot exchange credenti
   ])
     expect((await app.inject({ url, headers: host })).statusCode).toBe(400);
   expect(transport).not.toHaveBeenCalled();
+});
+
+it("allows only the connected OAuth document landing while cross-site APIs remain denied", async () => {
+  const connector = new OpenRouterOAuthConnector(
+    async () => new Response(JSON.stringify({ key: KEY })),
+  );
+  const app = await createServer(new KnowledgeService(fakePort()), {
+    port: 4310,
+    connector,
+    staticRoot: path.resolve("tests"),
+  });
+  open.push(app);
+  app.get("/status", async (_req, reply) =>
+    reply.type("text/html").send("<html>Public shell</html>"),
+  );
+  const nav = {
+    host: "127.0.0.1:4310",
+    "sec-fetch-site": "cross-site",
+    "sec-fetch-mode": "navigate",
+    "sec-fetch-dest": "document",
+  };
+  expect((await app.inject({ url: "/status", headers: nav })).statusCode).toBe(403);
+  const flow = connector.begin("http://127.0.0.1:4310");
+  const callback = new URL(new URL(flow.authorization_url).searchParams.get("callback_url")!);
+  await connector.complete(callback.pathname.split("/").at(-1)!, "synthetic", flow.browser);
+  for (const headers of [nav, { ...nav, origin: "https://openrouter.ai" }]) {
+    const response = await app.inject({ url: "/status", headers });
+    expect(response.statusCode).toBe(200);
+    expect(response.headers["content-type"]).toContain("text/html");
+    expect(response.body).not.toContain(KEY);
+  }
+  for (const url of ["/api/v1/status", "/api/v1/bootstrap", "/ask", "/status?unexpected=true"]) {
+    expect((await app.inject({ url, headers: nav })).statusCode).toBe(403);
+  }
+  for (const headers of [
+    { ...nav, "sec-fetch-mode": "cors" },
+    { ...nav, "sec-fetch-dest": "iframe" },
+    { ...nav, origin: "https://evil.invalid" },
+  ])
+    expect((await app.inject({ url: "/status", headers })).statusCode).toBe(403);
+  expect((await app.inject({ method: "POST", url: "/status", headers: nav })).statusCode).toBe(403);
+  connector.disconnect();
+  expect((await app.inject({ url: "/status", headers: nav })).statusCode).toBe(403);
 });

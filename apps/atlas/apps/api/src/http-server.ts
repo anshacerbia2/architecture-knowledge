@@ -64,15 +64,26 @@ export async function createServer(
       options.connector instanceof OpenRouterOAuthConnector &&
       request.method === "GET" &&
       request.routeOptions.url === OAUTH_CALLBACK_ROUTE;
+    // Browsers retain cross-site Fetch Metadata through the callback's 303 redirect.
+    // Permit only the public HTML landing page after a successful OAuth exchange.
+    const oauthLanding =
+      options.connector instanceof OpenRouterOAuthConnector &&
+      options.connector.connected() &&
+      Boolean(options.staticRoot) &&
+      request.method === "GET" &&
+      request.url === "/status" &&
+      request.headers["sec-fetch-mode"] === "navigate" &&
+      request.headers["sec-fetch-dest"] === "document";
     if (
       request.headers.origin &&
       !origins.has(request.headers.origin) &&
-      !(oauthCallback && request.headers.origin === "https://openrouter.ai")
+      !((oauthCallback || oauthLanding) && request.headers.origin === "https://openrouter.ai")
     )
       throw new AppError("ORIGIN_DENIED", 403, "Cross-origin access denied.");
     if (
       request.headers["sec-fetch-site"] === "cross-site" &&
-      !(oauthCallback && request.headers["sec-fetch-mode"] === "navigate")
+      !(oauthCallback && request.headers["sec-fetch-mode"] === "navigate") &&
+      !oauthLanding
     )
       throw new AppError("ORIGIN_DENIED", 403, "Cross-site access denied.");
     if (!["GET", "HEAD"].includes(request.method) && !validToken(request.headers["x-app-token"]))
