@@ -7,6 +7,8 @@ export default defineConfig({
       include: [
         "packages/application/src/**/*.ts",
         "packages/knowledge-adapter/src/**/*.ts",
+        "packages/ai-connectors/src/**/*.ts",
+        "apps/api/src/openrouter-routes.ts",
         "apps/api/src/http-server.ts",
         "apps/api/src/config.ts",
       ],

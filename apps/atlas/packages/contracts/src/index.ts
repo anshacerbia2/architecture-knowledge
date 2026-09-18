@@ -43,7 +43,15 @@ export interface SystemStatus {
   generation_id: string | null;
   database_mode: RetrievalDatabaseMode;
   counts: Record<string, number>;
-  provider_mode: "deterministic-demo";
+  provider_mode: "deterministic-demo" | "openai-live-pilot" | "openrouter-free" | "antigravity-cli";
+  ai_connection?: { mode: "api" | "oauth"; connected: boolean } | null;
+  retrieval_strategy?: "lexical" | "hybrid-graph";
+  pilot_budget?: {
+    limit_cents: number;
+    reserved_cents: number;
+    remaining_cents: number;
+    expires_at: string;
+  } | null;
   recommendations_enabled: false;
 }
 export interface SearchInput {

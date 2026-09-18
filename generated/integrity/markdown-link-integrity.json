@@ -18,8 +18,18 @@
       "status": "valid"
     },
     {
+      "path": "apps/atlas/docs/live-provider-pilot.md",
+      "target": "../README.md",
+      "status": "valid"
+    },
+    {
       "path": "apps/atlas/README.md",
       "target": "../../docs/structural-integration-hardening.md",
+      "status": "valid"
+    },
+    {
+      "path": "apps/atlas/README.md",
+      "target": "docs/antigravity-cli.md",
       "status": "valid"
     },
     {
@@ -30,6 +40,16 @@
     {
       "path": "apps/atlas/README.md",
       "target": "docs/implementation-handoff.md",
+      "status": "valid"
+    },
+    {
+      "path": "apps/atlas/README.md",
+      "target": "docs/live-provider-pilot.md",
+      "status": "valid"
+    },
+    {
+      "path": "apps/atlas/README.md",
+      "target": "docs/openrouter-free-connectors.md",
       "status": "valid"
     },
     {
@@ -939,8 +959,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 187,
+    "checked_link_count": 191,
     "broken_link_count": 0,
-    "markdown_file_count": 116
+    "markdown_file_count": 119
   }
 }

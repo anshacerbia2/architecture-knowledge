@@ -5,8 +5,6 @@ import {
   buildRetrievalArtifacts,
   RetrievalDatabase,
   checkRetrievalCurrent,
-  DeterministicFakeEmbeddingProvider,
-  DeterministicFakeRagProvider,
   RetrievalEngine,
   PostgresRetrievalStore,
   parseRetrievalRequest,
@@ -32,6 +30,7 @@ import type {
   RetrievalDatabaseMode,
 } from "../../contracts/src/index.js";
 import { cleanCommit, immutableCopy } from "./snapshot.js";
+import { providers, type ProviderSettings } from "./providers.js";
 
 function edgeDto(edge: GraphEdge): Edge {
   return {
@@ -47,8 +46,8 @@ function edgeDto(edge: GraphEdge): Edge {
 }
 
 export class KernelAdapter implements KnowledgePort {
-  private readonly embedding = new DeterministicFakeEmbeddingProvider();
-  private readonly provider = new DeterministicFakeRagProvider();
+  private readonly embedding;
+  private readonly provider;
   private readonly nodes: Summary[];
   private constructor(
     readonly commit: string,
@@ -56,19 +55,24 @@ export class KernelAdapter implements KnowledgePort {
     private readonly artifacts: RetrievalArtifacts,
     private readonly database: RetrievalDatabase,
     private readonly databaseMode: RetrievalDatabaseMode,
+    private readonly runtime: ReturnType<typeof providers>,
   ) {
+    this.embedding = runtime.embedding;
+    this.provider = runtime.answer;
     this.nodes = bundle.nodes.map((n) => ({ ...n, title: n.title ?? n.id }));
   }
   static async create(
     root: string,
     connectionString: string,
     databaseMode: RetrievalDatabaseMode = "local",
+    settings: ProviderSettings = { mode: "fake" },
   ): Promise<KernelAdapter> {
     const commit = await cleanCommit(root);
     const graph = await loadValidatedGraph(root);
     const artifacts = await loadCurrentRetrievalArtifacts(root, buildRetrievalArtifacts(graph));
     if ((await cleanCommit(root)) !== commit)
       throw new AppError("SNAPSHOT_CHANGED", 409, "Repository changed during startup.");
+    const runtime = providers(settings, artifacts.manifest.manifest_root_hash);
     const db = new RetrievalDatabase({
       connectionString,
       maxConnections: 4,
@@ -87,6 +91,7 @@ export class KernelAdapter implements KnowledgePort {
       immutableCopy(artifacts),
       db,
       databaseMode,
+      runtime,
     );
   }
   private async current() {
@@ -103,7 +108,7 @@ export class KernelAdapter implements KnowledgePort {
         throw new AppError(
           code,
           503,
-          "Index missing or stale. Run retrieval:index in the knowledge repository with the fake embedding provider.",
+          "Index missing or stale. Follow the app README for indexing with the configured embedding provider.",
         );
       }
       throw new AppError(
@@ -135,7 +140,16 @@ export class KernelAdapter implements KnowledgePort {
       generation_id,
       database_mode: this.databaseMode,
       counts,
-      provider_mode: "deterministic-demo",
+      provider_mode: this.lexicalOnly
+        ? (this.runtime.mode as "openrouter-free" | "antigravity-cli")
+        : this.runtime.budget
+          ? "openai-live-pilot"
+          : "deterministic-demo",
+      ai_connection: this.runtime.credential
+        ? { mode: this.runtime.credential.mode, connected: this.runtime.credential.connected() }
+        : null,
+      retrieval_strategy: this.lexicalOnly ? "lexical" : "hybrid-graph",
+      pilot_budget: this.runtime.budget?.status() ?? null,
       recommendations_enabled: false,
     };
   }
@@ -191,7 +205,16 @@ export class KernelAdapter implements KnowledgePort {
         "Index changed during the request. Retry after maintenance.",
       );
   }
+  private get lexicalOnly() {
+    return this.runtime.mode === "openrouter-free" || this.runtime.mode === "antigravity-cli";
+  }
   async search(input: SearchInput): Promise<SearchOutput> {
+    if (this.lexicalOnly && input.mode !== "lexical")
+      throw new AppError(
+        "FREE_MODE_LEXICAL_ONLY",
+        400,
+        "Select Lexical search for this provider. No paid or fake semantic retrieval is used.",
+      );
     const { engine, generation } = await this.engine();
     const packet = await engine.query(
       parseRetrievalRequest({ text: input.text, mode: input.mode, top_k: 10 }),
@@ -212,9 +235,34 @@ export class KernelAdapter implements KnowledgePort {
     };
   }
   async ask(input: AskInput): Promise<Answer> {
+    // Must precede retrieval: query embedding itself sends the question externally.
+    if (this.runtime.mode !== "fake" && input.data_classification !== "public")
+      throw new AppError(
+        "PILOT_PUBLIC_ONLY",
+        403,
+        "Live pilot accepts public, non-secret questions only.",
+      );
     const { engine, generation } = await this.engine();
     const rag = new RagEngine(engine, this.provider, createRagCitationAuthority(this.bundle));
-    const packet = await rag.answer(parseRagRequest(input));
+    const packet = await rag.answer(
+      parseRagRequest({
+        ...input,
+        ...(this.lexicalOnly
+          ? {
+              retrieval: { mode: "lexical", graph: { enabled: false, max_depth: 0 } },
+            }
+          : {}),
+        ...(this.runtime.mode === "antigravity-cli"
+          ? {
+              retrieval: {
+                mode: "lexical",
+                graph: { enabled: false, max_depth: 0 },
+                budget: { max_units: 6, max_estimated_tokens: 1400, max_units_per_concept: 3 },
+              },
+            }
+          : {}),
+      }),
+    );
     await this.verifyAfter(generation.generation_id);
     // Explicit DTO: never leak retrieval internals or unvalidated provider output.
     return {

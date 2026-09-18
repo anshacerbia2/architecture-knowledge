@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { SystemStatus } from "../../../../packages/contracts/src/index.js";
 import { api } from "../api/client.js";
 import { Loading, Notice, Trace } from "../components/common.js";
+import { AiConnection } from "../components/ai-connection.js";
 
 export default function Status() {
   const result = useQuery({
@@ -48,10 +49,41 @@ export default function Status() {
             </article>
             <article className="panel">
               <span className="eyebrow">ANSWER PROVIDER</span>
-              <h2>Deterministic demo</h2>
-              <p>Local fake embeddings and answer provider. No external model calls or API keys.</p>
+              <h2>
+                {status.provider_mode === "antigravity-cli"
+                  ? "Antigravity CLI runner"
+                  : status.provider_mode === "openrouter-free"
+                    ? "OpenRouter free"
+                    : status.provider_mode === "openai-live-pilot"
+                      ? "OpenAI live pilot"
+                      : "Deterministic demo"}
+              </h2>
+              <p>
+                {status.provider_mode === "antigravity-cli"
+                  ? "Gemini 3.8 Flash Low via agy -p, using your existing CLI login. Public inputs and retrieved evidence go to cloud inference; CLI history may persist. Uses normal CLI permissions, not a tool sandbox. Lexical retrieval; no provider fallback."
+                  : status.provider_mode === "openrouter-free"
+                    ? "NVIDIA Nemotron 3.5 Lightning (:free). With explicit operator consent, NVIDIA may record public questions and evidence for security and service improvement. Lexical-only retrieval in Neon; no external embeddings or paid fallback."
+                    : status.provider_mode === "openai-live-pilot"
+                      ? "gpt-5.6-sol answers + text-embedding-3-small embeddings. Public non-secret inputs only; external API calls consume budget."
+                      : "Local fake embeddings and answer provider. No external model calls or API keys."}
+              </p>
+              {status.pilot_budget && (
+                <p>
+                  Reserved ${(status.pilot_budget.reserved_cents / 100).toFixed(2)} / $
+                  {(status.pilot_budget.limit_cents / 100).toFixed(2)}. Conservative reservations,
+                  not actual billing. Expires {status.pilot_budget.expires_at}.
+                </p>
+              )}
             </article>
           </div>
+          {status.ai_connection && (
+            <AiConnection
+              connection={status.ai_connection}
+              refresh={() => {
+                void result.refetch();
+              }}
+            />
+          )}
           <section className="panel">
             <h2>Indexed knowledge snapshot</h2>
             <div className="metrics">
@@ -80,7 +112,11 @@ export default function Status() {
                 From the workspace root, configure your PostgreSQL connection and prepare the index.
                 Hosted Neon works without Docker; see apps/atlas/README.md.
               </p>
-              <pre>{"pnpm retrieval:migrate\npnpm retrieval:index\npnpm retrieval:check"}</pre>
+              <pre>
+                {status.provider_mode !== "deterministic-demo"
+                  ? "pnpm app:pilot index\npnpm app:pilot check"
+                  : "pnpm retrieval:migrate\npnpm retrieval:index\npnpm retrieval:check"}
+              </pre>
               <p>
                 See this app's README for the exact environment-variable setup. Do not use a
                 production database or run destructive database reset commands.

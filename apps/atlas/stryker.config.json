@@ -5,7 +5,16 @@
   "coverageAnalysis": "perTest",
   "mutate": [
     "packages/knowledge-adapter/src/snapshot.ts",
-    "packages/knowledge-adapter/src/kernel-adapter.ts"
+    "packages/knowledge-adapter/src/kernel-adapter.ts",
+    "packages/knowledge-adapter/src/pilot-budget.ts",
+    "packages/knowledge-adapter/src/providers.ts",
+    "packages/knowledge-adapter/src/pilot-index.ts",
+    "apps/api/src/config.ts",
+    "packages/knowledge-adapter/src/openrouter-provider.ts",
+    "packages/knowledge-adapter/src/agy-provider.ts",
+    "packages/ai-connectors/src/agy-process.ts",
+    "packages/ai-connectors/src/openrouter-connectors.ts",
+    "apps/api/src/openrouter-routes.ts"
   ],
   "reporters": ["clear-text", "progress", "json"],
   "jsonReporter": { "fileName": "reports/mutation.json" },

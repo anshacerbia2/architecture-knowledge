@@ -1,6 +1,114 @@
 import { test, expect } from "@playwright/test";
 import { KNOWLEDGE_ID_PATTERN } from "../../packages/contracts/src/index.js";
 
+for (const mode of ["oauth", "api"] as const) {
+  test(`free OpenRouter ${mode} connector UI keeps credentials out of the browser`, async ({
+    page,
+  }, testInfo) => {
+    // Mock transport only, never an actual login or inference call.
+    let connected = true;
+    await page.route("**/api/v1/status", (route) =>
+      route.fulfill({
+        json: {
+          contract_version: 1,
+          request_id: "synthetic-status",
+          repository_commit: "synthetic-sha",
+          data: {
+            repository_commit: "synthetic-sha",
+            graph: "ready",
+            retrieval: "unavailable",
+            retrieval_code: "RETRIEVAL_GENERATION_MISSING",
+            generation_id: null,
+            database_mode: "hosted",
+            counts: {},
+            provider_mode: "openrouter-free",
+            recommendations_enabled: false,
+            ai_connection: { mode, connected },
+            retrieval_strategy: "lexical",
+            pilot_budget: null,
+          },
+        },
+      }),
+    );
+    await page.route("**/api/v1/connectors/openrouter/disconnect", (route) => {
+      expect(route.request().method()).toBe("POST");
+      expect(route.request().headers()["x-app-token"]).toMatch(/^[a-f0-9]{64}$/);
+      connected = false;
+      return route.fulfill({ json: { data: { connected: false } } });
+    });
+    await page.goto("/status");
+    await expect(page.getByRole("heading", { name: "OpenRouter free", exact: true })).toBeVisible();
+    await expect(page.getByText(/Lexical-only retrieval in Neon/)).toBeVisible();
+    await expect(page.getByText(/NVIDIA may record public questions and evidence/)).toBeVisible();
+    await expect(page.getByText(/pnpm app:pilot index/)).toBeVisible();
+    await expect(page.locator('input[type="password"]')).toHaveCount(0);
+    if (mode === "api") {
+      await expect(page.getByRole("button", { name: "Connect OpenRouter" })).toHaveCount(0);
+      await expect(page.getByText(/Configure OPENROUTER_API_KEY/)).toBeVisible();
+      return;
+    }
+    await page.getByRole("button", { name: "Disconnect locally" }).click();
+    await expect(page.getByText(/Account connection \(OAuth PKCE\): Not connected/)).toBeVisible();
+    await expect(page.getByRole("button", { name: "Disconnect locally" })).toBeDisabled();
+    await page.screenshot({ path: testInfo.outputPath("openrouter-status.png"), fullPage: true });
+    await page.route("**/api/v1/connectors/openrouter/start", (route) =>
+      route.fulfill({
+        json: {
+          data: { authorization_url: "https://openrouter.ai/auth?code_challenge=synthetic" },
+        },
+      }),
+    );
+    await page.route("https://openrouter.ai/auth?*", (route) =>
+      route.fulfill({ contentType: "text/html", body: "Mock authorization page" }),
+    );
+    await page.getByRole("button", { name: "Connect OpenRouter" }).click();
+    await expect(page).toHaveURL("https://openrouter.ai/auth?code_challenge=synthetic");
+    await expect(page.getByText("Mock authorization page")).toBeVisible();
+  });
+}
+
+test("live pilot disclosures show budget and public egress without making live calls", async ({
+  page,
+}) => {
+  // UI transport fixture, not live-provider or billing evidence.
+  await page.route("**/api/v1/status", async (route) => {
+    await route.fulfill({
+      json: {
+        contract_version: 1,
+        request_id: "synthetic-status",
+        repository_commit: "synthetic-sha",
+        data: {
+          repository_commit: "synthetic-sha",
+          graph: "ready",
+          retrieval: "unavailable",
+          retrieval_code: "RETRIEVAL_GENERATION_MISSING",
+          generation_id: null,
+          database_mode: "hosted",
+          counts: {},
+          provider_mode: "openai-live-pilot",
+          recommendations_enabled: false,
+          pilot_budget: {
+            limit_cents: 500,
+            reserved_cents: 51,
+            remaining_cents: 449,
+            expires_at: "2026-10-01T00:00:00.000Z",
+          },
+        },
+      },
+    });
+  });
+  await page.goto("/status");
+  await expect(page.getByRole("link", { name: "PROVIDER STATUS" })).toBeVisible();
+  await expect(page.getByText("DETERMINISTIC DEMO", { exact: true })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "OpenAI live pilot" })).toBeVisible();
+  await expect(page.getByText(/Reserved \$0.51 \/ \$5.00/)).toBeVisible();
+  await expect(page.getByText(/pnpm app:pilot index/)).toBeVisible();
+  await page.goto("/ask");
+  await expect(
+    page.getByText(/submitting sends your question and retrieved public evidence/),
+  ).toBeVisible();
+});
+
 test("every real identifier family is accepted, including AKL claims", async ({
   request,
   page,
@@ -111,6 +219,14 @@ test("single-turn answer UI displays safe citations and qualifiers; clear remove
                   url: "https://example.com",
                   locators: [],
                 },
+                {
+                  citation_id: "c2",
+                  evidence_id: "E2",
+                  source_id: "AKS-000001",
+                  title: "Synthetic source",
+                  url: "https://example.com",
+                  locators: [{ locator: "Synthetic section" }],
+                },
               ],
             },
           ],
@@ -125,6 +241,10 @@ test("single-turn answer UI displays safe citations and qualifiers; clear remove
   await expect(page.getByText("Synthetic condition", { exact: true })).toBeVisible();
   await expect(page.locator(".statement script")).toHaveCount(0);
   await page.getByText("AKS-000001 · Synthetic source", { exact: true }).click();
+  await expect(page.getByText("AKS-000001 · Synthetic source", { exact: true })).toHaveCount(1);
+  await expect(page.getByText("Evidence: E1, E2", { exact: true })).toBeVisible();
+  await expect(page.getByText("Synthetic section", { exact: true })).toBeVisible();
+  await expect(page.getByText("None recorded", { exact: true })).toHaveCount(0);
   await expect(page.getByRole("link", { name: "Open registered source" })).toHaveAttribute(
     "rel",
     "noreferrer noopener",

@@ -6,7 +6,11 @@ import {
   DeterministicFakeEmbeddingProvider,
   validateEmbeddingVector,
 } from "./embedding-provider.js";
-import { fakeEmbeddingHasTokenOverlap } from "./fake-embedding-relevance.js";
+import {
+  contentTokenOverlapCount,
+  contentTokens,
+  fakeEmbeddingHasTokenOverlap,
+} from "./fake-embedding-relevance.js";
 import {
   EXACT_ID_BOOST,
   EXACT_TITLE_OR_KEY_BOOST,
@@ -60,14 +64,24 @@ export class PostgresRetrievalStore implements RetrievalStore {
     limit: number,
   ): Promise<RankedRow[]> {
     const query = buildFilterSql(filters, 3);
-    const result = await this.pool.query<UnitRow & { channel_score: number }>(
-      `SELECT ${unitColumns()}, ts_rank_cd(search_document, websearch_to_tsquery('simple', $2), 32) AS channel_score
-       FROM retrieval_units WHERE generation_id=$1
-       AND search_document @@ websearch_to_tsquery('simple', $2) ${query.sql}
-       ORDER BY channel_score DESC, unit_id ASC LIMIT $${query.parameters.length + 3}`,
-      [generationId, text, ...query.parameters, limit],
-    );
-    return result.rows.map((row, index) => ({
+    const search = (searchText: string) =>
+      this.pool.query<UnitRow & { channel_score: number }>(
+        `SELECT ${unitColumns()}, ts_rank_cd(search_document, websearch_to_tsquery('simple', $2), 32) AS channel_score
+         FROM retrieval_units WHERE generation_id=$1
+         AND search_document @@ websearch_to_tsquery('simple', $2) ${query.sql}
+         ORDER BY channel_score DESC, unit_id ASC LIMIT $${query.parameters.length + 3}`,
+        [generationId, searchText, ...query.parameters, limit],
+      );
+    const result = await search(text);
+    const relaxed = result.rows.length === 0 ? lexicalOrQuery(text) : null;
+    const fallback = relaxed && relaxed !== text ? await search(relaxed) : result;
+    const minimumOverlap = Math.min(2, contentTokens(text).length);
+    const rows = relaxed
+      ? fallback.rows.filter(
+          (row) => contentTokenOverlapCount(text, row.retrieval_text) >= minimumOverlap,
+        )
+      : fallback.rows;
+    return rows.map((row, index) => ({
       unit: rowToUnit(row),
       rank: index + 1,
       score: Number(row.channel_score),
@@ -504,6 +518,12 @@ function baseScore(queryText: string, candidate: RetrievalCandidate): number {
   const vector =
     candidate.vector_rank === null ? 0 : VECTOR_RRF_WEIGHT / (RRF_K + candidate.vector_rank);
   return lexical + vector + exactBoost(queryText, candidate.unit);
+}
+
+function lexicalOrQuery(text: string): string | null {
+  const tokens = contentTokens(text);
+  if (tokens.length === 0) return null;
+  return tokens.map((token) => `"${token}"`).join(" OR ");
 }
 
 function exactBoost(queryText: string, unit: RetrievalUnit): number {

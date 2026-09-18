@@ -8,3 +8,4 @@ playwright-report/
 !.env.example
 !.env.hosted.example
 *.log
+.tmp/

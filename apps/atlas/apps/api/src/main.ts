@@ -12,11 +12,13 @@ const knowledge = await KernelAdapter.create(
   config.repoRoot,
   config.databaseUrl,
   config.databaseMode,
+  config.provider,
 );
 const staticRoot = path.join(appRoot, "dist/web");
 const app = await createServer(new KnowledgeService(knowledge), {
   port: config.port,
   logger: true,
+  connector: config.connector,
   staticRoot: existsSync(staticRoot) ? staticRoot : undefined,
 });
 app.addHook("onClose", async () => knowledge.close());

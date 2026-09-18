@@ -70,7 +70,10 @@ export default function Explore() {
       </form>
       <p className="hint">
         Typing filters the catalog below. Search index queries PostgreSQL/pgvector; it requires a
-        current index.
+        current index. In OpenRouter free mode, select Lexical: no embeddings or graph expansion are
+        used for retrieval. In OpenAI live pilot mode, Hybrid searches send your query to OpenAI for
+        embedding and consume budget. Use only public, non-secret test queries. Typing alone sends
+        nothing to OpenAI.
       </p>
       <Notice error={search.error} />
       {search.data && (

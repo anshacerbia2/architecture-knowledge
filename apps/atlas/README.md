@@ -15,7 +15,8 @@ pnpm app:start
 
 Open http://127.0.0.1:4310. Stop with Ctrl+C. For development use `pnpm app:dev` and open
 http://127.0.0.1:5173. The development proxy expects API port 4310. Rebuild the kernel after kernel
-implementation changes; restart to load a new snapshot.
+implementation changes when using the package start command directly. The root `pnpm app:start`
+command rebuilds the kernel automatically; restart to load a new snapshot.
 
 Startup requires a clean checkout, validated knowledge, and current generated artifacts. It detaches
 and freezes the loaded graph and retrieval records. Authoring edits after startup do not change the
@@ -56,6 +57,16 @@ try {
 }
 ```
 
+If `apps/atlas/.env` already contains the hosted Neon `DATABASE_URL`, the same setup can be run
+without temporary environment commands:
+
+```powershell
+pnpm retrieval:hosted:setup
+```
+
+This reads the URL only for the child processes, uses the deterministic stored embedding contract,
+and runs migration, indexing and currentness check in order. It never prints the URL.
+
 Migration is needed on first setup or when new migrations arrive. Index after changing the pinned
 commit, including documentation-only commits under the current generation contract. Password
 rotation alone does not require indexing. No HTTP endpoint migrates or indexes automatically. The
@@ -67,13 +78,30 @@ show retrieval ready before Search or Ask can work.
 
 ## Features and evidence limits
 
+For a no-credit setup use
+[OpenRouter free mode with OAuth or API key](docs/openrouter-free-connectors.md). OAuth adds a
+Connect OpenRouter button in System status; credentials remain server-side. This mode uses lexical
+retrieval in Neon and a pinned free answer model, with no paid fallback. The direct OpenAI paid
+pilot below is an alternative, not a dependency of free mode.
+
+The [Antigravity CLI runner](docs/antigravity-cli.md) uses `agy -p` with your existing CLI login. No
+SDK or new API key is required. `pnpm app:agy:check` sends a small public cloud prompt to check the
+runner. It uses normal CLI permissions, not a tool sandbox; read the local privacy boundary.
+
 - Explore concepts, claims, sources, relationships and decision guides.
 - Inspect a one-hop graph (40-edge display limit), exclusions and conditions.
 - Search PostgreSQL using lexical, hybrid or hybrid-graph retrieval.
 - Ask a single question and inspect citations, uncertainty and provenance.
 
-Embedding and answer providers remain deterministic demos. They exercise real storage and retrieval,
-but do not establish live-model quality. Try: `Can Retry and Circuit Breaker be combined?`
+Embedding and answer providers default to deterministic demos. They exercise real storage and
+retrieval, but do not establish live-model quality. Try:
+`Can Retry and Circuit Breaker be combined?`
+
+The opt-in [OpenAI live-provider pilot](docs/live-provider-pilot.md) uses a shared conservative USD
+5 allowance, explicit public-corpus consent and server-only credentials. Follow that guide to
+configure `apps/atlas/.env`, plan, initialize budget, index, check and activate. Do not use the
+unbudgeted root retrieval CLI with live credentials for this pilot. No live calls occur just because
+an API key exists.
 
 Citation resolution does not prove semantic entailment. No decision approval or ADR/RFC/PAD
 generator is provided. This app is loopback-only for one trusted OS user.

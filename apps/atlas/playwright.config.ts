@@ -15,7 +15,8 @@ export default defineConfig({
   webServer: {
     command: "pnpm start",
     url: `${baseURL}/health/live`,
-    env: { PORT: port },
+    // Never inherit a live provider from the operator's .env during browser tests.
+    env: { PORT: port, ATLAS_PROVIDER_MODE: "fake" },
     reuseExistingServer: false,
     timeout: 120000,
   },

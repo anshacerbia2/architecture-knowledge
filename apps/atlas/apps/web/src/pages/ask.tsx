@@ -23,9 +23,14 @@ export default function Ask() {
         <p>Single-turn knowledge Q&A. Recommendations and automated decisions are disabled.</p>
       </section>
       <div className="info-banner">
-        <strong>Local deterministic demo</strong>
+        <strong>Check provider mode in System status</strong>
         <span>
-          No external model calls. A current PostgreSQL index is required. Each question is
+          In live mode, submitting sends your question and retrieved public evidence to the
+          configured AI service. OpenRouter free mode uses lexical retrieval with no paid fallback;
+          NVIDIA may record public questions and evidence when the operator enables its logging
+          policy. Direct OpenAI consumes the pilot budget. Use only non-secret public test
+          questions. Antigravity CLI also uses cloud inference and may retain CLI conversation
+          history outside Atlas. Fake mode makes no external model calls. Each question is
           independent.
         </span>
       </div>
@@ -109,7 +114,8 @@ export default function Ask() {
         </>
       )}
       <p className="hint">
-        No persisted chat history. Refreshing or leaving this page clears the displayed answer.
+        Atlas does not persist chat history. Refreshing or leaving this page clears the displayed
+        answer, not any provider or CLI history.
       </p>
     </>
   );

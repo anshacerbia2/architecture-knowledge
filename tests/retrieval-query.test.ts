@@ -261,6 +261,67 @@ describe("M5 query contract and ranking", () => {
     expect(call[1]).toContain(attack);
     expect(call[1].at(-1)).toBe(10);
   });
+
+  it("falls back to parameterized OR terms for natural-language lexical queries", async () => {
+    const query = vi
+      .fn()
+      .mockResolvedValueOnce({ rows: [], rowCount: 0 })
+      .mockResolvedValueOnce({ rows: [], rowCount: 0 });
+    const store = new PostgresRetrievalStore({ query } as never);
+    await store.lexical("generation", "What is a circuit breaker?", validRequest().filters, 10);
+    expect(query).toHaveBeenCalledTimes(2);
+    const fallback = query.mock.calls[1] as unknown as [string, unknown[]];
+    expect(fallback[1]?.[1]).toBe('"circuit" OR "breaker"');
+    expect(fallback[0]).not.toContain("What is a circuit breaker?");
+  });
+
+  it("requires two content-token matches for a multi-term relaxed query", async () => {
+    const weak = unit("ru:weak", "AKC-000001", "Topology", null);
+    const strong = unit("ru:strong", "AKC-000013", "Circuit breaker", null);
+    const query = vi
+      .fn()
+      .mockResolvedValueOnce({ rows: [], rowCount: 0 })
+      .mockResolvedValueOnce({
+        rows: [
+          { ...weak, channel_score: 0.2 },
+          { ...strong, channel_score: 0.1 },
+        ],
+        rowCount: 2,
+      });
+    const store = new PostgresRetrievalStore({ query } as never);
+    const rows = await store.lexical(
+      "generation",
+      "What is a circuit breaker topology?",
+      validRequest().filters,
+      10,
+    );
+    expect(rows.map((row) => row.unit.unit_id)).toEqual(["ru:strong"]);
+    expect(rows[0]?.rank).toBe(1);
+  });
+
+  it("does not relax or post-filter a successful primary lexical search", async () => {
+    const primary = unit("ru:primary", "AKC-000001", "Topology", null);
+    const query = vi.fn().mockResolvedValue({
+      rows: [{ ...primary, channel_score: 0.2 }],
+      rowCount: 1,
+    });
+    const store = new PostgresRetrievalStore({ query } as never);
+    const rows = await store.lexical(
+      "generation",
+      "quantum topology schedule",
+      validRequest().filters,
+      10,
+    );
+    expect(query).toHaveBeenCalledOnce();
+    expect(rows.map((row) => row.unit.unit_id)).toEqual(["ru:primary"]);
+  });
+
+  it("does not repeat an already quoted content-token query unchanged", async () => {
+    const query = vi.fn().mockResolvedValue({ rows: [], rowCount: 0 });
+    const store = new PostgresRetrievalStore({ query } as never);
+    await store.lexical("generation", '"retry"', validRequest().filters, 10);
+    expect(query).toHaveBeenCalledOnce();
+  });
 });
 
 function unit(

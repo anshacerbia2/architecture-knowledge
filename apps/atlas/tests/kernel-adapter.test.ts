@@ -38,6 +38,11 @@ vi.mock("architecture-knowledge-system/runtime", async (importOriginal) => ({
 }));
 import { KernelAdapter } from "../packages/knowledge-adapter/src/kernel-adapter.js";
 import { answer, node } from "./fixture.js";
+import { mkdtempSync, rmSync } from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import { PilotBudget } from "../packages/knowledge-adapter/src/pilot-budget.js";
+import { OpenRouterOAuthConnector } from "../packages/ai-connectors/src/openrouter-connectors.js";
 
 const graph = () => ({
   nodes: [{ ...node }, { ...node, id: "AKC-000013", title: null }],
@@ -87,6 +92,66 @@ beforeEach(() => {
   });
 });
 const create = () => KernelAdapter.create("synthetic-root", "postgresql://localhost/synthetic");
+it("CLI mode remains lexical-only, public-only, and never claims API/OAuth authentication", async () => {
+  const manifest = `sha256:${"a".repeat(64)}`;
+  state.loadArtifacts.mockResolvedValue({ units: [], manifest: { manifest_root_hash: manifest } });
+  const adapter = await KernelAdapter.create(
+    "synthetic-root",
+    "postgresql://localhost/synthetic",
+    "local",
+    {
+      mode: "antigravity-cli",
+      publicManifest: manifest,
+      executable: path.resolve("agy.exe"),
+    },
+  );
+  await expect(
+    adapter.ask({ question: "secret", data_classification: "internal" }),
+  ).rejects.toMatchObject({ code: "PILOT_PUBLIC_ONLY" });
+  await expect(adapter.search({ text: "public", mode: "hybrid" })).rejects.toThrow();
+  expect(state.current).not.toHaveBeenCalled();
+  await adapter.ask({ question: "public", data_classification: "public" });
+  expect(state.answer.mock.calls[0]![0]).toMatchObject({
+    retrieval: { mode: "lexical", graph: { enabled: false, max_depth: 0 } },
+  });
+  expect(await adapter.status()).toMatchObject({
+    provider_mode: "antigravity-cli",
+    retrieval_strategy: "lexical",
+    ai_connection: null,
+  });
+});
+it("free mode uses lexical retrieval only and denies private inputs before any retrieval", async () => {
+  const manifest = `sha256:${"a".repeat(64)}`;
+  state.loadArtifacts.mockResolvedValue({ units: [], manifest: { manifest_root_hash: manifest } });
+  const adapter = await KernelAdapter.create(
+    "synthetic-root",
+    "postgresql://localhost/synthetic",
+    "local",
+    {
+      mode: "openrouter-free",
+      publicManifest: manifest,
+      credential: new OpenRouterOAuthConnector(),
+    },
+  );
+  await expect(
+    adapter.ask({ question: "secret", data_classification: "confidential" }),
+  ).rejects.toMatchObject({ code: "PILOT_PUBLIC_ONLY" });
+  await expect(adapter.search({ text: "public", mode: "hybrid-graph" })).rejects.toMatchObject({
+    code: "FREE_MODE_LEXICAL_ONLY",
+  });
+  expect(state.current).not.toHaveBeenCalled();
+  await adapter.ask({ question: "public", data_classification: "public" });
+  expect(state.answer.mock.calls[0]![0]).toMatchObject({
+    retrieval: { mode: "lexical", graph: { enabled: false, max_depth: 0 } },
+  });
+  await adapter.search({ text: "public", mode: "lexical" });
+  expect(state.query.mock.calls[0]![0].mode).toBe("lexical");
+  expect(await adapter.status()).toMatchObject({
+    provider_mode: "openrouter-free",
+    retrieval_strategy: "lexical",
+    ai_connection: { mode: "oauth", connected: false },
+  });
+});
 it("maps governed records without reclassifying excluded relationships", async () => {
   const adapter = await create();
   expect(await adapter.catalog()).toHaveLength(2);
@@ -256,4 +321,44 @@ it("reports readiness and leaves lifecycle unchanged", async () => {
     provider_mode: "deterministic-demo",
   });
   expect((await adapter.catalog())[0]?.status).toBe("proposed");
+});
+
+it("rejects non-public live questions before DB access or query embedding; exposes safe mode only", async () => {
+  const directory = mkdtempSync(path.join(os.tmpdir(), "atlas-classification-test-"));
+  try {
+    const budgetFile = path.join(directory, "budget.txt");
+    new PilotBudget(budgetFile).initialize();
+    const manifest = `sha256:${"a".repeat(64)}`;
+    state.loadArtifacts.mockResolvedValue({
+      units: [],
+      manifest: { manifest_root_hash: manifest },
+    });
+    const adapter = await KernelAdapter.create(
+      "synthetic-root",
+      "postgresql://localhost/synthetic",
+      "local",
+      {
+        mode: "openai",
+        apiKey: "synthetic-secret",
+        publicManifest: manifest,
+        budgetFile,
+      },
+    );
+    for (const data_classification of ["internal", "confidential"] as const)
+      await expect(
+        adapter.ask({ question: "private synthetic", data_classification }),
+      ).rejects.toMatchObject({ code: "PILOT_PUBLIC_ONLY" });
+    expect(state.current).not.toHaveBeenCalled();
+    expect(state.query).not.toHaveBeenCalled();
+    expect(state.answer).not.toHaveBeenCalled();
+    const status = await adapter.status();
+    expect(status.provider_mode).toBe("openai-live-pilot");
+    expect(status.pilot_budget?.reserved_cents).toBe(0);
+    expect(JSON.stringify(status)).not.toContain("synthetic-secret");
+    expect(JSON.stringify(status)).not.toContain(budgetFile);
+    await adapter.ask({ question: "public synthetic", data_classification: "public" });
+    expect(state.answer).toHaveBeenCalledOnce();
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
+  }
 });

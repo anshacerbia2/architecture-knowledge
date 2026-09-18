@@ -6,6 +6,7 @@ playwright-report
 pnpm-lock.yaml
 reports
 .stryker-tmp
+.tmp
 .env
 .env.*
 !.env.example

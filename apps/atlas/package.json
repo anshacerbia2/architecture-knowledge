@@ -8,6 +8,8 @@
     "node": ">=24.11.1 <25"
   },
   "scripts": {
+    "agy:check": "tsx scripts/agy-check.ts",
+    "pilot": "tsx scripts/live-pilot.ts",
     "benchmark": "tsx scripts/benchmark.ts",
     "test:mutation": "stryker run stryker.config.json",
     "dev": "concurrently -k -n api,web \"pnpm dev:api\" \"pnpm dev:web\"",

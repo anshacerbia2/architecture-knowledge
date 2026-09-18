@@ -1,9 +1,67 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { RetrievalDatabaseMode } from "../../../packages/contracts/src/index.js";
+import type { ProviderSettings } from "../../../packages/knowledge-adapter/src/providers.js";
+import {
+  OpenRouterApiConnector,
+  OpenRouterOAuthConnector,
+} from "../../../packages/ai-connectors/src/openrouter-connectors.js";
 
 export const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 export function configuration(env: NodeJS.ProcessEnv) {
+  const mode = env.ATLAS_PROVIDER_MODE ?? "fake";
+  if (
+    mode !== "fake" &&
+    mode !== "openai" &&
+    mode !== "openrouter-free" &&
+    mode !== "antigravity-cli"
+  )
+    throw new Error("PROVIDER_MODE_INVALID");
+  let provider: ProviderSettings = { mode: "fake" };
+  let connector: OpenRouterApiConnector | OpenRouterOAuthConnector | undefined;
+  if (mode === "antigravity-cli") {
+    if (env.ATLAS_LIVE_CONSENT !== "agy-public-cloud-cli-history")
+      throw new Error("PILOT_CONSENT_REQUIRED");
+    if (!/^sha256:[a-f0-9]{64}$/.test(env.ATLAS_PUBLIC_MANIFEST ?? ""))
+      throw new Error("PILOT_PUBLIC_MANIFEST_REQUIRED");
+    const executable = env.ATLAS_AGY_EXECUTABLE ?? "";
+    if (!path.isAbsolute(executable) || !/^agy(?:\.exe)?$/i.test(path.basename(executable)))
+      throw new Error("AGY_EXECUTABLE_INVALID");
+    provider = { mode, publicManifest: env.ATLAS_PUBLIC_MANIFEST!, executable };
+  }
+  if (mode === "openrouter-free") {
+    if (env.ATLAS_LIVE_CONSENT !== "openrouter-public-free-only")
+      throw new Error("PILOT_CONSENT_REQUIRED");
+    if (!/^sha256:[a-f0-9]{64}$/.test(env.ATLAS_PUBLIC_MANIFEST ?? ""))
+      throw new Error("PILOT_PUBLIC_MANIFEST_REQUIRED");
+    const dataPolicy = env.ATLAS_OPENROUTER_DATA_POLICY ?? "no-collection";
+    if (dataPolicy !== "no-collection" && dataPolicy !== "nvidia-public-logging")
+      throw new Error("OPENROUTER_DATA_POLICY_INVALID");
+    const authMode = env.ATLAS_AI_CONNECTOR ?? "oauth";
+    if (authMode !== "api" && authMode !== "oauth") throw new Error("AI_CONNECTOR_INVALID");
+    connector =
+      authMode === "oauth"
+        ? new OpenRouterOAuthConnector()
+        : new OpenRouterApiConnector(env.OPENROUTER_API_KEY?.trim() ?? "");
+    provider = {
+      mode,
+      publicManifest: env.ATLAS_PUBLIC_MANIFEST!,
+      credential: connector,
+      dataCollection: dataPolicy === "nvidia-public-logging" ? "allow" : "deny",
+    };
+  }
+  if (mode === "openai") {
+    if (env.ATLAS_LIVE_CONSENT !== "public-only-usd5") throw new Error("PILOT_CONSENT_REQUIRED");
+    if (!env.OPENAI_API_KEY?.trim()) throw new Error("OPENAI_API_KEY_REQUIRED");
+    if (!/^sha256:[a-f0-9]{64}$/.test(env.ATLAS_PUBLIC_MANIFEST ?? ""))
+      throw new Error("PILOT_PUBLIC_MANIFEST_REQUIRED");
+    provider = {
+      mode,
+      apiKey: env.OPENAI_API_KEY.trim(),
+      publicManifest: env.ATLAS_PUBLIC_MANIFEST!,
+      budgetFile: path.join(appRoot, ".tmp/live-pilot/budget.txt"),
+    };
+  }
   const port = Number(env.PORT ?? "4310");
   if (!Number.isInteger(port) || port < 1024 || port > 65535) throw new Error("INVALID_PORT");
   const repoRoot = path.resolve(env.KNOWLEDGE_REPO_ROOT ?? path.join(appRoot, "../.."));
@@ -34,5 +92,7 @@ export function configuration(env: NodeJS.ProcessEnv) {
     repoRoot,
     databaseUrl,
     databaseMode: databaseMode as RetrievalDatabaseMode,
+    provider,
+    connector,
   };
 }
