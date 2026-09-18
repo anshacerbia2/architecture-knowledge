@@ -29,12 +29,18 @@ diagnostics on 2026-09-18 found requests reaching the 45-second deadline; a reas
 returned HTTP 200 but failed the existing kernel statement-ID rule. The provider's schema projection
 and instructions now advertise `S` plus exactly four digits (for example `S0001`). This narrows the
 advertised format to the existing parser contract, not a kernel schema or identifier migration.
-Model outputs are never repaired, and evidence/claim identifiers are not rewritten.
+Model outputs are never repaired, and evidence/claim identifiers are not rewritten. Evidence and
+claim ID patterns and uniqueness are also advertised. The input includes authoritative citation
+bindings (evidence ID and registered source ID only) alongside the existing kernel input; these
+guide the model but never replace downstream citation-authority validation. Instructions spell out
+the existing claim/evidence mapping and epistemic/confidence constraints, and request one to three
+short statements.
 
 `OPENROUTER_TIMEOUT` identifies bounded catalog/inference timeouts;
 `OPENROUTER_ANSWER_SCHEMA_INVALID` identifies invalid answer JSON or semantic shape after
 function-envelope checks. Neither error discloses raw model output or automatically retries. The
-15-second catalog and 45-second inference deadlines, public-only boundary and citation validation
+catalog timeout remains 15 seconds; the free-route inference deadline is 90 seconds to accommodate
+variable endpoint latency. Root provider defaults, public-only boundaries and citation validation
 remain unchanged. Disabling reasoning is a latency/output-budget trade-off, not evidence of
 equivalent answer quality.
 

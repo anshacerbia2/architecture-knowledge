@@ -20,6 +20,7 @@ const context = {
   data_classification: "public",
   context_fingerprint: "synthetic",
   evidence: [],
+  citation_catalog: [],
 } as unknown as RagContextPacket;
 const request = () =>
   parseRagRequest({ question: "synthetic public question", data_classification: "public" });
@@ -85,6 +86,7 @@ it("supports distinct API/OAuth config, public manifest consent and free provide
     expect(() => configuration({ ...env, ...bad })).toThrow();
 });
 it("sends only the pinned zero-price structured request and validates the returned model and output", async () => {
+  const timeout = vi.spyOn(AbortSignal, "timeout");
   const transport = vi
     .fn<typeof fetch>()
     .mockResolvedValueOnce(json({ data: [entry()] }))
@@ -132,6 +134,43 @@ it("sends only the pinned zero-price structured request and validates the return
   expect(body.models).toBeUndefined();
   expect(body.messages[0].role).toBe("system");
   expect(body.messages[1].content).toContain("synthetic public question");
+  expect(timeout.mock.calls.map(([milliseconds]) => milliseconds)).toEqual([15000, 90000]);
+  expect(JSON.parse(body.messages[1].content)).toMatchObject({
+    context: { question: "synthetic public question" },
+    resolved_citations: [],
+  });
+});
+it("sends only authoritative citation bindings as guidance without manufacturing model citations", async () => {
+  const transport = vi
+    .fn<typeof fetch>()
+    .mockResolvedValueOnce(json({ data: [entry()] }))
+    .mockResolvedValueOnce(json(response()));
+  await make(transport).generate(
+    {
+      ...context,
+      citation_catalog: [
+        {
+          evidence_id: "E0001",
+          source_id: "AKS-000001",
+          citation_id: "C0001",
+          title: "Synthetic",
+          url: "https://example.com",
+          locators: [],
+        },
+      ],
+    },
+    request(),
+  );
+  const body = JSON.parse(transport.mock.calls[1]![1]!.body as string);
+  expect(JSON.parse(body.messages[1].content).resolved_citations).toEqual([
+    { evidence_id: "E0001", source_id: "AKS-000001" },
+  ]);
+  expect(
+    body.tools[0].function.parameters.properties.statements.items.properties.evidence_ids,
+  ).toMatchObject({ uniqueItems: true, items: { pattern: "^E[0-9]{4}$" } });
+  expect(
+    body.tools[0].function.parameters.properties.statements.items.properties.claim_ids,
+  ).toMatchObject({ uniqueItems: true, items: { pattern: "^AKL-[0-9]{6}$" } });
 });
 it.each([undefined, "no-collection", "nvidia-public-logging"])(
   "propagates explicit data policy %s from configuration to the request without weakening other guards",

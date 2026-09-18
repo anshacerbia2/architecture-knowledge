@@ -30,6 +30,16 @@ const ANSWER_SCHEMA = {
             pattern: "^S[0-9]{4}$",
             description: "Unique statement ID, e.g. S0001, S0002.",
           },
+          evidence_ids: {
+            ...RAG_MODEL_OUTPUT_SCHEMA.properties.statements.items.properties.evidence_ids,
+            uniqueItems: true,
+            items: { type: "string", pattern: "^E[0-9]{4}$" },
+          },
+          claim_ids: {
+            ...RAG_MODEL_OUTPUT_SCHEMA.properties.statements.items.properties.claim_ids,
+            uniqueItems: true,
+            items: { type: "string", pattern: "^AKL-[0-9]{6}$" },
+          },
         },
       },
     },
@@ -115,9 +125,27 @@ export class OpenRouterFreeProvider implements RagModelProvider {
         messages: [
           {
             role: "system",
-            content: `${ragDeveloperInstructions()}\nSubmit the answer JSON as arguments to ${ANSWER_FUNCTION} exactly once. This function only submits an answer; it does not execute actions. Use unique statement IDs S0001, S0002, etc. Keep answers concise; copy evidence_ids and claim_ids only from supplied evidence, never invent or rename them.`,
+            content: [
+              ragDeveloperInstructions(),
+              `Submit the answer JSON as arguments to ${ANSWER_FUNCTION} exactly once. This function only submits an answer; it does not execute actions.`,
+              "Use unique statement IDs S0001, S0002, etc. Prefer one to three short statements answering only the question; do not repeat entire evidence records.",
+              "Copy evidence_ids only from supplied evidence. Every assertive statement needs at least one evidence_id listed in resolved_citations.",
+              "claim_ids must be record_id values of cited evidence items whose unit_kind is claim (AKL IDs). A concept_id, source ID or a claim mentioned inside text is not a directly cited claim record.",
+              "Use sourced-claim only with directly cited claim records and their claim_ids. Otherwise leave claim_ids empty and classify supported interpretation as inference with low or medium confidence, not high.",
+              "Synthesis requires at least two distinct evidence_ids. Uncertainty statements require low confidence. Never invent or rename evidence or claim identifiers; remove duplicate entries in arrays.",
+              "Respect allow_recommendations and max_statements. For answered include at least one statement and null refusal_reason. For insufficient-evidence use no statements and null refusal_reason. For refused use no statements and a nonempty refusal_reason.",
+            ].join("\n"),
           },
-          { role: "user", content: JSON.stringify(ragModelInput(context, request)) },
+          {
+            role: "user",
+            content: JSON.stringify({
+              context: ragModelInput(context, request),
+              resolved_citations: context.citation_catalog.map(({ evidence_id, source_id }) => ({
+                evidence_id,
+                source_id,
+              })),
+            }),
+          },
         ],
         // This route supports function calling, not response_format/json_schema.
         // Arguments are untrusted data: never execute calls or display raw model text.
@@ -146,7 +174,7 @@ export class OpenRouterFreeProvider implements RagModelProvider {
       const response = await this.transport(CHAT, {
         method: "POST",
         redirect: "error",
-        signal: AbortSignal.timeout(45000),
+        signal: AbortSignal.timeout(90000),
         headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
         body,
       });
