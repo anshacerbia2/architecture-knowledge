@@ -26,6 +26,9 @@ it("preserves classification and local schema validation across CLI transport", 
   const p = new AgyProvider(transport);
   expect(await p.generate(context, request)).toEqual(output);
   expect(transport.generate.mock.calls[0]![0]).toContain("synthetic public question");
+  expect(transport.generate.mock.calls[0]![0]).toContain("whose unit_kind is claim");
+  expect(transport.generate.mock.calls[0]![0]).toContain("at least two distinct evidence items");
+  expect(transport.generate.mock.calls[0]![0]).not.toContain("Claim IDs: AKL-000001");
   for (const c of ["internal", "confidential"] as const)
     await expect(p.generate({ ...context, data_classification: c }, request)).rejects.toThrow();
   expect(transport.generate).toHaveBeenCalledOnce();
