@@ -140,16 +140,15 @@ export class KernelAdapter implements KnowledgePort {
       generation_id,
       database_mode: this.databaseMode,
       counts,
-      provider_mode:
-        this.runtime.mode === "openrouter-free"
-          ? "openrouter-free"
-          : this.runtime.budget
-            ? "openai-live-pilot"
-            : "deterministic-demo",
+      provider_mode: this.lexicalOnly
+        ? (this.runtime.mode as "openrouter-free" | "antigravity-cli")
+        : this.runtime.budget
+          ? "openai-live-pilot"
+          : "deterministic-demo",
       ai_connection: this.runtime.credential
         ? { mode: this.runtime.credential.mode, connected: this.runtime.credential.connected() }
         : null,
-      retrieval_strategy: this.runtime.mode === "openrouter-free" ? "lexical" : "hybrid-graph",
+      retrieval_strategy: this.lexicalOnly ? "lexical" : "hybrid-graph",
       pilot_budget: this.runtime.budget?.status() ?? null,
       recommendations_enabled: false,
     };
@@ -206,12 +205,15 @@ export class KernelAdapter implements KnowledgePort {
         "Index changed during the request. Retry after maintenance.",
       );
   }
+  private get lexicalOnly() {
+    return this.runtime.mode === "openrouter-free" || this.runtime.mode === "antigravity-cli";
+  }
   async search(input: SearchInput): Promise<SearchOutput> {
-    if (this.runtime.mode === "openrouter-free" && input.mode !== "lexical")
+    if (this.lexicalOnly && input.mode !== "lexical")
       throw new AppError(
         "FREE_MODE_LEXICAL_ONLY",
         400,
-        "Select Lexical search in free mode. No paid or fake semantic retrieval is used.",
+        "Select Lexical search for this provider. No paid or fake semantic retrieval is used.",
       );
     const { engine, generation } = await this.engine();
     const packet = await engine.query(
@@ -245,9 +247,18 @@ export class KernelAdapter implements KnowledgePort {
     const packet = await rag.answer(
       parseRagRequest({
         ...input,
-        ...(this.runtime.mode === "openrouter-free"
+        ...(this.lexicalOnly
           ? {
               retrieval: { mode: "lexical", graph: { enabled: false, max_depth: 0 } },
+            }
+          : {}),
+        ...(this.runtime.mode === "antigravity-cli"
+          ? {
+              retrieval: {
+                mode: "lexical",
+                graph: { enabled: false, max_depth: 0 },
+                budget: { max_units: 6, max_estimated_tokens: 1400, max_units_per_concept: 3 },
+              },
             }
           : {}),
       }),

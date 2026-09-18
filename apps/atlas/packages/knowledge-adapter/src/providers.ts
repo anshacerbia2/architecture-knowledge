@@ -8,9 +8,12 @@ import { AppError } from "../../application/src/errors.js";
 import { PilotBudget, pilotFetch } from "./pilot-budget.js";
 import type { AiCredentialPort } from "../../application/src/ai-credential-port.js";
 import { OpenRouterFreeProvider } from "./openrouter-provider.js";
+import { AgyProcess } from "../../ai-connectors/src/agy-process.js";
+import { AgyProvider } from "./agy-provider.js";
 
 export type ProviderSettings =
   | { mode: "fake" }
+  | { mode: "antigravity-cli"; publicManifest: string; executable: string }
   | {
       mode: "openrouter-free";
       publicManifest: string;
@@ -42,6 +45,14 @@ export function providers(settings: ProviderSettings, manifest: string) {
       503,
       "Confirm the exact retrieval manifest is public before enabling external providers.",
     );
+  if (settings.mode === "antigravity-cli")
+    return {
+      embedding: new DeterministicFakeEmbeddingProvider(),
+      answer: new AgyProvider(new AgyProcess(settings.executable)),
+      budget: null,
+      mode: "antigravity-cli" as const,
+      credential: null,
+    };
   if (settings.mode === "openrouter-free")
     return {
       embedding: new DeterministicFakeEmbeddingProvider(),

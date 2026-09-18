@@ -50,18 +50,22 @@ export default function Status() {
             <article className="panel">
               <span className="eyebrow">ANSWER PROVIDER</span>
               <h2>
-                {status.provider_mode === "openrouter-free"
-                  ? "OpenRouter free"
-                  : status.provider_mode === "openai-live-pilot"
-                    ? "OpenAI live pilot"
-                    : "Deterministic demo"}
+                {status.provider_mode === "antigravity-cli"
+                  ? "Antigravity CLI runner"
+                  : status.provider_mode === "openrouter-free"
+                    ? "OpenRouter free"
+                    : status.provider_mode === "openai-live-pilot"
+                      ? "OpenAI live pilot"
+                      : "Deterministic demo"}
               </h2>
               <p>
-                {status.provider_mode === "openrouter-free"
-                  ? "NVIDIA Nemotron 3.5 Lightning (:free). With explicit operator consent, NVIDIA may record public questions and evidence for security and service improvement. Lexical-only retrieval in Neon; no external embeddings or paid fallback."
-                  : status.provider_mode === "openai-live-pilot"
-                    ? "gpt-5.6-sol answers + text-embedding-3-small embeddings. Public non-secret inputs only; external API calls consume budget."
-                    : "Local fake embeddings and answer provider. No external model calls or API keys."}
+                {status.provider_mode === "antigravity-cli"
+                  ? "Gemini 3.8 Flash Low via agy -p, using your existing CLI login. Public inputs and retrieved evidence go to cloud inference; CLI history may persist. Uses normal CLI permissions, not a tool sandbox. Lexical retrieval; no provider fallback."
+                  : status.provider_mode === "openrouter-free"
+                    ? "NVIDIA Nemotron 3.5 Lightning (:free). With explicit operator consent, NVIDIA may record public questions and evidence for security and service improvement. Lexical-only retrieval in Neon; no external embeddings or paid fallback."
+                    : status.provider_mode === "openai-live-pilot"
+                      ? "gpt-5.6-sol answers + text-embedding-3-small embeddings. Public non-secret inputs only; external API calls consume budget."
+                      : "Local fake embeddings and answer provider. No external model calls or API keys."}
               </p>
               {status.pilot_budget && (
                 <p>

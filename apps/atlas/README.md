@@ -84,6 +84,10 @@ Connect OpenRouter button in System status; credentials remain server-side. This
 retrieval in Neon and a pinned free answer model, with no paid fallback. The direct OpenAI paid
 pilot below is an alternative, not a dependency of free mode.
 
+The [Antigravity CLI runner](docs/antigravity-cli.md) uses `agy -p` with your existing CLI login. No
+SDK or new API key is required. `pnpm app:agy:check` sends a small public cloud prompt to check the
+runner. It uses normal CLI permissions, not a tool sandbox; read the local privacy boundary.
+
 - Explore concepts, claims, sources, relationships and decision guides.
 - Inspect a one-hop graph (40-edge display limit), exclusions and conditions.
 - Search PostgreSQL using lexical, hybrid or hybrid-graph retrieval.

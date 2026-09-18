@@ -10,10 +10,25 @@ import {
 export const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 export function configuration(env: NodeJS.ProcessEnv) {
   const mode = env.ATLAS_PROVIDER_MODE ?? "fake";
-  if (mode !== "fake" && mode !== "openai" && mode !== "openrouter-free")
+  if (
+    mode !== "fake" &&
+    mode !== "openai" &&
+    mode !== "openrouter-free" &&
+    mode !== "antigravity-cli"
+  )
     throw new Error("PROVIDER_MODE_INVALID");
   let provider: ProviderSettings = { mode: "fake" };
   let connector: OpenRouterApiConnector | OpenRouterOAuthConnector | undefined;
+  if (mode === "antigravity-cli") {
+    if (env.ATLAS_LIVE_CONSENT !== "agy-public-cloud-cli-history")
+      throw new Error("PILOT_CONSENT_REQUIRED");
+    if (!/^sha256:[a-f0-9]{64}$/.test(env.ATLAS_PUBLIC_MANIFEST ?? ""))
+      throw new Error("PILOT_PUBLIC_MANIFEST_REQUIRED");
+    const executable = env.ATLAS_AGY_EXECUTABLE ?? "";
+    if (!path.isAbsolute(executable) || !/^agy(?:\.exe)?$/i.test(path.basename(executable)))
+      throw new Error("AGY_EXECUTABLE_INVALID");
+    provider = { mode, publicManifest: env.ATLAS_PUBLIC_MANIFEST!, executable };
+  }
   if (mode === "openrouter-free") {
     if (env.ATLAS_LIVE_CONSENT !== "openrouter-public-free-only")
       throw new Error("PILOT_CONSENT_REQUIRED");

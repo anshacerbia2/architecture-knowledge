@@ -29,6 +29,11 @@
     },
     {
       "path": "apps/atlas/README.md",
+      "target": "docs/antigravity-cli.md",
+      "status": "valid"
+    },
+    {
+      "path": "apps/atlas/README.md",
       "target": "docs/architecture.md",
       "status": "valid"
     },
@@ -954,8 +959,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 190,
+    "checked_link_count": 191,
     "broken_link_count": 0,
-    "markdown_file_count": 118
+    "markdown_file_count": 119
   }
 }

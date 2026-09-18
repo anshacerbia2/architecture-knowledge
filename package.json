@@ -26,6 +26,7 @@
     "app:test:e2e": "pnpm --filter architecture-knowledge-app test:e2e",
     "app:benchmark": "pnpm --filter architecture-knowledge-app benchmark",
     "app:pilot": "pnpm --filter architecture-knowledge-app pilot",
+    "app:agy:check": "pnpm --filter architecture-knowledge-app agy:check",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"*.json\" \"*.ts\" \"schemas/**/*.json\" \".github/**/*.yml\" \".github/scripts/**/*.mjs\" \"*.yml\"",
     "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\" \"*.json\" \"*.ts\" \"schemas/**/*.json\" \".github/**/*.yml\" \".github/scripts/**/*.mjs\" \"*.yml\"",

@@ -92,6 +92,34 @@ beforeEach(() => {
   });
 });
 const create = () => KernelAdapter.create("synthetic-root", "postgresql://localhost/synthetic");
+it("CLI mode remains lexical-only, public-only, and never claims API/OAuth authentication", async () => {
+  const manifest = `sha256:${"a".repeat(64)}`;
+  state.loadArtifacts.mockResolvedValue({ units: [], manifest: { manifest_root_hash: manifest } });
+  const adapter = await KernelAdapter.create(
+    "synthetic-root",
+    "postgresql://localhost/synthetic",
+    "local",
+    {
+      mode: "antigravity-cli",
+      publicManifest: manifest,
+      executable: path.resolve("agy.exe"),
+    },
+  );
+  await expect(
+    adapter.ask({ question: "secret", data_classification: "internal" }),
+  ).rejects.toMatchObject({ code: "PILOT_PUBLIC_ONLY" });
+  await expect(adapter.search({ text: "public", mode: "hybrid" })).rejects.toThrow();
+  expect(state.current).not.toHaveBeenCalled();
+  await adapter.ask({ question: "public", data_classification: "public" });
+  expect(state.answer.mock.calls[0]![0]).toMatchObject({
+    retrieval: { mode: "lexical", graph: { enabled: false, max_depth: 0 } },
+  });
+  expect(await adapter.status()).toMatchObject({
+    provider_mode: "antigravity-cli",
+    retrieval_strategy: "lexical",
+    ai_connection: null,
+  });
+});
 it("free mode uses lexical retrieval only and denies private inputs before any retrieval", async () => {
   const manifest = `sha256:${"a".repeat(64)}`;
   state.loadArtifacts.mockResolvedValue({ units: [], manifest: { manifest_root_hash: manifest } });
