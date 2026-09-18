@@ -79,6 +79,8 @@ it("supports distinct API/OAuth config, public manifest consent and free provide
     { ATLAS_PUBLIC_MANIFEST: "bad" },
     { ATLAS_AI_CONNECTOR: "saml" },
     { ATLAS_AI_CONNECTOR: "api" },
+    { ATLAS_OPENROUTER_DATA_POLICY: "allow" },
+    { ATLAS_OPENROUTER_DATA_POLICY: "" },
   ])
     expect(() => configuration({ ...env, ...bad })).toThrow();
 });
@@ -110,6 +112,7 @@ it("sends only the pinned zero-price structured request and validates the return
       allow_fallbacks: false,
       require_parameters: true,
       data_collection: "deny",
+      only: ["nvidia"],
       max_price: { prompt: 0, completion: 0, request: 0, image: 0 },
     },
     tool_choice: { type: "function", function: { name: "submit_architecture_answer" } },
@@ -125,6 +128,72 @@ it("sends only the pinned zero-price structured request and validates the return
   expect(body.messages[0].role).toBe("system");
   expect(body.messages[1].content).toContain("synthetic public question");
 });
+it.each([undefined, "no-collection", "nvidia-public-logging"])(
+  "propagates explicit data policy %s from configuration to the request without weakening other guards",
+  async (policy) => {
+    const transport = vi
+      .fn<typeof fetch>()
+      .mockResolvedValueOnce(json({ data: [entry()] }))
+      .mockResolvedValueOnce(json(response()));
+    vi.stubGlobal("fetch", transport);
+    try {
+      const manifest = `sha256:${"a".repeat(64)}`;
+      const config = configuration({
+        ATLAS_PROVIDER_MODE: "openrouter-free",
+        ATLAS_LIVE_CONSENT: "openrouter-public-free-only",
+        ATLAS_PUBLIC_MANIFEST: manifest,
+        ATLAS_AI_CONNECTOR: "api",
+        OPENROUTER_API_KEY: KEY,
+        ...(policy === undefined ? {} : { ATLAS_OPENROUTER_DATA_POLICY: policy }),
+      });
+      const provider = providers(config.provider, manifest).answer;
+      for (const classification of ["internal", "confidential"] as const)
+        await expect(
+          provider.generate(
+            { ...context, data_classification: classification },
+            { ...request(), data_classification: classification },
+          ),
+        ).rejects.toThrow();
+      expect(transport).not.toHaveBeenCalled();
+      expect(await provider.generate(context, request())).toEqual(output);
+      const body = JSON.parse(transport.mock.calls[1]![1]!.body as string);
+      expect(body.model).toBe("nvidia/nemotron-3.5-lightning:free");
+      expect(body.provider).toEqual({
+        data_collection: policy === "nvidia-public-logging" ? "allow" : "deny",
+        only: ["nvidia"],
+        allow_fallbacks: false,
+        require_parameters: true,
+        max_price: { prompt: 0, completion: 0, request: 0, image: 0 },
+      });
+      expect(body.models).toBeUndefined();
+      expect(transport).toHaveBeenCalledTimes(2);
+    } finally {
+      vi.unstubAllGlobals();
+    }
+  },
+);
+it.each([
+  { message: "No endpoints found matching your data policy. secret detail", blocked: true },
+  { message: "Review privacy settings. secret detail", blocked: true },
+  { message: "No endpoints available. secret detail", blocked: false },
+  { message: null, blocked: false },
+])(
+  "redacts 404 details and classifies a data-policy rejection (%j)",
+  async ({ message, blocked }) => {
+    const transport = vi
+      .fn<typeof fetch>()
+      .mockResolvedValueOnce(json({ data: [entry()] }))
+      .mockResolvedValueOnce(new Response(JSON.stringify({ error: { message } }), { status: 404 }));
+    const error = await make(transport)
+      .generate(context, request())
+      .catch((e: unknown) => e);
+    expect(error).toMatchObject({
+      code: blocked ? "OPENROUTER_DATA_POLICY_BLOCKED" : "OPENROUTER_REQUEST_FAILED",
+    });
+    expect((error as Error).message).not.toContain("secret detail");
+    expect(transport).toHaveBeenCalledTimes(2);
+  },
+);
 it("rejects disconnected or non-public requests without metadata or inference calls", async () => {
   const transport = vi.fn<typeof fetch>();
   const provider = make(transport);

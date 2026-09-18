@@ -39,6 +39,7 @@ for (const mode of ["oauth", "api"] as const) {
     await page.goto("/status");
     await expect(page.getByRole("heading", { name: "OpenRouter free", exact: true })).toBeVisible();
     await expect(page.getByText(/Lexical-only retrieval in Neon/)).toBeVisible();
+    await expect(page.getByText(/NVIDIA may record public questions and evidence/)).toBeVisible();
     await expect(page.getByText(/pnpm app:pilot index/)).toBeVisible();
     await expect(page.locator('input[type="password"]')).toHaveCount(0);
     if (mode === "api") {

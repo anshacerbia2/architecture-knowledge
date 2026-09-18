@@ -11,7 +11,12 @@ import { OpenRouterFreeProvider } from "./openrouter-provider.js";
 
 export type ProviderSettings =
   | { mode: "fake" }
-  | { mode: "openrouter-free"; publicManifest: string; credential: AiCredentialPort }
+  | {
+      mode: "openrouter-free";
+      publicManifest: string;
+      credential: AiCredentialPort;
+      dataCollection?: "deny" | "allow";
+    }
   | {
       mode: "openai";
       apiKey: string;
@@ -40,7 +45,7 @@ export function providers(settings: ProviderSettings, manifest: string) {
   if (settings.mode === "openrouter-free")
     return {
       embedding: new DeterministicFakeEmbeddingProvider(),
-      answer: new OpenRouterFreeProvider(settings.credential),
+      answer: new OpenRouterFreeProvider(settings.credential, fetch, settings.dataCollection),
       budget: null,
       mode: "openrouter-free" as const,
       credential: settings.credential,

@@ -41,6 +41,7 @@ export class OpenRouterFreeProvider implements RagModelProvider {
   constructor(
     private readonly credential: AiCredentialPort,
     private readonly transport: typeof fetch = fetch,
+    private readonly dataCollection: "deny" | "allow" = "deny",
   ) {}
 
   async generate(context: RagContextPacket, request: RagRequest) {
@@ -109,7 +110,9 @@ export class OpenRouterFreeProvider implements RagModelProvider {
         provider: {
           allow_fallbacks: false,
           require_parameters: true,
-          data_collection: "deny",
+          // Opt-in applies only to this pinned NVIDIA free route, never paid fallback.
+          data_collection: this.dataCollection,
+          only: ["nvidia"],
           max_price: { prompt: 0, completion: 0, request: 0, image: 0 },
         },
       });
@@ -121,7 +124,23 @@ export class OpenRouterFreeProvider implements RagModelProvider {
         headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
         body,
       });
-      if (!response.ok) throw httpProblem(response.status);
+      if (!response.ok) {
+        if (response.status === 404) {
+          const detail: unknown = await response.json().catch(() => null);
+          if (
+            object(detail) &&
+            object(detail.error) &&
+            typeof detail.error.message === "string" &&
+            /data policy|privacy settings/i.test(detail.error.message)
+          )
+            throw new AppError(
+              "OPENROUTER_DATA_POLICY_BLOCKED",
+              503,
+              "OpenRouter rejected routing under its data policy. Review account privacy settings at https://openrouter.ai/settings/privacy. Atlas does not change those settings. No paid fallback was attempted.",
+            );
+        }
+        throw httpProblem(response.status);
+      }
       const result: unknown = await response.json();
       if (
         !object(result) ||

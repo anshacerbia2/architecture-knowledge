@@ -58,7 +58,7 @@ export default function Status() {
               </h2>
               <p>
                 {status.provider_mode === "openrouter-free"
-                  ? "NVIDIA Nemotron 3.5 Lightning (:free). Lexical-only retrieval in Neon; no external embeddings or paid fallback."
+                  ? "NVIDIA Nemotron 3.5 Lightning (:free). With explicit operator consent, NVIDIA may record public questions and evidence for security and service improvement. Lexical-only retrieval in Neon; no external embeddings or paid fallback."
                   : status.provider_mode === "openai-live-pilot"
                     ? "gpt-5.6-sol answers + text-embedding-3-small embeddings. Public non-secret inputs only; external API calls consume budget."
                     : "Local fake embeddings and answer provider. No external model calls or API keys."}

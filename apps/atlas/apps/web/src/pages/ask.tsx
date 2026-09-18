@@ -27,8 +27,9 @@ export default function Ask() {
         <span>
           In live mode, submitting sends your question and retrieved public evidence to the
           configured AI service. OpenRouter free mode uses lexical retrieval with no paid fallback;
-          direct OpenAI consumes the pilot budget. Use only non-secret public test questions. Fake
-          mode makes no external model calls. Each question is independent.
+          NVIDIA may record public questions and evidence when the operator enables its logging
+          policy. Direct OpenAI consumes the pilot budget. Use only non-secret public test
+          questions. Fake mode makes no external model calls. Each question is independent.
         </span>
       </div>
       <form

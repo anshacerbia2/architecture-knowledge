@@ -25,14 +25,38 @@ exactly; undocumented alias changes fail closed. The existing citation-authority
 checks still run before display.
 
 Requests specify zero maximum prompt/completion/request/image prices, no provider fallbacks,
-required parameter support and `data_collection: deny`. No executable tools, model fallback lists,
-external embeddings or premium options are enabled. The old direct OpenAI connector cannot be
-selected automatically. Errors, exhausted quota or no eligible free endpoint are surfaced without a
-paid retry or privacy-policy relaxation. Provider enforcement remains an external dependency; this
-is not a guarantee about all charges on an account used by other apps. Use a dedicated key with a
-provider-side spending restriction if available. Reported nonzero inference cost rejects the
-response. HTTP rejection messages expose only the upstream status code, never upstream error bodies,
-credentials or prompts.
+required parameter support, `only: ["nvidia"]`, and default `data_collection: deny`. No executable
+tools, model fallback lists, external embeddings or premium options are enabled. The old direct
+OpenAI connector cannot be selected automatically. Errors, exhausted quota or no eligible free
+endpoint are surfaced without a paid retry or privacy-policy relaxation. Provider enforcement
+remains an external dependency; this is not a guarantee about all charges on an account used by
+other apps. Use a dedicated key with a provider-side spending restriction if available. Reported
+nonzero inference cost rejects the response. HTTP rejection messages expose only the upstream status
+code or a fixed data-policy diagnostic, never upstream error bodies, credentials or prompts.
+
+### Explicit public-data logging opt-in
+
+On 2026-09-18, Ansha Cerbia explicitly consented in the project conversation to provider recording
+of public questions and evidence for the pinned NVIDIA free route. This is operational data-egress
+consent, not approval of knowledge, claims or decisions. The ignored local `.env` records that
+choice:
+
+```dotenv
+ATLAS_OPENROUTER_DATA_POLICY=nvidia-public-logging
+```
+
+Only this exact value enables `data_collection: allow`; omission or `no-collection` retains `deny`,
+and unknown values fail startup. The model and provider remain pinned to NVIDIA's free endpoint. Its
+published notice says inputs may be recorded for security and service improvement. Do not send
+personal, confidential or secret data, even if manually labeled Public. Internal/confidential
+request classifications remain blocked before retrieval or inference, and the public manifest check
+still applies.
+
+The request-level opt-in does not override account privacy settings or guardrails. If OpenRouter
+returns a data-policy rejection, Atlas reports `OPENROUTER_DATA_POLICY_BLOCKED`; the operator must
+review the account setting themselves. Atlas never changes it or retries under weaker settings.
+Removing the local opt-in and restarting restores the no-collection policy; it cannot retract data
+already transmitted. This does not enable Atlas prompt logging or persistent chat history.
 
 Free mode retrieves **lexically from PostgreSQL**, not with semantic vectors or graph expansion. It
 uses the existing fake-contract DB generation only as indexed storage; neither fake query embedding
@@ -167,6 +191,7 @@ paid fallback.
 - [OAuth PKCE and local callbacks](https://openrouter.ai/docs/guides/overview/auth/oauth).
 - [Provider pricing, fallback and privacy controls](https://openrouter.ai/docs/guides/routing/provider-selection).
 - [Function calling and tool choice](https://openrouter.ai/docs/guides/features/tool-calling).
+- [NVIDIA free endpoint data notice](https://openrouter.ai/nvidia/nemotron-3.5-lightning:free).
 - [Model catalog](https://openrouter.ai/api/v1/models).
 - [Pinned free route endpoints](https://openrouter.ai/api/v1/models/nvidia/nemotron-3.5-lightning:free/endpoints).
 - [Upstream account rate limits](https://openrouter.ai/docs/api/reference/limits).

@@ -19,13 +19,21 @@ export function configuration(env: NodeJS.ProcessEnv) {
       throw new Error("PILOT_CONSENT_REQUIRED");
     if (!/^sha256:[a-f0-9]{64}$/.test(env.ATLAS_PUBLIC_MANIFEST ?? ""))
       throw new Error("PILOT_PUBLIC_MANIFEST_REQUIRED");
+    const dataPolicy = env.ATLAS_OPENROUTER_DATA_POLICY ?? "no-collection";
+    if (dataPolicy !== "no-collection" && dataPolicy !== "nvidia-public-logging")
+      throw new Error("OPENROUTER_DATA_POLICY_INVALID");
     const authMode = env.ATLAS_AI_CONNECTOR ?? "oauth";
     if (authMode !== "api" && authMode !== "oauth") throw new Error("AI_CONNECTOR_INVALID");
     connector =
       authMode === "oauth"
         ? new OpenRouterOAuthConnector()
         : new OpenRouterApiConnector(env.OPENROUTER_API_KEY?.trim() ?? "");
-    provider = { mode, publicManifest: env.ATLAS_PUBLIC_MANIFEST!, credential: connector };
+    provider = {
+      mode,
+      publicManifest: env.ATLAS_PUBLIC_MANIFEST!,
+      credential: connector,
+      dataCollection: dataPolicy === "nvidia-public-logging" ? "allow" : "deny",
+    };
   }
   if (mode === "openai") {
     if (env.ATLAS_LIVE_CONSENT !== "public-only-usd5") throw new Error("PILOT_CONSENT_REQUIRED");
