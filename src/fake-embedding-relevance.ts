@@ -8,8 +8,16 @@ const FUNCTION_WORDS = new Set(
 );
 
 export function fakeEmbeddingHasTokenOverlap(query: string, candidate: string): boolean {
+  return contentTokenOverlapCount(query, candidate) > 0;
+}
+
+export function contentTokens(text: string): string[] {
+  return [...new Set(tokens(text).filter((term) => !FUNCTION_WORDS.has(term)))];
+}
+
+export function contentTokenOverlapCount(query: string, candidate: string): number {
   const candidateTerms = new Set(tokens(candidate));
-  return tokens(query).some((term) => !FUNCTION_WORDS.has(term) && candidateTerms.has(term));
+  return contentTokens(query).filter((term) => candidateTerms.has(term)).length;
 }
 
 function tokens(text: string): string[] {

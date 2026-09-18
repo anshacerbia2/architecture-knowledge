@@ -6,7 +6,11 @@ import {
   DeterministicFakeEmbeddingProvider,
   validateEmbeddingVector,
 } from "./embedding-provider.js";
-import { fakeEmbeddingHasTokenOverlap } from "./fake-embedding-relevance.js";
+import {
+  contentTokenOverlapCount,
+  contentTokens,
+  fakeEmbeddingHasTokenOverlap,
+} from "./fake-embedding-relevance.js";
 import {
   EXACT_ID_BOOST,
   EXACT_TITLE_OR_KEY_BOOST,
@@ -71,7 +75,13 @@ export class PostgresRetrievalStore implements RetrievalStore {
     const result = await search(text);
     const relaxed = result.rows.length === 0 ? lexicalOrQuery(text) : null;
     const fallback = relaxed && relaxed !== text ? await search(relaxed) : result;
-    return fallback.rows.map((row, index) => ({
+    const minimumOverlap = Math.min(2, contentTokens(text).length);
+    const rows = relaxed
+      ? fallback.rows.filter(
+          (row) => contentTokenOverlapCount(text, row.retrieval_text) >= minimumOverlap,
+        )
+      : fallback.rows;
+    return rows.map((row, index) => ({
       unit: rowToUnit(row),
       rank: index + 1,
       score: Number(row.channel_score),
@@ -511,10 +521,9 @@ function baseScore(queryText: string, candidate: RetrievalCandidate): number {
 }
 
 function lexicalOrQuery(text: string): string | null {
-  const tokens = text.match(/[A-Za-z0-9][A-Za-z0-9_-]*/g);
-  if (!tokens || tokens.length < 2) return null;
-  const unique = [...new Set(tokens)];
-  return unique.map((token) => `"${token}"`).join(" OR ");
+  const tokens = contentTokens(text);
+  if (tokens.length === 0) return null;
+  return tokens.map((token) => `"${token}"`).join(" OR ");
 }
 
 function exactBoost(queryText: string, unit: RetrievalUnit): number {
