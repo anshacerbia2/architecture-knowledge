@@ -219,6 +219,14 @@ test("single-turn answer UI displays safe citations and qualifiers; clear remove
                   url: "https://example.com",
                   locators: [],
                 },
+                {
+                  citation_id: "c2",
+                  evidence_id: "E2",
+                  source_id: "AKS-000001",
+                  title: "Synthetic source",
+                  url: "https://example.com",
+                  locators: [{ locator: "Synthetic section" }],
+                },
               ],
             },
           ],
@@ -233,6 +241,10 @@ test("single-turn answer UI displays safe citations and qualifiers; clear remove
   await expect(page.getByText("Synthetic condition", { exact: true })).toBeVisible();
   await expect(page.locator(".statement script")).toHaveCount(0);
   await page.getByText("AKS-000001 · Synthetic source", { exact: true }).click();
+  await expect(page.getByText("AKS-000001 · Synthetic source", { exact: true })).toHaveCount(1);
+  await expect(page.getByText("Evidence: E1, E2", { exact: true })).toBeVisible();
+  await expect(page.getByText("Synthetic section", { exact: true })).toBeVisible();
+  await expect(page.getByText("None recorded", { exact: true })).toHaveCount(0);
   await expect(page.getByRole("link", { name: "Open registered source" })).toHaveAttribute(
     "rel",
     "noreferrer noopener",
