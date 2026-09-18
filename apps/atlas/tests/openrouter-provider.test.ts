@@ -459,6 +459,28 @@ it.each(["S1", "statement_1", "S0001"])(
       });
   },
 );
+it.each([429, 502, undefined, "secret", 999, 400.5])(
+  "classifies late HTTP 200 provider failures without treating them as answers (%s)",
+  async (code) => {
+    const transport = vi
+      .fn<typeof fetch>()
+      .mockResolvedValueOnce(json({ data: [entry()] }))
+      .mockResolvedValueOnce(
+        json({ ...response(), error: { code, message: "secret upstream detail" } }),
+      );
+    const error = await make(transport)
+      .generate(context, request())
+      .catch((e: unknown) => e);
+    expect(error).toMatchObject({
+      code: code === 429 ? "OPENROUTER_RATE_LIMIT" : "OPENROUTER_UPSTREAM_ERROR",
+    });
+    expect((error as Error).message).toContain(
+      code === 429 || code === 502 ? String(code) : "unknown",
+    );
+    expect((error as Error).message).not.toContain("secret");
+    expect(transport).toHaveBeenCalledTimes(2);
+  },
+);
 it("limits concurrent, rapid and per-process attempts, and rechecks pricing each time", async () => {
   let time = Date.now();
   vi.spyOn(Date, "now").mockImplementation(() => time);

@@ -196,6 +196,19 @@ export class OpenRouterFreeProvider implements RagModelProvider {
         throw httpProblem(response.status);
       }
       const result: unknown = await response.json();
+      // OpenRouter can report a late generation failure inside an HTTP 200 envelope.
+      if (object(result) && object(result.error)) {
+        const code = result.error.code;
+        const safeCode =
+          typeof code === "number" && Number.isInteger(code) && code >= 100 && code <= 599
+            ? String(code)
+            : "unknown";
+        throw new AppError(
+          code === 429 ? "OPENROUTER_RATE_LIMIT" : "OPENROUTER_UPSTREAM_ERROR",
+          503,
+          `OpenRouter reported a generation failure inside HTTP 200 (provider code ${safeCode}). No answer was released and no automatic retry or paid fallback was attempted.`,
+        );
+      }
       if (
         !object(result) ||
         result.model !== this.model ||

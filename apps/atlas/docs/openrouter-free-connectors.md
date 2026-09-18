@@ -44,6 +44,12 @@ variable endpoint latency. Root provider defaults, public-only boundaries and ci
 remain unchanged. Disabling reasoning is a latency/output-budget trade-off, not evidence of
 equivalent answer quality.
 
+A later live probe returned HTTP 200 with an `error` envelope and no model completion. Such late
+generation failures are classified as `OPENROUTER_UPSTREAM_ERROR` (or rate limiting for code 429),
+not malformed answers. Only a bounded numeric provider error code is surfaced; messages and model
+content remain private. This remains an upstream availability limitation, not evidence that live
+answers are reliable. No successful end-to-end answer is claimed by these diagnostics.
+
 Requests specify zero maximum prompt/completion/request/image prices, no provider fallbacks,
 required parameter support, `only: ["nvidia"]`, and default `data_collection: deny`. No executable
 tools, model fallback lists, external embeddings or premium options are enabled. The old direct
