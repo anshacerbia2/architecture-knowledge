@@ -26,7 +26,7 @@ const request = () =>
 const entry = () => ({
   id: OPENROUTER_FREE_MODEL,
   pricing: { prompt: "0", completion: "0" },
-  supported_parameters: ["tools", "tool_choice"],
+  supported_parameters: ["tools", "tool_choice", "reasoning"],
 });
 const output = {
   status: "insufficient-evidence",
@@ -108,6 +108,7 @@ it("sends only the pinned zero-price structured request and validates the return
     model: OPENROUTER_FREE_MODEL,
     stream: false,
     max_tokens: 1800,
+    reasoning: { enabled: false },
     provider: {
       allow_fallbacks: false,
       require_parameters: true,
@@ -123,6 +124,10 @@ it("sends only the pinned zero-price structured request and validates the return
     function: { name: "submit_architecture_answer", parameters: RAG_MODEL_OUTPUT_SCHEMA },
   });
   expect(body.tools[0].function.strict).toBeUndefined();
+  expect(
+    body.tools[0].function.parameters.properties.statements.items.properties.statement_id,
+  ).toMatchObject({ pattern: "^S[0-9]{4}$" });
+  expect(body.messages[0].content).toContain("S0001, S0002");
   expect(body.response_format).toBeUndefined();
   expect(body.models).toBeUndefined();
   expect(body.messages[0].role).toBe("system");
@@ -224,6 +229,8 @@ it.each([
   { data: [{ ...entry(), supported_parameters: ["tools"] }] },
   { data: [{ ...entry(), supported_parameters: ["tool_choice"] }] },
   { data: [{ ...entry(), supported_parameters: ["structured_outputs"] }] },
+  { data: [{ ...entry(), supported_parameters: ["tools", "tool_choice"] }] },
+  { data: [{ ...entry(), reasoning: { mandatory: true } }] },
 ])("blocks missing/paid/incompatible catalog without sending evidence (%j)", async (catalog) => {
   const transport = vi.fn<typeof fetch>().mockResolvedValue(json(catalog));
   await expect(make(transport).generate(context, request())).rejects.toMatchObject({
@@ -357,6 +364,62 @@ it("honors refusal, HTTP failures, timeout errors and payload/output bounds with
   ).rejects.toThrow();
   expect(transport).toHaveBeenCalledOnce();
 });
+it.each(["TimeoutError", "AbortError"])(
+  "classifies %s during catalog, inference and body reads without leaking details or retrying",
+  async (name) => {
+    for (const stage of ["catalog", "inference", "body"] as const) {
+      const failure = Object.assign(new Error("secret diagnostic"), { name });
+      const transport = vi.fn<typeof fetch>();
+      if (stage !== "catalog") transport.mockResolvedValueOnce(json({ data: [entry()] }));
+      if (stage === "body") {
+        const failedResponse = json({});
+        vi.spyOn(failedResponse, "json").mockRejectedValue(failure);
+        transport.mockResolvedValueOnce(failedResponse);
+      } else transport.mockRejectedValueOnce(failure);
+      const error = await make(transport)
+        .generate(context, request())
+        .catch((e: unknown) => e);
+      expect(error).toMatchObject({ code: "OPENROUTER_TIMEOUT", status: 504 });
+      expect((error as Error).message).toContain(stage === "catalog" ? "catalog" : "inference");
+      expect((error as Error).message).not.toContain("secret diagnostic");
+      expect(transport).toHaveBeenCalledTimes(stage === "catalog" ? 1 : 2);
+    }
+  },
+);
+it.each(["S1", "statement_1", "S0001"])(
+  "enforces kernel statement ID format for %s without rewriting identifiers",
+  async (id) => {
+    const result = response();
+    const answered = {
+      ...output,
+      status: "answered",
+      statements: [
+        {
+          statement_id: id,
+          text: "Synthetic statement.",
+          epistemic_type: "sourced-claim",
+          evidence_ids: ["E0001"],
+          claim_ids: ["AKL-000001"],
+          conditions: [],
+          alternatives: [],
+          trade_offs: [],
+          confidence: "low",
+        },
+      ],
+    };
+    result.choices[0]!.message.tool_calls[0]!.function.arguments = JSON.stringify(answered);
+    const transport = vi
+      .fn<typeof fetch>()
+      .mockResolvedValueOnce(json({ data: [entry()] }))
+      .mockResolvedValueOnce(json(result));
+    if (id === "S0001")
+      expect(await make(transport).generate(context, request())).toEqual(answered);
+    else
+      await expect(make(transport).generate(context, request())).rejects.toMatchObject({
+        code: "OPENROUTER_ANSWER_SCHEMA_INVALID",
+      });
+  },
+);
 it("limits concurrent, rapid and per-process attempts, and rechecks pricing each time", async () => {
   let time = Date.now();
   vi.spyOn(Date, "now").mockImplementation(() => time);

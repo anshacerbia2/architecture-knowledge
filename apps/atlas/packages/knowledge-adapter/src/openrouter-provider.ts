@@ -14,6 +14,27 @@ import { AppError } from "../../application/src/errors.js";
 // Fixed zero-price route verified against the public model catalog on 2026-09-17.
 export const OPENROUTER_FREE_MODEL = "nvidia/nemotron-3.5-lightning:free";
 const ANSWER_FUNCTION = "submit_architecture_answer";
+// Advertise the existing kernel parser's ID rule; never repair model output after generation.
+const ANSWER_SCHEMA = {
+  ...RAG_MODEL_OUTPUT_SCHEMA,
+  properties: {
+    ...RAG_MODEL_OUTPUT_SCHEMA.properties,
+    statements: {
+      ...RAG_MODEL_OUTPUT_SCHEMA.properties.statements,
+      items: {
+        ...RAG_MODEL_OUTPUT_SCHEMA.properties.statements.items,
+        properties: {
+          ...RAG_MODEL_OUTPUT_SCHEMA.properties.statements.items.properties,
+          statement_id: {
+            type: "string",
+            pattern: "^S[0-9]{4}$",
+            description: "Unique statement ID, e.g. S0001, S0002.",
+          },
+        },
+      },
+    },
+  },
+};
 const CATALOG = "https://openrouter.ai/api/v1/models";
 const CHAT = "https://openrouter.ai/api/v1/chat/completions";
 const problem = (code: string) =>
@@ -58,6 +79,7 @@ export class OpenRouterFreeProvider implements RagModelProvider {
     this.active = true;
     this.nextAttempt = Date.now() + 3000;
     this.attempts++;
+    let stage: "catalog" | "inference" | "answer" = "catalog";
     try {
       // Revalidate each attempt: free availability/prices may change. No key or query sent here.
       const catalogResponse = await this.transport(CATALOG, {
@@ -80,17 +102,20 @@ export class OpenRouterFreeProvider implements RagModelProvider {
         ) ||
         !Array.isArray(entry.supported_parameters) ||
         !entry.supported_parameters.includes("tools") ||
-        !entry.supported_parameters.includes("tool_choice")
+        !entry.supported_parameters.includes("tool_choice") ||
+        !entry.supported_parameters.includes("reasoning") ||
+        (object(entry.reasoning) && entry.reasoning.mandatory === true)
       )
         throw problem("OPENROUTER_FREE_CONTRACT_UNAVAILABLE");
       const body = JSON.stringify({
         model: this.model,
         stream: false,
         max_tokens: request.answer.max_output_tokens,
+        reasoning: { enabled: false },
         messages: [
           {
             role: "system",
-            content: `${ragDeveloperInstructions()}\nSubmit the answer JSON as arguments to ${ANSWER_FUNCTION} exactly once. This function only submits an answer; it does not execute actions.`,
+            content: `${ragDeveloperInstructions()}\nSubmit the answer JSON as arguments to ${ANSWER_FUNCTION} exactly once. This function only submits an answer; it does not execute actions. Use unique statement IDs S0001, S0002, etc. Keep answers concise; copy evidence_ids and claim_ids only from supplied evidence, never invent or rename them.`,
           },
           { role: "user", content: JSON.stringify(ragModelInput(context, request)) },
         ],
@@ -102,7 +127,7 @@ export class OpenRouterFreeProvider implements RagModelProvider {
             function: {
               name: ANSWER_FUNCTION,
               description: "Submit one evidence-backed architecture answer for local validation.",
-              parameters: RAG_MODEL_OUTPUT_SCHEMA,
+              parameters: ANSWER_SCHEMA,
             },
           },
         ],
@@ -117,6 +142,7 @@ export class OpenRouterFreeProvider implements RagModelProvider {
         },
       });
       if (Buffer.byteLength(body) > 65536) throw problem("OPENROUTER_INPUT_LIMIT");
+      stage = "inference";
       const response = await this.transport(CHAT, {
         method: "POST",
         redirect: "error",
@@ -169,6 +195,7 @@ export class OpenRouterFreeProvider implements RagModelProvider {
         typeof call.function.arguments !== "string"
       )
         throw problem("OPENROUTER_OUTPUT_CONTRACT");
+      stage = "answer";
       return parseRagModelOutput(JSON.parse(call.function.arguments));
     } catch (error) {
       if (
@@ -176,6 +203,18 @@ export class OpenRouterFreeProvider implements RagModelProvider {
         (error instanceof Error && error.message === "RAG_MODEL_REFUSAL")
       )
         throw error;
+      if (error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError"))
+        throw new AppError(
+          "OPENROUTER_TIMEOUT",
+          504,
+          `OpenRouter ${stage === "catalog" ? "catalog" : "inference"} exceeded its time limit. No automatic retry or paid fallback was attempted.`,
+        );
+      if (stage === "answer")
+        throw new AppError(
+          "OPENROUTER_ANSWER_SCHEMA_INVALID",
+          503,
+          "The model returned answer arguments that failed local validation. The answer was not displayed. No paid fallback was attempted.",
+        );
       throw problem("OPENROUTER_RESPONSE_INVALID");
     } finally {
       this.active = false;

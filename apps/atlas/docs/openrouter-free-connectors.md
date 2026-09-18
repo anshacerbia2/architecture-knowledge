@@ -14,15 +14,29 @@ and forced function selection were listed. This route did not list support for `
 evidence.
 
 Before each inference, the adapter rereads the public catalog, requires the exact route, zero prices
-and `tools`/`tool_choice` support. It uses Chat Completions with one forced
-`submit_architecture_answer` function whose parameters are the kernel's existing answer JSON schema.
-The function is an output envelope, not an executable tool. Exactly one completed function call with
-the registered name and JSON-string arguments is required. The existing local output parser
-validates those arguments; provider-side schema enforcement is not assumed. Other message text is
-never displayed. There is no tool execution, continuation loop or second model call. Kernel
-instructions and input mapping remain in force. Returned model must match the requested route
-exactly; undocumented alias changes fail closed. The existing citation-authority and grounding
+and `tools`/`tool_choice`/`reasoning` support, rejecting mandatory-reasoning routes. It uses Chat
+Completions with one forced `submit_architecture_answer` function whose parameters are the kernel's
+existing answer JSON schema. The function is an output envelope, not an executable tool. Exactly one
+completed function call with the registered name and JSON-string arguments is required. The existing
+local output parser validates those arguments; provider-side schema enforcement is not assumed.
+Other message text is never displayed. There is no tool execution, continuation loop or second model
+call. Kernel instructions and input mapping remain in force. Returned model must match the requested
+route exactly; undocumented alias changes fail closed. The existing citation-authority and grounding
 checks still run before display.
+
+For this bounded single-turn lookup, requests explicitly disable optional reasoning. Live
+diagnostics on 2026-09-18 found requests reaching the 45-second deadline; a reasoning-disabled probe
+returned HTTP 200 but failed the existing kernel statement-ID rule. The provider's schema projection
+and instructions now advertise `S` plus exactly four digits (for example `S0001`). This narrows the
+advertised format to the existing parser contract, not a kernel schema or identifier migration.
+Model outputs are never repaired, and evidence/claim identifiers are not rewritten.
+
+`OPENROUTER_TIMEOUT` identifies bounded catalog/inference timeouts;
+`OPENROUTER_ANSWER_SCHEMA_INVALID` identifies invalid answer JSON or semantic shape after
+function-envelope checks. Neither error discloses raw model output or automatically retries. The
+15-second catalog and 45-second inference deadlines, public-only boundary and citation validation
+remain unchanged. Disabling reasoning is a latency/output-budget trade-off, not evidence of
+equivalent answer quality.
 
 Requests specify zero maximum prompt/completion/request/image prices, no provider fallbacks,
 required parameter support, `only: ["nvidia"]`, and default `data_collection: deny`. No executable
