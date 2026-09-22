@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { KnowledgeService } from "../packages/application/src/knowledge-service.js";
-import { fakePort } from "./fixture.js";
+import { DecisionService } from "../packages/application/src/decision-service.js";
+import { OperationLimiter } from "../packages/application/src/operation-limiter.js";
+import { decisionSession, fakeDecisionPort, fakePort } from "./fixture.js";
 import { configuration } from "../apps/api/src/config.js";
 import { safeSourceUrl } from "../apps/web/src/components/answer-panel.js";
 
@@ -35,6 +37,41 @@ describe("application policy", () => {
     await expect(service.search({ text: "retry", mode: "hybrid" })).resolves.toMatchObject({
       generation_id: "x",
     });
+  });
+  it("pins decision evaluation to the snapshot and shares admission control", async () => {
+    let release!: () => void;
+    const wait = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    const limiter = new OperationLimiter(1);
+    const decisions = new DecisionService(
+      fakeDecisionPort({
+        evaluateDecision: async () => {
+          await wait;
+          return { recommendation: {}, clarification_prompts: [] };
+        },
+      }),
+      limiter,
+    );
+    const knowledge = new KnowledgeService(fakePort(), 1, limiter);
+    const active = decisions.evaluate({
+      repository_commit: "a".repeat(40),
+      client_revision: 7,
+      session: decisionSession,
+    });
+    await expect(knowledge.search({ text: "retry", mode: "lexical" })).rejects.toMatchObject({
+      code: "BUSY",
+    });
+    release();
+    await expect(active).resolves.toMatchObject({ client_revision: 7 });
+    expect(() =>
+      decisions.evaluate({
+        repository_commit: "b".repeat(40),
+        client_revision: 8,
+        session: decisionSession,
+      }),
+    ).toThrow("snapshot changed");
+    expect(() => decisions.intake("AKC-000012")).toThrow("decision-guide ID");
   });
   it("validates operator configuration", () => {
     expect(configuration({}).port).toBe(4310);

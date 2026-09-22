@@ -29,3 +29,14 @@ export type { GraphArtifacts, GraphEdge } from "./graph-types.js";
 export type { RetrievalArtifacts } from "./retrieval-types.js";
 export { loadDecisionValidationSnapshot } from "./decision-validation-snapshot.js";
 export type { DecisionRecommendationValidator } from "./decision-recommendation-validator.js";
+export { loadDecisionRuntimeSnapshot } from "./decision-runtime.js";
+export type {
+  DecisionClarificationPrompt,
+  DecisionConditionPrompt,
+  DecisionEvaluationResult,
+  DecisionGuideCatalogItem,
+  DecisionGuideIntake,
+  DecisionRuntime,
+  DecisionRuntimeStatus,
+} from "./decision-runtime-types.js";
+export { DecisionRuntimeError } from "./decision-runtime-types.js";

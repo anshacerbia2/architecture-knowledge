@@ -544,12 +544,32 @@
     },
     {
       "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "m7-3-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "m7-3-local-evaluator.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
       "target": "m7-3-snapshot-validation.md",
       "status": "valid"
     },
     {
       "path": "docs/m7-3-decision-assistant-plan.md",
       "target": "m7-decision-guide-kernel.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-local-evaluator.md",
+      "target": "../src/runtime-api.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-local-evaluator.md",
+      "target": "m7-3-implementation-report.md",
       "status": "valid"
     },
     {
@@ -929,6 +949,26 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m7-3-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-3-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-3-local-evaluator.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-3-local-evaluator.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m7-3-snapshot-validation.md",
       "status": "valid"
     },
@@ -1189,6 +1229,16 @@
     },
     {
       "path": "README.md",
+      "target": "docs/m7-3-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
+      "target": "docs/m7-3-local-evaluator.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
       "target": "docs/m7-3-snapshot-validation.md",
       "status": "valid"
     },
@@ -1254,6 +1304,16 @@
     },
     {
       "path": "ROADMAP.md",
+      "target": "docs/m7-3-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
+      "target": "docs/m7-3-local-evaluator.md",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
       "target": "docs/m7-3-snapshot-validation.md",
       "status": "valid"
     },
@@ -1269,8 +1329,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 253,
+    "checked_link_count": 265,
     "broken_link_count": 0,
-    "markdown_file_count": 122
+    "markdown_file_count": 124
   }
 }

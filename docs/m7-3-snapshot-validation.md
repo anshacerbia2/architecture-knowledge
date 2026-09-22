@@ -88,8 +88,11 @@ Root formatting and the compiled kernel/Atlas production build passed.
 
 Schema validation and the snapshot loader are now included in coverage and in the
 existing recommendation mutation suite. Its threshold and mutation exclusions are
-unchanged; tests for the new boundary are included in that suite. Remaining gate
-outcomes are recorded at handoff after execution. Windows initially blocked Vitest,
+unchanged; tests for the new boundary are included in that suite. The completed
+local recommendation/snapshot mutation run scored 87.80%: 468 killed, 7 timed out,
+60 survived and 6 uncovered, with 375 excluded by the existing mutation policy.
+This evidence covers the snapshot boundary, not the subsequent evaluator.
+Remaining gate outcomes are recorded at handoff after execution. Windows initially blocked Vitest,
 Vite and Stryker worker creation with `spawn EPERM`; commands were retried with
 process-spawn permission. Hosted CI and live DB/provider checks are not claimed.
 

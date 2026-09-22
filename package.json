@@ -73,7 +73,8 @@
     "test:mutation:graph": "stryker run stryker.graph.config.json",
     "test:mutation:retrieval": "stryker run stryker.retrieval.config.json",
     "test:mutation:rag": "stryker run stryker.rag.config.json",
-    "test:mutation:decision-guides": "stryker run stryker.decision-guide.config.json && stryker run stryker.decision-recommendation.config.json"
+    "test:mutation:decision-guides": "stryker run stryker.decision-guide.config.json && stryker run stryker.decision-recommendation.config.json && stryker run stryker.decision-runtime.config.json",
+    "test:mutation:decision-runtime": "stryker run stryker.decision-runtime.config.json"
   },
   "dependencies": {
     "ajv": "8.17.1",

@@ -1,11 +1,13 @@
 # M7.3 Decision Assistant: bounded runtime plan
 
-Date: 2026-09-20. Status: proposed engineering plan; runtime not implemented.
+Date: 2026-09-20. Status: proposed engineering plan; implementation under verification.
 Inspected baseline: `724233c`, merge PR #20 on 2026-09-18.
 
 Implementation progress: [slice 1 snapshot-bound validation](m7-3-snapshot-validation.md)
-is implemented locally. The evaluator, decision API and UI remain pending. The
-plan below describes the complete bounded pilot, not delivered product capability.
+and the [slice 2 local evaluator](m7-3-local-evaluator.md) are connected to the
+Atlas API/UI in the [implementation report](m7-3-implementation-report.md).
+Independent audit and owner completion remain pending. The plan below describes
+the bounded pilot and does not grant decision or content approval.
 
 The owner requested the next plan after checking current implementation and replied
 "gas" to preparing it and repairing documentation prerequisites. This document
@@ -34,8 +36,9 @@ complementary controls. The pilot must preserve both when applicable; it does no
 invent a third combination concept, rank one as universally better, or infer that
 two viable options alone prove a safe composition.
 
-The first slice uses only this guide. The other two guides remain browseable and
-can be enabled for decision evaluation after their own end-to-end acceptance cases.
+The first evaluator slice targeted this guide. The implementation now enables all
+three guides with real-guide acceptance tests; integrated browser and hosted gates
+are recorded in the implementation report rather than implied by this plan.
 No new knowledge, sources, claims, IDs, decision artifacts or database tables are
 needed for the planned first slice. ADR/RFC/PAD generation, persistent sessions,
 multi-user access, automatic guide selection and corpus expansion are later work.
@@ -78,7 +81,7 @@ database dependency. Exact lookup of the pinned guide and its evidence is suffic
 | Missing required context, unknown required conditions or unconfirmed answers | `needs-human-clarification`; explicit questions; no viable-option recommendation |
 | Hard constraint known false, unavailable evidence, contradictory confirmations or no supported viable option | `insufficient-evidence`; explain the specific boundary; preserve known assessments only when they validate |
 | Exactly one supported viable option and a complete, justified partition | `recommendation` |
-| Both options viable and their conditions/evidence hold | `multiple-viable-options`; explain complementarity and preserve human choice |
+| Both options viable and their conditions/evidence hold | `multiple-viable-options`; preserve human choice without inferring that the options can be combined |
 | Schema/semantic failure in a constructed result | Operational error; no rejected draft rendered as an evidence conclusion |
 
 Rules use the existing validator's three-valued logic: a conjunction with a false
@@ -186,7 +189,7 @@ erasure of OS/browser memory. Responses retain the existing no-store policy.
 | --- | --- | --- |
 | 0 | Repair review links and align current roadmap; record this plan | Documentation/schema validation and deterministic report freshness pass. |
 | 1 | Snapshot-bound schema validator and public decision runtime boundary | Existing CLI contracts unchanged; tampered model/schema/version regressions fail closed; no request-time filesystem/Git access. |
-| 2 | Local evaluator for the first guide, evidence assembler and clarification contract | Real-guide acceptance cases and synthetic adversarial fixtures pass through independent output validation. |
+| 2 | Local evaluator for the three pilot guides, evidence assembler and clarification contract | Real-guide acceptance cases and synthetic adversarial fixtures pass through independent output validation. |
 | 3 | DecisionPort/service, DTOs and API routes | HTTP tests prove strict input, privacy, version, authority, concurrency and output checks; no provider/DB call. |
 | 4 | Atlas intake, condition confirmation, comparison and evidence inspector | Browser flows cover missing context, single/multiple viable options, edits, reset, stale responses and accessible/mobile forms. |
 | 5 | Integrated verification and handoff | Required gates pass on the implementation SHA; residuals and any migration recorded; no milestone completion or independent audit inferred from self-tests. |

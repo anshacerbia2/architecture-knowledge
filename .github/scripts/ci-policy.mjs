@@ -40,7 +40,7 @@ export function assertMutationGate(event, needs) {
   if (needs?.changes?.result !== "success") throw new Error("CI_CLASSIFICATION_FAILED");
   const mode = needs.changes.outputs?.mutation_mode;
   const result = needs["mutation-suite"]?.result;
-  if (mode === "full" && result === "success") return "All six mutation suites passed.";
+  if (mode === "full" && result === "success") return "All seven mutation suites passed.";
   if (event === "pull_request" && mode === "docs-only" && result === "skipped") {
     return "Editorial-only PR: mutation intentionally omitted; validation and integration still required.";
   }

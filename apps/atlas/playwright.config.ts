@@ -16,7 +16,12 @@ export default defineConfig({
     command: "pnpm start",
     url: `${baseURL}/health/live`,
     // Never inherit a live provider from the operator's .env during browser tests.
-    env: { PORT: port, ATLAS_PROVIDER_MODE: "fake" },
+    env: {
+      PORT: port,
+      ATLAS_PROVIDER_MODE: "fake",
+      RETRIEVAL_DATABASE_MODE: "local",
+      DATABASE_URL: "postgresql://synthetic:synthetic@127.0.0.1:1/synthetic",
+    },
     reuseExistingServer: false,
     timeout: 120000,
   },

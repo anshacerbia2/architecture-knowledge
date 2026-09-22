@@ -16,11 +16,12 @@ semantics, principal-review dispositions and validation evidence.
 
 Atlas includes provider adapters for OpenAI, OpenRouter free and Antigravity CLI
 in its existing Search/Ask flows; see [app setup and limits](apps/atlas/README.md).
-These integrations do not implement the M7 decision-assistant runtime.
-The next bounded scope is the [M7.3 runtime plan](docs/m7-3-decision-assistant-plan.md),
-starting with local evaluation of the dependency fault-response guide.
-Its [snapshot-validation prerequisite](docs/m7-3-snapshot-validation.md) is implemented;
-option evaluation and the decision API/UI remain pending.
+These integrations are separate from the M7 decision-assistant runtime.
+The [M7.3 runtime plan](docs/m7-3-decision-assistant-plan.md),
+[snapshot-validation prerequisite](docs/m7-3-snapshot-validation.md), and
+[local evaluator](docs/m7-3-local-evaluator.md) are now connected through the
+[M7.3 implementation](docs/m7-3-implementation-report.md). Atlas exposes the
+ephemeral Decision Assistant API/UI; independent audit and owner completion remain pending.
 
 ## Current scope
 
@@ -48,10 +49,10 @@ layer, hybrid retrieval, and a governed architecture RAG implementation:
   application-resolved citations, fail-closed grounding checks, deterministic
   evaluation, and a production OpenAI Responses adapter.
 
-The three decision guides remain proposed content. There is no decision-assistant
-runtime, persisted project decision sessions, ADR generation, conversational memory,
-graph database, or publication output. Those belong to separately authorized
-later scopes.
+The three decision guides remain proposed content. A local, deterministic kernel
+runtime evaluates ephemeral sessions through the Atlas Decision Assistant API/UI.
+There are no persisted project decision sessions, ADR generation,
+conversational memory, graph database, or publication output.
 
 ## Classification model
 

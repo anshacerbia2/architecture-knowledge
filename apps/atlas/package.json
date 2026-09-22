@@ -12,6 +12,7 @@
     "pilot": "tsx scripts/live-pilot.ts",
     "benchmark": "tsx scripts/benchmark.ts",
     "test:mutation": "stryker run stryker.config.json",
+    "test:mutation:decision": "stryker run stryker.decision.config.json",
     "dev": "concurrently -k -n api,web \"pnpm dev:api\" \"pnpm dev:web\"",
     "dev:api": "tsx watch apps/api/src/main.ts",
     "dev:web": "vite --config apps/web/vite.config.ts",

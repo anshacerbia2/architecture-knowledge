@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "testRunner": "vitest",
+  "plugins": ["@stryker-mutator/vitest-runner"],
+  "coverageAnalysis": "perTest",
+  "mutate": [
+    "packages/application/src/decision-service.ts",
+    "packages/application/src/operation-limiter.ts",
+    "packages/knowledge-adapter/src/kernel-adapter.ts",
+    "apps/api/src/decision-routes.ts"
+  ],
+  "reporters": ["clear-text", "progress", "json"],
+  "jsonReporter": { "fileName": "reports/mutation-decision.json" },
+  "tempDirName": ".stryker-tmp",
+  "concurrency": 2,
+  "timeoutMS": 10000,
+  "thresholds": { "high": 80, "low": 60, "break": 60 },
+  "vitest": { "configFile": "vitest.decision-mutation.config.ts" }
+}

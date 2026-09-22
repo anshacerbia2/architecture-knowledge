@@ -15,6 +15,10 @@ Identifiers below describe **app requirements**, not governed knowledge IDs.
 | APP-09: bounded work and graceful degradation                   | Application concurrency, pool limits, graph cap          | Application saturation/release tests, adapter graph cap and DB-unavailable tests             |
 | APP-10: browser-safe presentation                               | Plain React text, protocol-checked links, CSP            | Safe URL tests; browser injected-markup fixture; mobile overflow test                        |
 | APP-11: ordinary local usability                                | Browse, graph, ask, status, lazy routes                  | Real Chrome flows, static SPA deep-link test, production build                               |
+| APP-12: local decision context never reaches a provider or DB   | Snapshot-bound `DecisionPort` and deterministic runtime  | Runtime, adapter and browser tests; provider/retrieval spies remain unused                   |
+| APP-13: automation cannot approve or persist decisions          | Const authority, ephemeral session DTO, no write route   | Schema/HTTP negatives, result authority assertions, reset/navigation browser flow            |
+| APP-14: decision results are snapshot and revision bound        | Commit check, monotonic client revision, stale discard   | Application snapshot test, HTTP contract test and browser edit-invalidates-result flow       |
+| APP-15: all three proposed guides remain explicitly selectable  | Runtime catalog plus guide-driven intake                 | Real-guide runtime scenarios and Decision assistant catalog/browser tests                    |
 
 Coverage gates apply to the app API, configuration, application and kernel adapter. They do not
 remeasure the entire sibling kernel or prove end-to-end database behavior. The root workflow

@@ -111,6 +111,9 @@ jobs:
           - suite: decision-recommendation
             config: stryker.decision-recommendation.config.json
             report: .tmp/mutation-decision-recommendation.json
+          - suite: decision-runtime
+            config: stryker.decision-runtime.config.json
+            report: .tmp/mutation-decision-runtime.json
     name: mutation-suite (${{ matrix.suite }})
     steps:
       - name: Check out repository
