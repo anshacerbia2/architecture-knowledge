@@ -128,6 +128,38 @@ describe("application policy", () => {
     );
     expect(() => configuration({ DATABASE_URL: "not-a-url" })).toThrow("DATABASE_URL_INVALID");
   });
+  it("rejects invalid decision revisions and detaches a pending submission", async () => {
+    let finish!: () => void;
+    const pending = new Promise<void>((resolve) => {
+      finish = resolve;
+    });
+    const service = new DecisionService(
+      fakeDecisionPort({
+        evaluateDecision: async (session) => {
+          await pending;
+          return { recommendation: { session_id: session.session_id }, clarification_prompts: [] };
+        },
+      }),
+    );
+    const input = {
+      repository_commit: "a".repeat(40),
+      client_revision: 0,
+      session: structuredClone(decisionSession),
+    };
+    for (const invalid of [-1, 0.5, Number.MAX_SAFE_INTEGER + 1]) {
+      expect(() => service.evaluate({ ...input, client_revision: invalid })).toThrow(
+        "non-negative integer",
+      );
+    }
+    const evaluation = service.evaluate(input);
+    input.session.session_id = "modified";
+    input.client_revision = 9;
+    finish();
+    await expect(evaluation).resolves.toMatchObject({
+      client_revision: 0,
+      recommendation: { session_id: decisionSession.session_id },
+    });
+  });
   it("does not render executable or credential-bearing source links", () => {
     for (const value of [
       "javascript:alert(1)",
