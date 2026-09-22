@@ -94,7 +94,7 @@ test("real browser intake confirms evidence, invalidates edits and discards sess
     .getByRole("checkbox", { name: /I confirm this project context/ })
     .all())
     await confirm.check();
-  await page.getByLabel("Assessment", { exact: true }).selectOption("true");
+  await page.getByRole("combobox", { name: "Assessment", exact: true }).selectOption("true");
   for (const card of await page.locator(".condition-card").all()) {
     const statement = await card.locator("legend").innerText();
     const excluded =
