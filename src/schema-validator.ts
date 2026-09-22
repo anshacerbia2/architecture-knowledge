@@ -23,10 +23,37 @@ interface LoadedSchema {
 export async function validateSchemas(model: RepositoryModel): Promise<SchemaValidationResult> {
   const diagnostics = [...model.diagnostics];
   const loaded = await loadSchemas(model.root, diagnostics);
+  return createSchemaValidator(new Map(loaded.map((schema) => [schema.path, schema.data])))({
+    governedFiles: model.governedFiles,
+    diagnostics,
+  });
+}
+
+/** Compile detached schema documents once. Validation performs no filesystem reads. */
+export function createSchemaValidator(
+  documents: ReadonlyMap<string, unknown>,
+): (model: Pick<RepositoryModel, "governedFiles" | "diagnostics">) => SchemaValidationResult {
+  const diagnostics: Diagnostic[] = [];
+  const loaded: LoadedSchema[] = [];
+  for (const [schemaPath, data] of structuredClone(new Map(documents))) {
+    if (!isPlainObject(data) || typeof data.$id !== "string") {
+      diagnostics.push(
+        diagnostic(
+          "SCHEMA_ID_MISSING",
+          "error",
+          schemaPath,
+          "JSON Schema must contain a string $id.",
+        ),
+      );
+      continue;
+    }
+    loaded.push({ path: schemaPath, id: data.$id, data });
+  }
   const ajv = createAjv();
+  const registered = new Set<string>();
 
   for (const schema of loaded) {
-    if (ajv.getSchema(schema.id)) {
+    if (registered.has(schema.id)) {
       diagnostics.push(
         diagnostic(
           "SCHEMA_DUPLICATE_ID",
@@ -37,6 +64,7 @@ export async function validateSchemas(model: RepositoryModel): Promise<SchemaVal
       );
       continue;
     }
+    registered.add(schema.id);
     try {
       ajv.addSchema(schema.data, schema.id);
     } catch (error) {
@@ -72,59 +100,66 @@ export async function validateSchemas(model: RepositoryModel): Promise<SchemaVal
     }
   }
 
-  const validatedFiles: string[] = [];
-  for (const file of model.governedFiles) {
-    const schemaId = resolveSchemaReference(file.schemaRef, loaded);
-    if (!schemaId) {
-      diagnostics.push(
-        diagnostic(
-          "SCHEMA_MAPPING_UNKNOWN",
-          "error",
-          file.path,
-          `Registered schema '${file.schemaRef}' does not resolve.`,
-        ),
-      );
-      continue;
-    }
-    let validator: ValidateFunction | undefined;
-    try {
-      validator = ajv.getSchema(schemaId);
-    } catch (error) {
-      diagnostics.push(
-        diagnostic(
-          "SCHEMA_REFERENCE",
-          "error",
-          file.path,
-          error instanceof Error ? error.message : String(error),
-        ),
-      );
-    }
-    if (!validator) {
-      diagnostics.push(
-        diagnostic(
-          "SCHEMA_MAPPING_UNKNOWN",
-          "error",
-          file.path,
-          `Compiled validator '${schemaId}' is unavailable.`,
-        ),
-      );
-      continue;
-    }
-    if (!validator(file.data)) {
-      diagnostics.push(
-        ...ajvErrors("SCHEMA_INSTANCE", file.path, validator.errors ?? [], "record"),
-      );
-    } else {
-      validatedFiles.push(file.path);
-    }
-  }
+  return (model) => validateCompiled(model);
 
-  return {
-    diagnostics,
-    validatedFiles: validatedFiles.sort(),
-    schemas: loaded.map((schema) => schema.path).sort(),
-    documents: new Map(loaded.map((schema) => [schema.path, schema.data])),
-  };
+  function validateCompiled(
+    model: Pick<RepositoryModel, "governedFiles" | "diagnostics">,
+  ): SchemaValidationResult {
+    const resultDiagnostics = structuredClone([...model.diagnostics, ...diagnostics]);
+    const validatedFiles: string[] = [];
+    for (const file of model.governedFiles) {
+      const schemaId = resolveSchemaReference(file.schemaRef, loaded);
+      if (!schemaId) {
+        resultDiagnostics.push(
+          diagnostic(
+            "SCHEMA_MAPPING_UNKNOWN",
+            "error",
+            file.path,
+            `Registered schema '${file.schemaRef}' does not resolve.`,
+          ),
+        );
+        continue;
+      }
+      let validator: ValidateFunction | undefined;
+      try {
+        validator = ajv.getSchema(schemaId);
+      } catch (error) {
+        resultDiagnostics.push(
+          diagnostic(
+            "SCHEMA_REFERENCE",
+            "error",
+            file.path,
+            error instanceof Error ? error.message : String(error),
+          ),
+        );
+      }
+      if (!validator) {
+        resultDiagnostics.push(
+          diagnostic(
+            "SCHEMA_MAPPING_UNKNOWN",
+            "error",
+            file.path,
+            `Compiled validator '${schemaId}' is unavailable.`,
+          ),
+        );
+        continue;
+      }
+      if (!validator(file.data)) {
+        resultDiagnostics.push(
+          ...ajvErrors("SCHEMA_INSTANCE", file.path, validator.errors ?? [], "record"),
+        );
+      } else {
+        validatedFiles.push(file.path);
+      }
+    }
+
+    return {
+      diagnostics: resultDiagnostics,
+      validatedFiles: validatedFiles.sort(),
+      schemas: loaded.map((schema) => schema.path).sort(),
+      documents: structuredClone(new Map(loaded.map((schema) => [schema.path, schema.data]))),
+    };
+  }
 }
 
 function createAjv(): Ajv2020 {

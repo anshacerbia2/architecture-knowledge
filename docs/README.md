@@ -1,7 +1,11 @@
 # Documentation Reading Order
 
-Current integration work: [Structural integration hardening](structural-integration-hardening.md)
-records the supplied principal review, each disposition and Atlas workspace verification.
+Current next scope: [M7.3 Decision Assistant plan](m7-3-decision-assistant-plan.md).
+[Slice 1](m7-3-snapshot-validation.md) implements snapshot-bound validation;
+the evaluator and decision API/UI remain pending.
+[Structural integration hardening](structural-integration-hardening.md) records
+the earlier review dispositions and Atlas workspace verification. See the
+[Atlas README](../apps/atlas/README.md) for the implemented Search/Ask providers.
 
 This directory contains historical assessments, implementation reports,
 independent audits, remediation evidence, and architecture decision records.
@@ -108,6 +112,8 @@ Proposed local app: [Architecture](local-app-architecture.md), then
 | M7-14 | [M7.2 Output-Coverage Remediation](m7-2-output-coverage-remediation.md) | Recommendation v4 migration, explicit applicability partition, option-local evidence, and regression evidence. |
 | M7-15 | [M7.2 Focused Closure Confirmation](m7-2-focused-closure-confirmation.md) | Confirms the two bounded finding closures and exact-merge hosted evidence; retains all five observations and human authority. |
 | M7-16 | [M7.2 Completion Approval](m7-2-completion-approval.md) | Records the owner's bounded milestone approval without approving content or authorizing runtime work. |
+| M7-17 | [M7.3 Decision Assistant Plan](m7-3-decision-assistant-plan.md) | Records the inspected implementation baseline and a local, ephemeral dependency fault-response runtime plan; implementation remains pending. |
+| M7-18 | [M7.3 Snapshot Validation](m7-3-snapshot-validation.md) | Implements the pinned validation prerequisite without claiming evaluator, API/UI or milestone completion. |
 
 ## Architecture Decision Records
 
@@ -164,6 +170,8 @@ describe.
 | 2026-09-03 | implementation commit; see post-commit handoff | ADR 0008; M7.1 kernel guide; M7.1 implementation report |
 | 2026-09-08 | `c34daab` | M7.1 initial audit and focused hardening reports |
 | 2026-09-08 | decision-basis remediation commit; see post-commit handoff | M7.1 focused re-audit and decision-basis remediation reports |
+| M7.3 implementation history | authored 2026-09-20 | M7.3 Decision Assistant Plan; use Git history for commit provenance |
+| M7.3 implementation history | authored 2026-09-20 | M7.3 Snapshot Validation; use Git history for commit provenance |
 
 ## Maintenance Rule
 

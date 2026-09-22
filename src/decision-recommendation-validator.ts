@@ -1,7 +1,11 @@
 import { diagnostic, hasErrors, type Diagnostic } from "./diagnostics.js";
 import { asArray, asStringArray, isPlainObject } from "./io.js";
 import type { RepositoryModel } from "./model.js";
-import { validateSchemas } from "./schema-validator.js";
+import {
+  createSchemaValidator,
+  validateSchemas,
+  type SchemaValidationResult,
+} from "./schema-validator.js";
 import { decisionConditionKey, validateDecisionGuides } from "./decision-guide-validator.js";
 import { validateEvidence } from "./evidence-validator.js";
 import { serializeGraphValue } from "./graph-projector.js";
@@ -19,6 +23,42 @@ export async function validateDecisionRecommendation(
   sessionInput: unknown,
   recommendationInput: unknown,
 ): Promise<Diagnostic[]> {
+  return validateWithSchemas(model, sessionInput, recommendationInput, validateSchemas);
+}
+
+export interface DecisionRecommendationValidator {
+  validate(session: unknown, recommendation: unknown): Promise<Diagnostic[]>;
+}
+
+/** Validation-only primitive, not repository attestation. Public runtime callers use
+ * loadDecisionValidationSnapshot, which runs the complete repository kernel first.
+ */
+export function createDecisionRecommendationValidator(
+  model: RepositoryModel,
+  documents: ReadonlyMap<string, unknown>,
+): DecisionRecommendationValidator {
+  const pinnedModel = structuredClone(model);
+  const validate = createSchemaValidator(documents);
+  return Object.freeze({
+    validate(session: unknown, recommendation: unknown) {
+      return validateWithSchemas(
+        pinnedModel,
+        structuredClone(session),
+        structuredClone(recommendation),
+        validate,
+      );
+    },
+  });
+}
+
+async function validateWithSchemas(
+  model: RepositoryModel,
+  sessionInput: unknown,
+  recommendationInput: unknown,
+  validateSchema: (
+    model: RepositoryModel,
+  ) => SchemaValidationResult | Promise<SchemaValidationResult>,
+): Promise<Diagnostic[]> {
   const inputs = [
     {
       path: "decision-session.json",
@@ -31,7 +71,7 @@ export async function validateDecisionRecommendation(
       data: recommendationInput,
     },
   ];
-  const schema = await validateSchemas({
+  const schema = await validateSchema({
     ...model,
     governedFiles: inputs.map((input) => ({
       ...input,
@@ -71,7 +111,7 @@ export async function validateDecisionRecommendation(
   const records = [guideRecord, ...model.claims, ...model.sources];
   diagnostics.push(
     ...(
-      await validateSchemas({
+      await validateSchema({
         ...model,
         governedFiles: records.map((record) => ({
           path: record.path,

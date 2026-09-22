@@ -27,3 +27,5 @@ export { RagEngine } from "./rag-engine.js";
 export { createRagCitationAuthority } from "./rag-citation-authority.js";
 export type { GraphArtifacts, GraphEdge } from "./graph-types.js";
 export type { RetrievalArtifacts } from "./retrieval-types.js";
+export { loadDecisionValidationSnapshot } from "./decision-validation-snapshot.js";
+export type { DecisionRecommendationValidator } from "./decision-recommendation-validator.js";

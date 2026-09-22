@@ -15,7 +15,11 @@
       "UpdateOperator"
     ]
   },
-  "mutate": ["src/decision-recommendation-validator.ts"],
+  "mutate": [
+    "src/decision-recommendation-validator.ts",
+    "src/schema-validator.ts",
+    "src/decision-validation-snapshot.ts"
+  ],
   "thresholds": {
     "high": 70,
     "low": 60,

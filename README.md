@@ -14,6 +14,14 @@ Server configuration belongs in `apps/atlas/.env` (ignored by Git).
 See [structural hardening](docs/structural-integration-hardening.md) for snapshot
 semantics, principal-review dispositions and validation evidence.
 
+Atlas includes provider adapters for OpenAI, OpenRouter free and Antigravity CLI
+in its existing Search/Ask flows; see [app setup and limits](apps/atlas/README.md).
+These integrations do not implement the M7 decision-assistant runtime.
+The next bounded scope is the [M7.3 runtime plan](docs/m7-3-decision-assistant-plan.md),
+starting with local evaluation of the dependency fault-response guide.
+Its [snapshot-validation prerequisite](docs/m7-3-snapshot-validation.md) is implemented;
+option evaluation and the decision API/UI remain pending.
+
 ## Current scope
 
 The repository currently implements M0 through M6, has completed M7.0, implements
@@ -135,8 +143,9 @@ Cerbia then explicitly approved M6 completion and M7.0, and authorized M7.1's
 validation kernel. M7.1 implements closed guide, session, recommendation, and
 draft-artifact contracts plus semantic, graph, retrieval, privacy, authority,
 coverage, and mutation gates. The bounded M7.2 pilot is now complete with owner
-approval; its three guides remain proposed. Assistant runtime, model integration,
-broader corpus expansion and artifact generators have not started. See
+approval; its three guides remain proposed. M7 decision-assistant runtime,
+broader corpus expansion and artifact generators have not started. Atlas provider
+integration for M6 Search/Ask is implemented separately. See
 [`docs/m7-2-completion-approval.md`](docs/m7-2-completion-approval.md) and
 [`docs/m7-decision-guide-kernel.md`](docs/m7-decision-guide-kernel.md).
 
