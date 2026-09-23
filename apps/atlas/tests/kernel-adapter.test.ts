@@ -4,9 +4,13 @@ const state = vi.hoisted(() => ({
   commit: vi.fn(),
   loadGraph: vi.fn(),
   loadArtifacts: vi.fn(),
+  loadDecisions: vi.fn(),
   current: vi.fn(),
   query: vi.fn(),
   answer: vi.fn(),
+  decisionGuides: vi.fn(),
+  decisionIntake: vi.fn(),
+  decisionEvaluate: vi.fn(),
   close: vi.fn(),
   options: {} as Record<string, unknown>,
   databaseOptions: vi.fn(),
@@ -19,6 +23,7 @@ vi.mock("architecture-knowledge-system/runtime", async (importOriginal) => ({
   ...(await importOriginal<typeof import("architecture-knowledge-system/runtime")>()),
   loadValidatedGraph: state.loadGraph,
   loadCurrentRetrievalArtifacts: state.loadArtifacts,
+  loadDecisionRuntimeSnapshot: state.loadDecisions,
   buildRetrievalArtifacts: () => ({}),
   RetrievalDatabase: class {
     constructor(options: unknown) {
@@ -37,7 +42,8 @@ vi.mock("architecture-knowledge-system/runtime", async (importOriginal) => ({
   },
 }));
 import { KernelAdapter } from "../packages/knowledge-adapter/src/kernel-adapter.js";
-import { answer, node } from "./fixture.js";
+import { answer, decisionSession, node } from "./fixture.js";
+import { DecisionRuntimeError } from "architecture-knowledge-system/runtime";
 import { mkdtempSync, rmSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -69,6 +75,31 @@ beforeEach(() => {
   state.commit.mockResolvedValue("a".repeat(40));
   state.loadGraph.mockResolvedValue(graph());
   state.loadArtifacts.mockResolvedValue({ units: [], manifest: {} });
+  state.loadDecisions.mockResolvedValue({
+    listGuides: state.decisionGuides,
+    intake: state.decisionIntake,
+    evaluate: state.decisionEvaluate,
+  });
+  state.decisionGuides.mockReturnValue([
+    {
+      id: "AKG-000002",
+      version: 1,
+      title: "Synthetic guide",
+      decision_question: "Question?",
+      lifecycle_status: "proposed",
+      option_ids: ["AKC-000012", "AKC-000013"],
+      authority: {
+        recommendation_only: true,
+        human_decision_required: true,
+        automation_may_approve: false,
+      },
+    },
+  ]);
+  state.decisionIntake.mockReturnValue({ guide: state.decisionGuides()[0] });
+  state.decisionEvaluate.mockResolvedValue({
+    recommendation: { status: "needs-human-clarification" },
+    clarification_prompts: [],
+  });
   state.current.mockResolvedValue({ generation_id: "synthetic-generation" });
   state.query.mockResolvedValue({
     results: [
@@ -150,6 +181,26 @@ it("free mode uses lexical retrieval only and denies private inputs before any r
     provider_mode: "openrouter-free",
     retrieval_strategy: "lexical",
     ai_connection: { mode: "oauth", connected: false },
+  });
+});
+it("maps the opaque decision runtime without retrieval or provider access", async () => {
+  const adapter = await create();
+  expect(await adapter.decisionGuides()).toEqual([
+    expect.objectContaining({ id: "AKG-000002", lifecycle_status: "proposed" }),
+  ]);
+  await adapter.decisionIntake("AKG-000002");
+  await expect(adapter.evaluateDecision(decisionSession)).resolves.toMatchObject({
+    recommendation: { status: "needs-human-clarification" },
+  });
+  expect(state.current).not.toHaveBeenCalled();
+  expect(state.query).not.toHaveBeenCalled();
+  expect(state.answer).not.toHaveBeenCalled();
+  state.decisionEvaluate.mockRejectedValueOnce(
+    new DecisionRuntimeError("DECISION_RUNTIME_INPUT_INVALID"),
+  );
+  await expect(adapter.evaluateDecision(decisionSession)).rejects.toMatchObject({
+    code: "DECISION_RUNTIME_INPUT_INVALID",
+    status: 400,
   });
 });
 it("maps governed records without reclassifying excluded relationships", async () => {
@@ -317,7 +368,7 @@ it("reports readiness and leaves lifecycle unchanged", async () => {
     graph: "ready",
     database_mode: "local",
     retrieval: "ready",
-    recommendations_enabled: false,
+    recommendations_enabled: true,
     provider_mode: "deterministic-demo",
   });
   expect((await adapter.catalog())[0]?.status).toBe("proposed");

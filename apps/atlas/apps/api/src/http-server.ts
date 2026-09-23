@@ -10,6 +10,8 @@ import {
   type OpenRouterApiConnector,
 } from "../../../packages/ai-connectors/src/openrouter-connectors.js";
 import { OAUTH_CALLBACK_ROUTE, registerOpenRouterRoutes } from "./openrouter-routes.js";
+import type { DecisionService } from "../../../packages/application/src/decision-service.js";
+import { registerDecisionRoutes } from "./decision-routes.js";
 
 export async function createServer(
   service: KnowledgeService,
@@ -18,6 +20,7 @@ export async function createServer(
     staticRoot?: string;
     logger?: boolean;
     connector?: OpenRouterOAuthConnector | OpenRouterApiConnector;
+    decisions?: DecisionService;
   },
 ) {
   const app = Fastify({
@@ -137,6 +140,7 @@ export async function createServer(
     data,
   });
   if (options.connector) registerOpenRouterRoutes(app, options.connector, service.commit);
+  if (options.decisions) registerDecisionRoutes(app, options.decisions, envelope);
   app.get("/health/live", async () => ({ live: true }));
   app.get("/health/ready", async (req, reply) => {
     const status = await service.status();

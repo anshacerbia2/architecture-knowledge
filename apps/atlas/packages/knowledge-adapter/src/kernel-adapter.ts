@@ -11,11 +11,15 @@ import {
   parseRagRequest,
   RagEngine,
   createRagCitationAuthority,
+  loadDecisionRuntimeSnapshot,
+  DecisionRuntimeError,
+  type DecisionRuntime,
   type GraphArtifacts,
   type GraphEdge,
   type RetrievalArtifacts,
 } from "architecture-knowledge-system/runtime";
 import type { KnowledgePort } from "../../application/src/knowledge-port.js";
+import type { DecisionPort } from "../../application/src/decision-port.js";
 import { AppError } from "../../application/src/errors.js";
 import type {
   Answer,
@@ -28,6 +32,10 @@ import type {
   Summary,
   SystemStatus,
   RetrievalDatabaseMode,
+  DecisionEvaluationOutput,
+  DecisionGuideIntake,
+  DecisionGuideSummary,
+  DecisionSession,
 } from "../../contracts/src/index.js";
 import { cleanCommit, immutableCopy } from "./snapshot.js";
 import { providers, type ProviderSettings } from "./providers.js";
@@ -45,7 +53,7 @@ function edgeDto(edge: GraphEdge): Edge {
   };
 }
 
-export class KernelAdapter implements KnowledgePort {
+export class KernelAdapter implements KnowledgePort, DecisionPort {
   private readonly embedding;
   private readonly provider;
   private readonly nodes: Summary[];
@@ -56,6 +64,7 @@ export class KernelAdapter implements KnowledgePort {
     private readonly database: RetrievalDatabase,
     private readonly databaseMode: RetrievalDatabaseMode,
     private readonly runtime: ReturnType<typeof providers>,
+    private readonly decisions: DecisionRuntime,
   ) {
     this.embedding = runtime.embedding;
     this.provider = runtime.answer;
@@ -70,6 +79,7 @@ export class KernelAdapter implements KnowledgePort {
     const commit = await cleanCommit(root);
     const graph = await loadValidatedGraph(root);
     const artifacts = await loadCurrentRetrievalArtifacts(root, buildRetrievalArtifacts(graph));
+    const decisions = await loadDecisionRuntimeSnapshot(root);
     if ((await cleanCommit(root)) !== commit)
       throw new AppError("SNAPSHOT_CHANGED", 409, "Repository changed during startup.");
     const runtime = providers(settings, artifacts.manifest.manifest_root_hash);
@@ -92,6 +102,7 @@ export class KernelAdapter implements KnowledgePort {
       db,
       databaseMode,
       runtime,
+      decisions,
     );
   }
   private async current() {
@@ -150,7 +161,7 @@ export class KernelAdapter implements KnowledgePort {
         : null,
       retrieval_strategy: this.lexicalOnly ? "lexical" : "hybrid-graph",
       pilot_budget: this.runtime.budget?.status() ?? null,
-      recommendations_enabled: false,
+      recommendations_enabled: true,
     };
   }
   async catalog(): Promise<Summary[]> {
@@ -276,6 +287,47 @@ export class KernelAdapter implements KnowledgePort {
       provider: packet.provider,
       provenance: packet.provenance,
     };
+  }
+  async decisionGuides(): Promise<DecisionGuideSummary[]> {
+    return this.decisions.listGuides() as DecisionGuideSummary[];
+  }
+  async decisionIntake(guideId: string): Promise<DecisionGuideIntake> {
+    try {
+      return this.decisions.intake(guideId) as DecisionGuideIntake;
+    } catch (error) {
+      throw this.decisionError(error);
+    }
+  }
+  async evaluateDecision(
+    session: DecisionSession,
+  ): Promise<Omit<DecisionEvaluationOutput, "client_revision">> {
+    try {
+      const result = await this.decisions.evaluate(session);
+      return {
+        recommendation: result.recommendation,
+        clarification_prompts: result.clarification_prompts,
+      };
+    } catch (error) {
+      throw this.decisionError(error);
+    }
+  }
+  private decisionError(error: unknown): AppError {
+    if (error instanceof DecisionRuntimeError) {
+      if (error.code === "DECISION_GUIDE_NOT_ENABLED")
+        return new AppError(error.code, 404, "Decision guide is not enabled by this runtime.");
+      if (error.code === "DECISION_RUNTIME_INPUT_INVALID")
+        return new AppError(error.code, 400, "Decision input did not match the active guide.");
+      return new AppError(
+        error.code,
+        503,
+        "Decision evaluation failed safely. No recommendation was released.",
+      );
+    }
+    return new AppError(
+      "DECISION_RUNTIME_UNAVAILABLE",
+      503,
+      "Decision evaluation failed safely. No recommendation was released.",
+    );
   }
   close() {
     return this.database.close();

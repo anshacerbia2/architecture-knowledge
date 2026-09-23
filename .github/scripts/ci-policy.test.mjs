@@ -84,7 +84,10 @@ function needs(mode, result, classification = "success") {
 
 test("gate accepts successful full suites or explicitly omitted editorial PR suites", () => {
   for (const event of ["pull_request", "push", "schedule", "workflow_dispatch"]) {
-    assert.match(assertMutationGate(event, needs("full", "success")), /six mutation suites passed/);
+    assert.match(
+      assertMutationGate(event, needs("full", "success")),
+      /seven mutation suites passed/,
+    );
   }
   assert.match(
     assertMutationGate("pull_request", needs("docs-only", "skipped")),
@@ -204,7 +207,7 @@ test("CLI exits nonzero for gate failure, malformed JSON and missing diff histor
   }
 });
 
-test("workflow retains six real suites, evidence and a mandatory failure-aware gate", () => {
+test("workflow retains seven real suites, evidence and a mandatory failure-aware gate", () => {
   const workflow = parse(readFileSync(".github/workflows/validate.yml", "utf8"));
   const jobs = workflow.jobs;
   const suite = jobs["mutation-suite"];
@@ -215,6 +218,7 @@ test("workflow retains six real suites, evidence and a mandatory failure-aware g
     "stryker.rag.config.json",
     "stryker.decision-guide.config.json",
     "stryker.decision-recommendation.config.json",
+    "stryker.decision-runtime.config.json",
   ];
   assert.deepEqual(suite.strategy.matrix.include.map((row) => row.config).sort(), configs.sort());
   assert.equal(suite.strategy["fail-fast"], false);

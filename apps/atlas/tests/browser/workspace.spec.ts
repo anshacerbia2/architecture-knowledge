@@ -253,6 +253,133 @@ test("single-turn answer UI displays safe citations and qualifiers; clear remove
   await expect(page.getByText("Synthetic UI test answer.")).toHaveCount(0);
 });
 
+test("decision assistant keeps sessions local, explicit and revision-bound", async ({ page }) => {
+  const commit = "a".repeat(40);
+  await page.route("**/api/v1/decision-guides", (route) =>
+    route.fulfill({
+      json: {
+        contract_version: 1,
+        request_id: "guide-request",
+        repository_commit: commit,
+        data: [
+          {
+            id: "AKG-000002",
+            version: 1,
+            title: "Dependency fault-response selection",
+            decision_question: "Which bounded fault response is applicable?",
+            lifecycle_status: "proposed",
+            option_ids: ["AKC-000012", "AKC-000013"],
+            authority: {
+              recommendation_only: true,
+              human_decision_required: true,
+              automation_may_approve: false,
+            },
+          },
+        ],
+      },
+    }),
+  );
+  await page.route("**/api/v1/decision-guides/AKG-000002/intake", (route) =>
+    route.fulfill({
+      json: {
+        contract_version: 1,
+        request_id: "intake-request",
+        repository_commit: commit,
+        data: {
+          guide: {
+            id: "AKG-000002",
+            version: 1,
+            title: "Dependency fault-response selection",
+            decision_question: "Which bounded fault response is applicable?",
+            lifecycle_status: "proposed",
+            option_ids: ["AKC-000012", "AKC-000013"],
+            authority: {
+              recommendation_only: true,
+              human_decision_required: true,
+              automation_may_approve: false,
+            },
+          },
+          context_variables: [
+            {
+              key: "decision-scope",
+              question: "What boundary is being decided?",
+              description: "Use bounded internal context.",
+              sensitivity: "internal",
+            },
+          ],
+          constraints: [],
+          quality_attributes: [],
+          conditions: [],
+          privacy: {
+            allowed_context_classifications: ["public", "internal"],
+            external_provider_policy: "prohibited",
+            session_persistence: "ephemeral-only",
+          },
+        },
+      },
+    }),
+  );
+  await page.route("**/api/v1/decision-evaluations", async (route) => {
+    const body = route.request().postDataJSON();
+    expect(body.repository_commit).toBe(commit);
+    expect(body.session.privacy).toEqual({
+      persistence: "ephemeral-only",
+      external_provider_authorized: false,
+      external_provider_authorization: null,
+      redacted_keys: [],
+    });
+    expect(body.session.authority.automation_may_approve).toBe(false);
+    await route.fulfill({
+      json: {
+        contract_version: 1,
+        request_id: "evaluation-request",
+        repository_commit: commit,
+        data: {
+          client_revision: body.client_revision,
+          clarification_prompts: [
+            { kind: "condition", key: "synthetic", question: "Confirm applicability." },
+          ],
+          recommendation: {
+            status: "needs-human-clarification",
+            viable_options: [],
+            rejected_options: [],
+            inapplicable_options: [],
+            tradeoffs: [],
+            verification: [],
+            evolution_triggers: [],
+            uncertainty: [{ statement: "Context incomplete", basis: "unknown-context" }],
+            decision_basis: [],
+            claim_ids: [],
+            source_ids: [],
+            evidence_claims: [],
+            authority: {
+              recommendation_only: true,
+              human_decision_required: true,
+              automation_may_approve: false,
+            },
+          },
+        },
+      },
+    });
+  });
+
+  await page.goto("/decide");
+  await expect(page.getByRole("heading", { name: /Compare with evidence/ })).toBeVisible();
+  await expect(
+    page.getByText("No AI provider, retrieval database", { exact: false }),
+  ).toBeVisible();
+  const context = page.getByRole("textbox", { name: "What boundary is being decided?" });
+  await context.fill("Checkout to payment dependency call");
+  await page.getByRole("checkbox", { name: /I confirm this project context/ }).check();
+  await page.getByRole("button", { name: "Evaluate options" }).click();
+  await expect(page.getByRole("heading", { name: "needs human clarification" })).toBeVisible();
+  await expect(page.getByText("Confirm applicability.")).toBeVisible();
+  await context.fill("Edited boundary");
+  await expect(page.getByRole("heading", { name: "needs human clarification" })).toHaveCount(0);
+  await page.getByRole("button", { name: "Reset ephemeral session" }).click();
+  await expect(context).toHaveValue("");
+});
+
 test("mobile navigation and no horizontal overflow", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");

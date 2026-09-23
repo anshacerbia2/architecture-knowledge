@@ -52,7 +52,7 @@ export interface SystemStatus {
     remaining_cents: number;
     expires_at: string;
   } | null;
-  recommendations_enabled: false;
+  recommendations_enabled: boolean;
 }
 export interface SearchInput {
   text: string;
@@ -112,4 +112,91 @@ export interface Answer {
     retrieval_manifest_root: string;
     data_classification: string;
   };
+}
+
+export interface DecisionAuthority {
+  recommendation_only: true;
+  human_decision_required: true;
+  automation_may_approve: false;
+}
+export interface DecisionGuideSummary {
+  id: string;
+  version: number;
+  title: string;
+  decision_question: string;
+  lifecycle_status: "proposed";
+  option_ids: string[];
+  authority: DecisionAuthority;
+}
+export interface DecisionCondition {
+  statement: string;
+  scope: string;
+  concept_ids: string[];
+}
+export interface DecisionConditionPrompt {
+  key: string;
+  condition: DecisionCondition;
+  question: string;
+}
+export interface DecisionGuideIntake {
+  guide: DecisionGuideSummary;
+  context_variables: Array<Record<string, unknown>>;
+  constraints: Array<Record<string, unknown>>;
+  quality_attributes: Array<Record<string, unknown>>;
+  conditions: DecisionConditionPrompt[];
+  privacy: {
+    allowed_context_classifications: string[];
+    external_provider_policy: "prohibited";
+    session_persistence: "ephemeral-only";
+  };
+}
+export interface DecisionSession {
+  contract_version: 3;
+  session_id: string;
+  guide_id: string;
+  guide_version: number;
+  context: Array<{
+    key: string;
+    value: string | number | boolean | null;
+    classification: "public" | "internal" | "confidential" | "restricted";
+    provenance: "human-provided" | "system-observed" | "inferred";
+    confirmed_by_human: boolean;
+  }>;
+  drivers: Array<{
+    concept_id: string;
+    role: "quality-attribute" | "constraint" | "assumption" | "context";
+    priority: "required" | "high" | "medium" | "low";
+  }>;
+  constraints: Array<{
+    concept_id: string;
+    satisfied: boolean | null;
+    notes: string | null;
+  }>;
+  condition_evaluations: Array<{
+    condition: DecisionCondition;
+    satisfied: boolean | null;
+    confirmed_by_human: boolean;
+  }>;
+  privacy: {
+    persistence: "ephemeral-only";
+    external_provider_authorized: false;
+    external_provider_authorization: null;
+    redacted_keys: string[];
+  };
+  authority: DecisionAuthority;
+}
+export interface DecisionClarificationPrompt {
+  kind: "context" | "constraint" | "condition" | "confirmation";
+  key: string;
+  question: string;
+}
+export interface DecisionEvaluationInput {
+  repository_commit: string;
+  client_revision: number;
+  session: DecisionSession;
+}
+export interface DecisionEvaluationOutput {
+  client_revision: number;
+  recommendation: Record<string, unknown>;
+  clarification_prompts: DecisionClarificationPrompt[];
 }

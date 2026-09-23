@@ -14,6 +14,15 @@ Server configuration belongs in `apps/atlas/.env` (ignored by Git).
 See [structural hardening](docs/structural-integration-hardening.md) for snapshot
 semantics, principal-review dispositions and validation evidence.
 
+Atlas includes provider adapters for OpenAI, OpenRouter free and Antigravity CLI
+in its existing Search/Ask flows; see [app setup and limits](apps/atlas/README.md).
+These integrations are separate from the M7 decision-assistant runtime.
+The [M7.3 runtime plan](docs/m7-3-decision-assistant-plan.md),
+[snapshot-validation prerequisite](docs/m7-3-snapshot-validation.md), and
+[local evaluator](docs/m7-3-local-evaluator.md) are now connected through the
+[M7.3 implementation](docs/m7-3-implementation-report.md). Atlas exposes the
+ephemeral Decision Assistant API/UI; independent audit and owner completion remain pending.
+
 ## Current scope
 
 The repository currently implements M0 through M6, has completed M7.0, implements
@@ -40,10 +49,10 @@ layer, hybrid retrieval, and a governed architecture RAG implementation:
   application-resolved citations, fail-closed grounding checks, deterministic
   evaluation, and a production OpenAI Responses adapter.
 
-The three decision guides remain proposed content. There is no decision-assistant
-runtime, persisted project decision sessions, ADR generation, conversational memory,
-graph database, or publication output. Those belong to separately authorized
-later scopes.
+The three decision guides remain proposed content. A local, deterministic kernel
+runtime evaluates ephemeral sessions through the Atlas Decision Assistant API/UI.
+There are no persisted project decision sessions, ADR generation,
+conversational memory, graph database, or publication output.
 
 ## Classification model
 
@@ -135,8 +144,9 @@ Cerbia then explicitly approved M6 completion and M7.0, and authorized M7.1's
 validation kernel. M7.1 implements closed guide, session, recommendation, and
 draft-artifact contracts plus semantic, graph, retrieval, privacy, authority,
 coverage, and mutation gates. The bounded M7.2 pilot is now complete with owner
-approval; its three guides remain proposed. Assistant runtime, model integration,
-broader corpus expansion and artifact generators have not started. See
+approval; its three guides remain proposed. M7 decision-assistant runtime,
+broader corpus expansion and artifact generators have not started. Atlas provider
+integration for M6 Search/Ask is implemented separately. See
 [`docs/m7-2-completion-approval.md`](docs/m7-2-completion-approval.md) and
 [`docs/m7-decision-guide-kernel.md`](docs/m7-decision-guide-kernel.md).
 

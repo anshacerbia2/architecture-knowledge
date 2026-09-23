@@ -2,13 +2,14 @@ import type { AskInput, SearchInput } from "../../contracts/src/index.js";
 import { KNOWLEDGE_ID_PATTERN } from "../../contracts/src/index.js";
 import type { KnowledgePort } from "./knowledge-port.js";
 import { AppError } from "./errors.js";
+import { OperationLimiter } from "./operation-limiter.js";
 
 /** Application policy, independent of Fastify, React, PostgreSQL and kernel internals. */
 export class KnowledgeService {
-  private active = 0;
   constructor(
     private readonly knowledge: KnowledgePort,
-    private readonly concurrency = 2,
+    concurrency = 2,
+    private readonly limiter = new OperationLimiter(concurrency),
   ) {}
   get commit() {
     return this.knowledge.commit;
@@ -38,13 +39,6 @@ export class KnowledgeService {
       throw new AppError("INVALID_ID", 400, "Use a registered opaque knowledge ID.");
   }
   private async bounded<T>(operation: () => Promise<T>): Promise<T> {
-    if (this.active >= this.concurrency)
-      throw new AppError("BUSY", 429, "Two operations are active. Please wait before retrying.");
-    this.active++;
-    try {
-      return await operation();
-    } finally {
-      this.active--;
-    }
+    return this.limiter.run(operation);
   }
 }

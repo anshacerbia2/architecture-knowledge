@@ -92,6 +92,13 @@ runner. It uses normal CLI permissions, not a tool sandbox; read the local priva
 - Inspect a one-hop graph (40-edge display limit), exclusions and conditions.
 - Search PostgreSQL using lexical, hybrid or hybrid-graph retrieval.
 - Ask a single question and inspect citations, uncertainty and provenance.
+- Use Decision assistant to select any of the three proposed M7.2 guides, confirm project context
+  and conditions, and inspect a validated evidence-backed recommendation.
+
+Decision assistant evaluation is local and deterministic. It does not call the configured Ask
+provider or PostgreSQL, and it does not persist the session. Editing the draft invalidates the
+displayed result; reset, navigation, or refresh discards it. Every output remains recommendation
+only, requires a human decision, and cannot approve content or create an ADR/RFC/PAD.
 
 Embedding and answer providers default to deterministic demos. They exercise real storage and
 retrieval, but do not establish live-model quality. Try:
@@ -103,8 +110,9 @@ configure `apps/atlas/.env`, plan, initialize budget, index, check and activate.
 unbudgeted root retrieval CLI with live credentials for this pilot. No live calls occur just because
 an API key exists.
 
-Citation resolution does not prove semantic entailment. No decision approval or ADR/RFC/PAD
-generator is provided. This app is loopback-only for one trusted OS user.
+Citation resolution does not prove semantic entailment. Decision-runtime validation does not prove
+project facts or grant approval. No ADR/RFC/PAD generator is provided. This app is loopback-only for
+one trusted OS user.
 
 ## Verification from repository root
 

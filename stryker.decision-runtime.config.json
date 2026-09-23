@@ -15,24 +15,12 @@
       "UpdateOperator"
     ]
   },
-  "mutate": [
-    "src/decision-recommendation-validator.ts",
-    "src/schema-validator.ts",
-    "src/decision-validation-snapshot.ts"
-  ],
-  "thresholds": {
-    "high": 70,
-    "low": 60,
-    "break": 60
-  },
+  "mutate": ["src/decision-runtime.ts"],
+  "thresholds": { "high": 70, "low": 60, "break": 60 },
   "reporters": ["clear-text", "progress", "json"],
-  "jsonReporter": {
-    "fileName": ".tmp/mutation-decision-recommendation.json"
-  },
+  "jsonReporter": { "fileName": ".tmp/mutation-decision-runtime.json" },
   "concurrency": 2,
   "timeoutMS": 10000,
   "coverageAnalysis": "perTest",
-  "vitest": {
-    "configFile": "vitest.decision-recommendation-mutation.config.ts"
-  }
+  "vitest": { "configFile": "vitest.decision-runtime-mutation.config.ts" }
 }

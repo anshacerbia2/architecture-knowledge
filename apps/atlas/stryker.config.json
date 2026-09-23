@@ -12,9 +12,12 @@
     "apps/api/src/config.ts",
     "packages/knowledge-adapter/src/openrouter-provider.ts",
     "packages/knowledge-adapter/src/agy-provider.ts",
+    "packages/application/src/decision-service.ts",
+    "packages/application/src/operation-limiter.ts",
     "packages/ai-connectors/src/agy-process.ts",
     "packages/ai-connectors/src/openrouter-connectors.ts",
-    "apps/api/src/openrouter-routes.ts"
+    "apps/api/src/openrouter-routes.ts",
+    "apps/api/src/decision-routes.ts"
   ],
   "reporters": ["clear-text", "progress", "json"],
   "jsonReporter": { "fileName": "reports/mutation.json" },

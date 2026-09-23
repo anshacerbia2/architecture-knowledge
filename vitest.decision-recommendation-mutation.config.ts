@@ -10,6 +10,8 @@ export default defineConfig({
       "tests/m7-decision-basis-regressions.test.ts",
       "tests/m7-preflight-regressions.test.ts",
       "tests/m7-2-output-coverage.test.ts",
+      "tests/schema-snapshot.test.ts",
+      "tests/decision-validation-snapshot.test.ts",
     ],
   },
 });

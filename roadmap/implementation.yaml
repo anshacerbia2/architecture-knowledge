@@ -1,9 +1,9 @@
 schema_version: 2
 status: proposed
 roadmap_id: architecture-knowledge-platform
-# Authorized engineering prerequisite before further M7 runtime work:
-# Atlas workspace/public facade + pinned snapshot; docs/structural-integration-hardening.md.
-# This does not change milestone/content approval or authorize assistant runtime.
+# Baseline 724233c: Atlas workspace/public facade, pinned snapshot and Search/Ask providers implemented.
+# M7.3 snapshot validation, local three-guide evaluation, and Atlas API/UI are implemented; audit pending.
+# This does not change milestone/content approval.
 milestones:
   - id: m0
     title: Project Definition
@@ -137,7 +137,7 @@ milestones:
     exit_criteria:
       - recommendations are contextual and explainable
       - automation cannot approve decisions
-    notes: M7.0 is explicitly approved complete. The M7.1 validation kernel is implemented. Ansha Cerbia approved completion of the bounded M7.2 corpus pilot after focused closure confirmation and successful exact-merge CI; the approval is recorded in docs/m7-2-completion-approval.md. Three guides remain proposed; evidence records retain their existing lifecycle states. Milestone approval does not approve guide content or complete all of M7. Assistant runtime, model integration, broader corpus expansion, and artifact generation remain unstarted and require separate authorization.
+    notes: M7.0 is explicitly approved complete. The M7.1 validation kernel is implemented. Ansha Cerbia approved completion of the bounded M7.2 corpus pilot after focused closure confirmation and successful exact-merge CI; the approval is recorded in docs/m7-2-completion-approval.md. Three guides remain proposed; evidence records retain their existing lifecycle states. Milestone approval does not approve guide content or complete all of M7. At baseline 724233c Atlas workspace integration and M6 Search/Ask provider adapters are implemented. The bounded M7.3 plan preserves local, ephemeral evaluation and prohibits external-provider processing. Snapshot validation, local evaluation of all three M7.2 guides, and Atlas API/UI integration are implemented (docs/m7-3-snapshot-validation.md, docs/m7-3-local-evaluator.md, and docs/m7-3-implementation-report.md); independent audit, broader corpus expansion, and artifact generation remain pending.
   - id: m8
     title: Architecture Review Platform
     status: future

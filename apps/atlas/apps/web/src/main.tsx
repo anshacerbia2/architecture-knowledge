@@ -9,6 +9,7 @@ const Explore = lazy(() => import("./pages/explore.js"));
 const Record = lazy(() => import("./pages/record.js"));
 const Graph = lazy(() => import("./pages/graph.js"));
 const Ask = lazy(() => import("./pages/ask.js"));
+const Decide = lazy(() => import("./pages/decide.js"));
 const Status = lazy(() => import("./pages/status.js"));
 const client = new QueryClient({
   defaultOptions: {
@@ -38,6 +39,9 @@ function App() {
           </NavLink>
           <NavLink to="/ask">
             <span>✳</span> Ask knowledge
+          </NavLink>
+          <NavLink to="/decide">
+            <span>◇</span> Decision assistant
           </NavLink>
           <NavLink to="/status">
             <span>◉</span> System status
@@ -69,6 +73,7 @@ function App() {
               <Route path="/records/:id" element={<Record />} />
               <Route path="/graph" element={<Graph />} />
               <Route path="/ask" element={<Ask />} />
+              <Route path="/decide" element={<Decide />} />
               <Route path="/status" element={<Status />} />
               <Route
                 path="*"

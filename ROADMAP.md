@@ -11,10 +11,20 @@ canonical status.
 
 ## Current position
 
-Structural integration hardening is being implemented before further M7 runtime work:
-Atlas joins the pnpm workspace with a compiled kernel facade and a pinned in-memory
-snapshot. See [scope, review dispositions and evidence](docs/structural-integration-hardening.md).
-This engineering work does not complete M7 or elevate knowledge lifecycle states.
+Implementation baseline inspected on 2026-09-20: `724233c` (merge PR #20).
+Atlas workspace integration, the compiled kernel facade and pinned in-memory
+snapshot are implemented. The app also has OpenAI, OpenRouter free and Antigravity
+CLI provider adapters for its existing Search/Ask flows. See
+[structural integration evidence](docs/structural-integration-hardening.md) and
+[current Atlas capabilities](apps/atlas/README.md).
+
+The bounded [M7.3 Decision Assistant plan](docs/m7-3-decision-assistant-plan.md),
+[snapshot-validation prerequisite](docs/m7-3-snapshot-validation.md), and
+[local evaluator](docs/m7-3-local-evaluator.md) are connected through the
+[M7.3 implementation](docs/m7-3-implementation-report.md) for all three M7.2 guides.
+Independent audit and owner completion remain pending. This work does
+not complete M7 or elevate knowledge lifecycle states. Provider integration is not
+semantic-quality evaluation or proof of a working user-facing decision assistant.
 
 ```text
 M0 Project Definition          → implemented in repository
@@ -24,7 +34,7 @@ M3 Reference Knowledge Corpus  → implemented; final independent re-audit passe
 M4 Knowledge Graph             → implemented; independent audit passed
 M5 Hybrid Retrieval            → implemented; independent audit passed
 M6 Architecture RAG            → implemented; final independent re-audit passed
-M7 Decision Assistant          → M7.2 pilot completion approved; runtime not started
+M7 Decision Assistant          → M7.3 runtime/API/UI implemented; audit pending
 M8 Review Platform             → future
 M9 Production Platform         → future
 ```
@@ -273,9 +283,14 @@ pilot contains three proposed decision guides. Ansha Cerbia approved M7.2
 completion after the two focused remediation findings were confirmed closed
 and exact-merge CI passed. See the
 [completion approval](docs/m7-2-completion-approval.md) and its evidence links.
-This does not complete all of M7 or approve guide content. Assistant runtime,
-model integration, broader corpus expansion and artifact generators remain
-unstarted and require separate authorization.
+This does not complete all of M7 or approve guide content. Atlas now implements
+provider integration for M6 Search/Ask. M7.3 snapshot validation, local evaluation,
+and Atlas API/UI integration for all three proposed guides are implemented; independent
+audit, broader corpus expansion and artifact generators remain pending. The bounded
+[M7.3 plan](docs/m7-3-decision-assistant-plan.md) preserves ephemeral context intake,
+explicit condition confirmation, local option evaluation, and validated
+recommendations. The guides prohibit external processing; existing Ask provider
+settings do not authorize decision-session egress.
 
 ## M8 — Architecture Review Platform
 

@@ -483,6 +483,126 @@
       "status": "valid"
     },
     {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "../apps/atlas/AGENTS.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "../apps/atlas/apps/api/src/http-server.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "../apps/atlas/packages/knowledge-adapter/src/providers.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "../apps/atlas/packages/knowledge-adapter/src/snapshot.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "../decisions/AKG-000002.yaml",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "../schemas/decision-recommendation.schema.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "../schemas/decision-session.schema.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "../src/decision-recommendation-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "../src/decision-recommendation-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "../src/runtime-api.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "../src/schema-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "m7-2-completion-approval.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "m7-3-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "m7-3-local-evaluator.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "m7-3-snapshot-validation.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-decision-assistant-plan.md",
+      "target": "m7-decision-guide-kernel.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-local-evaluator.md",
+      "target": "../src/runtime-api.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-local-evaluator.md",
+      "target": "m7-3-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-snapshot-validation.md",
+      "target": "../src/decision-recommendation-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-snapshot-validation.md",
+      "target": "../src/decision-validation-snapshot.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-snapshot-validation.md",
+      "target": "../src/schema-validator.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-snapshot-validation.md",
+      "target": "../tests/decision-validation-snapshot.test.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-snapshot-validation.md",
+      "target": "../tests/schema-snapshot.test.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-snapshot-validation.md",
+      "target": "m7-3-decision-assistant-plan.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/m7-decision-guide-kernel.md",
       "target": "m7-1-decision-basis-remediation-report.md",
       "status": "valid"
@@ -500,6 +620,11 @@
     {
       "path": "docs/m7-decision-guide-kernel.md",
       "target": "m7-2-output-coverage-remediation.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "../apps/atlas/README.md",
       "status": "valid"
     },
     {
@@ -814,6 +939,46 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m7-3-decision-assistant-plan.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-3-decision-assistant-plan.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-3-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-3-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-3-local-evaluator.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-3-local-evaluator.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-3-snapshot-validation.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-3-snapshot-validation.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m7-decision-guide-kernel.md",
       "status": "valid"
     },
@@ -845,6 +1010,156 @@
     {
       "path": "docs/README.md",
       "target": "structural-integration-hardening.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../docker-compose.retrieval.yml",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../docs/m6-architecture-rag.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../evaluation/rag-golden.yaml",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../generated/graph/manifest.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../migrations/0001_retrieval.sql",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../migrations/0001_retrieval.sql",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../migrations/0001_retrieval.sql",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/graph-projector.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/graph-projector.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/graph-query.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/graph-types.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/rag-citation-authority.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/rag-context.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/rag-context.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/rag-engine.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/rag-engine.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/rag-output-contract.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/rag-provider.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/rag-provider.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/retrieval-indexer.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/retrieval-query.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/retrieval-query.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/retrieval-query.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/retrieval-query.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/retrieval-query.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/retrieval-query.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/retrieval-query.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/retrieval-units.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../src/retrieval-units.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/reviews/architecture-knowledge-graph-rag-assessment.md",
+      "target": "../../tests/retrieval-query.test.ts",
       "status": "valid"
     },
     {
@@ -884,6 +1199,11 @@
     },
     {
       "path": "README.md",
+      "target": "apps/atlas/README.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
       "target": "CODE_OF_KNOWLEDGE.md",
       "status": "valid"
     },
@@ -900,6 +1220,26 @@
     {
       "path": "README.md",
       "target": "docs/m7-2-completion-approval.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
+      "target": "docs/m7-3-decision-assistant-plan.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
+      "target": "docs/m7-3-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
+      "target": "docs/m7-3-local-evaluator.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
+      "target": "docs/m7-3-snapshot-validation.md",
       "status": "valid"
     },
     {
@@ -944,7 +1284,37 @@
     },
     {
       "path": "ROADMAP.md",
+      "target": "apps/atlas/README.md",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
       "target": "docs/m7-2-completion-approval.md",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
+      "target": "docs/m7-3-decision-assistant-plan.md",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
+      "target": "docs/m7-3-decision-assistant-plan.md",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
+      "target": "docs/m7-3-implementation-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
+      "target": "docs/m7-3-local-evaluator.md",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
+      "target": "docs/m7-3-snapshot-validation.md",
       "status": "valid"
     },
     {
@@ -959,8 +1329,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 191,
+    "checked_link_count": 265,
     "broken_link_count": 0,
-    "markdown_file_count": 119
+    "markdown_file_count": 124
   }
 }
