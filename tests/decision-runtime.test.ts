@@ -126,6 +126,15 @@ function bothViable() {
 }
 
 describe("M7.3 bounded decision runtime", () => {
+  it("constructs a usable public runtime inside the request-independent startup boundary", async () => {
+    const fresh = await loadDecisionRuntimeSnapshot(process.cwd());
+    expect(fresh.listGuides().map((guide) => guide.id)).toEqual([
+      "AKG-000001",
+      "AKG-000002",
+      "AKG-000003",
+    ]);
+    expect((await fresh.evaluate(bothViable())).status).toBe("multiple-viable-options");
+  });
   it("exposes the three proposed M7.2 guides and returns detached intake data", () => {
     const guides = runtime.listGuides();
     expect(guides.map((guide) => guide.id)).toEqual(["AKG-000001", "AKG-000002", "AKG-000003"]);

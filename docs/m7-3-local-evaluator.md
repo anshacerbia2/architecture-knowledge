@@ -76,20 +76,22 @@ treated as present project facts.
 
 ## Local verification
 
-Focused runtime tests pass 31 cases over all three real guides. They cover detached
+Focused runtime tests pass 32 cases over all three real guides. They cover detached
 catalog/intake/results, clarification, single and multiple viable outcomes, rejection,
 inapplicability, hard-constraint failure, unknown exclusions, external-provider
 override, stale versions, duplicate/forged conditions, undeclared context, and
 snapshot-load failure, blank confirmed context, conflicting attestations, missing
 conditions, driver-basis precision, classification mismatch, oversized values,
-future-trigger preservation, and pending-input detachment.
+future-trigger preservation, pending-input detachment, and fresh public-loader
+construction inside a test. Three additional exhaustive tests cover all 256
+complete boolean assessments across the three guides without an operational failure.
 
-The earlier 15-test run measured 95.27% statements, 87.57% branches, 96.51%
-functions, and 96.87% lines; these are historical, not the expanded boundary's
-final coverage. The runtime is included in full coverage and a separate
-decision-runtime mutation suite. Full-suite,
-mutation, application, and hosted CI results belong to the final implementation
-handoff and are not claimed here.
+The full 707-test kernel run measured runtime coverage at 96.57% statements,
+91.94% branches, 97.11% functions, and 97.65% lines, before four supplemental tests
+were added. The runtime is included in full coverage and a separate decision-runtime
+mutation suite. The 68.29% local mutation baseline predates those additional tests.
+Detailed scope, limitations, application results, and pending hosted verification
+are recorded in the implementation report.
 
 ## Subsequent application integration
 

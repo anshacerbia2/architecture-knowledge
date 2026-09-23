@@ -1,6 +1,6 @@
 # M7.3 Decision Assistant runtime implementation
 
-Date: 2026-09-22. Status: implemented on the feature branch; independent audit and
+Date: 2026-09-23. Status: implemented on the feature branch; hosted verification, independent audit and
 owner completion are pending. All three decision guides remain `proposed`.
 
 ## Outcome
@@ -73,23 +73,54 @@ is an operational failure and is not rendered as an evidence conclusion.
 
 ## Validation evidence
 
-Local results recorded during implementation:
+Local Windows results recorded during implementation (production code unchanged
+after these measurements):
 
 - `pnpm validate`: zero errors and warnings;
 - graph, retrieval-unit and integrity currentness: current;
-- focused runtime tests: 31 passed across all three real guides after hardening;
-- focused runtime coverage: 95.27% statements, 87.57% branches, 96.51% functions,
-  and 96.87% lines;
-- full kernel coverage: 93.59% statements, 84.98% branches, 97.14% functions,
-  and 95.65% lines;
-- Atlas unit/HTTP/adapter tests: 195 passed and one database test skipped;
-- Atlas coverage: 98.86% statements, 97.27% branches, 100% functions, and 99.10%
-  lines; and
+- full kernel coverage: 707 tests passed, five database tests skipped; 93.71%
+  statements, 85.34% branches, 97.20% functions, and 95.72% lines;
+- runtime coverage within that full run: 96.57% statements, 91.94% branches,
+  97.11% functions, and 97.65% lines;
+- subsequent startup and exhaustive-combination regressions: 35 focused tests
+  passed (32 runtime tests and three tests spanning 256 boolean assessments);
+- Atlas unit/HTTP/adapter tests: 197 passed and one database test skipped;
+- Atlas coverage: 99.04% statements, 97.47% branches, 100% functions, and 99.29%
+  lines;
+- browser E2E: 18 passed, including real API evaluation of all three guides with
+  an unavailable database, confirmation, edits/reset/reload, stale-response
+  suppression, and desktop/mobile rendering;
+- CI classification/gate tests: eight passed; and
 - kernel build, Atlas typecheck, formatting and production build: passed.
 
-Focused kernel and Atlas decision mutation results, browser E2E results, clean-checkout
-results and hosted CI provenance are added at delivery handoff after those commands
-complete. A self-test pass is not an independent audit or milestone approval.
+The first full coverage attempt had two 10-second setup-hook timeouts while several
+heavy suites ran concurrently. Both suites passed an isolated 65-test rerun; the
+entire coverage gate then passed using `pnpm exec vitest run --coverage --maxWorkers=1`.
+Timeouts and thresholds were not relaxed. The four subsequently added tests passed
+separately; the 707-test coverage total does not include them. A browser test's
+dropdown locator was corrected to its accessible role before the successful full
+18-test rerun. Port 4311 was already occupied; a separate test port was used without
+stopping the existing application.
+
+Completed local mutation baselines:
+
+- recommendation/snapshot boundary: 87.80% (468 killed, seven timed out,
+  60 survived, six uncovered; 375 policy-excluded);
+- new evaluator: 68.29% (348 killed, three timed out, 148 survived,
+  15 uncovered; 273 policy-excluded); and
+- focused Atlas decision boundary: 60.50% (268 killed, 167 survived, eight
+  uncovered). Route-schema mutation was only 37.50% in this baseline.
+
+All three baselines pass the unchanged 60% gate. Startup and exhaustive runtime
+tests, and nested HTTP/revision regressions, were strengthened after the mutation
+baselines. Report source text was checked against the unchanged production files;
+these scores are not measurements of the strengthened test set. Surviving and
+uncovered mutants remain explicit limitations, not proof of defect freedom.
+
+Hosted clean-checkout Linux/Windows, full Atlas mutation, and PostgreSQL integration
+remain to be verified on the PR SHA. Hosted results must be read from the exact-SHA
+run, not inferred from these local results. A self-test pass is not an independent
+audit or milestone approval.
 
 ## Residual risks and deferred scope
 
