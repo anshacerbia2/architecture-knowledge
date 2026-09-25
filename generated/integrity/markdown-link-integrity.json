@@ -573,6 +573,41 @@
       "status": "valid"
     },
     {
+      "path": "docs/m7-3-post-merge-audit-report.md",
+      "target": "../apps/atlas/apps/web/src/pages/decide.tsx",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-post-merge-audit-report.md",
+      "target": "../schemas/decision-recommendation.schema.json",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-post-merge-audit-report.md",
+      "target": "../src/decision-runtime.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-post-merge-audit-report.md",
+      "target": "../src/decision-runtime.ts",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-post-merge-audit-report.md",
+      "target": "m7-3-decision-assistant-plan.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-post-merge-audit-report.md",
+      "target": "m7-3-decision-assistant-plan.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/m7-3-post-merge-audit-report.md",
+      "target": "m7-3-implementation-report.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/m7-3-snapshot-validation.md",
       "target": "../src/decision-recommendation-validator.ts",
       "status": "valid"
@@ -944,11 +979,6 @@
     },
     {
       "path": "docs/README.md",
-      "target": "m7-3-decision-assistant-plan.md",
-      "status": "valid"
-    },
-    {
-      "path": "docs/README.md",
       "target": "m7-3-implementation-report.md",
       "status": "valid"
     },
@@ -965,6 +995,16 @@
     {
       "path": "docs/README.md",
       "target": "m7-3-local-evaluator.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-3-post-merge-audit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-3-post-merge-audit-report.md",
       "status": "valid"
     },
     {
@@ -1239,6 +1279,11 @@
     },
     {
       "path": "README.md",
+      "target": "docs/m7-3-post-merge-audit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
       "target": "docs/m7-3-snapshot-validation.md",
       "status": "valid"
     },
@@ -1314,6 +1359,16 @@
     },
     {
       "path": "ROADMAP.md",
+      "target": "docs/m7-3-post-merge-audit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
+      "target": "docs/m7-3-post-merge-audit-report.md",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
       "target": "docs/m7-3-snapshot-validation.md",
       "status": "valid"
     },
@@ -1329,8 +1384,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 265,
+    "checked_link_count": 276,
     "broken_link_count": 0,
-    "markdown_file_count": 124
+    "markdown_file_count": 125
   }
 }

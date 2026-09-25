@@ -21,7 +21,8 @@ The [M7.3 runtime plan](docs/m7-3-decision-assistant-plan.md),
 [snapshot-validation prerequisite](docs/m7-3-snapshot-validation.md), and
 [local evaluator](docs/m7-3-local-evaluator.md) are now connected through the
 [M7.3 implementation](docs/m7-3-implementation-report.md). Atlas exposes the
-ephemeral Decision Assistant API/UI; independent audit and owner completion remain pending.
+ephemeral Decision Assistant API/UI. The [post-merge audit](docs/m7-3-post-merge-audit-report.md)
+requires focused remediation before owner completion.
 
 ## Current scope
 
