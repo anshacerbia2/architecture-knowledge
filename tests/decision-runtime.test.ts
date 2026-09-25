@@ -194,6 +194,13 @@ describe("M7.3 bounded decision runtime", () => {
     expect(result.recommendation.inapplicable_options).toEqual([
       expect.objectContaining({ concept_id: BREAKER }),
     ]);
+    expect(result.recommendation.risks).toEqual([
+      expect.objectContaining({
+        option_ids: [RETRY],
+        claim_ids: ["AKL-000026"],
+        statement: expect.stringContaining("not verified for this project"),
+      }),
+    ]);
     expect(result.recommendation.claim_ids).toContain("AKL-000026");
     expect(result.recommendation.evidence_claims).toEqual(expect.any(Array));
   });
@@ -232,6 +239,12 @@ describe("M7.3 bounded decision runtime", () => {
         expect.objectContaining({ option_ids: [BREAKER] }),
       ]),
     );
+    expect(result.recommendation.risks).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ option_ids: [RETRY], claim_ids: ["AKL-000026"] }),
+        expect.objectContaining({ option_ids: [BREAKER], claim_ids: ["AKL-000013"] }),
+      ]),
+    );
   });
 
   it.each([
@@ -257,6 +270,9 @@ describe("M7.3 bounded decision runtime", () => {
       const result = await runtime.evaluate(sessionForGuide(guideId, falses));
       expect(result.status).toBe("multiple-viable-options");
       expect(result.recommendation.viable_options).toEqual(options);
+      expect(result.recommendation.risks).toEqual(
+        expect.arrayContaining([expect.objectContaining({ option_ids: [options[0]] })]),
+      );
       expect(result.recommendation.authority).toEqual({
         recommendation_only: true,
         human_decision_required: true,
@@ -271,6 +287,7 @@ describe("M7.3 bounded decision runtime", () => {
     const result = await runtime.evaluate(value);
     expect(result.status).toBe("insufficient-evidence");
     expect(result.recommendation.viable_options).toEqual([]);
+    expect(result.recommendation.risks).toEqual([]);
     expect(result.recommendation.uncertainty).toEqual(
       expect.arrayContaining([expect.objectContaining({ basis: "missing-evidence" })]),
     );

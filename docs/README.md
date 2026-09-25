@@ -1,6 +1,7 @@
 # Documentation Reading Order
 
-Current next scope: focused closure of the [M7.3 post-merge audit](m7-3-post-merge-audit-report.md).
+Current next scope: focused closure of the [M7.3 risk-coverage remediation](m7-3-risk-coverage-remediation.md)
+against the [post-merge audit](m7-3-post-merge-audit-report.md).
 [Slice 1](m7-3-snapshot-validation.md) implements snapshot-bound validation and
 [slice 2](m7-3-local-evaluator.md) implements local evaluation for all three M7.2
 guides. The [M7.3 implementation report](m7-3-implementation-report.md) records the
@@ -119,6 +120,7 @@ Proposed local app: [Architecture](local-app-architecture.md), then
 | M7-19 | [M7.3 Local Evaluator](m7-3-local-evaluator.md) | Implements validated local evaluation for the three proposed M7.2 guides without provider, database, persistence, or approval authority. |
 | M7-20 | [M7.3 Implementation Report](m7-3-implementation-report.md) | Records the local runtime, API/UI, safety boundaries, validation evidence and independent-audit handoff. |
 | M7-21 | [M7.3 Post-Merge Technical Audit](m7-3-post-merge-audit-report.md) | Reviews the exact merge SHA, records risk-comparison and driver-UI gaps, and bounds focused remediation. |
+| M7-22 | [M7.3 Risk-Coverage Remediation](m7-3-risk-coverage-remediation.md) | Presents guide-bound, explicitly unverified risk inquiries and corrects driver UI wording. |
 
 ## Architecture Decision Records
 
@@ -180,6 +182,7 @@ describe.
 | M7.3 implementation history | authored 2026-09-22 | M7.3 Local Evaluator; use Git history for commit provenance |
 | M7.3 implementation history | authored 2026-09-22 | M7.3 Runtime Implementation; use Git history for commit provenance |
 | 2026-09-25 | `efbb3b0` audited merge | M7.3 Post-Merge Technical Audit; use Git history for report commit provenance |
+| 2026-09-25 | implementation branch; commit pending | M7.3 Risk-Coverage Remediation; use Git history for commit provenance |
 
 ## Maintenance Rule
 

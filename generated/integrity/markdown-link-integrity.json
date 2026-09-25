@@ -608,6 +608,11 @@
       "status": "valid"
     },
     {
+      "path": "docs/m7-3-risk-coverage-remediation.md",
+      "target": "m7-3-post-merge-audit-report.md",
+      "status": "valid"
+    },
+    {
       "path": "docs/m7-3-snapshot-validation.md",
       "target": "../src/decision-recommendation-validator.ts",
       "status": "valid"
@@ -1009,6 +1014,16 @@
     },
     {
       "path": "docs/README.md",
+      "target": "m7-3-risk-coverage-remediation.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
+      "target": "m7-3-risk-coverage-remediation.md",
+      "status": "valid"
+    },
+    {
+      "path": "docs/README.md",
       "target": "m7-3-snapshot-validation.md",
       "status": "valid"
     },
@@ -1284,6 +1299,11 @@
     },
     {
       "path": "README.md",
+      "target": "docs/m7-3-risk-coverage-remediation.md",
+      "status": "valid"
+    },
+    {
+      "path": "README.md",
       "target": "docs/m7-3-snapshot-validation.md",
       "status": "valid"
     },
@@ -1369,6 +1389,16 @@
     },
     {
       "path": "ROADMAP.md",
+      "target": "docs/m7-3-risk-coverage-remediation.md",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
+      "target": "docs/m7-3-risk-coverage-remediation.md",
+      "status": "valid"
+    },
+    {
+      "path": "ROADMAP.md",
       "target": "docs/m7-3-snapshot-validation.md",
       "status": "valid"
     },
@@ -1384,8 +1414,8 @@
     }
   ],
   "summary": {
-    "checked_link_count": 276,
+    "checked_link_count": 282,
     "broken_link_count": 0,
-    "markdown_file_count": 125
+    "markdown_file_count": 126
   }
 }
