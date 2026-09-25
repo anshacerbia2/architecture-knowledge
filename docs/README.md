@@ -182,7 +182,7 @@ describe.
 | M7.3 implementation history | authored 2026-09-22 | M7.3 Local Evaluator; use Git history for commit provenance |
 | M7.3 implementation history | authored 2026-09-22 | M7.3 Runtime Implementation; use Git history for commit provenance |
 | 2026-09-25 | `efbb3b0` audited merge | M7.3 Post-Merge Technical Audit; use Git history for report commit provenance |
-| 2026-09-25 | implementation branch; commit pending | M7.3 Risk-Coverage Remediation; use Git history for commit provenance |
+| 2026-09-25 | `6fc9004` initial implementation | M7.3 Risk-Coverage Remediation; use Git history for final report commit provenance |
 
 ## Maintenance Rule
 

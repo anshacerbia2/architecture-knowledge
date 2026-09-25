@@ -1,6 +1,6 @@
 # M7.3 Focused Risk-Coverage Remediation
 
-Date: 2026-09-25 (Asia/Jakarta). Status: implementation in progress on
+Date: 2026-09-25 (Asia/Jakarta). Status: implemented on
 `fix/m7-3-risk-coverage`; focused closure and owner completion remain pending.
 This work responds only to [M7.3-AUD-001 and M7.3-AUD-002](m7-3-post-merge-audit-report.md).
 
@@ -38,9 +38,26 @@ introduced. The guide content remains `proposed`.
 Focused runtime tests check one-option risk scope, two-option risk scope,
 non-affirmative absence, and all three real guides. The existing 256 complete
 condition combinations retain semantic output validation. Atlas browser tests
-check option/claim provenance and risk presentation. Full kernel, Atlas,
-mutation and exact-SHA CI results must be recorded at handoff, separating
-local database skips from hosted integration evidence.
+check option/claim provenance and risk presentation.
+
+Local evidence on the implementation tree:
+
+- `pnpm build`, `pnpm validate`, root and Atlas formatting checks, graph check,
+  retrieval-unit check, and integrity currentness all passed;
+- full kernel coverage passed: 711 tests, five local database tests skipped;
+  93.74% statements and 85.40% branches;
+- Atlas coverage passed: 197 tests, one local database test skipped;
+  99.04% statements and 97.47% branches; and
+- all 18 Atlas browser tests passed on a clean commit with a deliberately
+  unavailable synthetic database and fake provider, including all three real
+  guide API outcomes and visible risk output;
+- focused evaluator mutation passed at 69.46% (357 killed, 142 survived,
+  15 uncovered, zero timed out), above the unchanged 60% break threshold. The
+  executable condition-filter mutants in the new risk projection were killed;
+  policy-excluded mutation types and surviving mutants remain limitations.
+
+Exact-SHA hosted CI remains to be recorded at handoff. Local database skips are
+not PostgreSQL integration evidence.
 
 Successful tests and mutation scores are technical evidence only. A focused
 review should inspect whether the qualified inquiry presentation adequately
