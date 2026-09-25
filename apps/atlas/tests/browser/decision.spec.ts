@@ -77,6 +77,14 @@ test("real decision API evaluates all three pinned guides with the database unav
     expect(output.recommendation.viable_options).toEqual(guide.option_ids);
     expect(output.recommendation.authority.automation_may_approve).toBe(false);
     expect(output.recommendation.evidence_claims.length).toBeGreaterThan(0);
+    expect(output.recommendation.risks.length).toBeGreaterThan(0);
+    for (const risk of output.recommendation.risks) {
+      expect(risk.statement).toContain("not verified for this project");
+      expect(risk.option_ids.every((id: string) => guide.option_ids.includes(id))).toBe(true);
+      expect(
+        risk.claim_ids.every((id: string) => output.recommendation.claim_ids.includes(id)),
+      ).toBe(true);
+    }
   }
 });
 
@@ -105,6 +113,13 @@ test("real browser intake confirms evidence, invalidates edits and discards sess
   }
   await page.getByRole("button", { name: "Evaluate options" }).click();
   await expect(page.getByRole("heading", { name: "multiple viable options" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Potential risks to investigate" })).toBeVisible();
+  await expect(
+    page.getByText("not verified for this project", { exact: false }).first(),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Confirm scope and evidence focus" }),
+  ).toBeVisible();
   await page.screenshot({ path: testInfo.outputPath("decision-desktop.png"), fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);

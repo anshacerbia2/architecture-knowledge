@@ -269,7 +269,7 @@ export default function Decide() {
             <div className="section-heading">
               <div>
                 <span className="eyebrow">2 · CONSTRAINTS & DRIVERS</span>
-                <h2>Confirm scope and priorities</h2>
+                <h2>Confirm scope and evidence focus</h2>
               </div>
             </div>
             {selected.constraints.map((entry, index) => {
@@ -345,6 +345,10 @@ export default function Decide() {
                 </label>
               );
             })}
+            <p className="hint">
+              Selecting a quality attribute records what to trace in the decision basis. It does not
+              rank options or change their eligibility.
+            </p>
           </section>
 
           <section className="panel decision-section">
@@ -472,13 +476,22 @@ export default function Decide() {
           <div className="decision-evidence-grid">
             {[
               ["Trade-offs", recommendation.tradeoffs],
+              ["Potential risks to investigate", recommendation.risks],
               ["Verification", recommendation.verification],
               ["Evolution triggers", recommendation.evolution_triggers],
               ["Uncertainty", recommendation.uncertainty],
             ].map(([label, value]) => (
               <article key={String(label)}>
                 <h3>{String(label)}</h3>
-                <FieldValue value={value} />
+                {label === "Potential risks to investigate" &&
+                Array.isArray(value) &&
+                value.length === 0 ? (
+                  <p>
+                    No applicable risk inquiry is recorded; this does not establish absence of risk.
+                  </p>
+                ) : (
+                  <FieldValue value={value} />
+                )}
               </article>
             ))}
           </div>

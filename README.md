@@ -22,7 +22,9 @@ The [M7.3 runtime plan](docs/m7-3-decision-assistant-plan.md),
 [local evaluator](docs/m7-3-local-evaluator.md) are now connected through the
 [M7.3 implementation](docs/m7-3-implementation-report.md). Atlas exposes the
 ephemeral Decision Assistant API/UI. The [post-merge audit](docs/m7-3-post-merge-audit-report.md)
-requires focused remediation before owner completion.
+identified two focused gaps. The [remediation](docs/m7-3-risk-coverage-remediation.md)
+adds qualified risk inquiries and clarifies quality-driver behavior; focused closure
+and owner completion remain pending.
 
 ## Current scope
 

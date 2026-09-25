@@ -23,8 +23,10 @@ The bounded [M7.3 Decision Assistant plan](docs/m7-3-decision-assistant-plan.md)
 [local evaluator](docs/m7-3-local-evaluator.md) are connected through the
 [M7.3 implementation](docs/m7-3-implementation-report.md) for all three M7.2 guides.
 The [post-merge audit](docs/m7-3-post-merge-audit-report.md) found one medium
-risk-comparison coverage gap and one low UI/driver wording gap. Focused remediation
-and owner completion remain pending. This work does
+risk-comparison coverage gap and one low UI/driver wording gap. The
+[focused remediation](docs/m7-3-risk-coverage-remediation.md) implements
+qualified risk inquiries and clearer driver wording; closure review and owner
+completion remain pending. This work does
 not complete M7 or elevate knowledge lifecycle states. Provider integration is not
 semantic-quality evaluation or proof of a working user-facing decision assistant.
 
@@ -36,7 +38,7 @@ M3 Reference Knowledge Corpus  → implemented; final independent re-audit passe
 M4 Knowledge Graph             → implemented; independent audit passed
 M5 Hybrid Retrieval            → implemented; independent audit passed
 M6 Architecture RAG            → implemented; final independent re-audit passed
-M7 Decision Assistant          → M7.3 runtime/API/UI implemented; focused audit remediation pending
+M7 Decision Assistant          → M7.3 focused remediation implemented; closure review pending
 M8 Review Platform             → future
 M9 Production Platform         → future
 ```
@@ -289,7 +291,10 @@ This does not complete all of M7 or approve guide content. Atlas now implements
 provider integration for M6 Search/Ask. M7.3 snapshot validation, local evaluation,
 and Atlas API/UI integration for all three proposed guides are implemented. The
 [post-merge audit](docs/m7-3-post-merge-audit-report.md) requires focused
-risk-comparison and UI/driver wording remediation before owner completion;
+risk-comparison and UI/driver wording remediation. The
+[focused implementation](docs/m7-3-risk-coverage-remediation.md) now presents
+qualified, option-scoped risk inquiries and clarifies driver behavior; closure
+review and owner completion remain pending;
 broader corpus expansion and artifact generators remain pending. The bounded
 [M7.3 plan](docs/m7-3-decision-assistant-plan.md) preserves ephemeral context intake,
 explicit condition confirmation, local option evaluation, and validated

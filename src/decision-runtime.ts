@@ -356,7 +356,7 @@ function buildEvaluation(
           option_ids: [String(item.option_id)],
         }))
     : [];
-  const verification = affirmative
+  const applicableRiskQuestions = affirmative
     ? objects(guide.risk_questions)
         .filter(
           (item) =>
@@ -369,6 +369,12 @@ function buildEvaluation(
           option_ids: asStringArray(item.affected_option_ids).filter((id) => viable.includes(id)),
         }))
     : [];
+  // These are guide-bound inquiries, not assertions that a project risk occurred.
+  const risks = applicableRiskQuestions.map((item) => ({
+    ...item,
+    statement: `Potential risk to investigate; not verified for this project: ${item.statement}`,
+  }));
+  const verification = [...applicableRiskQuestions];
   if (affirmative) {
     for (const optionId of viable) {
       if (verification.some((item) => item.option_ids.includes(optionId))) continue;
@@ -403,6 +409,7 @@ function buildEvaluation(
     ...constraintResults.flatMap((item) => item.claim_ids),
     ...rejected.flatMap((item) => asStringArray(item.claim_ids)),
     ...tradeoffs.flatMap((item) => item.claim_ids),
+    ...risks.flatMap((item) => item.claim_ids),
     ...verification.flatMap((item) => item.claim_ids),
     ...evolution.flatMap((item) => item.claim_ids),
   ]);
@@ -422,7 +429,7 @@ function buildEvaluation(
     assertedRoots.push(
       ...constraintResults.flatMap((item) => item.claim_ids),
       ...rejected.flatMap((item) => asStringArray(item.claim_ids)),
-      ...[...tradeoffs, ...verification, ...evolution].flatMap((item) => item.claim_ids),
+      ...[...tradeoffs, ...risks, ...verification, ...evolution].flatMap((item) => item.claim_ids),
     );
     const uncovered = viable.some(
       (id) =>
@@ -479,7 +486,7 @@ function buildEvaluation(
     rejected_options: rejected,
     inapplicable_options: inactive,
     tradeoffs,
-    risks: [],
+    risks,
     uncertainty,
     verification,
     evolution_triggers: evolution,
